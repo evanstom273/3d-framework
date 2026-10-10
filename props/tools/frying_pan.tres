@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_eny1d"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_hfrag"]
+[ext_resource type="Script" path="res://physics/physics_tool_definition.gd" id="3_x0tbo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s3hqi"]
+albedo_color = Color(0.25, 0.17, 0.1, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_xfpyq"]
+script = ExtResource("1_eny1d")
+shape_type = 2
+radius = 0.014
+height = 0.26
+material = SubResource("StandardMaterial3D_s3hqi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wv4s"]
+albedo_color = Color(0.12, 0.12, 0.13, 1)
+metallic = 0.5
+roughness = 0.4
+
+[sub_resource type="Resource" id="Resource_f8i0y"]
+script = ExtResource("1_eny1d")
+shape_type = 2
+radius = 0.13
+height = 0.03
+position = Vector3(0, 0.27, 0)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_8wv4s")
+
+[sub_resource type="Resource" id="Resource_pls5g"]
+script = ExtResource("3_x0tbo")
+action_name = "Bonk"
+grip_position = Vector3(0, -0.08, 0)
+rest_position = Vector3(0.3, -0.32, -0.38)
+rest_rotation_degrees = Vector3(-30, 0, 8)
+windup_position = Vector3(0.34, -0.28, -0.3)
+windup_rotation_degrees = Vector3(0, 30, -80)
+strike_position = Vector3(0, -0.32, -0.45)
+strike_rotation_degrees = Vector3(0, 160, -90)
+windup_time = 0.14
+strike_time = 0.1
+recover_time = 0.22
+cooldown = 0.06
+charge_time = 0.5
+reach = 2.2
+strike_point = Vector3(0, 0.27, 0)
+strike_radius = 0.15
+impact_impulse = 40.0
+max_launch_speed = 16.0
+swing_path_influence = 0.3
+damage = 6.0
+voxel_damage_radius = 0.12
+
+[resource]
+script = ExtResource("2_hfrag")
+display_name = "Frying Pan"
+shape_type = 4
+parts = Array[ExtResource("1_eny1d")]([SubResource("Resource_xfpyq"), SubResource("Resource_f8i0y")])
+mass = 1.6
+bounce = 0.1
+angular_damp = 0.15
+impact_sound = 2
+vox_model = "res://props/vox/frying_pan.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.13, -0.13, -0.015000005)
+tool = SubResource("Resource_pls5g")

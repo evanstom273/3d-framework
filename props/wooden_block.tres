@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://cqou1eqx80x4a"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_0xu1e"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="1_definition"]
+
+[sub_resource type="StandardMaterial3D" id="Material_block"]
+albedo_color = Color(0.86, 0.68, 0.42, 1)
+roughness = 0.8
+
+[resource]
+script = ExtResource("1_definition")
+display_name = "Wooden Block"
+size = Vector3(0.16, 0.1, 0.1)
+mass = 0.5
+friction = 0.65
+bounce = 0.1
+angular_damp = 0.2
+impact_sound = 1
+material = SubResource("Material_block")
+vox_model = "res://props/vox/wooden_block.vox"
+vox_voxel_size = 0.02
+vox_origin = Vector3(-0.08, -0.05, -0.05)

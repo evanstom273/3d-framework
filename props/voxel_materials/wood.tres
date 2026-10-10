@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="1_material"]
+
+[resource]
+script = ExtResource("1_material")
+display_name = "Wood"
+color = Color(0.72, 0.52, 0.32, 1)
+color_jitter = 0.06
+strength = 6.0
+density = 180.0
+friction = 0.65
+bounce = 0.1
+blunt_multiplier = 1.0
+sharp_multiplier = 2.0
+pierce_multiplier = 0.8
+impact_sound = 1
+rubble_fraction = 0.3

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PhysicsFeel" format=3]
+
+[ext_resource type="Script" path="res://physics/feel/physics_feel.gd" id="1_feel"]
+
+[resource]
+script = ExtResource("1_feel")
+display_name = "Grounded"
+impact_impulse_multiplier = 1.0
+angular_impulse_multiplier = 0.0
+held_responsiveness = 1.0
+throw_multiplier = 1.0
+debris_launch_multiplier = 1.0
+camera_shake_strength = 0.4
+min_exaggeration_impulse = 10.0

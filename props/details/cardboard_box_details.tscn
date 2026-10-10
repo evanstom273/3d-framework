@@ -1,0 +1,27 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="Material_tape"]
+albedo_color = Color(0.86, 0.76, 0.56, 1)
+roughness = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_tape_top"]
+material = SubResource("Material_tape")
+size = Vector3(0.08, 0.008, 0.404)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tape_side"]
+material = SubResource("Material_tape")
+size = Vector3(0.08, 0.1, 0.008)
+
+[node name="CardboardBoxDetails" type="Node3D"]
+
+[node name="TapeTop" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.181, 0)
+mesh = SubResource("BoxMesh_tape_top")
+
+[node name="TapeFront" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.13, 0.201)
+mesh = SubResource("BoxMesh_tape_side")
+
+[node name="TapeBack" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.13, -0.201)
+mesh = SubResource("BoxMesh_tape_side")

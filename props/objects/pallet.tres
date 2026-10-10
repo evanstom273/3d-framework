@@ -1,0 +1,127 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_5iipa"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_gt7uv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bk8hu"]
+albedo_color = Color(0.72, 0.58, 0.38, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_kqtr7"]
+script = ExtResource("1_5iipa")
+size = Vector3(1, 0.02, 0.12)
+position = Vector3(0, 0.05, -0.44)
+material = SubResource("StandardMaterial3D_bk8hu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hds8"]
+albedo_color = Color(0.72, 0.58, 0.38, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_xvcxb"]
+script = ExtResource("1_5iipa")
+size = Vector3(1, 0.02, 0.12)
+position = Vector3(0, 0.05, -0.22)
+material = SubResource("StandardMaterial3D_3hds8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x4s0d"]
+albedo_color = Color(0.72, 0.58, 0.38, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_k7bjm"]
+script = ExtResource("1_5iipa")
+size = Vector3(1, 0.02, 0.12)
+position = Vector3(0, 0.05, 0)
+material = SubResource("StandardMaterial3D_x4s0d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ga0bh"]
+albedo_color = Color(0.72, 0.58, 0.38, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_vgfy2"]
+script = ExtResource("1_5iipa")
+size = Vector3(1, 0.02, 0.12)
+position = Vector3(0, 0.05, 0.22)
+material = SubResource("StandardMaterial3D_ga0bh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nm14p"]
+albedo_color = Color(0.72, 0.58, 0.38, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_8dm1f"]
+script = ExtResource("1_5iipa")
+size = Vector3(1, 0.02, 0.12)
+position = Vector3(0, 0.05, 0.44)
+material = SubResource("StandardMaterial3D_nm14p")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oma4p"]
+albedo_color = Color(0.6, 0.47, 0.3, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_jqyyd"]
+script = ExtResource("1_5iipa")
+size = Vector3(0.1, 0.08, 1)
+position = Vector3(-0.45, 0, 0)
+material = SubResource("StandardMaterial3D_oma4p")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ec0ue"]
+albedo_color = Color(0.6, 0.47, 0.3, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_k1ilv"]
+script = ExtResource("1_5iipa")
+size = Vector3(0.1, 0.08, 1)
+material = SubResource("StandardMaterial3D_ec0ue")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l6r8i"]
+albedo_color = Color(0.6, 0.47, 0.3, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_5ypjs"]
+script = ExtResource("1_5iipa")
+size = Vector3(0.1, 0.08, 1)
+position = Vector3(0.45, 0, 0)
+material = SubResource("StandardMaterial3D_l6r8i")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7eri"]
+albedo_color = Color(0.72, 0.58, 0.38, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_j2j6f"]
+script = ExtResource("1_5iipa")
+size = Vector3(1, 0.02, 0.1)
+position = Vector3(0, -0.05, -0.45)
+material = SubResource("StandardMaterial3D_d7eri")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2cd1"]
+albedo_color = Color(0.72, 0.58, 0.38, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_hyyug"]
+script = ExtResource("1_5iipa")
+size = Vector3(1, 0.02, 0.1)
+position = Vector3(0, -0.05, 0)
+material = SubResource("StandardMaterial3D_t2cd1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o13g8"]
+albedo_color = Color(0.72, 0.58, 0.38, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_x0udg"]
+script = ExtResource("1_5iipa")
+size = Vector3(1, 0.02, 0.1)
+position = Vector3(0, -0.05, 0.45)
+material = SubResource("StandardMaterial3D_o13g8")
+
+[resource]
+script = ExtResource("2_gt7uv")
+display_name = "Pallet"
+shape_type = 4
+parts = Array[ExtResource("1_5iipa")]([SubResource("Resource_kqtr7"), SubResource("Resource_xvcxb"), SubResource("Resource_k7bjm"), SubResource("Resource_vgfy2"), SubResource("Resource_8dm1f"), SubResource("Resource_jqyyd"), SubResource("Resource_k1ilv"), SubResource("Resource_5ypjs"), SubResource("Resource_j2j6f"), SubResource("Resource_hyyug"), SubResource("Resource_x0udg")])
+mass = 15.0
+bounce = 0.1
+angular_damp = 0.15
+impact_sound = 1
+impact_damage_scale = 0.8
+vox_model = "res://props/vox/pallet.vox"
+vox_voxel_size = 0.031
+vox_origin = Vector3(-0.5, -0.060000002, -0.5)

@@ -1,0 +1,98 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_fnhjn"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_hux58"]
+[ext_resource type="Script" path="res://physics/physics_tool_definition.gd" id="3_515gs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wcgb4"]
+albedo_color = Color(0.62, 0.44, 0.26, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_bputj"]
+script = ExtResource("1_fnhjn")
+shape_type = 2
+radius = 0.03
+height = 1.0
+material = SubResource("StandardMaterial3D_wcgb4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0tjs"]
+albedo_color = Color(0.75, 0.15, 0.1, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_d4pao"]
+script = ExtResource("1_fnhjn")
+shape_type = 2
+radius = 0.17
+height = 0.44
+position = Vector3(0, 0.55, 0)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_v0tjs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ymgmy"]
+albedo_color = Color(0.25, 0.25, 0.27, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_turjw"]
+script = ExtResource("1_fnhjn")
+shape_type = 2
+radius = 0.175
+height = 0.04
+position = Vector3(0, 0.55, -0.18)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_ymgmy")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3cqw"]
+albedo_color = Color(0.25, 0.25, 0.27, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_k7w5s"]
+script = ExtResource("1_fnhjn")
+shape_type = 2
+radius = 0.175
+height = 0.04
+position = Vector3(0, 0.55, 0.18)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_x3cqw")
+collides = false
+
+[sub_resource type="Resource" id="Resource_v7j7e"]
+script = ExtResource("3_515gs")
+action_name = "Demolish"
+grip_position = Vector3(0, -0.4, 0)
+rest_position = Vector3(0.32, -0.42, -0.4)
+rest_rotation_degrees = Vector3(-22, 0, 10)
+windup_position = Vector3(0.24, -0.2, -0.3)
+windup_rotation_degrees = Vector3(65, 0, 8)
+strike_position = Vector3(0.16, -0.48, -0.5)
+strike_rotation_degrees = Vector3(-100, 0, 4)
+windup_time = 0.45
+strike_time = 0.16
+recover_time = 0.5
+cooldown = 0.2
+charge_time = 1.2
+min_charge_power = 0.4
+motion_strike_min_speed = 7.0
+motion_strike_full_speed = 15.0
+motion_strike_cooldown = 0.5
+reach = 2.6
+strike_point = Vector3(0, 0.55, -0.22)
+strike_radius = 0.2
+impact_impulse = 90.0
+damage = 70.0
+voxel_damage_radius = 0.5
+
+[resource]
+script = ExtResource("2_hux58")
+display_name = "Wrecking Mallet"
+shape_type = 4
+parts = Array[ExtResource("1_fnhjn")]([SubResource("Resource_bputj"), SubResource("Resource_d4pao"), SubResource("Resource_turjw"), SubResource("Resource_k7w5s")])
+mass = 9.0
+bounce = 0.1
+angular_damp = 0.15
+impact_sound = 1
+impact_damage_scale = 2.0
+vox_model = "res://props/vox/wrecking_mallet.vox"
+vox_voxel_size = 0.015
+vox_origin = Vector3(-0.175, -0.5, -0.22)
+tool = SubResource("Resource_v7j7e")

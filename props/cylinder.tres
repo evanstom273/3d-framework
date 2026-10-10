@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://b7egajs75uy25"]
+
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="1_definition"]
+[ext_resource type="PackedScene" path="res://props/details/cylinder_details.tscn" id="2_details"]
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="2_yspuh"]
+
+[sub_resource type="StandardMaterial3D" id="Material_paint"]
+albedo_color = Color(0.16, 0.38, 0.78, 1)
+metallic = 0.3
+roughness = 0.45
+
+[resource]
+script = ExtResource("1_definition")
+display_name = "Cylinder"
+shape_type = 2
+radius = 0.18
+height = 0.6
+mass = 6.0
+bounce = 0.1
+angular_damp = 0.15
+impact_sound = 2
+material = SubResource("Material_paint")
+detail_scene = ExtResource("2_details")
+vox_model = "res://props/vox/cylinder.vox"
+vox_voxel_size = 0.03
+vox_origin = Vector3(-0.183, -0.302, -0.183)

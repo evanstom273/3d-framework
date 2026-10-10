@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://6d1i1vl660wr"
+path="res://.godot/imported/frying_pan.vox-8459b6528020c61cc98d674f1dfedc33.tres"
+
+[deps]
+
+source_file="res://props/vox/frying_pan.vox"
+dest_files=["res://.godot/imported/frying_pan.vox-8459b6528020c61cc98d674f1dfedc33.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

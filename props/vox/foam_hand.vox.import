@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bjw0m7m22771k"
+path="res://.godot/imported/foam_hand.vox-d141f4a14ffb71076effe9eb64dac333.tres"
+
+[deps]
+
+source_file="res://props/vox/foam_hand.vox"
+dest_files=["res://.godot/imported/foam_hand.vox-d141f4a14ffb71076effe9eb64dac333.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

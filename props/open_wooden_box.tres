@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://ymijmmjjnenj"]
+
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="1_definition"]
+[ext_resource type="Script" uid="uid://cuxj0nnyyq3n2" path="res://physics/physics_container_definition.gd" id="2_container"]
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="2_n2py2"]
+
+[sub_resource type="Resource" id="Container_box"]
+script = ExtResource("2_container")
+outer_size = Vector3(0.6, 0.3, 0.5)
+wall_thickness = 0.035
+floor_thickness = 0.035
+
+[sub_resource type="StandardMaterial3D" id="Material_wood"]
+albedo_color = Color(0.62, 0.44, 0.25, 1)
+roughness = 0.85
+
+[resource]
+script = ExtResource("1_definition")
+display_name = "Open Wooden Box"
+mass = 4.0
+friction = 0.7
+bounce = 0.05
+impact_sound = 1
+material = SubResource("Material_wood")
+vox_model = "res://props/vox/open_wooden_box.vox"
+vox_origin = Vector3(-0.3, -0.15, -0.25)
+container = SubResource("Container_box")

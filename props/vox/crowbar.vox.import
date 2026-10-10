@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dan6v6bxo6ol"
+path="res://.godot/imported/crowbar.vox-ec1ccbf51e21772f079bcbcfa5e2a7a2.tres"
+
+[deps]
+
+source_file="res://props/vox/crowbar.vox"
+dest_files=["res://.godot/imported/crowbar.vox-ec1ccbf51e21772f079bcbcfa5e2a7a2.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

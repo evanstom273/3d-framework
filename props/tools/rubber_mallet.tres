@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_pvm8k"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_pq0qr"]
+[ext_resource type="Script" path="res://physics/physics_tool_definition.gd" id="3_ag37w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2vjb"]
+albedo_color = Color(0.8, 0.64, 0.42, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_qi13o"]
+script = ExtResource("1_pvm8k")
+shape_type = 2
+radius = 0.016
+height = 0.38
+material = SubResource("StandardMaterial3D_w2vjb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bt1cc"]
+albedo_color = Color(0.08, 0.08, 0.09, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_1aj7o"]
+script = ExtResource("1_pvm8k")
+shape_type = 2
+radius = 0.055
+height = 0.15
+position = Vector3(0, 0.2, 0)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_bt1cc")
+
+[sub_resource type="Resource" id="Resource_r87wi"]
+script = ExtResource("3_ag37w")
+action_name = "Boing"
+grip_position = Vector3(0, -0.12, 0)
+rest_position = Vector3(0.32, -0.42, -0.4)
+rest_rotation_degrees = Vector3(-22, 0, 10)
+windup_position = Vector3(0.24, -0.2, -0.3)
+windup_rotation_degrees = Vector3(65, 0, 8)
+strike_position = Vector3(0.16, -0.48, -0.5)
+strike_rotation_degrees = Vector3(-100, 0, 4)
+windup_time = 0.12
+strike_time = 0.1
+recover_time = 0.18
+charge_time = 0.4
+strike_point = Vector3(0, 0.2, -0.07)
+strike_radius = 0.1
+impact_impulse = 35.0
+max_launch_speed = 14.0
+damage = 3.0
+voxel_damage_radius = 0.08
+
+[resource]
+script = ExtResource("2_pq0qr")
+display_name = "Rubber Mallet"
+shape_type = 4
+parts = Array[ExtResource("1_pvm8k")]([SubResource("Resource_qi13o"), SubResource("Resource_1aj7o")])
+bounce = 0.1
+angular_damp = 0.15
+impact_sound = 5
+vox_model = "res://props/vox/rubber_mallet.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.055, -0.19, -0.075)
+tool = SubResource("Resource_r87wi")

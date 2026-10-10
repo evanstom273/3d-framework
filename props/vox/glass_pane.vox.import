@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://p4r2f843lo0s"
+path="res://.godot/imported/glass_pane.vox-c8f79da9558d4c22bfa8d7a1991d913c.tres"
+
+[deps]
+
+source_file="res://props/vox/glass_pane.vox"
+dest_files=["res://.godot/imported/glass_pane.vox-c8f79da9558d4c22bfa8d7a1991d913c.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_tya3l"]
+[ext_resource type="Resource" path="res://props/voxel_materials/concrete.tres" id="2_maxkv"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_3pclc"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_rjei3"]
+
+[sub_resource type="Resource" id="Resource_3vdgc"]
+script = ExtResource("1_tya3l")
+min_cell = Vector3i(-2, 0, -2)
+size = Vector3i(4, 9, 4)
+material = ExtResource("2_maxkv")
+
+[sub_resource type="Resource" id="Resource_rs1uk"]
+script = ExtResource("1_tya3l")
+min_cell = Vector3i(-2, 6, -2)
+size = Vector3i(4, 1, 4)
+material = ExtResource("2_maxkv")
+color_override = Color(1, 0.8, 0.1, 1)
+
+[resource]
+script = ExtResource("3_3pclc")
+display_name = "Concrete Bollard"
+spawn_category = "Structures"
+boxes = Array[ExtResource("1_tya3l")]([SubResource("Resource_3vdgc"), SubResource("Resource_rs1uk")])

@@ -1,0 +1,36 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="Material_band"]
+albedo_color = Color(0.22, 0.23, 0.25, 1)
+metallic = 0.8
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="Material_label"]
+albedo_color = Color(0.95, 0.72, 0.1, 1)
+roughness = 0.6
+
+[sub_resource type="BoxMesh" id="BoxMesh_band"]
+material = SubResource("Material_band")
+size = Vector3(0.515, 0.06, 0.515)
+
+[sub_resource type="BoxMesh" id="BoxMesh_label"]
+material = SubResource("Material_label")
+size = Vector3(0.2, 0.1, 0.01)
+
+[node name="MetalBoxDetails" type="Node3D"]
+
+[node name="BandTop" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.17, 0)
+mesh = SubResource("BoxMesh_band")
+
+[node name="BandBottom" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.17, 0)
+mesh = SubResource("BoxMesh_band")
+
+[node name="LabelFront" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, 0.253)
+mesh = SubResource("BoxMesh_label")
+
+[node name="LabelBack" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -0.253)
+mesh = SubResource("BoxMesh_label")

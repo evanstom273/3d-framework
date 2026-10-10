@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://or361td6lugt"
+path="res://.godot/imported/golf_club.vox-ce4b34432c4fc69a39ff5b29d72e769b.tres"
+
+[deps]
+
+source_file="res://props/vox/golf_club.vox"
+dest_files=["res://.godot/imported/golf_club.vox-ce4b34432c4fc69a39ff5b29d72e769b.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

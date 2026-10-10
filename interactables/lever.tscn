@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://01a3b1mncyxs"]
+
+[ext_resource type="Script" uid="uid://5axxhly3br1v" path="res://interactables/lever.gd" id="1_lever"]
+
+[sub_resource type="StandardMaterial3D" id="BaseMaterial"]
+albedo_color = Color(0.3, 0.3, 0.3, 1)
+
+[sub_resource type="BoxMesh" id="BaseMesh"]
+material = SubResource("BaseMaterial")
+size = Vector3(0.65, 1, 0.65)
+
+[sub_resource type="BoxShape3D" id="BaseShape"]
+size = Vector3(0.65, 1, 0.65)
+
+[sub_resource type="StandardMaterial3D" id="HandleMaterial"]
+albedo_color = Color(0.18, 0.18, 0.18, 1)
+
+[sub_resource type="BoxMesh" id="ArmMesh"]
+material = SubResource("HandleMaterial")
+size = Vector3(0.1, 0.65, 0.1)
+
+[sub_resource type="BoxShape3D" id="ArmShape"]
+size = Vector3(0.1, 0.65, 0.1)
+
+[sub_resource type="SphereMesh" id="GripMesh"]
+material = SubResource("HandleMaterial")
+radius = 0.14
+height = 0.28
+
+[sub_resource type="SphereShape3D" id="GripShape"]
+radius = 0.14
+
+[node name="Lever" type="Node3D" unique_id=136880558]
+script = ExtResource("1_lever")
+interaction_name = "Lever"
+animation_duration = 0.3
+
+[node name="Base" type="StaticBody3D" parent="." unique_id=993721870]
+collision_layer = 5
+collision_mask = 8
+
+[node name="Mesh" type="MeshInstance3D" parent="Base" unique_id=1791865813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BaseMesh")
+
+[node name="Collision" type="CollisionShape3D" parent="Base" unique_id=1491747993]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BaseShape")
+
+[node name="Handle" type="AnimatableBody3D" parent="." unique_id=2002790424]
+transform = Transform3D(1, 0, 0, 0, 0.8191522, -0.5735762, 0, 0.5735762, 0.8191522, 0, 0.942111, 0)
+collision_layer = 5
+collision_mask = 8
+
+[node name="Arm" type="MeshInstance3D" parent="Handle" unique_id=1652417910]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.325, 0)
+mesh = SubResource("ArmMesh")
+
+[node name="ArmCollision" type="CollisionShape3D" parent="Handle" unique_id=471029792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.325, 0)
+shape = SubResource("ArmShape")
+
+[node name="Grip" type="MeshInstance3D" parent="Handle" unique_id=54263888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72, 0)
+mesh = SubResource("GripMesh")
+
+[node name="GripCollision" type="CollisionShape3D" parent="Handle" unique_id=1787024221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72, 0)
+shape = SubResource("GripShape")

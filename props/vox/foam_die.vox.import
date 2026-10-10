@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bdphsjq7bkk1t"
+path="res://.godot/imported/foam_die.vox-2ac8afcd1121c38525b3c3048904cfc5.tres"
+
+[deps]
+
+source_file="res://props/vox/foam_die.vox"
+dest_files=["res://.godot/imported/foam_die.vox-2ac8afcd1121c38525b3c3048904cfc5.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

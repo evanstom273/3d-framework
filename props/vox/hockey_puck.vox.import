@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://5x5v8gff0ehs"
+path="res://.godot/imported/hockey_puck.vox-018a3f07829b6029db87e8e7c0cab769.tres"
+
+[deps]
+
+source_file="res://props/vox/hockey_puck.vox"
+dest_files=["res://.godot/imported/hockey_puck.vox-018a3f07829b6029db87e8e7c0cab769.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

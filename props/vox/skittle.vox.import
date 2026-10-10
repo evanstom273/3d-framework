@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bss8efhx6gi15"
+path="res://.godot/imported/skittle.vox-e746ac3b77bc9911db5ec780c0b5e0bc.tres"
+
+[deps]
+
+source_file="res://props/vox/skittle.vox"
+dest_files=["res://.godot/imported/skittle.vox-e746ac3b77bc9911db5ec780c0b5e0bc.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

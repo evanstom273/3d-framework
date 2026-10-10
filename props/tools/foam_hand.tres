@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_l5jcf"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_8jjp5"]
+[ext_resource type="Script" path="res://physics/physics_tool_definition.gd" id="3_hvt2j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7qtxc"]
+albedo_color = Color(0.15, 0.35, 0.8, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_xk3q6"]
+script = ExtResource("1_l5jcf")
+shape_type = 2
+radius = 0.02
+height = 0.3
+material = SubResource("StandardMaterial3D_7qtxc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fl2mv"]
+albedo_color = Color(1, 0.55, 0.1, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_bphuv"]
+script = ExtResource("1_l5jcf")
+size = Vector3(0.22, 0.24, 0.06)
+position = Vector3(0, 0.28, 0)
+material = SubResource("StandardMaterial3D_fl2mv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e0ke4"]
+albedo_color = Color(1, 0.55, 0.1, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_be4x3"]
+script = ExtResource("1_l5jcf")
+size = Vector3(0.06, 0.2, 0.06)
+position = Vector3(-0.05, 0.5, 0)
+material = SubResource("StandardMaterial3D_e0ke4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xgn4e"]
+albedo_color = Color(1, 0.55, 0.1, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_nvx35"]
+script = ExtResource("1_l5jcf")
+size = Vector3(0.06, 0.1, 0.06)
+position = Vector3(0.13, 0.3, 0)
+rotation_degrees = Vector3(0, 0, -30)
+material = SubResource("StandardMaterial3D_xgn4e")
+
+[sub_resource type="Resource" id="Resource_jp611"]
+script = ExtResource("3_hvt2j")
+action_name = "Slap"
+grip_position = Vector3(0, -0.1, 0)
+rest_position = Vector3(0.3, -0.32, -0.38)
+rest_rotation_degrees = Vector3(-30, 0, 8)
+windup_position = Vector3(0.34, -0.28, -0.3)
+windup_rotation_degrees = Vector3(0, 30, -80)
+strike_position = Vector3(0, -0.32, -0.45)
+strike_rotation_degrees = Vector3(0, 160, -90)
+windup_time = 0.12
+strike_time = 0.1
+recover_time = 0.2
+charge_time = 0.5
+motion_strike_min_speed = 4.0
+strike_point = Vector3(0, 0.35, 0)
+strike_radius = 0.18
+impact_impulse = 30.0
+max_launch_speed = 18.0
+damage = 0.0
+voxel_damage_radius = 0.0
+
+[resource]
+script = ExtResource("2_8jjp5")
+display_name = "Giant Foam Hand"
+shape_type = 4
+parts = Array[ExtResource("1_l5jcf")]([SubResource("Resource_xk3q6"), SubResource("Resource_bphuv"), SubResource("Resource_be4x3"), SubResource("Resource_nvx35")])
+mass = 0.5
+bounce = 0.1
+angular_damp = 0.15
+impact_sound = 5
+vox_model = "res://props/vox/foam_hand.vox"
+vox_voxel_size = 0.009000000000000001
+vox_origin = Vector3(-0.11, -0.15, -0.03)
+tool = SubResource("Resource_jp611")

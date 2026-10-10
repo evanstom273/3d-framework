@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_snaya"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_27evr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p0bm0"]
+roughness = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_scf5a"]
+albedo_color = Color(0.95, 0.95, 0.94, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_jxplh"]
+script = ExtResource("1_snaya")
+shape_type = 2
+radius = 0.04
+height = 0.12
+position = Vector3(0, -0.1, 0)
+material = SubResource("StandardMaterial3D_scf5a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrv0t"]
+albedo_color = Color(0.95, 0.95, 0.94, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_2cfr8"]
+script = ExtResource("1_snaya")
+shape_type = 1
+radius = 0.048
+height = 0.0
+position = Vector3(0, -0.07, 0)
+material = SubResource("StandardMaterial3D_lrv0t")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fguf"]
+albedo_color = Color(0.95, 0.95, 0.94, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_r8hqh"]
+script = ExtResource("1_snaya")
+shape_type = 2
+radius = 0.022
+height = 0.09
+position = Vector3(0, 0.03, 0)
+material = SubResource("StandardMaterial3D_0fguf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqcts"]
+albedo_color = Color(0.95, 0.95, 0.94, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_72366"]
+script = ExtResource("1_snaya")
+shape_type = 1
+radius = 0.032
+height = 0.0
+position = Vector3(0, 0.1, 0)
+material = SubResource("StandardMaterial3D_vqcts")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3f17g"]
+albedo_color = Color(0.85, 0.1, 0.1, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_crrap"]
+script = ExtResource("1_snaya")
+shape_type = 2
+radius = 0.024
+height = 0.02
+position = Vector3(0, 0.02, 0)
+material = SubResource("StandardMaterial3D_3f17g")
+collides = false
+
+[resource]
+script = ExtResource("2_27evr")
+display_name = "Skittle"
+shape_type = 4
+parts = Array[ExtResource("1_snaya")]([SubResource("Resource_jxplh"), SubResource("Resource_2cfr8"), SubResource("Resource_r8hqh"), SubResource("Resource_72366"), SubResource("Resource_crrap")])
+mass = 1.5
+friction = 0.4
+bounce = 0.3
+angular_damp = 0.15
+impact_sound = 1
+impact_damage_scale = 0.3
+material = SubResource("StandardMaterial3D_p0bm0")
+vox_model = "res://props/vox/skittle.vox"
+vox_voxel_size = 0.009000000000000001
+vox_origin = Vector3(-0.048, -0.16, -0.048)

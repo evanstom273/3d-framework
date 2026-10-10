@@ -1,0 +1,70 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_body.gd" id="1_voxel_body"]
+[ext_resource type="Resource" path="res://props/voxel_structures/brick_wall.tres" id="2_wall"]
+[ext_resource type="Resource" path="res://props/voxel_structures/pillar_with_slab.tres" id="3_pillar"]
+[ext_resource type="Resource" path="res://props/voxel_structures/small_bridge.tres" id="4_bridge"]
+[ext_resource type="Resource" path="res://props/voxel_structures/brick_chunk.tres" id="5_chunk"]
+[ext_resource type="Script" path="res://physics/physics_prop.gd" id="6_prop"]
+[ext_resource type="Resource" path="res://props/trowel.tres" id="7_trowel"]
+[ext_resource type="Resource" path="res://props/voxel_structures/table.tres" id="8_table"]
+
+[sub_resource type="StandardMaterial3D" id="Material_table"]
+albedo_color = Color(0.45, 0.32, 0.2, 1)
+roughness = 0.8
+
+[sub_resource type="BoxShape3D" id="Shape_table_top"]
+size = Vector3(1.2, 0.06, 0.6)
+
+[sub_resource type="BoxMesh" id="Mesh_table_top"]
+material = SubResource("Material_table")
+size = Vector3(1.2, 0.06, 0.6)
+
+[sub_resource type="BoxShape3D" id="Shape_table_leg"]
+size = Vector3(0.06, 0.77, 0.06)
+
+[sub_resource type="BoxMesh" id="Mesh_table_leg"]
+material = SubResource("Material_table")
+size = Vector3(0.06, 0.77, 0.06)
+
+[node name="VoxelTestArea" type="Node3D"]
+
+[node name="BrickWall" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -8)
+script = ExtResource("1_voxel_body")
+structure = ExtResource("2_wall")
+
+[node name="Pillar" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2, 0, -5.5)
+script = ExtResource("1_voxel_body")
+structure = ExtResource("3_pillar")
+
+[node name="Bridge" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3, 0, -5.5)
+script = ExtResource("1_voxel_body")
+structure = ExtResource("4_bridge")
+
+[node name="BuildTable" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -5.2)
+script = ExtResource("1_voxel_body")
+structure = ExtResource("8_table")
+
+[node name="Trowel" type="RigidBody3D" parent="."]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 13.75, 0.75, -5.2)
+script = ExtResource("6_prop")
+definition = ExtResource("7_trowel")
+
+[node name="BrickChunk1" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.05, 0.805, -5.3)
+script = ExtResource("1_voxel_body")
+structure = ExtResource("5_chunk")
+
+[node name="BrickChunk2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2, 0.005, -4.4)
+script = ExtResource("1_voxel_body")
+structure = ExtResource("5_chunk")
+
+[node name="BrickChunk3" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 0.005, -4.4)
+script = ExtResource("1_voxel_body")
+structure = ExtResource("5_chunk")

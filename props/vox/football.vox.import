@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cyn0ct647ir00"
+path="res://.godot/imported/football.vox-63e976c5b3dd6b13e721f1e876e91964.tres"
+
+[deps]
+
+source_file="res://props/vox/football.vox"
+dest_files=["res://.godot/imported/football.vox-63e976c5b3dd6b13e721f1e876e91964.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

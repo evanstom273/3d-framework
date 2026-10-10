@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_gpot6"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_yhkwh"]
+[ext_resource type="Script" path="res://physics/physics_tool_definition.gd" id="3_4sx58"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u636u"]
+albedo_color = Color(0.7, 0.1, 0.08, 1)
+metallic = 0.5
+roughness = 0.4
+
+[sub_resource type="Resource" id="Resource_qs7xu"]
+script = ExtResource("1_gpot6")
+shape_type = 2
+radius = 0.012
+height = 0.7
+material = SubResource("StandardMaterial3D_u636u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3uwb"]
+albedo_color = Color(0.7, 0.1, 0.08, 1)
+metallic = 0.5
+roughness = 0.4
+
+[sub_resource type="Resource" id="Resource_bqhi4"]
+script = ExtResource("1_gpot6")
+size = Vector3(0.024, 0.024, 0.09)
+position = Vector3(0, 0.36, -0.035)
+rotation_degrees = Vector3(20, 0, 0)
+material = SubResource("StandardMaterial3D_y3uwb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e87ks"]
+albedo_color = Color(0.66, 0.68, 0.72, 1)
+metallic = 0.9
+roughness = 0.3
+
+[sub_resource type="Resource" id="Resource_lthqh"]
+script = ExtResource("1_gpot6")
+size = Vector3(0.03, 0.008, 0.05)
+position = Vector3(0, -0.36, -0.01)
+material = SubResource("StandardMaterial3D_e87ks")
+
+[sub_resource type="Resource" id="Resource_dq6js"]
+script = ExtResource("3_4sx58")
+action_name = "Whack"
+grip_position = Vector3(0, -0.25, 0)
+rest_position = Vector3(0.32, -0.42, -0.4)
+rest_rotation_degrees = Vector3(-22, 0, 10)
+windup_position = Vector3(0.24, -0.2, -0.3)
+windup_rotation_degrees = Vector3(65, 0, 8)
+strike_position = Vector3(0.16, -0.48, -0.5)
+strike_rotation_degrees = Vector3(-100, 0, 4)
+windup_time = 0.15
+strike_time = 0.1
+recover_time = 0.2
+cooldown = 0.06
+charge_time = 0.5
+strike_point = Vector3(0, 0.35, -0.06)
+strike_radius = 0.09
+max_launch_speed = 9.0
+damage = 22.0
+voxel_damage_radius = 0.16
+
+[resource]
+script = ExtResource("2_yhkwh")
+display_name = "Crowbar"
+shape_type = 4
+parts = Array[ExtResource("1_gpot6")]([SubResource("Resource_qs7xu"), SubResource("Resource_bqhi4"), SubResource("Resource_lthqh")])
+mass = 1.6
+bounce = 0.1
+angular_damp = 0.15
+impact_sound = 2
+vox_model = "res://props/vox/crowbar.vox"
+vox_voxel_size = 0.009000000000000001
+vox_origin = Vector3(-0.015, -0.36400002, -0.08139041)
+tool = SubResource("Resource_dq6js")

@@ -1,0 +1,67 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="Material_frame"]
+albedo_color = Color(0.48, 0.31, 0.16, 1)
+roughness = 0.9
+
+[sub_resource type="BoxMesh" id="BoxMesh_edge_x"]
+material = SubResource("Material_frame")
+size = Vector3(0.605, 0.075, 0.075)
+
+[sub_resource type="BoxMesh" id="BoxMesh_edge_y"]
+material = SubResource("Material_frame")
+size = Vector3(0.075, 0.605, 0.075)
+
+[sub_resource type="BoxMesh" id="BoxMesh_edge_z"]
+material = SubResource("Material_frame")
+size = Vector3(0.075, 0.075, 0.605)
+
+[node name="WoodenCrateDetails" type="Node3D"]
+
+[node name="EdgeX1" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.265, 0.265)
+mesh = SubResource("BoxMesh_edge_x")
+
+[node name="EdgeX2" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.265, -0.265)
+mesh = SubResource("BoxMesh_edge_x")
+
+[node name="EdgeX3" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.265, 0.265)
+mesh = SubResource("BoxMesh_edge_x")
+
+[node name="EdgeX4" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.265, -0.265)
+mesh = SubResource("BoxMesh_edge_x")
+
+[node name="EdgeY1" type="MeshInstance3D" parent="."]
+position = Vector3(0.265, 0, 0.265)
+mesh = SubResource("BoxMesh_edge_y")
+
+[node name="EdgeY2" type="MeshInstance3D" parent="."]
+position = Vector3(0.265, 0, -0.265)
+mesh = SubResource("BoxMesh_edge_y")
+
+[node name="EdgeY3" type="MeshInstance3D" parent="."]
+position = Vector3(-0.265, 0, 0.265)
+mesh = SubResource("BoxMesh_edge_y")
+
+[node name="EdgeY4" type="MeshInstance3D" parent="."]
+position = Vector3(-0.265, 0, -0.265)
+mesh = SubResource("BoxMesh_edge_y")
+
+[node name="EdgeZ1" type="MeshInstance3D" parent="."]
+position = Vector3(0.265, 0.265, 0)
+mesh = SubResource("BoxMesh_edge_z")
+
+[node name="EdgeZ2" type="MeshInstance3D" parent="."]
+position = Vector3(0.265, -0.265, 0)
+mesh = SubResource("BoxMesh_edge_z")
+
+[node name="EdgeZ3" type="MeshInstance3D" parent="."]
+position = Vector3(-0.265, 0.265, 0)
+mesh = SubResource("BoxMesh_edge_z")
+
+[node name="EdgeZ4" type="MeshInstance3D" parent="."]
+position = Vector3(-0.265, -0.265, 0)
+mesh = SubResource("BoxMesh_edge_z")

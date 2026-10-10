@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bopdaowasitxq"
+path="res://.godot/imported/plastic_basket.vox-10a36b6f886b97e68f9ec234a8f3b469.tres"
+
+[deps]
+
+source_file="res://props/vox/plastic_basket.vox"
+dest_files=["res://.godot/imported/plastic_basket.vox-10a36b6f886b97e68f9ec234a8f3b469.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

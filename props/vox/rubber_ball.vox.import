@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cy7pqo6k3yjw2"
+path="res://.godot/imported/rubber_ball.vox-0bacb298ef4b2592de2420759841b34f.tres"
+
+[deps]
+
+source_file="res://props/vox/rubber_ball.vox"
+dest_files=["res://.godot/imported/rubber_ball.vox-0bacb298ef4b2592de2420759841b34f.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

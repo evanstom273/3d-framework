@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_1nm4v"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="2_vglgd"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="3_6ske2"]
+[ext_resource type="Resource" path="res://props/voxel_materials/wood.tres" id="4_8bxm6"]
+
+[resource]
+script = ExtResource("2_vglgd")
+display_name = "Wooden Chair"
+spawn_category = "Destructible"
+voxel_size = 0.05
+anchor_mode = 1
+vox_file = "res://props/vox/chair.vox"
+vox_material = ExtResource("4_8bxm6")

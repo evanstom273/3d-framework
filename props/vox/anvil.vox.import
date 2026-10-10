@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://br2exjbh111ks"
+path="res://.godot/imported/anvil.vox-d5a037ebbe1ca8b17684b4a3514cc72e.tres"
+
+[deps]
+
+source_file="res://props/vox/anvil.vox"
+dest_files=["res://.godot/imported/anvil.vox-d5a037ebbe1ca8b17684b4a3514cc72e.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

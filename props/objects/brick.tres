@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_xyqt4"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_7abg5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1qg53"]
+albedo_color = Color(0.66, 0.3, 0.22, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_mmob7"]
+script = ExtResource("1_xyqt4")
+size = Vector3(0.215, 0.065, 0.1)
+material = SubResource("StandardMaterial3D_1qg53")
+
+[resource]
+script = ExtResource("2_7abg5")
+display_name = "Brick"
+shape_type = 4
+parts = Array[ExtResource("1_xyqt4")]([SubResource("Resource_mmob7")])
+mass = 2.3
+friction = 0.8
+bounce = 0.05
+angular_damp = 0.15
+impact_sound = 3
+impact_damage_scale = 1.2
+vox_model = "res://props/vox/brick.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.1075, -0.0325, -0.05)

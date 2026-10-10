@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_qeiqp"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_qg055"]
+[ext_resource type="Script" path="res://physics/physics_tool_definition.gd" id="3_8twsn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhtxq"]
+albedo_color = Color(0.62, 0.44, 0.26, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_gdhg3"]
+script = ExtResource("1_qeiqp")
+shape_type = 2
+radius = 0.018
+height = 0.75
+material = SubResource("StandardMaterial3D_dhtxq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kbe7u"]
+albedo_color = Color(0.34, 0.35, 0.38, 1)
+metallic = 0.8
+roughness = 0.4
+
+[sub_resource type="Resource" id="Resource_7w72p"]
+script = ExtResource("1_qeiqp")
+size = Vector3(0.035, 0.12, 0.13)
+position = Vector3(0, 0.33, -0.035)
+material = SubResource("StandardMaterial3D_kbe7u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uh2ad"]
+albedo_color = Color(0.66, 0.68, 0.72, 1)
+metallic = 0.9
+roughness = 0.25
+
+[sub_resource type="Resource" id="Resource_dm08x"]
+script = ExtResource("1_qeiqp")
+size = Vector3(0.012, 0.16, 0.05)
+position = Vector3(0, 0.33, -0.12)
+material = SubResource("StandardMaterial3D_uh2ad")
+
+[sub_resource type="Resource" id="Resource_i5m63"]
+script = ExtResource("3_8twsn")
+action_name = "Chop"
+grip_position = Vector3(0, -0.3, 0)
+rest_position = Vector3(0.32, -0.42, -0.4)
+rest_rotation_degrees = Vector3(-22, 0, 10)
+windup_position = Vector3(0.24, -0.2, -0.3)
+windup_rotation_degrees = Vector3(65, 0, 8)
+strike_position = Vector3(0.16, -0.48, -0.5)
+strike_rotation_degrees = Vector3(-100, 0, 4)
+windup_time = 0.22
+recover_time = 0.3
+charge_time = 0.7
+reach = 2.3
+impact_type = 2
+strike_point = Vector3(0, 0.33, -0.13)
+strike_radius = 0.1
+impact_impulse = 22.0
+max_launch_speed = 8.0
+swing_path_influence = 0.6
+damage = 30.0
+voxel_damage_radius = 0.2
+
+[resource]
+script = ExtResource("2_qg055")
+display_name = "Axe"
+shape_type = 4
+parts = Array[ExtResource("1_qeiqp")]([SubResource("Resource_gdhg3"), SubResource("Resource_7w72p"), SubResource("Resource_dm08x")])
+mass = 2.0
+bounce = 0.1
+angular_damp = 0.15
+impact_sound = 2
+vox_model = "res://props/vox/axe.vox"
+vox_voxel_size = 0.01
+vox_origin = Vector3(-0.018, -0.375, -0.145)
+tool = SubResource("Resource_i5m63")

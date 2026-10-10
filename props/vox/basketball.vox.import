@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dd8p4tytlk4u1"
+path="res://.godot/imported/basketball.vox-841583a64e3ee6bf333e97cbf2e714ba.tres"
+
+[deps]
+
+source_file="res://props/vox/basketball.vox"
+dest_files=["res://.godot/imported/basketball.vox-841583a64e3ee6bf333e97cbf2e714ba.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

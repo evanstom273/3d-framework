@@ -1,0 +1,109 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://interactables/lockable_hinge.gd" id="1_glass"]
+[ext_resource type="Script" path="res://interactables/shutters.gd" id="2_shutters"]
+
+[sub_resource type="StandardMaterial3D" id="FrameMaterial"]
+albedo_color = Color(0.35, 0.35, 0.35, 1)
+
+[sub_resource type="StandardMaterial3D" id="GlassMaterial"]
+transparency = 1
+albedo_color = Color(0.55, 0.78, 0.9, 0.45)
+roughness = 0.2
+
+[sub_resource type="StandardMaterial3D" id="ShutterMaterial"]
+albedo_color = Color(0.45, 0.32, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="GlassMesh"]
+material = SubResource("GlassMaterial")
+size = Vector3(1.6, 1.3, 0.045)
+
+[sub_resource type="BoxShape3D" id="GlassShape"]
+size = Vector3(1.6, 1.3, 0.045)
+
+[sub_resource type="BoxMesh" id="ShutterMesh"]
+material = SubResource("ShutterMaterial")
+size = Vector3(0.8, 1.3, 0.07)
+
+[sub_resource type="BoxShape3D" id="ShutterShape"]
+size = Vector3(0.8, 1.3, 0.07)
+
+[node name="Window" type="Node3D"]
+
+[node name="LeftFrame" type="CSGBox3D" parent="."]
+position = Vector3(-0.9, 1.1, 0)
+size = Vector3(0.15, 2.2, 0.24)
+material = SubResource("FrameMaterial")
+use_collision = true
+collision_mask = 8
+
+[node name="RightFrame" type="CSGBox3D" parent="."]
+position = Vector3(0.9, 1.1, 0)
+size = Vector3(0.15, 2.2, 0.24)
+material = SubResource("FrameMaterial")
+use_collision = true
+collision_mask = 8
+
+[node name="TopFrame" type="CSGBox3D" parent="."]
+position = Vector3(0, 2.2, 0)
+size = Vector3(1.95, 0.15, 0.24)
+material = SubResource("FrameMaterial")
+use_collision = true
+collision_mask = 8
+
+[node name="BottomFrame" type="CSGBox3D" parent="."]
+position = Vector3(0, 0.75, 0)
+size = Vector3(1.95, 0.15, 0.24)
+material = SubResource("FrameMaterial")
+use_collision = true
+collision_mask = 8
+
+[node name="Glass" type="Node3D" parent="."]
+position = Vector3(-0.8, 0.825, 0)
+script = ExtResource("1_glass")
+interaction_name = "Window glass"
+animation_duration = 0.4
+open_angle_degrees = 90.0
+
+[node name="Hinge" type="AnimatableBody3D" parent="Glass"]
+collision_layer = 5
+collision_mask = 8
+
+[node name="Mesh" type="MeshInstance3D" parent="Glass/Hinge"]
+position = Vector3(0.8, 0.65, 0)
+mesh = SubResource("GlassMesh")
+
+[node name="Collision" type="CollisionShape3D" parent="Glass/Hinge"]
+position = Vector3(0.8, 0.65, 0)
+shape = SubResource("GlassShape")
+
+[node name="Shutters" type="Node3D" parent="."]
+script = ExtResource("2_shutters")
+interaction_name = "Shutters"
+animation_duration = 0.4
+
+[node name="LeftHinge" type="AnimatableBody3D" parent="Shutters"]
+position = Vector3(-0.8, 0.825, 0.1)
+collision_layer = 5
+collision_mask = 8
+
+[node name="Mesh" type="MeshInstance3D" parent="Shutters/LeftHinge"]
+position = Vector3(0.4, 0.65, 0)
+mesh = SubResource("ShutterMesh")
+
+[node name="Collision" type="CollisionShape3D" parent="Shutters/LeftHinge"]
+position = Vector3(0.4, 0.65, 0)
+shape = SubResource("ShutterShape")
+
+[node name="RightHinge" type="AnimatableBody3D" parent="Shutters"]
+position = Vector3(0.8, 0.825, 0.1)
+collision_layer = 5
+collision_mask = 8
+
+[node name="Mesh" type="MeshInstance3D" parent="Shutters/RightHinge"]
+position = Vector3(-0.4, 0.65, 0)
+mesh = SubResource("ShutterMesh")
+
+[node name="Collision" type="CollisionShape3D" parent="Shutters/RightHinge"]
+position = Vector3(-0.4, 0.65, 0)
+shape = SubResource("ShutterShape")

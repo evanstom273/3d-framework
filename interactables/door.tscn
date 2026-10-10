@@ -1,0 +1,55 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://interactables/lockable_hinge.gd" id="1_door"]
+
+[sub_resource type="StandardMaterial3D" id="DoorMaterial"]
+albedo_color = Color(0.45, 0.32, 0.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="FrameMaterial"]
+albedo_color = Color(0.35, 0.35, 0.35, 1)
+
+[sub_resource type="BoxMesh" id="DoorMesh"]
+material = SubResource("DoorMaterial")
+size = Vector3(1.2, 2.1, 0.12)
+
+[sub_resource type="BoxShape3D" id="DoorShape"]
+size = Vector3(1.2, 2.1, 0.12)
+
+[node name="Door" type="Node3D"]
+script = ExtResource("1_door")
+interaction_name = "Door"
+animation_duration = 0.4
+
+[node name="Hinge" type="AnimatableBody3D" parent="."]
+position = Vector3(-0.6, 0, 0)
+collision_layer = 5
+collision_mask = 8
+
+[node name="Mesh" type="MeshInstance3D" parent="Hinge"]
+position = Vector3(0.6, 1.05, 0)
+mesh = SubResource("DoorMesh")
+
+[node name="Collision" type="CollisionShape3D" parent="Hinge"]
+position = Vector3(0.6, 1.05, 0)
+shape = SubResource("DoorShape")
+
+[node name="LeftFrame" type="CSGBox3D" parent="."]
+position = Vector3(-0.7, 1.1, 0)
+size = Vector3(0.15, 2.2, 0.2)
+material = SubResource("FrameMaterial")
+use_collision = true
+collision_mask = 8
+
+[node name="RightFrame" type="CSGBox3D" parent="."]
+position = Vector3(0.7, 1.1, 0)
+size = Vector3(0.15, 2.2, 0.2)
+material = SubResource("FrameMaterial")
+use_collision = true
+collision_mask = 8
+
+[node name="TopFrame" type="CSGBox3D" parent="."]
+position = Vector3(0, 2.2, 0)
+size = Vector3(1.55, 0.15, 0.2)
+material = SubResource("FrameMaterial")
+use_collision = true
+collision_mask = 8

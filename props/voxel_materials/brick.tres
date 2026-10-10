@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="1_material"]
+
+[resource]
+script = ExtResource("1_material")
+display_name = "Brick"
+color = Color(0.66, 0.3, 0.22, 1)
+color_jitter = 0.1
+strength = 10.0
+density = 1900.0
+friction = 0.8
+bounce = 0.05
+blunt_multiplier = 1.0
+sharp_multiplier = 0.6
+pierce_multiplier = 1.6
+impact_sound = 3
+rubble_fraction = 0.2

@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_1anw5"]
+[ext_resource type="Resource" path="res://props/voxel_materials/brick.tres" id="2_65jlr"]
+[ext_resource type="Resource" path="res://props/voxel_materials/concrete.tres" id="3_vgqv4"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="4_qiyd6"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="5_ke0op"]
+
+[sub_resource type="Resource" id="Resource_xform"]
+script = ExtResource("1_1anw5")
+min_cell = Vector3i(-3, 0, -3)
+size = Vector3i(6, 24, 1)
+material = ExtResource("2_65jlr")
+
+[sub_resource type="Resource" id="Resource_slh35"]
+script = ExtResource("1_1anw5")
+min_cell = Vector3i(-3, 0, 2)
+size = Vector3i(6, 24, 1)
+material = ExtResource("2_65jlr")
+
+[sub_resource type="Resource" id="Resource_dnyld"]
+script = ExtResource("1_1anw5")
+min_cell = Vector3i(-3, 0, -2)
+size = Vector3i(1, 24, 4)
+material = ExtResource("2_65jlr")
+
+[sub_resource type="Resource" id="Resource_412sp"]
+script = ExtResource("1_1anw5")
+min_cell = Vector3i(2, 0, -2)
+size = Vector3i(1, 24, 4)
+material = ExtResource("2_65jlr")
+
+[sub_resource type="Resource" id="Resource_ef3tu"]
+script = ExtResource("1_1anw5")
+min_cell = Vector3i(-4, 22, -4)
+size = Vector3i(8, 2, 8)
+material = ExtResource("3_vgqv4")
+
+[resource]
+script = ExtResource("4_qiyd6")
+display_name = "Brick Chimney"
+spawn_category = "Structures"
+boxes = Array[ExtResource("1_1anw5")]([SubResource("Resource_xform"), SubResource("Resource_slh35"), SubResource("Resource_dnyld"), SubResource("Resource_412sp"), SubResource("Resource_ef3tu")])

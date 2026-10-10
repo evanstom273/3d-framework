@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dd1hxscdidih7"
+path="res://.godot/imported/bowling_ball.vox-9a1c74f297922476ea5345c3d65f7e78.tres"
+
+[deps]
+
+source_file="res://props/vox/bowling_ball.vox"
+dest_files=["res://.godot/imported/bowling_ball.vox-9a1c74f297922476ea5345c3d65f7e78.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

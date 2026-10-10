@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://c7v0qmbx2yxyv"
+path="res://.godot/imported/open_wooden_box.vox-4c312e1d8a91b84ef06ac7d15609f1d3.tres"
+
+[deps]
+
+source_file="res://props/vox/open_wooden_box.vox"
+dest_files=["res://.godot/imported/open_wooden_box.vox-4c312e1d8a91b84ef06ac7d15609f1d3.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

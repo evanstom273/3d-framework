@@ -1,0 +1,74 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_hws7b"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_iwicm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4tb73"]
+metallic = 0.5
+roughness = 0.45
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mr270"]
+albedo_color = Color(0.15, 0.3, 0.6, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_8y4vi"]
+script = ExtResource("1_hws7b")
+shape_type = 2
+radius = 0.28
+height = 0.85
+material = SubResource("StandardMaterial3D_mr270")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_th7fd"]
+albedo_color = Color(0.1, 0.18, 0.35, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_43i8e"]
+script = ExtResource("1_hws7b")
+shape_type = 2
+radius = 0.29
+height = 0.03
+position = Vector3(0, 0.2, 0)
+material = SubResource("StandardMaterial3D_th7fd")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aibs5"]
+albedo_color = Color(0.1, 0.18, 0.35, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_h1323"]
+script = ExtResource("1_hws7b")
+shape_type = 2
+radius = 0.29
+height = 0.03
+position = Vector3(0, -0.2, 0)
+material = SubResource("StandardMaterial3D_aibs5")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gsklb"]
+albedo_color = Color(0.55, 0.55, 0.58, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_5oid3"]
+script = ExtResource("1_hws7b")
+shape_type = 2
+radius = 0.26
+height = 0.012
+position = Vector3(0, 0.43, 0)
+material = SubResource("StandardMaterial3D_gsklb")
+collides = false
+
+[resource]
+script = ExtResource("2_iwicm")
+display_name = "Oil Barrel"
+shape_type = 4
+parts = Array[ExtResource("1_hws7b")]([SubResource("Resource_8y4vi"), SubResource("Resource_43i8e"), SubResource("Resource_h1323"), SubResource("Resource_5oid3")])
+mass = 20.0
+friction = 0.5
+bounce = 0.1
+angular_damp = 0.15
+impact_sound = 2
+impact_damage_scale = 1.5
+material = SubResource("StandardMaterial3D_4tb73")
+vox_model = "res://props/vox/oil_barrel.vox"
+vox_voxel_size = 0.027
+vox_origin = Vector3(-0.29, -0.425, -0.29)

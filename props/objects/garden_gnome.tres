@@ -1,0 +1,113 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_0mr05"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_nsdnn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6604u"]
+albedo_color = Color(0.25, 0.55, 0.2, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_t3tiu"]
+script = ExtResource("1_0mr05")
+shape_type = 2
+radius = 0.07
+height = 0.03
+position = Vector3(0, -0.14, 0)
+material = SubResource("StandardMaterial3D_6604u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ydhcb"]
+albedo_color = Color(0.2, 0.35, 0.75, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_bxb4j"]
+script = ExtResource("1_0mr05")
+shape_type = 2
+radius = 0.065
+height = 0.14
+position = Vector3(0, -0.06, 0)
+material = SubResource("StandardMaterial3D_ydhcb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ob7o0"]
+albedo_color = Color(0.08, 0.08, 0.09, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_3mlks"]
+script = ExtResource("1_0mr05")
+shape_type = 2
+radius = 0.066
+height = 0.015
+position = Vector3(0, -0.02, 0)
+material = SubResource("StandardMaterial3D_ob7o0")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o1efb"]
+albedo_color = Color(0.95, 0.8, 0.65, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_w84au"]
+script = ExtResource("1_0mr05")
+shape_type = 1
+radius = 0.055
+height = 0.0
+position = Vector3(0, 0.06, 0)
+material = SubResource("StandardMaterial3D_o1efb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlpw5"]
+albedo_color = Color(0.95, 0.95, 0.94, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_a8ik1"]
+script = ExtResource("1_0mr05")
+size = Vector3(0.09, 0.07, 0.04)
+position = Vector3(0, 0.03, -0.05)
+material = SubResource("StandardMaterial3D_nlpw5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_umbof"]
+albedo_color = Color(0.85, 0.12, 0.1, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_m0hen"]
+script = ExtResource("1_0mr05")
+shape_type = 2
+radius = 0.055
+height = 0.06
+position = Vector3(0, 0.12, 0)
+material = SubResource("StandardMaterial3D_umbof")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nobho"]
+albedo_color = Color(0.85, 0.12, 0.1, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_hqupl"]
+script = ExtResource("1_0mr05")
+shape_type = 2
+radius = 0.035
+height = 0.06
+position = Vector3(0, 0.17, 0)
+material = SubResource("StandardMaterial3D_nobho")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46l2a"]
+albedo_color = Color(0.85, 0.12, 0.1, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_q0vvd"]
+script = ExtResource("1_0mr05")
+shape_type = 2
+radius = 0.015
+height = 0.05
+position = Vector3(0, 0.22, 0)
+material = SubResource("StandardMaterial3D_46l2a")
+
+[resource]
+script = ExtResource("2_nsdnn")
+display_name = "Garden Gnome"
+shape_type = 4
+parts = Array[ExtResource("1_0mr05")]([SubResource("Resource_t3tiu"), SubResource("Resource_bxb4j"), SubResource("Resource_3mlks"), SubResource("Resource_w84au"), SubResource("Resource_a8ik1"), SubResource("Resource_m0hen"), SubResource("Resource_hqupl"), SubResource("Resource_q0vvd")])
+mass = 2.5
+bounce = 0.1
+angular_damp = 0.15
+impact_sound = 3
+impact_damage_scale = 0.8
+vox_model = "res://props/vox/garden_gnome.vox"
+vox_voxel_size = 0.013000000000000001
+vox_origin = Vector3(-0.07, -0.155, -0.07)

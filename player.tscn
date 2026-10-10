@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://c8bo3i576tqx"]
+
+[ext_resource type="Script" uid="uid://c0whtgtfebp4c" path="res://character_body_3d.gd" id="1_controller"]
+[ext_resource type="Script" uid="uid://5r7jjvwaiv63" path="res://player_stats.gd" id="2_stats"]
+[ext_resource type="Script" uid="uid://i05g53h1pitq" path="res://hud.gd" id="3_hud"]
+[ext_resource type="PackedScene" path="res://interaction_menu.tscn" id="4_menu"]
+[ext_resource type="Script" uid="uid://bdfx5qgyptg4p" path="res://physics/object_manipulator.gd" id="5_manipulator"]
+[ext_resource type="Script" uid="uid://dmefbcp4n8j2e" path="res://physics/tool_handler.gd" id="6_tools"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_player"]
+radius = 0.3
+height = 1.8
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_charge_back"]
+bg_color = Color(0, 0, 0, 0.45)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_charge_fill"]
+bg_color = Color(1, 1, 1, 0.9)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_26o08"]
+radius = 0.3
+height = 1.8
+
+[node name="Player" type="CharacterBody3D" unique_id=1745676424]
+collision_layer = 8
+collision_mask = 19
+floor_snap_length = 0.3
+platform_floor_layers = 2
+script = ExtResource("1_controller")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1475869079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_player")
+
+[node name="Head" type="Node3D" parent="." unique_id=595644807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=221596702]
+current = true
+far = 8000.0
+
+[node name="InteractionRay" type="RayCast3D" parent="Head/Camera3D" unique_id=1865607306]
+target_position = Vector3(0, 0, -3)
+collision_mask = 23
+collide_with_areas = true
+
+[node name="Stats" type="Node" parent="." unique_id=1151065812]
+script = ExtResource("2_stats")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=50302245]
+script = ExtResource("3_hud")
+
+[node name="InteractionMenu" parent="HUD" unique_id=860719336 instance=ExtResource("4_menu")]
+
+[node name="Crosshair" type="Label" parent="HUD" unique_id=1367551509]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+text = "·"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractionPrompt" type="Label" parent="HUD" unique_id=406186564]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 28.0
+offset_right = 200.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 4
+text = "[E] Interact"
+horizontal_alignment = 1
+
+[node name="ChargeBar" type="ProgressBar" parent="HUD" unique_id=301009667]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = 14.0
+offset_right = 45.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBox_charge_back")
+theme_override_styles/fill = SubResource("StyleBox_charge_fill")
+max_value = 1.0
+step = 0.001
+show_percentage = false
+
+[node name="FPSCounter" type="Label" parent="HUD" unique_id=1589230807]
+offset_left = 12.0
+offset_top = 8.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 13
+text = "FPS: --  |  Frame: -- ms
+10s Avg: -- ms  |  Worst: -- ms
+1% Low: -- FPS  |  Min: -- FPS"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=902470429]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+cast_shadow = 3
+mesh = SubResource("CapsuleMesh_26o08")
+
+[node name="ObjectManipulator" type="Node" parent="." unique_id=2085247795 node_paths=PackedStringArray("view", "camera")]
+script = ExtResource("5_manipulator")
+view = NodePath("../Head")
+camera = NodePath("../Head/Camera3D")
+
+[node name="ToolHandler" type="Node" parent="." unique_id=240728281 node_paths=PackedStringArray("manipulator", "view")]
+script = ExtResource("6_tools")
+manipulator = NodePath("../ObjectManipulator")
+view = NodePath("../Head")

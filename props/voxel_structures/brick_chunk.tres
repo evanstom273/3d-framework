@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://ddth8avi5wd1x"]
+
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="1_structure"]
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="2_box"]
+[ext_resource type="Resource" path="res://props/voxel_materials/brick.tres" id="3_brick"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_awjbc"]
+
+[sub_resource type="Resource" id="Box_chunk"]
+script = ExtResource("2_box")
+size = Vector3i(3, 2, 2)
+material = ExtResource("3_brick")
+
+[resource]
+script = ExtResource("1_structure")
+display_name = "Brick Chunk"
+anchor_mode = 1
+boxes = Array[ExtResource("2_box")]([SubResource("Box_chunk")])

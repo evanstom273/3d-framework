@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://dhqij3p50ruoq"]
+
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="1_structure"]
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="2_box"]
+[ext_resource type="Resource" path="res://props/voxel_materials/brick.tres" id="3_brick"]
+[ext_resource type="Resource" path="res://props/voxel_materials/concrete.tres" id="4_concrete"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="5_o3o4p"]
+
+[sub_resource type="Resource" id="Box_leg_left"]
+script = ExtResource("2_box")
+min_cell = Vector3i(-8, 0, -1)
+size = Vector3i(3, 9, 3)
+material = ExtResource("3_brick")
+
+[sub_resource type="Resource" id="Box_leg_right"]
+script = ExtResource("2_box")
+min_cell = Vector3i(5, 0, -1)
+size = Vector3i(3, 9, 3)
+material = ExtResource("3_brick")
+
+[sub_resource type="Resource" id="Box_deck"]
+script = ExtResource("2_box")
+min_cell = Vector3i(-8, 9, -1)
+size = Vector3i(16, 2, 3)
+material = ExtResource("4_concrete")
+
+[resource]
+script = ExtResource("1_structure")
+display_name = "Bridge"
+boxes = Array[ExtResource("2_box")]([SubResource("Box_leg_left"), SubResource("Box_leg_right"), SubResource("Box_deck")])

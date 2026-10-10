@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://b3lhjm1rm61so"
+path="res://.godot/imported/bookshelf.vox-84bd362cccd9502ce57829cac448bdf4.tres"
+
+[deps]
+
+source_file="res://props/vox/bookshelf.vox"
+dest_files=["res://.godot/imported/bookshelf.vox-84bd362cccd9502ce57829cac448bdf4.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

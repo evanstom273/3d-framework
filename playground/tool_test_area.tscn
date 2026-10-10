@@ -1,0 +1,180 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://physics/physics_prop.gd" id="12_prop"]
+[ext_resource type="Resource" path="res://props/rubber_ball.tres" id="8_ball"]
+[ext_resource type="Resource" path="res://props/wooden_block.tres" id="13_block"]
+[ext_resource type="Resource" path="res://props/open_wooden_box.tres" id="14_open_box"]
+[ext_resource type="Resource" path="res://props/plastic_basket.tres" id="15_basket"]
+[ext_resource type="Resource" path="res://props/bucket.tres" id="16_bucket"]
+[ext_resource type="Resource" path="res://props/hammer.tres" id="17_hammer"]
+[ext_resource type="Resource" path="res://props/golf_club.tres" id="18_club"]
+[ext_resource type="Resource" path="res://props/wooden_bat.tres" id="19_bat"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_body.gd" id="20_voxel_body"]
+[ext_resource type="Resource" path="res://props/voxel_structures/table.tres" id="21_table"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_table"]
+friction = 0.7
+
+[sub_resource type="BoxShape3D" id="Shape_table_leg"]
+size = Vector3(0.08, 0.82, 0.08)
+
+[sub_resource type="StandardMaterial3D" id="Material_bench"]
+albedo_color = Color(0.55, 0.4, 0.24, 1)
+roughness = 0.75
+
+[sub_resource type="StandardMaterial3D" id="Material_tee"]
+albedo_color = Color(0.25, 0.6, 0.3, 1)
+roughness = 0.9
+
+[sub_resource type="BoxShape3D" id="Shape_bench_top"]
+size = Vector3(2.6, 0.08, 1)
+
+[sub_resource type="BoxMesh" id="Mesh_bench_top"]
+material = SubResource("Material_bench")
+size = Vector3(2.6, 0.08, 1)
+
+[sub_resource type="BoxMesh" id="Mesh_bench_leg"]
+material = SubResource("Material_bench")
+size = Vector3(0.08, 0.82, 0.08)
+
+[sub_resource type="BoxMesh" id="Mesh_tee_mat"]
+material = SubResource("Material_tee")
+size = Vector3(3, 0.01, 1.4)
+
+[node name="ToolTestArea" type="Node3D"]
+
+[node name="WorkbenchTableLeft" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.89, 0, 0)
+script = ExtResource("20_voxel_body")
+structure = ExtResource("21_table")
+
+[node name="WorkbenchTableRight" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.11, 0, 0)
+script = ExtResource("20_voxel_body")
+structure = ExtResource("21_table")
+
+[node name="TeeMat" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0.005, 6)
+mesh = SubResource("Mesh_tee_mat")
+
+
+[node name="Hammer" type="RigidBody3D" parent="."]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 11.8, 0.86, -0.15)
+script = ExtResource("12_prop")
+definition = ExtResource("17_hammer")
+
+[node name="GolfClub" type="RigidBody3D" parent="."]
+transform = Transform3D(0, 1, 0, 0, 0, 1, 1, 0, 0, 12.9, 0.827, -0.3)
+script = ExtResource("12_prop")
+definition = ExtResource("18_club")
+
+[node name="WoodenBat" type="RigidBody3D" parent="."]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 12.5, 0.035, -1.1)
+script = ExtResource("12_prop")
+definition = ExtResource("19_bat")
+
+[node name="Block1" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0.855, 0.25)
+script = ExtResource("12_prop")
+definition = ExtResource("13_block")
+
+[node name="Block2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8, 0.855, 0.25)
+script = ExtResource("12_prop")
+definition = ExtResource("13_block")
+
+[node name="Block3" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1, 0.855, 0.25)
+script = ExtResource("12_prop")
+definition = ExtResource("13_block")
+
+[node name="Block4" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4, 0.855, 0.25)
+script = ExtResource("12_prop")
+definition = ExtResource("13_block")
+
+[node name="Block5" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7, 0.855, 0.25)
+script = ExtResource("12_prop")
+definition = ExtResource("13_block")
+
+[node name="Block6" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0, 0.855, 0.25)
+script = ExtResource("12_prop")
+definition = ExtResource("13_block")
+
+[node name="Block7" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3, 0.855, 0.25)
+script = ExtResource("12_prop")
+definition = ExtResource("13_block")
+
+[node name="Block8" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6, 0.855, 0.25)
+script = ExtResource("12_prop")
+definition = ExtResource("13_block")
+
+[node name="FloorBlock1" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6, 0.055, 3.4)
+script = ExtResource("12_prop")
+definition = ExtResource("13_block")
+
+[node name="FloorBlock2" type="RigidBody3D" parent="."]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 14.9, 0.055, 3.8)
+script = ExtResource("12_prop")
+definition = ExtResource("13_block")
+
+[node name="FloorBlock3" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2, 0.055, 3.4)
+script = ExtResource("12_prop")
+definition = ExtResource("13_block")
+
+[node name="FloorBlock4" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6, 0.155, 3.4)
+script = ExtResource("12_prop")
+definition = ExtResource("13_block")
+
+[node name="WoodenBox1" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8, 0.155, 2)
+script = ExtResource("12_prop")
+definition = ExtResource("14_open_box")
+
+[node name="WoodenBox2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.155, 2)
+script = ExtResource("12_prop")
+definition = ExtResource("14_open_box")
+
+[node name="Basket1" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2, 0.135, 2)
+script = ExtResource("12_prop")
+definition = ExtResource("15_basket")
+
+[node name="Basket2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3, 0.135, 2)
+script = ExtResource("12_prop")
+definition = ExtResource("15_basket")
+
+[node name="Bucket1" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9, 0.165, 3.5)
+script = ExtResource("12_prop")
+definition = ExtResource("16_bucket")
+
+[node name="Bucket2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8, 0.165, 3.5)
+script = ExtResource("12_prop")
+definition = ExtResource("16_bucket")
+
+[node name="TeeBall1" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8, 0.16, 6)
+script = ExtResource("12_prop")
+definition = ExtResource("8_ball")
+
+[node name="TeeBall2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0.16, 6)
+script = ExtResource("12_prop")
+definition = ExtResource("8_ball")
+
+[node name="TeeBall3" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2, 0.16, 6)
+script = ExtResource("12_prop")
+definition = ExtResource("8_ball")
+

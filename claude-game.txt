@@ -1,0 +1,3246 @@
+ ▐▛███▛█   Claude Code v2.1.296
+▝▜██████▀  Opus 5.5 · Claude Pro
+ ▝▝   ▝▝   E:\Projects\tm-game
+
+  Sonnet 5.5 is here, and it's faster and excels at well-scoped tasks. Opus 5.5 is still your default. Switch with /model.
+
+❯ Extend my existing Godot 3D project with a physics-based object manipulation  
+  system and a small physics testing playground.                                
+  IMPORTANT: This project already contains a working FPS player controller,     
+  camera and interaction system. It also has a voxel destruction add-on         
+  installed.                                                                    
+  Inspect the existing project first. Reuse and extend the current interaction  
+  system rather than replacing it. Preserve existing movement, camera controls  
+  and project configuration.                                                    
+  1. Object manipulation                                                        
+  Implement physics-based grabbing and carrying of objects using these          
+  controls:                                                                     
+                                                                                
+  * E: Pick up the physics object you're looking at. Press E again to drop it.  
+  * Hold middle mouse + move mouse: Rotate the held object freely in three      
+  dimensions.                                                                   
+  * Mouse wheel: Adjust the distance between the player and the held object.    
+  * Left click: Throw the held object forwards.                                 
+                                                                                
+  While holding middle mouse, mouse movement must rotate the object instead of  
+  rotating the camera.                                                          
+  Objects should follow a position in front of the camera smoothly, using       
+  physics-based movement rather than teleporting or being rigidly attached to   
+  the camera.                                                                   
+  Objects must retain appropriate collision behaviour while held. They should   
+  not pass through walls, floors or other solid objects.                        
+  Allow the player to walk and sprint normally while carrying objects.          
+  Prevent held objects from violently shaking, spinning uncontrollably or       
+  pushing the player around.                                                    
+  Respect object mass where practical, allowing lighter objects to be           
+  manipulated more easily than heavy ones.                                      
+  2. Physics test objects                                                       
+  Create several reusable objects with visibly different physical properties:   
+                                                                                
+  * Wooden crate: A standard rigid-body box that can be picked up, stacked,     
+  rotated and thrown.                                                           
+  * Rubber ball: A sphere with high restitution that bounces convincingly when  
+  dropped or thrown.                                                            
+  * Heavy metal box: A heavier object that is harder to move and produces more  
+  substantial impacts.                                                          
+  * Lightweight cardboard box: A light object that is easy to carry and throw.  
+  * Cylinder: A physics object that can roll, tip over and be balanced.         
+                                                                                
+  Use straightforward, recognisable materials and visually distinguish the      
+  objects.                                                                      
+  Configure their mass, friction, damping and bounce properties appropriately.  
+  3. Physics playground                                                         
+  Create a simple test environment containing:                                  
+                                                                                
+  * A flat floor.                                                               
+  * Several physics objects.                                                    
+  * A sturdy table for stacking and placing objects.                            
+  * A raised platform for dropping objects from a height.                       
+  * A wall for throwing objects against.                                        
+  * Enough open space to experiment with object manipulation.                   
+                                                                                
+  The environment should remain simple. This is a physics and interaction       
+  prototype, not a full game level.                                             
+  4. Rotation and placement                                                     
+  Ensure objects can be positioned precisely.                                   
+                                                                                
+  * Support rotation around all three axes.                                     
+  * Allow fine adjustments while holding an object.                             
+  * Preserve the object's orientation when dropped.                             
+  * Allow objects to rest naturally on tables, floors and other objects.        
+  * Support stacking boxes and balancing objects.                               
+  * Avoid automatically snapping objects to an artificial grid.                 
+                                                                                
+  5. Technical requirements                                                     
+  Use Godot's native 3D physics systems, including RigidBody3D,                 
+  CollisionShape3D and PhysicsMaterial where appropriate.                       
+  Keep the manipulation system reusable so it can later work with furniture,    
+  tools, destructible voxel objects and construction materials.                 
+  Do not implement voxel destruction or construction yet. Leave the installed   
+  add-on intact.                                                                
+  Avoid changing unrelated systems.                                             
+  6. Testing                                                                    
+  Test the actual project and verify that:                                      
+                                                                                
+  * Objects can be picked up and dropped.                                       
+  * Mouse rotation works across all three axes.                                 
+  * Scrolling adjusts holding distance.                                         
+  * Throwing works correctly.                                                   
+  * The rubber ball bounces.                                                    
+  * Heavy and light objects behave differently.                                 
+  * Objects collide correctly while held.                                       
+  * Boxes can be stacked.                                                       
+  * Existing FPS controls still work.                                           
+  * The project loads without errors.                                           
+                                                                                
+  Goal: A fully playable first-person physics playground that establishes a     
+  reliable, satisfying object manipulation system for a future                  
+  Taskmaster-inspired immersive sim.                                            
+  Prioritise responsive controls, believable physics, stability and reusable    
+  architecture over additional features.                                        
+
+● I'll start by inspecting the project structure.
+
+  Read 1 file, listed 2 directories (ctrl+o to expand)
+
+● Now let me locate the Godot binary and check the addon's layer usage and
+  textures.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Baseline check: does the project load cleanly before I change anything?
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Baseline is clean. Now the core reusable component: the manipulator.
+
+● Write(physics\object_manipulator.gd)
+  ⎿  Wrote 374 lines to physics\object_manipulator.gd
+       1 class_name ObjectManipulator
+       3 ## Physics-driven grab, carry, rotate and throw for RigidBody3D 
+         objects.
+         bbable" group or
+       5 ## exposes can_be_grabbed(). Held bodies are steered by velocity
+       6 ## a force budget, so they keep colliding normally and heavy bod
+         ies respond slowly.
+         older),
+       8 ## on_released(holder, thrown).
+      10 signal grabbed(body: RigidBody3D)
+     … +418 lines (ctrl+o to expand)
+
+● Now the reusable prop base class:
+
+● Write(physics\physics_prop.gd)
+  ⎿  Wrote 37 lines to physics\physics_prop.gd
+       1 class_name PhysicsProp
+       2 extends RigidBody3D
+         ysical behaviour
+       4 ## comes from the body's mass, damping and PhysicsMaterial; this
+          script only adds
+         d.
+       6 
+       7 @export var display_name: String = "Object"
+       9 ## Props falling below this height return to where they started.
+      10 @export var respawn_below_y: float = -25.0
+     … +29 lines (ctrl+o to expand)
+
+● Now add input actions and the props layer name to project.godot (additions
+  only):
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● No Python; I'll use the Edit tool directly.
+
+  Read 1 file (ctrl+o to expand)
+
+● Update(project.godot)
+  ⎿  Added 34 lines
+       76  "events": [Object(InputEventKey,"resource_local_to_scene":fals
+           e,"resource_name":"","device":16,"window_id":0,"alt_pressed":f
+           alse,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed"
+           :false,"pressed":false,"keycode":0,"physical_keycode":69,"key_
+           label":0,"unicode":0,"location":0,"echo":false,"script":null)
+       77  ]
+       78  }
+       79 +rotate_held_object={                                          
+       80 +"deadzone": 0.2,                                              
+       81 +"events": [Object(InputEventMouseButton,"resource_local_to_sce
+          +ne":false,"resource_name":"","device":-1,"window_id":0,"alt_pr
+          +essed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_
+          +pressed":false,"button_mask":0,"position":Vector2(0, 0),"globa
+          +l_position":Vector2(0, 0),"factor":1.0,"button_index":3,"cance
+          +led":false,"pressed":false,"double_click":false,"script":null)
+       82 +]                                                             
+       83 +}                                                             
+       84 +throw_held_object={                                           
+       85 +"deadzone": 0.2,                                              
+       86 +"events": [Object(InputEventMouseButton,"resource_local_to_sce
+          +ne":false,"resource_name":"","device":-1,"window_id":0,"alt_pr
+          +essed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_
+          +pressed":false,"button_mask":0,"position":Vector2(0, 0),"globa
+          +l_position":Vector2(0, 0),"factor":1.0,"button_index":1,"cance
+          +led":false,"pressed":false,"double_click":false,"script":null)
+       87 +]                                                             
+       88 +}                                                             
+       89 +hold_farther={                                                
+       90 +"deadzone": 0.2,                                              
+       91 +"events": [Object(InputEventMouseButton,"resource_local_to_sce
+          +ne":false,"resource_name":"","device":-1,"window_id":0,"alt_pr
+          +essed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_
+          +pressed":false,"button_mask":0,"position":Vector2(0, 0),"globa
+          +l_position":Vector2(0, 0),"factor":1.0,"button_index":4,"cance
+          +led":false,"pressed":false,"double_click":false,"script":null)
+       92 +]                                                             
+       93 +}                                                             
+       94 +hold_closer={                                                 
+       95 +"deadzone": 0.2,                                              
+       96 +"events": [Object(InputEventMouseButton,"resource_local_to_sce
+          +ne":false,"resource_name":"","device":-1,"window_id":0,"alt_pr
+          +essed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_
+          +pressed":false,"button_mask":0,"position":Vector2(0, 0),"globa
+          +l_position":Vector2(0, 0),"factor":1.0,"button_index":5,"cance
+          +led":false,"pressed":false,"double_click":false,"script":null)
+       97 +]                                                             
+       98 +}                                                             
+       99 +precision_modifier={                                          
+      100 +"deadzone": 0.2,                                              
+      101 +"events": [Object(InputEventKey,"resource_local_to_scene":fals
+          +e,"resource_name":"","device":-1,"window_id":0,"alt_pressed":f
+          +alse,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed"
+          +:false,"pressed":false,"keycode":0,"physical_keycode":4194328,
+          +"key_label":0,"unicode":0,"location":0,"echo":false,"script":n
+          +ull)                                                          
+      102 +]                                                             
+      103 +}                                                             
+      104 +reset_playground={                                            
+      105 +"deadzone": 0.2,                                              
+      106 +"events": [Object(InputEventKey,"resource_local_to_scene":fals
+          +e,"resource_name":"","device":-1,"window_id":0,"alt_pressed":f
+          +alse,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed"
+          +:false,"pressed":false,"keycode":0,"physical_keycode":82,"key_
+          +label":0,"unicode":0,"location":0,"echo":false,"script":null) 
+      107 +]                                                             
+      108 +}                                                             
+      109  
+      110 +[layer_names]                                                 
+      111 +                                                              
+      112 +3d_physics/layer_5="props"                                    
+      113 +                                                              
+      114  [physics]
+      115  
+      116  3d/physics_engine="Jolt Physics"
+
+  Searched for 1 pattern (ctrl+o to expand)
+
+● Now integrate into the existing player controller — delegating input,
+  extending _update_interaction, and adding light body-pushing.
+
+  Ran 2 shell commands (ctrl+o to expand)
+
+● Update(character_body_3d.gd)
+  ⎿  Added 2 lines
+      44  
+      45  @export_group("Interaction")
+      46  @export var interaction_distance: float = 3.0
+      47 +## Force applied to loose rigid bodies the player walks into; h
+         +eavy ones barely move.                                         
+      48 +@export var push_force: float = 300.0                          
+      49  
+      50  @onready var collision: CollisionShape3D = $CollisionShape3D
+      51  @onready var body_mesh: MeshInstance3D = $MeshInstance3D
+
+● Update(character_body_3d.gd)
+  ⎿  Added 1 line
+      56  @onready var interaction_menu: InteractionMenu = $HUD/Interacti
+          onMenu
+      57  @onready var crosshair: Label = $HUD/Crosshair
+      58  @onready var stats: PlayerStats = $Stats
+      59 +@onready var manipulator: ObjectManipulator = $ObjectManipulato
+         +r                                                              
+      60  
+      61  var gameplay_enabled: bool = true
+      62  var is_crouching: bool = false
+
+● Update(character_body_3d.gd)
+  ⎿  Added 4 lines
+      110      Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+      111      get_viewport().set_input_as_handled()
+      112      return
+      113 +  # A held object claims throw, rotate and scroll input, and m
+          +ouse look while rotating.                                     
+      114 +  if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and manipul
+          +ator.handle_input(event):                                     
+      115 +    get_viewport().set_input_as_handled()                     
+      116 +    return                                                    
+      117  
+      118    if event is InputEventMouseButton:
+      119      if event.button_index == MOUSE_BUTTON_LEFT and event.press
+           ed:
+
+● Update(character_body_3d.gd)
+  ⎿  Added 2 lines
+      170    var horizontal_velocity := velocity.slide(up_direction).move
+           _toward(direction.slide(up_direction) * speed, response * delt
+           a)
+      171    velocity = horizontal_velocity + up_direction * vertical_vel
+           ocity
+      172    var falling_speed := -vertical_velocity
+      173 +  var intended_velocity := velocity                           
+      174    move_and_slide()
+      175 +  _push_rigid_bodies(intended_velocity, delta)                
+      176    var actual_velocity := get_real_velocity()
+      177    var moving := Vector2(actual_velocity.x, actual_velocity.z).
+           length() > 0.1
+      178    stats.update_stamina(delta, sprinting and moving)
+
+● Update(character_body_3d.gd)
+  ⎿  Added 15 lines
+      184      )
+      185    _update_camera_motion(delta, controls_active, input_dir)
+      186    _update_interaction(controls_active)
+      187 +  manipulator.physics_update(delta)                           
+      188  
+      189  
+      190 +func _push_rigid_bodies(intended_velocity: Vector3, delta: flo
+          +at) -> void:                                                  
+      191 +  for index in get_slide_collision_count():                   
+      192 +    var hit := get_slide_collision(index)                     
+      193 +    var body := hit.get_collider() as RigidBody3D             
+      194 +    # Standing on a body should not shove it along.           
+      195 +    if body == null or body.freeze or hit.get_normal().dot(up_
+          +direction) > 0.7:                                             
+      196 +      continue                                                
+      197 +    var push := -hit.get_normal().slide(up_direction).normaliz
+          +ed()                                                          
+      198 +    # Only push until the body keeps pace, so light objects ar
+          +e not launched.                                               
+      199 +    if push.is_zero_approx() or body.linear_velocity.dot(push)
+          + >= intended_velocity.dot(push):                              
+      200 +      continue                                                
+      201 +    body.apply_impulse(push * push_force * delta, hit.get_posi
+          +tion() - body.global_position)                                
+      202 +                                                              
+      203 +                                                              
+      204  func _update_crouch(wants_crouch: bool, delta: float) -> void:
+      205    # Check every frame while rising, in case we move beneath a 
+           low ceiling.
+      206    if not wants_crouch and _crouch_progress > 0.0 and not _can_
+           stand():
+
+● Update(character_body_3d.gd)
+  ⎿  Added 15 lines
+      269    if not controls_active:
+      270      interaction_menu.close_menu()
+      271      return
+      272 +  if manipulator.is_holding():                                
+      273 +    interaction_menu.close_menu()                             
+      274 +    interaction_prompt.text = manipulator.get_hold_prompt()   
+      275 +    interaction_prompt.show()                                 
+      276 +    if Input.is_action_just_pressed("interact"):              
+      277 +      manipulator.release()                                   
+      278 +    return                                                    
+      279    interaction_ray.force_raycast_update()
+      280 +  var grabbable := manipulator.resolve_grabbable(interaction_r
+          +ay.get_collider())                                            
+      281 +  if grabbable != null:                                       
+      282 +    interaction_menu.close_menu()                             
+      283 +    interaction_prompt.text = manipulator.get_grab_prompt(grab
+          +bable)                                                        
+      284 +    interaction_prompt.show()                                 
+      285 +    if Input.is_action_just_pressed("interact"):              
+      286 +      manipulator.grab(grabbable)                             
+      287 +    return                                                    
+      288    var target := interaction_ray.get_collider() as Node
+      289    # The interaction script may live on the collider or its sce
+           ne root.
+      290    while target != null and not target.has_method("interact"):
+
+● Update(character_body_3d.gd)
+  ⎿  Added 1 line
+      333      crosshair.visible = _crosshair_was_visible
+      334    else:
+      335      velocity = Vector3.ZERO
+      336 +    manipulator.release()                                     
+      337      _crosshair_was_visible = crosshair.visible
+      338      crosshair.hide()
+      339      interaction_prompt.hide()
+
+● Now wire the node into player.tscn and include the props layer in the player
+  and ray masks:
+
+  Ran 1 shell command (ctrl+o to expand)
+● Now the five prop scenes. Props sit on layer 5 (value 16) and collide with
+  world, interactables, player and other props (mask 31).
+
+● Write(props\wooden_crate.tscn)
+  ⎿  Wrote 99 lines to props\wooden_crate.tscn
+       1 [gd_scene format=3]
+       2 
+       3 [ext_resource type="Script" path="res://physics/physics_prop.gd"
+          id="1_prop"]
+       4 
+       6 friction = 0.7
+       7 bounce = 0.05
+       8 
+       9 [sub_resource type="BoxShape3D" id="BoxShape3D_crate"]
+      10 size = Vector3(0.6, 0.6, 0.6)
+     … +90 lines (ctrl+o to expand)
+
+● Write(props\rubber_ball.tscn)
+  ⎿  Wrote 49 lines to props\rubber_ball.tscn
+       1 [gd_scene format=3]
+       2 
+       3 [ext_resource type="Script" path="res://physics/physics_prop.gd"
+       4 
+       5 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rubber"
+         ]
+       6 friction = 0.9
+       8 
+       9 [sub_resource type="SphereShape3D" id="SphereShape3D_ball"]
+      10 radius = 0.15
+     … +40 lines (ctrl+o to expand)
+
+● Write(props\metal_box.tscn)
+  ⎿  Wrote 69 lines to props\metal_box.tscn
+       1 [gd_scene format=3]
+       2 
+       3 [ext_resource type="Script" path="res://physics/physics_prop.gd"
+          id="1_prop"]
+       4 
+       6 friction = 0.45
+       7 bounce = 0.0
+       8 
+       9 [sub_resource type="BoxShape3D" id="BoxShape3D_metal"]
+      10 size = Vector3(0.5, 0.5, 0.5)
+     … +60 lines (ctrl+o to expand)
+
+● Write(props\cardboard_box.tscn)
+  ⎿  Wrote 59 lines to props\cardboard_box.tscn
+       1 [gd_scene format=3]
+       2 
+       3 [ext_resource type="Script" path="res://physics/physics_prop.gd"
+       4 
+       5 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cardboa
+         rd"]
+       6 friction = 0.8
+       8 
+       9 [sub_resource type="BoxShape3D" id="BoxShape3D_cardboard"]
+      10 size = Vector3(0.5, 0.36, 0.4)
+     … +50 lines (ctrl+o to expand)
+
+● Write(props\cylinder.tscn)
+  ⎿  Wrote 60 lines to props\cylinder.tscn
+       1 [gd_scene format=3]
+       2 
+       3 [ext_resource type="Script" path="res://physics/physics_prop.gd"
+       4 
+       5 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_painted
+         "]
+       6 friction = 0.6
+       8 
+       9 [sub_resource type="CylinderShape3D" id="CylinderShape3D_body"]
+      10 height = 0.6
+     … +51 lines (ctrl+o to expand)
+
+● Now the playground scene and its tiny script:
+
+● Write(playground\physics_playground.gd)
+  ⎿  Wrote 9 lines to playground\physics_playground.gd
+      1 extends Node3D
+      2 ## Physics prototyping space. R returns every prop to where it st
+        arted.
+      3 
+      4 
+      5 func _unhandled_input(event: InputEvent) -> void:
+      6   if event.is_action_pressed("reset_playground"):
+      7     get_tree().call_group(&"object_manipulators", &"release")
+      8     get_tree().call_group(&"physics_props", &"reset_to_spawn")
+      9     get_viewport().set_input_as_handled()
+
+● Write(playground\physics_playground.tscn)
+  ⎿  Wrote 348 lines to playground\physics_playground.tscn
+      1 [gd_scene format=3]
+      3 [ext_resource type="Script" path="res://playground/physics_playgr
+        ound.gd" id="1_playground"]
+        es://player.tscn" id="2_player"]
+        s://addons/godot-prototype-texture/PNG/grid_512x512/grid_black_51
+        2x512.png" id="3_grid_black"]
+        -texture/PNG/grid_512x512/grid_orange_512x512.png" id="4_grid_ora
+        nge"]
+        -texture/PNG/grid_512x512/grid_blue_512x512.png" id="5_grid_blue"
+      8 [ext_resource type="Texture2D" path="res://addons/
+     … +381 lines (ctrl+o to expand)
+
+● Now import (registers the new class_names) and run the playground headless to
+  catch script/scene errors:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Both scenes load with no errors. Let me check the full import log for warnings
+  too:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Those look pre-existing (the voxel addon's editor plugin). Let me confirm
+  against the original project.godot:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● The errors match the original config and are just pre-existing editor addon
+  noise unrelated to my changes, with runtime clean. Next I'll run a behavioural
+  test on the real input path, starting with checking if mouse capture reports
+  correctly in headless mode since the player gates controls on it.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+❯ E 0:00:04:930   ObjectManipulator._eye_position: Invalid access to property   
+  or key 'global_position' on a base object of type 'Nil'.                      
+    <GDScript Source>object_manipulator.gd:294 @                                
+  ObjectManipulator._eye_position()                                             
+    <Stack Trace> object_manipulator.gd:294 @ _eye_position()                   
+                  object_manipulator.gd:146 @ grab()                            
+                  character_body_3d.gd:286 @ _update_interaction()              
+                  character_body_3d.gd:186 @ _physics_process()                 
+
+● The exported view/camera references came through as null. Let me check what's
+  on disk now, since the editor has re-saved files.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Found the bug: the hand-written scene was missing the
+  node_paths=PackedStringArray(...) declaration needed for Node-typed exports in
+  Godot 4, leaving both references null. I'll fix the scene and add a fallback
+  to the holder's own head/camera so missing exports can't crash it.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Update(physics\object_manipulator.gd)
+  ⎿  Added 8 lines
+      71  func _ready() -> void:
+      72    _holder = get_parent() as CollisionObject3D
+      73    add_to_group(&"object_manipulators")
+      74 +  # Fall back to the holder's own view nodes when the exports a
+         +re not assigned.                                               
+      75 +  if camera == null:                                           
+      76 +    camera = _holder.get(&"camera") as Camera3D                
+      77 +  if view == null:                                             
+      78 +    view = _holder.get(&"head") as Node3D                      
+      79 +  if camera == null:                                           
+      80 +    push_error("ObjectManipulator needs a camera assigned.")   
+      81 +    set_physics_process(false)                                 
+      82  
+      83  
+      84  func is_holding() -> bool:
+
+● Since a child's _ready runs before the parent's, the player's camera/head
+  won't be set yet—so I'll wait for the holder to be ready and skip the grab if
+  the camera still isn't available.
+
+● Update(physics\object_manipulator.gd)
+  ⎿  Added 8 lines, removed 5 lines
+      72    _holder = get_parent() as CollisionObject3D
+      73    add_to_group(&"object_manipulators")
+      74    # Fall back to the holder's own view nodes when the exports a
+          re not assigned.
+      75 +  # The holder's @onready references only exist once it is read
+         +y itself.                                                      
+      76 +  if camera == null or view == null:                           
+      77 +    if not _holder.is_node_ready():                            
+      78 +      await _holder.ready                                      
+      79 +    if camera == null:                                         
+      80 +      camera = _holder.get(&"camera") as Camera3D              
+      81 +    if view == null:                                           
+      82 +      view = _holder.get(&"head") as Node3D                    
+      83    if camera == null:
+      76 -    camera = _holder.get(&"camera") as Camera3D                
+      77 -  if view == null:                                             
+      78 -    view = _holder.get(&"head") as Node3D                      
+      79 -  if camera == null:                                           
+      84      push_error("ObjectManipulator needs a camera assigned.")
+      81 -    set_physics_process(false)                                 
+      85  
+      86  
+      87  func is_holding() -> bool:
+
+● Update(physics\object_manipulator.gd)
+  ⎿  Added 1 line, removed 1 line
+      135  
+      136  
+      137  func can_grab(body: RigidBody3D) -> bool:
+      138 -  if body == null or is_holding() or body.freeze or is_too_hea
+          -vy(body):                                                     
+      138 +  if camera == null or body == null or is_holding() or body.fr
+          +eeze or is_too_heavy(body):                                   
+      139      return false
+      140    # Lifting the body you are standing on would pull it out fro
+           m under you.
+      141    var character := _holder as CharacterBody3D
+
+● I'll run a scripted test that loads the playground, confirms references
+  resolve, and exercises real grabs through the manipulator directly—bypassing
+  mouse input since headless mode can't capture it.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Shell quoting tripped over the heredoc; I'll write the test file with the
+  Write tool instead.
+
+● Write(_tmp_test\manip_test.gd)  ⎿  Wrote 214 lines to _tmp_test\manip_test.gd
+      1 extends SceneTree
+      2 
+      3 var fails := 0
+      4 
+      5 
+      6 func check(ok: bool, label: String) -> void:
+      7   print(("PASS  " if ok else "FAIL  ") + label)
+      8   if not ok:
+      9     fails += 1
+     … +238 lines (ctrl+o to expand)
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Fixed the crash and confirmed grabbing works, but 4 test failures turned out
+  to be test setup issues: rotation was blocked by the crate resting on the
+  table, and the stack had already toppled from an earlier throw. I'll lift the
+  crate into the air before testing rotation and reset the stack before testing
+  stacking.
+
+● Update(_tmp_test\manip_test.gd)
+  ⎿  Added 3 lines, removed 1 line
+      67    man.handle_input(mb(MOUSE_BUTTON_WHEEL_DOWN, true))
+      68    check(absf(man._hold_distance - (before + 0.15)) < 0.01, "whe
+          el down decreases hold distance")
+      69  
+      70 -  # Rotation about all three axes; camera must not turn.       
+      70 +  # Rotation about all three axes, lifted clear of the table; c
+         +amera must not turn.                                           
+      71 +  head.rotation.x = deg_to_rad(10)                             
+      72 +  await frames(60)                                             
+      73    var yaw_before := player.rotation.y
+      74    var pitch_before := head.rotation.x
+      75    var cam: Basis = man.camera.global_basis
+
+● Update(_tmp_test\manip_test.gd)
+  ⎿  Added 8 lines
+      192    check(cpeak < 0.45, "crate barely bounces by comparison (pea
+           k %.2f)" % cpeak)
+      193  
+      194    # Stack: carry a crate over the stack and drop it.
+      195 +  print("  stack before reset: top y=%.3f" % top.global_positi
+          +on.y)                                                         
+      196 +  var bottom: RigidBody3D = props.get_node("StackedCrateBottom
+          +")                                                            
+      197 +  bottom.global_transform = Transform3D(Basis(), Vector3(2.6, 
+          +0.305, 0.4))                                                  
+      198 +  top.global_transform = Transform3D(Basis(), Vector3(2.6, 0.9
+          +1, 0.4))                                                      
+      199 +  for b: RigidBody3D in [bottom, top]:                        
+      200 +    b.linear_velocity = Vector3.ZERO                          
+      201 +    b.angular_velocity = Vector3.ZERO                         
+      202 +  await frames(60)                                            
+      203    var carry: RigidBody3D = props.get_node("WallCrate")
+      204    carry.global_transform = Transform3D(Basis(), Vector3(2.6, 0
+           .305, 2.0))
+      205    carry.linear_velocity = Vector3.ZERO
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Rotation now matches the input on all axes (41° and 48° as expected), and the
+  remaining failure is just a test setup issue — teleporting the player caused
+  the crate to clip the stack's corner, which is correct collision behavior.
+  I'll fix the test by moving the crate realistically: lift it, carry it over
+  the stack, then lower it.
+
+● Update(_tmp_test\manip_test.gd)
+  ⎿  Added 5 lines, removed 4 lines
+      211    player.global_position = Vector3(2.6, 0, 1.8)
+      212    await frames(2)
+      213    var eye := man.view.global_position
+      214 -  var goal := Vector3(2.6, 1.6, 0.4)                          
+      215 -  man._hold_distance = eye.distance_to(goal)                  
+      216 -  head.rotation.x = atan2(goal.y - eye.y, eye.z - goal.z)     
+      217 -  await frames(150)                                           
+      214 +  for goal: Vector3 in [Vector3(2.6, 2.0, 1.1), Vector3(2.6, 2
+          +.0, 0.4), Vector3(2.6, 1.56, 0.4)]:                           
+      215 +    man._hold_distance = eye.distance_to(goal)                
+      216 +    head.rotation.x = atan2(goal.y - eye.y, eye.z - goal.z)   
+      217 +    await frames(60)                                          
+      218 +  await frames(60)                                            
+      219    man.release()
+      220    await frames(180)
+      221    check(absf(carry.global_position.y - 1.515) < 0.06 and absf(
+           top.global_position.y - 0.91) < 0.05,
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● All 31 checks pass. Final check that both scenes still load cleanly, then I'll
+  clean up the temporary test folder:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● I've fixed the crash. Pressing E now picks objects up instead of throwing the
+  Nil error.
+
+  Cause: I hand-wrote the ObjectManipulator node in player.tscn without the
+  node_paths=PackedStringArray("view", "camera") line. Godot 4 needs that line
+  for exported node references saved as paths. Without it, camera and view
+  stayed null, and the first grab crashed when it tried to read the camera
+  position.
+
+  Fix:
+  - player.tscn: added the missing node_paths line.
+  - object_manipulator.gd: if camera or view aren't assigned, it now falls back
+    to the player's own camera and head. If there's still no camera, it logs a
+    clear error and refuses to grab instead of crashing.
+
+  Testing: I wrote a scripted test that loads the playground and runs the
+  manipulator with real physics. All 31 checks pass:
+  - Grab and drop work. The object follows the hold point, and its orientation
+    is unchanged at the moment of drop.
+  - Rotation works on all three axes: mouse X turns it, mouse Y tips it forward
+    or back, and middle mouse + wheel rolls it. The camera doesn't move while
+    you rotate.
+  - The scroll wheel changes holding distance.
+  - A held crate pushed into the wall never got inside it, never went into the
+    floor, and didn't push the player.
+  - Throw speed depends on mass: 16 m/s for cardboard, 2 m/s for the metal box.
+    The heavy box also takes about twice as long to catch up when lifted.
+  - The rubber ball rebounds to 2 m when dropped from 3 m. A dropped crate
+    barely bounces.
+  - The pre-placed crate stack stays standing, and a crate carried over and
+    dropped onto it rests on top.
+  - Both the playground and your original main scene load with no runtime
+    errors.
+
+  Four checks failed on early runs, all from how I'd set up the test. I'd
+  rotated a crate that was still resting on the table, and teleported the player
+  so a crate flew straight through the stack. I fixed the setup rather than
+  loosening any check.
+
+  Not yet tested: headless Godot can't capture the mouse, and your player only
+  accepts controls while the mouse is captured. So the test called the
+  manipulator directly. Pressing E in-game (the path that crashed for you) and
+  the existing walk, sprint, jump and look controls haven't been run with real
+  input yet. The fix addresses exactly the null references in your stack trace,
+  but please press play and try it. If anything else comes up, send me the error
+  like you did here.
+
+  To try it, open playground/physics_playground.tscn and press F6. I left your
+  project's main scene unchanged, as you asked.
+
+  You edited the playground scene in the editor while I was working. I kept your
+  version and didn't touch it.
+
+❯ Can you turn all of the individual objects into like a combined like um,      
+  physics object resource script to use to make like .tres files? Just so I can 
+  easily change things in the inspector and like easily add other things with   
+  it being data driven.                                                         
+
+● I'll check the current state of the scenes first, since you've edited the
+  playground in the editor.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● The editor only added UIDs to the playground; the prop scenes are untouched.
+  Let me see the prop instance blocks to check for any per-instance overrides:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● I'll create a PhysicsObjectDefinition resource holding shape, size, mass, and
+  material data, and turn PhysicsProp into a @tool node that builds itself from
+  that resource for live editor previews. Then I'll convert the five existing
+  .tscn props into .tres definitions, moving their decorative elements into
+  small optional detail scenes.
+
+● Write(physics\physics_object_definition.gd)
+  ⎿  Wrote 209 lines to physics\physics_object_definition.gd
+       1 @tool
+       2 class_name PhysicsObjectDefinition
+       4 ## Data for one kind of physics object. Save as a .tres and assi
+         gn it to a
+       5 ## PhysicsProp; the prop builds its collision, mesh and body set
+       6 ## Edits update every prop using the definition, including in th
+         e editor.
+       7 
+       9 
+      10 @export_group("Identity")
+     … +214 lines (ctrl+o to expand)
+
+● Now rewrite PhysicsProp to build from the definition:
+
+● Write(physics\physics_prop.gd)
+  ⎿  Added 71 lines, removed 7 lines
+       1 +@tool                                                          
+       2  class_name PhysicsProp
+       3  extends RigidBody3D
+       3 -## Reusable rigid-body prop that ObjectManipulator can carry. P
+         -hysical behaviour                                              
+       4 -## comes from the body's mass, damping and PhysicsMaterial; thi
+         -s script only adds                                             
+       5 -## the grab contract and a respawn for props that leave the wor
+         -ld.                                                            
+       4 +## Rigid-body prop built from a PhysicsObjectDefinition, carrya
+         +ble by ObjectManipulator.                                      
+       5 +## The definition is the source of truth: its shape, mesh and d
+         +etails are built as                                            
+       6 +## internal children (previewed in the editor, never saved into
+         + scenes), and its                                              
+       7 +## mass, damping, material and layers replace this body's own v
+         +alues at runtime.                                              
+       8  
+       7 -@export var display_name: String = "Object"                    
+       8 -@export var grabbable: bool = true                             
+       9 +@export var definition: PhysicsObjectDefinition:               
+      10 +  set(value):                                                  
+      11 +    if definition == value:                                    
+      12 +      return                                                   
+      13 +    if definition != null and definition.changed.is_connected(_
+         +apply_definition):                                             
+      14 +      definition.changed.disconnect(_apply_definition)         
+      15 +    definition = value                                         
+      16 +    if definition != null:                                     
+      17 +      definition.changed.connect(_apply_definition)            
+      18 +    if is_node_ready():                                        
+      19 +      _apply_definition()                                      
+      20 +    update_configuration_warnings()                            
+      21  ## Props falling below this height return to where they started
+          .
+      22  @export var respawn_below_y: float = -25.0
+      23  
+      24 +var _built: Array[Node] = []                                   
+      25  var _spawn_transform: Transform3D
+      26  
+      27  
+      28 +## Creates a prop from code, e.g. for spawners: PhysicsProp.cre
+         +ate(load("res://props/wooden_crate.tres")).                    
+      29 +static func create(object_definition: PhysicsObjectDefinition) 
+         +-> PhysicsProp:                                                
+      30 +  var prop := PhysicsProp.new()                                
+      31 +  prop.definition = object_definition                          
+      32 +  prop.name = object_definition.display_name.to_pascal_case()  
+      33 +  return prop                                                  
+      34 +                                                               
+      35 +                                                               
+      36  func _ready() -> void:
+      37 +  _apply_definition()                                          
+      38 +  if Engine.is_editor_hint():                                  
+      39 +    set_physics_process(false)                                 
+      40 +    return                                                     
+      41    add_to_group(&"physics_props")
+      42    _spawn_transform = global_transform
+      43  
+      44  
+      45  func can_be_grabbed() -> bool:
+      21 -  return grabbable and not freeze                              
+      46 +  return definition != null and definition.grabbable and not fr
+         +eeze                                                           
+      47  
+      48  
+      49  func get_grab_name() -> String:
+      25 -  return display_name                                          
+      50 +  return definition.display_name if definition != null else str
+         +(name)                                                         
+      51  
+      52  
+      53  func reset_to_spawn() -> void:
+     ...
+       60  func _physics_process(_delta: float) -> void:
+       61    if global_position.y < respawn_below_y:
+       62      reset_to_spawn()
+       63 +                                                              
+       64 +                                                              
+       65 +func _apply_definition() -> void:                             
+       66 +  for node in _built:                                         
+       67 +    if is_instance_valid(node):                               
+       68 +      remove_child(node)                                      
+       69 +      node.queue_free()                                       
+       70 +  _built.clear()                                              
+       71 +  if definition == null:                                      
+       72 +    return                                                    
+       73 +  var collision := CollisionShape3D.new()                     
+       74 +  collision.shape = definition.get_shape()                    
+       75 +  _add_built(collision)                                       
+       76 +  var mesh := MeshInstance3D.new()                            
+       77 +  mesh.mesh = definition.get_mesh()                           
+       78 +  _add_built(mesh)                                            
+       79 +  if definition.detail_scene != null:                         
+       80 +    _add_built(definition.detail_scene.instantiate())         
+       81 +  # Body values stay untouched in the editor so scenes are not
+          + saved with copies.                                           
+       82 +  if Engine.is_editor_hint():                                 
+       83 +    return                                                    
+       84 +  mass = definition.mass                                      
+       85 +  physics_material_override = definition.get_physics_material(
+          +)                                                             
+       86 +  linear_damp = definition.linear_damp                        
+       87 +  angular_damp = definition.angular_damp                      
+       88 +  continuous_cd = definition.continuous_cd                    
+       89 +  collision_layer = definition.collision_layer                
+       90 +  collision_mask = definition.collision_mask                  
+       91 +                                                              
+       92 +                                                              
+       93 +func _add_built(node: Node) -> void:                          
+       94 +  add_child(node, false, Node.INTERNAL_MODE_BACK)             
+       95 +  _built.append(node)                                         
+       96 +                                                              
+       97 +                                                              
+       98 +func _get_configuration_warnings() -> PackedStringArray:      
+       99 +  if definition == null:                                      
+      100 +    return ["Assign a PhysicsObjectDefinition to build this pr
+          +op."]                                                         
+      101 +  return []                                                   
+
+● Now the detail scenes. They hold only the decorative trim; the main body mesh
+  comes from the definition:
+
+● Write(props\details\wooden_crate_details.tscn)
+  ⎿  Wrote 67 lines to props\details\wooden_crate_details.tscn
+      1 [gd_scene format=3]
+      2 
+      3 [sub_resource type="StandardMaterial3D" id="Material_frame"]
+      4 albedo_color = Color(0.48, 0.31, 0.16, 1)
+      5 roughness = 0.9
+      6 
+      7 [sub_resource type="BoxMesh" id="BoxMesh_edge_x"]
+      8 material = SubResource("Material_frame")
+      9 size = Vector3(0.605, 0.075, 0.075)
+     … +57 lines (ctrl+o to expand)
+
+● Write(props\details\metal_box_details.tscn)
+  ⎿  Wrote 36 lines to props\details\metal_box_details.tscn
+       1 [gd_scene format=3]
+       2 
+       3 [sub_resource type="StandardMaterial3D" id="Material_band"]
+       4 albedo_color = Color(0.22, 0.23, 0.25, 1)
+       5 metallic = 0.8
+       6 roughness = 0.5
+       7 
+       8 [sub_resource type="StandardMaterial3D" id="Material_label"]
+       9 albedo_color = Color(0.95, 0.72, 0.1, 1)
+      10 roughness = 0.6
+     … +26 lines (ctrl+o to expand)
+
+● Write(props\details\cardboard_box_details.tscn)
+  ⎿  Wrote 27 lines to props\details\cardboard_box_details.tscn
+      1 [gd_scene format=3]
+      2 
+      3 [sub_resource type="StandardMaterial3D" id="Material_tape"]
+      4 albedo_color = Color(0.86, 0.76, 0.56, 1)
+      5 roughness = 0.4
+      6 
+      7 [sub_resource type="BoxMesh" id="BoxMesh_tape_top"]
+      8 material = SubResource("Material_tape")
+      9 size = Vector3(0.08, 0.008, 0.404)
+     … +17 lines (ctrl+o to expand)
+
+● Write(props\details\rubber_ball_details.tscn)
+  ⎿  Wrote 16 lines to props\details\rubber_ball_details.tscn
+       1 [gd_scene format=3]
+       2 
+       3 [sub_resource type="StandardMaterial3D" id="Material_stripe"]
+       4 albedo_color = Color(0.95, 0.93, 0.88, 1)
+       5 roughness = 0.55
+       6 
+       7 [sub_resource type="TorusMesh" id="TorusMesh_stripe"]
+       8 material = SubResource("Material_stripe")
+       9 inner_radius = 0.142
+      10 outer_radius = 0.158
+     … +6 lines (ctrl+o to expand)
+
+● Write(props\details\cylinder_details.tscn)
+  ⎿  Wrote 24 lines to props\details\cylinder_details.tscn
+       1 [gd_scene format=3]
+       2 
+       3 [sub_resource type="StandardMaterial3D" id="Material_band"]
+       4 albedo_color = Color(0.95, 0.95, 0.95, 1)
+       5 roughness = 0.5
+       6 
+       7 [sub_resource type="CylinderMesh" id="CylinderMesh_band"]
+       8 material = SubResource("Material_band")
+       9 top_radius = 0.183
+      10 bottom_radius = 0.183
+     … +14 lines (ctrl+o to expand)
+
+● Now the five definition .tres files, carrying over the exact values from the
+  old scenes:
+
+● Write(props\wooden_crate.tres)  ⎿  Wrote 22 lines to props\wooden_crate.tres
+       1 [gd_resource type="Resource" script_class="PhysicsObjectDefiniti
+         on" format=3]
+       3 [ext_resource type="Script" path="res://physics/physics_object_d
+         efinition.gd" id="1_definition"]
+       4 [ext_resource type="PackedScene" path="res://props/details/woode
+       5 
+       6 [sub_resource type="StandardMaterial3D" id="Material_wood"]
+       7 albedo_color = Color(0.76, 0.56, 0.33, 1)
+       9 
+      10 [resource]
+     … +15 lines (ctrl+o to expand)
+
+● Write(props\rubber_ball.tres)
+  ⎿  Wrote 22 lines to props\rubber_ball.tres
+       1 [gd_resource type="Resource" script_class="PhysicsObjectDefiniti
+         on" format=3]
+       3 [ext_resource type="Script" path="res://physics/physics_object_d
+         efinition.gd" id="1_definition"]
+       4 [ext_resource type="PackedScene" path="res://props/details/rubbe
+       5 
+       6 [sub_resource type="StandardMaterial3D" id="Material_rubber"]
+       7 albedo_color = Color(0.86, 0.13, 0.1, 1)
+       9 
+      10 [resource]
+     … +15 lines (ctrl+o to expand)
+
+● Write(props\metal_box.tres)
+  ⎿  Wrote 23 lines to props\metal_box.tres
+      1 [gd_resource type="Resource" script_class="PhysicsObjectDefinitio
+        n" format=3]
+      2 
+        finition.gd" id="1_definition"]
+      4 [ext_resource type="PackedScene" path="res://props/details/metal_
+        box_details.tscn" id="2_details"]
+      5 
+      7 albedo_color = Color(0.5, 0.52, 0.55, 1)
+      8 metallic = 0.9
+      9 roughness = 0.35
+     … +16 lines (ctrl+o to expand)
+
+● Write(props\cardboard_box.tres)
+  ⎿  Wrote 22 lines to props\cardboard_box.tres
+       1 [gd_resource type="Resource" script_class="PhysicsObjectDefiniti
+         on" format=3]
+       3 [ext_resource type="Script" path="res://physics/physics_object_d
+         efinition.gd" id="1_definition"]
+       4 [ext_resource type="PackedScene" path="res://props/details/cardb
+       5 
+       6 [sub_resource type="StandardMaterial3D" id="Material_cardboard"]
+       7 albedo_color = Color(0.74, 0.58, 0.38, 1)
+       9 
+      10 [resource]
+     … +15 lines (ctrl+o to expand)
+
+● Write(props\cylinder.tres)
+  ⎿  Wrote 24 lines to props\cylinder.tres
+      1 [gd_resource type="Resource" script_class="PhysicsObjectDefinitio
+        n" format=3]
+      2 
+        finition.gd" id="1_definition"]
+      4 [ext_resource type="PackedScene" path="res://props/details/cylind
+        er_details.tscn" id="2_details"]
+      5 
+      7 albedo_color = Color(0.16, 0.38, 0.78, 1)
+      8 metallic = 0.3
+      9 roughness = 0.45
+     … +17 lines (ctrl+o to expand)
+
+● Now convert the playground's prop instances to PhysicsProp nodes referencing
+  the .tres files. I'll back up first, then rewrite with awk, keeping names,
+  transforms and the editor's unique IDs:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Off-by-one in my substring; fixing the doubled quote:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Now remove the old per-object scenes (backed up in my scratchpad), re-import,
+  and re-run the full behaviour test plus some new checks for the data-driven
+  setup:
+
+  Ran 2 shell commands (ctrl+o to expand)
+
+● The only failure is a test issue, not a real bug: it looked for a
+  CollisionShape3D child that's now built internally, though grabbing still
+  works fine in play. I'll also update the test to read bounce from the
+  definition rather than a hardcoded value, preserving your edited 0.6 setting
+  in the .tres file.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● All checks pass except one tied to your 0.6 bounce setting, which now gives
+  ~1.1 m rebound instead of the expected 1.5 m—behavior is still correct, so
+  I've kept your value as is. Cleaning up the temporary test folder now.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● All five objects are now driven by .tres files. You can tune them in the
+  inspector, and a new object is just a new .tres.
+
+  How it's set up:
+  - physics_object_definition.gd is the resource script. Its inspector is
+    grouped:
+    - Identity: name, grabbable.
+    - Shape: box, sphere, cylinder or capsule. Only the size fields that shape
+      uses are shown. There's also an optional custom collision shape.
+    - Physics: mass, friction, bounce, rough, absorbent, damping, continuous
+      collision.
+    - Collision: layers and mask, as checkboxes.
+    - Visuals: a material you edit inline, an optional custom mesh, and an
+      optional detail scene.
+  - physics_prop.gd is the node, and it builds itself from a definition. It runs
+    in the editor, so props preview in the viewport. Editing a .tres updates
+    every prop that uses it, live. The built collision and mesh aren't saved
+    into your scenes, so the .tres stays the only place a value lives.
+  - props/*.tres are the five objects, with the same values as before.
+  - props/details/ holds the decorative trim: crate frame, tape, metal bands,
+    stripes. One caveat: these keep their size when you resize a shape, so if
+    you change a crate's size, its frame won't follow.
+  - Playground: the props are now PhysicsProp nodes using the .tres files. Names
+    and positions are unchanged, and the old per-object .tscn files are gone.
+
+  To add a new object: in the FileSystem dock, right-click → New Resource →
+  PhysicsObjectDefinition, fill it in, and save it as a .tres. Then add a
+  PhysicsProp node (search for it in Add Node) and drag the .tres onto its
+  Definition slot. From code it's one line:
+  PhysicsProp.create(load("res://props/my_thing.tres")).
+
+  Testing: I re-ran the full behaviour test. Grabbing, all three rotation axes,
+  scroll distance, throwing, the heavy vs light difference, wall and floor
+  collision and stacking all pass as before. New checks also pass: props take
+  their values from the .tres, a definition made purely in code works (I tried a
+  capsule), and editing a definition rebuilds every prop using it. Both scenes
+  load with no errors.
+
+  The .tres files load in your open editor too, since it re-saved them. I
+  haven't clicked through the inspector myself, though, so tell me if anything
+  there looks off.
+
+❯ Godot Physics Sandbox — Physical Inventory, Containers and Equippable Tools   
+  Extend my existing Godot 4 first-person physics sandbox with a physical       
+  inventory, functional containers and an equippable tool system.               
+  This is the next development stage of a Taskmaster-inspired immersive         
+  simulation with physics, destruction and construction.                        
+  Inspect the existing project before making changes. It already contains:      
+                                                                                
+  * A working FPS controller and camera.                                        
+  * An E-based interaction system.                                              
+  * Physics-based object grabbing, carrying, rotation, distance adjustment,     
+  dropping and throwing.                                                        
+  * Multiple physics props with different masses and physical properties.       
+  * A physics playground.                                                       
+  * A data-driven physics object system using custom Resources (`.tres`).       
+  * An installed voxel destruction add-on.                                      
+                                                                                
+  Build on these existing systems. Preserve all working functionality and avoid 
+  unnecessary rewrites.                                                         
+  1. Physical inventory — no traditional inventory                              
+  The player should interact with physical objects directly rather than storing 
+  everything in an invisible inventory.                                         
+  Distinguish between three states:                                             
+                                                                                
+  * World object: An ordinary physics object lying in the environment.          
+  * Held object: An object being carried and positioned using the existing      
+  physics manipulation system.                                                  
+  * Equipped tool: A tool held in a dedicated first-person position, ready to   
+  be used.                                                                      
+                                                                                
+  The player can hold one object or equip one tool at a time, using a           
+  consistent, clearly defined hand/holding system.                              
+  Objects should transition correctly between these states without duplication, 
+  deletion or loss of their individual data.                                    
+  Do not add an inventory grid, hotbar, backpack or unlimited item storage.     
+  2. Physical containers                                                        
+  Create a reusable container system that allows physics objects to be placed   
+  inside other objects.                                                         
+  Start with:                                                                   
+                                                                                
+  * An open wooden box.                                                         
+  * A plastic basket or storage crate.                                          
+  * A bucket.                                                                   
+                                                                                
+  Containers should be ordinary physical objects that the player can pick up,   
+  carry, rotate, drop and throw using the existing manipulation system.         
+  Container behaviour                                                           
+                                                                                
+  * Allow players to place multiple smaller physics objects inside a container. 
+  * Contents must occupy actual physical space.                                 
+  * Objects should collide with the container walls and floor.                  
+  * Objects must remain inside when the container is lifted or transported      
+  normally.                                                                     
+  * Tilting or overturning the container should allow objects to slide or fall  
+  out.                                                                          
+  * Throwing a container should allow its contents to spill naturally.          
+  * Objects can be individually retrieved from inside a container.              
+  * Container contents should contribute to its total carried weight and        
+  physical behaviour.                                                           
+  * Prevent objects from clipping through container walls or falling through    
+  the bottom.                                                                   
+                                                                                
+  Use actual physics wherever practical, with carefully chosen stabilisation or 
+  collision handling if needed.                                                 
+  Do not fake the system by simply storing item IDs in a container inventory.   
+  Reusability                                                                   
+  The container system should be sufficiently general to support future objects 
+  such as:                                                                      
+                                                                                
+  * Wheelbarrows.                                                               
+  * Bins.                                                                       
+  * Trolleys.                                                                   
+  * Trays.                                                                      
+  * Drawers.                                                                    
+  * Toolboxes.                                                                  
+  * Buckets and other vessels.                                                  
+                                                                                
+  Do not implement all of these yet. Establish a reusable foundation that can   
+  accommodate them later.                                                       
+  3. Equippable tools                                                           
+  Extend the existing physics object system to support equippable tools.        
+  A tool should exist as an ordinary physical object in the world until         
+  equipped.                                                                     
+  For example, the player should be able to:                                    
+                                                                                
+  1. Look at a hammer.                                                          
+  2. Press E to pick it up using the existing physics manipulation system.      
+  3. Press a separate key to equip it.                                          
+  4. See the hammer move into a natural first-person holding position.          
+  5. Use the hammer with the mouse.                                             
+  6. Unequip it, returning it to normal physical manipulation.                  
+  7. Drop it back into the world or place it inside a container.                
+                                                                                
+  Use F as the default Equip/Unequip key, unless F is already assigned to an    
+  existing function. If it is, inspect the input mappings and choose an         
+  available key.                                                                
+  Preserve E for grabbing and dropping objects.                                 
+  Equipped tool behaviour                                                       
+                                                                                
+  * Only one tool may be equipped at a time.                                    
+  * The equipped object should be visually attached to the player's hand or     
+  appropriate first-person holding position.                                    
+  * Preserve the identity and properties of the original physics object.        
+  * Support different tool sizes, orientations and grip positions.              
+  * Prevent equipped tools from obstructing the camera excessively.             
+  * Avoid unwanted physics collisions between the equipped tool and the player. 
+  * Unequipping or dropping should return the original object to normal world   
+  physics.                                                                      
+  * Do not create duplicate objects during equipping.                           
+                                                                                
+  Keep tool configuration data-driven through the existing Resource-based       
+  object system.                                                                
+  4. Tool usage and animations                                                  
+  Implement a reusable tool-action system.                                      
+  When a tool is equipped:                                                      
+                                                                                
+  * Left click activates its primary action.                                    
+  * Tools should have appropriate first-person use animations.                  
+  * The action should originate from the actual equipped tool.                  
+  * Use collision detection, raycasts or appropriate physics queries to detect  
+  impacts.                                                                      
+  * Impacts should interact with ordinary physics objects.                      
+  * Tool use must respect reasonable timing and cooldowns.                      
+  * Prevent rapid animation or input glitches.                                  
+                                                                                
+  Start with three tools.                                                       
+  Hammer                                                                        
+                                                                                
+  * Equip and hold naturally.                                                   
+  * Left click swings the hammer.                                               
+  * Detect impacts against physical objects.                                    
+  * Apply a suitable physical impulse.                                          
+  * Provide simple impact feedback.                                             
+                                                                                
+  Golf club                                                                     
+                                                                                
+  * Equip with an appropriate grip.                                             
+  * Left click swings the club.                                                 
+  * Strike physics objects, especially balls.                                   
+  * Transfer an appropriate impulse based on the swing direction.               
+  * Make it possible to aim and hit a ball across the playground.               
+                                                                                
+  Basic handheld tool                                                           
+  Add a third simple tool, such as a wooden bat or similar striking implement,  
+  to demonstrate that the action system supports multiple tools without bespoke 
+  player-controller code.                                                       
+  Tools should behave differently through configurable properties such as       
+  force, range, swing speed, mass and impact type.                              
+  Do not implement full voxel destruction yet. Establish the tool interaction   
+  and impact framework so the voxel destruction system can be integrated later. 
+  5. Data-driven integration                                                    
+  Extend the existing `.tres` resource architecture instead of creating an      
+  unrelated inventory or tool definition system.                                
+  Allow relevant properties to be configured in the Godot Inspector, such as:   
+                                                                                
+  * Whether an object is equippable.                                            
+  * Tool category and primary action.                                           
+  * Equipped position and rotation offsets.                                     
+  * Swing speed and impact strength.                                            
+  * Interaction range.                                                          
+  * Container eligibility and physical characteristics.                         
+  * Appropriate collision behaviour.                                            
+                                                                                
+  Keep object definitions separate from individual runtime object states.       
+  Multiple instances using the same Resource must still behave independently.   
+  Avoid hardcoding individual object names into the player controller.          
+  6. Physics playground additions                                               
+  Expand the existing playground with a dedicated testing area.                 
+  Include:                                                                      
+                                                                                
+  * Several empty containers.                                                   
+  * Multiple loose wooden blocks and other small objects.                       
+  * A few balls.                                                                
+  * A hammer.                                                                   
+  * A golf club.                                                                
+  * A third basic striking tool.                                                
+  * A table or workbench for manipulating tools and objects.                    
+  * Space for carrying loaded containers and tipping them over.                 
+                                                                                
+  Reuse the existing physics props and scene wherever practical.                
+  Keep the playground simple and functional.                                    
+  7. Input controls                                                             
+  Preserve the existing controls:                                               
+                                                                                
+  * WASD — movement.                                                            
+  * Existing sprint and jump controls.                                          
+  * E — pick up/drop physics objects.                                           
+  * Middle mouse + mouse movement — rotate held objects.                        
+  * Mouse wheel — adjust holding distance.                                      
+  * Left click — throw an ordinary held object.                                 
+                                                                                
+  Add:                                                                          
+                                                                                
+  * F — equip/unequip a held tool, provided the key is available.               
+  * Left click while a tool is equipped — use its primary action.               
+                                                                                
+  Ensure throwing and tool use cannot accidentally trigger simultaneously.      
+  Preserve the camera behaviour when rotating ordinary held objects.            
+  Do not break existing controls.                                               
+  8. Testing and acceptance                                                     
+  Test the actual Godot project and check the following:                        
+                                                                                
+  * Pick up a wooden block and put it into an open crate.                       
+  * Add several objects to the same crate.                                      
+  * Carry the loaded crate around the playground.                               
+  * Drop the crate and verify its contents remain physical.                     
+  * Tip the crate over and watch the objects spill out.                         
+  * Pick an individual object out of the crate.                                 
+  * Put a hammer into the crate and retrieve it.                                
+  * Equip the hammer and swing it at a physics object.                          
+  * Unequip the hammer and return it to the crate.                              
+  * Equip a golf club and strike a bouncing ball.                               
+  * Confirm multiple instances of the same resource remain independent.         
+  * Confirm the player can still use all previously implemented grabbing,       
+  carrying, rotation and throwing controls.                                     
+  * Confirm there are no unwanted object duplicates, lost objects, collision    
+  failures or runtime errors.                                                   
+                                                                                
+  Where automated tests cannot exercise real mouse input, explain that          
+  limitation and verify the underlying systems separately.                      
+  Do not claim manual controls have been tested if they have not.               
+  Final goal                                                                    
+  Create a genuinely physical object-handling environment in which the player   
+  can collect, transport, spill, retrieve, equip and use objects without        
+  relying on a traditional inventory.                                           
+  The entire system should feel natural, consistent and reusable.               
+  This will form the foundation for future voxel destruction, construction,     
+  improvised tools, wheelbarrows, movable furniture and open-ended              
+  Taskmaster-style challenges.                                                  
+  Prioritise working physics, responsive controls, stable interactions and      
+  reusable architecture. Preserve everything that already works.                
+
+● This is a big stage, so I'll start by checking the current state of
+  everything, since you've been editing in the editor.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● F is free to use for the equip action since it's not bound elsewhere
+  (toggle_build_mode uses Tab). I'll check for any recent changes in
+  project.godot and the playground before editing, so I don't overwrite your
+  work.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● I'll keep your changes making playground the main scene and setting ball
+  bounce to 0.6. Now I'm building out the architecture (shared hand rule,
+  container/tool definitions, collision-based containers, and sweep-based tool
+  impacts), starting with the shape part resource for multi-part objects.
+
+● Write(physics\physics_shape_part.gd)
+  ⎿  Wrote 118 lines to physics\physics_shape_part.gd
+       1 @tool
+       2 class_name PhysicsShapePart
+       3 extends Resource
+       4 ## One primitive piece of a compound physics object: its collisi
+         on shape and the
+       6 
+       7 enum ShapeType { BOX, SPHERE, CYLINDER, CAPSULE }
+       8 
+       9 @export var shape_type: ShapeType = ShapeType.BOX:
+      10   set(value):
+     … +116 lines (ctrl+o to expand)
+
+● Now the container definition, which generates walls, floor and an inner volume
+  from a few dimensions:
+
+● Write(physics\physics_container_definition.gd)
+  ⎿  Wrote 181 lines to physics\physics_container_definition.gd
+       1 @tool
+       3 extends Resource
+       4 ## Makes a physics object a container. Contents are ordinary rig
+       5 ## by real walls; this resource generates those walls (or, for C
+         USTOM, uses the
+         rack contents.
+       7 ## Future vessels: wheelbarrows and trolleys can use CUSTOM with
+       8 ## trays are an OPEN_BOX with low walls; drawers and toolboxes n
+         est one inside a body.
+      10 enum Form {
+     … +209 lines (ctrl+o to expand)
+
+● Small cleanup of two redundant lines I left in the round-wall builder:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Now the tool definition: grip, poses, swing timing and impact settings, all
+  configurable in the inspector.
+
+● Write(physics\physics_tool_definition.gd)
+  ⎿  Wrote 72 lines to physics\physics_tool_definition.gd
+       1 @tool
+       2 class_name PhysicsToolDefinition
+       4 ## Makes a physics object equippable. Poses are in view space (m
+         etres, degrees;
+       5 ## -Z forward, +X right, +Y up) and describe where the hand is; 
+       6 ## the hand holds the tool, in the tool's own local space.
+       7 
+       8 enum Category { STRIKING, UTILITY }
+      10   ## Wind up, strike, recover; impacts are swept along the strik
+         e point's path.
+     … +82 lines (ctrl+o to expand)
+
+● I'll extend PhysicsObjectDefinition, keeping existing .tres files compatible
+  by adding COMPOUND at the end of the shape enum, and route building through
+  PhysicsShapePart to keep a single copy of the primitive-building code.
+
+  Read 1 file (ctrl+o to expand)
+
+● The file is unchanged from my version, so I'll rewrite it in full with the
+  additions:
+● Write(physics\physics_object_definition.gd)
+  ⎿  Added 85 lines, removed 63 lines
+       4  ## Data for one kind of physics object. Save as a .tres and ass
+          ign it to a
+       5  ## PhysicsProp; the prop builds its collision, mesh and body se
+          ttings from it.
+       6  ## Edits update every prop using the definition, including in t
+          he editor.
+       7 +## Optional sub-resources add behaviour: `container` makes it h
+         +old other objects,                                             
+       8 +## `tool` makes it equippable. Runtime state always lives on th
+         +e prop, never here.                                            
+       9  
+       8 -enum ShapeType { BOX, SPHERE, CYLINDER, CAPSULE }              
+      10 +enum ShapeType { BOX, SPHERE, CYLINDER, CAPSULE, COMPOUND }    
+      11  
+      12  @export_group("Identity")
+      13  @export var display_name: String = "Object":
+     ...
+      20      emit_changed()
+      21  
+      22  @export_group("Shape")
+      23 +## COMPOUND builds the object from `parts`. Containers generate
+         + their own walls.                                              
+      24  @export var shape_type: ShapeType = ShapeType.BOX:
+      25    set(value):
+      26      shape_type = value
+     ...
+      39    set(value):
+      40      height = value
+      41      _invalidate_geometry()
+      42 +## Pieces of a COMPOUND object, e.g. a hammer's handle and head
+         +.                                                              
+      43 +@export var parts: Array[PhysicsShapePart] = []:               
+      44 +  set(value):                                                  
+      45 +    _watch_parts(false)                                        
+      46 +    parts = value                                              
+      47 +    _watch_parts(true)                                         
+      48 +    _invalidate_geometry()                                     
+      49  ## Replaces the generated collision shape, e.g. a convex hull f
+          or furniture.
+      50  @export var shape_override: Shape3D:
+      51    set(value):
+     ...
+      117      detail_scene = value
+      118      emit_changed()
+      119  
+      110 -var _shape: Shape3D                                           
+      111 -var _mesh: Mesh                                               
+      120 +@export_group("Behaviour")                                    
+      121 +## Set to make this object a container whose walls hold other 
+          +physics objects.                                              
+      122 +@export var container: PhysicsContainerDefinition:            
+      123 +  set(value):                                                 
+      124 +    if container != null and container.changed.is_connected(_i
+          +nvalidate_geometry):                                          
+      125 +      container.changed.disconnect(_invalidate_geometry)      
+      126 +    container = value                                         
+      127 +    if container != null:                                     
+      128 +      container.changed.connect(_invalidate_geometry)         
+      129 +    _invalidate_geometry()                                    
+      130 +## Set to make this object equippable as a tool.              
+      131 +@export var tool: PhysicsToolDefinition:                      
+      132 +  set(value):                                                 
+      133 +    tool = value                                              
+      134 +    emit_changed()                                            
+      135 +                                                              
+      136 +var _collision_parts: Array[Dictionary] = []                  
+      137 +var _visual_parts: Array[Dictionary] = []                     
+      138 +var _geometry_built: bool = false                             
+      139  var _physics_material: PhysicsMaterial
+      140  
+      141  
+      115 -## Shared by every prop using this definition.                
+      116 -func get_shape() -> Shape3D:                                  
+      117 -  if shape_override != null:                                  
+      118 -    return shape_override                                     
+      119 -  if _shape == null:                                          
+      120 -    _shape = _build_shape()                                   
+      121 -  return _shape                                               
+      142 +func is_container() -> bool:                                  
+      143 +  return container != null                                    
+      144  
+      145  
+      124 -func get_mesh() -> Mesh:                                      
+      125 -  if mesh_override != null:                                   
+      126 -    return mesh_override                                      
+      127 -  if _mesh == null:                                           
+      128 -    _mesh = _build_mesh()                                     
+      129 -  return _mesh                                                
+      146 +func is_equippable() -> bool:                                 
+      147 +  return tool != null                                         
+      148  
+      149  
+      150 +## Collision pieces as [{shape, transform}], shared by every p
+          +rop using this definition.                                    
+      151 +func get_collision_parts() -> Array[Dictionary]:              
+      152 +  _ensure_geometry()                                          
+      153 +  return _collision_parts                                     
+      154 +                                                              
+      155 +                                                              
+      156 +## Visual pieces as [{mesh, transform}].                      
+      157 +func get_visual_parts() -> Array[Dictionary]:                 
+      158 +  _ensure_geometry()                                          
+      159 +  return _visual_parts                                        
+      160 +                                                              
+      161 +                                                              
+      162  func get_physics_material() -> PhysicsMaterial:
+      163    if _physics_material == null:
+      164      _physics_material = PhysicsMaterial.new()
+     ...
+      169    return _physics_material
+      170  
+      171  
+      142 -func _build_shape() -> Shape3D:                               
+      143 -  match shape_type:                                           
+      144 -    ShapeType.SPHERE:                                         
+      145 -      var sphere := SphereShape3D.new()                       
+      146 -      sphere.radius = radius                                  
+      147 -      return sphere                                           
+      148 -    ShapeType.CYLINDER:                                       
+      149 -      var cylinder := CylinderShape3D.new()                   
+      150 -      cylinder.radius = radius                                
+      151 -      cylinder.height = height                                
+      152 -      return cylinder                                         
+      153 -    ShapeType.CAPSULE:                                        
+      154 -      var capsule := CapsuleShape3D.new()                     
+      155 -      capsule.radius = radius                                 
+      156 -      capsule.height = maxf(height, radius * 2.0)             
+      157 -      return capsule                                          
+      158 -  var box := BoxShape3D.new()                                 
+      159 -  box.size = size                                             
+      160 -  return box                                                  
+      172 +func _ensure_geometry() -> void:                              
+      173 +  if _geometry_built:                                         
+      174 +    return                                                    
+      175 +  _geometry_built = true                                      
+      176 +  _collision_parts = []                                       
+      177 +  _visual_parts = []                                          
+      178 +  var source: Array[PhysicsShapePart] = []                    
+      179 +  var draw_parts := true                                      
+      180 +  if container != null and container.form != PhysicsContainerD
+          +efinition.Form.CUSTOM:                                        
+      181 +    source = container.build_parts(material)                  
+      182 +    draw_parts = container.draws_parts()                      
+      183 +    _visual_parts.append_array(container.build_visuals(materia
+          +l))                                                           
+      184 +  elif shape_type == ShapeType.COMPOUND:                      
+      185 +    for part in parts:                                        
+      186 +      if part != null:                                        
+      187 +        source.append(part)                                   
+      188 +  else:                                                       
+      189 +    source.append(PhysicsShapePart.make(shape_type as PhysicsS
+          +hapePart.ShapeType, size, radius, height))                    
+      190 +  for part in source:                                         
+      191 +    var part_transform := part.get_transform()                
+      192 +    if part.collides and shape_override == null:              
+      193 +      _collision_parts.append({"shape": part.build_shape(), "t
+          +ransform": part_transform})                                   
+      194 +    if draw_parts and mesh_override == null:                  
+      195 +      _visual_parts.append({"mesh": part.build_mesh(material),
+          + "transform": part_transform})                                
+      196 +  if shape_override != null:                                  
+      197 +    _collision_parts.append({"shape": shape_override, "transfo
+          +rm": Transform3D.IDENTITY})                                   
+      198 +  if mesh_override != null:                                   
+      199 +    _visual_parts.append({"mesh": mesh_override, "transform": 
+          +Transform3D.IDENTITY})                                        
+      200  
+      201  
+      163 -func _build_mesh() -> Mesh:                                   
+      164 -  var mesh: PrimitiveMesh                                     
+      165 -  match shape_type:                                           
+      166 -    ShapeType.SPHERE:                                         
+      167 -      var sphere := SphereMesh.new()                          
+      168 -      sphere.radius = radius                                  
+      169 -      sphere.height = radius * 2.0                            
+      170 -      mesh = sphere                                           
+      171 -    ShapeType.CYLINDER:                                       
+      172 -      var cylinder := CylinderMesh.new()                      
+      173 -      cylinder.top_radius = radius                            
+      174 -      cylinder.bottom_radius = radius                         
+      175 -      cylinder.height = height                                
+      176 -      mesh = cylinder                                         
+      177 -    ShapeType.CAPSULE:                                        
+      178 -      var capsule := CapsuleMesh.new()                        
+      179 -      capsule.radius = radius                                 
+      180 -      capsule.height = maxf(height, radius * 2.0)             
+      181 -      mesh = capsule                                          
+      182 -    _:                                                        
+      183 -      var box := BoxMesh.new()                                
+      184 -      box.size = size                                         
+      185 -      mesh = box                                              
+      186 -  mesh.material = material                                    
+      187 -  return mesh                                                 
+      202 +func _watch_parts(enabled: bool) -> void:                     
+      203 +  for part in parts:                                          
+      204 +    if part == null:                                          
+      205 +      continue                                                
+      206 +    if enabled and not part.changed.is_connected(_invalidate_g
+          +eometry):                                                     
+      207 +      part.changed.connect(_invalidate_geometry)              
+      208 +    elif not enabled and part.changed.is_connected(_invalidate
+          +_geometry):                                                   
+      209 +      part.changed.disconnect(_invalidate_geometry)           
+      210  
+      211  
+      212  func _invalidate_geometry() -> void:
+      191 -  _shape = null                                               
+      192 -  _mesh = null                                                
+      213 +  _geometry_built = false                                     
+      214    emit_changed()
+      215  
+      216  
+     ...
+      223  func _validate_property(property: Dictionary) -> void:
+      224    var used := {
+      225      &"size": shape_type == ShapeType.BOX,
+      205 -    &"radius": shape_type != ShapeType.BOX,                   
+      226 +    &"radius": shape_type == ShapeType.SPHERE or shape_type ==
+          + ShapeType.CYLINDER or shape_type == ShapeType.CAPSULE,       
+      227      &"height": shape_type == ShapeType.CYLINDER or shape_type 
+           == ShapeType.CAPSULE,
+      228 +    &"parts": shape_type == ShapeType.COMPOUND,               
+      229    }
+      230    if used.has(property.name) and not used[property.name]:
+      231      property.usage = PROPERTY_USAGE_NO_EDITOR
+
+● Now the runtime container component, an Area3D that tracks contents and
+  stabilises them while the container is carried:
+
+● Write(physics\physics_container.gd)
+  ⎿  Wrote 83 lines to physics\physics_container.gd
+       1 class_name PhysicsContainer
+       3 ## Runtime side of a container. Contents stay in through real co
+         llision with the
+         for weight and
+       5 ## spilling), and while the host is carried upright gently match
+       6 ## it so walking does not shake them out. Tilting past the limit
+          or throwing the
+       8 ## Works on any RigidBody3D host; the host may expose is_held() 
+         for carry detection.
+      10 var settings: PhysicsContainerDefinition
+     … +88 lines (ctrl+o to expand)
+
+● Now update PhysicsProp to build from parts, attach the container component,
+  and track its hand state:
+
+● Write(physics\physics_prop.gd)
+  ⎿  Added 78 lines, removed 11 lines
+       1  @tool
+       2  class_name PhysicsProp
+       3  extends RigidBody3D
+       4 -## Rigid-body prop built from a PhysicsObjectDefinition, carrya
+         -ble by ObjectManipulator.                                      
+       5 -## The definition is the source of truth: its shape, mesh and d
+         -etails are built as                                            
+       4 +## Rigid-body prop built from a PhysicsObjectDefinition, carrya
+         +ble by ObjectManipulator                                       
+       5 +## and, when the definition has a tool, equippable through Tool
+         +Handler.                                                       
+       6 +## The definition is the source of truth: its shapes, meshes an
+         +d details are built as                                         
+       7  ## internal children (previewed in the editor, never saved into
+           scenes), and its
+       8  ## mass, damping, material and layers replace this body's own v
+          alues at runtime.
+       9 +## Per-instance runtime state (hand state, contents, spawn poin
+         +t) lives here, so                                              
+      10 +## any number of props can share one definition independently. 
+      11  
+      12 +enum HandState { WORLD, HELD, EQUIPPED }                       
+      13 +                                                               
+      14  @export var definition: PhysicsObjectDefinition:
+      15    set(value):
+      16      if definition == value:
+     ...
+      26  ## Props falling below this height return to where they started
+          .
+      27  @export var respawn_below_y: float = -25.0
+      28  
+      29 +var hand_state: HandState = HandState.WORLD                    
+      30  var _built: Array[Node] = []
+      31 +var _container: PhysicsContainer                               
+      32  var _spawn_transform: Transform3D
+      33  
+      34  
+     ...
+       57    return definition.display_name if definition != null else st
+           r(name)
+       58  
+       59  
+       60 +func is_held() -> bool:                                       
+       61 +  return hand_state == HandState.HELD                         
+       62 +                                                              
+       63 +                                                              
+       64 +func get_tool_definition() -> PhysicsToolDefinition:          
+       65 +  return definition.tool if definition != null else null      
+       66 +                                                              
+       67 +                                                              
+       68 +## Rigid bodies currently inside this prop, if it is a contain
+          +er.                                                           
+       69 +func get_contents() -> Array[RigidBody3D]:                    
+       70 +  if _container == null:                                      
+       71 +    return []                                                 
+       72 +  return _container.get_contents()                            
+       73 +                                                              
+       74 +                                                              
+       75 +## Own mass plus contents, used for carrying and throwing.    
+       76 +func get_carried_mass(depth: int = 0) -> float:               
+       77 +  if _container == null or not definition.container.contents_a
+          +dd_weight:                                                    
+       78 +    return mass                                               
+       79 +  return mass + _container.get_contents_mass(depth)           
+       80 +                                                              
+       81 +                                                              
+       82 +## Extra line for the carry prompt.                           
+       83 +func get_status_text() -> String:                             
+       84 +  if _container == null:                                      
+       85 +    return ""                                                 
+       86 +  var count := get_contents().size()                          
+       87 +  if count == 0:                                              
+       88 +    return "empty"                                            
+       89 +  return "%d item%s, %.1f kg total" % [count, "" if count == 1
+          + else "s", get_carried_mass()]                                
+       90 +                                                              
+       91 +                                                              
+       92 +func on_grabbed(_holder: Node) -> void:                       
+       93 +  hand_state = HandState.HELD                                 
+       94 +                                                              
+       95 +                                                              
+       96 +func on_released(_holder: Node, _thrown: bool) -> void:       
+       97 +  if hand_state == HandState.HELD:                            
+       98 +    hand_state = HandState.WORLD                              
+       99 +                                                              
+      100 +                                                              
+      101 +func on_equipped(_holder: Node) -> void:                      
+      102 +  hand_state = HandState.EQUIPPED                             
+      103 +                                                              
+      104 +                                                              
+      105 +func on_unequipped(_holder: Node) -> void:                    
+      106 +  hand_state = HandState.WORLD                                
+      107 +                                                              
+      108 +                                                              
+      109  func reset_to_spawn() -> void:
+      110    global_transform = _spawn_transform
+      111    linear_velocity = Vector3.ZERO
+     ...
+      114  
+      115  
+      116  func _physics_process(_delta: float) -> void:
+       61 -  if global_position.y < respawn_below_y:                     
+      117 +  if global_position.y < respawn_below_y and hand_state == Han
+          +dState.WORLD:                                                 
+      118      reset_to_spawn()
+      119  
+      120  
+     ...
+      124        remove_child(node)
+      125        node.queue_free()
+      126    _built.clear()
+      127 +  _container = null                                           
+      128    if definition == null:
+      129      return
+       73 -  var collision := CollisionShape3D.new()                     
+       74 -  collision.shape = definition.get_shape()                    
+       75 -  _add_built(collision)                                       
+       76 -  var mesh := MeshInstance3D.new()                            
+       77 -  mesh.mesh = definition.get_mesh()                           
+       78 -  _add_built(mesh)                                            
+      130 +  for part in definition.get_collision_parts():               
+      131 +    var collision := CollisionShape3D.new()                   
+      132 +    collision.shape = part["shape"]                           
+      133 +    collision.transform = part["transform"]                   
+      134 +    _add_built(collision)                                     
+      135 +  for part in definition.get_visual_parts():                  
+      136 +    var mesh := MeshInstance3D.new()                          
+      137 +    mesh.mesh = part["mesh"]                                  
+      138 +    mesh.transform = part["transform"]                        
+      139 +    _add_built(mesh)                                          
+      140    if definition.detail_scene != null:
+      141      _add_built(definition.detail_scene.instantiate())
+      142    # Body values stay untouched in the editor so scenes are not
+            saved with copies.
+     ...
+      147    linear_damp = definition.linear_damp
+      148    angular_damp = definition.angular_damp
+      149    continuous_cd = definition.continuous_cd
+       89 -  collision_layer = definition.collision_layer                
+       90 -  collision_mask = definition.collision_mask                  
+      150 +  if hand_state != HandState.EQUIPPED:                        
+      151 +    collision_layer = definition.collision_layer              
+      152 +    collision_mask = definition.collision_mask                
+      153 +  if definition.container != null:                            
+      154 +    _container = PhysicsContainer.new()                       
+      155 +    _container.name = "Container"                             
+      156 +    _add_built(_container)                                    
+      157 +    _container.setup(self, definition.container)              
+      158  
+      159  
+      160  func _add_built(node: Node) -> void:
+
+● One typing fix (returning an untyped [] from a typed-array function), then the
+  manipulator changes:
+
+● Update(physics\physics_prop.gd)
+  ⎿  Added 2 lines, removed 1 line
+      68  ## Rigid bodies currently inside this prop, if it is a containe
+          r.
+      69  func get_contents() -> Array[RigidBody3D]:
+      70    if _container == null:
+      71 -    return []                                                  
+      71 +    var none: Array[RigidBody3D] = []                          
+      72 +    return none                                                
+      73    return _container.get_contents()
+      74  
+      75  
+
+  Read 1 file (ctrl+o to expand)
+
+● Now the manipulator changes: a locked flag for the shared hand, carried mass
+  that includes container contents, contents travelling with a thrown container,
+  and a clean hand-off for equipping.
+
+● Update(physics\object_manipulator.gd)
+  ⎿  Added 3 lines
+      52  ## not fling them.
+      53  @export var drop_speed_limit: float = 6.0
+      54  
+      55 +## Set while the hand is busy with something else, such as an e
+         +quipped tool.                                                  
+      56 +var locked: bool = false                                       
+      57 +                                                               
+      58  var _holder: CollisionObject3D
+      59  var _body: RigidBody3D
+      60  var _provider: Node
+
+● Update(physics\object_manipulator.gd)
+  ⎿  Added 9 lines, removed 1 line
+      115  
+      116  
+      117  func is_too_heavy(body: RigidBody3D) -> bool:
+      118 -  return body.mass > max_carry_mass                           
+      118 +  return get_carried_mass(body) > max_carry_mass              
+      119  
+      120  
+      121 +## The body's mass plus anything it carries, e.g. a container'
+          +s contents.                                                   
+      122 +func get_carried_mass(body: RigidBody3D) -> float:            
+      123 +  var provider := _find_provider(body)                        
+      124 +  if provider != null and provider.has_method("get_carried_mas
+          +s"):                                                          
+      125 +    return float(provider.call("get_carried_mass"))           
+      126 +  return body.mass                                            
+      127 +                                                              
+      128 +                                                              
+      129  func get_grab_name(body: RigidBody3D) -> String:
+      130    var provider := _find_provider(body)
+      131    if provider != null and provider.has_method("get_grab_name")
+           :
+
+● Update(physics\object_manipulator.gd)
+  ⎿  Added 12 lines, removed 3 lines
+      139    return "[E] Pick up %s" % get_grab_name(body)
+      140  
+      141  
+      142 -func get_hold_prompt() -> String:                             
+      142 +## extra_hint lets other hand systems add their keys, e.g. "[F
+          +] Equip".                                                     
+      143 +func get_hold_prompt(extra_hint: String = "") -> String:      
+      144    if not is_holding():
+      145      return ""
+      145 -  return "%s\n[E] Drop   [LMB] Throw   [MMB + Mouse] Rotate   
+          -[MMB + Wheel] Roll   [Wheel] Distance   [Alt] Fine" % get_grab
+          -_name(_body)                                                  
+      146 +  var title := get_grab_name(_body)                           
+      147 +  if _provider != null and _provider.has_method("get_status_te
+          +xt"):                                                         
+      148 +    var status := str(_provider.call("get_status_text"))      
+      149 +    if not status.is_empty():                                 
+      150 +      title += " (%s)" % status                               
+      151 +  var keys := "[E] Drop   [LMB] Throw   [MMB + Mouse] Rotate  
+          + [MMB + Wheel] Roll   [Wheel] Distance   [Alt] Fine"          
+      152 +  if not extra_hint.is_empty():                               
+      153 +    keys = extra_hint + "   " + keys                          
+      154 +  return "%s\n%s" % [title, keys]                             
+      155  
+      156  
+      157  func can_grab(body: RigidBody3D) -> bool:
+      149 -  if camera == null or body == null or is_holding() or body.fr
+          -eeze or is_too_heavy(body):                                   
+      158 +  if locked or camera == null or body == null or is_holding() 
+          +or body.freeze or is_too_heavy(body):                         
+      159      return false
+      160    # Lifting the body you are standing on would pull it out fro
+           m under you.
+      161    var character := _holder as CharacterBody3D
+
+● Update(physics\object_manipulator.gd)
+  ⎿  Added 7 lines, removed 3 lines
+      203    if body.tree_exiting.is_connected(_on_body_tree_exiting):
+      204      body.tree_exiting.disconnect(_on_body_tree_exiting)
+      205    if throw:
+      206 -    var speed := clampf(throw_impulse / body.mass, min_throw_s
+          -peed, max_throw_speed)                                        
+      207 -    var carried := _holder_velocity()                         
+      208 -    body.linear_velocity = carried + -camera.global_basis.z * 
+          -speed                                                         
+      206 +    var speed := clampf(throw_impulse / get_carried_mass(body)
+          +, min_throw_speed, max_throw_speed)                           
+      207 +    var before := body.linear_velocity                        
+      208 +    body.linear_velocity = _holder_velocity() + -camera.global
+          +_basis.z * speed                                              
+      209      body.angular_velocity = body.angular_velocity.limit_length
+           (2.0)
+      210 +    # Contents leave with the container and spill when it land
+          +s, not at the hand.                                           
+      211 +    if _provider != null and _provider.has_method("get_content
+          +s"):                                                          
+      212 +      for content: RigidBody3D in _provider.call("get_contents
+          +"):                                                           
+      213 +        content.linear_velocity += body.linear_velocity - befo
+          +re                                                            
+      214    else:
+      215      body.linear_velocity = body.linear_velocity.limit_length(d
+           rop_speed_limit)
+      216      # Zero spin so the body lands in the orientation it was pl
+           aced in.
+
+● Update(physics\object_manipulator.gd)
+  ⎿  Added 20 lines
+      225    released.emit(body, throw)
+      226  
+      227  
+      228 +## Hands the held body to another system (e.g. equipping) with
+          +out dropping it:                                              
+      229 +## no velocity changes, and the holder's collision exception i
+          +s cleared.                                                    
+      230 +func take_held_body() -> RigidBody3D:                         
+      231 +  if not is_holding():                                        
+      232 +    return null                                               
+      233 +  var body := _body                                           
+      234 +  _body = null                                                
+      235 +  _rotating = false                                           
+      236 +  body.can_sleep = _saved_can_sleep                           
+      237 +  if body.tree_exiting.is_connected(_on_body_tree_exiting):   
+      238 +    body.tree_exiting.disconnect(_on_body_tree_exiting)       
+      239 +  _lingering.erase(body)                                      
+      240 +  _set_holder_exception(body, false)                          
+      241 +  if _provider != null and is_instance_valid(_provider) and _p
+          +rovider.has_method("on_released"):                            
+      242 +    _provider.call("on_released", _holder, false)             
+      243 +  _provider = null                                            
+      244 +  released.emit(body, false)                                  
+      245 +  return body                                                 
+      246 +                                                              
+      247 +                                                              
+      248  ## Returns true when the event was consumed by the held object
+           .
+      249  func handle_input(event: InputEvent) -> bool:
+      250    if not is_holding():
+
+● Now make the steering use carried mass, so a loaded container feels heavier to
+  move and turn:
+
+  Ran 2 shell commands (ctrl+o to expand)
+
+● Update(physics\object_manipulator.gd)
+  ⎿  Added 1 line
+      297        return
+      298    else:
+      299      _strain_time = 0.0
+      300 +  _carried_mass = get_carried_mass(_body)                     
+      301    _steer_linear(error, target_velocity, delta)
+      302    _steer_angular(delta)
+      303  
+
+● Now the tool framework. First the impact data object, the integration point
+  for voxel destruction later:
+
+● Write(physics\tool_impact.gd)
+  ⎿  Wrote 21 lines to physics\tool_impact.gd
+       1 class_name ToolImpact
+       2 extends RefCounted
+         mpact(impact) on its
+       4 ## collider or an ancestor to react (e.g. voxel destruction usin
+         g position, damage
+          rigid-body impulse.
+       6 
+       7 var tool: RigidBody3D
+       9 var user: Node
+      10 var collider: Object
+     … +16 lines (ctrl+o to expand)
+
+● Write(physics\impact_feedback.gd)
+  ⎿  Wrote 84 lines to physics\impact_feedback.gd
+      1 class_name ImpactFeedback
+      2 extends Node3D
+      3 ## Short-lived particle burst and procedural knock sound at an im
+        pact point.
+      4 ## Sounds are synthesised once per impact type, so no audio asset
+      5 
+      6 const LIFETIME := 0.6
+      7 const SAMPLE_RATE := 22050
+      8 
+      9 static var _sounds: Dictionary = {}
+     … +80 lines (ctrl+o to expand)
+
+● Now the ToolHandler, the equipped half of the hand:
+
+● Write(physics\tool_handler.gd)
+  ⎿  Wrote 351 lines to physics\tool_handler.gd
+       1 class_name ToolHandler
+       3 ## Equips tool objects into a first-person hold and runs their p
+         rimary actions.
+         igidBody3D moves
+         ed. Equipped tools
+       6 ## are frozen kinematic bodies with collision off (so they canno
+       7 ## or snag on walls); strikes are found by sweeping the tool's o
+         wn strike point.
+       9 ## get_tool_definition() can be equipped; providers may implemen
+      10 ## on_equipped(holder) and on_unequipped(holder).
+     … +377 lines (ctrl+o to expand)
+
+● Now integrate into the player: input routing (tool first, then manipulator),
+  the shared-hand prompt and key logic, and the per-tick update.
+
+  Ran 2 shell commands (ctrl+o to expand)
+
+● Update(character_body_3d.gd)
+  ⎿  Added 1 line
+      57  @onready var crosshair: Label = $HUD/Crosshair
+      58  @onready var stats: PlayerStats = $Stats
+      59  @onready var manipulator: ObjectManipulator = $ObjectManipulato
+          r
+      60 +@onready var tool_handler: ToolHandler = $ToolHandler          
+      61  
+      62  var gameplay_enabled: bool = true
+      63  var is_crouching: bool = false
+
+● Update(character_body_3d.gd)  ⎿  Added 3 lines, removed 2 lines
+      111      Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+      112      get_viewport().set_input_as_handled()
+      113      return
+      114 -  # A held object claims throw, rotate and scroll input, and m
+          -ouse look while rotating.                                     
+      115 -  if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and manipul
+          -ator.handle_input(event):                                     
+      114 +  # The hand holds at most one thing: an equipped tool claims 
+          +its use input, a held                                         
+      115 +  # object claims throw, rotate and scroll input, and mouse lo
+          +ok while rotating.                                            
+      116 +  if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and (tool_h
+          +andler.handle_input(event) or manipulator.handle_input(event))
+          +:                                                             
+      117      get_viewport().set_input_as_handled()
+      118      return
+      119  
+
+● Update(character_body_3d.gd)
+  ⎿  Added 1 line
+      187    _update_camera_motion(delta, controls_active, input_dir)
+      188    _update_interaction(controls_active)
+      189    manipulator.physics_update(delta)
+      190 +  tool_handler.physics_update(delta)                          
+      191  
+      192  
+      193  func _push_rigid_bodies(intended_velocity: Vector3, delta: flo
+           at) -> void:
+
+● Update(character_body_3d.gd)
+  ⎿  Added 19 lines, removed 3 lines
+      272    if not controls_active:
+      273      interaction_menu.close_menu()
+      274      return
+      275 +  if tool_handler.is_equipped():                              
+      276 +    interaction_menu.close_menu()                             
+      277 +    interaction_prompt.text = tool_handler.get_prompt()       
+      278 +    interaction_prompt.show()                                 
+      279 +    if Input.is_action_just_pressed("equip_tool"):            
+      280 +      tool_handler.unequip()                                  
+      281 +    elif Input.is_action_just_pressed("interact"):            
+      282 +      tool_handler.drop()                                     
+      283 +    return                                                    
+      284    if manipulator.is_holding():
+      285 +    var held := manipulator.get_held_body()                   
+      286      interaction_menu.close_menu()
+      277 -    interaction_prompt.text = manipulator.get_hold_prompt()   
+      287 +    interaction_prompt.text = manipulator.get_hold_prompt(tool
+          +_handler.get_equip_hint(held))                                
+      288      interaction_prompt.show()
+      279 -    if Input.is_action_just_pressed("interact"):              
+      289 +    if Input.is_action_just_pressed("equip_tool"):            
+      290 +      tool_handler.equip_held()                               
+      291 +    elif Input.is_action_just_pressed("interact"):            
+      292        manipulator.release()
+      293      return
+      294    interaction_ray.force_raycast_update()
+      295    var grabbable := manipulator.resolve_grabbable(interaction_r
+           ay.get_collider())
+      296    if grabbable != null:
+      297      interaction_menu.close_menu()
+      286 -    interaction_prompt.text = manipulator.get_grab_prompt(grab
+          -bable)                                                        
+      298 +    var prompt := manipulator.get_grab_prompt(grabbable)      
+      299 +    var equip_hint := tool_handler.get_equip_hint(grabbable)  
+      300 +    interaction_prompt.text = prompt if equip_hint.is_empty() 
+          +else "%s   %s" % [prompt, equip_hint]                         
+      301      interaction_prompt.show()
+      302      if Input.is_action_just_pressed("interact"):
+      303        manipulator.grab(grabbable)
+      304 +    elif Input.is_action_just_pressed("equip_tool"):          
+      305 +      tool_handler.equip(grabbable)                           
+      306      return
+      307    var target := interaction_ray.get_collider() as Node
+      308    # The interaction script may live on the collider or its sce
+           ne root.
+
+● Update(character_body_3d.gd)
+  ⎿  Added 1 line
+      353    else:
+      354      velocity = Vector3.ZERO
+      355      manipulator.release()
+      356 +    tool_handler.cancel_action()                              
+      357      _crosshair_was_visible = crosshair.visible
+      358      crosshair.hide()
+      359      interaction_prompt.hide()
+
+● Now add the ToolHandler node to the player and the two new input actions (F to
+  equip, LMB to use):
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Update(project.godot)
+  ⎿  Added 10 lines
+      101  "events": [Object(InputEventKey,"resource_local_to_scene":fals
+           e,"resource_name":"","device":-1,"window_id":0,"alt_pressed":f
+           alse,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed"
+           :false,"pressed":false,"keycode":0,"physical_keycode":4194328,
+           "key_label":0,"unicode":0,"location":0,"echo":false,"script":n
+           ull)
+      102  ]
+      103  }
+      104 +equip_tool={                                                  
+      105 +"deadzone": 0.2,                                              
+      106 +"events": [Object(InputEventKey,"resource_local_to_scene":fals
+          +e,"resource_name":"","device":-1,"window_id":0,"alt_pressed":f
+          +alse,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed"
+          +:false,"pressed":false,"keycode":0,"physical_keycode":70,"key_
+          +label":0,"unicode":0,"location":0,"echo":false,"script":null) 
+      107 +]                                                             
+      108 +}                                                             
+      109 +use_tool={                                                    
+      110 +"deadzone": 0.2,                                              
+      111 +"events": [Object(InputEventMouseButton,"resource_local_to_sce
+          +ne":false,"resource_name":"","device":-1,"window_id":0,"alt_pr
+          +essed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_
+          +pressed":false,"button_mask":0,"position":Vector2(0, 0),"globa
+          +l_position":Vector2(0, 0),"factor":1.0,"button_index":1,"cance
+          +led":false,"pressed":false,"double_click":false,"script":null)
+      112 +]                                                             
+      113 +}                                                             
+      114  reset_playground={
+      115  "deadzone": 0.2,
+      116  "events": [Object(InputEventKey,"resource_local_to_scene":fals
+           e,"resource_name":"","device":-1,"window_id":0,"alt_pressed":f
+           alse,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed"
+           :false,"pressed":false,"keycode":0,"physical_keycode":82,"key_
+           label":0,"unicode":0,"location":0,"echo":false,"script":null)
+
+● Now the new object definitions. First the wooden block and the three
+  containers:
+
+● Write(props\wooden_block.tres)
+  ⎿  Wrote 17 lines to props\wooden_block.tres
+       1 [gd_resource type="Resource" script_class="PhysicsObjectDefiniti
+         on" format=3]
+       2 
+         efinition.gd" id="1_definition"]
+       4 
+       5 [sub_resource type="StandardMaterial3D" id="Material_block"]
+       6 albedo_color = Color(0.86, 0.68, 0.42, 1)
+       8 
+       9 [resource]
+      10 script = ExtResource("1_definition")
+     … +9 lines (ctrl+o to expand)
+
+● Write(props\open_wooden_box.tres)
+  ⎿  Wrote 23 lines to props\open_wooden_box.tres
+       1 [gd_resource type="Resource" script_class="PhysicsObjectDefiniti
+         on" format=3]
+       3 [ext_resource type="Script" path="res://physics/physics_object_d
+         efinition.gd" id="1_definition"]
+       4 [ext_resource type="Script" path="res://physics/physics_containe
+       5 
+       6 [sub_resource type="StandardMaterial3D" id="Material_wood"]
+       7 albedo_color = Color(0.62, 0.44, 0.25, 1)
+       9 
+      10 [sub_resource type="Resource" id="Container_box"]
+     … +16 lines (ctrl+o to expand)
+
+● Write(props\plastic_basket.tres)
+  ⎿  Wrote 23 lines to props\plastic_basket.tres
+       1 [gd_resource type="Resource" script_class="PhysicsObjectDefiniti
+         on" format=3]
+       3 [ext_resource type="Script" path="res://physics/physics_object_d
+         efinition.gd" id="1_definition"]
+       4 [ext_resource type="Script" path="res://physics/physics_containe
+       5 
+       6 [sub_resource type="StandardMaterial3D" id="Material_plastic"]
+       7 albedo_color = Color(0.18, 0.52, 0.86, 1)
+       9 
+      10 [sub_resource type="Resource" id="Container_basket"]
+     … +16 lines (ctrl+o to expand)
+
+● Write(props\bucket.tres)
+  ⎿  Wrote 29 lines to props\bucket.tres
+       1 [gd_resource type="Resource" script_class="PhysicsObjectDefiniti
+       2 
+       3 [ext_resource type="Script" path="res://physics/physics_object_d
+         efinition.gd" id="1_definition"]
+         r_definition.gd" id="2_container"]
+       5 
+         ]
+       7 cull_mode = 2
+       8 albedo_color = Color(0.68, 0.7, 0.72, 1)
+      10 roughness = 0.45
+     … +22 lines (ctrl+o to expand)
+
+● Now the three tools, each a compound object with a tool sub-resource:
+
+● Write(props\hammer.tres)
+  ⎿  Wrote 59 lines to props\hammer.tres
+      1 [gd_resource type="Resource" script_class="PhysicsObjectDefinitio
+        n" format=3]
+      3 [ext_resource type="Script" path="res://physics/physics_object_de
+        finition.gd" id="1_definition"]
+      4 [ext_resource type="Script" path="res://physics/physics_shape_par
+      5 [ext_resource type="Script" path="res://physics/physics_tool_defi
+        nition.gd" id="3_tool"]
+      6 
+      8 albedo_color = Color(0.72, 0.52, 0.3, 1)
+      9 roughness = 0.8
+     … +54 lines (ctrl+o to expand)
+
+● Write(props\golf_club.tres)
+  ⎿  Wrote 75 lines to props\golf_club.tres
+       1 [gd_resource type="Resource" script_class="PhysicsObjectDefiniti
+       2 
+       3 [ext_resource type="Script" path="res://physics/physics_object_d
+         efinition.gd" id="1_definition"]
+         rt.gd" id="2_part"]
+       5 [ext_resource type="Script" path="res://physics/physics_tool_def
+       6 
+       7 [sub_resource type="StandardMaterial3D" id="Material_shaft"]
+       8 albedo_color = Color(0.78, 0.8, 0.82, 1)
+      10 roughness = 0.25
+     … +70 lines (ctrl+o to expand)
+
+● Write(props\wooden_bat.tres)
+  ⎿  Wrote 67 lines to props\wooden_bat.tres
+      1 [gd_resource type="Resource" script_class="PhysicsObjectDefinitio
+        n" format=3]
+      3 [ext_resource type="Script" path="res://physics/physics_object_de
+        finition.gd" id="1_definition"]
+      4 [ext_resource type="Script" path="res://physics/physics_shape_par
+      5 [ext_resource type="Script" path="res://physics/physics_tool_defi
+        nition.gd" id="3_tool"]
+      6 
+      8 albedo_color = Color(0.85, 0.72, 0.5, 1)
+      9 roughness = 0.55
+     … +62 lines (ctrl+o to expand)
+
+● I'll place the tool and container area in the open space east of the existing
+  layout (around x ≈ 10–15) to avoid moving anything. Let me check the exact
+  anchor lines in the current scene file first.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● I'll write the new scene blocks to scratch files, then splice them in at the
+  right anchors:
+
+  Made 3 scratchpad edits +202 (ctrl+o to expand)
+
+● The golf club's head would start inside the bench with that rotation, so I'll
+  lay it flat instead (head thickness pointing up). Then I'll splice the blocks
+  in and update the on-screen help text:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Now the help text and playground reset (it should also put down an equipped
+  tool):
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Update(playground\physics_playground.tscn)
+  ⎿  Added 3 lines, removed 2 lines
+      569  offset_left = -330.0
+      570  offset_top = 8.0
+      571  offset_right = -12.0
+      572 -offset_bottom = 120.0                                         
+      572 +offset_bottom = 150.0                                         
+      573  grow_horizontal = 0
+      574  theme_override_colors/font_color = Color(1, 1, 1, 0.85)
+      575  theme_override_colors/font_outline_color = Color(0, 0, 0, 0.8)
+      576  theme_override_constants/outline_size = 4
+      577  theme_override_font_sizes/font_size = 13
+      578  text = "E  pick up / drop
+      579 -LMB  throw                                                    
+      579 +LMB  throw (or use equipped tool)                             
+      580 +F  equip / unequip tool                                       
+      581  MMB + mouse  rotate (MMB + wheel: roll)
+      582  Wheel  hold distance
+      583  Alt  fine adjust
+
+● Write(playground\physics_playground.gd)
+  ⎿  Added 1 line
+       4  
+       5  func _unhandled_input(event: InputEvent) -> void:
+       6    if event.is_action_pressed("reset_playground"):
+       7 +    get_tree().call_group(&"tool_handlers", &"drop")           
+       8      get_tree().call_group(&"object_manipulators", &"release")
+       9      get_tree().call_group(&"physics_props", &"reset_to_spawn")
+      10      get_viewport().set_input_as_handled()
+
+● Update(physics\tool_handler.gd)  ⎿  Added 1 line
+      35  
+      36  func _ready() -> void:
+      37    _holder = get_parent() as CollisionObject3D
+      38 +  add_to_group(&"tool_handlers")                               
+      39    if view == null:
+      40      if not _holder.is_node_ready():
+      41        await _holder.ready
+
+● project.godot changed on disk again; let me make sure my new input actions
+  survived, then import and run:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Imports and scenes check out clean, so I'll run the acceptance test next—it
+  exercises real physics, collisions, and the actual
+  ObjectManipulator/ToolHandler paths, calling handle_input directly since mouse
+  capture isn't possible headless.
+
+● Write(_tmp_test\stage3_test.gd)
+  ⎿  Wrote 443 lines to _tmp_test\stage3_test.gd
+       1 extends SceneTree
+       2 ## Stage 3 acceptance: containers, physical hand states and tool
+         s.
+       3 
+       4 var fails := 0
+       6 var player: CharacterBody3D
+       7 var head: Node3D
+       8 var man: ObjectManipulator
+       9 var th: ToolHandler
+      10 var area: Node
+     … +534 lines (ctrl+o to expand)
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● The ToolArea nodes are missing from the playground. Your open editor re-saved
+  the scene right after I spliced it in. Let me look at what's on disk now:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● I'll check out the new props/ball.tres resource you added so I can merge my
+  changes around it instead of overwriting it.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● I'll keep your in-progress edits untouched by moving the tool/container area
+  into its own scene, playground/tool_test_area.tscn, and referencing it from
+  the playground with a single instance line.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Now the one-line instance in the playground, plus the help-text update that
+  was also lost in the re-save:
+
+  Ran 2 shell commands (ctrl+o to expand)
+
+❯ fucking awesome. Uh, the only thing I want is you can absolutely make the     
+  tools be able to hit stuff kind of where the crosshair is, as opposed to      
+  actually where the end of the tool is, just because it's quite difficult to   
+  line everything up if you're doing it to where the tool ends as opposed to    
+  the cross there.                                                              
+
+● I'll add a hit detection setting to each tool with two modes: a new CROSSHAIR
+  default (camera-centered ray with slight aim-assist sphere cast, timed to the
+  swing) and TOOL_PATH (the existing sweep behavior). Adding these settings to
+  the tool definition now.
+
+● Update(physics\physics_tool_definition.gd)
+  ⎿  Added 6 lines
+      11    SWING,
+      12  }
+      13  enum ImpactType { BLUNT, SWEEP, SHARP }
+      14 +enum HitDetection {                                            
+      15 +  ## Hits whatever is under the crosshair within `reach`, at th
+         +e impact moment of the swing.                                  
+      16 +  CROSSHAIR,                                                   
+      17 +  ## Hits only what the tool's strike point physically sweeps t
+         +hrough.                                                        
+      18 +  TOOL_PATH,                                                   
+      19 +}                                                              
+      20  enum AimMode {
+      21    ## Impulses go where the player looks.
+      22    VIEW_FORWARD,
+
+● Update(physics\physics_tool_definition.gd)
+  ⎿  Added 8 lines
+      55  @export_range(0.0, 2.0, 0.01, "suffix:s") var cooldown: float =
+           0.1
+      56  
+      57  @export_group("Impact")
+      58 +@export var hit_detection: HitDetection = HitDetection.CROSSHAI
+         +R                                                              
+      59 +## CROSSHAIR: how far from the camera a strike can land.       
+      60 +@export_range(0.5, 6.0, 0.05, "suffix:m") var reach: float = 2.
+         +0                                                              
+      61 +## CROSSHAIR: if the exact crosshair ray misses, a sphere this 
+         +wide is tried, so                                              
+      62 +## near-misses on small objects still connect.                 
+      63 +@export_range(0.0, 0.5, 0.01, "suffix:m") var aim_assist_radius
+         +: float = 0.12                                                 
+      64 +## CROSSHAIR: when in the strike the hit lands (0 = start of st
+         +rike, 1 = end).                                                
+      65 +@export_range(0.0, 1.0, 0.05) var impact_moment: float = 0.5   
+      66  @export var impact_type: ImpactType = ImpactType.BLUNT
+      67  ## The part of the tool that hits, in the tool's local space (e
+          .g. a hammer head).
+      68  @export var strike_point: Vector3 = Vector3(0, 0.15, 0)
+
+● Update(physics\physics_tool_definition.gd)
+  ⎿  Added 2 lines
+      65  @export_range(0.0, 1.0, 0.05) var impact_moment: float = 0.5
+      66  @export var impact_type: ImpactType = ImpactType.BLUNT
+      67  ## The part of the tool that hits, in the tool's local space (e
+          .g. a hammer head).
+      68 +## Used for TOOL_PATH hits and for the swing speed reported on 
+         +impacts.                                                       
+      69  @export var strike_point: Vector3 = Vector3(0, 0.15, 0)
+      70 +## TOOL_PATH: radius of the swept sphere around the strike poin
+         +t.                                                             
+      71  @export_range(0.01, 0.5, 0.005, "suffix:m") var strike_radius: 
+          float = 0.08
+      72  ## Impulse given to struck rigid bodies.
+      73  @export_range(0.0, 200.0, 0.5, "suffix:N·s") var impact_impulse
+          : float = 20.0
+
+● Now the handler: branch on the mode, and add the crosshair cast.
+
+● Update(physics\tool_handler.gd)
+  ⎿  Added 5 lines, removed 1 line
+      151      _action_time += delta
+      152      var strike_start := _settings.windup_time
+      153      var strike_end := strike_start + _settings.strike_time
+      154 -    if not _hit_done and _action_time > strike_start and previ
+          -ous < strike_end:                                             
+      154 +    if _settings.hit_detection == PhysicsToolDefinition.HitDet
+          +ection.CROSSHAIR:                                             
+      155 +      var impact_at := strike_start + _settings.strike_time * 
+          +_settings.impact_moment                                       
+      156 +      if not _hit_done and previous < impact_at and _action_ti
+          +me >= impact_at:                                              
+      157 +        _crosshair_hit(impact_at)                             
+      158 +    elif not _hit_done and _action_time > strike_start and pre
+          +vious < strike_end:                                           
+      159        _sweep(clampf(previous, strike_start, strike_end), clamp
+           f(_action_time, strike_start, strike_end))
+      160      if _action_time >= _settings.get_total_action_time():
+      161        _action_time = -1.0
+
+● Update(physics\tool_handler.gd)
+  ⎿  Added 50 lines
+      273    return _tool_transform_at(time) * _settings.strike_point
+      274  
+      275  
+      276 +## Hits what the crosshair is on: an exact ray first, then a w
+          +ider sphere as aim assist.                                    
+      277 +func _crosshair_hit(impact_time: float) -> void:              
+      278 +  _hit_done = true                                            
+      279 +  var aim := _crosshair_transform()                           
+      280 +  var forward := -aim.basis.z.normalized()                    
+      281 +  var space := _tool.get_world_3d().direct_space_state        
+      282 +  var exclude: Array[RID] = [_holder.get_rid(), _tool.get_rid(
+          +)]                                                            
+      283 +  var ray := PhysicsRayQueryParameters3D.create(aim.origin, ai
+          +m.origin + forward * _settings.reach, _settings.hit_mask, excl
+          +ude)                                                          
+      284 +  var hit := space.intersect_ray(ray)                         
+      285 +  var point: Vector3                                          
+      286 +  var normal: Vector3                                         
+      287 +  if not hit.is_empty():                                      
+      288 +    point = hit["position"]                                   
+      289 +    normal = hit["normal"]                                    
+      290 +  elif _settings.aim_assist_radius > 0.0:                     
+      291 +    _sphere.radius = _settings.aim_assist_radius              
+      292 +    _query.shape = _sphere                                    
+      293 +    _query.collision_mask = _settings.hit_mask                
+      294 +    _query.exclude = exclude                                  
+      295 +    _query.transform = Transform3D(Basis(), aim.origin)       
+      296 +    _query.motion = forward * (_settings.reach - _settings.aim
+          +_assist_radius)                                               
+      297 +    var fractions := space.cast_motion(_query)                
+      298 +    if fractions.is_empty() or fractions[1] >= 1.0:           
+      299 +      return                                                  
+      300 +    _query.transform = Transform3D(Basis(), aim.origin + _quer
+          +y.motion * fractions[1])                                      
+      301 +    _query.motion = Vector3.ZERO                              
+      302 +    hit = space.get_rest_info(_query)                         
+      303 +    if hit.is_empty():                                        
+      304 +      return                                                  
+      305 +    hit["collider"] = instance_from_id(hit["collider_id"])    
+      306 +    point = hit["point"]                                      
+      307 +    normal = hit["normal"]                                    
+      308 +  else:                                                       
+      309 +    return                                                    
+      310 +  var collider: Object = hit["collider"]                      
+      311 +  if collider == null:                                        
+      312 +    return                                                    
+      313 +  # Report the swing's own direction and speed, so impacts sti
+          +ll feel like the tool's.                                      
+      314 +  var step := 1.0 / Engine.physics_ticks_per_second           
+      315 +  var path := _strike_point_at(impact_time) - _strike_point_at
+          +(impact_time - step)                                          
+      316 +  _register_hit(collider, point, normal, path.normalized() if 
+          +not path.is_zero_approx() else forward, path.length() / step) 
+      317 +                                                              
+      318 +                                                              
+      319 +## Where the crosshair points from: the camera when the holder
+          + has one, else the head.                                      
+      320 +func _crosshair_transform() -> Transform3D:                   
+      321 +  if manipulator != null and manipulator.camera != null:      
+      322 +    return manipulator.camera.global_transform                
+      323 +  return view.global_transform                                
+      324 +                                                              
+      325 +                                                              
+      326  func _sweep(from_time: float, to_time: float) -> void:
+      327    var from := _strike_point_at(from_time)
+      328    var to := _strike_point_at(to_time)
+
+● Now give each tool sensible reach values. The golf club gets a long reach,
+  since you look down at a ball at your feet:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Settings are saved, and the re-saved tool files already contain the updated
+  reach and impact_moment values. I'll let the currently running background test
+  finish, then update the crosshair aiming section of the test.
+
+● I'll update the crosshair-aiming tool tests to check: far targets under the
+  crosshair still get hit, off-crosshair targets don't, targets beyond reach
+  don't, and TOOL_PATH mode still functions.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Now the helper and the new crosshair checks:
+
+● Update(_tmp_test\stage3_test.gd)
+  ⎿  Added 12 lines
+      424    quit(1 if fails else 0)
+      425  
+      426  
+      427 +## Puts `target` on the floor `distance` ahead and aims the cr
+          +osshair at its centre.                                        
+      428 +func place_under_crosshair(target: RigidBody3D, half_height: f
+          +loat, distance: float) -> bool:                               
+      429 +  var ahead := -player.global_basis.z.slide(Vector3.UP).normal
+          +ized()                                                        
+      430 +  var spot := player.global_position + ahead * distance       
+      431 +  place(target, Vector3(spot.x, half_height + 0.005, spot.z)) 
+      432 +  await frames(30)                                            
+      433 +  var dir := target.global_position - eye()                   
+      434 +  head.rotation.x = atan2(dir.y, Vector2(dir.x, dir.z).length(
+          +))                                                            
+      435 +  await frames(2)                                             
+      436 +  return true                                                 
+      437 +                                                              
+      438 +                                                              
+      439  ## Points the view so the equipped tool's strike passes throug
+           h where `target`
+      440  ## can rest, then puts the target there. Returns false if no p
+           ose fits.
+      441  func place_in_swing(target: RigidBody3D, half_height: float) -
+           > bool:
+
+● Update(_tmp_test\stage3_test.gd)
+  ⎿  Added 23 lines
+      285    check(th.use_primary(), "can swing again after the cooldown"
+           )
+      286    await frames(60)
+      287  
+      288 +  # --- 9b. Crosshair rules: off-crosshair and out-of-reach ta
+          +rgets are not hit                                             
+      289 +  await place_under_crosshair(crate, 0.305, 1.5)              
+      290 +  player.rotation.y += deg_to_rad(40)                         
+      291 +  await frames(2)                                             
+      292 +  impacts.clear()                                             
+      293 +  th.use_primary()                                            
+      294 +  await frames(60)                                            
+      295 +  check(impacts.is_empty(), "a crate 40 degrees off the crossh
+          +air is not hit")                                              
+      296 +  player.rotation.y -= deg_to_rad(40)                         
+      297 +  await place_under_crosshair(crate, 0.305, 3.2)              
+      298 +  impacts.clear()                                             
+      299 +  th.use_primary()                                            
+      300 +  await frames(60)                                            
+      301 +  check(impacts.is_empty(), "a crate beyond the hammer's 2 m r
+          +each is not hit")                                             
+      302 +  var small: PhysicsProp = area.get_node("Block4")            
+      303 +  await place_under_crosshair(small, 0.05, 1.3)               
+      304 +  head.rotation.x += deg_to_rad(3.0)                          
+      305 +  await frames(2)                                             
+      306 +  impacts.clear()                                             
+      307 +  th.use_primary()                                            
+      308 +  await frames(60)                                            
+      309 +  check(impacts.size() == 1 and impacts[0].collider == small, 
+          +"aim assist catches a small block just off the crosshair")    
+      310 +                                                              
+      311    # --- 10. Unequip back to the hand, return it to the box
+      312    th.unequip()
+      313    check(man.get_held_body() == hammer and not man.locked, "F u
+           nequips the hammer back into the physical hold")
+
+● Update(_tmp_test\stage3_test.gd)  ⎿  Added 19 lines
+      397    th.drop()
+      398    await frames(20)
+      399  
+      400 +  # --- 13b. TOOL_PATH mode still hits with the physical tool 
+          +head                                                          
+      401 +  var path_def: PhysicsObjectDefinition = hammer.definition.du
+          +plicate(true)                                                 
+      402 +  path_def.tool.hit_detection = PhysicsToolDefinition.HitDetec
+          +tion.TOOL_PATH                                                
+      403 +  hammer2.definition = path_def                               
+      404 +  stand(Vector3(18, 0, 15))                                   
+      405 +  place(hammer2, Vector3(18, 0.3, 14))                        
+      406 +  await frames(30)                                            
+      407 +  man.grab(hammer2)                                           
+      408 +  th.equip_held()                                             
+      409 +  await frames(30)                                            
+      410 +  check(await place_in_swing(crate, 0.305), "found a pose wher
+          +e the hammer head physically reaches the crate")              
+      411 +  impacts.clear()                                             
+      412 +  th.use_primary()                                            
+      413 +  await frames(60)                                            
+      414 +  check(impacts.size() == 1 and impacts[0].collider == crate, 
+          +"TOOL_PATH hammer hits by sweeping its head (%d impacts)" % im
+          +pacts.size())                                                 
+      415 +  check(hammer.definition.tool.hit_detection == PhysicsToolDef
+          +inition.HitDetection.CROSSHAIR, "the original hammer definitio
+          +n still uses CROSSHAIR")                                      
+      416 +  th.drop()                                                   
+      417 +  await frames(20)                                            
+      418 +                                                              
+      419    # --- 14. Throw a loaded basket: contents leave with it and 
+           spill on landing
+      420    var basket: PhysicsProp = area.get_node("Basket2")
+      421    var bspot := Vector3(17, 0.135, 11)
+
+● Let me check whether the earlier background test (old tool-path code) has
+  finished:
+
+  Searched for 1 pattern (ctrl+o to expand)
+
+● Nothing yet, which suggests it's stuck (a script error mid-run would leave it
+  waiting forever). I'll stop it and run the updated test directly, so I can see
+  any errors:
+
+● Stop Task
+  ⎿  cd /e/Projects/tm-game; timeout 300
+     /c/Users/evans/Desktop/Godot_v4.7.1-stable_win64.exe --headless --path
+     . -s res://_tmp_test/stage3_test.gd 2>&1 | grep -v "^… · stopped
+
+  Ran 1 shell command (ctrl+o to expand)
+  ⎿  Interrupted · What should Claude do instead?
+
+❯ Whatever you were stuck on then, it's fine, it's all working. I've got        
+  something else I want you to do.                                              
+
+● I've stopped. Glad it's all working. Before you move on, here's where things
+  were left:
+
+  - Crosshair hitting is in. Every tool now has a Hit Detection setting, set to
+    CROSSHAIR by default. Halfway through the swing, the tool hits whatever is
+    under the crosshair within its Reach: hammer 2.0 m, bat 2.4 m, golf club 2.6
+    m. You can change Reach, Aim Assist Radius and Impact Moment per tool in
+    the inspector. TOOL_PATH (hitting with the actual tool head) is still
+    available as an option.
+  - I didn't finish testing the crosshair change. I'd rewritten the automated
+    test for it, but stopped before running it. Since then, what we know comes
+    from your play-testing.
+  - The tool/container area lives in its own scene,
+    playground/tool_test_area.tscn, instanced into the playground. I did that
+    because your open editor was re-saving the playground over my edits. If you
+    saved the playground after my last change and the area is missing, add an
+    instance of that scene back in.
+  - A temporary test folder, _tmp_test/, is still in the project. I'll delete it
+    unless you'd like the tests kept.
+
+  What's the next thing you want?
+
+❯ This is awesome. Thank you very much. Um, next up is chargeable throws and    
+  strikes. So holding down the button charges it up and only so I can set a     
+  maximum. But it charges it up and then depending on where you release it,     
+  that's how much force it adds to either the throw or hitting stuff.           
+
+● Here's the plan, which builds on the existing throw and swing code:
+
+  - Hold LMB to charge, release to fire. A quick tap gives a minimum-power throw
+    or swing. Holding builds up to full power over a charge time.
+  - Everything is configurable:
+    - Throws, on the ObjectManipulator node: charge time, tap power and max
+      power.
+    - Tools, per tool in each tool's .tres: charge time, min power and max
+      power. Setting max power above 1 makes a full charge stronger than the
+      current swing.
+  - Power scales everything: the impulse, the speed cap for light objects, and
+    the damage reported on impacts.
+  - Feedback: a small charge bar under the crosshair that turns orange at full.
+    Tools hold their windup pose while charging, and held objects draw back
+    slightly toward you.
+
+  Let me look at the current state of the two scripts first:
+
+  Read 1 file, ran 1 shell command (ctrl+o to expand)
+
+● Now the manipulator edits: settings, charge state, press-to-charge and
+  release-to-throw input, power-scaled throws, and the pull-back while charging.
+
+● Update(physics\object_manipulator.gd)
+  ⎿  Added 9 lines
+      45  @export_range(0.05, 1.0, 0.05) var precision_scale: float = 0.2
+          5
+      46  
+      47  @export_group("Throwing")
+      48 +## Impulse and speed limits of a throw at power 1. Charging sca
+         +les them by power.                                             
+      49  @export var throw_impulse: float = 80.0
+      50  @export var min_throw_speed: float = 2.0
+      51  @export var max_throw_speed: float = 16.0
+      52 +## Seconds of holding the throw button to reach full charge. Ze
+         +ro throws instantly.                                           
+      53 +@export_range(0.0, 3.0, 0.05, "suffix:s") var throw_charge_time
+         +: float = 0.8                                                  
+      54 +## Throw power of a quick tap.                                 
+      55 +@export_range(0.0, 3.0, 0.05) var min_throw_power: float = 0.3 
+      56 +## Throw power at full charge. Raise above 1 for stronger charg
+         +ed throws.                                                     
+      57 +@export_range(0.1, 3.0, 0.05) var max_throw_power: float = 1.0 
+      58 +## How far the held body draws back toward you at full charge. 
+      59 +@export_range(0.0, 1.0, 0.01, "suffix:m") var charge_pullback: 
+         +float = 0.25                                                   
+      60  ## Released (not thrown) bodies keep at most this speed, so a s
+          trained hold does
+      61  ## not fling them.
+      62  @export var drop_speed_limit: float = 6.0
+
+● Update(physics\object_manipulator.gd)
+  ⎿  Added 2 lines
+      72  var _hold_basis: Basis = Basis.IDENTITY
+      73  var _radius: float = 0.5
+      74  var _rotating: bool = false
+      75 +var _charging: bool = false                                    
+      76 +var _charge_elapsed: float = 0.0                               
+      77  var _strain_time: float = 0.0
+      78  var _last_target: Vector3
+      79  var _saved_can_sleep: bool = true
+
+● Update(physics\object_manipulator.gd)
+  ⎿  Added 13 lines
+      112    return is_holding() and _rotating
+      113  
+      114  
+      115 +## Throw charge from 0 to 1, or -1 when not charging.         
+      116 +func get_charge_ratio() -> float:                             
+      117 +  if not (is_holding() and _charging):                        
+      118 +    return -1.0                                               
+      119 +  return clampf(_charge_elapsed / maxf(throw_charge_time, 0.00
+          +1), 0.0, 1.0)                                                 
+      120 +                                                              
+      121 +                                                              
+      122 +## Throws with power from the current charge (min_throw_power 
+          +to max_throw_power).                                          
+      123 +func release_charged_throw() -> void:                         
+      124 +  if is_holding() and _charging:                              
+      125 +    release(true, lerpf(min_throw_power, max_throw_power, get_
+          +charge_ratio()))                                              
+      126 +                                                              
+      127 +                                                              
+      128  ## Returns the RigidBody3D that should be grabbed for a ray co
+           llider, or null.
+      129  func resolve_grabbable(collider: Object) -> RigidBody3D:
+      130    var node := collider as Node
+
+● Update(physics\object_manipulator.gd)
+  ⎿  Added 4 lines, removed 2 lines
+      218    return true
+      219  
+      220  
+      221 -func release(throw: bool = false) -> void:                    
+      221 +## power scales a throw's speed (1 = the configured throw).   
+      222 +func release(throw: bool = false, power: float = 1.0) -> void:
+      223 +  _charging = false                                           
+      224    if not is_holding():
+      225      _body = null
+      226      return
+     ...
+      231    if body.tree_exiting.is_connected(_on_body_tree_exiting):
+      232      body.tree_exiting.disconnect(_on_body_tree_exiting)
+      233    if throw:
+      232 -    var speed := clampf(throw_impulse / get_carried_mass(body)
+          -, min_throw_speed, max_throw_speed)                           
+      234 +    var speed := clampf(throw_impulse / get_carried_mass(body)
+          +, min_throw_speed, max_throw_speed) * power                   
+      235      var before := body.linear_velocity
+      236      body.linear_velocity = _holder_velocity() + -camera.global
+           _basis.z * speed
+      237      body.angular_velocity = body.angular_velocity.limit_length
+           (2.0)
+
+● Update(physics\object_manipulator.gd)
+  ⎿  Added 1 line
+      261    var body := _body
+      262    _body = null
+      263    _rotating = false
+      264 +  _charging = false                                           
+      265    body.can_sleep = _saved_can_sleep
+      266    if body.tree_exiting.is_connected(_on_body_tree_exiting):
+      267      body.tree_exiting.disconnect(_on_body_tree_exiting)
+
+● Update(physics\object_manipulator.gd)
+  ⎿  Added 9 lines, removed 2 lines
+      286      var cam := camera.global_basis.orthonormalized()
+      287      _rotate_world(Basis(cam.y, turn.x) * Basis(cam.x, turn.y))
+      288      return true
+      289 -  if event.is_action_pressed("throw_held_object"):            
+      290 -    release(true)                                             
+      289 +  if event.is_action("throw_held_object"):                    
+      290 +    if event.is_pressed() and not event.is_echo():            
+      291 +      if throw_charge_time <= 0.0:                            
+      292 +        release(true, max_throw_power)                        
+      293 +      else:                                                   
+      294 +        _charging = true                                      
+      295 +        _charge_elapsed = 0.0                                 
+      296 +    elif not event.is_pressed():                              
+      297 +      release_charged_throw()                                 
+      298      return true
+      299    var scroll := 0.0
+      300    if event.is_action("hold_farther"):
+
+● Update(physics\object_manipulator.gd)
+  ⎿  Added 6 lines
+      320      return
+      321    if _rotating and not Input.is_action_pressed("rotate_held_ob
+           ject"):
+      322      _rotating = false
+      323 +  if _charging:                                               
+      324 +    _charge_elapsed += delta                                  
+      325 +    # A release event can be missed (e.g. focus loss); the but
+          +ton state is authoritative.                                   
+      326 +    if not Input.is_action_pressed("throw_held_object"):      
+      327 +      release_charged_throw()                                 
+      328 +      return                                                  
+      329    var target := _compute_target()
+      330    var target_velocity := (target - _last_target) / delta
+      331    _last_target = target
+
+● Update(physics\object_manipulator.gd)
+  ⎿  Added 2 lines
+      370    var origin := _eye_position()
+      371    var forward := -camera.global_basis.z.normalized()
+      372    var distance := _hold_distance
+      373 +  if _charging:                                               
+      374 +    distance = maxf(_min_distance(), distance - charge_pullbac
+          +k * get_charge_ratio())                                       
+      375    # Keep the hold point on this side of walls, so the body is 
+           never pulled into them.
+      376    var query := PhysicsRayQueryParameters3D.create(origin, orig
+           in + forward * distance, _body.collision_mask)
+      377    query.exclude = [_holder.get_rid(), _body.get_rid()]
+
+● Update the carry prompt wording:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Update(physics\physics_tool_definition.gd)
+  ⎿  Added 9 lines
+      54  ## Extra pause after recovering before the next use.
+      55  @export_range(0.0, 2.0, 0.01, "suffix:s") var cooldown: float =
+           0.1
+      56  
+      57 +@export_group("Charging")                                      
+      58 +## Seconds of holding the use button to reach full charge. The 
+         +tool holds its windup                                          
+      59 +## pose while charging and strikes on release. Zero strikes ins
+         +tantly at max power.                                           
+      60 +@export_range(0.0, 3.0, 0.05, "suffix:s") var charge_time: floa
+         +t = 0.6                                                        
+      61 +## Power of a quick tap.                                       
+      62 +@export_range(0.0, 3.0, 0.05) var min_charge_power: float = 0.3
+      63 +## Power at full charge. Power scales the impulse, the launch s
+         +peed cap and the damage.                                       
+      64 +@export_range(0.1, 3.0, 0.05) var max_charge_power: float = 1.0
+      65 +                                                               
+      66  @export_group("Impact")
+      67  @export var hit_detection: HitDetection = HitDetection.CROSSHAI
+          R
+      68  ## CROSSHAIR: how far from the camera a strike can land.
+
+● Update(physics\tool_impact.gd)
+  ⎿  Added 2 lines
+      16  var impulse: Vector3
+      17  ## Speed of the tool's strike point at the moment of contact (m
+          /s).
+      18  var strike_speed: float = 0.0
+      19 +## Charge power the strike was made with (already applied to im
+         +pulse and damage).                                             
+      20 +var power: float = 1.0                                         
+      21  var damage: float = 0.0
+      22  var impact_type: PhysicsToolDefinition.ImpactType = PhysicsTool
+          Definition.ImpactType.BLUNT
+      23  var handled: bool = false
+
+● Now the ToolHandler. Let me re-read its current input and update code before
+  editing:
+
+  Read 1 file, ran 1 shell command (ctrl+o to expand)
+
+● Update(physics\tool_handler.gd)  ⎿  Added 38 lines, removed 4 lines
+      117      body.linear_velocity = _holder_velocity()
+      118  
+      119  
+      120 -## Starts the primary action. Ignored while equipping or mid-a
+          -ction.                                                        
+      121 -func use_primary() -> bool:                                   
+      120 +## Starts the primary action immediately at the given power. I
+          +gnored while busy.                                            
+      121 +func use_primary(power: float = 1.0) -> bool:                 
+      122    if not is_equipped() or is_busy():
+      123      return false
+      124    _action_time = 0.0
+      125    _hit_done = false
+      126 +  _charging = false                                           
+      127 +  _power = power                                              
+      128    return true
+      129  
+      130  
+      131 +## Starts winding up; the strike happens on release_charge(), 
+          +scaled by how long                                            
+      132 +## it was held. Tools with no charge time strike straight away
+          + at max power.                                                
+      133 +func begin_charge() -> bool:                                  
+      134 +  if not is_equipped() or is_busy():                          
+      135 +    return false                                              
+      136 +  if _settings.charge_time <= 0.0:                            
+      137 +    return use_primary(_settings.max_charge_power)            
+      138 +  use_primary()                                               
+      139 +  _charging = true                                            
+      140 +  _charge_elapsed = 0.0                                       
+      141 +  return true                                                 
+      142 +                                                              
+      143 +                                                              
+      144 +func release_charge() -> void:                                
+      145 +  if not _charging:                                           
+      146 +    return                                                    
+      147 +  _charging = false                                           
+      148 +  _power = lerpf(_settings.min_charge_power, _settings.max_cha
+          +rge_power, get_charge_ratio_unchecked())                      
+      149 +                                                              
+      150 +                                                              
+      151 +## Charge from 0 to 1, or -1 when not charging.               
+      152 +func get_charge_ratio() -> float:                             
+      153 +  return get_charge_ratio_unchecked() if is_equipped() and _ch
+          +arging else -1.0                                              
+      154 +                                                              
+      155 +                                                              
+      156 +func get_charge_ratio_unchecked() -> float:                   
+      157 +  return clampf(_charge_elapsed / maxf(_settings.charge_time, 
+          +0.001), 0.0, 1.0)                                             
+      158 +                                                              
+      159 +                                                              
+      160  func cancel_action() -> void:
+      161    _action_time = -1.0
+      162 +  _charging = false                                           
+      163  
+      164  
+      165  ## Returns true when the event was consumed by the equipped to
+           ol.
+     ...
+      167    if not is_equipped():
+      168      return false
+      169    if event.is_action("use_tool"):
+      138 -    if event.is_pressed():                                    
+      139 -      use_primary()                                           
+      170 +    if event.is_pressed() and not event.is_echo():            
+      171 +      begin_charge()                                          
+      172 +    elif not event.is_pressed():                              
+      173 +      release_charge()                                        
+      174      return true
+      175    return false
+      176  
+
+● Update(physics\tool_handler.gd)
+  ⎿  Added 8 lines
+      180    if not is_equipped():
+      181      return
+      182    _equip_progress = minf(1.0, _equip_progress + delta / maxf(_
+           settings.equip_time, 0.01))
+      183 +  if _charging:                                               
+      184 +    _charge_elapsed += delta                                  
+      185 +    # A release event can be missed (e.g. focus loss); the but
+          +ton state is authoritative.                                   
+      186 +    if not Input.is_action_pressed("use_tool"):               
+      187 +      release_charge()                                        
+      188    if _action_time >= 0.0:
+      189      var previous := _action_time
+      190      _action_time += delta
+      191 +    if _charging:                                             
+      192 +      # Hold at the top of the windup until the button is rele
+          +ased.                                                         
+      193 +      _action_time = minf(_action_time, _settings.windup_time)
+      194      var strike_start := _settings.windup_time
+      195      var strike_end := strike_start + _settings.strike_time
+      196      if _settings.hit_detection == PhysicsToolDefinition.HitDet
+           ection.CROSSHAIR:
+
+● Update(physics\tool_handler.gd)
+  ⎿  Added 2 lines
+      262  
+      263  func _current_transform(ahead: float) -> Transform3D:
+      264    var time := _action_time + ahead if _action_time >= 0.0 else
+            -1.0
+      265 +  if _charging:                                               
+      266 +    time = minf(time, _settings.windup_time)                  
+      267    var target := _tool_transform_at(time)
+      268    var progress := minf(1.0, _equip_progress + ahead / maxf(_se
+           ttings.equip_time, 0.01))
+      269    if progress >= 1.0:
+
+● Update(physics\tool_handler.gd)
+  ⎿  Added 4 lines
+      28  var _equip_from: Transform3D
+      29  ## Seconds into the current action, or negative when idle.
+      30  var _action_time: float = -1.0
+      31 +var _charging: bool = false                                    
+      32 +var _charge_elapsed: float = 0.0                               
+      33 +## Power of the current action, fixed when the charge is releas
+         +ed.                                                            
+      34 +var _power: float = 1.0                                        
+      35  var _hit_done: bool = false
+      36  var _query := PhysicsShapeQueryParameters3D.new()
+      37  var _sphere := SphereShape3D.new()
+
+● Now apply power in _register_hit, reset charging when the tool leaves the
+  hand, and update the prompt:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● The prompt substitution didn't match because of escaping, so I'll do that one
+  with the Edit tool:
+
+● Update(physics\tool_handler.gd)
+  ⎿  Added 2 lines, removed 1 line
+      83    if not is_equipped():
+      84      return ""
+      85    var title := str(_provider.call("get_grab_name")) if _provide
+          r.has_method("get_grab_name") else str(_tool.name)
+      86 -  return "%s (equipped)\n[LMB] %s   [F] Unequip   [E] Drop" % [
+         -title, _settings.action_name]                                  
+      86 +  var use := "[Hold LMB]" if _settings.charge_time > 0.0 else "
+         +[LMB]"                                                         
+      87 +  return "%s (equipped)\n%s %s   [F] Unequip   [E] Drop" % [tit
+         +le, use, _settings.action_name]                                
+      88  
+      89  
+      90  ## Equips the body currently held by the manipulator.
+
+● Now the charge bar. Let me check the current player scene (the editor may have
+  re-saved it):
+
+  Made 2 scratchpad edits +36, ran 2 shell commands (ctrl+o to expand)
+
+● Now the player drives the bar from whichever hand system is charging:
+
+● Update(character_body_3d.gd)
+  ⎿  Added 1 line
+      55  @onready var interaction_prompt: Label = $HUD/InteractionPrompt
+      56  @onready var interaction_menu: InteractionMenu = $HUD/Interacti
+          onMenu
+      57  @onready var crosshair: Label = $HUD/Crosshair
+      58 +@onready var charge_bar: ProgressBar = $HUD/ChargeBar          
+      59  @onready var stats: PlayerStats = $Stats
+      60  @onready var manipulator: ObjectManipulator = $ObjectManipulato
+          r
+      61  @onready var tool_handler: ToolHandler = $ToolHandler
+
+● Update(character_body_3d.gd)
+  ⎿  Added 10 lines
+      189    _update_interaction(controls_active)
+      190    manipulator.physics_update(delta)
+      191    tool_handler.physics_update(delta)
+      192 +  _update_charge_bar()                                        
+      193  
+      194  
+      195 +func _update_charge_bar() -> void:                            
+      196 +  var charge := maxf(manipulator.get_charge_ratio(), tool_hand
+          +ler.get_charge_ratio())                                       
+      197 +  charge_bar.visible = charge >= 0.0                          
+      198 +  if charge_bar.visible:                                      
+      199 +    charge_bar.value = charge                                 
+      200 +    # Warm up as it fills, so full charge reads at a glance.  
+      201 +    charge_bar.modulate = Color(1.0, 0.55, 0.15) if charge >= 
+          +1.0 else Color(1.0, 1.0, 1.0 - charge * 0.5)                  
+      202 +                                                              
+      203 +                                                              
+      204  func _push_rigid_bodies(intended_velocity: Vector3, delta: flo
+           at) -> void:
+      205    for index in get_slide_collision_count():
+      206      var hit := get_slide_collision(index)
+
+● Update(character_body_3d.gd)
+  ⎿  Added 1 line
+      365      velocity = Vector3.ZERO
+      366      manipulator.release()
+      367      tool_handler.cancel_action()
+      368 +    charge_bar.hide()                                         
+      369      _crosshair_was_visible = crosshair.visible
+      370      crosshair.hide()
+      371      interaction_prompt.hide()
+
+● Scale the bar with the rest of the HUD on resize, as hud.gd does for the other
+  elements:
+
+● Update(hud.gd)
+  ⎿  Added 5 lines
+      70    prompt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+      71    prompt.add_theme_font_size_override("font_size", maxi(10, rou
+          ndi(13.0 * factor)))
+      72    $Crosshair.add_theme_font_size_override("font_size", maxi(10,
+           roundi(20.0 * factor)))
+      73 +  var charge: ProgressBar = $ChargeBar                         
+      74 +  charge.offset_left = -45.0 * factor                          
+      75 +  charge.offset_right = 45.0 * factor                          
+      76 +  charge.offset_top = 14.0 * factor                            
+      77 +  charge.offset_bottom = 14.0 * factor + maxf(3.0, 5.0 * factor
+         +)                                                              
+      78    $FPSCounter.position = Vector2(12.0, 8.0) * factor
+      79    $FPSCounter.add_theme_font_size_override("font_size", maxi(10
+          , roundi(13.0 * factor)))
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● No real issues—the import error is just the plugin's pre-existing UID message,
+  now pointing to your playground scene. Next I'll run a focused test of
+  charging behavior: tap vs half vs full charges for throws and tool hits, the
+  windup hold, bar state, and max power above 1.
+
+● Write(_tmp_test\charge_test.gd)
+  ⎿  Wrote 183 lines to _tmp_test\charge_test.gd
+       1 extends SceneTree
+       2 ## Chargeable throws and strikes.
+       3 
+       4 var fails := 0
+       5 var scene: Node
+       6 var player: CharacterBody3D
+       7 var head: Node3D
+       8 var man: ObjectManipulator
+       9 var th: ToolHandler
+      10 var impacts: Array[ToolImpact] = []
+     … +202 lines (ctrl+o to expand)
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● The golf drive test is failing because the swing cycle takes 1.06s but the
+  test only waits 0.75s, likely causing the second press to be ignored while the
+  club is still busy. I'll verify this by printing the actual impact values.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+❯ You don't need to test. You don't need to test it at a time. Like, I don't    
+  want you to test everything. I will test it. And that's for the golf club.    
+  Instead of making it hit in front of you, can you make it so it's held like a 
+  golf club?                                                                    
+
+● Noted—I'll stop running tests myself and remember that preference going
+  forward; the one failure was just a stray crate blocking the ball's path, not
+  a code issue. Now I'll rework the golf club from an axe-chop into a real
+  swing: hanging down at address, backswing up-right during charge, then
+  sweeping down and through on release, while keeping the ball flying toward
+  your facing direction for intuitive aiming.
+
+  Ran 2 shell commands, wrote 3 memories (ctrl+o to expand)
+
+● I've updated the golf club's tool settings for the new pose—no code changes
+  needed. The swing now rotates across the body with a 20° forward-tilted plane
+  and the club face turned to align with the swing.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Charging and the golf stance are both in, and the playground loads without
+  errors. I haven't play-tested any of it; that's over to you.
+
+  Charged throws and strikes:
+  - Hold LMB to charge and release to fire. A quick tap is weak; holding builds
+    to full power. A bar under the crosshair fills and turns orange at full.
+  - While charging, a held object draws back toward you a little, and a tool
+    holds its wind-up pose. Pressing again mid-swing is ignored.
+  - Power scales everything: throw speed, tool impulse, the speed cap for light
+    objects, and the damage reported on impacts.
+  - Throw settings are on the player's ObjectManipulator node: Throw Charge Time
+    (0.8 s), Min Throw Power (0.3) and Max Throw Power (1.0).
+  - Tool settings are under a Charging group in each tool's .tres: Charge Time
+    (0.6 s), Min Charge Power (0.3) and Max Charge Power (1.0).
+  - Set a max power above 1 if you want a full charge to hit harder than before.
+    Set a charge time of 0 to make that throw or tool fire instantly.
+
+  Golf club (only its .tres changed, no code):
+  - It now hangs straight down in front of you, with the face turned along the
+    swing.
+  - Charging is the backswing: the club rises up to the right and holds there.
+  - Releasing swings it down through the ball and follows through to the left.
+  - The ball still flies where you're facing, and the hit still lands where the
+    crosshair is. To aim, look down at the ball.
+  - If the club head sits too high or low for your eye height, adjust the poses
+    in the inspector. The Rest/Windup/Strike Position Y values (about −0.7)
+    control the height.
+
+  The temporary _tmp_test/ folder is still in the project. Say the word and I'll
+  delete it.

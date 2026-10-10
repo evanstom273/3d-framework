@@ -1,0 +1,110 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_ml4ar"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_cdpld"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_no44c"]
+albedo_color = Color(0.95, 0.95, 0.94, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_bip5j"]
+script = ExtResource("1_ml4ar")
+shape_type = 1
+radius = 0.11
+height = 0.0
+material = SubResource("StandardMaterial3D_no44c")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8s26r"]
+albedo_color = Color(0.08, 0.08, 0.09, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_vqcn2"]
+script = ExtResource("1_ml4ar")
+shape_type = 1
+radius = 0.04
+height = 0.0
+position = Vector3(0, 0.085, 0)
+material = SubResource("StandardMaterial3D_8s26r")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3dys"]
+albedo_color = Color(0.08, 0.08, 0.09, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_1ufrn"]
+script = ExtResource("1_ml4ar")
+shape_type = 1
+radius = 0.04
+height = 0.0
+position = Vector3(0, -0.085, 0)
+material = SubResource("StandardMaterial3D_r3dys")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_no33x"]
+albedo_color = Color(0.08, 0.08, 0.09, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_i503l"]
+script = ExtResource("1_ml4ar")
+shape_type = 1
+radius = 0.04
+height = 0.0
+position = Vector3(-0.085, 0, 0)
+material = SubResource("StandardMaterial3D_no33x")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_222le"]
+albedo_color = Color(0.08, 0.08, 0.09, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_0bpo0"]
+script = ExtResource("1_ml4ar")
+shape_type = 1
+radius = 0.04
+height = 0.0
+position = Vector3(0.085, 0, 0)
+material = SubResource("StandardMaterial3D_222le")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fo0i5"]
+albedo_color = Color(0.08, 0.08, 0.09, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_c0mg0"]
+script = ExtResource("1_ml4ar")
+shape_type = 1
+radius = 0.04
+height = 0.0
+position = Vector3(0, 0, -0.085)
+material = SubResource("StandardMaterial3D_fo0i5")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ut8wv"]
+albedo_color = Color(0.08, 0.08, 0.09, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_86n2w"]
+script = ExtResource("1_ml4ar")
+shape_type = 1
+radius = 0.04
+height = 0.0
+position = Vector3(0, 0, 0.085)
+material = SubResource("StandardMaterial3D_ut8wv")
+collides = false
+
+[resource]
+script = ExtResource("2_cdpld")
+display_name = "Football"
+spawn_category = "Balls"
+shape_type = 4
+parts = Array[ExtResource("1_ml4ar")]([SubResource("Resource_bip5j"), SubResource("Resource_vqcn2"), SubResource("Resource_1ufrn"), SubResource("Resource_i503l"), SubResource("Resource_0bpo0"), SubResource("Resource_c0mg0"), SubResource("Resource_86n2w")])
+mass = 0.43
+friction = 0.7
+bounce = 0.65
+linear_damp = 0.1
+angular_damp = 0.15
+impact_sound = 5
+impact_damage_scale = 0.3
+vox_model = "res://props/vox/football.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.125, -0.125, -0.125)

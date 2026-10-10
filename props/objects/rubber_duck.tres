@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_xql2q"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_takac"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rlpr"]
+roughness = 0.35
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r1onx"]
+albedo_color = Color(1, 0.85, 0.1, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_2lk86"]
+script = ExtResource("1_xql2q")
+shape_type = 1
+radius = 0.07
+height = 0.0
+material = SubResource("StandardMaterial3D_r1onx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tp7is"]
+albedo_color = Color(1, 0.85, 0.1, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_kaaj8"]
+script = ExtResource("1_xql2q")
+shape_type = 1
+radius = 0.045
+height = 0.0
+position = Vector3(0, 0.075, -0.035)
+material = SubResource("StandardMaterial3D_tp7is")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_waboh"]
+albedo_color = Color(1, 0.5, 0.05, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_lofrl"]
+script = ExtResource("1_xql2q")
+size = Vector3(0.04, 0.014, 0.035)
+position = Vector3(0, 0.07, -0.085)
+material = SubResource("StandardMaterial3D_waboh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vr5k7"]
+albedo_color = Color(0.08, 0.08, 0.09, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_2d0y4"]
+script = ExtResource("1_xql2q")
+shape_type = 1
+radius = 0.008
+height = 0.0
+position = Vector3(-0.02, 0.09, -0.07)
+material = SubResource("StandardMaterial3D_vr5k7")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7f4m"]
+albedo_color = Color(0.08, 0.08, 0.09, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_xeo4h"]
+script = ExtResource("1_xql2q")
+shape_type = 1
+radius = 0.008
+height = 0.0
+position = Vector3(0.02, 0.09, -0.07)
+material = SubResource("StandardMaterial3D_m7f4m")
+collides = false
+
+[resource]
+script = ExtResource("2_takac")
+display_name = "Rubber Duck"
+shape_type = 4
+parts = Array[ExtResource("1_xql2q")]([SubResource("Resource_2lk86"), SubResource("Resource_kaaj8"), SubResource("Resource_lofrl"), SubResource("Resource_2d0y4"), SubResource("Resource_xeo4h")])
+mass = 0.12
+bounce = 0.5
+angular_damp = 0.15
+impact_sound = 5
+impact_damage_scale = 0.0
+material = SubResource("StandardMaterial3D_0rlpr")
+vox_model = "res://props/vox/rubber_duck.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.07, -0.07, -0.1025)

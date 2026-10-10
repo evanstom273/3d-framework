@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_uknhd"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="2_lmscw"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="3_kwux8"]
+[ext_resource type="Resource" path="res://props/voxel_materials/glass.tres" id="4_87ti2"]
+[ext_resource type="Resource" path="res://props/voxel_materials/wood.tres" id="5_rlfrq"]
+
+[resource]
+script = ExtResource("2_lmscw")
+display_name = "Glass Pane"
+spawn_category = "Destructible"
+voxel_size = 0.05
+vox_file = "res://props/vox/glass_pane.vox"
+vox_material = ExtResource("5_rlfrq")
+vox_extra_materials = Array[ExtResource("3_kwux8")]([ExtResource("4_87ti2")])

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://deoqgfwjfmn3a"
+path="res://.godot/imported/garden_gnome.vox-9b351d6b96048cdfffbf000ae7012524.tres"
+
+[deps]
+
+source_file="res://props/vox/garden_gnome.vox"
+dest_files=["res://.godot/imported/garden_gnome.vox-9b351d6b96048cdfffbf000ae7012524.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

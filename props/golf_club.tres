@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://c1lunoibc667t"]
+
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="1_definition"]
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="2_part"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="3_tool"]
+
+[sub_resource type="StandardMaterial3D" id="Material_shaft"]
+albedo_color = Color(0.78, 0.8, 0.82, 1)
+metallic = 0.9
+roughness = 0.25
+
+[sub_resource type="Resource" id="Part_shaft"]
+script = ExtResource("2_part")
+shape_type = 2
+radius = 0.007
+height = 0.9
+material = SubResource("Material_shaft")
+
+[sub_resource type="StandardMaterial3D" id="Material_grip"]
+albedo_color = Color(0.08, 0.08, 0.08, 1)
+roughness = 0.9
+
+[sub_resource type="Resource" id="Part_grip"]
+script = ExtResource("2_part")
+shape_type = 2
+radius = 0.014
+height = 0.24
+position = Vector3(0, 0.33, 0)
+material = SubResource("Material_grip")
+
+[sub_resource type="StandardMaterial3D" id="Material_head"]
+albedo_color = Color(0.2, 0.22, 0.25, 1)
+metallic = 0.8
+roughness = 0.3
+
+[sub_resource type="Resource" id="Part_head"]
+script = ExtResource("2_part")
+size = Vector3(0.1, 0.035, 0.05)
+position = Vector3(0.035, -0.465, 0)
+material = SubResource("Material_head")
+
+[sub_resource type="Resource" id="Tool_club"]
+script = ExtResource("3_tool")
+grip_position = Vector3(0, 0.38, 0)
+grip_rotation_degrees = Vector3(0, -90, 0)
+pitch_follow = 0.0
+rest_position = Vector3(0, -0.72, -0.32)
+rest_rotation_degrees = Vector3(20, 0, 0)
+windup_position = Vector3(0.18, -0.68, -0.26)
+windup_rotation_degrees = Vector3(20, 0, 110)
+strike_position = Vector3(-0.18, -0.68, -0.26)
+strike_rotation_degrees = Vector3(20, 0, -115)
+windup_time = 0.4
+strike_time = 0.16
+recover_time = 0.35
+cooldown = 0.15
+reach = 2.6
+impact_moment = 0.67
+impact_type = 1
+strike_point = Vector3(0.035, -0.465, 0)
+strike_radius = 0.07
+impact_impulse = 11.0
+max_launch_speed = 22.0
+aim_mode = 1
+swing_path_influence = 0.0
+loft_degrees = 22.0
+damage = 8.0
+voxel_damage_radius = 0.08
+hit_mask = 16
+
+[resource]
+script = ExtResource("1_definition")
+display_name = "Golf Club"
+shape_type = 4
+parts = Array[ExtResource("2_part")]([SubResource("Part_shaft"), SubResource("Part_grip"), SubResource("Part_head")])
+mass = 0.4
+angular_damp = 0.2
+impact_sound = 2
+vox_model = "res://props/vox/golf_club.vox"
+vox_voxel_size = 0.01
+vox_origin = Vector3(-0.015000001, -0.48250002, -0.025)
+tool = SubResource("Tool_club")

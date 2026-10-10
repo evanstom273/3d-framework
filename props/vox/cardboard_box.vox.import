@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dqcgesodf5tcd"
+path="res://.godot/imported/cardboard_box.vox-b7e0464895fb490f1997a99d728fed46.tres"
+
+[deps]
+
+source_file="res://props/vox/cardboard_box.vox"
+dest_files=["res://.godot/imported/cardboard_box.vox-b7e0464895fb490f1997a99d728fed46.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://iqjn0pwnssa"]
+
+[ext_resource type="PackedScene" path="res://props/details/rubber_ball_details.tscn" id="1_xe55l"]
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="2_bnr58"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="3_xqd2i"]
+
+[sub_resource type="StandardMaterial3D" id="Material_rubber"]
+albedo_color = Color(0.6212784, 0.34822455, 0.64201635, 1)
+roughness = 0.55
+
+[resource]
+script = ExtResource("3_xqd2i")
+display_name = "Ball"
+shape_type = 1
+radius = 0.15
+mass = 0.5
+friction = 0.9
+bounce = 0.2
+linear_damp = 0.02
+angular_damp = 0.4
+impact_sound = 5
+material = SubResource("Material_rubber")
+detail_scene = ExtResource("1_xe55l")
+vox_model = "res://props/vox/ball.vox"
+vox_origin = Vector3(-0.158, -0.15, -0.158)

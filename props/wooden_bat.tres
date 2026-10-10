@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://dofkg0ym0opva"]
+
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="1_definition"]
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="2_part"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="3_tool"]
+
+[sub_resource type="StandardMaterial3D" id="Material_ash"]
+albedo_color = Color(0.85, 0.72, 0.5, 1)
+roughness = 0.55
+
+[sub_resource type="Resource" id="Part_barrel"]
+script = ExtResource("2_part")
+shape_type = 2
+radius = 0.033
+height = 0.5
+position = Vector3(0, 0.17, 0)
+
+[sub_resource type="StandardMaterial3D" id="Material_tape"]
+albedo_color = Color(0.12, 0.12, 0.14, 1)
+roughness = 0.9
+
+[sub_resource type="Resource" id="Part_handle"]
+script = ExtResource("2_part")
+shape_type = 2
+radius = 0.016
+height = 0.36
+position = Vector3(0, -0.24, 0)
+material = SubResource("Material_tape")
+
+[sub_resource type="Resource" id="Part_knob"]
+script = ExtResource("2_part")
+shape_type = 2
+radius = 0.024
+height = 0.02
+position = Vector3(0, -0.43, 0)
+
+[sub_resource type="Resource" id="Tool_bat"]
+script = ExtResource("3_tool")
+grip_position = Vector3(0, -0.33, 0)
+rest_position = Vector3(0.3, -0.32, -0.38)
+rest_rotation_degrees = Vector3(-30, 0, 8)
+windup_position = Vector3(0.34, -0.28, -0.3)
+windup_rotation_degrees = Vector3(0, 30, -80)
+strike_position = Vector3(0, -0.32, -0.45)
+strike_rotation_degrees = Vector3(0, 160, -90)
+windup_time = 0.16
+strike_time = 0.14
+recover_time = 0.3
+reach = 2.4
+strike_point = Vector3(0, 0.3, 0)
+strike_radius = 0.1
+impact_impulse = 16.0
+max_launch_speed = 15.0
+swing_path_influence = 0.35
+damage = 15.0
+voxel_damage_radius = 0.2
+
+[resource]
+script = ExtResource("1_definition")
+display_name = "Wooden Bat"
+shape_type = 4
+parts = Array[ExtResource("2_part")]([SubResource("Part_barrel"), SubResource("Part_handle"), SubResource("Part_knob")])
+mass = 0.9
+angular_damp = 0.2
+impact_sound = 1
+material = SubResource("Material_ash")
+vox_model = "res://props/vox/wooden_bat.vox"
+vox_voxel_size = 0.015
+vox_origin = Vector3(-0.033, -0.44, -0.033)
+tool = SubResource("Tool_bat")

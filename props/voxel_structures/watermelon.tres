@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_77u3l"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="2_umer8"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="3_2mo4e"]
+[ext_resource type="Resource" path="res://props/voxel_materials/melon.tres" id="4_oap0n"]
+
+[resource]
+script = ExtResource("2_umer8")
+display_name = "Watermelon"
+spawn_category = "Destructible"
+voxel_size = 0.04
+anchor_mode = 1
+vox_file = "res://props/vox/watermelon.vox"
+vox_material = ExtResource("4_oap0n")

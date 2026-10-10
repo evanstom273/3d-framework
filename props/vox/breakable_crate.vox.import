@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dd5kc4tuhneto"
+path="res://.godot/imported/breakable_crate.vox-9ae682183981df1abd9dedeef7e3b15e.tres"
+
+[deps]
+
+source_file="res://props/vox/breakable_crate.vox"
+dest_files=["res://.godot/imported/breakable_crate.vox-9ae682183981df1abd9dedeef7e3b15e.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

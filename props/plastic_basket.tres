@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://b7q8ksrunor6s"]
+
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="1_definition"]
+[ext_resource type="Script" uid="uid://cuxj0nnyyq3n2" path="res://physics/physics_container_definition.gd" id="2_container"]
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="2_wgirw"]
+
+[sub_resource type="Resource" id="Container_basket"]
+script = ExtResource("2_container")
+outer_size = Vector3(0.5, 0.26, 0.38)
+
+[sub_resource type="StandardMaterial3D" id="Material_plastic"]
+albedo_color = Color(0.18, 0.52, 0.86, 1)
+roughness = 0.4
+
+[resource]
+script = ExtResource("1_definition")
+display_name = "Plastic Basket"
+mass = 1.2
+friction = 0.5
+bounce = 0.15
+impact_sound = 4
+material = SubResource("Material_plastic")
+vox_model = "res://props/vox/plastic_basket.vox"
+vox_origin = Vector3(-0.25, -0.13, -0.19)
+container = SubResource("Container_basket")

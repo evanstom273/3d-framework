@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://3ggj8vylxsci"
+path="res://.godot/imported/snowman.vox-22c559058f9fc9fc0a8c4358af07eda0.tres"
+
+[deps]
+
+source_file="res://props/vox/snowman.vox"
+dest_files=["res://.godot/imported/snowman.vox-22c559058f9fc9fc0a8c4358af07eda0.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

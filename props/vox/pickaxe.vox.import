@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://b22e3fiirvpd"
+path="res://.godot/imported/pickaxe.vox-78d0c1c3cb8f05f0b3d5bbaf1a1b793c.tres"
+
+[deps]
+
+source_file="res://props/vox/pickaxe.vox"
+dest_files=["res://.godot/imported/pickaxe.vox-78d0c1c3cb8f05f0b3d5bbaf1a1b793c.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

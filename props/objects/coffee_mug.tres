@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_ifion"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_77cud"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wweg1"]
+roughness = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_exej3"]
+albedo_color = Color(0.95, 0.95, 0.94, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_731e2"]
+script = ExtResource("1_ifion")
+shape_type = 2
+radius = 0.045
+height = 0.1
+material = SubResource("StandardMaterial3D_exej3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1xrn"]
+albedo_color = Color(0.95, 0.95, 0.94, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_ekuvs"]
+script = ExtResource("1_ifion")
+size = Vector3(0.02, 0.065, 0.025)
+position = Vector3(0.055, 0, 0)
+material = SubResource("StandardMaterial3D_p1xrn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ngit"]
+albedo_color = Color(0.3, 0.17, 0.08, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_e3htx"]
+script = ExtResource("1_ifion")
+shape_type = 2
+radius = 0.04
+height = 0.005
+position = Vector3(0, 0.05, 0)
+material = SubResource("StandardMaterial3D_8ngit")
+collides = false
+
+[resource]
+script = ExtResource("2_77cud")
+display_name = "Coffee Mug"
+shape_type = 4
+parts = Array[ExtResource("1_ifion")]([SubResource("Resource_731e2"), SubResource("Resource_ekuvs"), SubResource("Resource_e3htx")])
+mass = 0.35
+bounce = 0.1
+angular_damp = 0.15
+impact_sound = 3
+impact_damage_scale = 0.3
+material = SubResource("StandardMaterial3D_wweg1")
+vox_model = "res://props/vox/coffee_mug.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.045, -0.05, -0.045)

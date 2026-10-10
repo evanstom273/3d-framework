@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="1_jdnfr"]
+
+[resource]
+script = ExtResource("1_jdnfr")
+display_name = "Glass"
+color = Color(0.6862745, 0.8627451, 0.92156863, 1)
+strength = 1.5
+density = 2500.0
+friction = 0.4
+bounce = 0.1
+blunt_multiplier = 2.0
+sharp_multiplier = 2.0
+pierce_multiplier = 2.0
+impact_sound = 7
+rubble_fraction = 0.6

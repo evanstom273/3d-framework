@@ -1,0 +1,94 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_kiod8"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_issbj"]
+[ext_resource type="Script" path="res://physics/physics_tool_definition.gd" id="3_cejrl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13vqp"]
+albedo_color = Color(0.95, 0.95, 0.94, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_iyqke"]
+script = ExtResource("1_kiod8")
+shape_type = 2
+radius = 0.016
+height = 0.28
+material = SubResource("StandardMaterial3D_13vqp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_icrs6"]
+albedo_color = Color(0.75, 0.1, 0.1, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_3hay8"]
+script = ExtResource("1_kiod8")
+shape_type = 2
+radius = 0.01
+height = 0.1
+position = Vector3(0, 0.18, 0)
+material = SubResource("StandardMaterial3D_icrs6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e05ex"]
+albedo_color = Color(0.75, 0.1, 0.1, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_eewag"]
+script = ExtResource("1_kiod8")
+shape_type = 2
+radius = 0.14
+height = 0.02
+position = Vector3(0, 0.36, 0)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_e05ex")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3f8a"]
+albedo_color = Color(0.92, 0.92, 0.82, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_llas3"]
+script = ExtResource("1_kiod8")
+shape_type = 2
+radius = 0.12
+height = 0.024
+position = Vector3(0, 0.36, 0)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_q3f8a")
+collides = false
+
+[sub_resource type="Resource" id="Resource_q24sk"]
+script = ExtResource("3_cejrl")
+action_name = "Serve"
+grip_position = Vector3(0, -0.1, 0)
+rest_position = Vector3(0.3, -0.32, -0.38)
+rest_rotation_degrees = Vector3(-30, 0, 8)
+windup_position = Vector3(0.34, -0.28, -0.3)
+windup_rotation_degrees = Vector3(0, 30, -80)
+strike_position = Vector3(0, -0.32, -0.45)
+strike_rotation_degrees = Vector3(0, 160, -90)
+windup_time = 0.1
+strike_time = 0.1
+recover_time = 0.2
+cooldown = 0.05
+charge_time = 0.5
+impact_type = 1
+strike_point = Vector3(0, 0.36, 0)
+strike_radius = 0.15
+impact_impulse = 8.0
+max_launch_speed = 24.0
+swing_path_influence = 0.2
+loft_degrees = 35.0
+damage = 1.0
+voxel_damage_radius = 0.0
+
+[resource]
+script = ExtResource("2_issbj")
+display_name = "Tennis Racket"
+shape_type = 4
+parts = Array[ExtResource("1_kiod8")]([SubResource("Resource_iyqke"), SubResource("Resource_3hay8"), SubResource("Resource_eewag"), SubResource("Resource_llas3")])
+mass = 0.35
+bounce = 0.1
+angular_damp = 0.15
+impact_sound = 4
+vox_model = "res://props/vox/tennis_racket.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.14, -0.14, -0.016)
+tool = SubResource("Resource_q24sk")

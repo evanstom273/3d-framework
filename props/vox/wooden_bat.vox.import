@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dvnxo2kgbjt8g"
+path="res://.godot/imported/wooden_bat.vox-920ba498183aba21c7bac60d424a7dbd.tres"
+
+[deps]
+
+source_file="res://props/vox/wooden_bat.vox"
+dest_files=["res://.godot/imported/wooden_bat.vox-920ba498183aba21c7bac60d424a7dbd.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

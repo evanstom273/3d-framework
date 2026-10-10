@@ -1,0 +1,54 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://interactables/press_button.gd" id="1_button"]
+
+[sub_resource type="StandardMaterial3D" id="BaseMaterial"]
+albedo_color = Color(0.3, 0.3, 0.3, 1)
+
+[sub_resource type="StandardMaterial3D" id="ButtonMaterial"]
+albedo_color = Color(0.65, 0.12, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BaseMesh"]
+material = SubResource("BaseMaterial")
+size = Vector3(0.6, 1.1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BaseShape"]
+size = Vector3(0.6, 1.1, 0.5)
+
+[sub_resource type="CylinderMesh" id="ButtonMesh"]
+material = SubResource("ButtonMaterial")
+top_radius = 0.18
+bottom_radius = 0.18
+height = 0.12
+
+[sub_resource type="CylinderShape3D" id="ButtonShape"]
+radius = 0.18
+height = 0.12
+
+[node name="Button" type="Node3D"]
+script = ExtResource("1_button")
+interaction_name = "Button"
+animation_duration = 0.2
+
+[node name="Base" type="StaticBody3D" parent="."]
+collision_layer = 5
+collision_mask = 8
+
+[node name="Mesh" type="MeshInstance3D" parent="Base"]
+position = Vector3(0, 0.55, 0)
+mesh = SubResource("BaseMesh")
+
+[node name="Collision" type="CollisionShape3D" parent="Base"]
+position = Vector3(0, 0.55, 0)
+shape = SubResource("BaseShape")
+
+[node name="Plunger" type="AnimatableBody3D" parent="."]
+position = Vector3(0, 1.16, 0)
+collision_layer = 5
+collision_mask = 8
+
+[node name="Mesh" type="MeshInstance3D" parent="Plunger"]
+mesh = SubResource("ButtonMesh")
+
+[node name="Collision" type="CollisionShape3D" parent="Plunger"]
+shape = SubResource("ButtonShape")

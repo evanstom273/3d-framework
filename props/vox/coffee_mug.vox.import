@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://b3phgkhnwwdq2"
+path="res://.godot/imported/coffee_mug.vox-aee3a61e0e6f2992e1b5203a4aa42e2c.tres"
+
+[deps]
+
+source_file="res://props/vox/coffee_mug.vox"
+dest_files=["res://.godot/imported/coffee_mug.vox-aee3a61e0e6f2992e1b5203a4aa42e2c.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

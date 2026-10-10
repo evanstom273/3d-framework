@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://mvbufepqsx0a"
+path="res://.godot/imported/chair.vox-0a7e87170c04e36d2fa405d83a91101e.tres"
+
+[deps]
+
+source_file="res://props/vox/chair.vox"
+dest_files=["res://.godot/imported/chair.vox-0a7e87170c04e36d2fa405d83a91101e.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

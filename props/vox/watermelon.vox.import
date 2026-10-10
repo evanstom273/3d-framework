@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://tfj4mny5s3wa"
+path="res://.godot/imported/watermelon.vox-ab38efd8605ccec69d51850c6cb743e4.tres"
+
+[deps]
+
+source_file="res://props/vox/watermelon.vox"
+dest_files=["res://.godot/imported/watermelon.vox-ab38efd8605ccec69d51850c6cb743e4.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

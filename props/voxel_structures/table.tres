@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="1_structure"]
+[ext_resource type="Resource" path="res://props/voxel_materials/wood.tres" id="2_wood"]
+
+[resource]
+script = ExtResource("1_structure")
+display_name = "Table"
+anchor_mode = 1
+vox_file = "res://props/vox/table.vox"
+vox_material = ExtResource("2_wood")

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://brypfrr28ffgx"
+path="res://.godot/imported/wrecking_mallet.vox-dbbe0e9909eaf8615e0204300fce459d.tres"
+
+[deps]
+
+source_file="res://props/vox/wrecking_mallet.vox"
+dest_files=["res://.godot/imported/wrecking_mallet.vox-dbbe0e9909eaf8615e0204300fce459d.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

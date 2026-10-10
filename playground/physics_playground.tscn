@@ -1,0 +1,344 @@
+[gd_scene format=3 uid="uid://cxqeiqfi54s1k"]
+
+[ext_resource type="Script" uid="uid://ku8d6wd3hqxk" path="res://playground/physics_playground.gd" id="1_playground"]
+[ext_resource type="PackedScene" uid="uid://c8bo3i576tqx" path="res://player.tscn" id="2_player"]
+[ext_resource type="Texture2D" uid="uid://dxihk1cvm0bnm" path="res://addons/godot-prototype-texture/PNG/grid_512x512/grid_black_512x512.png" id="3_grid_black"]
+[ext_resource type="Texture2D" uid="uid://bkniuw3xoq5ww" path="res://addons/godot-prototype-texture/PNG/grid_512x512/grid_orange_512x512.png" id="4_grid_orange"]
+[ext_resource type="Texture2D" uid="uid://wbb5586u2vwy" path="res://addons/godot-prototype-texture/PNG/grid_512x512/grid_blue_512x512.png" id="5_grid_blue"]
+[ext_resource type="Texture2D" uid="uid://b87lep7xa3mfa" path="res://addons/godot-prototype-texture/PNG/grid_512x512/grid_white_512x512.png" id="6_grid_white"]
+[ext_resource type="Resource" uid="uid://dbr3v47gmxlsc" path="res://props/wooden_crate.tres" id="7_crate"]
+[ext_resource type="Resource" uid="uid://cwauchut3lose" path="res://props/rubber_ball.tres" id="8_ball"]
+[ext_resource type="Resource" uid="uid://dwqvkcxomlosi" path="res://props/metal_box.tres" id="9_metal"]
+[ext_resource type="Resource" uid="uid://biniont0chw41" path="res://props/cardboard_box.tres" id="10_cardboard"]
+[ext_resource type="Resource" uid="uid://b7egajs75uy25" path="res://props/cylinder.tres" id="11_cylinder"]
+[ext_resource type="Resource" uid="uid://iqjn0pwnssa" path="res://props/ball.tres" id="12_6v6lw"]
+[ext_resource type="Script" uid="uid://bn6n22yke0gpx" path="res://physics/physics_prop.gd" id="12_prop"]
+[ext_resource type="PackedScene" path="res://playground/tool_test_area.tscn" id="20_tool_area"]
+[ext_resource type="PackedScene" path="res://playground/voxel_test_area.tscn" id="21_voxel_area"]
+[ext_resource type="Script" uid="uid://ccu2ybbio4p4g" path="res://physics/voxels/voxel_body.gd" id="22_voxel_body"]
+[ext_resource type="Resource" path="res://props/voxel_structures/table.tres" id="23_table"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sky"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_main"]
+sky_material = SubResource("ProceduralSkyMaterial_sky")
+
+[sub_resource type="Environment" id="Environment_main"]
+background_mode = 2
+sky = SubResource("Sky_main")
+ambient_light_source = 3
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ground"]
+friction = 0.8
+
+[sub_resource type="BoxShape3D" id="Shape_floor"]
+size = Vector3(40, 1, 40)
+
+[sub_resource type="StandardMaterial3D" id="Material_floor"]
+albedo_texture = ExtResource("3_grid_black")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="Mesh_floor"]
+material = SubResource("Material_floor")
+size = Vector3(40, 1, 40)
+
+[sub_resource type="BoxShape3D" id="Shape_curb_x"]
+size = Vector3(41, 1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="Material_curb"]
+albedo_texture = ExtResource("6_grid_white")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="Mesh_curb_x"]
+material = SubResource("Material_curb")
+size = Vector3(41, 1, 0.5)
+
+[sub_resource type="BoxShape3D" id="Shape_curb_z"]
+size = Vector3(0.5, 1, 40)
+
+[sub_resource type="BoxMesh" id="Mesh_curb_z"]
+material = SubResource("Material_curb")
+size = Vector3(0.5, 1, 40)
+
+[sub_resource type="BoxShape3D" id="Shape_platform"]
+size = Vector3(4, 2.5, 4)
+
+[sub_resource type="StandardMaterial3D" id="Material_platform"]
+albedo_texture = ExtResource("5_grid_blue")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="Mesh_platform"]
+material = SubResource("Material_platform")
+size = Vector3(4, 2.5, 4)
+
+[sub_resource type="BoxShape3D" id="Shape_ramp"]
+size = Vector3(2, 0.3, 6.5)
+
+[sub_resource type="BoxMesh" id="Mesh_ramp"]
+material = SubResource("Material_platform")
+size = Vector3(2, 0.3, 6.5)
+
+[sub_resource type="BoxShape3D" id="Shape_wall"]
+size = Vector3(12, 4, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="Material_wall"]
+albedo_texture = ExtResource("4_grid_orange")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="Mesh_wall"]
+material = SubResource("Material_wall")
+size = Vector3(12, 4, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="Material_target_outer"]
+albedo_color = Color(0.95, 0.95, 0.95, 1)
+
+[sub_resource type="CylinderMesh" id="Mesh_target_outer"]
+material = SubResource("Material_target_outer")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.02
+
+[sub_resource type="StandardMaterial3D" id="Material_target_inner"]
+albedo_color = Color(0.8, 0.1, 0.1, 1)
+
+[sub_resource type="CylinderMesh" id="Mesh_target_inner"]
+material = SubResource("Material_target_inner")
+top_radius = 0.45
+bottom_radius = 0.45
+height = 0.02
+
+[node name="PhysicsPlayground" type="Node3D" unique_id=1223627486]
+script = ExtResource("1_playground")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=675593645]
+environment = SubResource("Environment_main")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2019214733]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=477576622]
+physics_material_override = SubResource("PhysicsMaterial_ground")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=2008723082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("Shape_floor")
+
+[node name="Mesh" type="MeshInstance3D" parent="Floor" unique_id=1542178025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("Mesh_floor")
+
+[node name="Curbs" type="StaticBody3D" parent="." unique_id=1478153700]
+physics_material_override = SubResource("PhysicsMaterial_ground")
+
+[node name="NorthShape" type="CollisionShape3D" parent="Curbs" unique_id=280508828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -20.25)
+shape = SubResource("Shape_curb_x")
+
+[node name="NorthMesh" type="MeshInstance3D" parent="Curbs" unique_id=229426740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -20.25)
+mesh = SubResource("Mesh_curb_x")
+
+[node name="SouthShape" type="CollisionShape3D" parent="Curbs" unique_id=1483005750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 20.25)
+shape = SubResource("Shape_curb_x")
+
+[node name="SouthMesh" type="MeshInstance3D" parent="Curbs" unique_id=94241409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 20.25)
+mesh = SubResource("Mesh_curb_x")
+
+[node name="EastShape" type="CollisionShape3D" parent="Curbs" unique_id=1444161291]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, 0.5, 0)
+shape = SubResource("Shape_curb_z")
+
+[node name="EastMesh" type="MeshInstance3D" parent="Curbs" unique_id=401217442]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, 0.5, 0)
+mesh = SubResource("Mesh_curb_z")
+
+[node name="WestShape" type="CollisionShape3D" parent="Curbs" unique_id=1443506412]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.25, 0.5, 0)
+shape = SubResource("Shape_curb_z")
+
+[node name="WestMesh" type="MeshInstance3D" parent="Curbs" unique_id=671045598]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.25, 0.5, 0)
+mesh = SubResource("Mesh_curb_z")
+
+[node name="TableLeft" type="RigidBody3D" parent="." unique_id=1598466800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.61, 0, 0)
+script = ExtResource("22_voxel_body")
+structure = ExtResource("23_table")
+
+[node name="TableRight" type="RigidBody3D" parent="." unique_id=1024659617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61, 0, 0)
+script = ExtResource("22_voxel_body")
+structure = ExtResource("23_table")
+
+[node name="RaisedPlatform" type="StaticBody3D" parent="." unique_id=455755933]
+physics_material_override = SubResource("PhysicsMaterial_ground")
+
+[node name="PlatformShape" type="CollisionShape3D" parent="RaisedPlatform" unique_id=608043689]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.25, -3)
+shape = SubResource("Shape_platform")
+
+[node name="PlatformMesh" type="MeshInstance3D" parent="RaisedPlatform" unique_id=2144357187]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.25, -3)
+mesh = SubResource("Mesh_platform")
+
+[node name="RampShape" type="CollisionShape3D" parent="RaisedPlatform" unique_id=460247710]
+transform = Transform3D(1, 0, 0, 0, 0.923077, -0.384615, 0, 0.384615, 0.923077, -7, 1.1115, 1.9423)
+shape = SubResource("Shape_ramp")
+
+[node name="RampMesh" type="MeshInstance3D" parent="RaisedPlatform" unique_id=2111283600]
+transform = Transform3D(1, 0, 0, 0, 0.923077, -0.384615, 0, 0.384615, 0.923077, -7, 1.1115, 1.9423)
+mesh = SubResource("Mesh_ramp")
+
+[node name="ThrowingWall" type="StaticBody3D" parent="." unique_id=2109139163]
+physics_material_override = SubResource("PhysicsMaterial_ground")
+
+[node name="WallShape" type="CollisionShape3D" parent="ThrowingWall" unique_id=703862729]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, -10)
+shape = SubResource("Shape_wall")
+
+[node name="WallMesh" type="MeshInstance3D" parent="ThrowingWall" unique_id=2109158272]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, -10)
+mesh = SubResource("Mesh_wall")
+
+[node name="TargetOuter" type="MeshInstance3D" parent="ThrowingWall" unique_id=1512519507]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 4, 1.8, -9.74)
+mesh = SubResource("Mesh_target_outer")
+
+[node name="TargetInner" type="MeshInstance3D" parent="ThrowingWall" unique_id=1894343175]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 4, 1.8, -9.725)
+mesh = SubResource("Mesh_target_inner")
+
+[node name="Props" type="Node3D" parent="." unique_id=1993044700]
+
+[node name="CrateOnTable" type="RigidBody3D" parent="Props" unique_id=1940037018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 1.105, 0)
+script = ExtResource("12_prop")
+definition = ExtResource("7_crate")
+
+[node name="CardboardOnTable" type="RigidBody3D" parent="Props" unique_id=691682456]
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 0.2, 0.985, 0.1)
+script = ExtResource("12_prop")
+definition = ExtResource("10_cardboard")
+
+[node name="CylinderOnTable" type="RigidBody3D" parent="Props" unique_id=145671065]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 1.105, -0.25)
+script = ExtResource("12_prop")
+definition = ExtResource("11_cylinder")
+
+[node name="StackedCrateBottom" type="RigidBody3D" parent="Props" unique_id=1577456452]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0.305, 0.4)
+script = ExtResource("12_prop")
+definition = ExtResource("7_crate")
+
+[node name="StackedCrateTop" type="RigidBody3D" parent="Props" unique_id=1416836747]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0.91, 0.4)
+script = ExtResource("12_prop")
+definition = ExtResource("7_crate")
+
+[node name="MetalBox" type="RigidBody3D" parent="Props" unique_id=1516158275]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0.255, 1)
+script = ExtResource("12_prop")
+definition = ExtResource("9_metal")
+
+[node name="CardboardFloor1" type="RigidBody3D" parent="Props" unique_id=446749048]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0.185, 2.6)
+script = ExtResource("12_prop")
+definition = ExtResource("10_cardboard")
+
+[node name="CardboardFloor2" type="RigidBody3D" parent="Props" unique_id=1798227428]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 1.6, 0.185, 2.8)
+script = ExtResource("12_prop")
+definition = ExtResource("10_cardboard")
+
+[node name="Ball1" type="RigidBody3D" parent="Props" unique_id=1410355977]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.155, 3)
+script = ExtResource("12_prop")
+definition = ExtResource("8_ball")
+
+[node name="Ball2" type="RigidBody3D" parent="Props" unique_id=967204880]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.81424844, 0.9608637, 0.24079525)
+script = ExtResource("12_prop")
+definition = ExtResource("12_6v6lw")
+
+[node name="CylinderStanding" type="RigidBody3D" parent="Props" unique_id=2028489037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0.305, 2.4)
+script = ExtResource("12_prop")
+definition = ExtResource("11_cylinder")
+
+[node name="CylinderLying" type="RigidBody3D" parent="Props" unique_id=1229354419]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, -3.6, 0.185, 3)
+script = ExtResource("12_prop")
+definition = ExtResource("11_cylinder")
+
+[node name="PlatformBall" type="RigidBody3D" parent="Props" unique_id=1342834691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2.655, -3)
+script = ExtResource("12_prop")
+definition = ExtResource("8_ball")
+
+[node name="PlatformCrate" type="RigidBody3D" parent="Props" unique_id=123682337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1, 2.805, -4)
+script = ExtResource("12_prop")
+definition = ExtResource("7_crate")
+
+[node name="PlatformCardboard" type="RigidBody3D" parent="Props" unique_id=1486378686]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9, 2.685, -2.4)
+script = ExtResource("12_prop")
+definition = ExtResource("10_cardboard")
+
+[node name="WallCrate" type="RigidBody3D" parent="Props" unique_id=1409572982]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.305, -7)
+script = ExtResource("12_prop")
+definition = ExtResource("7_crate")
+
+[node name="WallMetalBox" type="RigidBody3D" parent="Props" unique_id=1994712444]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.255, -7)
+script = ExtResource("12_prop")
+definition = ExtResource("9_metal")
+
+[node name="WallBall" type="RigidBody3D" parent="Props" unique_id=1531502178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3, 0.155, -6.5)
+script = ExtResource("12_prop")
+definition = ExtResource("8_ball")
+
+[node name="ToolArea" parent="." unique_id=232494761 instance=ExtResource("20_tool_area")]
+
+[node name="VoxelArea" parent="." unique_id=1602089977 instance=ExtResource("21_voxel_area")]
+
+[node name="Player" parent="." unique_id=403848203 instance=ExtResource("2_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 6.5)
+interaction_distance = 4.0
+
+[node name="Help" type="CanvasLayer" parent="." unique_id=460128295]
+
+[node name="Controls" type="Label" parent="Help" unique_id=1887249571]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -330.0
+offset_top = 8.0
+offset_right = -12.0
+offset_bottom = 150.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.85)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 13
+text = "E  pick up / drop
+LMB  throw (or use equipped tool)
+F  equip / unequip tool
+MMB + mouse  rotate (MMB + wheel: roll)
+Wheel  hold distance
+Alt  fine adjust
+R  reset props"
+horizontal_alignment = 2

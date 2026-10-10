@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bnvll74lywgk7"
+path="res://.godot/imported/pumpkin.vox-1cc6155fffc970862540c0e05f318e47.tres"
+
+[deps]
+
+source_file="res://props/vox/pumpkin.vox"
+dest_files=["res://.godot/imported/pumpkin.vox-1cc6155fffc970862540c0e05f318e47.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bc672w7v16nj7"
+path="res://.godot/imported/metal_box.vox-3bc2e5109feb865f400dc424ed69310a.tres"
+
+[deps]
+
+source_file="res://props/vox/metal_box.vox"
+dest_files=["res://.godot/imported/metal_box.vox-3bc2e5109feb865f400dc424ed69310a.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

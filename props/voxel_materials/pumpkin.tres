@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="1_dv3lh"]
+
+[resource]
+script = ExtResource("1_dv3lh")
+display_name = "Pumpkin"
+color = Color(0.92156863, 0.47058824, 0.11764706, 1)
+strength = 3.5
+density = 400.0
+friction = 0.7
+bounce = 0.1
+blunt_multiplier = 1.2
+sharp_multiplier = 2.0
+pierce_multiplier = 1.2
+impact_sound = 6
+rubble_fraction = 0.35

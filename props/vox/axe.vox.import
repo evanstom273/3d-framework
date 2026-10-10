@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://114bxjwnlpea"
+path="res://.godot/imported/axe.vox-e44f823d0b4d70e46cc5fd151697d1d8.tres"
+
+[deps]
+
+source_file="res://props/vox/axe.vox"
+dest_files=["res://.godot/imported/axe.vox-e44f823d0b4d70e46cc5fd151697d1d8.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

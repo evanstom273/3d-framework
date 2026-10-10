@@ -1,0 +1,103 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://bnl6hjllige1n"]
+
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="1_definition"]
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="2_part"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="3_tool"]
+
+[sub_resource type="StandardMaterial3D" id="Material_handle"]
+albedo_color = Color(0.68, 0.48, 0.28, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Part_handle"]
+script = ExtResource("2_part")
+shape_type = 2
+radius = 0.02
+height = 0.85
+material = SubResource("Material_handle")
+
+[sub_resource type="StandardMaterial3D" id="Material_grip"]
+albedo_color = Color(0.12, 0.12, 0.13, 1)
+roughness = 0.9
+
+[sub_resource type="Resource" id="Part_grip"]
+script = ExtResource("2_part")
+shape_type = 2
+radius = 0.024
+height = 0.22
+position = Vector3(0, -0.3, 0)
+material = SubResource("Material_grip")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="Material_steel"]
+albedo_color = Color(0.3, 0.31, 0.34, 1)
+metallic = 0.9
+roughness = 0.4
+
+[sub_resource type="Resource" id="Part_head"]
+script = ExtResource("2_part")
+size = Vector3(0.1, 0.1, 0.24)
+position = Vector3(0, 0.44, 0)
+material = SubResource("Material_steel")
+
+[sub_resource type="StandardMaterial3D" id="Material_face"]
+albedo_color = Color(0.62, 0.64, 0.68, 1)
+metallic = 0.9
+roughness = 0.25
+
+[sub_resource type="Resource" id="Part_face_front"]
+script = ExtResource("2_part")
+size = Vector3(0.104, 0.104, 0.012)
+position = Vector3(0, 0.44, -0.122)
+material = SubResource("Material_face")
+collides = false
+
+[sub_resource type="Resource" id="Part_face_back"]
+script = ExtResource("2_part")
+size = Vector3(0.104, 0.104, 0.012)
+position = Vector3(0, 0.44, 0.122)
+material = SubResource("Material_face")
+collides = false
+
+[sub_resource type="Resource" id="Tool_hammer"]
+script = ExtResource("3_tool")
+action_name = "Smash"
+grip_position = Vector3(0, -0.32, 0)
+equip_time = 0.35
+rest_position = Vector3(0.34, -0.45, -0.4)
+rest_rotation_degrees = Vector3(-22, 0, 10)
+windup_position = Vector3(0.24, -0.22, -0.3)
+windup_rotation_degrees = Vector3(70, 0, 8)
+strike_position = Vector3(0.16, -0.5, -0.5)
+strike_rotation_degrees = Vector3(-105, 0, 4)
+windup_time = 0.28
+strike_time = 0.14
+recover_time = 0.38
+cooldown = 0.15
+charge_time = 0.9
+min_charge_power = 0.35
+motion_strike_min_speed = 6.0
+motion_strike_cooldown = 0.35
+reach = 2.4
+impact_moment = 0.55
+strike_point = Vector3(0, 0.44, -0.12)
+strike_radius = 0.14
+impact_impulse = 45.0
+max_launch_speed = 9.0
+swing_path_influence = 0.6
+damage = 40.0
+voxel_damage_radius = 0.33
+
+[resource]
+script = ExtResource("1_definition")
+display_name = "Sledgehammer"
+shape_type = 4
+parts = Array[ExtResource("2_part")]([SubResource("Part_handle"), SubResource("Part_grip"), SubResource("Part_head"), SubResource("Part_face_front"), SubResource("Part_face_back")])
+mass = 4.5
+bounce = 0.05
+angular_damp = 0.2
+impact_sound = 2
+impact_damage_scale = 1.5
+vox_model = "res://props/vox/hammer.vox"
+vox_voxel_size = 0.012
+vox_origin = Vector3(-0.052, -0.425, -0.128)
+tool = SubResource("Tool_hammer")

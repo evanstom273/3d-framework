@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_isfai"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_ku3jj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4isl7"]
+metallic = 0.2
+roughness = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_48xf3"]
+albedo_color = Color(0.15, 0.2, 0.55, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_ex2g3"]
+script = ExtResource("1_isfai")
+shape_type = 1
+radius = 0.108
+height = 0.0
+material = SubResource("StandardMaterial3D_48xf3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vrpqa"]
+albedo_color = Color(0.08, 0.08, 0.09, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_epg5q"]
+script = ExtResource("1_isfai")
+shape_type = 1
+radius = 0.014
+height = 0.0
+position = Vector3(-0.02, 0.07, -0.08)
+material = SubResource("StandardMaterial3D_vrpqa")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nytg7"]
+albedo_color = Color(0.08, 0.08, 0.09, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_wo6f0"]
+script = ExtResource("1_isfai")
+shape_type = 1
+radius = 0.014
+height = 0.0
+position = Vector3(0.02, 0.07, -0.08)
+material = SubResource("StandardMaterial3D_nytg7")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lh82l"]
+albedo_color = Color(0.08, 0.08, 0.09, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_g14k3"]
+script = ExtResource("1_isfai")
+shape_type = 1
+radius = 0.016
+height = 0.0
+position = Vector3(0, 0.03, -0.1)
+material = SubResource("StandardMaterial3D_lh82l")
+collides = false
+
+[resource]
+script = ExtResource("2_ku3jj")
+display_name = "Bowling Ball"
+spawn_category = "Balls"
+shape_type = 4
+parts = Array[ExtResource("1_isfai")]([SubResource("Resource_ex2g3"), SubResource("Resource_epg5q"), SubResource("Resource_wo6f0"), SubResource("Resource_g14k3")])
+mass = 7.0
+friction = 0.3
+bounce = 0.05
+angular_damp = 0.15
+impact_sound = 3
+impact_damage_scale = 2.0
+material = SubResource("StandardMaterial3D_4isl7")
+vox_model = "res://props/vox/bowling_ball.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.108, -0.108, -0.116000004)

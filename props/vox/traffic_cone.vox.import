@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cqbsjafmsd3ut"
+path="res://.godot/imported/traffic_cone.vox-89e613d895da0c4694b94f6850c3489d.tres"
+
+[deps]
+
+source_file="res://props/vox/traffic_cone.vox"
+dest_files=["res://.godot/imported/traffic_cone.vox-89e613d895da0c4694b94f6850c3489d.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

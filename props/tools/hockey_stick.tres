@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_tm75m"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_y8l24"]
+[ext_resource type="Script" path="res://physics/physics_tool_definition.gd" id="3_4bhta"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ctj4j"]
+albedo_color = Color(0.8, 0.64, 0.42, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_qdn1d"]
+script = ExtResource("1_tm75m")
+shape_type = 2
+radius = 0.014
+height = 1.1
+material = SubResource("StandardMaterial3D_ctj4j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_syiyi"]
+albedo_color = Color(0.08, 0.08, 0.09, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_jx1fo"]
+script = ExtResource("1_tm75m")
+size = Vector3(0.02, 0.07, 0.22)
+position = Vector3(0, -0.57, -0.08)
+material = SubResource("StandardMaterial3D_syiyi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6mxf"]
+albedo_color = Color(0.08, 0.08, 0.09, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_8h670"]
+script = ExtResource("1_tm75m")
+shape_type = 2
+radius = 0.016
+height = 0.15
+position = Vector3(0, 0.48, 0)
+material = SubResource("StandardMaterial3D_c6mxf")
+collides = false
+
+[sub_resource type="Resource" id="Resource_ikwbn"]
+script = ExtResource("3_4bhta")
+action_name = "Slap"
+grip_position = Vector3(0, 0.45, 0)
+pitch_follow = 0.0
+rest_position = Vector3(0, -0.57660323, -0.32)
+rest_rotation_degrees = Vector3(20, 0, 0)
+windup_position = Vector3(0.18, -0.5366032, -0.26)
+windup_rotation_degrees = Vector3(20, 0, 110)
+strike_position = Vector3(-0.18, -0.5366032, -0.26)
+strike_rotation_degrees = Vector3(20, 0, -115)
+windup_time = 0.3
+strike_time = 0.13
+recover_time = 0.3
+charge_time = 0.8
+reach = 2.6
+impact_moment = 0.67
+impact_type = 1
+strike_point = Vector3(0, -0.57, -0.1)
+impact_impulse = 9.0
+max_launch_speed = 18.0
+aim_mode = 1
+swing_path_influence = 0.15
+loft_degrees = 4.0
+damage = 4.0
+voxel_damage_radius = 0.06
+
+[resource]
+script = ExtResource("2_y8l24")
+display_name = "Hockey Stick"
+shape_type = 4
+parts = Array[ExtResource("1_tm75m")]([SubResource("Resource_qdn1d"), SubResource("Resource_jx1fo"), SubResource("Resource_8h670")])
+mass = 0.6
+bounce = 0.1
+angular_damp = 0.15
+impact_sound = 1
+vox_model = "res://props/vox/hockey_stick.vox"
+vox_voxel_size = 0.015
+vox_origin = Vector3(-0.016, -0.605, -0.19)
+tool = SubResource("Resource_ikwbn")

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PhysicsFeel" format=3]
+
+[ext_resource type="Script" path="res://physics/feel/physics_feel.gd" id="1_feel"]
+
+[resource]
+script = ExtResource("1_feel")
+display_name = "Chaotic"
+impact_impulse_multiplier = 1.7
+angular_impulse_multiplier = 2.0
+held_responsiveness = 1.6
+throw_multiplier = 1.4
+debris_launch_multiplier = 2.2
+camera_shake_strength = 1.6
+min_exaggeration_impulse = 4.0

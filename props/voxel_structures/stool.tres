@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_0ahqt"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="2_ctddo"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="3_xuw25"]
+[ext_resource type="Resource" path="res://props/voxel_materials/wood.tres" id="4_jb1nf"]
+
+[resource]
+script = ExtResource("2_ctddo")
+display_name = "Stool"
+spawn_category = "Destructible"
+voxel_size = 0.05
+anchor_mode = 1
+vox_file = "res://props/vox/stool.vox"
+vox_material = ExtResource("4_jb1nf")

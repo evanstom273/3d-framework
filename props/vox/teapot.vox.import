@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bqnjmk2g81jd3"
+path="res://.godot/imported/teapot.vox-247d8ced3643c6241a2e39ee31a01831.tres"
+
+[deps]
+
+source_file="res://props/vox/teapot.vox"
+dest_files=["res://.godot/imported/teapot.vox-247d8ced3643c6241a2e39ee31a01831.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

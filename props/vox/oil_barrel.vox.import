@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cx4fphenykjr4"
+path="res://.godot/imported/oil_barrel.vox-84c77373f0a0a6db76061e91449b18f4.tres"
+
+[deps]
+
+source_file="res://props/vox/oil_barrel.vox"
+dest_files=["res://.godot/imported/oil_barrel.vox-84c77373f0a0a6db76061e91449b18f4.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

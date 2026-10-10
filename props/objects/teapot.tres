@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_of57s"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_a7045"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rm65o"]
+roughness = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d8chc"]
+albedo_color = Color(0.85, 0.9, 1, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_xnoyg"]
+script = ExtResource("1_of57s")
+shape_type = 1
+radius = 0.1
+height = 0.0
+material = SubResource("StandardMaterial3D_d8chc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4r4w"]
+albedo_color = Color(0.85, 0.9, 1, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_ccpaj"]
+script = ExtResource("1_of57s")
+shape_type = 2
+radius = 0.055
+height = 0.03
+position = Vector3(0, 0.09, 0)
+material = SubResource("StandardMaterial3D_q4r4w")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ohr3"]
+albedo_color = Color(0.3, 0.4, 0.8, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_snwvm"]
+script = ExtResource("1_of57s")
+shape_type = 1
+radius = 0.018
+height = 0.0
+position = Vector3(0, 0.115, 0)
+material = SubResource("StandardMaterial3D_2ohr3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_amsjn"]
+albedo_color = Color(0.85, 0.9, 1, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_yyvlo"]
+script = ExtResource("1_of57s")
+shape_type = 2
+radius = 0.016
+height = 0.11
+position = Vector3(0.11, 0.02, 0)
+rotation_degrees = Vector3(0, 0, -50)
+material = SubResource("StandardMaterial3D_amsjn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iarsl"]
+albedo_color = Color(0.85, 0.9, 1, 1)
+roughness = 0.8
+
+[sub_resource type="Resource" id="Resource_5qki6"]
+script = ExtResource("1_of57s")
+size = Vector3(0.02, 0.1, 0.03)
+position = Vector3(-0.11, 0.02, 0)
+material = SubResource("StandardMaterial3D_iarsl")
+
+[resource]
+script = ExtResource("2_a7045")
+display_name = "Teapot"
+shape_type = 4
+parts = Array[ExtResource("1_of57s")]([SubResource("Resource_xnoyg"), SubResource("Resource_ccpaj"), SubResource("Resource_snwvm"), SubResource("Resource_yyvlo"), SubResource("Resource_5qki6")])
+mass = 1.2
+bounce = 0.1
+angular_damp = 0.15
+impact_sound = 3
+impact_damage_scale = 0.4
+material = SubResource("StandardMaterial3D_rm65o")
+vox_model = "res://props/vox/teapot.vox"
+vox_voxel_size = 0.009000000000000001
+vox_origin = Vector3(-0.12, -0.1, -0.1)

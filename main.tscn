@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dwgsv0nfg0xur"]
+
+[ext_resource type="Texture2D" uid="uid://dxihk1cvm0bnm" path="res://addons/godot-prototype-texture/PNG/grid_512x512/grid_black_512x512.png" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://c8bo3i576tqx" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" path="res://interactables/door.tscn" id="2_door"]
+[ext_resource type="PackedScene" path="res://interactables/button.tscn" id="3_button"]
+[ext_resource type="PackedScene" uid="uid://01a3b1mncyxs" path="res://interactables/lever.tscn" id="4_lever"]
+[ext_resource type="PackedScene" path="res://interactables/window.tscn" id="5_window"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_h2yge"]
+sky_material = SubResource("ProceduralSkyMaterial_0xm2m")
+
+[sub_resource type="Environment" id="Environment_1bvp3"]
+background_mode = 2
+sky = SubResource("Sky_h2yge")
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
+albedo_texture = ExtResource("1_0xm2m")
+uv1_triplanar = true
+
+[node name="Node3D" type="Node3D" unique_id=2090846889]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1087606239]
+environment = SubResource("Environment_1bvp3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=625173096]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1101151229]
+use_collision = true
+size = Vector3(25, 1, 25)
+material = SubResource("StandardMaterial3D_h2yge")
+
+[node name="Player" parent="." unique_id=1745676424 instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6971834, 0)
+interaction_distance = 4.0
+
+[node name="Door" parent="." unique_id=547157874 instance=ExtResource("2_door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.5, -3)
+
+[node name="Button" parent="." unique_id=434637962 instance=ExtResource("3_button")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, -3)
+
+[node name="Lever" parent="." unique_id=2116985827 instance=ExtResource("4_lever")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -3)
+
+[node name="Window" parent="." unique_id=1096378055 instance=ExtResource("5_window")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.5, -3)

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bsnbstnntp04g"
+path="res://.godot/imported/trowel.vox-dd5fb248b7353b2f6809108bde375452.tres"
+
+[deps]
+
+source_file="res://props/vox/trowel.vox"
+dest_files=["res://.godot/imported/trowel.vox-dd5fb248b7353b2f6809108bde375452.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0
