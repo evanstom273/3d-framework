@@ -56,7 +56,8 @@ func get_contents_mass(depth: int = 0) -> float:
 func _physics_process(delta: float) -> void:
 	if _host == null or settings.carry_stabilisation <= 0.0:
 		return
-	if not (_host.has_method("is_held") and bool(_host.call("is_held"))):
+	var equipped_scoop: bool = settings.stabilise_when_equipped and _host is PhysicsProp and _host.hand_state == PhysicsProp.HandState.EQUIPPED
+	if not equipped_scoop and not (_host.has_method("is_held") and bool(_host.call("is_held"))):
 		return
 	var min_upright := cos(deg_to_rad(settings.stabilise_max_tilt))
 	var upright := _host.global_basis.y.normalized().dot(Vector3.UP)

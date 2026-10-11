@@ -1,5 +1,7 @@
 [gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
 
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/wood.tres" id="advanced_profile"]
+
 [ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_snaya"]
 [ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_27evr"]
 
@@ -69,6 +71,7 @@ collides = false
 
 [resource]
 script = ExtResource("2_27evr")
+tool_profile = ExtResource("advanced_profile")
 display_name = "Skittle"
 shape_type = 4
 parts = Array[ExtResource("1_snaya")]([SubResource("Resource_jxplh"), SubResource("Resource_2cfr8"), SubResource("Resource_r8hqh"), SubResource("Resource_72366"), SubResource("Resource_crrap")])

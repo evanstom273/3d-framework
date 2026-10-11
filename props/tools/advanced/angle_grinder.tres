@@ -1,0 +1,137 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://d4joqphhuhpqy"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_wxk84"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_nkdf8"]
+[ext_resource type="Script" uid="uid://dressmbhdwnel" path="res://physics/advanced/tool_action_definition.gd" id="3_ivrjl"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="4_mjk2m"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="5_m5ivi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qtqcd"]
+metallic = 0.25
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rrs86"]
+albedo_color = Color(0.1, 0.5, 0.55, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_ifaml"]
+script = ExtResource("1_wxk84")
+shape_type = 2
+radius = 0.034
+height = 0.26
+position = Vector3(0, 0, -0.08)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_rrs86")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0tec"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_oku5e"]
+script = ExtResource("1_wxk84")
+shape_type = 2
+radius = 0.026
+height = 0.05
+position = Vector3(0, 0, 0.07)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_y0tec")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6yi2s"]
+albedo_color = Color(0.18, 0.19, 0.21, 1)
+metallic = 0.5
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_xvflr"]
+script = ExtResource("1_wxk84")
+size = Vector3(0.07, 0.06, 0.07)
+position = Vector3(0, 0.005, -0.24)
+material = SubResource("StandardMaterial3D_6yi2s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_12bax"]
+albedo_color = Color(0.18, 0.19, 0.21, 1)
+metallic = 0.5
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_mccgq"]
+script = ExtResource("1_wxk84")
+size = Vector3(0.14, 0.012, 0.07)
+position = Vector3(0, -0.025, -0.22)
+material = SubResource("StandardMaterial3D_12bax")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l6ook"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.7
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_cl7hx"]
+script = ExtResource("1_wxk84")
+shape_type = 2
+radius = 0.065
+height = 0.006
+position = Vector3(0, -0.038, -0.27)
+material = SubResource("StandardMaterial3D_l6ook")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dfcgo"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_ock8e"]
+script = ExtResource("1_wxk84")
+shape_type = 2
+radius = 0.014
+height = 0.12
+position = Vector3(0.08, 0.005, -0.24)
+rotation_degrees = Vector3(0, 0, 90)
+material = SubResource("StandardMaterial3D_dfcgo")
+
+[sub_resource type="Resource" id="Resource_8wf3n"]
+script = ExtResource("3_ivrjl")
+operation = "grind"
+verb = "Grind"
+primary_hint = "[Hold LMB] Grind (cuts fasteners too)"
+secondary_hint = ""
+range_metres = 1.5
+rate = 26.0
+force = 40.0
+region_size = Vector3(0.12, 0.03, 0.12)
+nozzle = Vector3(0, -0.038, -0.27)
+moving_part_position = Vector3(0, -0.042, -0.27)
+contact_effect = 2
+loop_sound = 2
+sound_pitch = 1.15
+idles = true
+use_shake = 0.0025
+colors = PackedColorArray(0.8, 0.12, 0.1, 1, 0.15, 0.4, 0.8, 1, 0.9, 0.75, 0.12, 1, 0.9, 0.9, 0.85, 1)
+
+[sub_resource type="Resource" id="Resource_4ovnu"]
+script = ExtResource("4_mjk2m")
+advanced_action = SubResource("Resource_8wf3n")
+category = 1
+action_name = "Grind"
+equip_time = 0.3
+rest_position = Vector3(0.2, -0.3, -0.34)
+windup_position = Vector3(0.2, -0.3, -0.34)
+windup_rotation_degrees = Vector3(0, 0, 0)
+strike_position = Vector3(0.16, -0.27, -0.42)
+strike_rotation_degrees = Vector3(-10, 0, 0)
+charge_time = 0.0
+motion_strikes = false
+
+[resource]
+script = ExtResource("2_nkdf8")
+tool_profile = ExtResource("5_m5ivi")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Angle Grinder"
+shape_type = 4
+parts = Array[ExtResource("1_wxk84")]([SubResource("Resource_ifaml"), SubResource("Resource_oku5e"), SubResource("Resource_xvflr"), SubResource("Resource_mccgq"), SubResource("Resource_cl7hx"), SubResource("Resource_ock8e")])
+mass = 2.4
+friction = 0.7
+bounce = 0.05
+angular_damp = 0.25
+impact_sound = 2
+material = SubResource("StandardMaterial3D_qtqcd")
+vox_model = "res://props/vox/advanced/angle_grinder.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.07, -0.040999997, -0.335)
+tool = SubResource("Resource_4ovnu")

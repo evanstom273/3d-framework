@@ -83,6 +83,7 @@ var _camera_rest_position: Vector3
 var _camera_rest_roll: float
 var _click_interact_requested: bool = false
 var _crosshair_was_visible: bool = true
+var climber: RopeClimber
 
 
 func _ready() -> void:
@@ -109,6 +110,8 @@ func _ready() -> void:
 	_step_ray.exclude = [get_rid()]
 	interaction_ray.add_exception(self)
 	interaction_ray.target_position = Vector3(0.0, 0.0, -interaction_distance)
+	climber = RopeClimber.new()
+	add_child(climber)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
@@ -145,6 +148,9 @@ func _physics_process(delta: float) -> void:
 	if not gameplay_enabled:
 		return
 	var controls_active: bool = Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
+	if climber.is_climbing():
+		_climb(delta, controls_active)
+		return
 	var was_on_floor := is_on_floor()
 	_update_crouch(controls_active and Input.is_action_pressed("crouch"), delta)
 	_coyote_remaining = coyote_time if was_on_floor else maxf(0.0, _coyote_remaining - delta)
@@ -195,6 +201,24 @@ func _physics_process(delta: float) -> void:
 			max_landing_dip * landing_return_speed * exp(1.0)
 		)
 	_update_camera_motion(delta, controls_active, input_dir)
+	_update_interaction(controls_active)
+	manipulator.physics_update(delta)
+	tool_handler.physics_update(delta)
+	_update_charge_bar()
+
+
+## Movement while hanging on a rope: the climber swings and climbs the player.
+func _climb(delta: float, controls_active: bool) -> void:
+	var input_dir := Vector2.ZERO
+	if controls_active:
+		input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+		if Input.is_action_just_pressed("jump"):
+			climber.jump_off(-camera.global_transform.basis.z)
+		elif Input.is_action_just_pressed("crouch"):
+			climber.release()
+	if climber.is_climbing():
+		climber.physics_update(delta, input_dir, controls_active and Input.is_action_pressed("sprint"))
+	_update_camera_motion(delta, controls_active, Vector2.ZERO)
 	_update_interaction(controls_active)
 	manipulator.physics_update(delta)
 	tool_handler.physics_update(delta)
@@ -336,6 +360,13 @@ func _update_interaction(controls_active: bool) -> void:
 	if not controls_active:
 		interaction_menu.close_menu()
 		return
+	if climber.is_climbing():
+		interaction_menu.close_menu()
+		interaction_prompt.text = climber.prompt()
+		interaction_prompt.show()
+		if Input.is_action_just_pressed("interact"):
+			climber.release()
+		return
 	if tool_handler.is_equipped():
 		interaction_menu.close_menu()
 		interaction_prompt.text = tool_handler.get_prompt()
@@ -376,6 +407,18 @@ func _update_interaction(controls_active: bool) -> void:
 			manipulator.grab(grabbable)
 		elif Input.is_action_just_pressed("equip_tool"):
 			tool_handler.equip(grabbable)
+		return
+	# Ropes are thin, so they're found by aim rather than by the interaction ray.
+	var rope := climber.find_target(camera.global_position, -camera.global_transform.basis.z)
+	var ray_depth := INF
+	if interaction_ray.is_colliding():
+		ray_depth = camera.global_position.distance_to(interaction_ray.get_collision_point())
+	if not rope.is_empty() and rope["depth"] < ray_depth + 0.1:
+		interaction_menu.close_menu()
+		interaction_prompt.text = "[E] Climb %s" % rope["strand"].record.definition.display_name.to_lower()
+		interaction_prompt.show()
+		if Input.is_action_just_pressed("interact"):
+			climber.grab(rope)
 		return
 	var target := interaction_ray.get_collider() as Node
 	# The interaction script may live on the collider or its scene root.

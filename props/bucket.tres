@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="1_definition"]
 [ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="2_at88w"]
 [ext_resource type="Script" uid="uid://cuxj0nnyyq3n2" path="res://physics/physics_container_definition.gd" id="2_container"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="advanced_profile"]
 
 [sub_resource type="Resource" id="Container_bucket"]
 script = ExtResource("2_container")
@@ -19,6 +20,8 @@ roughness = 0.45
 
 [resource]
 script = ExtResource("1_definition")
+tool_profile = ExtResource("advanced_profile")
+equipped_collision_parts = PackedInt32Array()
 display_name = "Bucket"
 friction = 0.5
 bounce = 0.1

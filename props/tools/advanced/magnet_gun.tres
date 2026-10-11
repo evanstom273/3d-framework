@@ -1,0 +1,181 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://dx6vhp1j3abal"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_fkw6l"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_pjhed"]
+[ext_resource type="Script" uid="uid://dressmbhdwnel" path="res://physics/advanced/tool_action_definition.gd" id="3_xj148"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="4_0a37g"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="5_yocma"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n42k6"]
+metallic = 0.25
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5jv6y"]
+albedo_color = Color(0.18, 0.19, 0.21, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_32j0h"]
+script = ExtResource("1_fkw6l")
+size = Vector3(0.034, 0.11, 0.045)
+position = Vector3(0, -0.02, 0.005)
+rotation_degrees = Vector3(-14, 0, 0)
+material = SubResource("StandardMaterial3D_5jv6y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13ka6"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_7t12v"]
+script = ExtResource("1_fkw6l")
+size = Vector3(0.012, 0.035, 0.016)
+position = Vector3(0, 0, -0.035)
+material = SubResource("StandardMaterial3D_13ka6")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rm4y"]
+albedo_color = Color(0.92, 0.92, 0.9, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_go8q8"]
+script = ExtResource("1_fkw6l")
+size = Vector3(0.07, 0.075, 0.2)
+position = Vector3(0, 0.07, -0.05)
+material = SubResource("StandardMaterial3D_5rm4y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyk1u"]
+albedo_color = Color(0.8, 0.08, 0.06, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_f03ef"]
+script = ExtResource("1_fkw6l")
+size = Vector3(0.025, 0.025, 0.11)
+position = Vector3(-0.04, 0.07, -0.2)
+material = SubResource("StandardMaterial3D_oyk1u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4hggi"]
+albedo_color = Color(0.8, 0.08, 0.06, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_5bhgx"]
+script = ExtResource("1_fkw6l")
+size = Vector3(0.025, 0.025, 0.11)
+position = Vector3(0.04, 0.07, -0.2)
+material = SubResource("StandardMaterial3D_4hggi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4xbjs"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.9
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_yxbls"]
+script = ExtResource("1_fkw6l")
+size = Vector3(0.027, 0.027, 0.025)
+position = Vector3(-0.04, 0.07, -0.265)
+material = SubResource("StandardMaterial3D_4xbjs")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8k8s"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.9
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_hbvh8"]
+script = ExtResource("1_fkw6l")
+size = Vector3(0.027, 0.027, 0.025)
+position = Vector3(0.04, 0.07, -0.265)
+material = SubResource("StandardMaterial3D_v8k8s")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6nsdo"]
+albedo_color = Color(0.78, 0.45, 0.25, 1)
+metallic = 0.8
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_7umtv"]
+script = ExtResource("1_fkw6l")
+shape_type = 2
+radius = 0.042
+height = 0.012
+position = Vector3(0, 0.07, 0)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_6nsdo")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0mf3"]
+albedo_color = Color(0.78, 0.45, 0.25, 1)
+metallic = 0.8
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_dillh"]
+script = ExtResource("1_fkw6l")
+shape_type = 2
+radius = 0.042
+height = 0.012
+position = Vector3(0, 0.07, -0.04)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_y0mf3")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avxuv"]
+albedo_color = Color(0.78, 0.45, 0.25, 1)
+metallic = 0.8
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_kea6g"]
+script = ExtResource("1_fkw6l")
+shape_type = 2
+radius = 0.042
+height = 0.012
+position = Vector3(0, 0.07, -0.08)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_avxuv")
+collides = false
+
+[sub_resource type="Resource" id="Resource_a870d"]
+script = ExtResource("3_xj148")
+operation = "magnet"
+verb = "Magnet"
+primary_hint = "[Hold LMB] Pull magnetic metal"
+secondary_hint = ""
+range_metres = 6.0
+force = 260.0
+cone_degrees = 12.0
+nozzle = Vector3(0, 0.07, -0.28)
+moving_part_position = Vector3(0, 0.07, -0.28)
+effect = 11
+effect_color = Color(0.65, 0.45, 1, 1)
+loop_sound = 6
+light_color = Color(0.6, 0.4, 1, 1)
+colors = PackedColorArray(0.8, 0.12, 0.1, 1, 0.15, 0.4, 0.8, 1, 0.9, 0.75, 0.12, 1, 0.9, 0.9, 0.85, 1)
+
+[sub_resource type="Resource" id="Resource_hsolk"]
+script = ExtResource("4_0a37g")
+advanced_action = SubResource("Resource_a870d")
+category = 1
+action_name = "Magnet"
+equip_time = 0.3
+rest_position = Vector3(0.2, -0.24, -0.36)
+windup_position = Vector3(0.2, -0.24, -0.36)
+windup_rotation_degrees = Vector3(0, 0, 0)
+strike_position = Vector3(0.17, -0.21, -0.42)
+strike_rotation_degrees = Vector3(-3, 0, 0)
+charge_time = 0.0
+motion_strikes = false
+
+[resource]
+script = ExtResource("2_pjhed")
+tool_profile = ExtResource("5_yocma")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Magnet Gun"
+shape_type = 4
+parts = Array[ExtResource("1_fkw6l")]([SubResource("Resource_32j0h"), SubResource("Resource_7t12v"), SubResource("Resource_go8q8"), SubResource("Resource_f03ef"), SubResource("Resource_5bhgx"), SubResource("Resource_yxbls"), SubResource("Resource_hbvh8"), SubResource("Resource_7umtv"), SubResource("Resource_dillh"), SubResource("Resource_kea6g")])
+mass = 3.0
+friction = 0.7
+bounce = 0.05
+angular_damp = 0.25
+impact_sound = 2
+material = SubResource("StandardMaterial3D_n42k6")
+vox_model = "res://props/vox/advanced/magnet_gun.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.0535, -0.078809515, -0.27749997)
+tool = SubResource("Resource_hsolk")

@@ -75,6 +75,8 @@ const THROW_SPIN := 3.0
 
 ## Set while the hand is busy with something else, such as an equipped tool.
 var locked: bool = false
+var _tool_control: bool = false
+var _tool_saved: Vector3
 
 var _holder: CollisionObject3D
 var _body: RigidBody3D
@@ -162,6 +164,8 @@ func is_too_heavy(body: RigidBody3D) -> bool:
 
 ## The body's mass plus anything it carries, e.g. a container's contents.
 func get_carried_mass(body: RigidBody3D) -> float:
+	var world := ContraptionWorld.find(body)
+	if world != null: return world.assembly_mass(body)
 	var provider := _find_provider(body)
 	if provider != null and provider.has_method("get_carried_mass"):
 		return float(provider.call("get_carried_mass"))
@@ -197,8 +201,10 @@ func get_hold_prompt(extra_hint: String = "") -> String:
 
 
 func can_grab(body: RigidBody3D) -> bool:
-	if locked or camera == null or body == null or is_holding() or body.freeze or is_too_heavy(body):
+	if (locked and not _tool_control) or camera == null or body == null or is_holding() or body.freeze or is_too_heavy(body):
 		return false
+	var world := ContraptionWorld.find(body)
+	if world != null and world.anchored(body): return false
 	# Lifting the body you are standing on would pull it out from under you.
 	var character := _holder as CharacterBody3D
 	if character != null and character.is_on_floor():
@@ -212,6 +218,8 @@ func can_grab(body: RigidBody3D) -> bool:
 func grab(body: RigidBody3D) -> bool:
 	if not can_grab(body):
 		return false
+	var world := ContraptionWorld.find(body)
+	if world != null: world.detach_suction(body)
 	_body = body
 	_provider = _find_provider(body)
 	_lingering.erase(body)
@@ -394,7 +402,28 @@ func _steer_linear(error: Vector3, target_velocity: Vector3, delta: float) -> vo
 	# Pre-cancel the gravity the solver adds this step; it is paid from the force budget.
 	var change := desired - _body.linear_velocity - _body.get_gravity() * _body.gravity_scale * delta
 	var max_acceleration := minf(max_carry_force / _carried_mass, max_carry_acceleration * response)
-	_body.linear_velocity += change.limit_length(max_acceleration * delta)
+	var world := ContraptionWorld.find(_body)
+	if world != null and world.members(_body).size() > 1:
+		_body.apply_central_impulse(change.limit_length(max_acceleration * delta) * _carried_mass)
+	else:
+		_body.linear_velocity += change.limit_length(max_acceleration * delta)
+
+
+func begin_tool_control(body: RigidBody3D, reach: float, mass_limit: float, force: float) -> bool:
+	if not _tool_control:
+		_tool_saved = Vector3(max_hold_distance, max_carry_mass, max_carry_force)
+	_tool_control = true
+	max_hold_distance = reach; max_carry_mass = mass_limit; max_carry_force = force
+	if grab(body): return true
+	end_tool_control()
+	return false
+
+
+func end_tool_control() -> void:
+	if not _tool_control: return
+	release()
+	max_hold_distance = _tool_saved.x; max_carry_mass = _tool_saved.y; max_carry_force = _tool_saved.z
+	_tool_control = false
 
 
 func _steer_angular(delta: float) -> void:

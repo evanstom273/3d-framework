@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ConnectionDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/advanced/connection_definition.gd" id="1_at6lh"]
+
+[resource]
+script = ExtResource("1_at6lh")
+display_name = "Spring"
+kind = 6
+strength = 2000.0
+torque_resistance = 200.0
+removal_resistance = 35.77708763999664
+compliance = 0.004
+color = Color(0.57, 0.6, 0.62, 1)

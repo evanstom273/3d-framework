@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ConnectionDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/advanced/connection_definition.gd" id="1_rbi4h"]
+
+[resource]
+script = ExtResource("1_rbi4h")
+display_name = "Hinge"
+kind = 1
+strength = 1800.0
+torque_resistance = 180.0
+removal_resistance = 33.941125496954285

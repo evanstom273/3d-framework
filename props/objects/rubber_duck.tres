@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_xql2q"]
 [ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_takac"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/plastic.tres" id="advanced_profile"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rlpr"]
 roughness = 0.35
@@ -67,6 +68,8 @@ collides = false
 
 [resource]
 script = ExtResource("2_takac")
+tool_profile = ExtResource("advanced_profile")
+equipped_collision_parts = PackedInt32Array()
 display_name = "Rubber Duck"
 shape_type = 4
 parts = Array[ExtResource("1_xql2q")]([SubResource("Resource_2lk86"), SubResource("Resource_kaaj8"), SubResource("Resource_lofrl"), SubResource("Resource_2d0y4"), SubResource("Resource_xeo4h")])

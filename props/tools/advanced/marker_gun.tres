@@ -1,0 +1,108 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://dr2rngj5bturn"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_pnlil"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_a7rwh"]
+[ext_resource type="Script" uid="uid://dressmbhdwnel" path="res://physics/advanced/tool_action_definition.gd" id="3_xt660"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="4_bh4ch"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="5_xl7rc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rlfww"]
+metallic = 0.25
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gys7a"]
+albedo_color = Color(0.18, 0.19, 0.21, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_41lyb"]
+script = ExtResource("1_pnlil")
+size = Vector3(0.034, 0.11, 0.045)
+position = Vector3(0, -0.02, 0.005)
+rotation_degrees = Vector3(-14, 0, 0)
+material = SubResource("StandardMaterial3D_gys7a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0gsc"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_2yc2q"]
+script = ExtResource("1_pnlil")
+size = Vector3(0.012, 0.035, 0.016)
+position = Vector3(0, 0, -0.035)
+material = SubResource("StandardMaterial3D_c0gsc")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lbdyh"]
+albedo_color = Color(0.95, 0.78, 0.1, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_hchtv"]
+script = ExtResource("1_pnlil")
+size = Vector3(0.07, 0.05, 0.16)
+position = Vector3(0, 0.055, -0.04)
+material = SubResource("StandardMaterial3D_lbdyh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xyxb"]
+albedo_color = Color(0.2, 0.35, 0.25, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_b77nb"]
+script = ExtResource("1_pnlil")
+size = Vector3(0.045, 0.004, 0.045)
+position = Vector3(0, 0.082, 0)
+material = SubResource("StandardMaterial3D_2xyxb")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p2qxp"]
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_5hq80"]
+script = ExtResource("1_pnlil")
+size = Vector3(0.04, 0.008, 0.03)
+position = Vector3(0, 0.05, -0.13)
+material = SubResource("StandardMaterial3D_p2qxp")
+collides = false
+
+[sub_resource type="Resource" id="Resource_5451x"]
+script = ExtResource("3_xt660")
+operation = "marker"
+verb = "Mark"
+range_metres = 4.0
+nozzle = Vector3(0, 0.05, -0.145)
+moving_part_position = Vector3(0, 0.05, -0.145)
+effect_color = Color(1, 0.85, 0.1, 1)
+shot_sound = 1
+shot_kick = 0.15
+colors = PackedColorArray(0.8, 0.12, 0.1, 1, 0.15, 0.4, 0.8, 1, 0.9, 0.75, 0.12, 1, 0.9, 0.9, 0.85, 1)
+
+[sub_resource type="Resource" id="Resource_pv2n6"]
+script = ExtResource("4_bh4ch")
+advanced_action = SubResource("Resource_5451x")
+category = 1
+action_name = "Mark"
+equip_time = 0.3
+rest_position = Vector3(0.2, -0.24, -0.36)
+windup_position = Vector3(0.2, -0.24, -0.36)
+windup_rotation_degrees = Vector3(0, 0, 0)
+strike_position = Vector3(0.17, -0.21, -0.42)
+strike_rotation_degrees = Vector3(-3, 0, 0)
+charge_time = 0.0
+motion_strikes = false
+
+[resource]
+script = ExtResource("2_a7rwh")
+tool_profile = ExtResource("5_xl7rc")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Marker / Label Gun"
+shape_type = 4
+parts = Array[ExtResource("1_pnlil")]([SubResource("Resource_41lyb"), SubResource("Resource_2yc2q"), SubResource("Resource_hchtv"), SubResource("Resource_b77nb"), SubResource("Resource_5hq80")])
+mass = 0.8
+friction = 0.7
+bounce = 0.05
+angular_damp = 0.25
+impact_sound = 4
+material = SubResource("StandardMaterial3D_rlfww")
+vox_model = "res://props/vox/advanced/marker_gun.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.035, -0.078809515, -0.145)
+tool = SubResource("Resource_pv2n6")

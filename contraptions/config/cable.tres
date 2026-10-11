@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ConnectionDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/advanced/connection_definition.gd" id="1_wt5tr"]
+
+[resource]
+script = ExtResource("1_wt5tr")
+display_name = "Cable"
+kind = 5
+strength = 5000.0
+torque_resistance = 500.0
+removal_resistance = 56.568542494923804
+compliance = 5e-06
+strand_mass_per_metre = 0.3
+color = Color(0.2, 0.2, 0.22, 1)

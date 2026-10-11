@@ -1,0 +1,150 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://c0cl8n3of1fyg"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_84ygo"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_8a2oh"]
+[ext_resource type="Script" uid="uid://dressmbhdwnel" path="res://physics/advanced/tool_action_definition.gd" id="3_886i3"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="4_6bmi0"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="5_ksxt0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fhux6"]
+metallic = 0.25
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4vrh"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_tn8qu"]
+script = ExtResource("1_84ygo")
+size = Vector3(0.03, 0.015, 0.13)
+position = Vector3(0, 0.01, 0.02)
+material = SubResource("StandardMaterial3D_s4vrh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6or4"]
+albedo_color = Color(0.18, 0.19, 0.21, 1)
+metallic = 0.6
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_00vr8"]
+script = ExtResource("1_84ygo")
+size = Vector3(0.035, 0.05, 0.035)
+position = Vector3(0, -0.025, 0)
+material = SubResource("StandardMaterial3D_b6or4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ostc6"]
+albedo_color = Color(0.8, 0.08, 0.06, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_gdnbr"]
+script = ExtResource("1_84ygo")
+shape_type = 2
+radius = 0.07
+height = 0.38
+position = Vector3(0, -0.24, 0)
+material = SubResource("StandardMaterial3D_ostc6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vf1uc"]
+albedo_color = Color(0.95, 0.95, 0.92, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_wnvj2"]
+script = ExtResource("1_84ygo")
+shape_type = 2
+radius = 0.071
+height = 0.09
+position = Vector3(0, -0.26, 0)
+material = SubResource("StandardMaterial3D_vf1uc")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6tl8u"]
+albedo_color = Color(0.95, 0.95, 0.95, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_63fwf"]
+script = ExtResource("1_84ygo")
+shape_type = 2
+radius = 0.012
+height = 0.008
+position = Vector3(0.03, -0.03, -0.02)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_6tl8u")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5rs8"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_mnkem"]
+script = ExtResource("1_84ygo")
+shape_type = 2
+radius = 0.01
+height = 0.3
+position = Vector3(0.06, -0.03, -0.15)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_s5rs8")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7lbph"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_2r2ig"]
+script = ExtResource("1_84ygo")
+shape_type = 2
+radius = 0.024
+height = 0.1
+position = Vector3(0.06, -0.03, -0.33)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_7lbph")
+
+[sub_resource type="Resource" id="Resource_vk8by"]
+script = ExtResource("3_886i3")
+operation = "extinguish"
+verb = "Spray"
+primary_hint = "[Hold LMB] Spray (cools and pushes light things)"
+secondary_hint = ""
+range_metres = 4.5
+rate = 3.0
+force = 70.0
+cone_degrees = 18.0
+nozzle = Vector3(0.06, -0.03, -0.39)
+moving_part_position = Vector3(0.06, -0.03, -0.39)
+effect = 4
+contact_effect = 4
+loop_sound = 3
+sound_pitch = 0.9
+sound_volume_db = -6.0
+use_shake = 0.002
+colors = PackedColorArray(0.8, 0.12, 0.1, 1, 0.15, 0.4, 0.8, 1, 0.9, 0.75, 0.12, 1, 0.9, 0.9, 0.85, 1)
+
+[sub_resource type="Resource" id="Resource_11y8r"]
+script = ExtResource("4_6bmi0")
+advanced_action = SubResource("Resource_vk8by")
+category = 1
+action_name = "Spray"
+equip_time = 0.3
+rest_position = Vector3(0.24, -0.34, -0.4)
+windup_position = Vector3(0.24, -0.34, -0.4)
+windup_rotation_degrees = Vector3(0, 0, 0)
+strike_position = Vector3(0.2, -0.3, -0.46)
+strike_rotation_degrees = Vector3(-4, 0, 0)
+charge_time = 0.0
+motion_strikes = false
+
+[resource]
+script = ExtResource("2_8a2oh")
+tool_profile = ExtResource("5_ksxt0")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Fire Extinguisher"
+shape_type = 4
+parts = Array[ExtResource("1_84ygo")]([SubResource("Resource_tn8qu"), SubResource("Resource_00vr8"), SubResource("Resource_gdnbr"), SubResource("Resource_wnvj2"), SubResource("Resource_63fwf"), SubResource("Resource_mnkem"), SubResource("Resource_2r2ig")])
+mass = 6.0
+friction = 0.7
+bounce = 0.05
+angular_damp = 0.25
+impact_sound = 2
+material = SubResource("StandardMaterial3D_fhux6")
+vox_model = "res://props/vox/advanced/fire_extinguisher.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.071, -0.43, -0.38000003)
+tool = SubResource("Resource_11y8r")

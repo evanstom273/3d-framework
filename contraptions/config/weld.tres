@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ConnectionDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/advanced/connection_definition.gd" id="1_5jvit"]
+
+[resource]
+script = ExtResource("1_5jvit")
+display_name = "Weld"
+strength = 8000.0
+torque_resistance = 800.0
+removal_resistance = 71.55417527999327
+metal_only = true

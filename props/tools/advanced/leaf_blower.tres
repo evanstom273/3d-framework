@@ -1,0 +1,121 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://ca7vr8camtew1"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_6yi1d"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_ykhy8"]
+[ext_resource type="Script" uid="uid://dressmbhdwnel" path="res://physics/advanced/tool_action_definition.gd" id="3_vpne6"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="4_gxenh"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="5_x1t6f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djork"]
+metallic = 0.25
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b04b2"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_78tl7"]
+script = ExtResource("1_6yi1d")
+size = Vector3(0.03, 0.03, 0.18)
+position = Vector3(0, 0, 0.02)
+material = SubResource("StandardMaterial3D_b04b2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hq03c"]
+albedo_color = Color(0.85, 0.25, 0.1, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_cdmue"]
+script = ExtResource("1_6yi1d")
+size = Vector3(0.15, 0.17, 0.2)
+position = Vector3(0, -0.11, 0.04)
+material = SubResource("StandardMaterial3D_hq03c")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_la3nq"]
+albedo_color = Color(0.18, 0.19, 0.21, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_1uog5"]
+script = ExtResource("1_6yi1d")
+shape_type = 2
+radius = 0.1
+height = 0.09
+position = Vector3(0.1, -0.14, 0.03)
+rotation_degrees = Vector3(0, 0, 90)
+material = SubResource("StandardMaterial3D_la3nq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_138uc"]
+albedo_color = Color(0.85, 0.25, 0.1, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_lgla0"]
+script = ExtResource("1_6yi1d")
+shape_type = 2
+radius = 0.04
+height = 0.55
+position = Vector3(0, -0.16, -0.3)
+rotation_degrees = Vector3(80, 0, 0)
+material = SubResource("StandardMaterial3D_138uc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_siwb5"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_o1l46"]
+script = ExtResource("1_6yi1d")
+shape_type = 2
+radius = 0.045
+height = 0.04
+position = Vector3(0, -0.205, -0.58)
+rotation_degrees = Vector3(80, 0, 0)
+material = SubResource("StandardMaterial3D_siwb5")
+
+[sub_resource type="Resource" id="Resource_u5wmw"]
+script = ExtResource("3_vpne6")
+operation = "blow"
+verb = "Blow"
+primary_hint = "[Hold LMB] Blow"
+secondary_hint = ""
+range_metres = 6.0
+force = 260.0
+cone_degrees = 14.0
+nozzle = Vector3(0, -0.21, -0.61)
+moving_part_position = Vector3(0, -0.21, -0.61)
+effect = 5
+loop_sound = 5
+sound_pitch = 0.9
+sound_volume_db = -6.0
+idles = true
+use_shake = 0.003
+colors = PackedColorArray(0.8, 0.12, 0.1, 1, 0.15, 0.4, 0.8, 1, 0.9, 0.75, 0.12, 1, 0.9, 0.9, 0.85, 1)
+
+[sub_resource type="Resource" id="Resource_m6k27"]
+script = ExtResource("4_gxenh")
+advanced_action = SubResource("Resource_u5wmw")
+category = 1
+action_name = "Blow"
+equip_time = 0.3
+rest_position = Vector3(0.24, -0.3, -0.2)
+windup_position = Vector3(0.24, -0.3, -0.2)
+windup_rotation_degrees = Vector3(0, 0, 0)
+strike_position = Vector3(0.21, -0.27, -0.26)
+strike_rotation_degrees = Vector3(-5, 0, 0)
+charge_time = 0.0
+motion_strikes = false
+
+[resource]
+script = ExtResource("2_ykhy8")
+tool_profile = ExtResource("5_x1t6f")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Leaf Blower"
+shape_type = 4
+parts = Array[ExtResource("1_6yi1d")]([SubResource("Resource_78tl7"), SubResource("Resource_cdmue"), SubResource("Resource_1uog5"), SubResource("Resource_lgla0"), SubResource("Resource_o1l46")])
+mass = 4.5
+friction = 0.7
+bounce = 0.05
+angular_damp = 0.25
+impact_sound = 2
+material = SubResource("StandardMaterial3D_djork")
+vox_model = "res://props/vox/advanced/leaf_blower.vox"
+vox_voxel_size = 0.009
+vox_origin = Vector3(-0.075, -0.25278932, -0.6075103)
+tool = SubResource("Resource_m6k27")

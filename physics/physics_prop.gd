@@ -51,6 +51,7 @@ func _ready() -> void:
 
 
 func can_be_grabbed() -> bool:
+	if _uses_contraption_menu(): return false
 	return definition != null and definition.grabbable and not freeze
 
 
@@ -120,6 +121,7 @@ func reset_to_spawn() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if get_meta(&"vacuum_stored", false): return
 	if global_position.y < respawn_below_y and hand_state == HandState.WORLD:
 		reset_to_spawn()
 
@@ -181,3 +183,53 @@ func _get_configuration_warnings() -> PackedStringArray:
 	if definition == null:
 		return ["Assign a PhysicsObjectDefinition to build this prop."]
 	return []
+
+
+func set_equipped_collisions(equipped_now: bool) -> void:
+	if definition == null or definition.equipped_collision_parts.is_empty(): return
+	var index := 0
+	for node in _built:
+		if node is CollisionShape3D:
+			node.disabled = equipped_now and not definition.equipped_collision_parts.has(index)
+			index += 1
+	if equipped_now:
+		collision_layer = 16
+		collision_mask = 16
+
+
+signal interaction_actions_changed
+
+func _uses_contraption_menu() -> bool:
+	if Engine.is_editor_hint() or definition == null: return false
+	var world := ContraptionWorld.find(self)
+	return definition.contraption_component in ["pulley", "plunger"] or (world != null and world.attached(self))
+
+func can_interact() -> bool:
+	return _uses_contraption_menu()
+
+func get_interaction_prompt() -> String:
+	return get_grab_name()
+
+func get_interaction_actions() -> Array[Dictionary]:
+	if not _uses_contraption_menu(): return []
+	var world := ContraptionWorld.find(self)
+	var movable := not freeze and (world == null or not world.anchored(self))
+	var actions: Array[Dictionary] = [{"id": &"pickup", "label": "Pick up assembly" if world != null and world.attached(self) else "Pick up", "enabled": movable and (world.assembly_mass(self) if world != null else mass) <= 80}]
+	if definition.contraption_component == "pulley":
+		actions.append({"id": &"unroute", "label": "Release routed strands", "enabled": world != null})
+	return actions
+
+func interact(actor: Node) -> void:
+	actor.call("open_interaction_menu", self)
+
+func perform_interaction_action(id: StringName, actor: Node) -> void:
+	var world := ContraptionWorld.find(self)
+	if id == &"pickup":
+		var manipulator := actor.get_node_or_null("ObjectManipulator") as ObjectManipulator
+		if manipulator != null: manipulator.grab(self)
+	elif id == &"unroute" and world != null:
+		for record in world.connections.duplicate():
+			if record.strand != null:
+				for guide in record.strand.guides:
+					if guide.body() == self: world.remove(record); break
+	interaction_actions_changed.emit()

@@ -1,5 +1,7 @@
 [gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
 
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="advanced_profile"]
+
 [ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_fnhjn"]
 [ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_hux58"]
 [ext_resource type="Script" path="res://physics/physics_tool_definition.gd" id="3_515gs"]
@@ -84,6 +86,7 @@ voxel_damage_radius = 0.5
 
 [resource]
 script = ExtResource("2_hux58")
+tool_profile = ExtResource("advanced_profile")
 display_name = "Wrecking Mallet"
 shape_type = 4
 parts = Array[ExtResource("1_fnhjn")]([SubResource("Resource_bputj"), SubResource("Resource_d4pao"), SubResource("Resource_turjw"), SubResource("Resource_k7w5s")])

@@ -3,12 +3,15 @@
 [ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="1_definition"]
 [ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="2_3i5of"]
 [ext_resource type="PackedScene" path="res://props/details/cardboard_box_details.tscn" id="2_details"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/soft.tres" id="advanced_profile"]
 
 [sub_resource type="StandardMaterial3D" id="Material_cardboard"]
 albedo_color = Color(0.74, 0.58, 0.38, 1)
 
 [resource]
 script = ExtResource("1_definition")
+tool_profile = ExtResource("advanced_profile")
+equipped_collision_parts = PackedInt32Array()
 display_name = "Cardboard Box"
 size = Vector3(0.5, 0.36, 0.4)
 mass = 1.2

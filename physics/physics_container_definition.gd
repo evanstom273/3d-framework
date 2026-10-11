@@ -1,6 +1,7 @@
 @tool
 class_name PhysicsContainerDefinition
 extends Resource
+@export var stabilise_when_equipped: bool = false
 ## Makes a physics object a container. Contents are ordinary rigid bodies held in
 ## by real walls; this resource generates those walls (or, for CUSTOM, uses the
 ## object's own shapes) and describes the inner volume used to track contents.

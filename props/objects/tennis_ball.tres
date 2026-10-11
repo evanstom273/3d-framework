@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_xpw1y"]
 [ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_ufp7v"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/plastic.tres" id="advanced_profile"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o2wq8"]
 albedo_color = Color(0.8, 0.95, 0.2, 1)
@@ -29,6 +30,8 @@ collides = false
 
 [resource]
 script = ExtResource("2_ufp7v")
+tool_profile = ExtResource("advanced_profile")
+equipped_collision_parts = PackedInt32Array()
 display_name = "Tennis Ball"
 spawn_category = "Balls"
 shape_type = 4

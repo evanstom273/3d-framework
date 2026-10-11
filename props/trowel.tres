@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="2_part"]
 [ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="3_tool"]
 [ext_resource type="Resource" path="res://props/voxel_materials/brick.tres" id="4_brick"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="advanced_profile"]
 
 [sub_resource type="StandardMaterial3D" id="Material_handle"]
 albedo_color = Color(0.55, 0.36, 0.2, 1)
@@ -60,6 +61,8 @@ voxel_damage_radius = 0.0
 
 [resource]
 script = ExtResource("1_definition")
+tool_profile = ExtResource("advanced_profile")
+equipped_collision_parts = PackedInt32Array()
 display_name = "Trowel"
 shape_type = 4
 parts = Array[ExtResource("2_part")]([SubResource("Part_handle"), SubResource("Part_shank"), SubResource("Part_blade")])

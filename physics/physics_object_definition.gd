@@ -1,6 +1,10 @@
 @tool
 class_name PhysicsObjectDefinition
 extends Resource
+@export var tool_profile: ToolMaterialProfile
+@export_enum("none", "pulley", "plunger") var contraption_component: String = ""
+## Optional prop-only scoop collision while equipped. All other tools remain noncolliding.
+@export var equipped_collision_parts: PackedInt32Array = []
 ## Data for one kind of physics object. Save as a .tres and assign it to a
 ## PhysicsProp; the prop builds its collision, mesh and body settings from it.
 ## Edits update every prop using the definition, including in the editor.

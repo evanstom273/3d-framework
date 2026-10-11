@@ -30,7 +30,7 @@ static func get_material() -> StandardMaterial3D:
 
 ## Returns null when the chunk has no visible faces.
 static func build(chunk_cells: Dictionary, cells: Dictionary, health: Dictionary,
-		palette: Array[VoxelMaterialDefinition], voxel_size: float) -> ArrayMesh:
+		palette: Array[VoxelMaterialDefinition], voxel_size: float, surface_state: Dictionary = {}) -> ArrayMesh:
 	var surfaces: Dictionary = {}
 	for cell: Vector3i in chunk_cells:
 		var material := palette[cells[cell]]
@@ -55,8 +55,9 @@ static func build(chunk_cells: Dictionary, cells: Dictionary, health: Dictionary
 				surfaces[mesh_material] = tool
 			var normal := Vector3(face[0])
 			var corners: Array = face[1]
+			var face_color := VoxelToolSurface.color(color, surface_state.get(cell, {}).get(face[0], {}))
 			for index in VoxelMesher.FACE_ORDER:
-				tool.set_color(color)
+				tool.set_color(face_color)
 				tool.set_normal(normal)
 				tool.add_vertex((origin + corners[index]) * voxel_size)
 	if surfaces.is_empty():

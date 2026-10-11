@@ -1,0 +1,407 @@
+[gd_scene format=3 uid="uid://btj5ns2ifldfn"]
+
+[ext_resource type="Script" uid="uid://cth2phd143xom" path="res://contraptions/contraption_lab.gd" id="1_npo1m"]
+[ext_resource type="PackedScene" uid="uid://c8bo3i576tqx" path="res://player.tscn" id="2_frj6t"]
+[ext_resource type="Script" uid="uid://bn6n22yke0gpx" path="res://physics/physics_prop.gd" id="4_37qgb"]
+[ext_resource type="Resource" uid="uid://bvn51xmngirbn" path="res://props/tools/advanced/blowtorch.tres" id="5_ufs56"]
+[ext_resource type="Resource" uid="uid://cxrbqo36aqceb" path="res://props/tools/advanced/chainsaw.tres" id="6_2dmrl"]
+[ext_resource type="Resource" uid="uid://d4joqphhuhpqy" path="res://props/tools/advanced/angle_grinder.tres" id="7_gcofk"]
+[ext_resource type="Resource" uid="uid://dcb866kbwiffa" path="res://props/tools/advanced/pressure_washer.tres" id="8_nqema"]
+[ext_resource type="Resource" uid="uid://dbp088vn4mwd6" path="res://props/tools/advanced/glue_gun.tres" id="9_msals"]
+[ext_resource type="Resource" uid="uid://7bh5cxusxp2r" path="res://props/tools/advanced/welding_torch.tres" id="10_qffc2"]
+[ext_resource type="Resource" uid="uid://dv5bhg8hb1gxp" path="res://props/tools/advanced/nail_gun.tres" id="11_x4rx7"]
+[ext_resource type="Resource" uid="uid://736xsb0xa5cr" path="res://props/tools/advanced/power_drill.tres" id="12_4bfor"]
+[ext_resource type="Resource" uid="uid://cefxesw22h86f" path="res://props/tools/advanced/staple_gun.tres" id="13_rmkph"]
+[ext_resource type="Resource" uid="uid://bmk4h7oecsk5r" path="res://props/tools/advanced/caulking_gun.tres" id="14_cnh2e"]
+[ext_resource type="Resource" uid="uid://bjwg4lkxvxnm" path="res://props/tools/advanced/rope_tool.tres" id="15_6rqew"]
+[ext_resource type="Resource" uid="uid://bgbfwjceo3cl2" path="res://props/tools/advanced/chain_tool.tres" id="16_w0s43"]
+[ext_resource type="Resource" uid="uid://by5mqy4tt7sim" path="res://props/tools/advanced/cable_tool.tres" id="17_5hf27"]
+[ext_resource type="Resource" uid="uid://rmtnmp0ge74x" path="res://props/tools/advanced/spring_tool.tres" id="18_jw1m5"]
+[ext_resource type="Resource" uid="uid://ctxu78umwbwgp" path="res://props/tools/advanced/elastic_band_tool.tres" id="19_18sfn"]
+[ext_resource type="Resource" uid="uid://bsblacm4w3f0c" path="res://props/tools/advanced/hinge_tool.tres" id="20_vweqm"]
+[ext_resource type="Resource" uid="uid://c0cl8n3of1fyg" path="res://props/tools/advanced/fire_extinguisher.tres" id="21_4c6l5"]
+[ext_resource type="Resource" uid="uid://ca7vr8camtew1" path="res://props/tools/advanced/leaf_blower.tres" id="22_yex7b"]
+[ext_resource type="Resource" uid="uid://dvvbowr8eqfv" path="res://props/tools/advanced/vacuum_cleaner.tres" id="23_r10mc"]
+[ext_resource type="Resource" uid="uid://dx6vhp1j3abal" path="res://props/tools/advanced/magnet_gun.tres" id="24_nfsih"]
+[ext_resource type="Resource" uid="uid://bvvhg6iiyftqn" path="res://props/tools/advanced/physics_grabber.tres" id="25_uytry"]
+[ext_resource type="Resource" uid="uid://b0ymjf8y20kn2" path="res://props/tools/advanced/shovel.tres" id="26_r3al0"]
+[ext_resource type="Resource" uid="uid://dm1frj3rut8pq" path="res://props/tools/advanced/paint_sprayer.tres" id="27_h1ivt"]
+[ext_resource type="Resource" uid="uid://dr2rngj5bturn" path="res://props/tools/advanced/marker_gun.tres" id="28_whtq7"]
+[ext_resource type="Resource" uid="uid://dsgiqejedy7a7" path="res://props/tools/advanced/spray_foam_gun.tres" id="29_wdc6b"]
+[ext_resource type="Resource" uid="uid://he01meid0p6u" path="res://props/tools/advanced/plunger_launcher.tres" id="30_mj0pc"]
+[ext_resource type="Script" uid="uid://ccu2ybbio4p4g" path="res://physics/voxels/voxel_body.gd" id="31_wdf7a"]
+[ext_resource type="Resource" uid="uid://jbeg3bt3xeya" path="res://contraptions/assets/wood_sample.tres" id="32_8mwwi"]
+[ext_resource type="Resource" uid="uid://bqkvxenwinwpb" path="res://contraptions/assets/steel_sample.tres" id="33_75u5g"]
+[ext_resource type="Resource" uid="uid://dxb5rbgf5re7f" path="res://contraptions/assets/diggable_pile.tres" id="34_dl357"]
+[ext_resource type="Resource" uid="uid://qm208otd7bxg" path="res://contraptions/assets/support.tres" id="35_3akhj"]
+[ext_resource type="Resource" uid="uid://id6lo11yxwi3" path="res://props/advanced/pulley.tres" id="36_v5peu"]
+[ext_resource type="Resource" uid="uid://djo2ihtiaenxe" path="res://props/bucket.tres" id="37_dkok3"]
+[ext_resource type="Resource" uid="uid://cqou1eqx80x4a" path="res://props/wooden_block.tres" id="38_87m3o"]
+
+[sub_resource type="ProceduralSkyMaterial" id="s1"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="s2"]
+sky_material = SubResource("s1")
+
+[sub_resource type="Environment" id="s3"]
+background_mode = 2
+sky = SubResource("s2")
+ambient_light_source = 3
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_846k8"]
+size = Vector3(22, 0.5, 24)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mo13j"]
+albedo_color = Color(0.28, 0.31, 0.27, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ebq0m"]
+size = Vector3(22, 0.5, 24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yyojy"]
+size = Vector3(16, 0.25, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c2g18"]
+size = Vector3(16, 0.25, 0.3)
+
+[node name="ContraptionLab" type="Node3D" unique_id=123211577]
+script = ExtResource("1_npo1m")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1520974641]
+environment = SubResource("s3")
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=581461143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+
+[node name="@CollisionShape3D@4" type="CollisionShape3D" parent="Ground" unique_id=1171385628]
+shape = SubResource("BoxShape3D_846k8")
+
+[node name="@MeshInstance3D@5" type="MeshInstance3D" parent="Ground" unique_id=786042397]
+material_override = SubResource("StandardMaterial3D_mo13j")
+mesh = SubResource("BoxMesh_ebq0m")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=1127316990]
+transform = Transform3D(0.90630776, 0.34618863, -0.24240388, 0, 0.57357645, 0.81915206, 0.42261827, -0.74240386, 0.5198368, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=1745676424 instance=ExtResource("2_frj6t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 7)
+
+[node name="blowtorch" type="RigidBody3D" parent="." unique_id=2132749724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0.7, 4)
+script = ExtResource("4_37qgb")
+definition = ExtResource("5_ufs56")
+
+[node name="blowtorchLabel" type="Label3D" parent="." unique_id=368493236]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, -6.5, 0.099999964, 4.5)
+text = "Blowtorch"
+
+[node name="chainsaw" type="RigidBody3D" parent="." unique_id=1468689197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, 0.7, 4)
+script = ExtResource("4_37qgb")
+definition = ExtResource("6_2dmrl")
+
+[node name="chainsawLabel" type="Label3D" parent="." unique_id=1489436329]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, -4.9, 0.099999964, 4.5)
+text = "Chainsaw"
+
+[node name="angle_grinder" type="RigidBody3D" parent="." unique_id=50153303]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3, 0.7, 4)
+script = ExtResource("4_37qgb")
+definition = ExtResource("7_gcofk")
+
+[node name="angle_grinderLabel" type="Label3D" parent="." unique_id=1268026220]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, -3.3, 0.099999964, 4.5)
+text = "Angle Grinder"
+
+[node name="pressure_washer" type="RigidBody3D" parent="." unique_id=493977720]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 0.7, 4)
+script = ExtResource("4_37qgb")
+definition = ExtResource("8_nqema")
+
+[node name="pressure_washerLabel" type="Label3D" parent="." unique_id=905934304]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, -1.7, 0.099999964, 4.5)
+text = "Pressure Washer"
+
+[node name="glue_gun" type="RigidBody3D" parent="." unique_id=1182491508]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.7, 4)
+script = ExtResource("4_37qgb")
+definition = ExtResource("9_msals")
+
+[node name="glue_gunLabel" type="Label3D" parent="." unique_id=680406231]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, -0.1, 0.099999964, 4.5)
+text = "Glue Gun"
+
+[node name="welding_torch" type="RigidBody3D" parent="." unique_id=505562451]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.7, 4)
+script = ExtResource("4_37qgb")
+definition = ExtResource("10_qffc2")
+
+[node name="welding_torchLabel" type="Label3D" parent="." unique_id=465086523]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, 1.5, 0.099999964, 4.5)
+text = "Welding Torch"
+
+[node name="nail_gun" type="RigidBody3D" parent="." unique_id=565654041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, 0.7, 4)
+script = ExtResource("4_37qgb")
+definition = ExtResource("11_x4rx7")
+
+[node name="nail_gunLabel" type="Label3D" parent="." unique_id=1702164545]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, 3.1, 0.099999964, 4.5)
+text = "Nail Gun"
+
+[node name="power_drill" type="RigidBody3D" parent="." unique_id=1157103486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7, 0.7, 4)
+script = ExtResource("4_37qgb")
+definition = ExtResource("12_4bfor")
+
+[node name="power_drillLabel" type="Label3D" parent="." unique_id=1308638605]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, 4.7, 0.099999964, 4.5)
+text = "Power Drill"
+
+[node name="staple_gun" type="RigidBody3D" parent="." unique_id=386384685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 0.7, 4)
+script = ExtResource("4_37qgb")
+definition = ExtResource("13_rmkph")
+
+[node name="staple_gunLabel" type="Label3D" parent="." unique_id=94788705]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, 6.3, 0.099999964, 4.5)
+text = "Staple Gun"
+
+[node name="caulking_gun" type="RigidBody3D" parent="." unique_id=1922441479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0.7, 2.2)
+script = ExtResource("4_37qgb")
+definition = ExtResource("14_cnh2e")
+
+[node name="caulking_gunLabel" type="Label3D" parent="." unique_id=2076121580]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, -6.5, 0.099999964, 2.7)
+text = "Caulking Gun"
+
+[node name="rope_tool" type="RigidBody3D" parent="." unique_id=974544180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, 0.7, 2.2)
+script = ExtResource("4_37qgb")
+definition = ExtResource("15_6rqew")
+
+[node name="rope_toolLabel" type="Label3D" parent="." unique_id=777097387]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, -4.9, 0.099999964, 2.7)
+text = "Rope Tool"
+
+[node name="chain_tool" type="RigidBody3D" parent="." unique_id=1299736517]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3, 0.7, 2.2)
+script = ExtResource("4_37qgb")
+definition = ExtResource("16_w0s43")
+
+[node name="chain_toolLabel" type="Label3D" parent="." unique_id=1476939642]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, -3.3, 0.099999964, 2.7)
+text = "Chain Tool"
+
+[node name="cable_tool" type="RigidBody3D" parent="." unique_id=1758773217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 0.7, 2.2)
+script = ExtResource("4_37qgb")
+definition = ExtResource("17_5hf27")
+
+[node name="cable_toolLabel" type="Label3D" parent="." unique_id=294448867]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, -1.7, 0.099999964, 2.7)
+text = "Cable Tool"
+
+[node name="spring_tool" type="RigidBody3D" parent="." unique_id=53993481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.7, 2.2)
+script = ExtResource("4_37qgb")
+definition = ExtResource("18_jw1m5")
+
+[node name="spring_toolLabel" type="Label3D" parent="." unique_id=869544995]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, -0.1, 0.099999964, 2.7)
+text = "Spring Tool"
+
+[node name="elastic_band_tool" type="RigidBody3D" parent="." unique_id=1607503845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.7, 2.2)
+script = ExtResource("4_37qgb")
+definition = ExtResource("19_18sfn")
+
+[node name="elastic_band_toolLabel" type="Label3D" parent="." unique_id=1726633892]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, 1.5, 0.099999964, 2.7)
+text = "Elastic Band Tool"
+
+[node name="hinge_tool" type="RigidBody3D" parent="." unique_id=1532257991]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, 0.7, 2.2)
+script = ExtResource("4_37qgb")
+definition = ExtResource("20_vweqm")
+
+[node name="hinge_toolLabel" type="Label3D" parent="." unique_id=956067784]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, 3.1, 0.099999964, 2.7)
+text = "Hinge Tool"
+
+[node name="fire_extinguisher" type="RigidBody3D" parent="." unique_id=1156751294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7, 0.7, 2.2)
+script = ExtResource("4_37qgb")
+definition = ExtResource("21_4c6l5")
+
+[node name="fire_extinguisherLabel" type="Label3D" parent="." unique_id=1947748015]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, 4.7, 0.099999964, 2.7)
+text = "Fire Extinguisher"
+
+[node name="leaf_blower" type="RigidBody3D" parent="." unique_id=1079725077]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 0.7, 2.2)
+script = ExtResource("4_37qgb")
+definition = ExtResource("22_yex7b")
+
+[node name="leaf_blowerLabel" type="Label3D" parent="." unique_id=1687055984]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, 6.3, 0.099999964, 2.7)
+text = "Leaf Blower"
+
+[node name="vacuum_cleaner" type="RigidBody3D" parent="." unique_id=1928249146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0.7, 0.4)
+script = ExtResource("4_37qgb")
+definition = ExtResource("23_r10mc")
+
+[node name="vacuum_cleanerLabel" type="Label3D" parent="." unique_id=1343319392]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, -6.5, 0.099999964, 0.9)
+text = "Vacuum Cleaner"
+
+[node name="magnet_gun" type="RigidBody3D" parent="." unique_id=802365676]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, 0.7, 0.4)
+script = ExtResource("4_37qgb")
+definition = ExtResource("24_nfsih")
+
+[node name="magnet_gunLabel" type="Label3D" parent="." unique_id=358464398]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, -4.9, 0.099999964, 0.9)
+text = "Magnet Gun"
+
+[node name="physics_grabber" type="RigidBody3D" parent="." unique_id=811592900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3, 0.7, 0.4)
+script = ExtResource("4_37qgb")
+definition = ExtResource("25_uytry")
+
+[node name="physics_grabberLabel" type="Label3D" parent="." unique_id=1487603987]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, -3.3, 0.099999964, 0.9)
+text = "Physics Grabber"
+
+[node name="shovel" type="RigidBody3D" parent="." unique_id=838788583]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 0.7, 0.4)
+script = ExtResource("4_37qgb")
+definition = ExtResource("26_r3al0")
+
+[node name="shovelLabel" type="Label3D" parent="." unique_id=1344873629]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, -1.7, 0.099999964, 0.9)
+text = "Shovel"
+
+[node name="paint_sprayer" type="RigidBody3D" parent="." unique_id=2088164694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.7, 0.4)
+script = ExtResource("4_37qgb")
+definition = ExtResource("27_h1ivt")
+
+[node name="paint_sprayerLabel" type="Label3D" parent="." unique_id=1168985887]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, -0.1, 0.099999964, 0.9)
+text = "Paint Sprayer"
+
+[node name="marker_gun" type="RigidBody3D" parent="." unique_id=283238755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.7, 0.4)
+script = ExtResource("4_37qgb")
+definition = ExtResource("28_whtq7")
+
+[node name="marker_gunLabel" type="Label3D" parent="." unique_id=665174826]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, 1.5, 0.099999964, 0.9)
+text = "Marker / Label Gun"
+
+[node name="spray_foam_gun" type="RigidBody3D" parent="." unique_id=351984603]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, 0.7, 0.4)
+script = ExtResource("4_37qgb")
+definition = ExtResource("29_wdc6b")
+
+[node name="spray_foam_gunLabel" type="Label3D" parent="." unique_id=2031154746]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, 3.1, 0.099999964, 0.9)
+text = "Spray Foam Gun"
+
+[node name="plunger_launcher" type="RigidBody3D" parent="." unique_id=2082846995]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7, 0.7, 0.4)
+script = ExtResource("4_37qgb")
+definition = ExtResource("30_mj0pc")
+
+[node name="plunger_launcherLabel" type="Label3D" parent="." unique_id=1895956869]
+transform = Transform3D(1, 0, 0, 0, 0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, 4.7, 0.099999964, 0.9)
+text = "Plunger Launcher"
+
+[node name="wood_sample" type="RigidBody3D" parent="." unique_id=1827606916]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.1, -3)
+script = ExtResource("31_wdf7a")
+structure = ExtResource("32_8mwwi")
+
+[node name="steel_sample" type="RigidBody3D" parent="." unique_id=714516719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.1, -3)
+script = ExtResource("31_wdf7a")
+structure = ExtResource("33_75u5g")
+
+[node name="diggable_pile" type="RigidBody3D" parent="." unique_id=1196728754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -3)
+script = ExtResource("31_wdf7a")
+structure = ExtResource("34_dl357")
+
+[node name="support" type="RigidBody3D" parent="." unique_id=535000283]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.1, -3)
+script = ExtResource("31_wdf7a")
+structure = ExtResource("35_3akhj")
+
+[node name="FixedPulley" type="RigidBody3D" parent="." unique_id=1424289084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, -7)
+script = ExtResource("4_37qgb")
+definition = ExtResource("36_v5peu")
+
+[node name="MovingPulley" type="RigidBody3D" parent="." unique_id=125105473]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.8, -7)
+script = ExtResource("4_37qgb")
+definition = ExtResource("36_v5peu")
+
+[node name="Bucket" type="RigidBody3D" parent="." unique_id=663565525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.5, -7)
+script = ExtResource("4_37qgb")
+definition = ExtResource("37_dkok3")
+
+[node name="Counterweight" type="RigidBody3D" parent="." unique_id=1385925442]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.5, -7)
+script = ExtResource("4_37qgb")
+definition = ExtResource("38_87m3o")
+
+[node name="MovingLoad" type="RigidBody3D" parent="." unique_id=1825233685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.8, -7)
+script = ExtResource("4_37qgb")
+definition = ExtResource("38_87m3o")
+
+[node name="HoistCounterweight" type="RigidBody3D" parent="." unique_id=1074426375]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.6, -7)
+script = ExtResource("4_37qgb")
+definition = ExtResource("38_87m3o")
+
+[node name="SpringLoad" type="RigidBody3D" parent="." unique_id=1157575905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.1, -7)
+script = ExtResource("4_37qgb")
+definition = ExtResource("38_87m3o")
+
+[node name="ElasticLoad" type="RigidBody3D" parent="." unique_id=632381141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.1, -7)
+script = ExtResource("4_37qgb")
+definition = ExtResource("38_87m3o")
+
+[node name="Overhead" type="StaticBody3D" parent="." unique_id=912576046]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3.8, -7)
+
+[node name="@CollisionShape3D@38" type="CollisionShape3D" parent="Overhead" unique_id=857126392]
+shape = SubResource("BoxShape3D_yyojy")
+
+[node name="@MeshInstance3D@39" type="MeshInstance3D" parent="Overhead" unique_id=974546166]
+mesh = SubResource("BoxMesh_c2g18")
+
+[node name="Instructions" type="Label3D" parent="." unique_id=1151522459]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8, -4)
+pixel_size = 0.008
+text = "CONTRAPTION LAB
+F equip · LMB use · RMB secondary · Q mode · Wheel setting
+Tab spawn · R reset
+Samples / dig pile ahead. Hoists, spring and elastic at rear."
+font_size = 40

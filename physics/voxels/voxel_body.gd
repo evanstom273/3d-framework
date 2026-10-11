@@ -19,6 +19,10 @@ enum HandState { WORLD, HELD }
 
 ## Emitted after the cells' meshes, collision and support state have been rebuilt.
 signal geometry_changed
+## Mounts migrate before geometry_changed validates the source's remaining cells.
+signal cells_transferred(target: VoxelBody, mapping: Dictionary)
+var surface_state: Dictionary = {}
+var _body_properties_dirty: bool = true
 
 ## Optional appearance for a whole body (e.g. a glass-only window pane).
 ## Collision and voxel damage still use the normal material palette.
@@ -239,7 +243,7 @@ func world_to_cell(point: Vector3) -> Vector3i:
 
 ## Adds a voxel (construction, repair, cementing). Anchors only apply to fixed
 ## structures, where they mark voxels resting on the world.
-func add_voxel(cell: Vector3i, material: VoxelMaterialDefinition, anchored: bool = false, cell_health: float = -1.0) -> void:
+func add_voxel(cell: Vector3i, material: VoxelMaterialDefinition, anchored: bool = false, cell_health: float = -1.0, surfaces: Dictionary = {}) -> void:
 	if cells.has(cell) or material == null:
 		return
 	var index := palette.find(material)
@@ -247,6 +251,7 @@ func add_voxel(cell: Vector3i, material: VoxelMaterialDefinition, anchored: bool
 		palette.append(material)
 		index = palette.size() - 1
 	_set_cell(cell, index, cell_health)
+	if not surfaces.is_empty(): surface_state[cell] = surfaces.duplicate(true)
 	if anchored and freeze:
 		anchors[cell] = true
 
@@ -257,8 +262,9 @@ func take_voxel(cell: Vector3i) -> Array:
 		return []
 	var material := palette[cells[cell]]
 	var cell_health: float = health.get(cell, material.strength)
+	var surfaces: Dictionary = surface_state.get(cell, {}).duplicate(true)
 	_remove_cell(cell)
-	return [material, cell_health]
+	return [material, cell_health, surfaces]
 
 
 ## Starts a new fixed structure (or a free piece if not anchored) with one voxel.
@@ -281,6 +287,7 @@ static func create_built(parent: Node, world_cell: Vector3i, size: float, materi
 # --- Grid editing
 
 func _set_cell(cell: Vector3i, palette_index: int, cell_health: float = -1.0) -> void:
+	_body_properties_dirty = true
 	if not cells.has(cell):
 		_collision_dirty[_chunk_of(cell)] = true
 		if cells.is_empty():
@@ -306,6 +313,8 @@ func _set_cell(cell: Vector3i, palette_index: int, cell_health: float = -1.0) ->
 func _remove_cell(cell: Vector3i) -> void:
 	if not cells.has(cell):
 		return
+	_body_properties_dirty = true
+	surface_state.erase(cell)
 	_main_material_dirty = true
 	if cell.x == _bounds_min.x or cell.y == _bounds_min.y or cell.z == _bounds_min.z \
 			or cell.x == _bounds_max.x or cell.y == _bounds_max.y or cell.z == _bounds_max.z:
@@ -349,7 +358,7 @@ func _flush_dirty() -> void:
 		_rebuild_chunk(chunk)
 	_dirty.clear()
 	if not Engine.is_editor_hint():
-		_update_body()
+		if _body_properties_dirty: _update_body()
 		if cells.is_empty():
 			_on_emptied()
 	geometry_changed.emit()
@@ -371,7 +380,7 @@ func _rebuild_chunk(chunk: Vector3i) -> void:
 	if chunk_cells.is_empty():
 		_chunk_cells.erase(chunk)
 		return
-	var mesh := VoxelMesher.build(chunk_cells, cells, health, palette, voxel_size)
+	var mesh := VoxelMesher.build(chunk_cells, cells, health, palette, voxel_size, surface_state)
 	if mesh != null:
 		var mesh_instance := MeshInstance3D.new()
 		mesh_instance.mesh = mesh
@@ -396,6 +405,7 @@ func _rebuild_chunk(chunk: Vector3i) -> void:
 
 ## Mass and surface follow the voxels that remain.
 func _update_body() -> void:
+	_body_properties_dirty = false
 	var total := 0.0
 	var volume := pow(voxel_size, 3.0)
 	for cell in cells:
@@ -416,6 +426,7 @@ func _build_from_structure() -> void:
 	_chunk_nodes.clear()
 	_chunk_cells.clear()
 	cells.clear()
+	surface_state.clear()
 	health.clear()
 	anchors.clear()
 	palette.clear()
@@ -556,6 +567,10 @@ func _detach(group: Array) -> void:
 		if health.has(cell):
 			piece_health[cell - offset] = health[cell]
 	var piece := VoxelBody.create_piece(piece_cells, piece_health, palette, voxel_size)
+	var mapping := {}
+	for cell: Vector3i in group:
+		mapping[cell] = cell - offset
+		if surface_state.has(cell): piece.surface_state[cell - offset] = surface_state[cell].duplicate(true)
 	piece.mesh_material_override = mesh_material_override
 	var piece_transform := global_transform * Transform3D(Basis(), Vector3(offset) * voxel_size)
 	var velocity := Vector3.ZERO
@@ -573,6 +588,7 @@ func _detach(group: Array) -> void:
 	piece.global_transform = piece_transform
 	piece.linear_velocity = velocity
 	piece.angular_velocity = spin
+	cells_transferred.emit(piece, mapping)
 	if group.size() <= 2:
 		piece.is_rubble = true
 		_register_rubble(piece)
@@ -640,7 +656,7 @@ static func _register_rubble(piece: VoxelBody) -> void:
 	while _rubble.size() > RUBBLE_LIMIT:
 		var oldest: VoxelBody = null
 		for candidate in _rubble:
-			if not candidate.is_held():
+			if not candidate.is_held() and not candidate.get_meta(&"vacuum_stored", false):
 				oldest = candidate
 				break
 		if oldest == null:
@@ -650,6 +666,7 @@ static func _register_rubble(piece: VoxelBody) -> void:
 
 
 func _fade_away() -> void:
+	set_meta(&"despawning", true)
 	collision_layer = 0
 	var meshes: Array[Node3D] = []
 	for nodes in _chunk_nodes.values():

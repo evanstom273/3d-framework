@@ -1,0 +1,135 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://b0ymjf8y20kn2"]
+
+[ext_resource type="Script" uid="uid://cuxj0nnyyq3n2" path="res://physics/physics_container_definition.gd" id="1_n38lq"]
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="2_nn7fo"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="3_l4ky1"]
+[ext_resource type="Script" uid="uid://dressmbhdwnel" path="res://physics/advanced/tool_action_definition.gd" id="4_14etd"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="5_xmaax"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="6_gooct"]
+
+[sub_resource type="Resource" id="Resource_kcpum"]
+script = ExtResource("1_n38lq")
+stabilise_when_equipped = true
+form = 2
+inner_size = Vector3(0.22, 0.1, 0.26)
+inner_center = Vector3(0, 0.01, -1.02)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8yeda"]
+metallic = 0.25
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pguye"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_gjcv5"]
+script = ExtResource("2_nn7fo")
+size = Vector3(0.1, 0.02, 0.02)
+position = Vector3(0, 0, 0.02)
+material = SubResource("StandardMaterial3D_pguye")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fr46w"]
+albedo_color = Color(0.62, 0.43, 0.24, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_akq2b"]
+script = ExtResource("2_nn7fo")
+shape_type = 2
+radius = 0.016
+height = 0.9
+position = Vector3(0, 0, -0.45)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_fr46w")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0tdv"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.7
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_at7e0"]
+script = ExtResource("2_nn7fo")
+size = Vector3(0.24, 0.012, 0.28)
+position = Vector3(0, -0.02, -1.02)
+material = SubResource("StandardMaterial3D_q0tdv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d5e8k"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.7
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_68mei"]
+script = ExtResource("2_nn7fo")
+size = Vector3(0.012, 0.05, 0.28)
+position = Vector3(-0.12, 0, -1.02)
+material = SubResource("StandardMaterial3D_d5e8k")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iom52"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.7
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_hwg0g"]
+script = ExtResource("2_nn7fo")
+size = Vector3(0.012, 0.05, 0.28)
+position = Vector3(0.12, 0, -1.02)
+material = SubResource("StandardMaterial3D_iom52")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bauh"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.7
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_cwlcl"]
+script = ExtResource("2_nn7fo")
+size = Vector3(0.24, 0.05, 0.012)
+position = Vector3(0, 0, -0.88)
+material = SubResource("StandardMaterial3D_7bauh")
+
+[sub_resource type="Resource" id="Resource_b6g7q"]
+script = ExtResource("4_14etd")
+operation = "shovel"
+verb = "Shovel"
+range_metres = 1.9
+rate = 30.0
+region_size = Vector3(0.3, 0.15, 0.3)
+nozzle = Vector3(0, -0.02, -1.1)
+moving_part_position = Vector3(0, -0.02, -1.1)
+contact_effect = 13
+effect_color = Color(0.45, 0.33, 0.2, 1)
+shot_sound = 1
+shot_kick = 0.5
+colors = PackedColorArray(0.8, 0.12, 0.1, 1, 0.15, 0.4, 0.8, 1, 0.9, 0.75, 0.12, 1, 0.9, 0.9, 0.85, 1)
+
+[sub_resource type="Resource" id="Resource_p61ky"]
+script = ExtResource("5_xmaax")
+advanced_action = SubResource("Resource_b6g7q")
+category = 1
+action_name = "Shovel"
+equip_time = 0.3
+rest_position = Vector3(0.24, -0.34, 0.06)
+rest_rotation_degrees = Vector3(-14, 0, 6)
+windup_position = Vector3(0.24, -0.34, 0.06)
+windup_rotation_degrees = Vector3(-14, 0, 6)
+strike_position = Vector3(0.2, -0.44, -0.08)
+strike_rotation_degrees = Vector3(-30, 0, 4)
+charge_time = 0.0
+motion_strikes = false
+
+[resource]
+script = ExtResource("3_l4ky1")
+tool_profile = ExtResource("6_gooct")
+equipped_collision_parts = PackedInt32Array(2, 3, 4, 5)
+display_name = "Shovel"
+shape_type = 4
+parts = Array[ExtResource("2_nn7fo")]([SubResource("Resource_gjcv5"), SubResource("Resource_akq2b"), SubResource("Resource_at7e0"), SubResource("Resource_68mei"), SubResource("Resource_hwg0g"), SubResource("Resource_cwlcl")])
+mass = 2.6
+friction = 0.7
+bounce = 0.05
+angular_damp = 0.25
+impact_sound = 2
+material = SubResource("StandardMaterial3D_8yeda")
+vox_model = "res://props/vox/advanced/shovel.vox"
+vox_voxel_size = 0.015
+vox_origin = Vector3(-0.126, -0.026, -1.16)
+container = SubResource("Resource_kcpum")
+tool = SubResource("Resource_p61ky")

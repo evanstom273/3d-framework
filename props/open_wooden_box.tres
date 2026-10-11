@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="1_definition"]
 [ext_resource type="Script" uid="uid://cuxj0nnyyq3n2" path="res://physics/physics_container_definition.gd" id="2_container"]
 [ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="2_n2py2"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/wood.tres" id="advanced_profile"]
 
 [sub_resource type="Resource" id="Container_box"]
 script = ExtResource("2_container")
@@ -16,6 +17,8 @@ roughness = 0.85
 
 [resource]
 script = ExtResource("1_definition")
+tool_profile = ExtResource("advanced_profile")
+equipped_collision_parts = PackedInt32Array()
 display_name = "Open Wooden Box"
 mass = 4.0
 friction = 0.7

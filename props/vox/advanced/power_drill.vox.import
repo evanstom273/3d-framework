@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dssjufkc8tn0a"
+path="res://.godot/imported/power_drill.vox-2f2764923964cda334aec947d657ae41.tres"
+
+[deps]
+
+source_file="res://props/vox/advanced/power_drill.vox"
+dest_files=["res://.godot/imported/power_drill.vox-2f2764923964cda334aec947d657ae41.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

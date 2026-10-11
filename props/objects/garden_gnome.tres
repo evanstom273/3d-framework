@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_0mr05"]
 [ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_nsdnn"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/masonry.tres" id="advanced_profile"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6604u"]
 albedo_color = Color(0.25, 0.55, 0.2, 1)
@@ -100,6 +101,8 @@ material = SubResource("StandardMaterial3D_46l2a")
 
 [resource]
 script = ExtResource("2_nsdnn")
+tool_profile = ExtResource("advanced_profile")
+equipped_collision_parts = PackedInt32Array()
 display_name = "Garden Gnome"
 shape_type = 4
 parts = Array[ExtResource("1_0mr05")]([SubResource("Resource_t3tiu"), SubResource("Resource_bxb4j"), SubResource("Resource_3mlks"), SubResource("Resource_w84au"), SubResource("Resource_a8ik1"), SubResource("Resource_m0hen"), SubResource("Resource_hqupl"), SubResource("Resource_q0vvd")])

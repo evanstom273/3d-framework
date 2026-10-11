@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://boro8d6hoecrn"
+path="res://.godot/imported/nail_projectile.vox-8e266d3cbedb7709a28d4f9335f72c1a.tres"
+
+[deps]
+
+source_file="res://props/vox/advanced/nail_projectile.vox"
+dest_files=["res://.godot/imported/nail_projectile.vox-8e266d3cbedb7709a28d4f9335f72c1a.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

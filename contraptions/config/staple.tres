@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ConnectionDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/advanced/connection_definition.gd" id="1_sc4v7"]
+
+[resource]
+script = ExtResource("1_sc4v7")
+display_name = "Staple"
+strength = 150.0
+torque_resistance = 15.0
+removal_resistance = 9.797958971132713
+soft_only = true

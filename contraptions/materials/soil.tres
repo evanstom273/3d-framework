@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="1_yaml4"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/soil.tres" id="2_jmss6"]
+
+[resource]
+script = ExtResource("1_yaml4")
+tool_profile = ExtResource("2_jmss6")
+display_name = "Soil"
+color = Color(0.3, 0.2, 0.1, 1)
+strength = 0.6
+density = 900.0
+rubble_fraction = 0.1

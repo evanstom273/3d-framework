@@ -1,9 +1,12 @@
 [gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3]
 
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/soft.tres" id="advanced_profile"]
+
 [ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="1_le852"]
 
 [resource]
 script = ExtResource("1_le852")
+tool_profile = ExtResource("advanced_profile")
 display_name = "Watermelon"
 color = Color(0.8039216, 0.1764706, 0.21568628, 1)
 strength = 2.5

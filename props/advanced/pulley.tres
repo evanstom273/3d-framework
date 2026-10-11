@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://id6lo11yxwi3"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_criso"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_emyig"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="3_pny15"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h73pm"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.8
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_qgqjf"]
+script = ExtResource("1_criso")
+shape_type = 2
+radius = 0.1
+height = 0.045
+position = Vector3(0, 0.12, 0)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_h73pm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1atwo"]
+albedo_color = Color(0.18, 0.19, 0.21, 1)
+metallic = 0.7
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_o51s2"]
+script = ExtResource("1_criso")
+shape_type = 2
+radius = 0.03
+height = 0.06
+position = Vector3(0, 0.12, 0)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_1atwo")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50isk"]
+albedo_color = Color(0.9, 0.7, 0.1, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_1ijdl"]
+script = ExtResource("1_criso")
+size = Vector3(0.05, 0.3, 0.012)
+position = Vector3(0, 0.2, -0.035)
+material = SubResource("StandardMaterial3D_50isk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_na3fp"]
+albedo_color = Color(0.9, 0.7, 0.1, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_urth7"]
+script = ExtResource("1_criso")
+size = Vector3(0.05, 0.3, 0.012)
+position = Vector3(0, 0.2, 0.035)
+material = SubResource("StandardMaterial3D_na3fp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r24t3"]
+albedo_color = Color(0.18, 0.19, 0.21, 1)
+metallic = 0.6
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_vtx5p"]
+script = ExtResource("1_criso")
+size = Vector3(0.06, 0.03, 0.09)
+position = Vector3(0, 0.36, 0)
+material = SubResource("StandardMaterial3D_r24t3")
+
+[resource]
+script = ExtResource("2_emyig")
+tool_profile = ExtResource("3_pny15")
+contraption_component = "pulley"
+equipped_collision_parts = PackedInt32Array()
+display_name = "Pulley"
+shape_type = 4
+parts = Array[ExtResource("1_criso")]([SubResource("Resource_qgqjf"), SubResource("Resource_o51s2"), SubResource("Resource_1ijdl"), SubResource("Resource_urth7"), SubResource("Resource_vtx5p")])
+mass = 1.5
+impact_sound = 2
+vox_model = "res://props/vox/advanced/pulley.vox"
+vox_voxel_size = 0.011
+vox_origin = Vector3(-0.1, 0.019999996, -0.045)

@@ -1,0 +1,132 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://dcb866kbwiffa"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_2j2w4"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_sk1uq"]
+[ext_resource type="Script" uid="uid://dressmbhdwnel" path="res://physics/advanced/tool_action_definition.gd" id="3_mvfkx"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="4_6b6bn"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="5_uplnr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ot6t"]
+metallic = 0.25
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ueui6"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_dru5w"]
+script = ExtResource("1_2j2w4")
+size = Vector3(0.034, 0.11, 0.045)
+position = Vector3(0, -0.02, 0.005)
+rotation_degrees = Vector3(-14, 0, 0)
+material = SubResource("StandardMaterial3D_ueui6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cyihk"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_7523i"]
+script = ExtResource("1_2j2w4")
+size = Vector3(0.012, 0.035, 0.016)
+position = Vector3(0, 0, -0.035)
+material = SubResource("StandardMaterial3D_cyihk")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yoa0a"]
+albedo_color = Color(0.95, 0.8, 0.15, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_kitpj"]
+script = ExtResource("1_2j2w4")
+size = Vector3(0.05, 0.06, 0.13)
+position = Vector3(0, 0.065, -0.03)
+material = SubResource("StandardMaterial3D_yoa0a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1fbig"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.9
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_vxn72"]
+script = ExtResource("1_2j2w4")
+shape_type = 2
+radius = 0.011
+height = 0.7
+position = Vector3(0, 0.07, -0.44)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_1fbig")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_im7f5"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_wdnti"]
+script = ExtResource("1_2j2w4")
+shape_type = 2
+radius = 0.017
+height = 0.045
+position = Vector3(0, 0.07, -0.8)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_im7f5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6j1sm"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_r7vpv"]
+script = ExtResource("1_2j2w4")
+shape_type = 2
+radius = 0.012
+height = 0.08
+position = Vector3(0, -0.08, 0.03)
+material = SubResource("StandardMaterial3D_6j1sm")
+
+[sub_resource type="Resource" id="Resource_2cxqg"]
+script = ExtResource("3_mvfkx")
+operation = "wash"
+verb = "Wash"
+primary_hint = "[Hold LMB] Spray (washes paint and scorch off)"
+secondary_hint = ""
+range_metres = 6.0
+rate = 2.5
+force = 140.0
+cone_degrees = 9.0
+nozzle = Vector3(0, 0.07, -0.83)
+moving_part_position = Vector3(0, 0.07, -0.83)
+effect = 3
+contact_effect = 4
+loop_sound = 4
+use_shake = 0.001
+colors = PackedColorArray(0.8, 0.12, 0.1, 1, 0.15, 0.4, 0.8, 1, 0.9, 0.75, 0.12, 1, 0.9, 0.9, 0.85, 1)
+
+[sub_resource type="Resource" id="Resource_mpths"]
+script = ExtResource("4_6b6bn")
+advanced_action = SubResource("Resource_2cxqg")
+category = 1
+action_name = "Wash"
+equip_time = 0.3
+rest_position = Vector3(0.2, -0.28, -0.28)
+windup_position = Vector3(0.2, -0.28, -0.28)
+windup_rotation_degrees = Vector3(0, 0, 0)
+strike_position = Vector3(0.18, -0.26, -0.32)
+strike_rotation_degrees = Vector3(-2, 0, 0)
+charge_time = 0.0
+motion_strikes = false
+
+[resource]
+script = ExtResource("2_sk1uq")
+tool_profile = ExtResource("5_uplnr")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Pressure Washer"
+shape_type = 4
+parts = Array[ExtResource("1_2j2w4")]([SubResource("Resource_dru5w"), SubResource("Resource_7523i"), SubResource("Resource_kitpj"), SubResource("Resource_vxn72"), SubResource("Resource_wdnti"), SubResource("Resource_r7vpv")])
+mass = 2.2
+friction = 0.7
+bounce = 0.05
+angular_damp = 0.25
+impact_sound = 2
+material = SubResource("StandardMaterial3D_1ot6t")
+vox_model = "res://props/vox/advanced/pressure_washer.vox"
+vox_voxel_size = 0.011
+vox_origin = Vector3(-0.025, -0.12, -0.8225)
+tool = SubResource("Resource_mpths")

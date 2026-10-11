@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cuc16g65pp0i2"
+path="res://.godot/imported/vacuum_cleaner.vox-73a4d3375b8959f0b22a7e1e11098fa2.tres"
+
+[deps]
+
+source_file="res://props/vox/advanced/vacuum_cleaner.vox"
+dest_files=["res://.godot/imported/vacuum_cleaner.vox-73a4d3375b8959f0b22a7e1e11098fa2.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://c8pqpshvm1uso"
+path="res://.godot/imported/welding_torch.vox-e1eae4dd14e6df945824a5561cb9db71.tres"
+
+[deps]
+
+source_file="res://props/vox/advanced/welding_torch.vox"
+dest_files=["res://.godot/imported/welding_torch.vox-e1eae4dd14e6df945824a5561cb9db71.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

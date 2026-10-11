@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ToolMaterialProfile" format=3]
+
+[ext_resource type="Script" path="res://physics/advanced/tool_material_profile.gd" id="1_72gjm"]
+
+[resource]
+script = ExtResource("1_72gjm")
+heat_response = 0.03
+grind_response = 0.7

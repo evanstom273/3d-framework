@@ -1,0 +1,143 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://bgbfwjceo3cl2"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_xo5r0"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_85il3"]
+[ext_resource type="Resource" path="res://contraptions/config/chain.tres" id="3_empe7"]
+[ext_resource type="Script" uid="uid://dressmbhdwnel" path="res://physics/advanced/tool_action_definition.gd" id="4_n8cr8"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="5_vn5sm"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="6_lby0f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ktar"]
+metallic = 0.25
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uvqmj"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_6ejiu"]
+script = ExtResource("1_xo5r0")
+size = Vector3(0.034, 0.11, 0.045)
+position = Vector3(0, -0.02, 0.005)
+rotation_degrees = Vector3(-14, 0, 0)
+material = SubResource("StandardMaterial3D_uvqmj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6fj05"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_jj6g5"]
+script = ExtResource("1_xo5r0")
+size = Vector3(0.012, 0.035, 0.016)
+position = Vector3(0, 0, -0.035)
+material = SubResource("StandardMaterial3D_6fj05")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fqoaf"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.6
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_w1557"]
+script = ExtResource("1_xo5r0")
+shape_type = 2
+radius = 0.055
+height = 0.08
+position = Vector3(0, 0.07, -0.08)
+rotation_degrees = Vector3(0, 0, 90)
+material = SubResource("StandardMaterial3D_fqoaf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7jb26"]
+albedo_color = Color(0.9, 0.72, 0.1, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_yqtf8"]
+script = ExtResource("1_xo5r0")
+shape_type = 2
+radius = 0.075
+height = 0.012
+position = Vector3(-0.046, 0.07, -0.08)
+rotation_degrees = Vector3(0, 0, 90)
+material = SubResource("StandardMaterial3D_7jb26")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qgsgj"]
+albedo_color = Color(0.9, 0.72, 0.1, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_ykgaq"]
+script = ExtResource("1_xo5r0")
+shape_type = 2
+radius = 0.075
+height = 0.012
+position = Vector3(0.046, 0.07, -0.08)
+rotation_degrees = Vector3(0, 0, 90)
+material = SubResource("StandardMaterial3D_qgsgj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0rxs"]
+albedo_color = Color(0.18, 0.19, 0.21, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_hx64o"]
+script = ExtResource("1_xo5r0")
+size = Vector3(0.02, 0.025, 0.08)
+position = Vector3(0, 0.07, -0.17)
+material = SubResource("StandardMaterial3D_v0rxs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2us0g"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.8
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_tbcug"]
+script = ExtResource("1_xo5r0")
+shape_type = 2
+radius = 0.014
+height = 0.02
+position = Vector3(0, 0.07, -0.215)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_2us0g")
+collides = false
+
+[sub_resource type="Resource" id="Resource_g35th"]
+script = ExtResource("4_n8cr8")
+operation = "chain"
+verb = "Chain"
+range_metres = 6.0
+nozzle = Vector3(0, 0.07, -0.225)
+moving_part_position = Vector3(0, 0.07, -0.225)
+shot_sound = 1
+shot_kick = 0.15
+connection = ExtResource("3_empe7")
+colors = PackedColorArray(0.8, 0.12, 0.1, 1, 0.15, 0.4, 0.8, 1, 0.9, 0.75, 0.12, 1, 0.9, 0.9, 0.85, 1)
+
+[sub_resource type="Resource" id="Resource_3vf62"]
+script = ExtResource("5_vn5sm")
+advanced_action = SubResource("Resource_g35th")
+category = 1
+action_name = "Chain"
+equip_time = 0.3
+rest_position = Vector3(0.2, -0.24, -0.36)
+windup_position = Vector3(0.2, -0.24, -0.36)
+windup_rotation_degrees = Vector3(0, 0, 0)
+strike_position = Vector3(0.17, -0.21, -0.42)
+strike_rotation_degrees = Vector3(-3, 0, 0)
+charge_time = 0.0
+motion_strikes = false
+
+[resource]
+script = ExtResource("2_85il3")
+tool_profile = ExtResource("6_lby0f")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Chain Tool"
+shape_type = 4
+parts = Array[ExtResource("1_xo5r0")]([SubResource("Resource_6ejiu"), SubResource("Resource_jj6g5"), SubResource("Resource_w1557"), SubResource("Resource_yqtf8"), SubResource("Resource_ykgaq"), SubResource("Resource_hx64o"), SubResource("Resource_tbcug")])
+mass = 4.0
+friction = 0.7
+bounce = 0.05
+angular_damp = 0.25
+impact_sound = 2
+material = SubResource("StandardMaterial3D_1ktar")
+vox_model = "res://props/vox/advanced/chain_tool.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.052000005, -0.078809515, -0.22500001)
+tool = SubResource("Resource_3vf62")

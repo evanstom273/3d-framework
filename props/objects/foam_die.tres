@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_kssxr"]
 [ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_0sxai"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/soft.tres" id="advanced_profile"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ayefd"]
 albedo_color = Color(0.85, 0.1, 0.1, 1)
@@ -85,6 +86,8 @@ collides = false
 
 [resource]
 script = ExtResource("2_0sxai")
+tool_profile = ExtResource("advanced_profile")
+equipped_collision_parts = PackedInt32Array()
 display_name = "Giant Foam Die"
 shape_type = 4
 parts = Array[ExtResource("1_kssxr")]([SubResource("Resource_6ncal"), SubResource("Resource_qaofu"), SubResource("Resource_v4g3p"), SubResource("Resource_6gpa3"), SubResource("Resource_kqgt0"), SubResource("Resource_jwdoq"), SubResource("Resource_13l14")])

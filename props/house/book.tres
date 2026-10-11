@@ -1,10 +1,13 @@
 [gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
 
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/wood.tres" id="advanced_profile"]
+
 [ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_gr06i"]
 [ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_uxci0"]
 
 [resource]
 script = ExtResource("2_uxci0")
+tool_profile = ExtResource("advanced_profile")
 display_name = "Loose Book"
 spawn_category = "Props"
 size = Vector3(0.25, 0.35, 0.075)

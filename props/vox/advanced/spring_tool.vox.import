@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://ckb1d7sy80b36"
+path="res://.godot/imported/spring_tool.vox-e027ad15f242a416d13890790d912acf.tres"
+
+[deps]
+
+source_file="res://props/vox/advanced/spring_tool.vox"
+dest_files=["res://.godot/imported/spring_tool.vox-e027ad15f242a416d13890790d912acf.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

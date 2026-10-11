@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="1_10xex"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/soft.tres" id="2_46wwf"]
+
+[resource]
+script = ExtResource("1_10xex")
+tool_profile = ExtResource("2_46wwf")
+display_name = "Foam Soft"
+color = Color(0.92, 0.86, 0.58, 1)
+strength = 0.6
+density = 35.0
+rubble_fraction = 0.1

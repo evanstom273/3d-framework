@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://yi47ejo78sv2"
+path="res://.godot/imported/staple_gun.vox-65f26265fc14c1a49f19c166b07a4672.tres"
+
+[deps]
+
+source_file="res://props/vox/advanced/staple_gun.vox"
+dest_files=["res://.godot/imported/staple_gun.vox-65f26265fc14c1a49f19c166b07a4672.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

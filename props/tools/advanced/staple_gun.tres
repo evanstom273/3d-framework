@@ -1,0 +1,91 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://cefxesw22h86f"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_luh34"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_d2clm"]
+[ext_resource type="Resource" path="res://contraptions/config/staple.tres" id="3_urued"]
+[ext_resource type="Script" uid="uid://dressmbhdwnel" path="res://physics/advanced/tool_action_definition.gd" id="4_45r04"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="5_ijk0t"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="6_47j3t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvyty"]
+metallic = 0.25
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3pp3"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.7
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_gpiej"]
+script = ExtResource("1_luh34")
+size = Vector3(0.035, 0.055, 0.17)
+position = Vector3(0, 0, -0.03)
+material = SubResource("StandardMaterial3D_g3pp3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_up2v5"]
+albedo_color = Color(0.72, 0.13, 0.1, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_ffwkq"]
+script = ExtResource("1_luh34")
+size = Vector3(0.03, 0.022, 0.16)
+position = Vector3(0, 0.05, 0)
+rotation_degrees = Vector3(8, 0, 0)
+material = SubResource("StandardMaterial3D_up2v5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cv7wt"]
+albedo_color = Color(0.18, 0.19, 0.21, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_ogtks"]
+script = ExtResource("1_luh34")
+size = Vector3(0.036, 0.035, 0.024)
+position = Vector3(0, -0.02, -0.11)
+material = SubResource("StandardMaterial3D_cv7wt")
+
+[sub_resource type="Resource" id="Resource_cru4q"]
+script = ExtResource("4_45r04")
+operation = "staple"
+verb = "Staple"
+primary_hint = "[LMB] Staple (wood and soft materials)"
+secondary_hint = ""
+range_metres = 2.2
+probe_depth = 0.09
+nozzle = Vector3(0, -0.03, -0.125)
+moving_part_position = Vector3(0, -0.03, -0.125)
+shot_sound = 1
+shot_kick = 0.35
+connection = ExtResource("3_urued")
+colors = PackedColorArray(0.8, 0.12, 0.1, 1, 0.15, 0.4, 0.8, 1, 0.9, 0.75, 0.12, 1, 0.9, 0.9, 0.85, 1)
+
+[sub_resource type="Resource" id="Resource_gfceb"]
+script = ExtResource("5_ijk0t")
+advanced_action = SubResource("Resource_cru4q")
+category = 1
+action_name = "Staple"
+equip_time = 0.3
+rest_position = Vector3(0.2, -0.22, -0.36)
+windup_position = Vector3(0.2, -0.22, -0.36)
+windup_rotation_degrees = Vector3(0, 0, 0)
+strike_position = Vector3(0.17, -0.21, -0.42)
+strike_rotation_degrees = Vector3(-3, 0, 0)
+charge_time = 0.0
+motion_strikes = false
+
+[resource]
+script = ExtResource("2_d2clm")
+tool_profile = ExtResource("6_47j3t")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Staple Gun"
+shape_type = 4
+parts = Array[ExtResource("1_luh34")]([SubResource("Resource_gpiej"), SubResource("Resource_ffwkq"), SubResource("Resource_ogtks")])
+mass = 0.8
+friction = 0.7
+bounce = 0.05
+angular_damp = 0.25
+impact_sound = 2
+material = SubResource("StandardMaterial3D_jvyty")
+vox_model = "res://props/vox/advanced/staple_gun.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.018, -0.0375, -0.122)
+tool = SubResource("Resource_gfceb")

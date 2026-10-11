@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ConnectionDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/advanced/connection_definition.gd" id="1_0gng3"]
+
+[resource]
+script = ExtResource("1_0gng3")
+display_name = "Screw"
+strength = 1400.0
+torque_resistance = 140.0
+removal_resistance = 29.933259094191534

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ToolMaterialProfile" format=3]
+
+[ext_resource type="Script" path="res://physics/advanced/tool_material_profile.gd" id="1_4bhks"]
+
+[resource]
+script = ExtResource("1_4bhks")
+heat_response = 0.25
+saw_response = 0.08
+grind_response = 1.5
+magnetic = true
+weldable = true

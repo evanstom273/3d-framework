@@ -1,6 +1,8 @@
 @tool
 class_name PhysicsToolDefinition
 extends Resource
+@export var advanced_action: ToolActionDefinition
+@export var alternate_action: ToolActionDefinition
 ## Makes a physics object equippable. Poses are in view space (metres, degrees;
 ## -Z forward, +X right, +Y up) and describe where the hand is; the grip says where
 ## the hand holds the tool, in the tool's own local space.

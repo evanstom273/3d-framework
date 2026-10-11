@@ -1,0 +1,150 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://bvvhg6iiyftqn"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_emvra"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_1bn0a"]
+[ext_resource type="Script" uid="uid://dressmbhdwnel" path="res://physics/advanced/tool_action_definition.gd" id="3_ylkxf"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="4_j513p"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="5_ygq83"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nk61i"]
+metallic = 0.25
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vxea"]
+albedo_color = Color(0.18, 0.19, 0.21, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_wegk2"]
+script = ExtResource("1_emvra")
+size = Vector3(0.034, 0.11, 0.045)
+position = Vector3(0, -0.02, 0.005)
+rotation_degrees = Vector3(-14, 0, 0)
+material = SubResource("StandardMaterial3D_4vxea")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0upac"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_213g1"]
+script = ExtResource("1_emvra")
+size = Vector3(0.012, 0.035, 0.016)
+position = Vector3(0, 0, -0.035)
+material = SubResource("StandardMaterial3D_0upac")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aeylp"]
+albedo_color = Color(0.45, 0.47, 0.5, 1)
+metallic = 0.5
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_5banh"]
+script = ExtResource("1_emvra")
+size = Vector3(0.085, 0.09, 0.24)
+position = Vector3(0, 0.07, -0.05)
+material = SubResource("StandardMaterial3D_aeylp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1x34k"]
+albedo_color = Color(0.95, 0.55, 0.1, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_r2qox"]
+script = ExtResource("1_emvra")
+size = Vector3(0.09, 0.02, 0.12)
+position = Vector3(0, 0.125, -0.06)
+material = SubResource("StandardMaterial3D_1x34k")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13oi0"]
+albedo_color = Color(0.3, 0.9, 1, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_44m8w"]
+script = ExtResource("1_emvra")
+shape_type = 1
+radius = 0.03
+height = 0.0
+position = Vector3(0, 0.07, -0.2)
+material = SubResource("StandardMaterial3D_13oi0")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8ole"]
+albedo_color = Color(0.95, 0.55, 0.1, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_scqdi"]
+script = ExtResource("1_emvra")
+size = Vector3(0.016, 0.016, 0.1)
+position = Vector3(0, 0.115, -0.22)
+material = SubResource("StandardMaterial3D_p8ole")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c5wyx"]
+albedo_color = Color(0.95, 0.55, 0.1, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_dvrxp"]
+script = ExtResource("1_emvra")
+size = Vector3(0.016, 0.016, 0.1)
+position = Vector3(-0.038971145, 0.047499996, -0.22)
+material = SubResource("StandardMaterial3D_c5wyx")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7jb0"]
+albedo_color = Color(0.95, 0.55, 0.1, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_etie7"]
+script = ExtResource("1_emvra")
+size = Vector3(0.016, 0.016, 0.1)
+position = Vector3(0.03897115, 0.047500003, -0.22)
+material = SubResource("StandardMaterial3D_t7jb0")
+collides = false
+
+[sub_resource type="Resource" id="Resource_yffw2"]
+script = ExtResource("3_ylkxf")
+operation = "grabber"
+verb = "Grab"
+primary_hint = "[Hold LMB] Grab at a distance"
+secondary_hint = ""
+range_metres = 10.0
+force = 1400.0
+nozzle = Vector3(0, 0.07, -0.24)
+moving_part_position = Vector3(0, 0.07, -0.24)
+effect = 11
+effect_color = Color(0.3, 0.9, 1, 1)
+loop_sound = 6
+sound_pitch = 1.6
+sound_volume_db = -10.0
+light_color = Color(0.3, 0.85, 1, 1)
+colors = PackedColorArray(0.8, 0.12, 0.1, 1, 0.15, 0.4, 0.8, 1, 0.9, 0.75, 0.12, 1, 0.9, 0.9, 0.85, 1)
+
+[sub_resource type="Resource" id="Resource_1s1v1"]
+script = ExtResource("4_j513p")
+advanced_action = SubResource("Resource_yffw2")
+category = 1
+action_name = "Grab"
+equip_time = 0.3
+rest_position = Vector3(0.2, -0.24, -0.36)
+windup_position = Vector3(0.2, -0.24, -0.36)
+windup_rotation_degrees = Vector3(0, 0, 0)
+strike_position = Vector3(0.17, -0.21, -0.42)
+strike_rotation_degrees = Vector3(-3, 0, 0)
+charge_time = 0.0
+motion_strikes = false
+
+[resource]
+script = ExtResource("2_1bn0a")
+tool_profile = ExtResource("5_ygq83")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Physics Grabber"
+shape_type = 4
+parts = Array[ExtResource("1_emvra")]([SubResource("Resource_wegk2"), SubResource("Resource_213g1"), SubResource("Resource_5banh"), SubResource("Resource_r2qox"), SubResource("Resource_44m8w"), SubResource("Resource_scqdi"), SubResource("Resource_dvrxp"), SubResource("Resource_etie7")])
+mass = 4.0
+friction = 0.7
+bounce = 0.05
+angular_damp = 0.25
+impact_sound = 2
+material = SubResource("StandardMaterial3D_nk61i")
+vox_model = "res://props/vox/advanced/physics_grabber.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.046971146, -0.078809515, -0.27)
+tool = SubResource("Resource_1s1v1")

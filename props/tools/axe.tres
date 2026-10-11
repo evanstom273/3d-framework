@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_qeiqp"]
 [ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_qg055"]
 [ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="3_8twsn"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="advanced_profile"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhtxq"]
 albedo_color = Color(0.62, 0.44, 0.26, 1)
@@ -62,6 +63,8 @@ voxel_damage_radius = 0.2
 
 [resource]
 script = ExtResource("2_qg055")
+tool_profile = ExtResource("advanced_profile")
+equipped_collision_parts = PackedInt32Array()
 display_name = "Axe"
 shape_type = 4
 parts = Array[ExtResource("1_qeiqp")]([SubResource("Resource_gdhg3"), SubResource("Resource_7w72p"), SubResource("Resource_dm08x")])

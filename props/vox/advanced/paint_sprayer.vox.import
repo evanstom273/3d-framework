@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dqr2f4bcg3xs6"
+path="res://.godot/imported/paint_sprayer.vox-3e7dfeb55d4838688dcf5fdb3a4ebc6a.tres"
+
+[deps]
+
+source_file="res://props/vox/advanced/paint_sprayer.vox"
+dest_files=["res://.godot/imported/paint_sprayer.vox-3e7dfeb55d4838688dcf5fdb3a4ebc6a.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

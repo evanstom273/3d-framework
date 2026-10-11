@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dwd7dflj2gvhc"
+path="res://.godot/imported/physics_grabber.vox-a24429860af07d668fd55b9e5b333c02.tres"
+
+[deps]
+
+source_file="res://props/vox/advanced/physics_grabber.vox"
+dest_files=["res://.godot/imported/physics_grabber.vox-a24429860af07d668fd55b9e5b333c02.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

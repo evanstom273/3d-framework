@@ -105,7 +105,8 @@ static func cement(piece: VoxelBody, structure: VoxelBody) -> int:
 		if moved.is_empty():
 			continue
 		var anchored := _rests_on_world(space, structure.cell_to_world(target_cell), structure.voxel_size, structure)
-		structure.add_voxel(target_cell, moved[0], anchored, moved[1])
+		structure.add_voxel(target_cell, moved[0], anchored, moved[1], VoxelToolSurface.rotated(moved[2], _cement_alignment(piece, structure).basis))
+	piece.cells_transferred.emit(structure, plan)
 	return plan.size()
 
 

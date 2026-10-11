@@ -1,0 +1,142 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://bjwg4lkxvxnm"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_eo67e"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_c2cmo"]
+[ext_resource type="Resource" path="res://contraptions/config/rope.tres" id="3_nnmot"]
+[ext_resource type="Script" uid="uid://dressmbhdwnel" path="res://physics/advanced/tool_action_definition.gd" id="4_sr3mw"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="5_v8nse"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="6_lvx62"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3wmi"]
+metallic = 0.25
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbqpa"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_0dmfi"]
+script = ExtResource("1_eo67e")
+size = Vector3(0.034, 0.11, 0.045)
+position = Vector3(0, -0.02, 0.005)
+rotation_degrees = Vector3(-14, 0, 0)
+material = SubResource("StandardMaterial3D_gbqpa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_478oq"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_bwolm"]
+script = ExtResource("1_eo67e")
+size = Vector3(0.012, 0.035, 0.016)
+position = Vector3(0, 0, -0.035)
+material = SubResource("StandardMaterial3D_478oq")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijfof"]
+albedo_color = Color(0.62, 0.46, 0.26, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_y735m"]
+script = ExtResource("1_eo67e")
+shape_type = 2
+radius = 0.055
+height = 0.08
+position = Vector3(0, 0.07, -0.08)
+rotation_degrees = Vector3(0, 0, 90)
+material = SubResource("StandardMaterial3D_ijfof")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gooyw"]
+albedo_color = Color(0.2, 0.45, 0.25, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_h5m43"]
+script = ExtResource("1_eo67e")
+shape_type = 2
+radius = 0.075
+height = 0.012
+position = Vector3(-0.046, 0.07, -0.08)
+rotation_degrees = Vector3(0, 0, 90)
+material = SubResource("StandardMaterial3D_gooyw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3pgpu"]
+albedo_color = Color(0.2, 0.45, 0.25, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_2ab57"]
+script = ExtResource("1_eo67e")
+shape_type = 2
+radius = 0.075
+height = 0.012
+position = Vector3(0.046, 0.07, -0.08)
+rotation_degrees = Vector3(0, 0, 90)
+material = SubResource("StandardMaterial3D_3pgpu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xjk06"]
+albedo_color = Color(0.18, 0.19, 0.21, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_pjfaf"]
+script = ExtResource("1_eo67e")
+size = Vector3(0.02, 0.025, 0.08)
+position = Vector3(0, 0.07, -0.17)
+material = SubResource("StandardMaterial3D_xjk06")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rvuva"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.8
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_1ytcw"]
+script = ExtResource("1_eo67e")
+shape_type = 2
+radius = 0.014
+height = 0.02
+position = Vector3(0, 0.07, -0.215)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_rvuva")
+collides = false
+
+[sub_resource type="Resource" id="Resource_7qls4"]
+script = ExtResource("4_sr3mw")
+operation = "rope"
+verb = "Rope"
+range_metres = 6.0
+nozzle = Vector3(0, 0.07, -0.225)
+moving_part_position = Vector3(0, 0.07, -0.225)
+shot_sound = 1
+shot_kick = 0.15
+connection = ExtResource("3_nnmot")
+colors = PackedColorArray(0.8, 0.12, 0.1, 1, 0.15, 0.4, 0.8, 1, 0.9, 0.75, 0.12, 1, 0.9, 0.9, 0.85, 1)
+
+[sub_resource type="Resource" id="Resource_e2iak"]
+script = ExtResource("5_v8nse")
+advanced_action = SubResource("Resource_7qls4")
+category = 1
+action_name = "Rope"
+equip_time = 0.3
+rest_position = Vector3(0.2, -0.24, -0.36)
+windup_position = Vector3(0.2, -0.24, -0.36)
+windup_rotation_degrees = Vector3(0, 0, 0)
+strike_position = Vector3(0.17, -0.21, -0.42)
+strike_rotation_degrees = Vector3(-3, 0, 0)
+charge_time = 0.0
+motion_strikes = false
+
+[resource]
+script = ExtResource("2_c2cmo")
+tool_profile = ExtResource("6_lvx62")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Rope Tool"
+shape_type = 4
+parts = Array[ExtResource("1_eo67e")]([SubResource("Resource_0dmfi"), SubResource("Resource_bwolm"), SubResource("Resource_y735m"), SubResource("Resource_h5m43"), SubResource("Resource_2ab57"), SubResource("Resource_pjfaf"), SubResource("Resource_1ytcw")])
+mass = 2.0
+friction = 0.7
+bounce = 0.05
+angular_damp = 0.25
+impact_sound = 2
+material = SubResource("StandardMaterial3D_x3wmi")
+vox_model = "res://props/vox/advanced/rope_tool.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.052000005, -0.078809515, -0.22500001)
+tool = SubResource("Resource_e2iak")

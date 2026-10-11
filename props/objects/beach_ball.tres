@@ -1,5 +1,7 @@
 [gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
 
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/plastic.tres" id="advanced_profile"]
+
 [ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_wj22c"]
 [ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_wkfo8"]
 
@@ -58,6 +60,7 @@ collides = false
 
 [resource]
 script = ExtResource("2_wkfo8")
+tool_profile = ExtResource("advanced_profile")
 display_name = "Beach Ball"
 spawn_category = "Balls"
 shape_type = 4

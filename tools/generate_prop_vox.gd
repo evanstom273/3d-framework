@@ -35,7 +35,7 @@ func _initialize() -> void:
 	# "-- new" models every object definition under props/ that has no model yet,
 	# choosing a voxel size from its size.
 	if only == PackedStringArray(["new"]):
-		for path in _find_definitions("res://props"):
+		for path in _find_definitions("res://props") + _find_definitions("res://contraptions/assets"):
 			var definition := load(path) as PhysicsObjectDefinition
 			if definition != null and definition.vox_model.is_empty():
 				_convert(path, -1.0, [])
@@ -89,7 +89,10 @@ func _convert(path: String, voxel_size: float, planks: Array) -> void:
 					var cell := Vector3i(x, y, z)
 					cells[cell] = _shade(primitives[hit]["color"], cell, hit == 0, planks)
 	var name := path.get_file().get_basename()
-	var out_path := OUT_DIR + name + ".vox"
+	# Advanced tools and components keep their models together in vox/advanced/.
+	var out_dir := OUT_DIR + "advanced/" if path.contains("/advanced/") or path.contains("contraptions/") else OUT_DIR
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(out_dir))
+	var out_path := out_dir + name + ".vox"
 	var error := VoxFile.write_cells(ProjectSettings.globalize_path(out_path), dims, cells)
 	if error != OK:
 		push_error("Failed to write %s (%s)" % [out_path, error_string(error)])

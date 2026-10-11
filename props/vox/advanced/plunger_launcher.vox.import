@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cfd0wetj3g0y1"
+path="res://.godot/imported/plunger_launcher.vox-307b0fa73b302febb899a72358668c58.tres"
+
+[deps]
+
+source_file="res://props/vox/advanced/plunger_launcher.vox"
+dest_files=["res://.godot/imported/plunger_launcher.vox-307b0fa73b302febb899a72358668c58.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

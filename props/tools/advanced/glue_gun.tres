@@ -1,0 +1,119 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://dbp088vn4mwd6"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_gctnm"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_p7ylj"]
+[ext_resource type="Resource" path="res://contraptions/config/glue.tres" id="3_jvrae"]
+[ext_resource type="Script" uid="uid://dressmbhdwnel" path="res://physics/advanced/tool_action_definition.gd" id="4_m1pb7"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="5_614r1"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="6_ic0nf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3espp"]
+metallic = 0.25
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2rog7"]
+albedo_color = Color(0.22, 0.32, 0.45, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_nock8"]
+script = ExtResource("1_gctnm")
+size = Vector3(0.034, 0.11, 0.045)
+position = Vector3(0, -0.02, 0.005)
+rotation_degrees = Vector3(-14, 0, 0)
+material = SubResource("StandardMaterial3D_2rog7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fhhmx"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_7g6ig"]
+script = ExtResource("1_gctnm")
+size = Vector3(0.012, 0.035, 0.016)
+position = Vector3(0, 0, -0.035)
+material = SubResource("StandardMaterial3D_fhhmx")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6g8i8"]
+albedo_color = Color(0.22, 0.32, 0.45, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_w3274"]
+script = ExtResource("1_gctnm")
+size = Vector3(0.04, 0.075, 0.17)
+position = Vector3(0, 0.065, -0.04)
+material = SubResource("StandardMaterial3D_6g8i8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hg0yp"]
+albedo_color = Color(0.8, 0.62, 0.26, 1)
+metallic = 0.8
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_4uol6"]
+script = ExtResource("1_gctnm")
+shape_type = 2
+radius = 0.009
+height = 0.05
+position = Vector3(0, 0.055, -0.15)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_hg0yp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nwlmg"]
+albedo_color = Color(0.92, 0.9, 0.78, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_pnslu"]
+script = ExtResource("1_gctnm")
+shape_type = 2
+radius = 0.007
+height = 0.09
+position = Vector3(0, 0.08, 0.08)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_nwlmg")
+collides = false
+
+[sub_resource type="Resource" id="Resource_hhndb"]
+script = ExtResource("4_m1pb7")
+operation = "glue"
+verb = "Glue"
+primary_hint = "[LMB] Apply glue patch"
+secondary_hint = "[RMB] Clear patch"
+range_metres = 2.5
+nozzle = Vector3(0, 0.055, -0.18)
+moving_part_position = Vector3(0, 0.055, -0.18)
+effect_color = Color(0.95, 0.92, 0.8, 1)
+shot_sound = 1
+shot_kick = 0.2
+connection = ExtResource("3_jvrae")
+colors = PackedColorArray(0.8, 0.12, 0.1, 1, 0.15, 0.4, 0.8, 1, 0.9, 0.75, 0.12, 1, 0.9, 0.9, 0.85, 1)
+
+[sub_resource type="Resource" id="Resource_4haha"]
+script = ExtResource("5_614r1")
+advanced_action = SubResource("Resource_hhndb")
+category = 1
+action_name = "Glue"
+equip_time = 0.3
+rest_position = Vector3(0.2, -0.24, -0.36)
+windup_position = Vector3(0.2, -0.24, -0.36)
+windup_rotation_degrees = Vector3(0, 0, 0)
+strike_position = Vector3(0.17, -0.21, -0.42)
+strike_rotation_degrees = Vector3(-3, 0, 0)
+charge_time = 0.0
+motion_strikes = false
+
+[resource]
+script = ExtResource("2_p7ylj")
+tool_profile = ExtResource("6_ic0nf")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Glue Gun"
+shape_type = 4
+parts = Array[ExtResource("1_gctnm")]([SubResource("Resource_nock8"), SubResource("Resource_7g6ig"), SubResource("Resource_w3274"), SubResource("Resource_4uol6"), SubResource("Resource_pnslu")])
+mass = 0.5
+friction = 0.7
+bounce = 0.05
+angular_damp = 0.25
+impact_sound = 4
+material = SubResource("StandardMaterial3D_3espp")
+vox_model = "res://props/vox/advanced/glue_gun.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.02, -0.078809515, -0.17500001)
+tool = SubResource("Resource_4haha")

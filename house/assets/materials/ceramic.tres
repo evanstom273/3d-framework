@@ -1,9 +1,12 @@
 [gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3]
 
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/masonry.tres" id="advanced_profile"]
+
 [ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="1_3mnuk"]
 
 [resource]
 script = ExtResource("1_3mnuk")
+tool_profile = ExtResource("advanced_profile")
 display_name = "Ceramic"
 color = Color(0.87058824, 0.8980392, 0.8509804, 1)
 color_jitter = 0.04

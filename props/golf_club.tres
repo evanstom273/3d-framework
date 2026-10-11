@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="1_definition"]
 [ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="2_part"]
 [ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="3_tool"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="advanced_profile"]
 
 [sub_resource type="StandardMaterial3D" id="Material_shaft"]
 albedo_color = Color(0.78, 0.8, 0.82, 1)
@@ -70,6 +71,8 @@ hit_mask = 16
 
 [resource]
 script = ExtResource("1_definition")
+tool_profile = ExtResource("advanced_profile")
+equipped_collision_parts = PackedInt32Array()
 display_name = "Golf Club"
 shape_type = 4
 parts = Array[ExtResource("2_part")]([SubResource("Part_shaft"), SubResource("Part_grip"), SubResource("Part_head")])

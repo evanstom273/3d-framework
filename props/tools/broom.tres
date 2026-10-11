@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_0f85n"]
 [ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_7x3x1"]
 [ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="3_dl1wt"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/wood.tres" id="advanced_profile"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eml1p"]
 albedo_color = Color(0.8, 0.64, 0.42, 1)
@@ -65,6 +66,8 @@ voxel_damage_radius = 0.0
 
 [resource]
 script = ExtResource("2_7x3x1")
+tool_profile = ExtResource("advanced_profile")
+equipped_collision_parts = PackedInt32Array()
 display_name = "Broom"
 shape_type = 4
 parts = Array[ExtResource("1_0f85n")]([SubResource("Resource_ruw8s"), SubResource("Resource_2ep2h"), SubResource("Resource_xfkj1")])

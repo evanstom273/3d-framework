@@ -1,8 +1,12 @@
 [gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
 
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="advanced_profile"]
+
 [ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_gpot6"]
 [ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_yhkwh"]
 [ext_resource type="Script" path="res://physics/physics_tool_definition.gd" id="3_4sx58"]
+
+[ext_resource type="Resource" path="res://contraptions/config/crowbar_pry.tres" id="advanced_pry"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u636u"]
 albedo_color = Color(0.7, 0.1, 0.08, 1)
@@ -41,6 +45,7 @@ material = SubResource("StandardMaterial3D_e87ks")
 
 [sub_resource type="Resource" id="Resource_dq6js"]
 script = ExtResource("3_4sx58")
+alternate_action = ExtResource("advanced_pry")
 action_name = "Whack"
 grip_position = Vector3(0, -0.25, 0)
 rest_position = Vector3(0.32, -0.42, -0.4)
@@ -62,6 +67,7 @@ voxel_damage_radius = 0.16
 
 [resource]
 script = ExtResource("2_yhkwh")
+tool_profile = ExtResource("advanced_profile")
 display_name = "Crowbar"
 shape_type = 4
 parts = Array[ExtResource("1_gpot6")]([SubResource("Resource_qs7xu"), SubResource("Resource_bqhi4"), SubResource("Resource_lthqh")])

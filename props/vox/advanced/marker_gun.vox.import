@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://b704fpmfnkqwa"
+path="res://.godot/imported/marker_gun.vox-d498c41ff983f5ed59a1fa28f27b7611.tres"
+
+[deps]
+
+source_file="res://props/vox/advanced/marker_gun.vox"
+dest_files=["res://.godot/imported/marker_gun.vox-d498c41ff983f5ed59a1fa28f27b7611.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_qyenq"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_d0rpa"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="3_f2ok2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_appb3"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.9
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_xxq63"]
+script = ExtResource("1_qyenq")
+shape_type = 2
+radius = 0.004
+height = 0.08
+position = Vector3(0, 0, 0.01)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_appb3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_if8od"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.9
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_gmhm4"]
+script = ExtResource("1_qyenq")
+shape_type = 2
+radius = 0.009
+height = 0.004
+position = Vector3(0, 0, 0.05)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_if8od")
+collides = false
+
+[resource]
+script = ExtResource("2_d0rpa")
+tool_profile = ExtResource("3_f2ok2")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Nail"
+shape_type = 4
+parts = Array[ExtResource("1_qyenq")]([SubResource("Resource_xxq63"), SubResource("Resource_gmhm4")])
+mass = 0.015
+impact_sound = 2
+vox_model = "res://props/vox/advanced/nail_projectile.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.009, -0.009, -0.03)

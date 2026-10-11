@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_eny1d"]
 [ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_hfrag"]
 [ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="3_x0tbo"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="advanced_profile"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s3hqi"]
 albedo_color = Color(0.25, 0.17, 0.1, 1)
@@ -55,6 +56,8 @@ voxel_damage_radius = 0.12
 
 [resource]
 script = ExtResource("2_hfrag")
+tool_profile = ExtResource("advanced_profile")
+equipped_collision_parts = PackedInt32Array()
 display_name = "Frying Pan"
 shape_type = 4
 parts = Array[ExtResource("1_eny1d")]([SubResource("Resource_xfpyq"), SubResource("Resource_f8i0y")])

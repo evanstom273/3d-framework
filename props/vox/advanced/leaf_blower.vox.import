@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bv8mutkhpy4th"
+path="res://.godot/imported/leaf_blower.vox-50be1b338dea193e180994f5eb1dcc15.tres"
+
+[deps]
+
+source_file="res://props/vox/advanced/leaf_blower.vox"
+dest_files=["res://.godot/imported/leaf_blower.vox-50be1b338dea193e180994f5eb1dcc15.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

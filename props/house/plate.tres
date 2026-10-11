@@ -1,10 +1,13 @@
 [gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
 
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/masonry.tres" id="advanced_profile"]
+
 [ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_ber0o"]
 [ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_csl2i"]
 
 [resource]
 script = ExtResource("2_csl2i")
+tool_profile = ExtResource("advanced_profile")
 display_name = "Plate"
 spawn_category = "Props"
 size = Vector3(0.22500001, 0.0375, 0.22500001)

@@ -23,6 +23,8 @@ var _status: Label
 
 func _ready() -> void:
 	layer = 20
+	# Lets the pause menu leave Esc to an open spawn menu.
+	add_to_group(&"spawn_menus")
 	_scan(SCAN_ROOT)
 	for tab in _entries:
 		_entries[tab].sort_custom(func(a, b): return a["name"] < b["name"])

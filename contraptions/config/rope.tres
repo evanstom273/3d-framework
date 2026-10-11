@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ConnectionDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/advanced/connection_definition.gd" id="1_y2xqe"]
+
+[resource]
+script = ExtResource("1_y2xqe")
+display_name = "Rope"
+kind = 3
+strength = 2500.0
+torque_resistance = 250.0
+removal_resistance = 40.0
+compliance = 5e-06

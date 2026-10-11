@@ -1,0 +1,119 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://dm1frj3rut8pq"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_n1y6g"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_8nw47"]
+[ext_resource type="Script" uid="uid://dressmbhdwnel" path="res://physics/advanced/tool_action_definition.gd" id="3_mnmho"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="4_vkf3t"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="5_l420q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67voj"]
+metallic = 0.25
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v33ye"]
+albedo_color = Color(0.18, 0.19, 0.21, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_i5yq7"]
+script = ExtResource("1_n1y6g")
+size = Vector3(0.034, 0.11, 0.045)
+position = Vector3(0, -0.02, 0.005)
+rotation_degrees = Vector3(-14, 0, 0)
+material = SubResource("StandardMaterial3D_v33ye")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_agk7f"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_1muis"]
+script = ExtResource("1_n1y6g")
+size = Vector3(0.012, 0.035, 0.016)
+position = Vector3(0, 0, -0.035)
+material = SubResource("StandardMaterial3D_agk7f")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p5frg"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.8
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_ag0kb"]
+script = ExtResource("1_n1y6g")
+size = Vector3(0.04, 0.065, 0.12)
+position = Vector3(0, 0.075, -0.04)
+material = SubResource("StandardMaterial3D_p5frg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_86abg"]
+albedo_color = Color(0.85, 0.85, 0.8, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_5h6tc"]
+script = ExtResource("1_n1y6g")
+shape_type = 2
+radius = 0.04
+height = 0.09
+position = Vector3(0, 0.155, -0.04)
+material = SubResource("StandardMaterial3D_86abg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlfui"]
+albedo_color = Color(0.8, 0.62, 0.26, 1)
+metallic = 0.8
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_eev8u"]
+script = ExtResource("1_n1y6g")
+shape_type = 2
+radius = 0.012
+height = 0.045
+position = Vector3(0, 0.075, -0.12)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_qlfui")
+
+[sub_resource type="Resource" id="Resource_4fchw"]
+script = ExtResource("3_mnmho")
+operation = "paint"
+verb = "Paint"
+primary_hint = "[Hold LMB] Spray paint"
+secondary_hint = ""
+range_metres = 3.5
+cone_degrees = 10.0
+nozzle = Vector3(0, 0.075, -0.145)
+moving_part_position = Vector3(0, 0.075, -0.145)
+effect = 7
+loop_sound = 4
+sound_pitch = 1.35
+sound_volume_db = -10.0
+use_shake = 0.0008
+colors = PackedColorArray(0.8, 0.12, 0.1, 1, 0.15, 0.4, 0.8, 1, 0.9, 0.75, 0.12, 1, 0.9, 0.9, 0.85, 1)
+
+[sub_resource type="Resource" id="Resource_et6wq"]
+script = ExtResource("4_vkf3t")
+advanced_action = SubResource("Resource_4fchw")
+category = 1
+action_name = "Paint"
+equip_time = 0.3
+rest_position = Vector3(0.2, -0.24, -0.36)
+windup_position = Vector3(0.2, -0.24, -0.36)
+windup_rotation_degrees = Vector3(0, 0, 0)
+strike_position = Vector3(0.17, -0.21, -0.42)
+strike_rotation_degrees = Vector3(-3, 0, 0)
+charge_time = 0.0
+motion_strikes = false
+
+[resource]
+script = ExtResource("2_8nw47")
+tool_profile = ExtResource("5_l420q")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Paint Sprayer"
+shape_type = 4
+parts = Array[ExtResource("1_n1y6g")]([SubResource("Resource_i5yq7"), SubResource("Resource_1muis"), SubResource("Resource_ag0kb"), SubResource("Resource_5h6tc"), SubResource("Resource_eev8u")])
+mass = 1.2
+friction = 0.7
+bounce = 0.05
+angular_damp = 0.25
+impact_sound = 2
+material = SubResource("StandardMaterial3D_67voj")
+vox_model = "res://props/vox/advanced/paint_sprayer.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.04, -0.078809515, -0.1425)
+tool = SubResource("Resource_et6wq")

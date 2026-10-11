@@ -1,0 +1,129 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://dv5bhg8hb1gxp"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_tymjb"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_ff3u7"]
+[ext_resource type="Resource" path="res://contraptions/config/nail.tres" id="3_vqijp"]
+[ext_resource type="Script" uid="uid://dressmbhdwnel" path="res://physics/advanced/tool_action_definition.gd" id="4_31evo"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="5_72tdo"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="6_myj2l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ovh7g"]
+metallic = 0.25
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r16ys"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_ftlwt"]
+script = ExtResource("1_tymjb")
+size = Vector3(0.034, 0.11, 0.045)
+position = Vector3(0, -0.02, 0.005)
+rotation_degrees = Vector3(-14, 0, 0)
+material = SubResource("StandardMaterial3D_r16ys")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1psh0"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_7xu14"]
+script = ExtResource("1_tymjb")
+size = Vector3(0.012, 0.035, 0.016)
+position = Vector3(0, 0, -0.035)
+material = SubResource("StandardMaterial3D_1psh0")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4eur"]
+albedo_color = Color(0.78, 0.14, 0.1, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_hkoav"]
+script = ExtResource("1_tymjb")
+size = Vector3(0.06, 0.13, 0.19)
+position = Vector3(0, 0.08, -0.06)
+material = SubResource("StandardMaterial3D_o4eur")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rlud4"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.8
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_8a5x8"]
+script = ExtResource("1_tymjb")
+size = Vector3(0.03, 0.04, 0.27)
+position = Vector3(0, -0.03, -0.12)
+rotation_degrees = Vector3(-18, 0, 0)
+material = SubResource("StandardMaterial3D_rlud4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xp6o2"]
+albedo_color = Color(0.18, 0.19, 0.21, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_f4qmr"]
+script = ExtResource("1_tymjb")
+size = Vector3(0.036, 0.11, 0.036)
+position = Vector3(0, 0.03, -0.17)
+material = SubResource("StandardMaterial3D_xp6o2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5f5fd"]
+albedo_color = Color(0.8, 0.62, 0.26, 1)
+metallic = 0.8
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_pngmt"]
+script = ExtResource("1_tymjb")
+shape_type = 2
+radius = 0.008
+height = 0.03
+position = Vector3(0, -0.08, 0.04)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_5f5fd")
+collides = false
+
+[sub_resource type="Resource" id="Resource_5suam"]
+script = ExtResource("4_31evo")
+operation = "nail"
+verb = "Nail"
+primary_hint = "[LMB] Fire nail (fastens to what's behind)"
+secondary_hint = ""
+range_metres = 30.0
+projectile_speed = 40.0
+nozzle = Vector3(0, -0.02, -0.2)
+moving_part_position = Vector3(0, -0.02, -0.2)
+shot_sound = 2
+sound_volume_db = -4.0
+shot_kick = 0.7
+connection = ExtResource("3_vqijp")
+colors = PackedColorArray(0.8, 0.12, 0.1, 1, 0.15, 0.4, 0.8, 1, 0.9, 0.75, 0.12, 1, 0.9, 0.9, 0.85, 1)
+
+[sub_resource type="Resource" id="Resource_17ysv"]
+script = ExtResource("5_72tdo")
+advanced_action = SubResource("Resource_5suam")
+category = 1
+action_name = "Nail"
+equip_time = 0.3
+rest_position = Vector3(0.2, -0.24, -0.36)
+windup_position = Vector3(0.2, -0.24, -0.36)
+windup_rotation_degrees = Vector3(0, 0, 0)
+strike_position = Vector3(0.17, -0.21, -0.42)
+strike_rotation_degrees = Vector3(-3, 0, 0)
+charge_time = 0.0
+motion_strikes = false
+
+[resource]
+script = ExtResource("2_ff3u7")
+tool_profile = ExtResource("6_myj2l")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Nail Gun"
+shape_type = 4
+parts = Array[ExtResource("1_tymjb")]([SubResource("Resource_ftlwt"), SubResource("Resource_7xu14"), SubResource("Resource_hkoav"), SubResource("Resource_8a5x8"), SubResource("Resource_f4qmr"), SubResource("Resource_pngmt")])
+mass = 3.1
+friction = 0.7
+bounce = 0.05
+angular_damp = 0.25
+impact_sound = 2
+material = SubResource("StandardMaterial3D_ovh7g")
+vox_model = "res://props/vox/advanced/nail_gun.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.03, -0.09073843, -0.254573)
+tool = SubResource("Resource_17ysv")

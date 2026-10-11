@@ -47,6 +47,8 @@ var _sway_ready: bool = false
 var _hit_done: bool = false
 var _query := PhysicsShapeQueryParameters3D.new()
 var _sphere := SphereShape3D.new()
+var _advanced: AdvancedToolRuntime
+var _alternate: bool = false
 
 
 func _ready() -> void:
@@ -83,6 +85,9 @@ func get_tool_definition(body: RigidBody3D) -> PhysicsToolDefinition:
 
 
 func can_equip(body: RigidBody3D) -> bool:
+	if body != null:
+		var world := ContraptionWorld.find(body)
+		if world != null and world.attached(body): return false
 	return body != null and view != null and not is_equipped() and get_tool_definition(body) != null
 
 
@@ -95,8 +100,10 @@ func get_prompt() -> String:
 	if not is_equipped():
 		return ""
 	var title := str(_provider.call("get_grab_name")) if _provider.has_method("get_grab_name") else str(_tool.name)
+	if _advanced != null:
+		return "%s (equipped)\n%s" % [title, _advanced.prompt(_settings.alternate_action != null)]
 	var use := "[Hold LMB]" if _settings.charge_time > 0.0 else "[LMB]"
-	return "%s (equipped)\n%s %s   [F] Unequip   [E] Drop" % [title, use, _settings.action_name]
+	return "%s (equipped)\n%s %s   [F] Unequip   [E] Drop%s" % [title, use, _settings.action_name, "   [Q] Pry mode" if _settings.alternate_action != null else ""]
 
 
 ## Equips the body currently held by the manipulator.
@@ -138,6 +145,9 @@ func drop() -> void:
 func use_primary(power: float = 1.0) -> bool:
 	if not is_equipped() or is_busy():
 		return false
+	if _advanced != null:
+		_advanced.press_primary()
+		return true
 	if _is_placing():
 		var target := _place_target()
 		if target.is_empty() or not target["valid"]:
@@ -180,6 +190,7 @@ func get_charge_ratio_unchecked() -> float:
 
 
 func cancel_action() -> void:
+	if _advanced != null: _advanced.stop()
 	_action_time = -1.0
 	_charging = false
 
@@ -188,6 +199,13 @@ func cancel_action() -> void:
 func handle_input(event: InputEvent) -> bool:
 	if not is_equipped():
 		return false
+	if _settings.alternate_action != null and event.is_action_pressed("tool_mode"):
+		cancel_action()
+		_alternate = not _alternate
+		_tool.set_meta(&"alternate_tool_mode", _alternate)
+		_bind_advanced()
+		return true
+	if _advanced != null: return _advanced.input(event)
 	if event.is_action("use_tool"):
 		if event.is_pressed() and not event.is_echo():
 			begin_charge()
@@ -202,6 +220,10 @@ func physics_update(delta: float) -> void:
 	if not is_equipped():
 		return
 	_equip_progress = minf(1.0, _equip_progress + delta / maxf(_settings.equip_time, 0.01))
+	if _advanced != null:
+		_tool.global_transform = _current_transform(0.0)
+		_advanced.tick(delta)
+		return
 	if _charging:
 		_charge_elapsed += delta
 		# A release event can be missed (e.g. focus loss); the button state is authoritative.
@@ -306,6 +328,12 @@ func _equip(body: RigidBody3D) -> void:
 		body.tree_exiting.connect(_on_tool_tree_exiting)
 	if _provider.has_method("on_equipped"):
 		_provider.call("on_equipped", _holder)
+	_alternate = bool(body.get_meta(&"alternate_tool_mode", false))
+	_bind_advanced()
+	if body is PhysicsProp: body.set_equipped_collisions(true)
+	# Tools that stay solid while equipped (the shovel's scoop) must never shove their holder.
+	body.add_collision_exception_with(_holder)
+	_holder.add_collision_exception_with(body)
 	set_process(true)
 	equipped.emit(body)
 
@@ -314,6 +342,10 @@ func _release_tool() -> RigidBody3D:
 	if not is_equipped():
 		return null
 	var body := _tool
+	if _advanced != null: _advanced.unbind(); _advanced = null
+	if body is PhysicsProp: body.set_equipped_collisions(false)
+	body.remove_collision_exception_with(_holder)
+	_holder.remove_collision_exception_with(body)
 	_tool = null
 	_action_time = -1.0
 	_charging = false
@@ -339,7 +371,13 @@ func _current_transform(ahead: float) -> Transform3D:
 	var time := _action_time + ahead if _action_time >= 0.0 else -1.0
 	if _charging:
 		time = minf(time, _settings.windup_time)
-	var target := _tool_transform_at(time)
+	var target: Transform3D
+	if _advanced != null:
+		# Advanced tools blend between their rest and use poses, with recoil and vibration.
+		var grip := Transform3D(Basis.from_euler(_settings.grip_rotation_degrees * (PI / 180.0)), _settings.grip_position)
+		target = _anchor() * _advanced.hand_pose(_settings) * grip.affine_inverse()
+	else:
+		target = _tool_transform_at(time)
 	var progress := minf(1.0, _equip_progress + ahead / maxf(_settings.equip_time, 0.01))
 	if progress >= 1.0:
 		return target
@@ -347,6 +385,18 @@ func _current_transform(ahead: float) -> Transform3D:
 	return Transform3D(
 		_equip_from.basis.orthonormalized().slerp(target.basis.orthonormalized(), blend),
 		_equip_from.origin.lerp(target.origin, blend))
+
+
+func _bind_advanced() -> void:
+	if _advanced != null: _advanced.unbind(); _advanced = null
+	var definition := _settings.alternate_action if _alternate else _settings.advanced_action
+	if definition == null: return
+	_advanced = _tool.get_node_or_null("AdvancedAction") as AdvancedToolRuntime
+	if _advanced == null:
+		_advanced = AdvancedToolRuntime.new()
+		_advanced.name = "AdvancedAction"
+		_tool.add_child(_advanced)
+	_advanced.bind(self, definition)
 
 
 ## The anchor follows yaw fully and pitch by the tool's pitch_follow, trailing a

@@ -1,0 +1,131 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://736xsb0xa5cr"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_v1lw4"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_t5bix"]
+[ext_resource type="Resource" path="res://contraptions/config/screw.tres" id="3_qs38p"]
+[ext_resource type="Script" uid="uid://dressmbhdwnel" path="res://physics/advanced/tool_action_definition.gd" id="4_lolll"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="5_o8cs3"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="6_mswgo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ucnei"]
+metallic = 0.25
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p48qo"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_hatxf"]
+script = ExtResource("1_v1lw4")
+size = Vector3(0.034, 0.11, 0.045)
+position = Vector3(0, -0.02, 0.005)
+rotation_degrees = Vector3(-14, 0, 0)
+material = SubResource("StandardMaterial3D_p48qo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mo1wr"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_16l56"]
+script = ExtResource("1_v1lw4")
+size = Vector3(0.012, 0.035, 0.016)
+position = Vector3(0, 0, -0.035)
+material = SubResource("StandardMaterial3D_mo1wr")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8e1mj"]
+albedo_color = Color(0.2, 0.55, 0.25, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_wcuuf"]
+script = ExtResource("1_v1lw4")
+size = Vector3(0.05, 0.07, 0.17)
+position = Vector3(0, 0.07, -0.03)
+material = SubResource("StandardMaterial3D_8e1mj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yns8b"]
+albedo_color = Color(0.18, 0.19, 0.21, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_8a511"]
+script = ExtResource("1_v1lw4")
+size = Vector3(0.07, 0.045, 0.09)
+position = Vector3(0, -0.09, 0.02)
+material = SubResource("StandardMaterial3D_yns8b")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wanei"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_oix34"]
+script = ExtResource("1_v1lw4")
+shape_type = 2
+radius = 0.018
+height = 0.04
+position = Vector3(0, 0.07, -0.135)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_wanei")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfjhh"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.9
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_80yhw"]
+script = ExtResource("1_v1lw4")
+shape_type = 2
+radius = 0.004
+height = 0.07
+position = Vector3(0, 0.07, -0.19)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_rfjhh")
+collides = false
+
+[sub_resource type="Resource" id="Resource_eig05"]
+script = ExtResource("4_lolll")
+operation = "screw"
+verb = "Drill"
+primary_hint = "[Hold LMB] Drive screw"
+secondary_hint = "[RMB] Back out screw"
+range_metres = 2.5
+nozzle = Vector3(0, 0.07, -0.225)
+moving_part_position = Vector3(0, 0.07, -0.19)
+contact_effect = 13
+loop_sound = 1
+sound_pitch = 2.7
+sound_volume_db = -10.0
+use_shake = 0.0015
+connection = ExtResource("3_qs38p")
+colors = PackedColorArray(0.8, 0.12, 0.1, 1, 0.15, 0.4, 0.8, 1, 0.9, 0.75, 0.12, 1, 0.9, 0.9, 0.85, 1)
+
+[sub_resource type="Resource" id="Resource_tfm3p"]
+script = ExtResource("5_o8cs3")
+advanced_action = SubResource("Resource_eig05")
+category = 1
+action_name = "Drill"
+equip_time = 0.3
+rest_position = Vector3(0.2, -0.24, -0.36)
+windup_position = Vector3(0.2, -0.24, -0.36)
+windup_rotation_degrees = Vector3(0, 0, 0)
+strike_position = Vector3(0.17, -0.21, -0.42)
+strike_rotation_degrees = Vector3(-3, 0, 0)
+charge_time = 0.0
+motion_strikes = false
+
+[resource]
+script = ExtResource("2_t5bix")
+tool_profile = ExtResource("6_mswgo")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Power Drill"
+shape_type = 4
+parts = Array[ExtResource("1_v1lw4")]([SubResource("Resource_hatxf"), SubResource("Resource_16l56"), SubResource("Resource_wcuuf"), SubResource("Resource_8a511"), SubResource("Resource_oix34"), SubResource("Resource_80yhw")])
+mass = 1.8
+friction = 0.7
+bounce = 0.05
+angular_damp = 0.25
+impact_sound = 4
+material = SubResource("StandardMaterial3D_ucnei")
+vox_model = "res://props/vox/advanced/power_drill.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.035, -0.112500004, -0.225)
+tool = SubResource("Resource_tfm3p")

@@ -1,0 +1,101 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://ctxu78umwbwgp"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_ifb6x"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_uigx0"]
+[ext_resource type="Resource" path="res://contraptions/config/elastic.tres" id="3_n6fyq"]
+[ext_resource type="Script" uid="uid://dressmbhdwnel" path="res://physics/advanced/tool_action_definition.gd" id="4_4nbc7"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="5_uklp2"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="6_y8yl2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpran"]
+metallic = 0.25
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p03xl"]
+albedo_color = Color(0.62, 0.43, 0.24, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_u5uy3"]
+script = ExtResource("1_ifb6x")
+size = Vector3(0.03, 0.11, 0.035)
+position = Vector3(0, -0.02, 0)
+rotation_degrees = Vector3(-10, 0, 0)
+material = SubResource("StandardMaterial3D_p03xl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_60772"]
+albedo_color = Color(0.62, 0.43, 0.24, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_vt4cb"]
+script = ExtResource("1_ifb6x")
+size = Vector3(0.025, 0.09, 0.025)
+position = Vector3(-0.035, 0.07, -0.02)
+rotation_degrees = Vector3(0, 0, 18)
+material = SubResource("StandardMaterial3D_60772")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfe5f"]
+albedo_color = Color(0.62, 0.43, 0.24, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_8igrh"]
+script = ExtResource("1_ifb6x")
+size = Vector3(0.025, 0.09, 0.025)
+position = Vector3(0.035, 0.07, -0.02)
+rotation_degrees = Vector3(0, 0, -18)
+material = SubResource("StandardMaterial3D_mfe5f")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6q5ft"]
+albedo_color = Color(0.72, 0.13, 0.1, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_poaft"]
+script = ExtResource("1_ifb6x")
+size = Vector3(0.11, 0.012, 0.008)
+position = Vector3(0, 0.11, -0.02)
+material = SubResource("StandardMaterial3D_6q5ft")
+collides = false
+
+[sub_resource type="Resource" id="Resource_kt6d4"]
+script = ExtResource("4_4nbc7")
+operation = "elastic"
+verb = "Elastic"
+range_metres = 6.0
+rest_length = 1.0
+nozzle = Vector3(0, 0.11, -0.03)
+moving_part_position = Vector3(0, 0.11, -0.03)
+shot_sound = 1
+shot_kick = 0.15
+connection = ExtResource("3_n6fyq")
+colors = PackedColorArray(0.8, 0.12, 0.1, 1, 0.15, 0.4, 0.8, 1, 0.9, 0.75, 0.12, 1, 0.9, 0.9, 0.85, 1)
+
+[sub_resource type="Resource" id="Resource_y51g4"]
+script = ExtResource("5_uklp2")
+advanced_action = SubResource("Resource_kt6d4")
+category = 1
+action_name = "Elastic"
+equip_time = 0.3
+rest_position = Vector3(0.2, -0.24, -0.36)
+windup_position = Vector3(0.2, -0.24, -0.36)
+windup_rotation_degrees = Vector3(0, 0, 0)
+strike_position = Vector3(0.17, -0.21, -0.42)
+strike_rotation_degrees = Vector3(-3, 0, 0)
+charge_time = 0.0
+motion_strikes = false
+
+[resource]
+script = ExtResource("2_uigx0")
+tool_profile = ExtResource("6_y8yl2")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Elastic Band Tool"
+shape_type = 4
+parts = Array[ExtResource("1_ifb6x")]([SubResource("Resource_u5uy3"), SubResource("Resource_vt4cb"), SubResource("Resource_8igrh"), SubResource("Resource_poaft")])
+mass = 0.5
+friction = 0.7
+bounce = 0.05
+angular_damp = 0.25
+impact_sound = 1
+material = SubResource("StandardMaterial3D_gpran")
+vox_model = "res://props/vox/advanced/elastic_band_tool.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.060793974, -0.07720327, -0.0325)
+tool = SubResource("Resource_y51g4")

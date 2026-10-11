@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ToolMaterialProfile" format=3]
+
+[ext_resource type="Script" path="res://physics/advanced/tool_material_profile.gd" id="1_q38f5"]
+
+[resource]
+script = ExtResource("1_q38f5")
+heat_response = 0.08
+grind_response = 2.0
+fastening = false

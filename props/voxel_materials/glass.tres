@@ -1,10 +1,13 @@
 [gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://bn6kno624uu7n"]
 
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/glass.tres" id="advanced_profile"]
+
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_jdnfr"]
 [ext_resource type="Material" path="res://house/assets/materials/transparent_glass.tres" id="2_transparent"]
 
 [resource]
 script = ExtResource("1_jdnfr")
+tool_profile = ExtResource("advanced_profile")
 display_name = "Glass"
 color = Color(0.6862745, 0.8627451, 0.92156863, 1)
 mesh_material_override = ExtResource("2_transparent")

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bvj18mdrkgcjv"
+path="res://.godot/imported/nail_gun.vox-f444f9c197e6c1826db83f6485076d21.tres"
+
+[deps]
+
+source_file="res://props/vox/advanced/nail_gun.vox"
+dest_files=["res://.godot/imported/nail_gun.vox-f444f9c197e6c1826db83f6485076d21.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

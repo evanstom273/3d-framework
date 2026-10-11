@@ -1,5 +1,7 @@
 [gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
 
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/plastic.tres" id="advanced_profile"]
+
 [ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_kiod8"]
 [ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_issbj"]
 [ext_resource type="Script" path="res://physics/physics_tool_definition.gd" id="3_cejrl"]
@@ -81,6 +83,7 @@ voxel_damage_radius = 0.0
 
 [resource]
 script = ExtResource("2_issbj")
+tool_profile = ExtResource("advanced_profile")
 display_name = "Tennis Racket"
 shape_type = 4
 parts = Array[ExtResource("1_kiod8")]([SubResource("Resource_iyqke"), SubResource("Resource_3hay8"), SubResource("Resource_eewag"), SubResource("Resource_llas3")])

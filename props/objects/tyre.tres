@@ -1,5 +1,7 @@
 [gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
 
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/plastic.tres" id="advanced_profile"]
+
 [ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_vlr07"]
 [ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_4nci5"]
 
@@ -29,6 +31,7 @@ collides = false
 
 [resource]
 script = ExtResource("2_4nci5")
+tool_profile = ExtResource("advanced_profile")
 display_name = "Car Tyre"
 shape_type = 4
 parts = Array[ExtResource("1_vlr07")]([SubResource("Resource_b5csf"), SubResource("Resource_i0h1q")])

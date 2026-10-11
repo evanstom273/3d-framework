@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://num1sbu3186x"]
+
+[ext_resource type="Script" uid="uid://cisy2ovug3fi3" path="res://ui/main_menu.gd" id="1_menu"]
+
+[node name="MainMenu" type="Control" unique_id=2059733223]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+level_names = ["Playground", "House", "Lab"]
+level_paths = ["res://playground/physics_playground.tscn", "res://house/house.tscn", "res://contraptions/contraption_lab.tscn"]

@@ -1,6 +1,7 @@
 @tool
 class_name VoxelMaterialDefinition
 extends Resource
+@export var tool_profile: ToolMaterialProfile
 ## What a voxel is made of: how it looks, how much damage it takes to knock out,
 ## and how heavy the pieces that break off are.
 

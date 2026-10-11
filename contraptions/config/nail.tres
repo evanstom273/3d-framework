@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ConnectionDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/advanced/connection_definition.gd" id="1_oxof8"]
+
+[resource]
+script = ExtResource("1_oxof8")
+display_name = "Nail"
+removal_resistance = 22.627416997969522
+maximum_gap = 0.25

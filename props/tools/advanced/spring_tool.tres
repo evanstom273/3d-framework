@@ -1,0 +1,223 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://rmtnmp0ge74x"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_rdwl1"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_6saxh"]
+[ext_resource type="Resource" path="res://contraptions/config/spring.tres" id="3_7b0rh"]
+[ext_resource type="Script" uid="uid://dressmbhdwnel" path="res://physics/advanced/tool_action_definition.gd" id="4_7tkfh"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="5_r5wrx"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="6_456c8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1x3ri"]
+metallic = 0.25
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iuhms"]
+albedo_color = Color(0.2, 0.55, 0.25, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_o20wg"]
+script = ExtResource("1_rdwl1")
+size = Vector3(0.034, 0.11, 0.045)
+position = Vector3(0, -0.02, 0.005)
+rotation_degrees = Vector3(-14, 0, 0)
+material = SubResource("StandardMaterial3D_iuhms")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulnxt"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_8ept8"]
+script = ExtResource("1_rdwl1")
+size = Vector3(0.012, 0.035, 0.016)
+position = Vector3(0, 0, -0.035)
+material = SubResource("StandardMaterial3D_ulnxt")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tr1ud"]
+albedo_color = Color(0.2, 0.55, 0.25, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_fwova"]
+script = ExtResource("1_rdwl1")
+size = Vector3(0.04, 0.05, 0.09)
+position = Vector3(0, 0.06, -0.02)
+material = SubResource("StandardMaterial3D_tr1ud")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j3iut"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.9
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_s6rhg"]
+script = ExtResource("1_rdwl1")
+shape_type = 2
+radius = 0.03
+height = 0.006
+position = Vector3(0, 0.065, -0.09)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_j3iut")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ma3l4"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.9
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_sgqbi"]
+script = ExtResource("1_rdwl1")
+shape_type = 2
+radius = 0.03
+height = 0.006
+position = Vector3(0, 0.065, -0.104)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_ma3l4")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p01pf"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.9
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_00y6o"]
+script = ExtResource("1_rdwl1")
+shape_type = 2
+radius = 0.03
+height = 0.006
+position = Vector3(0, 0.065, -0.118)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_p01pf")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h507d"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.9
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_mkdli"]
+script = ExtResource("1_rdwl1")
+shape_type = 2
+radius = 0.03
+height = 0.006
+position = Vector3(0, 0.065, -0.132)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_h507d")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qrlfc"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.9
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_1jidu"]
+script = ExtResource("1_rdwl1")
+shape_type = 2
+radius = 0.03
+height = 0.006
+position = Vector3(0, 0.065, -0.146)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_qrlfc")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1u2ir"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.9
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_luekw"]
+script = ExtResource("1_rdwl1")
+shape_type = 2
+radius = 0.03
+height = 0.006
+position = Vector3(0, 0.065, -0.16)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_1u2ir")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10xc7"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.9
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_clojb"]
+script = ExtResource("1_rdwl1")
+shape_type = 2
+radius = 0.03
+height = 0.006
+position = Vector3(0, 0.065, -0.174)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_10xc7")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_we46j"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.9
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_dtqpw"]
+script = ExtResource("1_rdwl1")
+shape_type = 2
+radius = 0.03
+height = 0.006
+position = Vector3(0, 0.065, -0.188)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_we46j")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykman"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.9
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_jvqlp"]
+script = ExtResource("1_rdwl1")
+shape_type = 2
+radius = 0.03
+height = 0.006
+position = Vector3(0, 0.065, -0.202)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_ykman")
+collides = false
+
+[sub_resource type="Resource" id="Resource_nxkgw"]
+script = ExtResource("4_7tkfh")
+operation = "spring"
+verb = "Spring"
+range_metres = 6.0
+rest_length = 1.0
+nozzle = Vector3(0, 0.065, -0.22)
+moving_part_position = Vector3(0, 0.065, -0.22)
+shot_sound = 1
+shot_kick = 0.15
+connection = ExtResource("3_7b0rh")
+colors = PackedColorArray(0.8, 0.12, 0.1, 1, 0.15, 0.4, 0.8, 1, 0.9, 0.75, 0.12, 1, 0.9, 0.9, 0.85, 1)
+
+[sub_resource type="Resource" id="Resource_gimyt"]
+script = ExtResource("5_r5wrx")
+advanced_action = SubResource("Resource_nxkgw")
+category = 1
+action_name = "Spring"
+equip_time = 0.3
+rest_position = Vector3(0.2, -0.24, -0.36)
+windup_position = Vector3(0.2, -0.24, -0.36)
+windup_rotation_degrees = Vector3(0, 0, 0)
+strike_position = Vector3(0.17, -0.21, -0.42)
+strike_rotation_degrees = Vector3(-3, 0, 0)
+charge_time = 0.0
+motion_strikes = false
+
+[resource]
+script = ExtResource("2_6saxh")
+tool_profile = ExtResource("6_456c8")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Spring Tool"
+shape_type = 4
+parts = Array[ExtResource("1_rdwl1")]([SubResource("Resource_o20wg"), SubResource("Resource_8ept8"), SubResource("Resource_fwova"), SubResource("Resource_s6rhg"), SubResource("Resource_sgqbi"), SubResource("Resource_00y6o"), SubResource("Resource_mkdli"), SubResource("Resource_1jidu"), SubResource("Resource_luekw"), SubResource("Resource_clojb"), SubResource("Resource_dtqpw"), SubResource("Resource_jvqlp")])
+mass = 1.2
+friction = 0.7
+bounce = 0.05
+angular_damp = 0.25
+impact_sound = 2
+material = SubResource("StandardMaterial3D_1x3ri")
+vox_model = "res://props/vox/advanced/spring_tool.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.03, -0.078809515, -0.20500001)
+tool = SubResource("Resource_gimyt")

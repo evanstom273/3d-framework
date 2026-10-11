@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ConnectionDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/advanced/connection_definition.gd" id="1_ouwmu"]
+
+[resource]
+script = ExtResource("1_ouwmu")
+display_name = "Glue"
+strength = 350.0
+torque_resistance = 35.0
+removal_resistance = 14.966629547095767

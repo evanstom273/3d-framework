@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://b7ejsj1whjn8t"
+path="res://.godot/imported/hinge_tool.vox-caef6fce1770cf1966e05b689810ba64.tres"
+
+[deps]
+
+source_file="res://props/vox/advanced/hinge_tool.vox"
+dest_files=["res://.godot/imported/hinge_tool.vox-caef6fce1770cf1966e05b689810ba64.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

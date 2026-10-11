@@ -66,6 +66,8 @@ static func _apply(body: RigidBody3D, other: Object, own_point: Vector3, other_p
 		normal: Vector3, damage: float, radius: float, direction: Vector3, impulse: float) -> void:
 	if not is_instance_valid(body):
 		return
+	var contraptions := ContraptionWorld.find(body)
+	if contraptions != null: contraptions.impact(body, impulse)
 	var feel := PhysicsFeel.get_active()
 	var tint := Color(0, 0, 0, 0)
 	var sound := _sound_of(body)

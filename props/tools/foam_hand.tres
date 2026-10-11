@@ -1,5 +1,7 @@
 [gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
 
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/soft.tres" id="advanced_profile"]
+
 [ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_l5jcf"]
 [ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_8jjp5"]
 [ext_resource type="Script" path="res://physics/physics_tool_definition.gd" id="3_hvt2j"]
@@ -70,6 +72,7 @@ voxel_damage_radius = 0.0
 
 [resource]
 script = ExtResource("2_8jjp5")
+tool_profile = ExtResource("advanced_profile")
 display_name = "Giant Foam Hand"
 shape_type = 4
 parts = Array[ExtResource("1_l5jcf")]([SubResource("Resource_xk3q6"), SubResource("Resource_bphuv"), SubResource("Resource_be4x3"), SubResource("Resource_nvx35")])

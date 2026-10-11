@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://jbeg3bt3xeya"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_xlx16"]
+[ext_resource type="Resource" path="res://props/voxel_materials/wood.tres" id="2_ipxtu"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_vyjkr"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_pvfhu"]
+
+[sub_resource type="Resource" id="Resource_7hlau"]
+script = ExtResource("1_xlx16")
+size = Vector3i(12, 7, 2)
+material = ExtResource("2_ipxtu")
+
+[resource]
+script = ExtResource("3_vyjkr")
+display_name = "Wood Sample"
+anchor_mode = 1
+boxes = Array[ExtResource("1_xlx16")]([SubResource("Resource_7hlau")])

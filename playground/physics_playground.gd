@@ -14,6 +14,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("reset_playground"):
+		get_tree().call_group(&"contraption_worlds", &"reset")
 		get_tree().call_group(&"tool_handlers", &"drop")
 		get_tree().call_group(&"object_manipulators", &"release")
 		get_tree().call_group(&"physics_props", &"reset_to_spawn")

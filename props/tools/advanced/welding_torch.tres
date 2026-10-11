@@ -1,0 +1,126 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://7bh5cxusxp2r"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_phnxj"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_lmc0g"]
+[ext_resource type="Resource" path="res://contraptions/config/weld.tres" id="3_5d7da"]
+[ext_resource type="Script" uid="uid://dressmbhdwnel" path="res://physics/advanced/tool_action_definition.gd" id="4_1ot2y"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="5_fj6e1"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="6_sdq28"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x22yr"]
+metallic = 0.25
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7ci3"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_3wdbc"]
+script = ExtResource("1_phnxj")
+shape_type = 2
+radius = 0.02
+height = 0.14
+position = Vector3(0, -0.01, 0)
+rotation_degrees = Vector3(-20, 0, 0)
+material = SubResource("StandardMaterial3D_j7ci3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_12qg3"]
+albedo_color = Color(0.72, 0.13, 0.1, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_nvi02"]
+script = ExtResource("1_phnxj")
+size = Vector3(0.012, 0.03, 0.016)
+position = Vector3(0, -0.01, -0.03)
+material = SubResource("StandardMaterial3D_12qg3")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xtvgp"]
+albedo_color = Color(0.78, 0.45, 0.25, 1)
+metallic = 0.8
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_cd1hy"]
+script = ExtResource("1_phnxj")
+shape_type = 2
+radius = 0.012
+height = 0.15
+position = Vector3(0, 0.04, -0.1)
+rotation_degrees = Vector3(70, 0, 0)
+material = SubResource("StandardMaterial3D_xtvgp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j6xh6"]
+albedo_color = Color(0.78, 0.45, 0.25, 1)
+metallic = 0.8
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_mib0s"]
+script = ExtResource("1_phnxj")
+shape_type = 2
+radius = 0.017
+height = 0.05
+position = Vector3(0, 0.015, -0.19)
+rotation_degrees = Vector3(70, 0, 0)
+material = SubResource("StandardMaterial3D_j6xh6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_td2im"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_xppoi"]
+script = ExtResource("1_phnxj")
+shape_type = 2
+radius = 0.012
+height = 0.12
+position = Vector3(0, -0.09, 0.05)
+rotation_degrees = Vector3(-30, 0, 0)
+material = SubResource("StandardMaterial3D_td2im")
+collides = false
+
+[sub_resource type="Resource" id="Resource_ml1ux"]
+script = ExtResource("4_1ot2y")
+operation = "weld"
+verb = "Weld"
+primary_hint = "[LMB] Pick two touching metal surfaces"
+secondary_hint = "[RMB] Cancel / remove"
+range_metres = 2.5
+nozzle = Vector3(0, 0.005, -0.215)
+moving_part_position = Vector3(0, 0.005, -0.215)
+effect_color = Color(0.7, 0.85, 1, 1)
+shot_sound = 4
+shot_kick = 0.2
+light_color = Color(0.6, 0.8, 1, 1)
+connection = ExtResource("3_5d7da")
+colors = PackedColorArray(0.8, 0.12, 0.1, 1, 0.15, 0.4, 0.8, 1, 0.9, 0.75, 0.12, 1, 0.9, 0.9, 0.85, 1)
+
+[sub_resource type="Resource" id="Resource_2b127"]
+script = ExtResource("5_fj6e1")
+advanced_action = SubResource("Resource_ml1ux")
+category = 1
+action_name = "Weld"
+equip_time = 0.3
+rest_position = Vector3(0.2, -0.24, -0.36)
+windup_position = Vector3(0.2, -0.24, -0.36)
+windup_rotation_degrees = Vector3(0, 0, 0)
+strike_position = Vector3(0.17, -0.21, -0.42)
+strike_rotation_degrees = Vector3(-3, 0, 0)
+charge_time = 0.0
+motion_strikes = false
+
+[resource]
+script = ExtResource("2_lmc0g")
+tool_profile = ExtResource("6_sdq28")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Welding Torch"
+shape_type = 4
+parts = Array[ExtResource("1_phnxj")]([SubResource("Resource_3wdbc"), SubResource("Resource_nvi02"), SubResource("Resource_cd1hy"), SubResource("Resource_mib0s"), SubResource("Resource_xppoi")])
+mass = 1.4
+friction = 0.7
+bounce = 0.05
+angular_damp = 0.25
+impact_sound = 2
+material = SubResource("StandardMaterial3D_x22yr")
+vox_model = "res://props/vox/advanced/welding_torch.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.02, -0.14796153, -0.21930666)
+tool = SubResource("Resource_2b127")

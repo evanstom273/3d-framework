@@ -1,0 +1,134 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://bmk4h7oecsk5r"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_vq3dm"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_yc70t"]
+[ext_resource type="Resource" path="res://contraptions/config/sealant.tres" id="3_2jjm7"]
+[ext_resource type="Script" uid="uid://dressmbhdwnel" path="res://physics/advanced/tool_action_definition.gd" id="4_o1kow"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="5_km4ho"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="6_gyeo1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_acwb3"]
+metallic = 0.25
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mn4ad"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_c5uip"]
+script = ExtResource("1_vq3dm")
+size = Vector3(0.03, 0.11, 0.04)
+position = Vector3(0, -0.02, 0.03)
+rotation_degrees = Vector3(-10, 0, 0)
+material = SubResource("StandardMaterial3D_mn4ad")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kkaqf"]
+albedo_color = Color(0.72, 0.13, 0.1, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_n5byr"]
+script = ExtResource("1_vq3dm")
+size = Vector3(0.018, 0.1, 0.02)
+position = Vector3(0, -0.02, -0.015)
+rotation_degrees = Vector3(10, 0, 0)
+material = SubResource("StandardMaterial3D_kkaqf")
+collides = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44qg8"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.9
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_p2jdf"]
+script = ExtResource("1_vq3dm")
+shape_type = 2
+radius = 0.006
+height = 0.32
+position = Vector3(0, 0.035, -0.1)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_44qg8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4p2y"]
+albedo_color = Color(0.93, 0.92, 0.88, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_vf8qe"]
+script = ExtResource("1_vq3dm")
+shape_type = 2
+radius = 0.026
+height = 0.22
+position = Vector3(0, 0.065, -0.15)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_m4p2y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2yq2w"]
+albedo_color = Color(0.93, 0.92, 0.88, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_6y17b"]
+script = ExtResource("1_vq3dm")
+shape_type = 2
+radius = 0.009
+height = 0.06
+position = Vector3(0, 0.065, -0.29)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_2yq2w")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h6yfe"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.8
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_2mev1"]
+script = ExtResource("1_vq3dm")
+size = Vector3(0.06, 0.06, 0.012)
+position = Vector3(0, 0.05, -0.27)
+material = SubResource("StandardMaterial3D_h6yfe")
+collides = false
+
+[sub_resource type="Resource" id="Resource_m7q8w"]
+script = ExtResource("4_o1kow")
+operation = "sealant"
+verb = "Seal"
+primary_hint = "[LMB] Apply sealant (flexible bond)"
+secondary_hint = "[RMB] Clear"
+range_metres = 2.5
+nozzle = Vector3(0, 0.065, -0.325)
+moving_part_position = Vector3(0, 0.065, -0.325)
+effect_color = Color(0.93, 0.92, 0.88, 1)
+shot_sound = 1
+shot_kick = 0.15
+connection = ExtResource("3_2jjm7")
+colors = PackedColorArray(0.8, 0.12, 0.1, 1, 0.15, 0.4, 0.8, 1, 0.9, 0.75, 0.12, 1, 0.9, 0.9, 0.85, 1)
+
+[sub_resource type="Resource" id="Resource_pl8qm"]
+script = ExtResource("5_km4ho")
+advanced_action = SubResource("Resource_m7q8w")
+category = 1
+action_name = "Seal"
+equip_time = 0.3
+rest_position = Vector3(0.2, -0.24, -0.36)
+windup_position = Vector3(0.2, -0.24, -0.36)
+windup_rotation_degrees = Vector3(0, 0, 0)
+strike_position = Vector3(0.17, -0.21, -0.42)
+strike_rotation_degrees = Vector3(-3, 0, 0)
+charge_time = 0.0
+motion_strikes = false
+
+[resource]
+script = ExtResource("2_yc70t")
+tool_profile = ExtResource("6_gyeo1")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Caulking Gun"
+shape_type = 4
+parts = Array[ExtResource("1_vq3dm")]([SubResource("Resource_c5uip"), SubResource("Resource_n5byr"), SubResource("Resource_p2jdf"), SubResource("Resource_vf8qe"), SubResource("Resource_6y17b"), SubResource("Resource_2mev1")])
+mass = 1.2
+friction = 0.7
+bounce = 0.05
+angular_damp = 0.25
+impact_sound = 2
+material = SubResource("StandardMaterial3D_acwb3")
+vox_model = "res://props/vox/advanced/caulking_gun.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.03, -0.07763738, -0.32)
+tool = SubResource("Resource_pl8qm")

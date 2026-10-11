@@ -1,10 +1,13 @@
 [gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
 
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="advanced_profile"]
+
 [ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_qa4ia"]
 [ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_ltuy1"]
 
 [resource]
 script = ExtResource("2_ltuy1")
+tool_profile = ExtResource("advanced_profile")
 display_name = "Large Spoon"
 spawn_category = "Props"
 size = Vector3(0.05, 0.025, 0.25)

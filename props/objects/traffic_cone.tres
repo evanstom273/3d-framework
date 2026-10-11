@@ -1,5 +1,7 @@
 [gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
 
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/plastic.tres" id="advanced_profile"]
+
 [ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_3h846"]
 [ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_hjw30"]
 
@@ -78,6 +80,7 @@ material = SubResource("StandardMaterial3D_k3gal")
 
 [resource]
 script = ExtResource("2_hjw30")
+tool_profile = ExtResource("advanced_profile")
 display_name = "Traffic Cone"
 shape_type = 4
 parts = Array[ExtResource("1_3h846")]([SubResource("Resource_lu8v5"), SubResource("Resource_xflod"), SubResource("Resource_leq75"), SubResource("Resource_m4mvi"), SubResource("Resource_lscbx"), SubResource("Resource_tacdf")])

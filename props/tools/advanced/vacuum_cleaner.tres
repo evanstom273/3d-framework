@@ -1,0 +1,120 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://dvvbowr8eqfv"]
+
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_aoqpf"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_v3rtg"]
+[ext_resource type="Script" uid="uid://dressmbhdwnel" path="res://physics/advanced/tool_action_definition.gd" id="3_dgc1x"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="4_mqly6"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="5_jkmei"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_laajh"]
+metallic = 0.25
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mmq1j"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_6s3pv"]
+script = ExtResource("1_aoqpf")
+size = Vector3(0.03, 0.03, 0.14)
+position = Vector3(0, 0, 0.03)
+material = SubResource("StandardMaterial3D_mmq1j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7pnn2"]
+albedo_color = Color(0.45, 0.22, 0.65, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_8tsw6"]
+script = ExtResource("1_aoqpf")
+size = Vector3(0.09, 0.11, 0.16)
+position = Vector3(0, -0.08, 0.05)
+material = SubResource("StandardMaterial3D_7pnn2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lekaf"]
+albedo_color = Color(0.75, 0.8, 0.85, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_330wy"]
+script = ExtResource("1_aoqpf")
+shape_type = 2
+radius = 0.045
+height = 0.14
+position = Vector3(0, -0.11, -0.09)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_lekaf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6abgq"]
+albedo_color = Color(0.62, 0.64, 0.67, 1)
+metallic = 0.8
+roughness = 0.35
+
+[sub_resource type="Resource" id="Resource_jpp75"]
+script = ExtResource("1_aoqpf")
+shape_type = 2
+radius = 0.022
+height = 0.42
+position = Vector3(0, -0.13, -0.36)
+rotation_degrees = Vector3(85, 0, 0)
+material = SubResource("StandardMaterial3D_6abgq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ci31b"]
+albedo_color = Color(0.07, 0.07, 0.08, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_a8a52"]
+script = ExtResource("1_aoqpf")
+shape_type = 2
+radius = 0.03
+height = 0.05
+position = Vector3(0, -0.15, -0.6)
+rotation_degrees = Vector3(85, 0, 0)
+material = SubResource("StandardMaterial3D_ci31b")
+
+[sub_resource type="Resource" id="Resource_5djan"]
+script = ExtResource("3_dgc1x")
+operation = "vacuum"
+verb = "Vacuum"
+primary_hint = "[Hold LMB] Suck up loose things"
+secondary_hint = "[RMB] Empty"
+range_metres = 4.0
+force = 160.0
+cone_degrees = 16.0
+nozzle = Vector3(0, -0.153, -0.63)
+moving_part_position = Vector3(0, -0.153, -0.63)
+effect = 6
+loop_sound = 2
+sound_pitch = 0.7
+use_shake = 0.0015
+colors = PackedColorArray(0.8, 0.12, 0.1, 1, 0.15, 0.4, 0.8, 1, 0.9, 0.75, 0.12, 1, 0.9, 0.9, 0.85, 1)
+
+[sub_resource type="Resource" id="Resource_no7nl"]
+script = ExtResource("4_mqly6")
+advanced_action = SubResource("Resource_5djan")
+category = 1
+action_name = "Vacuum"
+equip_time = 0.3
+rest_position = Vector3(0.22, -0.32, -0.22)
+windup_position = Vector3(0.22, -0.32, -0.22)
+windup_rotation_degrees = Vector3(0, 0, 0)
+strike_position = Vector3(0.19, -0.29, -0.28)
+strike_rotation_degrees = Vector3(-5, 0, 0)
+charge_time = 0.0
+motion_strikes = false
+
+[resource]
+script = ExtResource("2_v3rtg")
+tool_profile = ExtResource("5_jkmei")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Vacuum Cleaner"
+shape_type = 4
+parts = Array[ExtResource("1_aoqpf")]([SubResource("Resource_6s3pv"), SubResource("Resource_8tsw6"), SubResource("Resource_330wy"), SubResource("Resource_jpp75"), SubResource("Resource_a8a52")])
+mass = 3.0
+friction = 0.7
+bounce = 0.05
+angular_damp = 0.25
+impact_sound = 4
+material = SubResource("StandardMaterial3D_laajh")
+vox_model = "res://props/vox/advanced/vacuum_cleaner.vox"
+vox_voxel_size = 0.009
+vox_origin = Vector3(-0.045, -0.18206474, -0.62751955)
+tool = SubResource("Resource_no7nl")

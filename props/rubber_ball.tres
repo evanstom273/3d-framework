@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="1_definition"]
 [ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="2_bku52"]
 [ext_resource type="PackedScene" path="res://props/details/rubber_ball_details.tscn" id="2_details"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/plastic.tres" id="advanced_profile"]
 
 [sub_resource type="StandardMaterial3D" id="Material_rubber"]
 albedo_color = Color(0.86, 0.13, 0.1, 1)
@@ -10,6 +11,8 @@ roughness = 0.55
 
 [resource]
 script = ExtResource("1_definition")
+tool_profile = ExtResource("advanced_profile")
+equipped_collision_parts = PackedInt32Array()
 display_name = "Rubber Ball"
 shape_type = 1
 radius = 0.15

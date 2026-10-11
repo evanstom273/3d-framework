@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dfjdeg7e2rjlu"
+path="res://.godot/imported/angle_grinder.vox-0ead94e008ea2caa1fde122a8292e735.tres"
+
+[deps]
+
+source_file="res://props/vox/advanced/angle_grinder.vox"
+dest_files=["res://.godot/imported/angle_grinder.vox-0ead94e008ea2caa1fde122a8292e735.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

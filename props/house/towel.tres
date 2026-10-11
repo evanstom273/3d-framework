@@ -1,10 +1,13 @@
 [gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
 
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/soft.tres" id="advanced_profile"]
+
 [ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_utl7i"]
 [ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_htf03"]
 
 [resource]
 script = ExtResource("2_htf03")
+tool_profile = ExtResource("advanced_profile")
 display_name = "Folded Towel"
 spawn_category = "Props"
 size = Vector3(0.3, 0.075, 0.2)

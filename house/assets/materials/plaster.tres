@@ -1,9 +1,12 @@
 [gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3]
 
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/masonry.tres" id="advanced_profile"]
+
 [ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="1_el8vv"]
 
 [resource]
 script = ExtResource("1_el8vv")
+tool_profile = ExtResource("advanced_profile")
 display_name = "Plaster"
 color = Color(0.8862745, 0.8627451, 0.77254903, 1)
 color_jitter = 0.04

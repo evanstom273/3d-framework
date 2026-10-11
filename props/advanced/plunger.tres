@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_rnqfe"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_sl0de"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="3_safxx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2mq6"]
+albedo_color = Color(0.72, 0.13, 0.1, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_vi26y"]
+script = ExtResource("1_rnqfe")
+shape_type = 1
+radius = 0.065
+height = 0.0
+material = SubResource("StandardMaterial3D_l2mq6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1o5lp"]
+albedo_color = Color(0.62, 0.43, 0.24, 1)
+roughness = 0.75
+
+[sub_resource type="Resource" id="Resource_g5m5n"]
+script = ExtResource("1_rnqfe")
+shape_type = 2
+radius = 0.02
+height = 0.28
+position = Vector3(0, 0, 0.17)
+rotation_degrees = Vector3(90, 0, 0)
+material = SubResource("StandardMaterial3D_1o5lp")
+
+[resource]
+script = ExtResource("2_sl0de")
+tool_profile = ExtResource("3_safxx")
+contraption_component = "plunger"
+equipped_collision_parts = PackedInt32Array()
+display_name = "Plunger"
+shape_type = 4
+parts = Array[ExtResource("1_rnqfe")]([SubResource("Resource_vi26y"), SubResource("Resource_g5m5n")])
+mass = 0.2
+impact_sound = 5
+vox_model = "res://props/vox/advanced/plunger.vox"
+vox_voxel_size = 0.012
+vox_origin = Vector3(-0.065, -0.065, -0.065)

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dhx504t1d8nqf"
+path="res://.godot/imported/pressure_washer.vox-11ac3a3f38c8b398b37c70b961eb8ac3.tres"
+
+[deps]
+
+source_file="res://props/vox/advanced/pressure_washer.vox"
+dest_files=["res://.godot/imported/pressure_washer.vox-11ac3a3f38c8b398b37c70b961eb8ac3.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0
