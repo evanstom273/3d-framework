@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://house/mounted_fixture.gd" id="r1"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_body.gd" id="r2"]
+[ext_resource type="Resource" path="res://house/assets/definitions/fridge.tres" id="r3"]
+[ext_resource type="Script" path="res://house/fixture_attachment.gd" id="r4"]
+[ext_resource type="PackedScene" path="res://house/scenes/fridge_door.tscn" id="r5"]
+
+
+[node name="Fridge" type="Node3D"]
+script = ExtResource("r1")
+
+[node name="Body" type="RigidBody3D" parent="."]
+position = Vector3(0, 0, 0)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r2")
+can_sleep = true
+structure = ExtResource("r3")
+
+[node name="Attachment" type="Node" parent="."]
+script = ExtResource("r4")
+body_path = NodePath("../Body")
+support_region = AABB(0, 0, 0, 0, 0, 0)
+mount_region = AABB(0, 0, 0, 0, 0, 0)
+
+[node name="Door" parent="." instance=ExtResource("r5")]
+position = Vector3(0, 0.1, -0.45)
+support_path = NodePath("../Body")
+support_region = AABB(-0.45000002, 0, -0.4, 0.1, 1.8000001, 0.8)
+open_angle_degrees = 100.0

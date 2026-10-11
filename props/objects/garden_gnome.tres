@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://bknq54nh8uh1b"]
 
-[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_0mr05"]
-[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_nsdnn"]
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_0mr05"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_nsdnn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6604u"]
 albedo_color = Color(0.25, 0.55, 0.2, 1)
@@ -109,5 +109,5 @@ angular_damp = 0.15
 impact_sound = 3
 impact_damage_scale = 0.8
 vox_model = "res://props/vox/garden_gnome.vox"
-vox_voxel_size = 0.013000000000000001
+vox_voxel_size = 0.013
 vox_origin = Vector3(-0.07, -0.155, -0.07)

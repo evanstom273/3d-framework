@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="1_el8vv"]
+
+[resource]
+script = ExtResource("1_el8vv")
+display_name = "Plaster"
+color = Color(0.8862745, 0.8627451, 0.77254903, 1)
+color_jitter = 0.04
+strength = 4.0
+density = 300.0
+friction = 0.65
+bounce = 0.03
+sharp_multiplier = 0.8
+pierce_multiplier = 1.3
+rubble_fraction = 0.08

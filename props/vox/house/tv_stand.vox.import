@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bbwnlsqjf14kt"
+path="res://.godot/imported/tv_stand.vox-6b29a37c9a7f89a51f302631d4d3e85a.tres"
+
+[deps]
+
+source_file="res://props/vox/house/tv_stand.vox"
+dest_files=["res://.godot/imported/tv_stand.vox-6b29a37c9a7f89a51f302631d4d3e85a.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

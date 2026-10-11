@@ -9,6 +9,12 @@ extends Resource
 	set(value):
 		color = value
 		emit_changed()
+## Optional rendering for these voxels, e.g. transparent glass in a wooden frame.
+## Physical properties and destruction still come from this resource.
+@export var mesh_material_override: StandardMaterial3D:
+	set(value):
+		mesh_material_override = value
+		emit_changed()
 ## Random per-voxel brightness variation, so surfaces don't look flat.
 @export_range(0.0, 0.5, 0.01) var color_jitter: float = 0.08:
 	set(value):

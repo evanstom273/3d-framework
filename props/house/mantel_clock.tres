@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_o51fr"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_vp5bi"]
+
+[resource]
+script = ExtResource("2_vp5bi")
+display_name = "Mantel Clock"
+spawn_category = "Props"
+size = Vector3(0.25, 0.3, 0.125)
+mass = 1.8
+bounce = 0.05
+impact_sound = 1
+vox_model = "res://props/vox/house/mantel_clock.vox"
+vox_origin = Vector3(-0.125, -0.15, -0.0625)

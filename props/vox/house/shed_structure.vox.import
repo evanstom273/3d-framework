@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dqt63c8n6311e"
+path="res://.godot/imported/shed_structure.vox-93834717f178125b23fc388419a540d9.tres"
+
+[deps]
+
+source_file="res://props/vox/house/shed_structure.vox"
+dest_files=["res://.godot/imported/shed_structure.vox-93834717f178125b23fc388419a540d9.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

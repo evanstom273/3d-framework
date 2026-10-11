@@ -14,6 +14,8 @@ const InteractionMenu = preload("res://interaction_menu.gd")
 @export var air_acceleration: float = 10.0
 @export_range(0.0, 0.25, 0.01) var coyote_time: float = 0.1
 @export_range(0.0, 0.25, 0.01) var jump_buffer_time: float = 0.12
+## Highest ledge the grounded player can walk up. Zero disables automatic stepping.
+@export_range(0.0, 0.6, 0.01) var max_step_height: float = 0.3
 
 @export_group("Crouching")
 @export_range(0.6, 1.8, 0.05) var crouch_height: float = 1.0
@@ -67,6 +69,8 @@ var _capsule_mesh: CapsuleMesh
 var _standing_height: float
 var _standing_eye_height: float
 var _standing_query: PhysicsShapeQueryParameters3D
+var _step_collision := KinematicCollision3D.new()
+var _step_ray := PhysicsRayQueryParameters3D.new()
 var _crouch_progress: float = 0.0
 var _crouch_blend: float = 0.0
 var _coyote_remaining: float = 0.0
@@ -102,6 +106,7 @@ func _ready() -> void:
 	_standing_query = PhysicsShapeQueryParameters3D.new()
 	_standing_query.shape = _capsule.duplicate()
 	_standing_query.exclude = [get_rid()]
+	_step_ray.exclude = [get_rid()]
 	interaction_ray.add_exception(self)
 	interaction_ray.target_position = Vector3(0.0, 0.0, -interaction_distance)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -176,6 +181,8 @@ func _physics_process(delta: float) -> void:
 	velocity = horizontal_velocity + up_direction * vertical_velocity
 	var falling_speed := -vertical_velocity
 	var intended_velocity := velocity
+	if was_on_floor and vertical_velocity <= 0.0:
+		_try_step_up(horizontal_velocity * delta)
 	move_and_slide()
 	_push_rigid_bodies(intended_velocity, delta)
 	var actual_velocity := get_real_velocity()
@@ -192,6 +199,50 @@ func _physics_process(delta: float) -> void:
 	manipulator.physics_update(delta)
 	tool_handler.physics_update(delta)
 	_update_charge_bar()
+
+
+func _try_step_up(motion: Vector3) -> void:
+	if max_step_height <= 0.0 or motion.is_zero_approx():
+		return
+	# Only probe a step when ordinary movement encounters a steep obstacle.
+	if not test_move(global_transform, motion, _step_collision, safe_margin):
+		return
+	if _step_collision.get_normal().dot(up_direction) >= cos(floor_max_angle):
+		return
+	var obstacle := _step_collision.get_collider()
+	# Loose objects retain the existing pushing behaviour instead of becoming stairs.
+	if obstacle is RigidBody3D and not obstacle.freeze:
+		return
+	var lift := up_direction * (max_step_height + safe_margin)
+	if test_move(global_transform, lift, _step_collision, safe_margin):
+		lift = _step_collision.get_travel()
+	if lift.dot(up_direction) <= safe_margin:
+		return
+	var raised := global_transform.translated(lift)
+	if test_move(raised, motion, _step_collision, safe_margin):
+		return
+	if not test_move(raised.translated(motion), -lift, _step_collision, safe_margin):
+		return
+	# A capsule can first touch a tread's edge with a steep normal. Check the
+	# surface just inside that edge, rather than rejecting valid steps at low speed.
+	var tread_point := _step_collision.get_position() + motion.normalized() * 0.02
+	_step_ray.from = tread_point + up_direction * 0.02
+	_step_ray.to = tread_point - up_direction * 0.02
+	_step_ray.collision_mask = collision_mask
+	var tread := get_world_3d().direct_space_state.intersect_ray(_step_ray)
+	if tread.is_empty() or tread["normal"].dot(up_direction) < cos(floor_max_angle):
+		return
+	var support: Object = tread["collider"]
+	if support is RigidBody3D and not support.freeze:
+		return
+	var height: float = (tread["position"] - global_position).dot(up_direction)
+	if height <= safe_margin or height > max_step_height + safe_margin:
+		return
+	var rise := up_direction * (height + safe_margin)
+	if test_move(global_transform, rise, _step_collision, safe_margin):
+		return
+	global_position += rise
+	velocity = velocity.slide(up_direction)
 
 
 func _update_charge_bar() -> void:
@@ -297,17 +348,19 @@ func _update_interaction(controls_active: bool) -> void:
 	if manipulator.is_holding():
 		var held := manipulator.get_held_body()
 		# A held voxel piece can be cemented into a structure it is pressed against.
-		var cement_target: VoxelBody = VoxelConstruction.find_cement_target(held) if held is VoxelBody else null
+		var can_cement := held is VoxelBody and VoxelConstruction.has_cement_target(held)
 		var hints := tool_handler.get_equip_hint(held)
-		if cement_target != null:
+		if can_cement:
 			hints = "[C] Cement" + ("" if hints.is_empty() else "   " + hints)
 		interaction_menu.close_menu()
 		interaction_prompt.text = manipulator.get_hold_prompt(hints)
 		interaction_prompt.show()
 		if Input.is_action_just_pressed("equip_tool"):
 			tool_handler.equip_held()
-		elif cement_target != null and Input.is_action_just_pressed("cement_held"):
-			VoxelConstruction.cement(held as VoxelBody, cement_target)
+		elif can_cement and Input.is_action_just_pressed("cement_held"):
+			var cement_target := VoxelConstruction.find_cement_target(held as VoxelBody)
+			if cement_target != null:
+				VoxelConstruction.cement(held as VoxelBody, cement_target)
 		elif Input.is_action_just_pressed("interact"):
 			manipulator.release()
 		return

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://c2ha3xx2dp867"
+path="res://.godot/imported/screen_frame.vox-ab7c49c29f5d61936bda7ce78bf2f0f1.tres"
+
+[deps]
+
+source_file="res://props/vox/house/screen_frame.vox"
+dest_files=["res://.godot/imported/screen_frame.vox-ab7c49c29f5d61936bda7ce78bf2f0f1.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

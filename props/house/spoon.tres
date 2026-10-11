@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_qa4ia"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_ltuy1"]
+
+[resource]
+script = ExtResource("2_ltuy1")
+display_name = "Large Spoon"
+spawn_category = "Props"
+size = Vector3(0.05, 0.025, 0.25)
+mass = 0.15
+bounce = 0.05
+impact_sound = 2
+vox_model = "res://props/vox/house/spoon.vox"
+vox_voxel_size = 0.0125
+vox_origin = Vector3(-0.025, -0.0125, -0.125)

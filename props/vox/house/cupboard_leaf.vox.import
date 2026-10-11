@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bor7nmd7448ks"
+path="res://.godot/imported/cupboard_leaf.vox-dc544a427440afc8dab69f03dbf050ac.tres"
+
+[deps]
+
+source_file="res://props/vox/house/cupboard_leaf.vox"
+dest_files=["res://.godot/imported/cupboard_leaf.vox-dc544a427440afc8dab69f03dbf050ac.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

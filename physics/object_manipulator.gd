@@ -497,6 +497,9 @@ func _find_provider(body: Node) -> Node:
 
 
 func _estimate_radius(body: RigidBody3D) -> float:
+	if body is VoxelBody:
+		var voxel_body := body as VoxelBody
+		return voxel_body.get_cell_bounds().size.length() * voxel_body.voxel_size * 0.5 if not voxel_body.cells.is_empty() else 0.5
 	var bounds := AABB()
 	var found := false
 	for owner_id in body.get_shape_owners():

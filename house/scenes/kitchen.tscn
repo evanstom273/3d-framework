@@ -1,0 +1,167 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://house/scenes/kitchen_drawers.tscn" id="r1"]
+[ext_resource type="PackedScene" path="res://house/scenes/kitchen_sink.tscn" id="r2"]
+[ext_resource type="PackedScene" path="res://house/scenes/kitchen_cupboard.tscn" id="r3"]
+[ext_resource type="PackedScene" path="res://house/scenes/oven.tscn" id="r4"]
+[ext_resource type="PackedScene" path="res://house/scenes/fridge.tscn" id="r5"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_body.gd" id="r6"]
+[ext_resource type="Resource" path="res://props/voxel_structures/table.tres" id="r7"]
+[ext_resource type="Resource" path="res://props/voxel_structures/chair.tres" id="r8"]
+[ext_resource type="Script" path="res://physics/physics_prop.gd" id="r9"]
+[ext_resource type="Resource" path="res://props/house/plate.tres" id="r10"]
+[ext_resource type="Resource" path="res://props/house/spoon.tres" id="r11"]
+[ext_resource type="Resource" path="res://props/objects/coffee_mug.tres" id="r12"]
+[ext_resource type="Resource" path="res://props/tools/frying_pan.tres" id="r13"]
+[ext_resource type="Resource" path="res://props/objects/teapot.tres" id="r14"]
+[ext_resource type="Resource" path="res://props/house/bottle.tres" id="r15"]
+
+
+[node name="Kitchen" type="Node3D"]
+
+[node name="Drawers" parent="." instance=ExtResource("r1")]
+support_path = NodePath("../../../Architecture/Section2")
+support_region = AABB(-5.85, 1, -0.25, 0.4, 0.2, 0.4)
+position = Vector3(-5.65, 0.4, -1.05)
+rotation = Vector3(0, -1.5707964, 0)
+
+[node name="Sink" parent="." instance=ExtResource("r2")]
+support_path = NodePath("../../../Architecture/Section2")
+support_region = AABB(-5.85, 1, 0.65, 0.4, 0.2, 0.4)
+position = Vector3(-5.65, 0.4, -0.15)
+rotation = Vector3(0, -1.5707964, 0)
+
+[node name="CupboardWest" parent="." instance=ExtResource("r3")]
+support_path = NodePath("../../../Architecture/Section3")
+support_region = AABB(-5.85, 1, -0.45, 0.4, 0.2, 0.4)
+position = Vector3(-5.65, 0.4, 0.75)
+rotation = Vector3(0, -1.5707964, 0)
+
+[node name="Oven" parent="." instance=ExtResource("r4")]
+support_path = NodePath("../../../Architecture/Section3")
+support_region = AABB(-4.8999996, 1, 0.65, 0.4, 0.2, 0.4)
+position = Vector3(-4.7, 0.4, 1.85)
+rotation = Vector3(0, 0, 0)
+
+[node name="CupboardRearA" parent="." instance=ExtResource("r3")]
+support_path = NodePath("../../../Architecture/Section3")
+support_region = AABB(-4, 1, 0.65, 0.4, 0.2, 0.4)
+position = Vector3(-3.8, 0.4, 1.85)
+rotation = Vector3(0, 0, 0)
+
+[node name="CupboardRearB" parent="." instance=ExtResource("r3")]
+support_path = NodePath("../../../Architecture/Section3")
+support_region = AABB(-3.1000001, 1, 0.65, 0.4, 0.2, 0.4)
+position = Vector3(-2.9, 0.4, 1.85)
+rotation = Vector3(0, 0, 0)
+
+[node name="Fridge" parent="." instance=ExtResource("r5")]
+support_path = NodePath("../../../Architecture/Section3")
+support_region = AABB(-2.2, 1, 0.3499999, 0.4, 0.2, 0.4)
+position = Vector3(-2, 0.4, 1.55)
+rotation = Vector3(0, 0, 0)
+
+[node name="KitchenTable" type="RigidBody3D" parent="."]
+position = Vector3(-3.25, 0.4, -0.65)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r6")
+structure = ExtResource("r7")
+
+[node name="ChairWest" type="RigidBody3D" parent="."]
+position = Vector3(-4.15, 0.4, -0.65)
+rotation = Vector3(0, -1.5707964, 0)
+can_sleep = true
+script = ExtResource("r6")
+structure = ExtResource("r8")
+
+[node name="ChairEast" type="RigidBody3D" parent="."]
+position = Vector3(-2.7, 0.4, -0.65)
+rotation = Vector3(0, 1.5707964, 0)
+can_sleep = true
+script = ExtResource("r6")
+structure = ExtResource("r8")
+
+[node name="ChairFront" type="RigidBody3D" parent="."]
+position = Vector3(-3.25, 0.4, -1.3)
+rotation = Vector3(0, 3.1415927, 0)
+can_sleep = true
+script = ExtResource("r6")
+structure = ExtResource("r8")
+
+[node name="Plate0" type="RigidBody3D" parent="."]
+position = Vector3(-3.55, 1.21875, -0.65)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r9")
+can_sleep = true
+definition = ExtResource("r10")
+
+[node name="Spoon0" type="RigidBody3D" parent="."]
+position = Vector3(-3.35, 1.2125001, -0.7)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r9")
+can_sleep = true
+definition = ExtResource("r11")
+
+[node name="Plate1" type="RigidBody3D" parent="."]
+position = Vector3(-2.95, 1.21875, -0.65)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r9")
+can_sleep = true
+definition = ExtResource("r10")
+
+[node name="Spoon1" type="RigidBody3D" parent="."]
+position = Vector3(-2.75, 1.2125001, -0.7)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r9")
+can_sleep = true
+definition = ExtResource("r11")
+
+[node name="TableMug" type="RigidBody3D" parent="."]
+position = Vector3(-3.15, 1.25, -0.4)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r9")
+definition = ExtResource("r12")
+
+[node name="PanOnHob" type="RigidBody3D" parent="."]
+position = Vector3(-4.7, 1.265, 1.8)
+rotation = Vector3(1.5707964, 0.43633232, 0)
+can_sleep = true
+script = ExtResource("r9")
+definition = ExtResource("r13")
+
+[node name="CounterTeapot" type="RigidBody3D" parent="."]
+position = Vector3(-3.8, 1.35, 1.85)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r9")
+definition = ExtResource("r14")
+
+[node name="CounterPlate" type="RigidBody3D" parent="."]
+position = Vector3(-2.9, 1.26875, 1.8)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r9")
+can_sleep = true
+definition = ExtResource("r10")
+
+[node name="CupboardMug" type="RigidBody3D" parent="."]
+position = Vector3(-3.8, 0.90000004, 1.85)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r9")
+definition = ExtResource("r12")
+
+[node name="DrawerUtensil" type="RigidBody3D" parent="."]
+position = Vector3(-5.55, 1.0875001, -1.05)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r9")
+can_sleep = true
+definition = ExtResource("r11")
+
+[node name="FridgeBottle" type="RigidBody3D" parent="."]
+position = Vector3(-2, 1.625, 1.5)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r9")
+can_sleep = true
+definition = ExtResource("r15")

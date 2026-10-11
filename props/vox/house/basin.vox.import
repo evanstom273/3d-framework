@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dh7kujrbwmpvg"
+path="res://.godot/imported/basin.vox-e1e7be864758966842d16a2a00f83e7c.tres"
+
+[deps]
+
+source_file="res://props/vox/house/basin.vox"
+dest_files=["res://.godot/imported/basin.vox-e1e7be864758966842d16a2a00f83e7c.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

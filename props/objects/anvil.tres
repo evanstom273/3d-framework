@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://1rote10o0a4n"]
 
-[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_pe3hc"]
-[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_id1es"]
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_pe3hc"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_id1es"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6irc0"]
 metallic = 0.7

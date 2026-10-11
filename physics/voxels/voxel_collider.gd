@@ -9,7 +9,11 @@ extends RefCounted
 static func merge(chunk_cells: Dictionary) -> Array:
 	var visited := {}
 	var boxes := []
-	for cell: Vector3i in chunk_cells:
+	# VOX cells arrive grouped by colour, not position. Starting in the middle of
+	# a solid run needlessly splits it, since expansion only goes along +X/+Y/+Z.
+	var ordered: Array = chunk_cells.keys()
+	ordered.sort()
+	for cell: Vector3i in ordered:
 		if visited.has(cell):
 			continue
 		var low := cell

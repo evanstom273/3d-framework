@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://sqog134qn4m4"
+path="res://.godot/imported/garden_bench.vox-73adcf7fe36ff77f01e2af890f1268c9.tres"
+
+[deps]
+
+source_file="res://props/vox/house/garden_bench.vox"
+dest_files=["res://.godot/imported/garden_bench.vox-73adcf7fe36ff77f01e2af890f1268c9.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

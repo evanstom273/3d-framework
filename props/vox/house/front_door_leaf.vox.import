@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://g2e7dx8xxbwt"
+path="res://.godot/imported/front_door_leaf.vox-573aa498802b4642c6737116b049c525.tres"
+
+[deps]
+
+source_file="res://props/vox/house/front_door_leaf.vox"
+dest_files=["res://.godot/imported/front_door_leaf.vox-573aa498802b4642c6737116b049c525.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

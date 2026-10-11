@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://c8rqnrofdwpm0"]
+
+[ext_resource type="Script" uid="uid://bqw6mch523kfp" path="res://house/house.gd" id="r1"]
+[ext_resource type="PackedScene" path="res://house/scenes/architecture.tscn" id="r2"]
+[ext_resource type="PackedScene" path="res://house/scenes/fixtures.tscn" id="r3"]
+[ext_resource type="PackedScene" path="res://house/scenes/hall.tscn" id="r4"]
+[ext_resource type="PackedScene" path="res://house/scenes/living_room.tscn" id="r5"]
+[ext_resource type="PackedScene" path="res://house/scenes/kitchen.tscn" id="r6"]
+[ext_resource type="PackedScene" path="res://house/scenes/study.tscn" id="r7"]
+[ext_resource type="PackedScene" path="res://house/scenes/bedroom.tscn" id="r8"]
+[ext_resource type="PackedScene" path="res://house/scenes/workshop.tscn" id="r9"]
+[ext_resource type="PackedScene" path="res://house/scenes/bathroom.tscn" id="r10"]
+[ext_resource type="PackedScene" path="res://house/scenes/utility.tscn" id="r11"]
+[ext_resource type="PackedScene" path="res://house/scenes/garden.tscn" id="r12"]
+[ext_resource type="PackedScene" uid="uid://c8bo3i576tqx" path="res://player.tscn" id="r13"]
+
+[sub_resource type="ProceduralSkyMaterial" id="s1"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="s2"]
+sky_material = SubResource("s1")
+
+[sub_resource type="Environment" id="s3"]
+background_mode = 2
+sky = SubResource("s2")
+ambient_light_source = 3
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[node name="House" type="Node3D" unique_id=68580246]
+script = ExtResource("r1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=12119845]
+environment = SubResource("s3")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=2046984605]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Architecture" parent="." unique_id=1690382705 instance=ExtResource("r2")]
+
+[node name="Fixtures" parent="." unique_id=542315937 instance=ExtResource("r3")]
+
+[node name="Rooms" type="Node3D" parent="." unique_id=1417151807]
+
+[node name="Hall" parent="Rooms" unique_id=622861756 instance=ExtResource("r4")]
+
+[node name="LivingRoom" parent="Rooms" unique_id=867910450 instance=ExtResource("r5")]
+
+[node name="Kitchen" parent="Rooms" unique_id=1233974077 instance=ExtResource("r6")]
+
+[node name="Study" parent="Rooms" unique_id=1352177836 instance=ExtResource("r7")]
+
+[node name="Bedroom" parent="Rooms" unique_id=562850951 instance=ExtResource("r8")]
+
+[node name="Workshop" parent="Rooms" unique_id=1978541833 instance=ExtResource("r9")]
+
+[node name="Bathroom" parent="Rooms" unique_id=94326515 instance=ExtResource("r10")]
+
+[node name="Utility" parent="Rooms" unique_id=879439539 instance=ExtResource("r11")]
+
+[node name="Garden" parent="." unique_id=2085332141 instance=ExtResource("r12")]
+
+[node name="DaylightFill" type="Node3D" parent="." unique_id=985352854]
+
+[node name="Fill16" type="OmniLight3D" parent="DaylightFill" unique_id=1415904858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2.65, -3.5)
+light_color = Color(1, 0.94, 0.83, 1)
+light_energy = 0.45
+omni_range = 4.2
+
+[node name="Fill17" type="OmniLight3D" parent="DaylightFill" unique_id=862456025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 2.65, -3.5)
+light_color = Color(1, 0.94, 0.83, 1)
+light_energy = 0.45
+omni_range = 4.2
+
+[node name="Fill18" type="OmniLight3D" parent="DaylightFill" unique_id=2090678080]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2.65, 0.4)
+light_color = Color(1, 0.94, 0.83, 1)
+light_energy = 0.45
+omni_range = 4.2
+
+[node name="Fill19" type="OmniLight3D" parent="DaylightFill" unique_id=1930146506]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 2.65, 0.4)
+light_color = Color(1, 0.94, 0.83, 1)
+light_energy = 0.45
+omni_range = 4.2
+
+[node name="Fill20" type="OmniLight3D" parent="DaylightFill" unique_id=956897198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2.65, 4)
+light_color = Color(1, 0.94, 0.83, 1)
+light_energy = 0.45
+omni_range = 4.2
+
+[node name="Fill21" type="OmniLight3D" parent="DaylightFill" unique_id=1548774065]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 2.65, 4.4)
+light_color = Color(1, 0.94, 0.83, 1)
+light_energy = 0.45
+omni_range = 4.2
+
+[node name="Fill22" type="OmniLight3D" parent="DaylightFill" unique_id=407029743]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.65, 0)
+light_color = Color(1, 0.94, 0.83, 1)
+light_energy = 0.45
+omni_range = 4.2
+
+[node name="Player" parent="." unique_id=1279860147 instance=ExtResource("r13")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.05, -9.5)
+interaction_distance = 4.0

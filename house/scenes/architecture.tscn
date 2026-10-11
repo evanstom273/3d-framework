@@ -1,0 +1,54 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_body.gd" id="r1"]
+[ext_resource type="Resource" path="res://house/assets/definitions/structure_00.tres" id="r2"]
+[ext_resource type="Resource" path="res://house/assets/definitions/structure_01.tres" id="r3"]
+[ext_resource type="Resource" path="res://house/assets/definitions/structure_02.tres" id="r4"]
+[ext_resource type="Resource" path="res://house/assets/definitions/structure_03.tres" id="r5"]
+[ext_resource type="Resource" path="res://house/assets/definitions/structure_04.tres" id="r6"]
+[ext_resource type="Resource" path="res://house/assets/definitions/structure_05.tres" id="r7"]
+
+
+[node name="Architecture" type="Node3D"]
+
+[node name="Section0" type="RigidBody3D" parent="."]
+position = Vector3(0, -0.8, -5)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="Section1" type="RigidBody3D" parent="."]
+position = Vector3(0, -0.8, -3)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r3")
+
+[node name="Section2" type="RigidBody3D" parent="."]
+position = Vector3(0, -0.8, -1)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r4")
+
+[node name="Section3" type="RigidBody3D" parent="."]
+position = Vector3(0, -0.8, 1)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r5")
+
+[node name="Section4" type="RigidBody3D" parent="."]
+position = Vector3(0, -0.8, 3)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r6")
+
+[node name="Section5" type="RigidBody3D" parent="."]
+position = Vector3(0, -0.8, 5)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r7")

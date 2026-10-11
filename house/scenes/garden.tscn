@@ -1,0 +1,653 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_body.gd" id="r1"]
+[ext_resource type="Resource" path="res://house/assets/definitions/fence_panel.tres" id="r2"]
+[ext_resource type="Resource" path="res://house/assets/definitions/shed_structure.tres" id="r3"]
+[ext_resource type="PackedScene" path="res://house/scenes/shed_door.tscn" id="r4"]
+[ext_resource type="Resource" path="res://props/house/storage_shelf.tres" id="r5"]
+[ext_resource type="Script" path="res://physics/physics_prop.gd" id="r6"]
+[ext_resource type="Resource" path="res://props/bucket.tres" id="r7"]
+[ext_resource type="Resource" path="res://props/tools/broom.tres" id="r8"]
+[ext_resource type="Resource" path="res://props/voxel_structures/breakable_crate.tres" id="r9"]
+[ext_resource type="Resource" path="res://props/house/garden_bench.tres" id="r10"]
+[ext_resource type="Resource" path="res://props/voxel_structures/table.tres" id="r11"]
+[ext_resource type="Resource" path="res://props/voxel_structures/chair.tres" id="r12"]
+[ext_resource type="Resource" path="res://props/objects/coffee_mug.tres" id="r13"]
+[ext_resource type="Resource" path="res://props/house/plant_pot.tres" id="r14"]
+[ext_resource type="Resource" path="res://props/objects/garden_gnome.tres" id="r15"]
+[ext_resource type="Resource" path="res://props/objects/football.tres" id="r16"]
+[ext_resource type="Resource" path="res://props/objects/tennis_ball.tres" id="r17"]
+[ext_resource type="Resource" path="res://props/wooden_bat.tres" id="r18"]
+[ext_resource type="Resource" path="res://props/open_wooden_box.tres" id="r19"]
+[ext_resource type="Resource" path="res://props/objects/plank.tres" id="r20"]
+[ext_resource type="Resource" path="res://props/voxel_structures/pumpkin.tres" id="r21"]
+
+[sub_resource type="StandardMaterial3D" id="s1"]
+albedo_color = Color(0.36862746, 0.47058824, 0.25882354, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="s2"]
+size = Vector3(7.6, 0.4, 32)
+material = SubResource("s1")
+
+[sub_resource type="BoxShape3D" id="s3"]
+size = Vector3(7.6, 0.4, 32)
+
+[sub_resource type="StandardMaterial3D" id="s4"]
+albedo_color = Color(0.36862746, 0.47058824, 0.25882354, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="s5"]
+size = Vector3(7.6, 0.4, 32)
+material = SubResource("s4")
+
+[sub_resource type="BoxShape3D" id="s6"]
+size = Vector3(7.6, 0.4, 32)
+
+[sub_resource type="StandardMaterial3D" id="s7"]
+albedo_color = Color(0.36862746, 0.47058824, 0.25882354, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="s8"]
+size = Vector3(12.8, 0.4, 6)
+material = SubResource("s7")
+
+[sub_resource type="BoxShape3D" id="s9"]
+size = Vector3(12.8, 0.4, 6)
+
+[sub_resource type="StandardMaterial3D" id="s10"]
+albedo_color = Color(0.36862746, 0.47058824, 0.25882354, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="s11"]
+size = Vector3(12.8, 0.4, 14)
+material = SubResource("s10")
+
+[sub_resource type="BoxShape3D" id="s12"]
+size = Vector3(12.8, 0.4, 14)
+
+[sub_resource type="StandardMaterial3D" id="s13"]
+albedo_color = Color(0.32941177, 0.25490198, 0.19215687, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="s14"]
+size = Vector3(12.8, 0.4, 12)
+material = SubResource("s13")
+
+[sub_resource type="BoxShape3D" id="s15"]
+size = Vector3(12.8, 0.4, 12)
+
+[sub_resource type="StandardMaterial3D" id="s16"]
+albedo_color = Color(0.6117647, 0.58431375, 0.52156866, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="s17"]
+size = Vector3(1.6, 0.04, 4)
+material = SubResource("s16")
+
+[sub_resource type="BoxShape3D" id="s18"]
+size = Vector3(1.6, 0.04, 4)
+
+[sub_resource type="StandardMaterial3D" id="s19"]
+albedo_color = Color(0.6117647, 0.58431375, 0.52156866, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="s20"]
+size = Vector3(1.6, 0.1, 2.04)
+material = SubResource("s19")
+
+[sub_resource type="BoxShape3D" id="s21"]
+size = Vector3(1.6, 0.1, 2.04)
+
+[sub_resource type="StandardMaterial3D" id="s22"]
+albedo_color = Color(0.6156863, 0.5882353, 0.5176471, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="s23"]
+size = Vector3(6, 0.4, 3)
+material = SubResource("s22")
+
+[sub_resource type="BoxShape3D" id="s24"]
+size = Vector3(6, 0.4, 3)
+
+[sub_resource type="StandardMaterial3D" id="s25"]
+albedo_color = Color(0.6156863, 0.5882353, 0.5176471, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="s26"]
+size = Vector3(1.6, 0.1, 2.04)
+material = SubResource("s25")
+
+[sub_resource type="BoxShape3D" id="s27"]
+size = Vector3(1.6, 0.1, 2.04)
+
+[node name="Garden" type="Node3D"]
+
+[node name="WestLawn" type="StaticBody3D" parent="."]
+position = Vector3(-10.2, -0.2, 4)
+rotation = Vector3(0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="WestLawn"]
+mesh = SubResource("s2")
+
+[node name="Collision" type="CollisionShape3D" parent="WestLawn"]
+shape = SubResource("s3")
+
+[node name="EastLawn" type="StaticBody3D" parent="."]
+position = Vector3(10.2, -0.2, 4)
+rotation = Vector3(0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="EastLawn"]
+mesh = SubResource("s5")
+
+[node name="Collision" type="CollisionShape3D" parent="EastLawn"]
+shape = SubResource("s6")
+
+[node name="FrontLawn" type="StaticBody3D" parent="."]
+position = Vector3(0, -0.2, -9)
+rotation = Vector3(0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="FrontLawn"]
+mesh = SubResource("s8")
+
+[node name="Collision" type="CollisionShape3D" parent="FrontLawn"]
+shape = SubResource("s9")
+
+[node name="RearLawn" type="StaticBody3D" parent="."]
+position = Vector3(0, -0.2, 13)
+rotation = Vector3(0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="RearLawn"]
+mesh = SubResource("s11")
+
+[node name="Collision" type="CollisionShape3D" parent="RearLawn"]
+shape = SubResource("s12")
+
+[node name="CrawlspaceEarth" type="StaticBody3D" parent="."]
+position = Vector3(0, -1.2, 0)
+rotation = Vector3(0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="CrawlspaceEarth"]
+mesh = SubResource("s14")
+
+[node name="Collision" type="CollisionShape3D" parent="CrawlspaceEarth"]
+shape = SubResource("s15")
+
+[node name="FrontPath" type="StaticBody3D" parent="."]
+position = Vector3(0, 0.01, -10)
+rotation = Vector3(0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="FrontPath"]
+mesh = SubResource("s17")
+
+[node name="Collision" type="CollisionShape3D" parent="FrontPath"]
+shape = SubResource("s18")
+
+[node name="EntranceRamp" type="StaticBody3D" parent="."]
+position = Vector3(0, 0.15, -7)
+rotation = Vector3(-0.19739674, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="EntranceRamp"]
+mesh = SubResource("s20")
+
+[node name="Collision" type="CollisionShape3D" parent="EntranceRamp"]
+shape = SubResource("s21")
+
+[node name="Patio" type="StaticBody3D" parent="."]
+position = Vector3(0, 0.2, 7.5)
+rotation = Vector3(0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Patio"]
+mesh = SubResource("s23")
+
+[node name="Collision" type="CollisionShape3D" parent="Patio"]
+shape = SubResource("s24")
+
+[node name="PatioRamp" type="StaticBody3D" parent="."]
+position = Vector3(0, 0.15, 10)
+rotation = Vector3(0.19739674, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="PatioRamp"]
+mesh = SubResource("s26")
+
+[node name="Collision" type="CollisionShape3D" parent="PatioRamp"]
+shape = SubResource("s27")
+
+[node name="RearFence0" type="RigidBody3D" parent="."]
+position = Vector3(-12.6, -0.1, 19.8)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="FrontFence0" type="RigidBody3D" parent="."]
+position = Vector3(-12.6, -0.1, -11.8)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="RearFence1" type="RigidBody3D" parent="."]
+position = Vector3(-9.8, -0.1, 19.8)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="FrontFence1" type="RigidBody3D" parent="."]
+position = Vector3(-9.8, -0.1, -11.8)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="RearFence2" type="RigidBody3D" parent="."]
+position = Vector3(-7, -0.1, 19.8)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="FrontFence2" type="RigidBody3D" parent="."]
+position = Vector3(-7, -0.1, -11.8)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="RearFence3" type="RigidBody3D" parent="."]
+position = Vector3(-4.2, -0.1, 19.8)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="FrontFence3" type="RigidBody3D" parent="."]
+position = Vector3(-4.2, -0.1, -11.8)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="RearFence4" type="RigidBody3D" parent="."]
+position = Vector3(-1.4, -0.1, 19.8)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="RearFence5" type="RigidBody3D" parent="."]
+position = Vector3(1.4, -0.1, 19.8)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="RearFence6" type="RigidBody3D" parent="."]
+position = Vector3(4.2, -0.1, 19.8)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="FrontFence6" type="RigidBody3D" parent="."]
+position = Vector3(4.2, -0.1, -11.8)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="RearFence7" type="RigidBody3D" parent="."]
+position = Vector3(7, -0.1, 19.8)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="FrontFence7" type="RigidBody3D" parent="."]
+position = Vector3(7, -0.1, -11.8)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="RearFence8" type="RigidBody3D" parent="."]
+position = Vector3(9.8, -0.1, 19.8)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="FrontFence8" type="RigidBody3D" parent="."]
+position = Vector3(9.8, -0.1, -11.8)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="RearFence9" type="RigidBody3D" parent="."]
+position = Vector3(12.6, -0.1, 19.8)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="FrontFence9" type="RigidBody3D" parent="."]
+position = Vector3(12.6, -0.1, -11.8)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="WestFence0" type="RigidBody3D" parent="."]
+position = Vector3(-13.8, -0.1, -10.4)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="EastFence0" type="RigidBody3D" parent="."]
+position = Vector3(13.8, -0.1, -10.4)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="WestFence1" type="RigidBody3D" parent="."]
+position = Vector3(-13.8, -0.1, -7.6)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="EastFence1" type="RigidBody3D" parent="."]
+position = Vector3(13.8, -0.1, -7.6)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="WestFence2" type="RigidBody3D" parent="."]
+position = Vector3(-13.8, -0.1, -4.8)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="EastFence2" type="RigidBody3D" parent="."]
+position = Vector3(13.8, -0.1, -4.8)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="WestFence3" type="RigidBody3D" parent="."]
+position = Vector3(-13.8, -0.1, -2)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="EastFence3" type="RigidBody3D" parent="."]
+position = Vector3(13.8, -0.1, -2)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="WestFence4" type="RigidBody3D" parent="."]
+position = Vector3(-13.8, -0.1, 0.8)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="EastFence4" type="RigidBody3D" parent="."]
+position = Vector3(13.8, -0.1, 0.8)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="WestFence5" type="RigidBody3D" parent="."]
+position = Vector3(-13.8, -0.1, 3.6)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="EastFence5" type="RigidBody3D" parent="."]
+position = Vector3(13.8, -0.1, 3.6)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="WestFence6" type="RigidBody3D" parent="."]
+position = Vector3(-13.8, -0.1, 6.4)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="EastFence6" type="RigidBody3D" parent="."]
+position = Vector3(13.8, -0.1, 6.4)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="WestFence7" type="RigidBody3D" parent="."]
+position = Vector3(-13.8, -0.1, 9.2)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="EastFence7" type="RigidBody3D" parent="."]
+position = Vector3(13.8, -0.1, 9.2)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="WestFence8" type="RigidBody3D" parent="."]
+position = Vector3(-13.8, -0.1, 12)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="EastFence8" type="RigidBody3D" parent="."]
+position = Vector3(13.8, -0.1, 12)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="WestFence9" type="RigidBody3D" parent="."]
+position = Vector3(-13.8, -0.1, 14.8)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="EastFence9" type="RigidBody3D" parent="."]
+position = Vector3(13.8, -0.1, 14.8)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="WestFence10" type="RigidBody3D" parent="."]
+position = Vector3(-13.8, -0.1, 17.6)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="EastFence10" type="RigidBody3D" parent="."]
+position = Vector3(13.8, -0.1, 17.6)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="Shed" type="RigidBody3D" parent="."]
+position = Vector3(-9, -0.3, 13)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r3")
+
+[node name="ShedDoor" parent="." instance=ExtResource("r4")]
+position = Vector3(-9, 0.11, 11.85)
+support_path = NodePath("../Shed")
+support_region = AABB(-0.7, 0.4, -1.2, 0.2, 1.8, 0.2)
+
+[node name="ShedShelf" type="RigidBody3D" parent="."]
+position = Vector3(-9, 0.1, 13.85)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r5")
+
+[node name="ShedBucket" type="RigidBody3D" parent="."]
+position = Vector3(-9, 0.81163085, 13.8)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r6")
+definition = ExtResource("r7")
+
+[node name="GardenBroom" type="RigidBody3D" parent="."]
+position = Vector3(-10, 0.84000003, 13)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r6")
+definition = ExtResource("r8")
+
+[node name="ShedCrate" type="RigidBody3D" parent="."]
+position = Vector3(-8, 0.1, 13.6)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r1")
+structure = ExtResource("r9")
+
+[node name="PatioBench" type="RigidBody3D" parent="."]
+position = Vector3(-2, 0.4, 7.7)
+rotation = Vector3(0, -1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r10")
+
+[node name="PatioTable" type="RigidBody3D" parent="."]
+position = Vector3(1.65, 0.4, 7.4)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r1")
+structure = ExtResource("r11")
+
+[node name="PatioChairA" type="RigidBody3D" parent="."]
+position = Vector3(1.65, 0.4, 6.6)
+rotation = Vector3(0, 3.1415927, 0)
+can_sleep = true
+script = ExtResource("r1")
+structure = ExtResource("r12")
+
+[node name="PatioChairB" type="RigidBody3D" parent="."]
+position = Vector3(1.65, 0.4, 8.2)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r1")
+structure = ExtResource("r12")
+
+[node name="PatioMug" type="RigidBody3D" parent="."]
+position = Vector3(1.65, 1.25, 7.4)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r6")
+definition = ExtResource("r13")
+
+[node name="Planter79" type="RigidBody3D" parent="."]
+position = Vector3(-2.7, 0.4, 6.55)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r14")
+
+[node name="Planter80" type="RigidBody3D" parent="."]
+position = Vector3(2.7, 0.4, 8.55)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r14")
+
+[node name="Planter81" type="RigidBody3D" parent="."]
+position = Vector3(-1.6, 0, -7.9)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r14")
+
+[node name="Planter82" type="RigidBody3D" parent="."]
+position = Vector3(1.6, 0, -7.9)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r14")
+
+[node name="Gnome" type="RigidBody3D" parent="."]
+position = Vector3(-2.2, 0.155, -8.1)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r6")
+definition = ExtResource("r15")
+
+[node name="Football" type="RigidBody3D" parent="."]
+position = Vector3(6.5, 0.11, 10.5)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r6")
+definition = ExtResource("r16")
+
+[node name="TennisBall" type="RigidBody3D" parent="."]
+position = Vector3(6.8, 0.033, 10.8)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r6")
+definition = ExtResource("r17")
+
+[node name="WoodenBat" type="RigidBody3D" parent="."]
+position = Vector3(5.9, 0.03300002, 10.8)
+rotation = Vector3(0, 0, 1.5707964)
+can_sleep = true
+script = ExtResource("r6")
+definition = ExtResource("r18")
+
+[node name="GardenBox" type="RigidBody3D" parent="."]
+position = Vector3(5.3, 0.15, 10.5)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r6")
+definition = ExtResource("r19")
+
+[node name="GardenPlank" type="RigidBody3D" parent="."]
+position = Vector3(-7, 0.015, 11)
+rotation = Vector3(0, 0.5235988, 0)
+can_sleep = true
+script = ExtResource("r6")
+definition = ExtResource("r20")
+
+[node name="GardenCrate" type="RigidBody3D" parent="."]
+position = Vector3(-7, 0, 11.8)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r1")
+structure = ExtResource("r9")
+
+[node name="Pumpkin" type="RigidBody3D" parent="."]
+position = Vector3(-10.9, 0, 12)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r1")
+structure = ExtResource("r21")

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_t3fi1"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_g8006"]
+
+[resource]
+script = ExtResource("2_g8006")
+display_name = "Oscilloscope"
+spawn_category = "Props"
+size = Vector3(0.45000002, 0.3, 0.3)
+mass = 7.0
+bounce = 0.05
+impact_sound = 2
+vox_model = "res://props/vox/house/oscilloscope.vox"
+vox_origin = Vector3(-0.22500001, -0.15, -0.15)

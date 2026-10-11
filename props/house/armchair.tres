@@ -1,0 +1,143 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://dbd34737o3u5i"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_sn0a2"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="2_0s8yd"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="3_r05b4"]
+[ext_resource type="Resource" path="res://props/voxel_materials/brick.tres" id="4_dxjdv"]
+[ext_resource type="Resource" path="res://props/voxel_materials/concrete.tres" id="5_lfxeu"]
+[ext_resource type="Resource" uid="uid://bn6kno624uu7n" path="res://props/voxel_materials/glass.tres" id="6_8h5rm"]
+[ext_resource type="Resource" path="res://props/voxel_materials/wood.tres" id="7_6mtyw"]
+
+[sub_resource type="Resource" id="Resource_n2dfs"]
+script = ExtResource("3_r05b4")
+display_name = "Upholstery"
+color = Color(0.26666668, 0.4, 0.32156864, 1)
+color_jitter = 0.04
+strength = 3.0
+density = 80.0
+friction = 0.65
+bounce = 0.03
+sharp_multiplier = 1.7
+pierce_multiplier = 1.3
+impact_sound = 4
+rubble_fraction = 0.05
+
+[sub_resource type="Resource" id="Resource_otkbb"]
+script = ExtResource("3_r05b4")
+display_name = "Plaster"
+color = Color(0.8862745, 0.8627451, 0.77254903, 1)
+color_jitter = 0.04
+strength = 4.0
+density = 300.0
+friction = 0.65
+bounce = 0.03
+sharp_multiplier = 0.8
+pierce_multiplier = 1.3
+rubble_fraction = 0.08
+
+[sub_resource type="Resource" id="Resource_kgmfo"]
+script = ExtResource("3_r05b4")
+display_name = "Ceramic"
+color = Color(0.87058824, 0.8980392, 0.8509804, 1)
+color_jitter = 0.04
+strength = 8.0
+density = 900.0
+friction = 0.65
+bounce = 0.03
+sharp_multiplier = 0.8
+pierce_multiplier = 1.3
+impact_sound = 7
+rubble_fraction = 0.18
+
+[sub_resource type="Resource" id="Resource_tdsfa"]
+script = ExtResource("3_r05b4")
+display_name = "Painted Metal"
+color = Color(0.29803923, 0.3254902, 0.3254902, 1)
+color_jitter = 0.04
+strength = 24.0
+density = 700.0
+friction = 0.65
+bounce = 0.03
+sharp_multiplier = 0.8
+pierce_multiplier = 1.3
+impact_sound = 2
+rubble_fraction = 0.08
+
+[sub_resource type="Resource" id="Resource_8do7r"]
+script = ExtResource("3_r05b4")
+display_name = "Roof Tile"
+color = Color(0.24313726, 0.2509804, 0.28235295, 1)
+color_jitter = 0.04
+strength = 8.0
+density = 600.0
+friction = 0.65
+bounce = 0.03
+sharp_multiplier = 0.8
+pierce_multiplier = 1.3
+rubble_fraction = 0.12
+
+[sub_resource type="Resource" id="Resource_jm8im"]
+script = ExtResource("3_r05b4")
+display_name = "Upholstery"
+color = Color(0.5176471, 0.24313726, 0.25490198, 1)
+color_jitter = 0.04
+strength = 3.0
+density = 80.0
+friction = 0.65
+bounce = 0.03
+sharp_multiplier = 1.7
+pierce_multiplier = 1.3
+impact_sound = 4
+rubble_fraction = 0.05
+
+[sub_resource type="Resource" id="Resource_1nnks"]
+script = ExtResource("3_r05b4")
+display_name = "Upholstery"
+color = Color(0.77254903, 0.7294118, 0.5764706, 1)
+color_jitter = 0.04
+strength = 3.0
+density = 80.0
+friction = 0.65
+bounce = 0.03
+sharp_multiplier = 1.7
+pierce_multiplier = 1.3
+impact_sound = 4
+rubble_fraction = 0.05
+
+[sub_resource type="Resource" id="Resource_vux8x"]
+script = ExtResource("3_r05b4")
+display_name = "Wood"
+color = Color(0.6392157, 0.44313726, 0.25490198, 1)
+color_jitter = 0.06
+strength = 6.0
+density = 180.0
+friction = 0.65
+bounce = 0.1
+sharp_multiplier = 2.0
+pierce_multiplier = 0.8
+impact_sound = 1
+rubble_fraction = 0.3
+
+[sub_resource type="Resource" id="Resource_tcaui"]
+script = ExtResource("3_r05b4")
+display_name = "Wood"
+color = Color(0.34117648, 0.23137255, 0.15686275, 1)
+color_jitter = 0.06
+strength = 6.0
+density = 180.0
+friction = 0.65
+bounce = 0.1
+sharp_multiplier = 2.0
+pierce_multiplier = 0.8
+impact_sound = 1
+rubble_fraction = 0.3
+
+[resource]
+script = ExtResource("2_0s8yd")
+display_name = "Armchair"
+spawn_category = "Destructible"
+voxel_size = 0.05
+anchor_mode = 1
+vox_file = "res://props/vox/house/armchair.vox"
+vox_material = ExtResource("7_6mtyw")
+vox_extra_materials = Array[ExtResource("3_r05b4")]([ExtResource("4_dxjdv"), ExtResource("5_lfxeu"), ExtResource("6_8h5rm"), SubResource("Resource_n2dfs"), SubResource("Resource_otkbb"), SubResource("Resource_kgmfo"), SubResource("Resource_tdsfa"), SubResource("Resource_8do7r"), SubResource("Resource_jm8im"), SubResource("Resource_1nnks"), SubResource("Resource_vux8x"), SubResource("Resource_tcaui")])

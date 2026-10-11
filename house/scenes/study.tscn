@@ -1,0 +1,136 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_body.gd" id="r1"]
+[ext_resource type="Resource" path="res://props/voxel_structures/table.tres" id="r2"]
+[ext_resource type="Resource" path="res://props/voxel_structures/chair.tres" id="r3"]
+[ext_resource type="Resource" path="res://props/house/desk.tres" id="r4"]
+[ext_resource type="Resource" path="res://props/voxel_structures/bookshelf.tres" id="r5"]
+[ext_resource type="PackedScene" path="res://house/scenes/display_cabinet.tscn" id="r6"]
+[ext_resource type="Script" path="res://physics/physics_prop.gd" id="r7"]
+[ext_resource type="Resource" path="res://props/objects/trophy.tres" id="r8"]
+[ext_resource type="Resource" path="res://props/house/table_lamp.tres" id="r9"]
+[ext_resource type="Resource" path="res://props/house/book.tres" id="r10"]
+[ext_resource type="Resource" path="res://props/objects/coffee_mug.tres" id="r11"]
+[ext_resource type="Resource" path="res://props/objects/teapot.tres" id="r12"]
+[ext_resource type="Resource" path="res://props/house/plate.tres" id="r13"]
+[ext_resource type="PackedScene" path="res://house/scenes/framed_portrait.tscn" id="r14"]
+
+
+[node name="StudyDining" type="Node3D"]
+
+[node name="DiningTable" type="RigidBody3D" parent="."]
+position = Vector3(3.8, 0.4, -4.4)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r1")
+structure = ExtResource("r2")
+
+[node name="DiningChair2" type="RigidBody3D" parent="."]
+position = Vector3(2.9, 0.4, -4.4)
+rotation = Vector3(0, -1.5707964, 0)
+can_sleep = true
+script = ExtResource("r1")
+structure = ExtResource("r3")
+
+[node name="DiningChair3" type="RigidBody3D" parent="."]
+position = Vector3(4.7, 0.4, -4.4)
+rotation = Vector3(0, 1.5707964, 0)
+can_sleep = true
+script = ExtResource("r1")
+structure = ExtResource("r3")
+
+[node name="DiningChair4" type="RigidBody3D" parent="."]
+position = Vector3(3.8, 0.4, -5.08)
+rotation = Vector3(0, 3.1415927, 0)
+can_sleep = true
+script = ExtResource("r1")
+structure = ExtResource("r3")
+
+[node name="DiningChair5" type="RigidBody3D" parent="."]
+position = Vector3(3.8, 0.4, -3.72)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r1")
+structure = ExtResource("r3")
+
+[node name="WritingDesk" type="RigidBody3D" parent="."]
+position = Vector3(5.5, 0.4, -2.5)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r4")
+
+[node name="DeskChair" type="RigidBody3D" parent="."]
+position = Vector3(4.55, 0.4, -2.5)
+rotation = Vector3(0, -1.5707964, 0)
+can_sleep = true
+script = ExtResource("r1")
+structure = ExtResource("r3")
+
+[node name="Bookshelf" type="RigidBody3D" parent="."]
+position = Vector3(1.55, 0.4, -2.3)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r1")
+structure = ExtResource("r5")
+
+[node name="DisplayCabinet" parent="." instance=ExtResource("r6")]
+support_path = NodePath("../../../Architecture/Section0")
+support_region = AABB(5.1000004, 1, -0.4499998, 0.4, 0.2, 0.4)
+position = Vector3(5.3, 0.4, -5.25)
+rotation = Vector3(0, 3.1415927, 0)
+
+[node name="GoldenTrophy" type="RigidBody3D" parent="."]
+position = Vector3(5.3, 1.625, -5.25)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r7")
+definition = ExtResource("r8")
+
+[node name="DeskLamp" type="RigidBody3D" parent="."]
+position = Vector3(5.5, 1.15, -2.9)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r9")
+
+[node name="DeskBook1" type="RigidBody3D" parent="."]
+position = Vector3(5.45, 1.3249999, -2.25)
+rotation = Vector3(0, 3.1415927, 0)
+script = ExtResource("r7")
+can_sleep = true
+definition = ExtResource("r10")
+
+[node name="DeskBook2" type="RigidBody3D" parent="."]
+position = Vector3(5.45, 1.3249999, -2.335)
+rotation = Vector3(0, 3.1415927, 0)
+script = ExtResource("r7")
+can_sleep = true
+definition = ExtResource("r10")
+
+[node name="DeskMug" type="RigidBody3D" parent="."]
+position = Vector3(5.3, 1.1999999, -2.55)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r7")
+definition = ExtResource("r11")
+
+[node name="DiningTeapot" type="RigidBody3D" parent="."]
+position = Vector3(3.85, 1.3000001, -4.4)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r7")
+definition = ExtResource("r12")
+
+[node name="DiningPlate" type="RigidBody3D" parent="."]
+position = Vector3(3.55, 1.21875, -4.35)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r7")
+can_sleep = true
+definition = ExtResource("r13")
+
+[node name="EccentricPortrait" parent="." instance=ExtResource("r14")]
+support_path = NodePath("../../../Architecture/Section2")
+support_region = AABB(2.4, 2.4, -0.79999995, 0.4, 0.6, 0.2)
+position = Vector3(2.6, 1.7, -1.86)
+rotation = Vector3(0, 0, 0)

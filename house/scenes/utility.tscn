@@ -1,0 +1,54 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://house/scenes/washer.tscn" id="r1"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_body.gd" id="r2"]
+[ext_resource type="Resource" path="res://props/house/storage_shelf.tres" id="r3"]
+[ext_resource type="Script" path="res://physics/physics_prop.gd" id="r4"]
+[ext_resource type="Resource" path="res://props/wooden_crate.tres" id="r5"]
+[ext_resource type="Resource" path="res://props/bucket.tres" id="r6"]
+[ext_resource type="Resource" path="res://props/plastic_basket.tres" id="r7"]
+[ext_resource type="Resource" path="res://props/house/towel.tres" id="r8"]
+
+
+[node name="UtilityStorage" type="Node3D"]
+
+[node name="WashingMachine" parent="." instance=ExtResource("r1")]
+support_path = NodePath("../../../Architecture/Section5")
+support_region = AABB(5.4500003, 1, -0.049999714, 0.4, 0.2, 0.4)
+position = Vector3(5.65, 0.4, 5.15)
+rotation = Vector3(0, 0, 0)
+
+[node name="Shelving" type="RigidBody3D" parent="."]
+position = Vector3(4.5, 0.4, 5.3)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r2")
+can_sleep = true
+structure = ExtResource("r3")
+
+[node name="StoredCrate" type="RigidBody3D" parent="."]
+position = Vector3(4.4, 2.3999999, 5.2)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r4")
+definition = ExtResource("r5")
+
+[node name="CleaningBucket" type="RigidBody3D" parent="."]
+position = Vector3(5.7, 1.4116309, 5.3)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r4")
+definition = ExtResource("r6")
+
+[node name="LaundryBasket" type="RigidBody3D" parent="."]
+position = Vector3(4.5, 1.0799999, 5.25)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r4")
+definition = ExtResource("r7")
+
+[node name="Towels" type="RigidBody3D" parent="."]
+position = Vector3(5.6, 1.2875, 4.98)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r4")
+can_sleep = true
+definition = ExtResource("r8")

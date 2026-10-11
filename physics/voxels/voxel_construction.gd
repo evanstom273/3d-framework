@@ -58,7 +58,24 @@ static func place(target: Dictionary, material: VoxelMaterialDefinition, parent:
 	return VoxelBody.create_built(parent, target["world_cell"], target["size"], material, target["anchored"])
 
 
-## The fixed structure a held piece would cement into, or null.
+## The HUD only needs to know whether cementing is possible. Do not allocate a
+## placement plan for every voxel of a held object on every physics tick.
+static func has_cement_target(piece: VoxelBody) -> bool:
+	for node in piece.get_tree().get_nodes_in_group(&"voxel_bodies"):
+		var structure := node as VoxelBody
+		if structure == null or structure == piece or not structure.freeze or structure.cells.is_empty():
+			continue
+		if not is_equal_approx(structure.voxel_size, piece.voxel_size):
+			continue
+		if structure.global_position.distance_to(piece.global_position) > 30.0:
+			continue
+		if _has_cement_contact(piece, structure):
+			return true
+	return false
+
+
+## The fixed structure accepting the most cells, or null. Used when cementing,
+## so target selection and the actual placement plan retain their original rules.
 static func find_cement_target(piece: VoxelBody) -> VoxelBody:
 	var best: VoxelBody = null
 	var best_count := 0
@@ -94,16 +111,55 @@ static func cement(piece: VoxelBody, structure: VoxelBody) -> int:
 
 ## Maps piece cells to structure cells: the piece's rotation snaps to the nearest
 ## 90 degree alignment, and only empty cells joined to the structure are used.
-static func _plan_cement(piece: VoxelBody, structure: VoxelBody) -> Dictionary:
+static func _cement_alignment(piece: VoxelBody, structure: VoxelBody) -> Transform3D:
 	var relative := structure.global_basis.orthonormalized().inverse() * piece.global_basis.orthonormalized()
 	var snapped := Basis(_snap_axis(relative.x), _snap_axis(relative.y), _snap_axis(relative.z))
-	if absf(snapped.determinant() - 1.0) > 0.01:
+	return Transform3D(snapped, structure.to_local(piece.global_position) / structure.voxel_size)
+
+
+static func _bounds_can_cement(piece: VoxelBody, structure: VoxelBody, alignment: Transform3D) -> bool:
+	if absf(alignment.basis.determinant() - 1.0) > 0.01 or piece.cells.is_empty():
+		return false
+	# Half a cell for rounding, plus one for face adjacency. Bounds are only a
+	# conservative rejection; actual cells below still decide contact and holes.
+	return (alignment * piece.get_cell_bounds()).intersects(structure.get_cell_bounds().grow(1.5))
+
+
+static func _has_cement_contact(piece: VoxelBody, structure: VoxelBody) -> bool:
+	var alignment := _cement_alignment(piece, structure)
+	if not _bounds_can_cement(piece, structure, alignment):
+		return false
+	for chunk: Vector3i in piece._chunk_cells:
+		var bounds := alignment * AABB(Vector3(chunk * VoxelBody.CHUNK_SIZE), Vector3.ONE * VoxelBody.CHUNK_SIZE)
+		bounds = bounds.grow(1.5)
+		var low := Vector3i((bounds.position / VoxelBody.CHUNK_SIZE).floor())
+		var high := Vector3i((bounds.end / VoxelBody.CHUNK_SIZE).floor())
+		var nearby := false
+		for x in range(low.x, high.x + 1):
+			for y in range(low.y, high.y + 1):
+				for z in range(low.z, high.z + 1):
+					if structure._chunk_cells.has(Vector3i(x, y, z)):
+						nearby = true
+		if not nearby:
+			continue
+		for cell: Vector3i in piece._chunk_cells[chunk]:
+			var target := Vector3i((alignment * (Vector3(cell) + Vector3.ONE * 0.5) - Vector3.ONE * 0.5).round())
+			if structure.cells.has(target):
+				continue
+			for offset in VoxelBody.NEIGHBOURS:
+				if structure.cells.has(target + offset):
+					return true
+	return false
+
+
+static func _plan_cement(piece: VoxelBody, structure: VoxelBody) -> Dictionary:
+	var alignment := _cement_alignment(piece, structure)
+	if not _bounds_can_cement(piece, structure, alignment):
 		return {}
-	var origin := structure.to_local(piece.global_position) / structure.voxel_size
 	var mapped := {}
 	var taken := {}
 	for cell: Vector3i in piece.cells:
-		var target := Vector3i((origin + snapped * (Vector3(cell) + Vector3.ONE * 0.5) - Vector3.ONE * 0.5).round())
+		var target := Vector3i((alignment * (Vector3(cell) + Vector3.ONE * 0.5) - Vector3.ONE * 0.5).round())
 		if structure.cells.has(target) or taken.has(target):
 			continue
 		mapped[cell] = target

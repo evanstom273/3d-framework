@@ -1,0 +1,50 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://house/scenes/toilet.tscn" id="r1"]
+[ext_resource type="PackedScene" path="res://house/scenes/basin.tscn" id="r2"]
+[ext_resource type="PackedScene" path="res://house/scenes/shower_tray.tscn" id="r3"]
+[ext_resource type="PackedScene" path="res://house/scenes/shower_screen.tscn" id="r4"]
+[ext_resource type="Script" path="res://physics/physics_prop.gd" id="r5"]
+[ext_resource type="Resource" path="res://props/house/towel.tres" id="r6"]
+[ext_resource type="Resource" path="res://props/objects/rubber_duck.tres" id="r7"]
+
+
+[node name="Bathroom" type="Node3D"]
+
+[node name="Toilet" parent="." instance=ExtResource("r1")]
+support_path = NodePath("../../../Architecture/Section5")
+support_region = AABB(1.3, 1, 0.05000019, 0.4, 0.2, 0.4)
+position = Vector3(1.5, 0.4, 5.25)
+rotation = Vector3(0, -1.5707964, 0)
+
+[node name="Basin" parent="." instance=ExtResource("r2")]
+support_path = NodePath("../../../Architecture/Section5")
+support_region = AABB(3.1, 1, -1.05, 0.4, 0.2, 0.4)
+position = Vector3(3.3, 0.4, 4.15)
+rotation = Vector3(0, 1.5707964, 0)
+
+[node name="ShowerTray" parent="." instance=ExtResource("r3")]
+support_path = NodePath("../../../Architecture/Section5")
+support_region = AABB(2.75, 1, -0.099999905, 0.4, 0.2, 0.4)
+position = Vector3(2.95, 0.4, 5.1)
+rotation = Vector3(0, 0, 0)
+
+[node name="ShowerScreen" parent="." instance=ExtResource("r4")]
+support_path = NodePath("../../../Architecture/Section5")
+support_region = AABB(2.45, 1, -0.5, 0.3, 0.2, 0.3)
+position = Vector3(2.95, 0.5, 4.65)
+rotation = Vector3(0, 0, 0)
+
+[node name="FoldedTowel" type="RigidBody3D" parent="."]
+position = Vector3(3.3, 1.2875, 4.2)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r5")
+can_sleep = true
+definition = ExtResource("r6")
+
+[node name="BathDuck" type="RigidBody3D" parent="."]
+position = Vector3(2.9, 0.52, 5.15)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r5")
+definition = ExtResource("r7")

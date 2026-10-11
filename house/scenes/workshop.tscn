@@ -1,0 +1,149 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_body.gd" id="r1"]
+[ext_resource type="Resource" path="res://props/house/workbench.tres" id="r2"]
+[ext_resource type="Resource" path="res://props/house/storage_shelf.tres" id="r3"]
+[ext_resource type="Script" path="res://physics/physics_prop.gd" id="r4"]
+[ext_resource type="Resource" path="res://props/house/oscilloscope.tres" id="r5"]
+[ext_resource type="Resource" path="res://props/house/bottle.tres" id="r6"]
+[ext_resource type="Resource" path="res://props/hammer.tres" id="r7"]
+[ext_resource type="Resource" path="res://props/tools/axe.tres" id="r8"]
+[ext_resource type="Resource" path="res://props/trowel.tres" id="r9"]
+[ext_resource type="Resource" path="res://props/tools/pickaxe.tres" id="r10"]
+[ext_resource type="Resource" path="res://props/open_wooden_box.tres" id="r11"]
+[ext_resource type="Resource" path="res://props/bucket.tres" id="r12"]
+[ext_resource type="Resource" path="res://props/plastic_basket.tres" id="r13"]
+[ext_resource type="Resource" path="res://props/voxel_structures/stool.tres" id="r14"]
+[ext_resource type="Resource" path="res://props/objects/anvil.tres" id="r15"]
+[ext_resource type="Resource" path="res://props/objects/bowling_ball.tres" id="r16"]
+[ext_resource type="Resource" path="res://props/objects/foam_die.tres" id="r17"]
+[ext_resource type="Resource" path="res://props/voxel_structures/breakable_crate.tres" id="r18"]
+
+
+[node name="LaboratoryWorkshop" type="Node3D"]
+
+[node name="WestWorkbench" type="RigidBody3D" parent="."]
+position = Vector3(-5.55, 0.4, 3.45)
+rotation = Vector3(0, -1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="RearWorkbench" type="RigidBody3D" parent="."]
+position = Vector3(-3.8, 0.4, 5.1)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="StorageShelf" type="RigidBody3D" parent="."]
+position = Vector3(-3, 0.4, 2.7)
+rotation = Vector3(0, 3.1415927, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r3")
+
+[node name="Oscilloscope" type="RigidBody3D" parent="."]
+position = Vector3(-5.55, 1.4499999, 3.7)
+rotation = Vector3(0, -1.5707964, 0)
+script = ExtResource("r4")
+can_sleep = true
+definition = ExtResource("r5")
+
+[node name="ExperimentBottleA" type="RigidBody3D" parent="."]
+position = Vector3(-5.55, 1.4749999, 3.05)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r4")
+can_sleep = true
+definition = ExtResource("r6")
+
+[node name="ExperimentBottleB" type="RigidBody3D" parent="."]
+position = Vector3(-5.4, 1.4749999, 3.25)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r4")
+can_sleep = true
+definition = ExtResource("r6")
+
+[node name="Sledgehammer" type="RigidBody3D" parent="."]
+position = Vector3(-3.8, 1.35, 5.1)
+rotation = Vector3(0, 0, 1.5707964)
+can_sleep = true
+script = ExtResource("r4")
+definition = ExtResource("r7")
+
+[node name="Axe" type="RigidBody3D" parent="."]
+position = Vector3(-3.85, 1.318, 4.87)
+rotation = Vector3(0, 0, 1.5707964)
+can_sleep = true
+script = ExtResource("r4")
+definition = ExtResource("r8")
+
+[node name="Trowel" type="RigidBody3D" parent="."]
+position = Vector3(-4.25, 1.316, 5.3)
+rotation = Vector3(1.5707964, 0, 0)
+can_sleep = true
+script = ExtResource("r4")
+definition = ExtResource("r9")
+
+[node name="Pickaxe" type="RigidBody3D" parent="."]
+position = Vector3(-5.4, 0.418, 4.65)
+rotation = Vector3(0, 0, 1.5707964)
+can_sleep = true
+script = ExtResource("r4")
+definition = ExtResource("r10")
+
+[node name="WoodenBox" type="RigidBody3D" parent="."]
+position = Vector3(-1.65, 0.55, 2.85)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r4")
+definition = ExtResource("r11")
+
+[node name="Bucket" type="RigidBody3D" parent="."]
+position = Vector3(-2.15, 0.5616309, 2.95)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r4")
+definition = ExtResource("r12")
+
+[node name="Basket" type="RigidBody3D" parent="."]
+position = Vector3(-3, 1.0799999, 2.7)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r4")
+definition = ExtResource("r13")
+
+[node name="Stool" type="RigidBody3D" parent="."]
+position = Vector3(-4.5, 0.4, 3.45)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r1")
+structure = ExtResource("r14")
+
+[node name="Anvil" type="RigidBody3D" parent="."]
+position = Vector3(-2.65, 0.57, 5.15)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r4")
+definition = ExtResource("r15")
+
+[node name="TestBall" type="RigidBody3D" parent="."]
+position = Vector3(-3, 1.5580001, 2.7)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r4")
+definition = ExtResource("r16")
+
+[node name="FoamDie" type="RigidBody3D" parent="."]
+position = Vector3(-3.3, 0.58000004, 3.6)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r4")
+definition = ExtResource("r17")
+
+[node name="BreakableCrate" type="RigidBody3D" parent="."]
+position = Vector3(-5.45, 0.4, 5.25)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r1")
+structure = ExtResource("r18")

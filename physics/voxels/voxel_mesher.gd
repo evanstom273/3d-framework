@@ -31,11 +31,11 @@ static func get_material() -> StandardMaterial3D:
 ## Returns null when the chunk has no visible faces.
 static func build(chunk_cells: Dictionary, cells: Dictionary, health: Dictionary,
 		palette: Array[VoxelMaterialDefinition], voxel_size: float) -> ArrayMesh:
-	var tool := SurfaceTool.new()
-	tool.begin(Mesh.PRIMITIVE_TRIANGLES)
-	var any := false
+	var surfaces: Dictionary = {}
 	for cell: Vector3i in chunk_cells:
 		var material := palette[cells[cell]]
+		var mesh_material := material.mesh_material_override if material.mesh_material_override != null else get_material()
+		var tool := surfaces.get(mesh_material) as SurfaceTool
 		var shade := 1.0 + (_hash01(cell) - 0.5) * 2.0 * material.color_jitter
 		var damage := clampf(float(health.get(cell, material.strength)) / material.strength, 0.0, 1.0)
 		var color := material.color * lerpf(0.45, 1.0, damage) * shade
@@ -43,18 +43,28 @@ static func build(chunk_cells: Dictionary, cells: Dictionary, health: Dictionary
 		var origin := Vector3(cell)
 		for face in FACES:
 			if cells.has(cell + face[0]):
-				continue
-			any = true
+				var neighbour_material := palette[cells[cell + face[0]]].mesh_material_override
+				# Timber edges remain visible through adjacent glass. Faces between
+				# matching glass cells and between ordinary solid cells stay culled.
+				if neighbour_material == null or neighbour_material.transparency == BaseMaterial3D.TRANSPARENCY_DISABLED or neighbour_material == mesh_material:
+					continue
+			if tool == null:
+				tool = SurfaceTool.new()
+				tool.begin(Mesh.PRIMITIVE_TRIANGLES)
+				tool.set_material(mesh_material)
+				surfaces[mesh_material] = tool
 			var normal := Vector3(face[0])
 			var corners: Array = face[1]
 			for index in VoxelMesher.FACE_ORDER:
 				tool.set_color(color)
 				tool.set_normal(normal)
 				tool.add_vertex((origin + corners[index]) * voxel_size)
-	if not any:
+	if surfaces.is_empty():
 		return null
-	tool.set_material(get_material())
-	return tool.commit()
+	var mesh := ArrayMesh.new()
+	for tool: SurfaceTool in surfaces.values():
+		tool.commit(mesh)
+	return mesh
 
 
 static func _hash01(cell: Vector3i) -> float:

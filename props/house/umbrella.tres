@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_ge7v8"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_f8n3n"]
+
+[resource]
+script = ExtResource("2_f8n3n")
+display_name = "Umbrella"
+spawn_category = "Props"
+size = Vector3(0.2, 0.90000004, 0.2)
+mass = 1.1
+bounce = 0.05
+impact_sound = 1
+vox_model = "res://props/vox/house/umbrella.vox"
+vox_origin = Vector3(-0.1, -0.45000002, -0.1)

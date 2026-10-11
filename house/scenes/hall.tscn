@@ -1,0 +1,54 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_body.gd" id="r1"]
+[ext_resource type="Resource" path="res://props/house/coat_rack.tres" id="r2"]
+[ext_resource type="Resource" path="res://props/house/console.tres" id="r3"]
+[ext_resource type="Resource" path="res://props/house/table_lamp.tres" id="r4"]
+[ext_resource type="Script" path="res://physics/physics_prop.gd" id="r5"]
+[ext_resource type="Resource" path="res://props/house/mantel_clock.tres" id="r6"]
+[ext_resource type="Resource" path="res://props/house/umbrella.tres" id="r7"]
+[ext_resource type="PackedScene" path="res://house/scenes/framed_portrait.tscn" id="r8"]
+
+
+[node name="Hall" type="Node3D"]
+
+[node name="CoatRack" type="RigidBody3D" parent="."]
+position = Vector3(-0.48, 0.4, -2.7)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="Console" type="RigidBody3D" parent="."]
+position = Vector3(0.55, 0.4, -1.65)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r3")
+
+[node name="ConsoleLamp" type="RigidBody3D" parent="."]
+position = Vector3(0.55, 1.15, -1.95)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r4")
+
+[node name="Clock" type="RigidBody3D" parent="."]
+position = Vector3(0.5, 1.3, -1.3)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r5")
+can_sleep = true
+definition = ExtResource("r6")
+
+[node name="Umbrella" type="RigidBody3D" parent="."]
+position = Vector3(-0.6, 0.85, -2.1)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r5")
+can_sleep = true
+definition = ExtResource("r7")
+
+[node name="HallPortrait" parent="." instance=ExtResource("r8")]
+support_path = NodePath("../../../Architecture/Section1")
+support_region = AABB(0.8, 2.4, 0.79999995, 0.2, 0.6, 0.2)
+position = Vector3(0.76, 1.65, -2.1)
+rotation = Vector3(0, 1.5707964, 0)

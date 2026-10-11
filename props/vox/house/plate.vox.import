@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://biaofnpj7o8c6"
+path="res://.godot/imported/plate.vox-787bbe88133a1af35809859e34daed67.tres"
+
+[deps]
+
+source_file="res://props/vox/house/plate.vox"
+dest_files=["res://.godot/imported/plate.vox-787bbe88133a1af35809859e34daed67.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

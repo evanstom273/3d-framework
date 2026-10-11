@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_3eqt8"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_i84x5"]
+
+[resource]
+script = ExtResource("2_i84x5")
+display_name = "Laboratory Bottle"
+spawn_category = "Props"
+size = Vector3(0.15, 0.35, 0.15)
+mass = 0.8
+bounce = 0.05
+impact_sound = 1
+vox_model = "res://props/vox/house/bottle.vox"
+vox_origin = Vector3(-0.075, -0.175, -0.075)

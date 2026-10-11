@@ -1,0 +1,76 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_body.gd" id="r1"]
+[ext_resource type="Resource" path="res://props/house/bed.tres" id="r2"]
+[ext_resource type="Resource" path="res://props/house/bedside.tres" id="r3"]
+[ext_resource type="Resource" path="res://props/house/table_lamp.tres" id="r4"]
+[ext_resource type="Script" path="res://physics/physics_prop.gd" id="r5"]
+[ext_resource type="Resource" path="res://props/house/mantel_clock.tres" id="r6"]
+[ext_resource type="PackedScene" path="res://house/scenes/wardrobe.tscn" id="r7"]
+[ext_resource type="Resource" path="res://props/house/book.tres" id="r8"]
+[ext_resource type="Resource" path="res://props/plastic_basket.tres" id="r9"]
+[ext_resource type="PackedScene" path="res://house/scenes/framed_landscape.tscn" id="r10"]
+
+
+[node name="Bedroom" type="Node3D"]
+
+[node name="Bed" type="RigidBody3D" parent="."]
+position = Vector3(3.3, 0.4, 0.65)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r2")
+
+[node name="BedsideWest" type="RigidBody3D" parent="."]
+position = Vector3(2, 0.4, 1.65)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r3")
+
+[node name="BedsideEast" type="RigidBody3D" parent="."]
+position = Vector3(4.6, 0.4, 1.65)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r3")
+
+[node name="BedsideLamp" type="RigidBody3D" parent="."]
+position = Vector3(2, 0.9, 1.65)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r1")
+can_sleep = true
+structure = ExtResource("r4")
+
+[node name="AlarmClock" type="RigidBody3D" parent="."]
+position = Vector3(4.6, 1.05, 1.65)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r5")
+can_sleep = true
+definition = ExtResource("r6")
+
+[node name="Wardrobe" parent="." instance=ExtResource("r7")]
+support_path = NodePath("../../../Architecture/Section2")
+support_region = AABB(5.4500003, 1, 0.15000004, 0.4, 0.2, 0.4)
+position = Vector3(5.65, 0.4, -0.65)
+rotation = Vector3(0, 1.5707964, 0)
+
+[node name="ReadingBook1" type="RigidBody3D" parent="."]
+position = Vector3(4.5, 1.0749999, 1.65)
+rotation = Vector3(0, 1.5707964, 0)
+script = ExtResource("r5")
+can_sleep = true
+definition = ExtResource("r8")
+
+[node name="LaundryBasket" type="RigidBody3D" parent="."]
+position = Vector3(2, 0.53, -1.05)
+rotation = Vector3(0, 0, 0)
+can_sleep = true
+script = ExtResource("r5")
+definition = ExtResource("r9")
+
+[node name="Landscape" parent="." instance=ExtResource("r10")]
+support_path = NodePath("../../../Architecture/Section4")
+support_region = AABB(3.1, 2.4, -0.79999995, 0.4, 0.5, 0.2)
+position = Vector3(3.3, 1.7, 2.14)
+rotation = Vector3(0, 0, 0)

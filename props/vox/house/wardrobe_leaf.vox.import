@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cf8nhcybs3upm"
+path="res://.godot/imported/wardrobe_leaf.vox-ebb1ed5d2ae3dd98b65ed917275e2ca2.tres"
+
+[deps]
+
+source_file="res://props/vox/house/wardrobe_leaf.vox"
+dest_files=["res://.godot/imported/wardrobe_leaf.vox-ebb1ed5d2ae3dd98b65ed917275e2ca2.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

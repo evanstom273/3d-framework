@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bqc03t3nk77b5"
+path="res://.godot/imported/screen_glass.vox-ae26814491f87a6a4fa7473996efb1d1.tres"
+
+[deps]
+
+source_file="res://props/vox/house/screen_glass.vox"
+dest_files=["res://.godot/imported/screen_glass.vox-ae26814491f87a6a4fa7473996efb1d1.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

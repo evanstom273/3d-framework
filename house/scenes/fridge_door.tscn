@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://house/breakable_hinge.gd" id="r1"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_body.gd" id="r2"]
+[ext_resource type="Resource" path="res://house/assets/definitions/fridge_leaf.tres" id="r3"]
+[ext_resource type="Script" path="res://house/fixture_attachment.gd" id="r4"]
+
+
+[node name="Fridge" type="Node3D"]
+script = ExtResource("r1")
+interaction_name = "Fridge"
+animation_duration = 0.4
+open_angle_degrees = 100.0
+allow_lock = false
+
+[node name="Hinge" type="Node3D" parent="."]
+position = Vector3(-0.4, 0, 0)
+
+[node name="Leaf" type="RigidBody3D" parent="."]
+position = Vector3(0, 0, 0)
+rotation = Vector3(0, 0, 0)
+script = ExtResource("r2")
+can_sleep = true
+structure = ExtResource("r3")
+
+[node name="Attachment" type="Node" parent="."]
+script = ExtResource("r4")
+body_path = NodePath("../Leaf")
+support_region = AABB(0, 0, 0, 0, 0, 0)
+mount_region = AABB(-0.4, 0, -0.05, 0.1, 1.65, 0.1)
+pivot_path = NodePath("../Hinge")

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dx4rqo5bj5mg1"
+path="res://.godot/imported/bottle.vox-3acb70b557969718d280a035e3d2afce.tres"
+
+[deps]
+
+source_file="res://props/vox/house/bottle.vox"
+dest_files=["res://.godot/imported/bottle.vox-3acb70b557969718d280a035e3d2afce.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

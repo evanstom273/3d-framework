@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_ber0o"]
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_csl2i"]
+
+[resource]
+script = ExtResource("2_csl2i")
+display_name = "Plate"
+spawn_category = "Props"
+size = Vector3(0.22500001, 0.0375, 0.22500001)
+mass = 0.4
+bounce = 0.05
+impact_sound = 1
+vox_model = "res://props/vox/house/plate.vox"
+vox_voxel_size = 0.0125
+vox_origin = Vector3(-0.112500004, -0.01875, -0.112500004)

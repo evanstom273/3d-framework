@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://frbg2i78ru8q"
+path="res://.godot/imported/side_table.vox-770a1709c616f86dfd70578571fe7228.tres"
+
+[deps]
+
+source_file="res://props/vox/house/side_table.vox"
+dest_files=["res://.godot/imported/side_table.vox-770a1709c616f86dfd70578571fe7228.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

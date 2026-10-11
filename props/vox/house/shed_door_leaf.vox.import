@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bdpy5vsajjith"
+path="res://.godot/imported/shed_door_leaf.vox-06b565677ac721022d7eb28c209baa33.tres"
+
+[deps]
+
+source_file="res://props/vox/house/shed_door_leaf.vox"
+dest_files=["res://.godot/imported/shed_door_leaf.vox-06b565677ac721022d7eb28c209baa33.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

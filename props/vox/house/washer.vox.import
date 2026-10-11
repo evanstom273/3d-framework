@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://ble0dax76aayb"
+path="res://.godot/imported/washer.vox-97aa2789294108b7ce9e91e42ab67d75.tres"
+
+[deps]
+
+source_file="res://props/vox/house/washer.vox"
+dest_files=["res://.godot/imported/washer.vox-97aa2789294108b7ce9e91e42ab67d75.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://b1r6sxncx4gvw"
+path="res://.godot/imported/bedside.vox-133e5592de69a288fb5f8e81b94e1d32.tres"
+
+[deps]
+
+source_file="res://props/vox/house/bedside.vox"
+dest_files=["res://.godot/imported/bedside.vox-133e5592de69a288fb5f8e81b94e1d32.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

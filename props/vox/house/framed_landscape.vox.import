@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cablrk6test61"
+path="res://.godot/imported/framed_landscape.vox-57231834a94912ee2673ff211015e794.tres"
+
+[deps]
+
+source_file="res://props/vox/house/framed_landscape.vox"
+dest_files=["res://.godot/imported/framed_landscape.vox-57231834a94912ee2673ff211015e794.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

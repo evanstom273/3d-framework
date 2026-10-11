@@ -17,6 +17,13 @@ const NEIGHBOURS: Array[Vector3i] = [
 
 enum HandState { WORLD, HELD }
 
+## Emitted after the cells' meshes, collision and support state have been rebuilt.
+signal geometry_changed
+
+## Optional appearance for a whole body (e.g. a glass-only window pane).
+## Collision and voxel damage still use the normal material palette.
+@export var mesh_material_override: Material
+
 ## Live rubble pieces, oldest first, so the count can be capped.
 static var _rubble: Array[VoxelBody] = []
 
@@ -48,6 +55,13 @@ var _chunk_cells: Dictionary[Vector3i, Dictionary] = {}
 ## Chunk -> nodes built for it.
 var _chunk_nodes: Dictionary[Vector3i, Array] = {}
 var _dirty: Dictionary[Vector3i, bool] = {}
+## Health/colour changes and neighbouring mesh faces do not change collision.
+var _collision_dirty: Dictionary[Vector3i, bool] = {}
+var _cached_main_material: VoxelMaterialDefinition
+var _main_material_dirty: bool = true
+var _bounds_min: Vector3i
+var _bounds_max: Vector3i
+var _bounds_dirty: bool = false
 var _flush_queued: bool = false
 ## Set when voxels are removed, so the next flush checks what is still supported.
 var _check_support: bool = false
@@ -267,6 +281,16 @@ static func create_built(parent: Node, world_cell: Vector3i, size: float, materi
 # --- Grid editing
 
 func _set_cell(cell: Vector3i, palette_index: int, cell_health: float = -1.0) -> void:
+	if not cells.has(cell):
+		_collision_dirty[_chunk_of(cell)] = true
+		if cells.is_empty():
+			_bounds_min = cell
+			_bounds_max = cell
+			_bounds_dirty = false
+		else:
+			_bounds_min = _bounds_min.min(cell)
+			_bounds_max = _bounds_max.max(cell)
+	_main_material_dirty = true
 	cells[cell] = palette_index
 	if cell_health >= 0.0 and cell_health < palette[palette_index].strength:
 		health[cell] = cell_health
@@ -282,11 +306,16 @@ func _set_cell(cell: Vector3i, palette_index: int, cell_health: float = -1.0) ->
 func _remove_cell(cell: Vector3i) -> void:
 	if not cells.has(cell):
 		return
+	_main_material_dirty = true
+	if cell.x == _bounds_min.x or cell.y == _bounds_min.y or cell.z == _bounds_min.z \
+			or cell.x == _bounds_max.x or cell.y == _bounds_max.y or cell.z == _bounds_max.z:
+		_bounds_dirty = true
 	cells.erase(cell)
 	health.erase(cell)
 	anchors.erase(cell)
 	_check_support = true
 	var chunk := _chunk_of(cell)
+	_collision_dirty[chunk] = true
 	if _chunk_cells.has(chunk):
 		_chunk_cells[chunk].erase(cell)
 	_mark_dirty(cell)
@@ -323,11 +352,18 @@ func _flush_dirty() -> void:
 		_update_body()
 		if cells.is_empty():
 			_on_emptied()
+	geometry_changed.emit()
 
 
 func _rebuild_chunk(chunk: Vector3i) -> void:
+	var rebuild_collision := _collision_dirty.has(chunk)
+	_collision_dirty.erase(chunk)
+	var nodes: Array = []
 	for node in _chunk_nodes.get(chunk, []):
 		if is_instance_valid(node):
+			if node is CollisionShape3D and not rebuild_collision:
+				nodes.append(node)
+				continue
 			remove_child(node)
 			node.queue_free()
 	_chunk_nodes.erase(chunk)
@@ -335,13 +371,16 @@ func _rebuild_chunk(chunk: Vector3i) -> void:
 	if chunk_cells.is_empty():
 		_chunk_cells.erase(chunk)
 		return
-	var nodes: Array = []
 	var mesh := VoxelMesher.build(chunk_cells, cells, health, palette, voxel_size)
 	if mesh != null:
 		var mesh_instance := MeshInstance3D.new()
 		mesh_instance.mesh = mesh
+		mesh_instance.material_override = mesh_material_override
 		add_child(mesh_instance, false, Node.INTERNAL_MODE_BACK)
 		nodes.append(mesh_instance)
+	if not rebuild_collision:
+		_chunk_nodes[chunk] = nodes
+		return
 	for box in VoxelCollider.merge(chunk_cells):
 		var low: Vector3i = box[0]
 		var high: Vector3i = box[1]
@@ -381,6 +420,10 @@ func _build_from_structure() -> void:
 	anchors.clear()
 	palette.clear()
 	_dirty.clear()
+	_collision_dirty.clear()
+	_main_material_dirty = true
+	_cached_main_material = null
+	_bounds_dirty = false
 	if structure == null:
 		return
 	voxel_size = structure.voxel_size
@@ -410,11 +453,31 @@ func _build_from_structure() -> void:
 	_flush_dirty()
 
 
+## Exact occupied bounds in cell coordinates, shared by pickup and construction.
+## Movement does not invalidate them; removing an outer cell refreshes them lazily.
+func get_cell_bounds() -> AABB:
+	if cells.is_empty():
+		return AABB()
+	if _bounds_dirty:
+		var first := true
+		for cell in cells:
+			_bounds_min = cell if first else _bounds_min.min(cell)
+			_bounds_max = cell if first else _bounds_max.max(cell)
+			first = false
+		_bounds_dirty = false
+	return AABB(Vector3(_bounds_min), Vector3(_bounds_max - _bounds_min + Vector3i.ONE))
+
+
 func _main_material() -> VoxelMaterialDefinition:
+	if not _main_material_dirty:
+		return _cached_main_material
+	_main_material_dirty = false
 	if palette.is_empty():
+		_cached_main_material = null
 		return null
 	if palette.size() == 1:
-		return palette[0]
+		_cached_main_material = palette[0]
+		return _cached_main_material
 	var counts := {}
 	for cell in cells:
 		counts[cells[cell]] = counts.get(cells[cell], 0) + 1
@@ -422,7 +485,8 @@ func _main_material() -> VoxelMaterialDefinition:
 	for index in counts:
 		if counts[index] > counts.get(best, 0):
 			best = index
-	return palette[best]
+	_cached_main_material = palette[best]
+	return _cached_main_material
 
 
 ## Nothing left (all knocked out or cemented elsewhere). Runtime pieces go away;
@@ -492,6 +556,7 @@ func _detach(group: Array) -> void:
 		if health.has(cell):
 			piece_health[cell - offset] = health[cell]
 	var piece := VoxelBody.create_piece(piece_cells, piece_health, palette, voxel_size)
+	piece.mesh_material_override = mesh_material_override
 	var piece_transform := global_transform * Transform3D(Basis(), Vector3(offset) * voxel_size)
 	var velocity := Vector3.ZERO
 	var spin := Vector3.ZERO
@@ -554,6 +619,7 @@ func _spawn_rubble(removed: Dictionary[Vector3i, int], direction: Vector3, stren
 		var piece_cells: Dictionary[Vector3i, int] = {Vector3i.ZERO: 0}
 		var piece_palette: Array[VoxelMaterialDefinition] = [material]
 		var piece := VoxelBody.create_piece(piece_cells, {}, piece_palette, voxel_size)
+		piece.mesh_material_override = mesh_material_override
 		piece.is_rubble = true
 		piece.name = "Rubble"
 		var spot := cell_to_world(cell)

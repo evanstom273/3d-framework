@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bl5d8s2igu4uy"
+path="res://.godot/imported/floor_lamp.vox-41098c1422a49bc00884c7097b0eee0b.tres"
+
+[deps]
+
+source_file="res://props/vox/house/floor_lamp.vox"
+dest_files=["res://.godot/imported/floor_lamp.vox-41098c1422a49bc00884c7097b0eee0b.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

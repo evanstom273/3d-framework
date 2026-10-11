@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://dtd3c12qtwi4a"]
 
-[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_kssxr"]
-[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_0sxai"]
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_kssxr"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_0sxai"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ayefd"]
 albedo_color = Color(0.85, 0.1, 0.1, 1)

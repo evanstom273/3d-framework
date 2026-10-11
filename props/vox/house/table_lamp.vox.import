@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://f45jngtwccvl"
+path="res://.godot/imported/table_lamp.vox-5af80322fb2eca09d32a3158457b5f90.tres"
+
+[deps]
+
+source_file="res://props/vox/house/table_lamp.vox"
+dest_files=["res://.godot/imported/table_lamp.vox-5af80322fb2eca09d32a3158457b5f90.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

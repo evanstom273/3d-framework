@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://b1qb3rsc6mcb2"
+path="res://.godot/imported/plant_pot.vox-06d7e93dff28b427045569c31f3eddca.tres"
+
+[deps]
+
+source_file="res://props/vox/house/plant_pot.vox"
+dest_files=["res://.godot/imported/plant_pot.vox-06d7e93dff28b427045569c31f3eddca.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

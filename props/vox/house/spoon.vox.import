@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://b2vasrbjklht2"
+path="res://.godot/imported/spoon.vox-b65232f626657cce25f62eeb2f9cf955.tres"
+
+[deps]
+
+source_file="res://props/vox/house/spoon.vox"
+dest_files=["res://.godot/imported/spoon.vox-b65232f626657cce25f62eeb2f9cf955.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -3,7 +3,7 @@ extends "res://interaction_target.gd"
 
 @export var open_angle_degrees: float = -90.0
 
-@onready var hinge: AnimatableBody3D = $Hinge
+@onready var hinge: Node3D = $Hinge
 
 var _is_open: bool = false
 var _locked: bool = false

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cn3shodqfftx1"
+path="res://.godot/imported/oven_leaf.vox-c98719548632bd0eda0d81cc6c939c63.tres"
+
+[deps]
+
+source_file="res://props/vox/house/oven_leaf.vox"
+dest_files=["res://.godot/imported/oven_leaf.vox-c98719548632bd0eda0d81cc6c939c63.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dte54ftcw8pjg"
+path="res://.godot/imported/towel.vox-7a3b03939fcd0381e7a52dbfbbbfbea6.tres"
+
+[deps]
+
+source_file="res://props/vox/house/towel.vox"
+dest_files=["res://.godot/imported/towel.vox-7a3b03939fcd0381e7a52dbfbbbfbea6.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

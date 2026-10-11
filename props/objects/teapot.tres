@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://mlktuxl0cy8q"]
 
-[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_of57s"]
-[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_a7045"]
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_of57s"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_a7045"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rm65o"]
 roughness = 0.25
@@ -76,5 +76,5 @@ impact_sound = 3
 impact_damage_scale = 0.4
 material = SubResource("StandardMaterial3D_rm65o")
 vox_model = "res://props/vox/teapot.vox"
-vox_voxel_size = 0.009000000000000001
+vox_voxel_size = 0.009
 vox_origin = Vector3(-0.12, -0.1, -0.1)
