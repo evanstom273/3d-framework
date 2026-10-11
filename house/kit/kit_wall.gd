@@ -230,9 +230,9 @@ func _build_exterior(b: KitBuilder, solid: Array[Rect2], half: float, x0: float,
 		var bx1 := x1 + (0.025 if end_join == Join.CORNER else 0.0)
 		b.box(Vector3(bx0, band_course_height, -half - 0.025), Vector3(bx1, band_course_height + 0.15, -half + 0.05), band)
 		if end_join == Join.CORNER:
-			b.box(Vector3(x1 - 0.05, band_course_height, -half), Vector3(bx1, band_course_height + 0.15, half), band)
+			b.box(Vector3(x1 - 0.05, band_course_height, -half + 0.05), Vector3(bx1, band_course_height + 0.15, half), band)
 		if start_join == Join.CORNER:
-			b.box(Vector3(bx0, band_course_height, -half), Vector3(x0 + 0.05, band_course_height + 0.15, half), band)
+			b.box(Vector3(bx0, band_course_height, -half + 0.05), Vector3(x0 + 0.05, band_course_height + 0.15, half), band)
 
 
 ## Overlapping horizontal boards on the outside face of one solid rectangle.
@@ -265,10 +265,10 @@ func _plinth(b: KitBuilder, half: float, x0: float, x1: float) -> void:
 		var dir: float = side[2]
 		var lo := minf(edge - dir * 0.05, edge + dir * 0.015)
 		var hi := maxf(edge - dir * 0.05, edge + dir * 0.015)
-		b.box(Vector3(lo, -plinth_drop, -half), Vector3(hi, -0.1, half), material)
-		# The bevel turns the corner too, running along +Z on the end face.
-		var along_from := Vector3(edge, 0, -half) if dir > 0.0 else Vector3(edge, 0, half)
-		var along_to := Vector3(edge, 0, half) if dir > 0.0 else Vector3(edge, 0, -half)
+		b.box(Vector3(lo, -plinth_drop, -half + 0.05), Vector3(hi, -0.1, half), material)
+		# The bevel turns the corner too, running along the end face behind the front one.
+		var along_from := Vector3(edge, 0, -half + 0.05) if dir > 0.0 else Vector3(edge, 0, half)
+		var along_to := Vector3(edge, 0, half) if dir > 0.0 else Vector3(edge, 0, -half + 0.05)
 		b.extrude(bevel, along_from, along_to, Vector3.UP, material, false)
 
 
@@ -296,7 +296,7 @@ func _opening_details(b: KitBuilder, o: KitOpening, hole: Rect2, half: float) ->
 				# Projecting stone sill with a drip, and a window board inside.
 				var sill_material := frame if facade == KitMaterials.Facade.TIMBER_CLADDING else stone
 				var out := SETBACK + 0.05
-				var sill := PackedVector2Array([Vector2(-0.02, bottom), Vector2(out, bottom - 0.02), Vector2(out, bottom - 0.065), Vector2(out - 0.02, bottom - 0.065), Vector2(out - 0.02, bottom - 0.055), Vector2(out - 0.03, bottom - 0.055), Vector2(out - 0.03, bottom - 0.065), Vector2(-0.02, bottom - 0.065)])
+				var sill := PackedVector2Array([Vector2(-0.02, bottom + 0.02), Vector2(out, bottom - 0.006), Vector2(out, bottom - 0.065), Vector2(out - 0.02, bottom - 0.065), Vector2(out - 0.02, bottom - 0.055), Vector2(out - 0.03, bottom - 0.055), Vector2(out - 0.03, bottom - 0.065), Vector2(-0.02, bottom - 0.065)])
 				b.extrude(sill, Vector3(x0 - 0.05, 0, z0), Vector3(x1 + 0.05, 0, z0), Vector3.UP, sill_material)
 				var board := KitMaterials.gloss(joinery_color)
 				b.box(Vector3(x0 - 0.03, bottom - 0.005, z0 + 0.07), Vector3(x1 + 0.03, bottom + 0.022, half + 0.028), board)
@@ -308,7 +308,8 @@ func _opening_details(b: KitBuilder, o: KitOpening, hole: Rect2, half: float) ->
 			KitJoinery.architrave(b, x0, x1, top, half, 1.0, trim)
 			if exterior:
 				# Stone threshold under the door, sloping out.
-				var threshold := PackedVector2Array([Vector2(-0.12, 0.012), Vector2(SETBACK + 0.06, -0.01), Vector2(SETBACK + 0.06, -0.06), Vector2(-0.12, -0.06)])
+				var inside := half * 2.0 - SETBACK
+				var threshold := PackedVector2Array([Vector2(-inside, 0.006), Vector2(-0.1, 0.012), Vector2(SETBACK + 0.06, -0.01), Vector2(SETBACK + 0.06, -0.06), Vector2(-inside, -0.06)])
 				b.extrude(threshold, Vector3(x0, 0, z0 + 0.0), Vector3(x1, 0, z0 + 0.0), Vector3.UP, stone)
 			elif wall_type == WallType.INTERIOR:
 				KitJoinery.architrave(b, x0, x1, top, -half, -1.0, KitMaterials.gloss(joinery_color))
@@ -324,10 +325,10 @@ func _head(b: KitBuilder, o: KitOpening, x0: float, x1: float, top: float, half:
 	match o.head:
 		KitOpening.Head.SOLDIER_COURSE:
 			if facade == KitMaterials.Facade.BRICK:
-				b.box(Vector3(x0, top, face_z - 0.003), Vector3(x1, minf(top + 0.225, height), face_z + OUTER_LEAF), KitMaterials.brick(brick, true))
+				b.box(Vector3(x0, top - 0.002, face_z - 0.003), Vector3(x1, minf(top + 0.225, height), face_z + OUTER_LEAF), KitMaterials.brick(brick, true))
 		KitOpening.Head.STONE_LINTEL, KitOpening.Head.STONE_KEYSTONE:
 			var stone := KitMaterials.stone()
-			b.box(Vector3(x0 - 0.1, top, face_z - 0.012), Vector3(x1 + 0.1, minf(top + 0.15, height), face_z + OUTER_LEAF), stone)
+			b.box(Vector3(x0 - 0.1, top - 0.002, face_z - 0.012), Vector3(x1 + 0.1, minf(top + 0.15, height), face_z + OUTER_LEAF), stone)
 			if o.head == KitOpening.Head.STONE_KEYSTONE:
 				var mid := (x0 + x1) * 0.5
 				var key := PackedVector2Array([Vector2(mid - 0.07, top - 0.03), Vector2(mid + 0.07, top - 0.03), Vector2(mid + 0.1, top + 0.19), Vector2(mid - 0.1, top + 0.19)])
@@ -405,7 +406,7 @@ func _quoins(b: KitBuilder, half: float, edge: float, direction: float) -> void:
 		var fx1 := edge + direction * proud
 		b.box(Vector3(minf(fx0, fx1), y, -half - proud), Vector3(maxf(fx0, fx1), y + course - 0.012, -half + 0.04), stone)
 		var rx0 := edge - direction * 0.04
-		b.box(Vector3(minf(rx0, fx1), y, -half - proud), Vector3(maxf(rx0, fx1), y + course - 0.012, -half + back), stone)
+		b.box(Vector3(minf(rx0, fx1), y, -half + 0.04), Vector3(maxf(rx0, fx1), y + course - 0.012, -half + back), stone)
 		y += course
 		index += 1
 

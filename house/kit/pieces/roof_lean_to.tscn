@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://house/kit/kit_roof.gd" id="1"]
+
+[node name="RoofLeanTo" type="StaticBody3D"]
+script = ExtResource("1")
+lean_to = true
+span = 2.0
+length = 4.0

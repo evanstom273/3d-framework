@@ -10,6 +10,8 @@ extends RigidBody3D
 
 const CHUNK_SIZE := 16
 const RUBBLE_LIMIT := 60
+## Most rubble pieces one hit or collision can create.
+const RUBBLE_PER_EVENT := 10
 const NEIGHBOURS: Array[Vector3i] = [
 	Vector3i(1, 0, 0), Vector3i(-1, 0, 0), Vector3i(0, 1, 0),
 	Vector3i(0, -1, 0), Vector3i(0, 0, 1), Vector3i(0, 0, -1),
@@ -628,10 +630,18 @@ func _spawn_rubble(removed: Dictionary[Vector3i, int], direction: Vector3, stren
 	if parent == null or removed.is_empty():
 		return
 	var energy := clampf(strength / 30.0, 0.3, 1.5) * PhysicsFeel.get_active().debris_launch_multiplier
-	for cell in removed:
+	# Fine voxels can lose hundreds of cells to one blow: only a handful become
+	# physical rubble (picked at random), the rest are just particles.
+	var order := removed.keys()
+	order.shuffle()
+	var spawned := 0
+	for cell: Vector3i in order:
+		if spawned >= RUBBLE_PER_EVENT:
+			break
 		var material := palette[removed[cell]]
 		if randf() >= material.rubble_fraction:
 			continue
+		spawned += 1
 		var piece_cells: Dictionary[Vector3i, int] = {Vector3i.ZERO: 0}
 		var piece_palette: Array[VoxelMaterialDefinition] = [material]
 		var piece := VoxelBody.create_piece(piece_cells, {}, piece_palette, voxel_size)

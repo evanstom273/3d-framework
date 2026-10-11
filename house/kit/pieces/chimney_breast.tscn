@@ -1,0 +1,11 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://house/kit/kit_chimney.gd" id="1"]
+
+[node name="ChimneyBreast" type="StaticBody3D"]
+script = ExtResource("1")
+breast_height = 2.75
+fireplace = 1
+height = 2.75
+size = Vector2(1.5, 0.6)
+stack_top = false

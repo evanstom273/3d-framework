@@ -4,7 +4,8 @@ extends KitPiece
 ## A floor and the ceiling under it. Size runs along +X and +Z from the origin; the
 ## finished top is at the origin and the ceiling below it at -thickness. Span it
 ## between wall grid lines: its edges tuck into the walls.
-## Stairwells and hatches are rectangles cut through it, lined and nosed.
+## Holes (hatches, voids) are rectangles cut through it, lined and nosed; a
+## KitStairs arriving at this floor cuts its stairwell automatically.
 
 enum Structure { TIMBER_JOISTS, CONCRETE_SLAB }
 
@@ -53,10 +54,29 @@ enum Structure { TIMBER_JOISTS, CONCRETE_SLAB }
 		queue_rebuild()
 
 
+func _enter_tree() -> void:
+	add_to_group(&"kit_floors")
+	if Engine.is_editor_hint():
+		set_notify_transform(true)
+
+
+func _notification(what: int) -> void:
+	# Moving a floor in the editor re-checks which stairs arrive at it.
+	if what == NOTIFICATION_TRANSFORM_CHANGED:
+		queue_rebuild()
+
+
 func _build(b: KitBuilder) -> void:
 	var holes: Array[Rect2] = []
 	for hole in openings:
 		holes.append(hole.intersection(Rect2(Vector2.ZERO, size)))
+	# Stairs arriving at this floor cut their own stairwell.
+	if is_inside_tree():
+		for stairs in get_tree().get_nodes_in_group(&"kit_stairs"):
+			if stairs is KitStairs:
+				var well: Rect2 = stairs.stairwell_in(self)
+				if well.has_area():
+					holes.append(well)
 	var finish_depth := 0.0 if finish == KitMaterials.FloorFinish.NONE else 0.022
 	var ceiling_depth := 0.015 if ceiling else 0.0
 	var top_material := KitMaterials.floor_finish(finish, finish_color, boards_along_z)
@@ -90,8 +110,8 @@ func _build(b: KitBuilder) -> void:
 		var z1 := hole.end.y
 		b.box(Vector3(x0, -thickness, z0), Vector3(x0 + lining, 0.0, z1), trim)
 		b.box(Vector3(x1 - lining, -thickness, z0), Vector3(x1, 0.0, z1), trim)
-		b.box(Vector3(x0, -thickness, z0), Vector3(x1, 0.0, z0 + lining), trim)
-		b.box(Vector3(x0, -thickness, z1 - lining), Vector3(x1, 0.0, z1), trim)
+		b.box(Vector3(x0 + lining, -thickness, z0), Vector3(x1 - lining, 0.0, z0 + lining), trim)
+		b.box(Vector3(x0 + lining, -thickness, z1 - lining), Vector3(x1 - lining, 0.0, z1), trim)
 		var round_nose := PackedVector2Array([Vector2(-0.03, -0.028), Vector2(0.0, -0.028)])
 		round_nose.append_array(arc(Vector2(0.0, -0.014), 0.014, -PI * 0.5, PI * 0.5, 6).slice(1))
 		round_nose.append(Vector2(-0.03, 0.0))

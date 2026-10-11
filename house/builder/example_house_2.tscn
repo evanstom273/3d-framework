@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://cwdpa8y15p3br"]
+
+[ext_resource type="Script" uid="uid://hh1my0bmi66c" path="res://house/kit/kit_wall.gd" id="1_rqd5y"]
+[ext_resource type="Script" uid="uid://d13k8ocasub88" path="res://house/kit/kit_opening.gd" id="2_dbyey"]
+[ext_resource type="Script" uid="uid://cthodpns1jvmh" path="res://house/kit/kit_floor.gd" id="3_ovabt"]
+[ext_resource type="Script" uid="uid://0cr4sa27vs6l" path="res://house/kit/kit_porch.gd" id="10_kqlvi"]
+
+[sub_resource type="ProceduralSkyMaterial" id="sky_material"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="sky"]
+sky_material = SubResource("sky_material")
+
+[sub_resource type="Environment" id="environment"]
+background_mode = 2
+sky = SubResource("sky")
+ambient_light_source = 3
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[sub_resource type="Resource" id="Resource_26o08"]
+script = ExtResource("2_dbyey")
+kind = 0
+position = 4.5
+width = 1.1
+height = 2.2
+door_style = 2
+door_color = Color(0.20246956, 0.1789935, 0.005806542, 1)
+head = 1
+frame_color = Color(0.23651966, 0.23505181, 0.17140493, 1)
+metadata/_custom_type_script = "uid://d13k8ocasub88"
+
+[node name="ExampleHouse" type="Node3D" unique_id=1283294391]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=343002641]
+environment = SubResource("environment")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1684822173]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="GroundFloor" type="Node3D" parent="." unique_id=1042848496]
+
+[node name="KitWall" type="StaticBody3D" parent="GroundFloor" unique_id=1103962713]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.4, -0.2)
+script = ExtResource("1_rqd5y")
+length = 9.0
+start_join = 2
+end_join = 2
+openings = Array[ExtResource("2_dbyey")]([SubResource("Resource_26o08")])
+plinth_drop = 0.6
+quoins = true
+band_course_height = 3.0
+metadata/_custom_type_script = "uid://hh1my0bmi66c"
+
+[node name="KitWall4" type="StaticBody3D" parent="GroundFloor" unique_id=763799961]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 9.3, 0.4, 8.8)
+script = ExtResource("1_rqd5y")
+length = 9.0
+start_join = 2
+end_join = 2
+plinth_drop = 0.6
+quoins = true
+band_course_height = 3.0
+metadata/_custom_type_script = "uid://hh1my0bmi66c"
+
+[node name="KitWall2" type="StaticBody3D" parent="GroundFloor" unique_id=1007015089]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.34713325, 0.4, 8.8)
+script = ExtResource("1_rqd5y")
+length = 9.0
+start_join = 1
+end_join = 1
+plinth_drop = 0.6
+quoins = true
+band_course_height = 3.0
+metadata/_custom_type_script = "uid://hh1my0bmi66c"
+
+[node name="KitWall3" type="StaticBody3D" parent="GroundFloor" unique_id=448583336]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 9.247133, 0.4, -0.19999981)
+script = ExtResource("1_rqd5y")
+length = 9.0
+start_join = 1
+end_join = 1
+plinth_drop = 0.6
+quoins = true
+band_course_height = 3.0
+metadata/_custom_type_script = "uid://hh1my0bmi66c"
+
+[node name="KitFloor" type="StaticBody3D" parent="GroundFloor" unique_id=431536021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.39999998, 0)
+script = ExtResource("3_ovabt")
+size = Vector2(9, 9)
+metadata/_custom_type_script = "uid://cthodpns1jvmh"
+
+[node name="KitPorch" type="StaticBody3D" parent="GroundFloor" unique_id=315809873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 0.2, -0.2)
+script = ExtResource("10_kqlvi")
+roof_style = 1

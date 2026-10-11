@@ -1,0 +1,369 @@
+[gd_scene format=3 uid="uid://ctray744dt1mi"]
+
+[ext_resource type="Script" uid="uid://ubr3mvu5b4vy" path="res://house/kit/kit_balustrade.gd" id="balustrade"]
+[ext_resource type="Script" uid="uid://brl3qfk8rpled" path="res://house/kit/kit_chimney.gd" id="chimney"]
+[ext_resource type="Script" uid="uid://cthodpns1jvmh" path="res://house/kit/kit_floor.gd" id="floor"]
+[ext_resource type="Script" uid="uid://bos5x6dqhk2d0" path="res://house/kit/kit_light.gd" id="light"]
+[ext_resource type="Script" uid="uid://d13k8ocasub88" path="res://house/kit/kit_opening.gd" id="opening"]
+[ext_resource type="Script" uid="uid://0cr4sa27vs6l" path="res://house/kit/kit_porch.gd" id="porch"]
+[ext_resource type="Script" uid="uid://dnkcp0tf6qa0j" path="res://house/kit/kit_roof.gd" id="roof"]
+[ext_resource type="Script" uid="uid://bw8dtn7eno0t3" path="res://house/kit/kit_stairs.gd" id="stairs"]
+[ext_resource type="Script" uid="uid://c6b5gonnjgybr" path="res://house/kit/kit_steps.gd" id="steps"]
+[ext_resource type="Script" uid="uid://3wv73ptba0qx" path="res://house/kit/kit_switch.gd" id="switch"]
+[ext_resource type="Script" uid="uid://hh1my0bmi66c" path="res://house/kit/kit_wall.gd" id="wall"]
+
+[sub_resource type="ProceduralSkyMaterial" id="sky_material"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="sky"]
+sky_material = SubResource("sky_material")
+
+[sub_resource type="Environment" id="environment"]
+background_mode = 2
+sky = SubResource("sky")
+ambient_light_source = 3
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[sub_resource type="Resource" id="g_front_w1"]
+script = ExtResource("opening")
+position = 1.8
+display_name = "Living room window"
+
+[sub_resource type="Resource" id="g_front_door"]
+script = ExtResource("opening")
+kind = 0
+position = 4.0
+width = 1.0
+height = 2.1
+door_style = 1
+door_color = Color(0.12, 0.26, 0.19, 1)
+head = 2
+display_name = "Front door"
+
+[sub_resource type="Resource" id="g_front_w2"]
+script = ExtResource("opening")
+position = 6.4
+display_name = "Hall window"
+
+[sub_resource type="Resource" id="g_east_w"]
+script = ExtResource("opening")
+position = 1.0
+width = 0.9
+window_style = 1
+panes = 1
+
+[sub_resource type="Resource" id="g_back_door"]
+script = ExtResource("opening")
+kind = 0
+position = 2.0
+width = 0.9
+height = 2.1
+door_style = 2
+display_name = "Back door"
+
+[sub_resource type="Resource" id="g_back_w"]
+script = ExtResource("opening")
+position = 6.0
+width = 1.5
+window_style = 2
+panes = 3
+
+[sub_resource type="Resource" id="g_west_w"]
+script = ExtResource("opening")
+position = 1.2000000000000002
+width = 0.9
+window_style = 1
+panes = 1
+
+[sub_resource type="Resource" id="g_inner_door"]
+script = ExtResource("opening")
+kind = 0
+position = 1.0
+width = 0.9
+height = 2.1
+
+[sub_resource type="Resource" id="f_front_w1"]
+script = ExtResource("opening")
+position = 1.8
+display_name = "Bedroom window"
+
+[sub_resource type="Resource" id="f_front_w2"]
+script = ExtResource("opening")
+position = 4.0
+width = 0.9
+panes = 1
+display_name = "Landing window"
+
+[sub_resource type="Resource" id="f_front_w3"]
+script = ExtResource("opening")
+position = 6.4
+
+[sub_resource type="Resource" id="f_east_w"]
+script = ExtResource("opening")
+position = 1.0
+width = 0.9
+window_style = 1
+panes = 1
+
+[sub_resource type="Resource" id="f_back_w1"]
+script = ExtResource("opening")
+position = 2.0
+width = 0.9
+panes = 1
+
+[sub_resource type="Resource" id="f_back_w2"]
+script = ExtResource("opening")
+position = 6.0
+
+[sub_resource type="Resource" id="f_west_w"]
+script = ExtResource("opening")
+position = 1.2000000000000002
+width = 0.9
+window_style = 1
+panes = 1
+
+[sub_resource type="Resource" id="f_inner_door"]
+script = ExtResource("opening")
+kind = 0
+position = 1.0
+width = 0.9
+height = 2.1
+hinge_left = false
+
+[node name="ExampleHouse" type="Node3D" unique_id=1283294391]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=343002641]
+environment = SubResource("environment")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1684822173]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="GroundFloor" type="Node3D" parent="." unique_id=1042848496]
+
+[node name="FrontWall" type="StaticBody3D" parent="GroundFloor" unique_id=1439715365]
+script = ExtResource("wall")
+length = 8.0
+start_join = 1
+end_join = 1
+openings = Array[ExtResource("opening")]([SubResource("g_front_w1"), SubResource("g_front_door"), SubResource("g_front_w2")])
+quoins = true
+band_course_height = 2.85
+
+[node name="EastWall" type="StaticBody3D" parent="GroundFloor" unique_id=1857088121]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 8, 0, 0)
+script = ExtResource("wall")
+length = 6.0
+start_join = 2
+end_join = 2
+openings = Array[ExtResource("opening")]([SubResource("g_east_w")])
+band_course_height = 2.85
+
+[node name="BackWall" type="StaticBody3D" parent="GroundFloor" unique_id=162183362]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 8, 0, 6)
+script = ExtResource("wall")
+length = 8.0
+start_join = 1
+end_join = 1
+openings = Array[ExtResource("opening")]([SubResource("g_back_door"), SubResource("g_back_w")])
+quoins = true
+band_course_height = 2.85
+
+[node name="WestWall" type="StaticBody3D" parent="GroundFloor" unique_id=187432783]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 6)
+script = ExtResource("wall")
+length = 6.0
+start_join = 2
+end_join = 2
+openings = Array[ExtResource("opening")]([SubResource("g_west_w")])
+band_course_height = 2.85
+
+[node name="Partition" type="StaticBody3D" parent="GroundFloor" unique_id=636624455]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 5, 0, 0)
+script = ExtResource("wall")
+wall_type = 1
+length = 6.0
+start_join = 2
+end_join = 2
+openings = Array[ExtResource("opening")]([SubResource("g_inner_door")])
+other_side_color = Color(0.86, 0.9, 0.88, 1)
+
+[node name="Floor" type="StaticBody3D" parent="GroundFloor" unique_id=323816059]
+script = ExtResource("floor")
+size = Vector2(8, 6)
+ceiling = false
+
+[node name="Stairs" type="StaticBody3D" parent="GroundFloor" unique_id=450524743]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 7.85, 0, 5.1)
+script = ExtResource("stairs")
+
+[node name="LivingLight" type="StaticBody3D" parent="GroundFloor" unique_id=992676908]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.75, 3)
+script = ExtResource("light")
+circuit = "living"
+energy = 1.0
+light_range = 4.5
+shadows = false
+
+[node name="HallLight" type="StaticBody3D" parent="GroundFloor" unique_id=1768971593]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.75, 1.2)
+script = ExtResource("light")
+style = 1
+circuit = "hall"
+energy = 1.0
+light_range = 4.5
+shadows = false
+
+[node name="LivingSwitch" type="StaticBody3D" parent="GroundFloor" unique_id=1240129699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 1.2, 0.15)
+script = ExtResource("switch")
+circuit = "living"
+label = "Living room light"
+
+[node name="PorchSwitch" type="StaticBody3D" parent="GroundFloor" unique_id=1010109578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, 1.2, 0.15)
+script = ExtResource("switch")
+circuit = "porch"
+label = "Porch light"
+
+[node name="HallSwitch" type="StaticBody3D" parent="GroundFloor" unique_id=2063431642]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 5.06, 1.2, 1.7)
+script = ExtResource("switch")
+circuit = "hall"
+label = "Hall light"
+
+[node name="FirstFloor" type="Node3D" parent="." unique_id=815499748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="Floor" type="StaticBody3D" parent="FirstFloor" unique_id=494163224]
+script = ExtResource("floor")
+size = Vector2(8, 6)
+
+[node name="FrontWall" type="StaticBody3D" parent="FirstFloor" unique_id=1355734845]
+script = ExtResource("wall")
+length = 8.0
+start_join = 1
+end_join = 1
+openings = Array[ExtResource("opening")]([SubResource("f_front_w1"), SubResource("f_front_w2"), SubResource("f_front_w3")])
+plinth_drop = 0.0
+quoins = true
+
+[node name="EastWall" type="StaticBody3D" parent="FirstFloor" unique_id=461860142]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 8, 0, 0)
+script = ExtResource("wall")
+length = 6.0
+start_join = 2
+end_join = 2
+openings = Array[ExtResource("opening")]([SubResource("f_east_w")])
+plinth_drop = 0.0
+
+[node name="BackWall" type="StaticBody3D" parent="FirstFloor" unique_id=8083040]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 8, 0, 6)
+script = ExtResource("wall")
+length = 8.0
+start_join = 1
+end_join = 1
+openings = Array[ExtResource("opening")]([SubResource("f_back_w1"), SubResource("f_back_w2")])
+plinth_drop = 0.0
+quoins = true
+
+[node name="WestWall" type="StaticBody3D" parent="FirstFloor" unique_id=1917447214]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 6)
+script = ExtResource("wall")
+length = 6.0
+start_join = 2
+end_join = 2
+openings = Array[ExtResource("opening")]([SubResource("f_west_w")])
+plinth_drop = 0.0
+
+[node name="Partition" type="StaticBody3D" parent="FirstFloor" unique_id=1444284085]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 5, 0, 0)
+script = ExtResource("wall")
+wall_type = 1
+length = 6.0
+start_join = 2
+end_join = 2
+openings = Array[ExtResource("opening")]([SubResource("f_inner_door")])
+other_side_color = Color(0.82, 0.86, 0.92, 1)
+
+[node name="StairwellSide" type="StaticBody3D" parent="FirstFloor" unique_id=915018911]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 6.94, 0, 4.84)
+script = ExtResource("balustrade")
+length = 3.25
+end_newel = false
+
+[node name="StairwellEnd" type="StaticBody3D" parent="FirstFloor" unique_id=1392373670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.94, 0, 4.84)
+script = ExtResource("balustrade")
+length = 0.9
+start_newel = false
+end_newel = false
+
+[node name="BedroomLight" type="StaticBody3D" parent="FirstFloor" unique_id=1578616608]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.75, 3)
+script = ExtResource("light")
+circuit = "bedroom"
+energy = 1.0
+light_range = 4.5
+shadows = false
+shade_color = Color(0.72, 0.8, 0.86, 1)
+
+[node name="LandingLight" type="StaticBody3D" parent="FirstFloor" unique_id=1002589467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2, 2.75, 1.1)
+script = ExtResource("light")
+style = 1
+circuit = "landing"
+energy = 1.0
+light_range = 4.5
+shadows = false
+
+[node name="BedroomSwitch" type="StaticBody3D" parent="FirstFloor" unique_id=1747225300]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 4.94, 1.2, 1.7)
+script = ExtResource("switch")
+circuit = "bedroom"
+label = "Bedroom light"
+
+[node name="LandingSwitch" type="StaticBody3D" parent="FirstFloor" unique_id=389095324]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 5.06, 1.2, 1.7)
+script = ExtResource("switch")
+circuit = "landing"
+label = "Landing light"
+
+[node name="Loft" type="StaticBody3D" parent="." unique_id=1209223638]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+script = ExtResource("floor")
+size = Vector2(8, 6)
+finish = 6
+
+[node name="Roof" type="StaticBody3D" parent="." unique_id=727538815]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 8, 6, 0)
+script = ExtResource("roof")
+downpipe_drop = 6.3
+
+[node name="Chimney" type="StaticBody3D" parent="." unique_id=1790107815]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, -0.3, 3)
+script = ExtResource("chimney")
+size = Vector2(0.6, 0.9)
+height = 9.6
+
+[node name="Porch" type="StaticBody3D" parent="." unique_id=764761767]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+script = ExtResource("porch")
+
+[node name="PorchSteps" type="StaticBody3D" parent="." unique_id=738713574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -1.55)
+script = ExtResource("steps")
+
+[node name="PorchLantern" type="StaticBody3D" parent="." unique_id=310090391]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 4.75, 2, -0.15)
+script = ExtResource("light")
+style = 3
+circuit = "porch"
+energy = 1.0
+light_range = 5.0

@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://i8xoeus80u2p"]
+
+[ext_resource type="Script" uid="uid://cthodpns1jvmh" path="res://house/kit/kit_floor.gd" id="floor"]
+[ext_resource type="Script" uid="uid://d13k8ocasub88" path="res://house/kit/kit_opening.gd" id="opening"]
+[ext_resource type="Script" uid="uid://dnkcp0tf6qa0j" path="res://house/kit/kit_roof.gd" id="roof"]
+[ext_resource type="Script" uid="uid://hh1my0bmi66c" path="res://house/kit/kit_wall.gd" id="wall"]
+
+[sub_resource type="Resource" id="front_window_left"]
+script = ExtResource("opening")
+position = 1.8
+width = 1.2000000000000002
+height = 1.2000000000000002
+display_name = "Front window"
+
+[sub_resource type="Resource" id="front_door"]
+script = ExtResource("opening")
+kind = 0
+position = 4.0
+width = 1.0
+height = 2.1
+door_style = 1
+door_color = Color(0.12, 0.26, 0.19, 1)
+head = 2
+display_name = "Front door"
+
+[sub_resource type="Resource" id="front_window_right"]
+script = ExtResource("opening")
+position = 6.4
+width = 1.2000000000000002
+height = 1.2000000000000002
+display_name = "Front window"
+
+[sub_resource type="Resource" id="east_window"]
+script = ExtResource("opening")
+position = 3.0
+width = 0.9
+height = 1.2000000000000002
+window_style = 1
+panes = 1
+
+[sub_resource type="Resource" id="back_door"]
+script = ExtResource("opening")
+kind = 0
+position = 2.0
+width = 0.9
+height = 2.1
+door_style = 2
+display_name = "Back door"
+
+[sub_resource type="Resource" id="back_window"]
+script = ExtResource("opening")
+position = 6.0
+width = 1.5
+height = 1.2000000000000002
+window_style = 2
+panes = 3
+
+[sub_resource type="Resource" id="west_window"]
+script = ExtResource("opening")
+position = 3.0
+width = 0.9
+height = 1.2000000000000002
+window_style = 1
+panes = 1
+
+[sub_resource type="Resource" id="inner_door"]
+script = ExtResource("opening")
+kind = 0
+position = 2.0
+width = 0.9
+height = 2.1
+
+[node name="ExampleCottage" type="Node3D" unique_id=819002765]
+
+[node name="FrontWall" type="StaticBody3D" parent="." unique_id=1831377598]
+script = ExtResource("wall")
+length = 8.0
+start_join = 1
+end_join = 1
+openings = Array[ExtResource("opening")]([SubResource("front_window_left"), SubResource("front_door"), SubResource("front_window_right")])
+quoins = true
+
+[node name="EastWall" type="StaticBody3D" parent="." unique_id=820390228]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 8, 0, 0)
+script = ExtResource("wall")
+length = 6.0
+start_join = 2
+end_join = 2
+openings = Array[ExtResource("opening")]([SubResource("east_window")])
+
+[node name="BackWall" type="StaticBody3D" parent="." unique_id=1809621094]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 8, 0, 6)
+script = ExtResource("wall")
+length = 8.0
+start_join = 1
+end_join = 1
+openings = Array[ExtResource("opening")]([SubResource("back_door"), SubResource("back_window")])
+quoins = true
+
+[node name="WestWall" type="StaticBody3D" parent="." unique_id=1800007687]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 6)
+script = ExtResource("wall")
+length = 6.0
+start_join = 2
+end_join = 2
+openings = Array[ExtResource("opening")]([SubResource("west_window")])
+
+[node name="Partition" type="StaticBody3D" parent="." unique_id=532214634]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 5, 0, 0)
+script = ExtResource("wall")
+wall_type = 1
+length = 6.0
+start_join = 2
+end_join = 2
+openings = Array[ExtResource("opening")]([SubResource("inner_door")])
+other_side_color = Color(0.86, 0.9, 0.88, 1)
+
+[node name="GroundFloor" type="StaticBody3D" parent="." unique_id=1394685321]
+script = ExtResource("floor")
+size = Vector2(8, 6)
+ceiling = false
+
+[node name="Ceiling" type="StaticBody3D" parent="." unique_id=1305433805]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+script = ExtResource("floor")
+size = Vector2(8, 6)
+finish = 6
+
+[node name="Roof" type="StaticBody3D" parent="." unique_id=1368522991]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 8, 3, 0)
+script = ExtResource("roof")
+downpipe_drop = 3.3

@@ -20,12 +20,14 @@ void fragment() {
 	vec3 v_axis;
 	vec2 uv = kit_plane(kit_world_pos, kit_world_normal, u_axis, v_axis) * texture_scale;
 	float broad = kit_fbm(uv * 1.7);
+	// Fine texture fades out once a pixel covers more than it can show, so it never sparkles.
+	float detail = 1.0 - smoothstep(0.0015, 0.006, length(fwidth(uv)));
 	float fine = kit_noise(uv * 180.0);
-	ALBEDO = color.rgb * (1.0 - mottling + mottling * 2.0 * broad) * (0.985 + 0.03 * fine);
+	ALBEDO = color.rgb * (1.0 - mottling + mottling * 2.0 * broad) * (1.0 + 0.03 * (fine - 0.5) * detail);
 	ROUGHNESS = roughness;
 	float e = 0.002;
 	float h = kit_noise(uv * 90.0);
 	float dhdu = (kit_noise((uv + vec2(e, 0.0)) * 90.0) - h) / e;
 	float dhdv = (kit_noise((uv + vec2(0.0, e)) * 90.0) - h) / e;
-	NORMAL = kit_bump(kit_world_normal, u_axis, v_axis, dhdu * 0.0006 * bump, dhdv * 0.0006 * bump, 1.0, VIEW_MATRIX);
+	NORMAL = kit_bump(kit_world_normal, u_axis, v_axis, dhdu * 0.0006 * bump * detail, dhdv * 0.0006 * bump * detail, 1.0, VIEW_MATRIX);
 }

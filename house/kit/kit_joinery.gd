@@ -10,9 +10,11 @@ const BREAKABLE_HINGE := preload("res://house/breakable_hinge.gd")
 const WOOD := preload("res://props/voxel_materials/wood.tres")
 ## Painted joinery: the same timber, without the raw-wood colour speckle.
 static var _painted: VoxelMaterialDefinition
+static var _glass_material: VoxelMaterialDefinition
 const GLASS := preload("res://props/voxel_materials/glass.tres")
-## Leaves and sashes are voxelised at 2 cm: fine enough for panels and glazing bars.
-const CELL := 0.02
+## Leaves and sashes are voxelised at 2.5 cm: fine enough for panels and glazing
+## bars, coarse enough that smashing them stays cheap.
+const CELL := 0.025
 const FRAME := 0.06
 const LEAF_CELLS_DEEP := 3
 const SASH_CELLS_DEEP := 2
@@ -25,15 +27,15 @@ static func door_frame(b: KitBuilder, o: KitOpening, x0: float, x1: float, top: 
 	var metal := KitMaterials.metal(Color(0.72, 0.6, 0.32), 0.8)
 	b.box(Vector3(x0, 0, z0), Vector3(x0 + FRAME, top, z1), frame)
 	b.box(Vector3(x1 - FRAME, 0, z0), Vector3(x1, top, z1), frame)
-	b.box(Vector3(x0, top - FRAME, z0), Vector3(x1, top, z1), frame)
+	b.box(Vector3(x0 + FRAME, top - FRAME, z0), Vector3(x1 - FRAME, top, z1), frame)
 	if o.kind == KitOpening.Kind.OPEN_DOORWAY:
 		return
 	var leaf := _door_leaf_z(o, z0, z1)
 	# The stop bead the leaf closes against, on the far side of the leaf from its swing.
 	var stop_z0 := leaf.x - 0.015 if o.opens_inward else leaf.y
 	var stop_z1 := leaf.x if o.opens_inward else leaf.y + 0.015
-	b.box(Vector3(x0 + FRAME, 0, stop_z0), Vector3(x0 + FRAME + 0.012, top - FRAME, stop_z1), frame)
-	b.box(Vector3(x1 - FRAME - 0.012, 0, stop_z0), Vector3(x1 - FRAME, top - FRAME, stop_z1), frame)
+	b.box(Vector3(x0 + FRAME, 0, stop_z0), Vector3(x0 + FRAME + 0.012, top - FRAME - 0.012, stop_z1), frame)
+	b.box(Vector3(x1 - FRAME - 0.012, 0, stop_z0), Vector3(x1 - FRAME, top - FRAME - 0.012, stop_z1), frame)
 	b.box(Vector3(x0 + FRAME, top - FRAME - 0.012, stop_z0), Vector3(x1 - FRAME, top - FRAME, stop_z1), frame)
 	var hinge_x := x0 + FRAME if o.hinge_left else x1 - FRAME
 	var hinge_z := leaf.y if o.opens_inward else leaf.x
@@ -52,7 +54,7 @@ static func architrave(b: KitBuilder, x0: float, x1: float, top: float, z: float
 	b.extrude(profile if side > 0.0 else flipped, Vector3(x0, bottom, z), Vector3(x0, top + width, z), out, material, false)
 	b.extrude(flipped if side > 0.0 else profile, Vector3(x1, bottom, z), Vector3(x1, top + width, z), out, material, false)
 	# Along +X, "across" is +Y on a +Z face (up, away from the opening) and -Y on a -Z face.
-	b.extrude(profile if side > 0.0 else flipped, Vector3(x0 - width, top, z), Vector3(x1 + width, top, z), out, material, false)
+	b.extrude(profile if side > 0.0 else flipped, Vector3(x0, top, z), Vector3(x1, top, z), out, material, false)
 
 
 ## Mirrors an architrave profile so the moulding faces the other way.
@@ -98,10 +100,11 @@ static func door_leaf(o: KitOpening, x0: float, x1: float, top: float, z0: float
 ## Voxel layout of a leaf: nx by ny cells, three deep (0 faces the outside, -Z).
 static func _door_cells(o: KitOpening, nx: int, ny: int, boxes: Array[VoxelFillBox], glass: Array[Rect2i]) -> void:
 	var color := o.door_color
-	var stile := 6
-	var top_rail := 6
-	var bottom_rail := 10
-	var lock_rail := 8
+	# Cell counts at 2.5 cm: 125 mm stiles, 200 mm bottom rail.
+	var stile := 5
+	var top_rail := 5
+	var bottom_rail := 8
+	var lock_rail := 7
 	var lock_y := clampi(roundi(0.95 / CELL), bottom_rail + 8, ny - top_rail - 12)
 	match o.door_style:
 		KitOpening.DoorStyle.FLUSH:
@@ -109,10 +112,10 @@ static func _door_cells(o: KitOpening, nx: int, ny: int, boxes: Array[VoxelFillB
 		KitOpening.DoorStyle.LEDGED_PLANK:
 			# Vertical boards with V-grooves on the face, ledges and braces behind.
 			_vbox(boxes, Vector3i(0, 0, 1), Vector3i(nx, ny, 1), color)
-			var board := 6
+			var board := 5
 			for x in range(0, nx, board):
 				_vbox(boxes, Vector3i(x, 0, 0), Vector3i(mini(board - 1, nx - x), ny, 1), color)
-			var ledge := 6
+			var ledge := 5
 			var ledges := [4, ny / 2 - ledge / 2, ny - ledge - 4]
 			for y in ledges:
 				_vbox(boxes, Vector3i(2, y, 2), Vector3i(nx - 4, ledge, 1), color.darkened(0.05))
@@ -131,7 +134,7 @@ static func _door_cells(o: KitOpening, nx: int, ny: int, boxes: Array[VoxelFillB
 			_vbox(boxes, Vector3i(stile, ny - top_rail, 0), Vector3i(nx - stile * 2, top_rail, 3), color)
 			_vbox(boxes, Vector3i(stile, lock_y, 0), Vector3i(nx - stile * 2, lock_rail, 3), color)
 			var inner_x := nx - stile * 2
-			var muntin := 5
+			var muntin := 4
 			var lower := Rect2i(stile, bottom_rail, inner_x, lock_y - bottom_rail)
 			var upper := Rect2i(stile, lock_y + lock_rail, inner_x, ny - top_rail - lock_y - lock_rail)
 			match o.door_style:
@@ -147,7 +150,7 @@ static func _door_cells(o: KitOpening, nx: int, ny: int, boxes: Array[VoxelFillB
 					_glazing_bars(boxes, lower, 2, 2, color)
 				KitOpening.DoorStyle.SIX_PANEL:
 					_two_panels(boxes, lower, muntin, color)
-					var frieze := 8
+					var frieze := 6
 					var frieze_y := upper.position.y + upper.size.y - upper.size.y / 3
 					_vbox(boxes, Vector3i(stile, frieze_y, 0), Vector3i(inner_x, frieze, 3), color)
 					_two_panels(boxes, Rect2i(upper.position.x, upper.position.y, upper.size.x, frieze_y - upper.position.y), muntin, color)
@@ -170,7 +173,7 @@ static func _panel(boxes: Array[VoxelFillBox], area: Rect2i, color: Color) -> vo
 	if area.size.x <= 0 or area.size.y <= 0:
 		return
 	_vbox(boxes, Vector3i(area.position.x, area.position.y, 1), Vector3i(area.size.x, area.size.y, 1), color)
-	var border := 3
+	var border := 2
 	if area.size.x > border * 2 + 2 and area.size.y > border * 2 + 2:
 		_vbox(boxes, Vector3i(area.position.x + border, area.position.y + border, 0), Vector3i(area.size.x - border * 2, area.size.y - border * 2, 1), color)
 		_vbox(boxes, Vector3i(area.position.x + border, area.position.y + border, 2), Vector3i(area.size.x - border * 2, area.size.y - border * 2, 1), color)
@@ -187,52 +190,59 @@ static func _glazing_bars(boxes: Array[VoxelFillBox], area: Rect2i, columns: int
 
 
 static func _door_hardware(o: KitOpening, leaf: VoxelBody, width: float, height: float, exterior: bool) -> void:
-	var b := KitBuilder.new()
 	var thickness := CELL * LEAF_CELLS_DEEP
 	var brass := KitMaterials.metal(Color(0.76, 0.6, 0.3), 0.85)
 	var chrome := KitMaterials.metal(Color(0.75, 0.76, 0.78), 0.9)
 	var black := KitMaterials.metal(Color(0.05, 0.05, 0.05), 0.5)
 	var lock_x := width - 0.065 if o.hinge_left else 0.065
 	var handle_y := clampf(1.0, 0.3, height - 0.3)
+	var out := Basis(Vector3.RIGHT, -PI * 0.5)
 	if o.door_style == KitOpening.DoorStyle.LEDGED_PLANK:
 		# Black ironmongery: strap hinges across the face and a ring latch.
-		for y in [0.12 + 0.06, height - 0.18]:
+		for y in [0.18, height - 0.18]:
+			var strap := KitBuilder.new()
 			var x0 := 0.0 if o.hinge_left else width - 0.45
-			b.box(Vector3(x0, y - 0.02, -0.004), Vector3(x0 + 0.45, y + 0.02, 0.0), black, false)
+			strap.box(Vector3(x0, y - 0.02, -0.004), Vector3(x0 + 0.45, y + 0.02, 0.0), black, false)
+			KitHardware.mount(leaf, strap, "StrapHinge", Vector3(x0 + 0.225, y, 0.0), CELL, LEAF_CELLS_DEEP, 0.1)
+		var latch := KitBuilder.new()
 		for face in [-0.004, thickness]:
-			b.lathe(PackedVector2Array([Vector2(0.0, 0.0), Vector2(0.03, 0.0), Vector2(0.03, 0.004), Vector2(0.0, 0.004)]), Vector3(lock_x, handle_y, face), 10, black)
-		var ring := KitBuilder.new()
-		ring.transform = Transform3D(Basis(Vector3.RIGHT, PI * 0.5), Vector3(lock_x, handle_y - 0.03, -0.012))
-		ring.lathe(PackedVector2Array([Vector2(0.032, -0.004), Vector2(0.038, 0.0), Vector2(0.032, 0.004), Vector2(0.026, 0.0), Vector2(0.032, -0.004)]), Vector3.ZERO, 14, black)
-		ring.commit(leaf, null, "Ring")
-	else:
-		var metal := brass if exterior else chrome
-		for side in [-1.0, 1.0]:
-			var face := 0.0 if side < 0.0 else thickness
-			var turn := Basis(Vector3.RIGHT, -PI * 0.5 * side)
-			var rose := KitBuilder.new()
-			rose.transform = Transform3D(turn, Vector3(lock_x, handle_y, face))
-			if exterior and side < 0.0:
-				# Brass knob outside.
-				rose.lathe(PackedVector2Array([Vector2(0.0, 0.0), Vector2(0.03, 0.0), Vector2(0.03, 0.006), Vector2(0.008, 0.012), Vector2(0.008, 0.04), Vector2(0.026, 0.05), Vector2(0.03, 0.065), Vector2(0.02, 0.078), Vector2(0.0, 0.08)]), Vector3.ZERO, 14, metal)
-			else:
-				# Lever on a round rose.
-				rose.lathe(PackedVector2Array([Vector2(0.0, 0.0), Vector2(0.026, 0.0), Vector2(0.026, 0.006), Vector2(0.008, 0.01), Vector2(0.008, 0.055), Vector2(0.0, 0.058)]), Vector3.ZERO, 12, metal)
-				var lever_dir := -1.0 if o.hinge_left else 1.0
-				var lever_from := Vector3(lock_x, handle_y, face + side * 0.05)
-				rose.transform = Transform3D.IDENTITY
-				rose.extrude(_round_profile(0.008, 8), lever_from, lever_from + Vector3(lever_dir * 0.12, 0, 0), Vector3.UP, metal, false, true)
-			rose.commit(leaf, null, "Handle%d" % (1 if side > 0.0 else 0))
-			# Keyhole escutcheon below the handle.
-			if o.lockable:
-				b.box(Vector3(lock_x - 0.012, handle_y - 0.1, face - (0.003 if side < 0.0 else 0.0)), Vector3(lock_x + 0.012, handle_y - 0.06, face + (0.003 if side > 0.0 else 0.0)), metal, false)
-		if exterior:
-			# Letter plate and a knocker on the outside face.
-			var plate_y := clampf(0.95, 0.4, height - 0.4)
-			b.box(Vector3(width * 0.5 - 0.15, plate_y - 0.035, -0.006), Vector3(width * 0.5 + 0.15, plate_y + 0.035, 0.0), metal, false)
-			b.box(Vector3(width * 0.5 - 0.13, plate_y - 0.012, -0.009), Vector3(width * 0.5 + 0.13, plate_y + 0.012, -0.006), black, false)
-			b.lathe(PackedVector2Array([Vector2(0.0, 0.0), Vector2(0.028, 0.0), Vector2(0.028, 0.01), Vector2(0.0, 0.012)]), Vector3(width * 0.5, height - 0.45, -0.012), 12, metal)
-	b.commit(leaf, null, "Hardware")
+			latch.lathe(PackedVector2Array([Vector2(0.0, 0.0), Vector2(0.03, 0.0), Vector2(0.03, 0.004), Vector2(0.0, 0.004)]), Vector3(lock_x, handle_y, face), 10, black)
+		latch.transform = Transform3D(Basis(Vector3.RIGHT, PI * 0.5), Vector3(lock_x, handle_y - 0.03, -0.012))
+		latch.lathe(PackedVector2Array([Vector2(0.032, -0.004), Vector2(0.038, 0.0), Vector2(0.032, 0.004), Vector2(0.026, 0.0), Vector2(0.032, -0.004)]), Vector3.ZERO, 14, black)
+		KitHardware.mount(leaf, latch, "RingLatch", Vector3(lock_x, handle_y, 0.0), CELL, LEAF_CELLS_DEEP)
+		return
+	var metal := brass if exterior else chrome
+	# One set of furniture through the lock: handle each side, and the escutcheons.
+	var handles := KitBuilder.new()
+	for side in [-1.0, 1.0]:
+		var face := 0.0 if side < 0.0 else thickness
+		handles.transform = Transform3D(Basis(Vector3.RIGHT, PI * 0.5 * side), Vector3(lock_x, handle_y, face))
+		if exterior and side < 0.0:
+			# Brass knob outside.
+			handles.lathe(PackedVector2Array([Vector2(0.0, 0.0), Vector2(0.03, 0.0), Vector2(0.03, 0.006), Vector2(0.008, 0.012), Vector2(0.008, 0.04), Vector2(0.026, 0.05), Vector2(0.03, 0.065), Vector2(0.02, 0.078), Vector2(0.0, 0.08)]), Vector3.ZERO, 14, metal)
+		else:
+			# Lever on a round rose.
+			handles.lathe(PackedVector2Array([Vector2(0.0, 0.0), Vector2(0.026, 0.0), Vector2(0.026, 0.006), Vector2(0.008, 0.01), Vector2(0.008, 0.055), Vector2(0.0, 0.058)]), Vector3.ZERO, 12, metal)
+			handles.transform = Transform3D.IDENTITY
+			var lever_from := Vector3(lock_x, handle_y, face + side * 0.05)
+			handles.extrude(_round_profile(0.008, 8), lever_from, lever_from + Vector3((-1.0 if o.hinge_left else 1.0) * 0.12, 0, 0), Vector3.UP, metal, false, true)
+		handles.transform = Transform3D.IDENTITY
+		if o.lockable:
+			handles.box(Vector3(lock_x - 0.012, handle_y - 0.1, face - (0.003 if side < 0.0 else 0.0)), Vector3(lock_x + 0.012, handle_y - 0.06, face + (0.003 if side > 0.0 else 0.0)), metal, false)
+	KitHardware.mount(leaf, handles, "Handles", Vector3(lock_x, handle_y - 0.03, 0.0), CELL, LEAF_CELLS_DEEP, 0.06)
+	if exterior:
+		# Letter plate and a knocker on the outside face.
+		var plate_y := clampf(0.95, 0.4, height - 0.4)
+		var plate := KitBuilder.new()
+		plate.box(Vector3(width * 0.5 - 0.15, plate_y - 0.035, -0.006), Vector3(width * 0.5 + 0.15, plate_y + 0.035, 0.0), metal, false)
+		plate.box(Vector3(width * 0.5 - 0.13, plate_y - 0.012, -0.009), Vector3(width * 0.5 + 0.13, plate_y + 0.012, -0.006), black, false)
+		KitHardware.mount(leaf, plate, "LetterPlate", Vector3(width * 0.5, plate_y, 0.0), CELL, LEAF_CELLS_DEEP, 0.1)
+		var knocker := KitBuilder.new()
+		knocker.transform = Transform3D(out, Vector3(width * 0.5, height - 0.45, 0.0))
+		knocker.lathe(PackedVector2Array([Vector2(0.0, 0.0), Vector2(0.03, 0.0), Vector2(0.03, 0.008), Vector2(0.012, 0.014), Vector2(0.0, 0.016)]), Vector3.ZERO, 12, metal)
+		knocker.transform = Transform3D(Basis(Vector3.RIGHT, PI * 0.5), Vector3(width * 0.5, height - 0.5, -0.02))
+		knocker.lathe(PackedVector2Array([Vector2(0.045, -0.005), Vector2(0.052, 0.0), Vector2(0.045, 0.005), Vector2(0.038, 0.0), Vector2(0.045, -0.005)]), Vector3.ZERO, 16, metal)
+		KitHardware.mount(leaf, knocker, "Knocker", Vector3(width * 0.5, height - 0.45, 0.0), CELL, LEAF_CELLS_DEEP)
 
 
 static func _round_profile(radius: float, segments: int) -> PackedVector2Array:
@@ -245,23 +255,23 @@ static func _round_profile(radius: float, segments: int) -> PackedVector2Array:
 static func window_frame(b: KitBuilder, o: KitOpening, x0: float, x1: float, y0: float, y1: float, z0: float, z1: float, frame: Material) -> void:
 	b.box(Vector3(x0, y0, z0), Vector3(x0 + FRAME, y1, z1), frame)
 	b.box(Vector3(x1 - FRAME, y0, z0), Vector3(x1, y1, z1), frame)
-	b.box(Vector3(x0, y1 - FRAME, z0), Vector3(x1, y1, z1), frame)
+	b.box(Vector3(x0 + FRAME, y1 - FRAME, z0), Vector3(x1 - FRAME, y1, z1), frame)
 	# The bottom rail is deeper and weathered so rain runs off outside.
-	b.box(Vector3(x0, y0, z0), Vector3(x1, y0 + FRAME + 0.01, z1), frame)
+	b.box(Vector3(x0 + FRAME, y0, z0), Vector3(x1 - FRAME, y0 + FRAME + 0.01, z1), frame)
 	b.extrude(PackedVector2Array([Vector2(0, 0), Vector2(0.025, 0), Vector2(0, 0.012)]), Vector3(x0, y0 + FRAME + 0.01, z0), Vector3(x1, y0 + FRAME + 0.01, z0), Vector3.UP, frame, false)
 	var layout := _window_layout(o, x0, x1, y0, y1)
 	for mullion in layout["mullions"]:
-		b.box(Vector3(mullion, y0, z0), Vector3(mullion + FRAME, layout["casement_top"], z1), frame)
+		b.box(Vector3(mullion, y0 + FRAME + 0.01, z0), Vector3(mullion + FRAME, layout["casement_top"], z1), frame)
 	if layout["transom"] > 0.0:
-		b.box(Vector3(x0, layout["transom"], z0), Vector3(x1, layout["transom"] + FRAME, z1), frame)
+		b.box(Vector3(x0 + FRAME, layout["transom"], z0), Vector3(x1 - FRAME, layout["transom"] + FRAME, z1), frame)
 	# Rebate lips the sashes close against (inside face of each light).
 	var lip_z0 := z0 + CELL * SASH_CELLS_DEEP + 0.008
 	for rect in layout["casements"] + layout["top_lights"]:
 		var r: Rect2 = rect
 		b.box(Vector3(r.position.x, r.position.y, lip_z0), Vector3(r.end.x, r.position.y + 0.012, lip_z0 + 0.012), frame)
 		b.box(Vector3(r.position.x, r.end.y - 0.012, lip_z0), Vector3(r.end.x, r.end.y, lip_z0 + 0.012), frame)
-		b.box(Vector3(r.position.x, r.position.y, lip_z0), Vector3(r.position.x + 0.012, r.end.y, lip_z0 + 0.012), frame)
-		b.box(Vector3(r.end.x - 0.012, r.position.y, lip_z0), Vector3(r.end.x, r.end.y, lip_z0 + 0.012), frame)
+		b.box(Vector3(r.position.x, r.position.y + 0.012, lip_z0), Vector3(r.position.x + 0.012, r.end.y - 0.012, lip_z0 + 0.012), frame)
+		b.box(Vector3(r.end.x - 0.012, r.position.y + 0.012, lip_z0), Vector3(r.end.x, r.end.y - 0.012, lip_z0 + 0.012), frame)
 
 
 ## Clear openings (Rect2 in x, y) of every light; used by callers for layout.
@@ -323,7 +333,7 @@ static func _casement(o: KitOpening, rect: Rect2, z0: float, opens: bool, hinge_
 	var origin := Vector3(rect.position.x + (rect.size.x - nx * CELL) * 0.5, rect.position.y + (rect.size.y - ny * CELL) * 0.5, z0)
 	var color := o.frame_color
 	var boxes: Array[VoxelFillBox] = []
-	var rail := 3
+	var rail := 2
 	_vbox(boxes, Vector3i(0, 0, 0), Vector3i(rail, ny, SASH_CELLS_DEEP), color)
 	_vbox(boxes, Vector3i(nx - rail, 0, 0), Vector3i(rail, ny, SASH_CELLS_DEEP), color)
 	_vbox(boxes, Vector3i(rail, 0, 0), Vector3i(nx - rail * 2, rail + 1, SASH_CELLS_DEEP), color)
@@ -355,7 +365,7 @@ static func _casement(o: KitOpening, rect: Rect2, z0: float, opens: bool, hinge_
 		var metal := KitMaterials.metal(Color(0.75, 0.76, 0.78), 0.9)
 		b.box(Vector3(hx - 0.008, ny * CELL * 0.5 - 0.03, face), Vector3(hx + 0.008, ny * CELL * 0.5 + 0.03, face + 0.006), metal, false)
 		b.extrude(_round_profile(0.006, 8), Vector3(hx, ny * CELL * 0.5, face + 0.03), Vector3(hx, ny * CELL * 0.5 - 0.09, face + 0.03), Vector3.BACK, metal, false, true)
-		b.commit(sash, null, "Handle")
+		KitHardware.mount(sash, b, "Handle", Vector3(hx, ny * CELL * 0.5, 0.0), CELL, SASH_CELLS_DEEP)
 	return root
 
 
@@ -394,7 +404,7 @@ static func _glass(root: Node3D, glass_name: String, nx: int, ny: int, origin: V
 	var boxes: Array[VoxelFillBox] = []
 	var box := VoxelFillBox.new()
 	box.size = Vector3i(maxi(1, nx), maxi(1, ny), 1)
-	box.material = GLASS
+	box.material = _kit_glass()
 	boxes.append(box)
 	return _voxel_leaf(root, glass_name, boxes, origin, Vector3.INF)
 
@@ -412,11 +422,21 @@ static func _attachment(root: Node3D, attachment_name: String, body: String, mou
 	root.add_child(attachment)
 
 
+static func _kit_glass() -> VoxelMaterialDefinition:
+	if _glass_material == null:
+		_glass_material = GLASS.duplicate()
+		_glass_material.rubble_fraction = 0.2
+	return _glass_material
+
+
 static func _painted_wood() -> VoxelMaterialDefinition:
 	if _painted == null:
 		_painted = WOOD.duplicate()
 		_painted.display_name = "Painted timber"
 		_painted.color_jitter = 0.012
+		# Sturdier than raw timber: a blow knocks a hole rather than shattering the leaf.
+		_painted.strength = 16.0
+		_painted.rubble_fraction = 0.12
 	return _painted
 
 

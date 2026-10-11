@@ -46,9 +46,11 @@ void fragment() {
 	float tone = kit_hash12(id);
 	vec3 brick = brick_color.rgb * (1.0 - variation * 0.5 + variation * tone);
 	brick = mix(brick, brick * vec3(0.78, 0.74, 0.86), step(0.86, kit_hash12(id + 7.0)) * 0.6);
-	brick *= 0.88 + 0.24 * kit_fbm(uv * 55.0);
+	// Fine texture fades out with distance so it never sparkles.
+	float detail = 1.0 - smoothstep(0.0015, 0.006, length(fwidth(uv)));
+	brick *= 1.0 + 0.24 * (kit_fbm(uv * 55.0) - 0.5) * (0.4 + 0.6 * detail);
 	float speckle = kit_noise(uv * 260.0);
-	brick *= 0.94 + 0.08 * speckle;
+	brick *= 1.0 + 0.08 * (speckle - 0.5) * detail;
 	// Joints sit back from the face, so they catch less light.
 	vec3 mortar = mortar_color.rgb * (0.62 + 0.25 * kit_noise(uv * 120.0));
 	ALBEDO = mix(mortar, brick, cell.x);

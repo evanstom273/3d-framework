@@ -25,7 +25,9 @@ void fragment() {
 	vec3 v_axis;
 	vec2 uv = kit_plane(kit_world_pos, kit_world_normal, u_axis, v_axis);
 	float broad = kit_fbm(uv * 2.5);
-	float h = surface(uv);
+	float detail = 1.0 - smoothstep(0.002, 0.008, length(fwidth(uv)));
+	float h_raw = surface(uv);
+	float h = mix(0.5, h_raw, detail);
 	vec3 base = color.rgb * (1.0 - mottling + mottling * 2.0 * broad) * (0.9 + 0.2 * h);
 	float joint_mask = 1.0;
 	if (blocks > 0.0) {
@@ -38,7 +40,7 @@ void fragment() {
 	ALBEDO = base * mix(0.55, 1.0, joint_mask);
 	ROUGHNESS = roughness;
 	float e = 0.002;
-	float dhdu = (surface(uv + vec2(e, 0.0)) - h) / e;
-	float dhdv = (surface(uv + vec2(0.0, e)) - h) / e;
-	NORMAL = kit_bump(kit_world_normal, u_axis, v_axis, dhdu * 0.0015 * relief, dhdv * 0.0015 * relief, 1.0, VIEW_MATRIX);
+	float dhdu = (surface(uv + vec2(e, 0.0)) - h_raw) / e;
+	float dhdv = (surface(uv + vec2(0.0, e)) - h_raw) / e;
+	NORMAL = kit_bump(kit_world_normal, u_axis, v_axis, dhdu * 0.0015 * relief * detail, dhdv * 0.0015 * relief * detail, 1.0, VIEW_MATRIX);
 }

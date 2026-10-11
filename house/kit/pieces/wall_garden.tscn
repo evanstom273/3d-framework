@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://house/kit/kit_wall.gd" id="1"]
+
+[node name="WallGarden" type="StaticBody3D"]
+script = ExtResource("1")
+wall_type = 2
+height = 1.2
