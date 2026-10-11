@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://shldkiljxxf4"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_hab2o"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_44kks"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_rydst"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_lrf76"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_steel.tres" id="5_7eca2"]
+[ext_resource type="Resource" path="res://furniture/materials/steel.tres" id="6_fqfap"]
+[ext_resource type="Resource" path="res://furniture/materials/glass.tres" id="7_ig733"]
+[ext_resource type="Resource" path="res://furniture/materials/cardboard.tres" id="8_54x4v"]
+
+[resource]
+script = ExtResource("3_rydst")
+display_name = "Laboratory Shelving Unit"
+spawn_category = "Laboratory"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.26376274435643
+vox_file = "res://furniture/vox/lab_shelving.vox"
+vox_material = ExtResource("5_7eca2")
+vox_index_materials = {
+1: ExtResource("5_7eca2"),
+2: ExtResource("6_fqfap"),
+3: ExtResource("6_fqfap"),
+4: ExtResource("7_ig733"),
+5: ExtResource("7_ig733"),
+6: ExtResource("8_54x4v")
+}

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://b2h72fdev86ps"
+path="res://.godot/imported/filing_cabinet_tall__part2.vox-d074477ff64c6f3db3dd223317d8f1ec.tres"
+
+[deps]
+
+source_file="res://furniture/vox/filing_cabinet_tall__part2.vox"
+dest_files=["res://.godot/imported/filing_cabinet_tall__part2.vox-d074477ff64c6f3db3dd223317d8f1ec.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

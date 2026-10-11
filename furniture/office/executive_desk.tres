@@ -1,0 +1,201 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://cnfvr7f6d4sh3"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_odw7k"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_mbdxu"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_j4hxq"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_y2brn"]
+[ext_resource type="Resource" uid="uid://bykhkvh721pjc" path="res://furniture/materials/walnut.tres" id="5_iqm3m"]
+[ext_resource type="Resource" uid="uid://de8xv7dfh7g41" path="res://furniture/materials/brass.tres" id="6_igc2m"]
+
+[sub_resource type="Resource" id="Resource_kbn51"]
+script = ExtResource("3_j4hxq")
+display_name = "Executive Desk Drawer"
+voxel_size = 0.0449999988079071
+anchor_mode = 1
+density_scale = 0.3304518199542947
+vox_file = "res://furniture/vox/executive_desk__part1.vox"
+vox_material = ExtResource("5_iqm3m")
+vox_index_materials = {
+1: ExtResource("5_iqm3m"),
+2: ExtResource("5_iqm3m"),
+3: ExtResource("5_iqm3m"),
+4: ExtResource("6_igc2m"),
+5: ExtResource("6_igc2m")
+}
+
+[sub_resource type="Resource" id="Resource_0j4a5"]
+script = ExtResource("2_mbdxu")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_kbn51")
+pivot = Vector3(-0.65999997, 0.18499999, -0.40499997)
+axis = Vector3(0, 0, -1)
+amount = 0.375
+
+[sub_resource type="Resource" id="Resource_gntv2"]
+script = ExtResource("3_j4hxq")
+display_name = "Executive Desk Drawer"
+voxel_size = 0.0449999988079071
+anchor_mode = 1
+density_scale = 0.3304518199542947
+vox_file = "res://furniture/vox/executive_desk__part2.vox"
+vox_material = ExtResource("5_iqm3m")
+vox_index_materials = {
+1: ExtResource("5_iqm3m"),
+2: ExtResource("5_iqm3m"),
+3: ExtResource("5_iqm3m"),
+4: ExtResource("6_igc2m"),
+5: ExtResource("6_igc2m")
+}
+
+[sub_resource type="Resource" id="Resource_fehaj"]
+script = ExtResource("2_mbdxu")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_gntv2")
+pivot = Vector3(-0.65999997, 0.40499997, -0.40499997)
+axis = Vector3(0, 0, -1)
+amount = 0.375
+
+[sub_resource type="Resource" id="Resource_0d76m"]
+script = ExtResource("3_j4hxq")
+display_name = "Executive Desk Drawer"
+voxel_size = 0.0449999988079071
+anchor_mode = 1
+density_scale = 0.3304518199542947
+vox_file = "res://furniture/vox/executive_desk__part3.vox"
+vox_material = ExtResource("5_iqm3m")
+vox_index_materials = {
+1: ExtResource("5_iqm3m"),
+2: ExtResource("5_iqm3m"),
+3: ExtResource("5_iqm3m"),
+4: ExtResource("6_igc2m"),
+5: ExtResource("6_igc2m")
+}
+
+[sub_resource type="Resource" id="Resource_dikc3"]
+script = ExtResource("2_mbdxu")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_0d76m")
+pivot = Vector3(-0.65999997, 0.625, -0.40499997)
+axis = Vector3(0, 0, -1)
+amount = 0.375
+
+[sub_resource type="Resource" id="Resource_g1d2d"]
+script = ExtResource("3_j4hxq")
+display_name = "Executive Desk Drawer"
+voxel_size = 0.0449999988079071
+anchor_mode = 1
+density_scale = 0.3304518199542947
+vox_file = "res://furniture/vox/executive_desk__part4.vox"
+vox_material = ExtResource("5_iqm3m")
+vox_index_materials = {
+1: ExtResource("5_iqm3m"),
+2: ExtResource("5_iqm3m"),
+3: ExtResource("5_iqm3m"),
+4: ExtResource("6_igc2m"),
+5: ExtResource("6_igc2m")
+}
+
+[sub_resource type="Resource" id="Resource_3uifl"]
+script = ExtResource("2_mbdxu")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_g1d2d")
+pivot = Vector3(0.66, 0.18499999, -0.40499997)
+axis = Vector3(0, 0, -1)
+amount = 0.375
+
+[sub_resource type="Resource" id="Resource_1mttk"]
+script = ExtResource("3_j4hxq")
+display_name = "Executive Desk Drawer"
+voxel_size = 0.0449999988079071
+anchor_mode = 1
+density_scale = 0.3304518199542947
+vox_file = "res://furniture/vox/executive_desk__part5.vox"
+vox_material = ExtResource("5_iqm3m")
+vox_index_materials = {
+1: ExtResource("5_iqm3m"),
+2: ExtResource("5_iqm3m"),
+3: ExtResource("5_iqm3m"),
+4: ExtResource("6_igc2m"),
+5: ExtResource("6_igc2m")
+}
+
+[sub_resource type="Resource" id="Resource_rknl8"]
+script = ExtResource("2_mbdxu")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_1mttk")
+pivot = Vector3(0.66, 0.40499997, -0.40499997)
+axis = Vector3(0, 0, -1)
+amount = 0.375
+
+[sub_resource type="Resource" id="Resource_4ggmt"]
+script = ExtResource("3_j4hxq")
+display_name = "Executive Desk Drawer"
+voxel_size = 0.0449999988079071
+anchor_mode = 1
+density_scale = 0.3304518199542947
+vox_file = "res://furniture/vox/executive_desk__part6.vox"
+vox_material = ExtResource("5_iqm3m")
+vox_index_materials = {
+1: ExtResource("5_iqm3m"),
+2: ExtResource("5_iqm3m"),
+3: ExtResource("5_iqm3m"),
+4: ExtResource("6_igc2m"),
+5: ExtResource("6_igc2m")
+}
+
+[sub_resource type="Resource" id="Resource_pkher"]
+script = ExtResource("2_mbdxu")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_4ggmt")
+pivot = Vector3(0.66, 0.625, -0.40499997)
+axis = Vector3(0, 0, -1)
+amount = 0.375
+
+[sub_resource type="Resource" id="Resource_22buo"]
+script = ExtResource("3_j4hxq")
+display_name = "Executive Desk Drawer"
+voxel_size = 0.0449999988079071
+anchor_mode = 1
+density_scale = 0.3304518199542947
+vox_file = "res://furniture/vox/executive_desk__part7.vox"
+vox_material = ExtResource("5_iqm3m")
+vox_index_materials = {
+1: ExtResource("5_iqm3m"),
+2: ExtResource("5_iqm3m"),
+3: ExtResource("5_iqm3m"),
+4: ExtResource("6_igc2m"),
+5: ExtResource("6_igc2m")
+}
+
+[sub_resource type="Resource" id="Resource_mnho4"]
+script = ExtResource("2_mbdxu")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_22buo")
+pivot = Vector3(0, 0.685, -0.38499996)
+axis = Vector3(0, 0, -1)
+amount = 0.375
+
+[resource]
+script = ExtResource("3_j4hxq")
+display_name = "Executive Desk"
+spawn_category = "Office"
+voxel_size = 0.0449999988079071
+anchor_mode = 1
+density_scale = 0.3304518199542947
+vox_file = "res://furniture/vox/executive_desk.vox"
+vox_material = ExtResource("5_iqm3m")
+vox_index_materials = {
+1: ExtResource("5_iqm3m"),
+2: ExtResource("5_iqm3m"),
+3: ExtResource("5_iqm3m"),
+4: ExtResource("6_igc2m"),
+5: ExtResource("6_igc2m")
+}
+moving_parts = Array[ExtResource("2_mbdxu")]([SubResource("Resource_0j4a5"), SubResource("Resource_fehaj"), SubResource("Resource_dikc3"), SubResource("Resource_3uifl"), SubResource("Resource_rknl8"), SubResource("Resource_pkher"), SubResource("Resource_mnho4")])

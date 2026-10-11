@@ -1,0 +1,174 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://b3n5mr3ns1r38"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_ehjsd"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_vg4tk"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_jr2fc"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_twcr5"]
+[ext_resource type="Resource" uid="uid://bgrnpiwfmjxib" path="res://furniture/materials/painted_wood.tres" id="5_gqxw2"]
+[ext_resource type="Resource" uid="uid://de8xv7dfh7g41" path="res://furniture/materials/brass.tres" id="6_b0ug1"]
+[ext_resource type="Resource" uid="uid://b6je217u8h4pn" path="res://furniture/materials/marble.tres" id="7_ony84"]
+
+[sub_resource type="Resource" id="Resource_x0k5t"]
+script = ExtResource("3_jr2fc")
+display_name = "Kitchen Island Drawer"
+voxel_size = 0.0449999988079071
+anchor_mode = 1
+density_scale = 0.25501264199675
+vox_file = "res://furniture/vox/kitchen_island__part1.vox"
+vox_material = ExtResource("5_gqxw2")
+vox_index_materials = {
+1: ExtResource("5_gqxw2"),
+2: ExtResource("6_b0ug1"),
+3: ExtResource("6_b0ug1"),
+4: ExtResource("7_ony84"),
+5: ExtResource("7_ony84"),
+6: ExtResource("7_ony84")
+}
+
+[sub_resource type="Resource" id="Resource_3mw5n"]
+script = ExtResource("2_vg4tk")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_x0k5t")
+pivot = Vector3(-0.6, 0.765, -0.40499997)
+axis = Vector3(0, 0, -1)
+amount = 0.375
+
+[sub_resource type="Resource" id="Resource_ieyj2"]
+script = ExtResource("3_jr2fc")
+display_name = "Kitchen Island Door"
+voxel_size = 0.0449999988079071
+anchor_mode = 1
+density_scale = 0.25501264199675
+vox_file = "res://furniture/vox/kitchen_island__part2.vox"
+vox_material = ExtResource("5_gqxw2")
+vox_index_materials = {
+1: ExtResource("5_gqxw2"),
+2: ExtResource("6_b0ug1"),
+3: ExtResource("6_b0ug1"),
+4: ExtResource("7_ony84"),
+5: ExtResource("7_ony84"),
+6: ExtResource("7_ony84")
+}
+
+[sub_resource type="Resource" id="Resource_ssd0m"]
+script = ExtResource("2_vg4tk")
+structure = SubResource("Resource_ieyj2")
+pivot = Vector3(-0.31, 0.39, -0.40499997)
+amount = -100.0
+
+[sub_resource type="Resource" id="Resource_ossml"]
+script = ExtResource("3_jr2fc")
+display_name = "Kitchen Island Drawer"
+voxel_size = 0.0449999988079071
+anchor_mode = 1
+density_scale = 0.25501264199675
+vox_file = "res://furniture/vox/kitchen_island__part3.vox"
+vox_material = ExtResource("5_gqxw2")
+vox_index_materials = {
+1: ExtResource("5_gqxw2"),
+2: ExtResource("6_b0ug1"),
+3: ExtResource("6_b0ug1"),
+4: ExtResource("7_ony84"),
+5: ExtResource("7_ony84"),
+6: ExtResource("7_ony84")
+}
+
+[sub_resource type="Resource" id="Resource_tfco4"]
+script = ExtResource("2_vg4tk")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_ossml")
+pivot = Vector3(8.5830685e-08, 0.765, -0.40499997)
+axis = Vector3(0, 0, -1)
+amount = 0.375
+
+[sub_resource type="Resource" id="Resource_2n4s7"]
+script = ExtResource("3_jr2fc")
+display_name = "Kitchen Island Door"
+voxel_size = 0.0449999988079071
+anchor_mode = 1
+density_scale = 0.25501264199675
+vox_file = "res://furniture/vox/kitchen_island__part4.vox"
+vox_material = ExtResource("5_gqxw2")
+vox_index_materials = {
+1: ExtResource("5_gqxw2"),
+2: ExtResource("6_b0ug1"),
+3: ExtResource("6_b0ug1"),
+4: ExtResource("7_ony84"),
+5: ExtResource("7_ony84"),
+6: ExtResource("7_ony84")
+}
+
+[sub_resource type="Resource" id="Resource_wdbym"]
+script = ExtResource("2_vg4tk")
+structure = SubResource("Resource_2n4s7")
+pivot = Vector3(-0.28999996, 0.39, -0.40499997)
+
+[sub_resource type="Resource" id="Resource_4kigm"]
+script = ExtResource("3_jr2fc")
+display_name = "Kitchen Island Drawer"
+voxel_size = 0.0449999988079071
+anchor_mode = 1
+density_scale = 0.25501264199675
+vox_file = "res://furniture/vox/kitchen_island__part5.vox"
+vox_material = ExtResource("5_gqxw2")
+vox_index_materials = {
+1: ExtResource("5_gqxw2"),
+2: ExtResource("6_b0ug1"),
+3: ExtResource("6_b0ug1"),
+4: ExtResource("7_ony84"),
+5: ExtResource("7_ony84"),
+6: ExtResource("7_ony84")
+}
+
+[sub_resource type="Resource" id="Resource_pkkx8"]
+script = ExtResource("2_vg4tk")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_4kigm")
+pivot = Vector3(0.6000001, 0.765, -0.40499997)
+axis = Vector3(0, 0, -1)
+amount = 0.375
+
+[sub_resource type="Resource" id="Resource_idbkt"]
+script = ExtResource("3_jr2fc")
+display_name = "Kitchen Island Door"
+voxel_size = 0.0449999988079071
+anchor_mode = 1
+density_scale = 0.25501264199675
+vox_file = "res://furniture/vox/kitchen_island__part6.vox"
+vox_material = ExtResource("5_gqxw2")
+vox_index_materials = {
+1: ExtResource("5_gqxw2"),
+2: ExtResource("6_b0ug1"),
+3: ExtResource("6_b0ug1"),
+4: ExtResource("7_ony84"),
+5: ExtResource("7_ony84"),
+6: ExtResource("7_ony84")
+}
+
+[sub_resource type="Resource" id="Resource_mduim"]
+script = ExtResource("2_vg4tk")
+structure = SubResource("Resource_idbkt")
+pivot = Vector3(0.89, 0.39, -0.40499997)
+amount = -100.0
+
+[resource]
+script = ExtResource("3_jr2fc")
+display_name = "Kitchen Island"
+spawn_category = "Kitchen"
+voxel_size = 0.0449999988079071
+anchor_mode = 1
+density_scale = 0.25501264199675
+vox_file = "res://furniture/vox/kitchen_island.vox"
+vox_material = ExtResource("5_gqxw2")
+vox_index_materials = {
+1: ExtResource("5_gqxw2"),
+2: ExtResource("6_b0ug1"),
+3: ExtResource("6_b0ug1"),
+4: ExtResource("7_ony84"),
+5: ExtResource("7_ony84"),
+6: ExtResource("7_ony84")
+}
+moving_parts = Array[ExtResource("2_vg4tk")]([SubResource("Resource_3mw5n"), SubResource("Resource_ssd0m"), SubResource("Resource_tfco4"), SubResource("Resource_wdbym"), SubResource("Resource_pkkx8"), SubResource("Resource_mduim")])

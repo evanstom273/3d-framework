@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dpevw3o24b3o6"
+path="res://.godot/imported/bookcase_tall.vox-fc5c0aeaff6663cc6b81d31ffd227907.tres"
+
+[deps]
+
+source_file="res://furniture/vox/bookcase_tall.vox"
+dest_files=["res://.godot/imported/bookcase_tall.vox-fc5c0aeaff6663cc6b81d31ffd227907.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

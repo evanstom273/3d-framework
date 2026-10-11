@@ -59,3 +59,19 @@ func _on_released() -> void:
 		if child is HouseFixtureAttachment:
 			child.release()
 	interaction_actions_changed.emit()
+
+
+func is_locked() -> bool:
+	return _locked
+
+
+## Levered open (a crowbar): unlocks and swings open without breaking anything.
+## Returns false if it can't be forced (already open, moving, or broken off).
+func force_open() -> bool:
+	if not _functional or _is_open or _busy:
+		return false
+	_locked = false
+	_is_open = true
+	interaction_actions_changed.emit()
+	_begin_animation().tween_property(hinge, "rotation:y", _closed_angle + deg_to_rad(open_angle_degrees), animation_duration * 0.6)
+	return true

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://w5u7vx6340fl"
+path="res://.godot/imported/pantry_cabinet__part1.vox-45318d1620f4829b3757ce840aed87c3.tres"
+
+[deps]
+
+source_file="res://furniture/vox/pantry_cabinet__part1.vox"
+dest_files=["res://.godot/imported/pantry_cabinet__part1.vox-45318d1620f4829b3757ce840aed87c3.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://bp17kw68cyu55"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_57oik"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_5lfra"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_ti5w4"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_vbwrk"]
+[ext_resource type="Resource" path="res://furniture/materials/oak.tres" id="5_1ldqc"]
+[ext_resource type="Resource" path="res://furniture/materials/paper.tres" id="6_rij2x"]
+[ext_resource type="Resource" path="res://furniture/materials/cardboard.tres" id="7_usgxm"]
+
+[resource]
+script = ExtResource("3_ti5w4")
+display_name = "Office Bookshelf"
+spawn_category = "Office"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.26521058478174525
+vox_file = "res://furniture/vox/office_bookshelf.vox"
+vox_material = ExtResource("5_1ldqc")
+vox_index_materials = {
+1: ExtResource("5_1ldqc"),
+2: ExtResource("5_1ldqc"),
+3: ExtResource("5_1ldqc"),
+4: ExtResource("6_rij2x"),
+5: ExtResource("6_rij2x"),
+6: ExtResource("6_rij2x"),
+7: ExtResource("6_rij2x"),
+8: ExtResource("6_rij2x"),
+9: ExtResource("6_rij2x"),
+10: ExtResource("6_rij2x"),
+11: ExtResource("6_rij2x"),
+12: ExtResource("6_rij2x"),
+13: ExtResource("6_rij2x"),
+14: ExtResource("6_rij2x"),
+15: ExtResource("6_rij2x"),
+16: ExtResource("6_rij2x"),
+17: ExtResource("6_rij2x"),
+18: ExtResource("6_rij2x"),
+19: ExtResource("6_rij2x"),
+20: ExtResource("6_rij2x"),
+21: ExtResource("6_rij2x"),
+22: ExtResource("6_rij2x"),
+23: ExtResource("6_rij2x"),
+24: ExtResource("6_rij2x"),
+25: ExtResource("6_rij2x"),
+26: ExtResource("6_rij2x"),
+27: ExtResource("6_rij2x"),
+28: ExtResource("6_rij2x"),
+29: ExtResource("6_rij2x"),
+30: ExtResource("6_rij2x"),
+31: ExtResource("6_rij2x"),
+32: ExtResource("6_rij2x"),
+33: ExtResource("6_rij2x"),
+34: ExtResource("6_rij2x"),
+35: ExtResource("7_usgxm"),
+36: ExtResource("7_usgxm"),
+37: ExtResource("6_rij2x"),
+38: ExtResource("6_rij2x"),
+39: ExtResource("6_rij2x"),
+40: ExtResource("6_rij2x"),
+41: ExtResource("6_rij2x"),
+42: ExtResource("6_rij2x"),
+43: ExtResource("6_rij2x"),
+44: ExtResource("6_rij2x"),
+45: ExtResource("6_rij2x"),
+46: ExtResource("6_rij2x"),
+47: ExtResource("6_rij2x"),
+48: ExtResource("6_rij2x"),
+49: ExtResource("6_rij2x"),
+50: ExtResource("6_rij2x"),
+51: ExtResource("6_rij2x")
+}

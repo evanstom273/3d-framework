@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://ckaxyhmvphuc5"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_i31sm"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_hffxf"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_ax6c1"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_weyyk"]
+[ext_resource type="Resource" path="res://furniture/materials/pine.tres" id="5_m07m6"]
+[ext_resource type="Resource" path="res://furniture/materials/foam.tres" id="6_s1r34"]
+[ext_resource type="Resource" path="res://furniture/materials/fabric.tres" id="7_ro63v"]
+
+[resource]
+script = ExtResource("3_ax6c1")
+display_name = "Single Bed"
+spawn_category = "Bedroom"
+voxel_size = 0.045
+anchor_mode = 1
+density_scale = 0.5159026342117893
+vox_file = "res://furniture/vox/bed_single.vox"
+vox_material = ExtResource("5_m07m6")
+vox_index_materials = {
+1: ExtResource("5_m07m6"),
+2: ExtResource("5_m07m6"),
+3: ExtResource("5_m07m6"),
+4: ExtResource("5_m07m6"),
+5: ExtResource("5_m07m6"),
+6: ExtResource("5_m07m6"),
+7: ExtResource("6_s1r34"),
+8: ExtResource("6_s1r34"),
+9: ExtResource("7_ro63v"),
+10: ExtResource("7_ro63v"),
+11: ExtResource("7_ro63v"),
+12: ExtResource("7_ro63v")
+}

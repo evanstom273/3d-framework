@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://dhy45155qp5rk"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_tvvkh"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_3dgd1"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_ylxeq"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_as7bl"]
+[ext_resource type="Resource" path="res://furniture/materials/oak.tres" id="5_sse5n"]
+[ext_resource type="Resource" path="res://furniture/materials/glass.tres" id="6_fkaqi"]
+[ext_resource type="Resource" path="res://furniture/materials/plastic.tres" id="7_3x0ge"]
+[ext_resource type="Resource" path="res://furniture/materials/brass.tres" id="8_lqpia"]
+
+[resource]
+script = ExtResource("3_ylxeq")
+display_name = "Specimen Cabinet"
+spawn_category = "Laboratory"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.29535545491988496
+vox_file = "res://furniture/vox/specimen_cabinet.vox"
+vox_material = ExtResource("5_sse5n")
+vox_index_materials = {
+1: ExtResource("5_sse5n"),
+2: ExtResource("5_sse5n"),
+3: ExtResource("5_sse5n"),
+4: ExtResource("6_fkaqi"),
+5: ExtResource("7_3x0ge"),
+6: ExtResource("8_lqpia"),
+7: ExtResource("8_lqpia"),
+8: ExtResource("6_fkaqi")
+}

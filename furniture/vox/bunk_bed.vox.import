@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://d2qhecpfaqu2y"
+path="res://.godot/imported/bunk_bed.vox-1f3a24289a81e255d0d0e916d9109e61.tres"
+
+[deps]
+
+source_file="res://furniture/vox/bunk_bed.vox"
+dest_files=["res://.godot/imported/bunk_bed.vox-1f3a24289a81e255d0d0e916d9109e61.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

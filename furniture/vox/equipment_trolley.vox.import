@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://rokyrltiapd0"
+path="res://.godot/imported/equipment_trolley.vox-4fb234b76a8a4d8c141a16a931c6a76e.tres"
+
+[deps]
+
+source_file="res://furniture/vox/equipment_trolley.vox"
+dest_files=["res://.godot/imported/equipment_trolley.vox-4fb234b76a8a4d8c141a16a931c6a76e.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

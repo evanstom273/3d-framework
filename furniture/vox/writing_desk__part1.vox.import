@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cnv125is0if8c"
+path="res://.godot/imported/writing_desk__part1.vox-dc7d298b82eb5728d7ce7f8eea096919.tres"
+
+[deps]
+
+source_file="res://furniture/vox/writing_desk__part1.vox"
+dest_files=["res://.godot/imported/writing_desk__part1.vox-dc7d298b82eb5728d7ce7f8eea096919.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

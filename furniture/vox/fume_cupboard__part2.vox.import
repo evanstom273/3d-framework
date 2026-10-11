@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://boob5ey6yhjmw"
+path="res://.godot/imported/fume_cupboard__part2.vox-9d482b47e20450883e5a0fad9f6c2459.tres"
+
+[deps]
+
+source_file="res://furniture/vox/fume_cupboard__part2.vox"
+dest_files=["res://.godot/imported/fume_cupboard__part2.vox-9d482b47e20450883e5a0fad9f6c2459.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

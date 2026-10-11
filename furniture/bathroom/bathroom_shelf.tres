@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://c0o6dboqkblmu"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_2jhfa"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_tqfdb"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_y01s8"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_go3xt"]
+[ext_resource type="Resource" path="res://furniture/materials/pine.tres" id="5_j6tki"]
+[ext_resource type="Resource" path="res://furniture/materials/fabric.tres" id="6_fu36c"]
+[ext_resource type="Resource" path="res://furniture/materials/wicker.tres" id="7_1dfux"]
+
+[resource]
+script = ExtResource("3_y01s8")
+display_name = "Bathroom Storage Shelf"
+spawn_category = "Bathroom"
+voxel_size = 0.022
+anchor_mode = 1
+density_scale = 0.5632044984269309
+vox_file = "res://furniture/vox/bathroom_shelf.vox"
+vox_material = ExtResource("5_j6tki")
+vox_index_materials = {
+1: ExtResource("5_j6tki"),
+2: ExtResource("5_j6tki"),
+3: ExtResource("5_j6tki"),
+4: ExtResource("6_fu36c"),
+5: ExtResource("6_fu36c"),
+6: ExtResource("7_1dfux"),
+7: ExtResource("7_1dfux")
+}

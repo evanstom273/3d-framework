@@ -1,0 +1,2 @@
+date,map,preset,frames,seconds,avg_fps,avg_ms,median_ms,p99_ms,low1_fps,worst_ms,frames_over_33ms,render_scale,file
+2026-10-11_20-17-33,furniture_showroom,High,6395,30.00,213.16,4.69,4.46,9.77,78.96,52.85,1,1.00,furniture_showroom_2026-10-11_20-17-33.csv

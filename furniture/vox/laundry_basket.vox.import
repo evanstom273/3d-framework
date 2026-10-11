@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://djku6nlv6uwwo"
+path="res://.godot/imported/laundry_basket.vox-eea65cc7366a681dc8dcc5bf774cb07d.tres"
+
+[deps]
+
+source_file="res://furniture/vox/laundry_basket.vox"
+dest_files=["res://.godot/imported/laundry_basket.vox-eea65cc7366a681dc8dcc5bf774cb07d.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

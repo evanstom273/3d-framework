@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://f8c1rqmp2lwj"
+path="res://.godot/imported/chest_of_drawers_tall__part3.vox-e1f629d1efa813559ce733059ce899ad.tres"
+
+[deps]
+
+source_file="res://furniture/vox/chest_of_drawers_tall__part3.vox"
+dest_files=["res://.godot/imported/chest_of_drawers_tall__part3.vox-e1f629d1efa813559ce733059ce899ad.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

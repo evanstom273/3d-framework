@@ -1,0 +1,88 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://dvunyoy5xq0sn"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_q6d43"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_5w77l"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_uibsv"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_tske7"]
+[ext_resource type="Resource" uid="uid://c3oyba533fuca" path="res://furniture/materials/painted_steel.tres" id="5_rf66f"]
+[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="6_de5o5"]
+[ext_resource type="Resource" uid="uid://c3dhplrb8hgty" path="res://furniture/materials/stone.tres" id="7_ruck2"]
+[ext_resource type="Resource" uid="uid://cqju2cnc1vrtw" path="res://furniture/materials/glass.tres" id="8_khwsq"]
+[ext_resource type="Resource" uid="uid://6ri68lauf7ep" path="res://furniture/materials/electronics.tres" id="9_okwkd"]
+[ext_resource type="Resource" uid="uid://dw4suus87xjs" path="res://furniture/materials/plastic.tres" id="10_8p1od"]
+
+[sub_resource type="Resource" id="Resource_ls1t3"]
+script = ExtResource("3_uibsv")
+display_name = "Fume Cupboard Door"
+voxel_size = 0.035
+anchor_mode = 1
+density_scale = 0.37842984330296175
+vox_file = "res://furniture/vox/fume_cupboard__part1.vox"
+vox_material = ExtResource("5_rf66f")
+vox_index_materials = {
+1: ExtResource("5_rf66f"),
+2: ExtResource("6_de5o5"),
+3: ExtResource("6_de5o5"),
+4: ExtResource("7_ruck2"),
+5: ExtResource("7_ruck2"),
+6: ExtResource("7_ruck2"),
+7: ExtResource("8_khwsq"),
+8: ExtResource("9_okwkd"),
+9: ExtResource("10_8p1od"),
+10: ExtResource("8_khwsq")
+}
+
+[sub_resource type="Resource" id="Resource_sbkpk"]
+script = ExtResource("2_5w77l")
+structure = SubResource("Resource_ls1t3")
+pivot = Vector3(-0.72499996, 0.45, -0.405)
+
+[sub_resource type="Resource" id="Resource_hlgso"]
+script = ExtResource("3_uibsv")
+display_name = "Fume Cupboard Door"
+voxel_size = 0.035
+anchor_mode = 1
+density_scale = 0.37842984330296175
+vox_file = "res://furniture/vox/fume_cupboard__part2.vox"
+vox_material = ExtResource("5_rf66f")
+vox_index_materials = {
+1: ExtResource("5_rf66f"),
+2: ExtResource("6_de5o5"),
+3: ExtResource("6_de5o5"),
+4: ExtResource("7_ruck2"),
+5: ExtResource("7_ruck2"),
+6: ExtResource("7_ruck2"),
+7: ExtResource("8_khwsq"),
+8: ExtResource("9_okwkd"),
+9: ExtResource("10_8p1od"),
+10: ExtResource("8_khwsq")
+}
+
+[sub_resource type="Resource" id="Resource_imnu7"]
+script = ExtResource("2_5w77l")
+structure = SubResource("Resource_hlgso")
+pivot = Vector3(0.75500005, 0.45, -0.405)
+amount = -100.0
+
+[resource]
+script = ExtResource("3_uibsv")
+display_name = "Fume Cupboard"
+spawn_category = "Laboratory"
+voxel_size = 0.035
+anchor_mode = 1
+density_scale = 0.37842984330296175
+vox_file = "res://furniture/vox/fume_cupboard.vox"
+vox_material = ExtResource("5_rf66f")
+vox_index_materials = {
+1: ExtResource("5_rf66f"),
+2: ExtResource("6_de5o5"),
+3: ExtResource("6_de5o5"),
+4: ExtResource("7_ruck2"),
+5: ExtResource("7_ruck2"),
+6: ExtResource("7_ruck2"),
+7: ExtResource("8_khwsq"),
+8: ExtResource("9_okwkd"),
+9: ExtResource("10_8p1od"),
+10: ExtResource("8_khwsq")
+}
+moving_parts = Array[ExtResource("2_5w77l")]([SubResource("Resource_sbkpk"), SubResource("Resource_imnu7")])

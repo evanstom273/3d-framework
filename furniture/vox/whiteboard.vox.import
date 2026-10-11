@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://citbdku7gsso3"
+path="res://.godot/imported/whiteboard.vox-409a540469941774d2f5acc42a8c7308.tres"
+
+[deps]
+
+source_file="res://furniture/vox/whiteboard.vox"
+dest_files=["res://.godot/imported/whiteboard.vox-409a540469941774d2f5acc42a8c7308.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

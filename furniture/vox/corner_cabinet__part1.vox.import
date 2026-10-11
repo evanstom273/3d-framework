@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bkj658id51kwk"
+path="res://.godot/imported/corner_cabinet__part1.vox-66910881bcdce76fcb1e73062294a534.tres"
+
+[deps]
+
+source_file="res://furniture/vox/corner_cabinet__part1.vox"
+dest_files=["res://.godot/imported/corner_cabinet__part1.vox-66910881bcdce76fcb1e73062294a534.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

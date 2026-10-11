@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cpxrmy6uvdeno"
+path="res://.godot/imported/workbench_metal__part2.vox-5a9aed1eca082f1e51a34a4de50277e4.tres"
+
+[deps]
+
+source_file="res://furniture/vox/workbench_metal__part2.vox"
+dest_files=["res://.godot/imported/workbench_metal__part2.vox-5a9aed1eca082f1e51a34a4de50277e4.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

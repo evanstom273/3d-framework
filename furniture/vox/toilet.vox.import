@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://b4hwgygolbt5t"
+path="res://.godot/imported/toilet.vox-3810720439409953216e6850d9cf96f8.tres"
+
+[deps]
+
+source_file="res://furniture/vox/toilet.vox"
+dest_files=["res://.godot/imported/toilet.vox-3810720439409953216e6850d9cf96f8.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

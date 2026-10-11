@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://rmpnry5n2g13"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_cmftq"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_lj87h"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_p80pd"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_dq1ol"]
+[ext_resource type="Resource" path="res://furniture/materials/plastic.tres" id="5_msgyb"]
+[ext_resource type="Resource" path="res://furniture/materials/fabric.tres" id="6_0uoao"]
+
+[resource]
+script = ExtResource("3_p80pd")
+display_name = "Plastic Storage Box"
+spawn_category = "Utility"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.16527395811295661
+vox_file = "res://furniture/vox/plastic_storage_box.vox"
+vox_material = ExtResource("5_msgyb")
+vox_index_materials = {
+1: ExtResource("5_msgyb"),
+2: ExtResource("6_0uoao"),
+3: ExtResource("6_0uoao"),
+4: ExtResource("6_0uoao"),
+5: ExtResource("6_0uoao"),
+6: ExtResource("6_0uoao"),
+7: ExtResource("6_0uoao"),
+8: ExtResource("5_msgyb")
+}

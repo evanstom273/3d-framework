@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://mwsbne5s17t0"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_bh2em"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_bxcsr"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_v3po6"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_u3a5h"]
+[ext_resource type="Resource" path="res://furniture/materials/walnut.tres" id="5_ob1tp"]
+
+[resource]
+script = ExtResource("3_v3po6")
+display_name = "Nesting Tables"
+spawn_category = "Living Room"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 1.4110627318174025
+vox_file = "res://furniture/vox/nesting_tables.vox"
+vox_material = ExtResource("5_ob1tp")
+vox_index_materials = {
+1: ExtResource("5_ob1tp"),
+2: ExtResource("5_ob1tp"),
+3: ExtResource("5_ob1tp")
+}

@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://chxwr3x8fg8i6"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_6q4di"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_lruge"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_tgs7c"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_n3hou"]
+[ext_resource type="Resource" uid="uid://bfvvsd3dyvk67" path="res://furniture/materials/chipboard.tres" id="5_8apqm"]
+[ext_resource type="Resource" uid="uid://bgrnpiwfmjxib" path="res://furniture/materials/painted_wood.tres" id="6_386oi"]
+[ext_resource type="Resource" uid="uid://de8xv7dfh7g41" path="res://furniture/materials/brass.tres" id="7_p02qu"]
+[ext_resource type="Resource" uid="uid://do6r55lv41aud" path="res://furniture/materials/oak.tres" id="8_hjswo"]
+
+[sub_resource type="Resource" id="Resource_0edab"]
+script = ExtResource("3_tgs7c")
+display_name = "Corner Cabinet Door"
+voxel_size = 0.02375
+anchor_mode = 1
+density_scale = 0.2865424324822617
+vox_file = "res://furniture/vox/corner_cabinet__part1.vox"
+vox_material = ExtResource("5_8apqm")
+vox_index_materials = {
+1: ExtResource("5_8apqm"),
+2: ExtResource("6_386oi"),
+3: ExtResource("7_p02qu"),
+4: ExtResource("7_p02qu"),
+5: ExtResource("8_hjswo"),
+6: ExtResource("8_hjswo"),
+7: ExtResource("8_hjswo")
+}
+
+[sub_resource type="Resource" id="Resource_ee4ki"]
+script = ExtResource("2_lruge")
+structure = SubResource("Resource_0edab")
+pivot = Vector3(-0.475, 0.5, -0.12124999)
+
+[sub_resource type="Resource" id="Resource_5jhwc"]
+script = ExtResource("3_tgs7c")
+display_name = "Corner Cabinet Door"
+voxel_size = 0.02375
+anchor_mode = 1
+density_scale = 0.2865424324822617
+vox_file = "res://furniture/vox/corner_cabinet__part2.vox"
+vox_material = ExtResource("5_8apqm")
+vox_index_materials = {
+1: ExtResource("5_8apqm"),
+2: ExtResource("6_386oi"),
+3: ExtResource("7_p02qu"),
+4: ExtResource("7_p02qu"),
+5: ExtResource("8_hjswo"),
+6: ExtResource("8_hjswo"),
+7: ExtResource("8_hjswo")
+}
+
+[sub_resource type="Resource" id="Resource_6cegx"]
+script = ExtResource("2_lruge")
+structure = SubResource("Resource_5jhwc")
+pivot = Vector3(0.46500003, 0.5, -0.45125)
+amount = -100.0
+
+[resource]
+script = ExtResource("3_tgs7c")
+display_name = "Corner Cabinet"
+spawn_category = "Kitchen"
+voxel_size = 0.02375
+anchor_mode = 1
+density_scale = 0.2865424324822617
+vox_file = "res://furniture/vox/corner_cabinet.vox"
+vox_material = ExtResource("5_8apqm")
+vox_index_materials = {
+1: ExtResource("5_8apqm"),
+2: ExtResource("6_386oi"),
+3: ExtResource("7_p02qu"),
+4: ExtResource("7_p02qu"),
+5: ExtResource("8_hjswo"),
+6: ExtResource("8_hjswo"),
+7: ExtResource("8_hjswo")
+}
+moving_parts = Array[ExtResource("2_lruge")]([SubResource("Resource_ee4ki"), SubResource("Resource_6cegx")])

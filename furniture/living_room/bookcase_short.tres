@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://babmotqn5jlf3"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_ntpin"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_8oq7v"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_q001l"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_cmuee"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_wood.tres" id="5_tff6j"]
+[ext_resource type="Resource" path="res://furniture/materials/plywood.tres" id="6_y4hkt"]
+[ext_resource type="Resource" path="res://furniture/materials/paper.tres" id="7_r3t5f"]
+
+[resource]
+script = ExtResource("3_q001l")
+display_name = "Short Bookcase"
+spawn_category = "Living Room"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.35317873402485966
+vox_file = "res://furniture/vox/bookcase_short.vox"
+vox_material = ExtResource("5_tff6j")
+vox_index_materials = {
+1: ExtResource("5_tff6j"),
+2: ExtResource("6_y4hkt"),
+3: ExtResource("7_r3t5f"),
+4: ExtResource("7_r3t5f"),
+5: ExtResource("7_r3t5f"),
+6: ExtResource("7_r3t5f"),
+7: ExtResource("7_r3t5f"),
+8: ExtResource("7_r3t5f"),
+9: ExtResource("7_r3t5f"),
+10: ExtResource("7_r3t5f"),
+11: ExtResource("7_r3t5f"),
+12: ExtResource("7_r3t5f"),
+13: ExtResource("7_r3t5f"),
+14: ExtResource("7_r3t5f"),
+15: ExtResource("7_r3t5f"),
+16: ExtResource("7_r3t5f"),
+17: ExtResource("7_r3t5f"),
+18: ExtResource("7_r3t5f"),
+19: ExtResource("7_r3t5f"),
+20: ExtResource("7_r3t5f"),
+21: ExtResource("7_r3t5f"),
+22: ExtResource("7_r3t5f"),
+23: ExtResource("7_r3t5f"),
+24: ExtResource("7_r3t5f"),
+25: ExtResource("7_r3t5f"),
+26: ExtResource("7_r3t5f"),
+27: ExtResource("7_r3t5f"),
+28: ExtResource("7_r3t5f"),
+29: ExtResource("7_r3t5f"),
+30: ExtResource("7_r3t5f"),
+31: ExtResource("7_r3t5f"),
+32: ExtResource("7_r3t5f"),
+33: ExtResource("7_r3t5f"),
+34: ExtResource("7_r3t5f"),
+35: ExtResource("7_r3t5f"),
+36: ExtResource("7_r3t5f"),
+37: ExtResource("7_r3t5f"),
+38: ExtResource("7_r3t5f"),
+39: ExtResource("7_r3t5f"),
+40: ExtResource("7_r3t5f"),
+41: ExtResource("7_r3t5f")
+}

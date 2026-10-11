@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://1lispe0s4d1"
+path="res://.godot/imported/kettle.vox-6648e9d60b626944def71204567803ba.tres"
+
+[deps]
+
+source_file="res://furniture/vox/kettle.vox"
+dest_files=["res://.godot/imported/kettle.vox-6648e9d60b626944def71204567803ba.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

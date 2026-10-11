@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://cc3fbx8vkarq2"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_622jq"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_kstrj"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_rjlm6"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_s1oni"]
+[ext_resource type="Resource" path="res://furniture/materials/plastic.tres" id="5_pwhwv"]
+[ext_resource type="Resource" path="res://furniture/materials/electronics.tres" id="6_e0gfw"]
+[ext_resource type="Resource" path="res://furniture/materials/screen.tres" id="7_ujapd"]
+
+[resource]
+script = ExtResource("3_rjlm6")
+display_name = "Centrifuge"
+spawn_category = "Laboratory"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 1.8070112034693893
+vox_file = "res://furniture/vox/centrifuge.vox"
+vox_material = ExtResource("5_pwhwv")
+vox_index_materials = {
+1: ExtResource("5_pwhwv"),
+2: ExtResource("5_pwhwv"),
+3: ExtResource("6_e0gfw"),
+4: ExtResource("7_ujapd")
+}

@@ -4,6 +4,7 @@ extends CanvasLayer
 
 const UiStyle := preload("res://ui/ui_style.gd")
 const MAIN_MENU := "res://ui/main_menu.tscn"
+const SettingsMenu := preload("res://ui/settings_menu.gd")
 
 var _root: Control
 
@@ -12,6 +13,14 @@ func _ready() -> void:
 	layer = 50
 	# Keeps working while the rest of the game is paused.
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	# Audio buses and saved volumes, for every scene (this autoload always loads first).
+	GameSettings.load_and_apply()
+	# Graphics settings, applied to each scene as it loads.
+	VideoSettings.watch(get_tree())
+	# F9: record 30 s of performance metrics to perf_logs/.
+	add_child(preload("res://ui/perf_recorder.gd").new())
+	# Compiles voxel and furniture shaders while each map loads.
+	add_child(preload("res://ui/shader_warmup.gd").new())
 	_build()
 	_root.hide()
 
@@ -21,7 +30,7 @@ func is_open() -> bool:
 
 
 func _input(event: InputEvent) -> void:
-	if not event.is_action_pressed("ui_cancel") or event.is_echo():
+	if not event.is_action_pressed("ui_cancel") or event.is_echo() or _settings_open():
 		return
 	if is_open():
 		resume()
@@ -56,6 +65,18 @@ func to_main_menu() -> void:
 	_root.hide()
 	get_tree().paused = false
 	get_tree().change_scene_to_file(MAIN_MENU)
+
+
+func open_settings() -> void:
+	if not _settings_open():
+		_root.add_child(SettingsMenu.new())
+
+
+func _settings_open() -> bool:
+	for child in _root.get_children():
+		if child.get_script() == SettingsMenu and not child.is_queued_for_deletion():
+			return true
+	return false
 
 
 func _spawn_menu_open() -> bool:
@@ -95,5 +116,6 @@ func _build() -> void:
 	column.add_child(UiStyle.spacer(6))
 	column.add_child(UiStyle.button("Resume", resume))
 	column.add_child(UiStyle.button("Restart level", restart))
+	column.add_child(UiStyle.button("Settings", open_settings))
 	column.add_child(UiStyle.button("Main menu", to_main_menu))
 	column.add_child(UiStyle.button("Quit to desktop", get_tree().quit))

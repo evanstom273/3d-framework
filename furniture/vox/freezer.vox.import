@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cst1fk6mhl717"
+path="res://.godot/imported/freezer.vox-effb62c0cd31aae97bdfd43475c317a3.tres"
+
+[deps]
+
+source_file="res://furniture/vox/freezer.vox"
+dest_files=["res://.godot/imported/freezer.vox-effb62c0cd31aae97bdfd43475c317a3.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

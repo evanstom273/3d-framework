@@ -1,0 +1,211 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://w540u8bbmrdj"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_3otra"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_vlmqx"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_njcco"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_r6de3"]
+[ext_resource type="Resource" uid="uid://bgrnpiwfmjxib" path="res://furniture/materials/painted_wood.tres" id="5_n760f"]
+[ext_resource type="Resource" uid="uid://2t7j78nojlx7" path="res://furniture/materials/ceramic.tres" id="6_c64m6"]
+[ext_resource type="Resource" uid="uid://c0lj18o07f1fd" path="res://furniture/materials/mirror.tres" id="7_cfckq"]
+[ext_resource type="Resource" uid="uid://cqju2cnc1vrtw" path="res://furniture/materials/glass.tres" id="8_iuon1"]
+
+[sub_resource type="Resource" id="Resource_av2p1"]
+script = ExtResource("3_njcco")
+display_name = "Dressing Table Drawer"
+voxel_size = 0.03625000119209289
+anchor_mode = 1
+density_scale = 0.20064484244668976
+vox_file = "res://furniture/vox/dressing_table__part1.vox"
+vox_material = ExtResource("5_n760f")
+vox_index_materials = {
+1: ExtResource("5_n760f"),
+2: ExtResource("6_c64m6"),
+3: ExtResource("7_cfckq"),
+4: ExtResource("8_iuon1"),
+5: ExtResource("8_iuon1"),
+6: ExtResource("8_iuon1")
+}
+
+[sub_resource type="Resource" id="Resource_p3nub"]
+script = ExtResource("2_vlmqx")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_av2p1")
+pivot = Vector3(-0.36875007, 0.12875, -0.18125)
+axis = Vector3(0, 0, -1)
+amount = 0.28499999139457943
+
+[sub_resource type="Resource" id="Resource_x4c0y"]
+script = ExtResource("3_njcco")
+display_name = "Dressing Table Drawer"
+voxel_size = 0.03625000119209289
+anchor_mode = 1
+density_scale = 0.20064484244668976
+vox_file = "res://furniture/vox/dressing_table__part2.vox"
+vox_material = ExtResource("5_n760f")
+vox_index_materials = {
+1: ExtResource("5_n760f"),
+2: ExtResource("6_c64m6"),
+3: ExtResource("7_cfckq"),
+4: ExtResource("8_iuon1"),
+5: ExtResource("8_iuon1"),
+6: ExtResource("8_iuon1")
+}
+
+[sub_resource type="Resource" id="Resource_2mvba"]
+script = ExtResource("2_vlmqx")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_x4c0y")
+pivot = Vector3(-0.36875007, 0.34875, -0.18125)
+axis = Vector3(0, 0, -1)
+amount = 0.28499999139457943
+
+[sub_resource type="Resource" id="Resource_b8f1b"]
+script = ExtResource("3_njcco")
+display_name = "Dressing Table Drawer"
+voxel_size = 0.03625000119209289
+anchor_mode = 1
+density_scale = 0.20064484244668976
+vox_file = "res://furniture/vox/dressing_table__part3.vox"
+vox_material = ExtResource("5_n760f")
+vox_index_materials = {
+1: ExtResource("5_n760f"),
+2: ExtResource("6_c64m6"),
+3: ExtResource("7_cfckq"),
+4: ExtResource("8_iuon1"),
+5: ExtResource("8_iuon1"),
+6: ExtResource("8_iuon1")
+}
+
+[sub_resource type="Resource" id="Resource_kuehp"]
+script = ExtResource("2_vlmqx")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_b8f1b")
+pivot = Vector3(-0.36875007, 0.56875, -0.18125)
+axis = Vector3(0, 0, -1)
+amount = 0.28499999139457943
+
+[sub_resource type="Resource" id="Resource_3rwr6"]
+script = ExtResource("3_njcco")
+display_name = "Dressing Table Drawer"
+voxel_size = 0.03625000119209289
+anchor_mode = 1
+density_scale = 0.20064484244668976
+vox_file = "res://furniture/vox/dressing_table__part4.vox"
+vox_material = ExtResource("5_n760f")
+vox_index_materials = {
+1: ExtResource("5_n760f"),
+2: ExtResource("6_c64m6"),
+3: ExtResource("7_cfckq"),
+4: ExtResource("8_iuon1"),
+5: ExtResource("8_iuon1"),
+6: ExtResource("8_iuon1")
+}
+
+[sub_resource type="Resource" id="Resource_fxdmm"]
+script = ExtResource("2_vlmqx")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_3rwr6")
+pivot = Vector3(0.38125, 0.12875, -0.18125)
+axis = Vector3(0, 0, -1)
+amount = 0.28499999139457943
+
+[sub_resource type="Resource" id="Resource_n8hbi"]
+script = ExtResource("3_njcco")
+display_name = "Dressing Table Drawer"
+voxel_size = 0.03625000119209289
+anchor_mode = 1
+density_scale = 0.20064484244668976
+vox_file = "res://furniture/vox/dressing_table__part5.vox"
+vox_material = ExtResource("5_n760f")
+vox_index_materials = {
+1: ExtResource("5_n760f"),
+2: ExtResource("6_c64m6"),
+3: ExtResource("7_cfckq"),
+4: ExtResource("8_iuon1"),
+5: ExtResource("8_iuon1"),
+6: ExtResource("8_iuon1")
+}
+
+[sub_resource type="Resource" id="Resource_q43yj"]
+script = ExtResource("2_vlmqx")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_n8hbi")
+pivot = Vector3(0.38125, 0.34875, -0.18125)
+axis = Vector3(0, 0, -1)
+amount = 0.28499999139457943
+
+[sub_resource type="Resource" id="Resource_f6qwl"]
+script = ExtResource("3_njcco")
+display_name = "Dressing Table Drawer"
+voxel_size = 0.03625000119209289
+anchor_mode = 1
+density_scale = 0.20064484244668976
+vox_file = "res://furniture/vox/dressing_table__part6.vox"
+vox_material = ExtResource("5_n760f")
+vox_index_materials = {
+1: ExtResource("5_n760f"),
+2: ExtResource("6_c64m6"),
+3: ExtResource("7_cfckq"),
+4: ExtResource("8_iuon1"),
+5: ExtResource("8_iuon1"),
+6: ExtResource("8_iuon1")
+}
+
+[sub_resource type="Resource" id="Resource_0e78e"]
+script = ExtResource("2_vlmqx")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_f6qwl")
+pivot = Vector3(0.38125, 0.56875, -0.18125)
+axis = Vector3(0, 0, -1)
+amount = 0.28499999139457943
+
+[sub_resource type="Resource" id="Resource_q2qa4"]
+script = ExtResource("3_njcco")
+display_name = "Dressing Table Drawer"
+voxel_size = 0.03625000119209289
+anchor_mode = 1
+density_scale = 0.20064484244668976
+vox_file = "res://furniture/vox/dressing_table__part7.vox"
+vox_material = ExtResource("5_n760f")
+vox_index_materials = {
+1: ExtResource("5_n760f"),
+2: ExtResource("6_c64m6"),
+3: ExtResource("7_cfckq"),
+4: ExtResource("8_iuon1"),
+5: ExtResource("8_iuon1"),
+6: ExtResource("8_iuon1")
+}
+
+[sub_resource type="Resource" id="Resource_smcol"]
+script = ExtResource("2_vlmqx")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_q2qa4")
+pivot = Vector3(0.006249967, 0.61875, -0.16125003)
+axis = Vector3(0, 0, -1)
+amount = 0.26999999172985556
+
+[resource]
+script = ExtResource("3_njcco")
+display_name = "Dressing Table"
+spawn_category = "Bedroom"
+voxel_size = 0.03625000119209289
+anchor_mode = 1
+density_scale = 0.20064484244668976
+vox_file = "res://furniture/vox/dressing_table.vox"
+vox_material = ExtResource("5_n760f")
+vox_index_materials = {
+1: ExtResource("5_n760f"),
+2: ExtResource("6_c64m6"),
+3: ExtResource("7_cfckq"),
+4: ExtResource("8_iuon1"),
+5: ExtResource("8_iuon1"),
+6: ExtResource("8_iuon1")
+}
+moving_parts = Array[ExtResource("2_vlmqx")]([SubResource("Resource_p3nub"), SubResource("Resource_2mvba"), SubResource("Resource_kuehp"), SubResource("Resource_fxdmm"), SubResource("Resource_q43yj"), SubResource("Resource_0e78e"), SubResource("Resource_smcol")])

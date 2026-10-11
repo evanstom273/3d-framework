@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://gmxnivwmcalx"
+path="res://.godot/imported/outdoor_chair.vox-246ecf48fc56c7121b48684c1ff04f10.tres"
+
+[deps]
+
+source_file="res://furniture/vox/outdoor_chair.vox"
+dest_files=["res://.godot/imported/outdoor_chair.vox-246ecf48fc56c7121b48684c1ff04f10.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

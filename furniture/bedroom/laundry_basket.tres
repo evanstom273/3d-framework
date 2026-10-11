@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://bn726nd3ng252"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_2e33g"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_yrn4h"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_aghuw"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_ahqbv"]
+[ext_resource type="Resource" uid="uid://cqjn2l6wntvg5" path="res://furniture/materials/wicker.tres" id="5_k0qoc"]
+
+[sub_resource type="Resource" id="Resource_5tkhk"]
+script = ExtResource("3_aghuw")
+display_name = "Laundry Basket Lid"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.34828643076068516
+vox_file = "res://furniture/vox/laundry_basket__part1.vox"
+vox_material = ExtResource("5_k0qoc")
+vox_index_materials = {
+1: ExtResource("5_k0qoc"),
+2: ExtResource("5_k0qoc"),
+3: ExtResource("5_k0qoc"),
+4: ExtResource("5_k0qoc")
+}
+
+[sub_resource type="Resource" id="Resource_sjlf0"]
+script = ExtResource("2_yrn4h")
+label = "Lid"
+structure = SubResource("Resource_5tkhk")
+pivot = Vector3(-0.01, 0.5, 0.17000003)
+axis = Vector3(1, 0, 0)
+
+[resource]
+script = ExtResource("3_aghuw")
+display_name = "Laundry Basket"
+spawn_category = "Bedroom"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.34828643076068516
+vox_file = "res://furniture/vox/laundry_basket.vox"
+vox_material = ExtResource("5_k0qoc")
+vox_index_materials = {
+1: ExtResource("5_k0qoc"),
+2: ExtResource("5_k0qoc"),
+3: ExtResource("5_k0qoc"),
+4: ExtResource("5_k0qoc")
+}
+moving_parts = Array[ExtResource("2_yrn4h")]([SubResource("Resource_sjlf0")])

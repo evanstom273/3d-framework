@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://b7gpujw5n23bp"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_11lsv"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_4b4wi"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_67uwl"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_3x7x5"]
+[ext_resource type="Resource" path="res://furniture/materials/walnut.tres" id="5_v842p"]
+[ext_resource type="Resource" path="res://furniture/materials/steel.tres" id="6_jqryl"]
+
+[resource]
+script = ExtResource("3_67uwl")
+display_name = "Extendable Dining Table"
+spawn_category = "Kitchen"
+voxel_size = 0.0449999988079071
+anchor_mode = 1
+density_scale = 0.7626567822335448
+vox_file = "res://furniture/vox/dining_table_extendable.vox"
+vox_material = ExtResource("5_v842p")
+vox_index_materials = {
+1: ExtResource("5_v842p"),
+2: ExtResource("5_v842p"),
+3: ExtResource("5_v842p"),
+4: ExtResource("5_v842p"),
+5: ExtResource("5_v842p"),
+6: ExtResource("5_v842p"),
+7: ExtResource("6_jqryl"),
+8: ExtResource("6_jqryl")
+}

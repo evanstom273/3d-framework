@@ -1,0 +1,197 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://dybwusue38dvu"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_17lwo"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_qqyq4"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_cuip1"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_g1cho"]
+[ext_resource type="Resource" uid="uid://do6r55lv41aud" path="res://furniture/materials/oak.tres" id="5_dp2uy"]
+[ext_resource type="Resource" uid="uid://de8xv7dfh7g41" path="res://furniture/materials/brass.tres" id="6_mxkcm"]
+
+[sub_resource type="Resource" id="Resource_a58pf"]
+script = ExtResource("3_cuip1")
+display_name = "Tall Chest of Drawers Drawer"
+voxel_size = 0.03125
+anchor_mode = 1
+density_scale = 0.4701830913160765
+vox_file = "res://furniture/vox/chest_of_drawers_tall__part1.vox"
+vox_material = ExtResource("5_dp2uy")
+vox_index_materials = {
+1: ExtResource("5_dp2uy"),
+2: ExtResource("5_dp2uy"),
+3: ExtResource("5_dp2uy"),
+4: ExtResource("5_dp2uy"),
+5: ExtResource("5_dp2uy"),
+6: ExtResource("6_mxkcm"),
+7: ExtResource("5_dp2uy"),
+8: ExtResource("6_mxkcm")
+}
+
+[sub_resource type="Resource" id="Resource_8nm5w"]
+script = ExtResource("2_qqyq4")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_a58pf")
+pivot = Vector3(-0.012499988, 0.20166667, -0.2075)
+axis = Vector3(0, 0, -1)
+amount = 0.3075000062584877
+
+[sub_resource type="Resource" id="Resource_nfo3k"]
+script = ExtResource("3_cuip1")
+display_name = "Tall Chest of Drawers Drawer"
+voxel_size = 0.03125
+anchor_mode = 1
+density_scale = 0.4701830913160765
+vox_file = "res://furniture/vox/chest_of_drawers_tall__part2.vox"
+vox_material = ExtResource("5_dp2uy")
+vox_index_materials = {
+1: ExtResource("5_dp2uy"),
+2: ExtResource("5_dp2uy"),
+3: ExtResource("5_dp2uy"),
+4: ExtResource("5_dp2uy"),
+5: ExtResource("5_dp2uy"),
+6: ExtResource("6_mxkcm"),
+7: ExtResource("5_dp2uy"),
+8: ExtResource("6_mxkcm")
+}
+
+[sub_resource type="Resource" id="Resource_837ha"]
+script = ExtResource("2_qqyq4")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_nfo3k")
+pivot = Vector3(-0.012499988, 0.385, -0.2075)
+axis = Vector3(0, 0, -1)
+amount = 0.3075000062584877
+
+[sub_resource type="Resource" id="Resource_0ftvj"]
+script = ExtResource("3_cuip1")
+display_name = "Tall Chest of Drawers Drawer"
+voxel_size = 0.03125
+anchor_mode = 1
+density_scale = 0.4701830913160765
+vox_file = "res://furniture/vox/chest_of_drawers_tall__part3.vox"
+vox_material = ExtResource("5_dp2uy")
+vox_index_materials = {
+1: ExtResource("5_dp2uy"),
+2: ExtResource("5_dp2uy"),
+3: ExtResource("5_dp2uy"),
+4: ExtResource("5_dp2uy"),
+5: ExtResource("5_dp2uy"),
+6: ExtResource("6_mxkcm"),
+7: ExtResource("5_dp2uy"),
+8: ExtResource("6_mxkcm")
+}
+
+[sub_resource type="Resource" id="Resource_awp1h"]
+script = ExtResource("2_qqyq4")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_0ftvj")
+pivot = Vector3(-0.012499988, 0.5683333, -0.2075)
+axis = Vector3(0, 0, -1)
+amount = 0.3075000062584877
+
+[sub_resource type="Resource" id="Resource_x205d"]
+script = ExtResource("3_cuip1")
+display_name = "Tall Chest of Drawers Drawer"
+voxel_size = 0.03125
+anchor_mode = 1
+density_scale = 0.4701830913160765
+vox_file = "res://furniture/vox/chest_of_drawers_tall__part4.vox"
+vox_material = ExtResource("5_dp2uy")
+vox_index_materials = {
+1: ExtResource("5_dp2uy"),
+2: ExtResource("5_dp2uy"),
+3: ExtResource("5_dp2uy"),
+4: ExtResource("5_dp2uy"),
+5: ExtResource("5_dp2uy"),
+6: ExtResource("6_mxkcm"),
+7: ExtResource("5_dp2uy"),
+8: ExtResource("6_mxkcm")
+}
+
+[sub_resource type="Resource" id="Resource_at01r"]
+script = ExtResource("2_qqyq4")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_x205d")
+pivot = Vector3(-0.012499988, 0.75166667, -0.2075)
+axis = Vector3(0, 0, -1)
+amount = 0.3075000062584877
+
+[sub_resource type="Resource" id="Resource_oc6hr"]
+script = ExtResource("3_cuip1")
+display_name = "Tall Chest of Drawers Drawer"
+voxel_size = 0.03125
+anchor_mode = 1
+density_scale = 0.4701830913160765
+vox_file = "res://furniture/vox/chest_of_drawers_tall__part5.vox"
+vox_material = ExtResource("5_dp2uy")
+vox_index_materials = {
+1: ExtResource("5_dp2uy"),
+2: ExtResource("5_dp2uy"),
+3: ExtResource("5_dp2uy"),
+4: ExtResource("5_dp2uy"),
+5: ExtResource("5_dp2uy"),
+6: ExtResource("6_mxkcm"),
+7: ExtResource("5_dp2uy"),
+8: ExtResource("6_mxkcm")
+}
+
+[sub_resource type="Resource" id="Resource_opl4u"]
+script = ExtResource("2_qqyq4")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_oc6hr")
+pivot = Vector3(-0.012499988, 0.935, -0.2075)
+axis = Vector3(0, 0, -1)
+amount = 0.3075000062584877
+
+[sub_resource type="Resource" id="Resource_yv53j"]
+script = ExtResource("3_cuip1")
+display_name = "Tall Chest of Drawers Drawer"
+voxel_size = 0.03125
+anchor_mode = 1
+density_scale = 0.4701830913160765
+vox_file = "res://furniture/vox/chest_of_drawers_tall__part6.vox"
+vox_material = ExtResource("5_dp2uy")
+vox_index_materials = {
+1: ExtResource("5_dp2uy"),
+2: ExtResource("5_dp2uy"),
+3: ExtResource("5_dp2uy"),
+4: ExtResource("5_dp2uy"),
+5: ExtResource("5_dp2uy"),
+6: ExtResource("6_mxkcm"),
+7: ExtResource("5_dp2uy"),
+8: ExtResource("6_mxkcm")
+}
+
+[sub_resource type="Resource" id="Resource_2rtsg"]
+script = ExtResource("2_qqyq4")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_yv53j")
+pivot = Vector3(-0.012499988, 1.1183333, -0.2075)
+axis = Vector3(0, 0, -1)
+amount = 0.3075000062584877
+
+[resource]
+script = ExtResource("3_cuip1")
+display_name = "Tall Chest of Drawers"
+spawn_category = "Bedroom"
+voxel_size = 0.03125
+anchor_mode = 1
+density_scale = 0.4701830913160765
+vox_file = "res://furniture/vox/chest_of_drawers_tall.vox"
+vox_material = ExtResource("5_dp2uy")
+vox_index_materials = {
+1: ExtResource("5_dp2uy"),
+2: ExtResource("5_dp2uy"),
+3: ExtResource("5_dp2uy"),
+4: ExtResource("5_dp2uy"),
+5: ExtResource("5_dp2uy"),
+6: ExtResource("6_mxkcm"),
+7: ExtResource("5_dp2uy"),
+8: ExtResource("6_mxkcm")
+}
+moving_parts = Array[ExtResource("2_qqyq4")]([SubResource("Resource_8nm5w"), SubResource("Resource_837ha"), SubResource("Resource_awp1h"), SubResource("Resource_at01r"), SubResource("Resource_opl4u"), SubResource("Resource_2rtsg")])

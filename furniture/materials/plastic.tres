@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://dw4suus87xjs"]
+
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_bau0a"]
+
+[resource]
+script = ExtResource("1_bau0a")
+display_name = "Plastic"
+color = Color(0.9, 0.9, 0.88, 1)
+color_jitter = 0.0
+strength = 4.0
+density = 450.0
+friction = 0.6
+bounce = 0.15
+blunt_multiplier = 0.9
+sharp_multiplier = 1.4
+pierce_multiplier = 1.2
+impact_sound = 4
+rubble_fraction = 0.15

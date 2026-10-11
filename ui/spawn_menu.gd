@@ -3,11 +3,14 @@ extends CanvasLayer
 ## Q opens a tabbed menu of everything spawnable; clicking an item drops it where
 ## the crosshair points. G spawns a random item there without opening the menu.
 ## The catalogue fills itself from every PhysicsObjectDefinition and
-## VoxelStructureDefinition under props/, so new .tres files appear automatically.
+## VoxelStructureDefinition under props/ and furniture/, so new .tres files appear
+## automatically.
 
-const SCAN_ROOT := "res://props"
-const SKIP_DIRS := ["vox", "details", "voxel_materials"]
-const TAB_ORDER := ["Tools", "Props", "Balls", "Destructible", "Containers", "Structures"]
+## Every definition under these folders is listed (furniture gets a tab per room).
+const SCAN_ROOTS := ["res://props", "res://furniture"]
+const SKIP_DIRS := ["vox", "details", "voxel_materials", "materials"]
+const TAB_ORDER := ["Tools", "Props", "Balls", "Destructible", "Containers", "Structures",
+	"Living Room", "Kitchen", "Bedroom", "Bathroom", "Office", "Laboratory", "Workshop", "Garden", "Utility"]
 ## Tabs the random spawn picks from (big anchored structures are left out).
 const RANDOM_TABS := ["Tools", "Props", "Balls", "Destructible", "Containers"]
 const SPAWN_REACH := 6.0
@@ -25,7 +28,8 @@ func _ready() -> void:
 	layer = 20
 	# Lets the pause menu leave Esc to an open spawn menu.
 	add_to_group(&"spawn_menus")
-	_scan(SCAN_ROOT)
+	for root_path in SCAN_ROOTS:
+		_scan(root_path)
 	for tab in _entries:
 		_entries[tab].sort_custom(func(a, b): return a["name"] < b["name"])
 	_build_ui()

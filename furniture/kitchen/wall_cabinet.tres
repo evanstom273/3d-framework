@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://b4pidrp30xict"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_bhoev"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_7mcc5"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_eo7hm"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_figvj"]
+[ext_resource type="Resource" uid="uid://bfvvsd3dyvk67" path="res://furniture/materials/chipboard.tres" id="5_uo0pu"]
+[ext_resource type="Resource" uid="uid://cdtvomcuyhwix" path="res://furniture/materials/steel.tres" id="6_3bwce"]
+[ext_resource type="Resource" uid="uid://bgrnpiwfmjxib" path="res://furniture/materials/painted_wood.tres" id="7_srk83"]
+[ext_resource type="Resource" uid="uid://de8xv7dfh7g41" path="res://furniture/materials/brass.tres" id="8_t4vrh"]
+
+[sub_resource type="Resource" id="Resource_gkc01"]
+script = ExtResource("3_eo7hm")
+display_name = "Wall Cabinet Door"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.6679630096929158
+vox_file = "res://furniture/vox/wall_cabinet__part1.vox"
+vox_material = ExtResource("5_uo0pu")
+vox_index_materials = {
+1: ExtResource("5_uo0pu"),
+2: ExtResource("6_3bwce"),
+3: ExtResource("7_srk83"),
+4: ExtResource("8_t4vrh"),
+5: ExtResource("8_t4vrh")
+}
+
+[sub_resource type="Resource" id="Resource_td80g"]
+script = ExtResource("2_7mcc5")
+structure = SubResource("Resource_gkc01")
+pivot = Vector3(0.29500002, 0.35999998, -0.16)
+amount = -100.0
+
+[resource]
+script = ExtResource("3_eo7hm")
+display_name = "Wall Cabinet"
+spawn_category = "Kitchen"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.6679630096929158
+vox_file = "res://furniture/vox/wall_cabinet.vox"
+vox_material = ExtResource("5_uo0pu")
+vox_index_materials = {
+1: ExtResource("5_uo0pu"),
+2: ExtResource("6_3bwce"),
+3: ExtResource("7_srk83"),
+4: ExtResource("8_t4vrh"),
+5: ExtResource("8_t4vrh")
+}
+moving_parts = Array[ExtResource("2_7mcc5")]([SubResource("Resource_td80g")])

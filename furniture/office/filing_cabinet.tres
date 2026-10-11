@@ -1,0 +1,78 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://bqb4388u267k4"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_xylca"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_lhvos"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_8e1wv"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_f5sh5"]
+[ext_resource type="Resource" uid="uid://c3oyba533fuca" path="res://furniture/materials/painted_steel.tres" id="5_kbkvl"]
+[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="6_ujsca"]
+[ext_resource type="Resource" uid="uid://6fc2qsb8id5f" path="res://furniture/materials/paper.tres" id="7_cedpe"]
+[ext_resource type="Resource" uid="uid://d01xckqs64akm" path="res://furniture/materials/rubber.tres" id="8_ge0u6"]
+
+[sub_resource type="Resource" id="Resource_cq7l1"]
+script = ExtResource("3_8e1wv")
+display_name = "Filing Cabinet Drawer"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.4333626864327047
+vox_file = "res://furniture/vox/filing_cabinet__part1.vox"
+vox_material = ExtResource("5_kbkvl")
+vox_index_materials = {
+1: ExtResource("5_kbkvl"),
+2: ExtResource("6_ujsca"),
+3: ExtResource("6_ujsca"),
+4: ExtResource("7_cedpe"),
+5: ExtResource("8_ge0u6")
+}
+
+[sub_resource type="Resource" id="Resource_wycgg"]
+script = ExtResource("2_lhvos")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_cq7l1")
+pivot = Vector3(-0.005, 0.19600002, -0.29999998)
+axis = Vector3(0, 0, -1)
+amount = 0.375
+
+[sub_resource type="Resource" id="Resource_wepc3"]
+script = ExtResource("3_8e1wv")
+display_name = "Filing Cabinet Drawer"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.4333626864327047
+vox_file = "res://furniture/vox/filing_cabinet__part2.vox"
+vox_material = ExtResource("5_kbkvl")
+vox_index_materials = {
+1: ExtResource("5_kbkvl"),
+2: ExtResource("6_ujsca"),
+3: ExtResource("6_ujsca"),
+4: ExtResource("7_cedpe"),
+5: ExtResource("8_ge0u6")
+}
+
+[sub_resource type="Resource" id="Resource_1xpjh"]
+script = ExtResource("2_lhvos")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_wepc3")
+pivot = Vector3(-0.005, 0.536, -0.29999998)
+axis = Vector3(0, 0, -1)
+amount = 0.375
+
+[resource]
+script = ExtResource("3_8e1wv")
+display_name = "Filing Cabinet"
+spawn_category = "Office"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.4333626864327047
+vox_file = "res://furniture/vox/filing_cabinet.vox"
+vox_material = ExtResource("5_kbkvl")
+vox_index_materials = {
+1: ExtResource("5_kbkvl"),
+2: ExtResource("6_ujsca"),
+3: ExtResource("6_ujsca"),
+4: ExtResource("7_cedpe"),
+5: ExtResource("8_ge0u6")
+}
+moving_parts = Array[ExtResource("2_lhvos")]([SubResource("Resource_wycgg"), SubResource("Resource_1xpjh")])

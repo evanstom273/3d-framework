@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://buw4ljdvbhuhb"
+path="res://.godot/imported/picnic_table.vox-5e55779ebc4f83cb74fbcf6c5437e55b.tres"
+
+[deps]
+
+source_file="res://furniture/vox/picnic_table.vox"
+dest_files=["res://.godot/imported/picnic_table.vox-5e55779ebc4f83cb74fbcf6c5437e55b.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

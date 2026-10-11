@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dv5xbq8kdy3ai"
+path="res://.godot/imported/garden_tool_rack.vox-b95c1de6ab8fe4b728f32ec53c2d03ce.tres"
+
+[deps]
+
+source_file="res://furniture/vox/garden_tool_rack.vox"
+dest_files=["res://.godot/imported/garden_tool_rack.vox-b95c1de6ab8fe4b728f32ec53c2d03ce.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://fkilktg6jgdb"]
+
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_e3s73"]
+
+[resource]
+script = ExtResource("1_e3s73")
+display_name = "Leather"
+color = Color(0.36, 0.2, 0.12, 1)
+color_jitter = 0.0
+strength = 7.0
+density = 220.0
+friction = 0.85
+bounce = 0.03
+blunt_multiplier = 0.5
+sharp_multiplier = 1.8
+pierce_multiplier = 1.4
+impact_sound = 6
+rubble_fraction = 0.08

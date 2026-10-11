@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://6pdyuoaguqpo"
+path="res://.godot/imported/computer_monitor.vox-88c9d93d24883ccfd52b4d04ecf5315c.tres"
+
+[deps]
+
+source_file="res://furniture/vox/computer_monitor.vox"
+dest_files=["res://.godot/imported/computer_monitor.vox-88c9d93d24883ccfd52b4d04ecf5315c.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

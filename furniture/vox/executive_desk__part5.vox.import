@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://b1gjej8wk02us"
+path="res://.godot/imported/executive_desk__part5.vox-f9738c02b75aa4199169a4fc4d238515.tres"
+
+[deps]
+
+source_file="res://furniture/vox/executive_desk__part5.vox"
+dest_files=["res://.godot/imported/executive_desk__part5.vox-f9738c02b75aa4199169a4fc4d238515.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

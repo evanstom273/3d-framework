@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://j8rpsupdx3f3"
+path="res://.godot/imported/computer_desk__part3.vox-472646a1d6a64922d191c560045d30fa.tres"
+
+[deps]
+
+source_file="res://furniture/vox/computer_desk__part3.vox"
+dest_files=["res://.godot/imported/computer_desk__part3.vox-472646a1d6a64922d191c560045d30fa.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

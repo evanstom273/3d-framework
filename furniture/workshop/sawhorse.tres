@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://bybjb6smscchu"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_q20j6"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_0y7t7"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_1g7gr"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_yjg11"]
+[ext_resource type="Resource" path="res://furniture/materials/pine.tres" id="5_3jq76"]
+
+[resource]
+script = ExtResource("3_1g7gr")
+display_name = "Sawhorse"
+spawn_category = "Workshop"
+voxel_size = 0.02249999940395355
+anchor_mode = 1
+density_scale = 0.8721010149928135
+vox_file = "res://furniture/vox/sawhorse.vox"
+vox_material = ExtResource("5_3jq76")
+vox_index_materials = {
+1: ExtResource("5_3jq76"),
+2: ExtResource("5_3jq76"),
+3: ExtResource("5_3jq76")
+}

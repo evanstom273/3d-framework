@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://ibwxu18je0xi"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_l1d4h"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_s7gb0"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_k8lkb"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_jdnpn"]
+[ext_resource type="Resource" path="res://furniture/materials/steel.tres" id="5_g061a"]
+[ext_resource type="Resource" path="res://furniture/materials/rubber.tres" id="6_f5qhi"]
+[ext_resource type="Resource" path="res://furniture/materials/plastic.tres" id="7_kqrr5"]
+
+[resource]
+script = ExtResource("3_k8lkb")
+display_name = "Equipment Trolley"
+spawn_category = "Laboratory"
+voxel_size = 0.022
+anchor_mode = 1
+density_scale = 0.6485349776444358
+vox_file = "res://furniture/vox/equipment_trolley.vox"
+vox_material = ExtResource("5_g061a")
+vox_index_materials = {
+1: ExtResource("5_g061a"),
+2: ExtResource("5_g061a"),
+3: ExtResource("6_f5qhi"),
+4: ExtResource("7_kqrr5"),
+5: ExtResource("7_kqrr5"),
+6: ExtResource("7_kqrr5")
+}

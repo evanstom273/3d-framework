@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://d3itsipqufe3b"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_ikh6m"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_0hsr0"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_2nshs"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_nncpj"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_steel.tres" id="5_gfevs"]
+[ext_resource type="Resource" path="res://furniture/materials/paper.tres" id="6_owj4p"]
+[ext_resource type="Resource" path="res://furniture/materials/chrome.tres" id="7_kdcge"]
+[ext_resource type="Resource" path="res://furniture/materials/brass.tres" id="8_dacy2"]
+
+[resource]
+script = ExtResource("3_2nshs")
+display_name = "Metal Locker"
+spawn_category = "Utility"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.45695427283973483
+vox_file = "res://furniture/vox/metal_locker.vox"
+vox_material = ExtResource("5_gfevs")
+vox_index_materials = {
+1: ExtResource("5_gfevs"),
+2: ExtResource("5_gfevs"),
+3: ExtResource("6_owj4p"),
+4: ExtResource("7_kdcge"),
+5: ExtResource("7_kdcge"),
+6: ExtResource("8_dacy2"),
+7: ExtResource("8_dacy2")
+}

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bhdknogj3jjc3"
+path="res://.godot/imported/drawer_cabinet.vox-f2e0110b3e66aac600f93ac73cf0201a.tres"
+
+[deps]
+
+source_file="res://furniture/vox/drawer_cabinet.vox"
+dest_files=["res://.godot/imported/drawer_cabinet.vox-f2e0110b3e66aac600f93ac73cf0201a.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

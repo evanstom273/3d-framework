@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bf73fdveq5dwl"
+path="res://.godot/imported/dressing_table__part2.vox-5e8352c76bfb226e88f98a927eca14cc.tres"
+
+[deps]
+
+source_file="res://furniture/vox/dressing_table__part2.vox"
+dest_files=["res://.godot/imported/dressing_table__part2.vox-5e8352c76bfb226e88f98a927eca14cc.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

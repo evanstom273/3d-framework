@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dv1hfer6tg2wq"
+path="res://.godot/imported/bedroom_bookshelf.vox-d79cf387cc25eb510c223a9f7563f06d.tres"
+
+[deps]
+
+source_file="res://furniture/vox/bedroom_bookshelf.vox"
+dest_files=["res://.godot/imported/bedroom_bookshelf.vox-d79cf387cc25eb510c223a9f7563f06d.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,115 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://brwn0a52ywpjb"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_nwssq"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_u5t5y"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_3bm7j"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_41tft"]
+[ext_resource type="Resource" uid="uid://c3oyba533fuca" path="res://furniture/materials/painted_steel.tres" id="5_vldj6"]
+[ext_resource type="Resource" uid="uid://byh5oxajc1nic" path="res://furniture/materials/plywood.tres" id="6_fghen"]
+[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="7_bf5j8"]
+[ext_resource type="Resource" uid="uid://dw4suus87xjs" path="res://furniture/materials/plastic.tres" id="8_5ivc6"]
+
+[sub_resource type="Resource" id="Resource_7wcsm"]
+script = ExtResource("3_3bm7j")
+display_name = "Metal Workbench Drawer"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.37753648477191626
+vox_file = "res://furniture/vox/workbench_metal__part1.vox"
+vox_material = ExtResource("5_vldj6")
+vox_index_materials = {
+1: ExtResource("5_vldj6"),
+2: ExtResource("6_fghen"),
+3: ExtResource("6_fghen"),
+4: ExtResource("6_fghen"),
+5: ExtResource("7_bf5j8"),
+6: ExtResource("7_bf5j8"),
+7: ExtResource("5_vldj6"),
+8: ExtResource("8_5ivc6")
+}
+
+[sub_resource type="Resource" id="Resource_h0koe"]
+script = ExtResource("2_u5t5y")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_7wcsm")
+pivot = Vector3(0.5199999, 0.265, -0.29999998)
+axis = Vector3(0, 0, -1)
+amount = 0.375
+
+[sub_resource type="Resource" id="Resource_3dnv0"]
+script = ExtResource("3_3bm7j")
+display_name = "Metal Workbench Drawer"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.37753648477191626
+vox_file = "res://furniture/vox/workbench_metal__part2.vox"
+vox_material = ExtResource("5_vldj6")
+vox_index_materials = {
+1: ExtResource("5_vldj6"),
+2: ExtResource("6_fghen"),
+3: ExtResource("6_fghen"),
+4: ExtResource("6_fghen"),
+5: ExtResource("7_bf5j8"),
+6: ExtResource("7_bf5j8"),
+7: ExtResource("5_vldj6"),
+8: ExtResource("8_5ivc6")
+}
+
+[sub_resource type="Resource" id="Resource_uspbs"]
+script = ExtResource("2_u5t5y")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_3dnv0")
+pivot = Vector3(0.5199999, 0.48499998, -0.29999998)
+axis = Vector3(0, 0, -1)
+amount = 0.375
+
+[sub_resource type="Resource" id="Resource_si7km"]
+script = ExtResource("3_3bm7j")
+display_name = "Metal Workbench Drawer"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.37753648477191626
+vox_file = "res://furniture/vox/workbench_metal__part3.vox"
+vox_material = ExtResource("5_vldj6")
+vox_index_materials = {
+1: ExtResource("5_vldj6"),
+2: ExtResource("6_fghen"),
+3: ExtResource("6_fghen"),
+4: ExtResource("6_fghen"),
+5: ExtResource("7_bf5j8"),
+6: ExtResource("7_bf5j8"),
+7: ExtResource("5_vldj6"),
+8: ExtResource("8_5ivc6")
+}
+
+[sub_resource type="Resource" id="Resource_8ynhc"]
+script = ExtResource("2_u5t5y")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_si7km")
+pivot = Vector3(0.5199999, 0.70500004, -0.29999998)
+axis = Vector3(0, 0, -1)
+amount = 0.375
+
+[resource]
+script = ExtResource("3_3bm7j")
+display_name = "Metal Workbench"
+spawn_category = "Workshop"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.37753648477191626
+vox_file = "res://furniture/vox/workbench_metal.vox"
+vox_material = ExtResource("5_vldj6")
+vox_index_materials = {
+1: ExtResource("5_vldj6"),
+2: ExtResource("6_fghen"),
+3: ExtResource("6_fghen"),
+4: ExtResource("6_fghen"),
+5: ExtResource("7_bf5j8"),
+6: ExtResource("7_bf5j8"),
+7: ExtResource("5_vldj6"),
+8: ExtResource("8_5ivc6")
+}
+moving_parts = Array[ExtResource("2_u5t5y")]([SubResource("Resource_h0koe"), SubResource("Resource_uspbs"), SubResource("Resource_8ynhc")])

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://0w5ag7vi2my7"
+path="res://.godot/imported/compost_bin__part1.vox-f0fe30f20a0a50db4433efc1feb68903.tres"
+
+[deps]
+
+source_file="res://furniture/vox/compost_bin__part1.vox"
+dest_files=["res://.godot/imported/compost_bin__part1.vox-f0fe30f20a0a50db4433efc1feb68903.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://d0lfkdpfevv0t"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_1s58y"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_lj1mn"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_ttow3"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_pw0at"]
+[ext_resource type="Resource" uid="uid://c3oyba533fuca" path="res://furniture/materials/painted_steel.tres" id="5_ushie"]
+[ext_resource type="Resource" uid="uid://cdtvomcuyhwix" path="res://furniture/materials/steel.tres" id="6_so2xb"]
+[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="7_a7rv8"]
+[ext_resource type="Resource" uid="uid://c3dhplrb8hgty" path="res://furniture/materials/stone.tres" id="8_kaoyi"]
+[ext_resource type="Resource" uid="uid://dw4suus87xjs" path="res://furniture/materials/plastic.tres" id="9_a45ee"]
+
+[sub_resource type="Resource" id="Resource_7jx2l"]
+script = ExtResource("3_ttow3")
+display_name = "Laboratory Sink Door"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.3525636611532792
+vox_file = "res://furniture/vox/lab_sink__part1.vox"
+vox_material = ExtResource("5_ushie")
+vox_index_materials = {
+1: ExtResource("5_ushie"),
+2: ExtResource("6_so2xb"),
+3: ExtResource("6_so2xb"),
+4: ExtResource("7_a7rv8"),
+5: ExtResource("7_a7rv8"),
+6: ExtResource("8_kaoyi"),
+7: ExtResource("8_kaoyi"),
+8: ExtResource("8_kaoyi"),
+9: ExtResource("9_a45ee")
+}
+
+[sub_resource type="Resource" id="Resource_pjppf"]
+script = ExtResource("2_lj1mn")
+structure = SubResource("Resource_7jx2l")
+pivot = Vector3(-0.59000003, 0.41500002, -0.32000002)
+
+[sub_resource type="Resource" id="Resource_hq1eu"]
+script = ExtResource("3_ttow3")
+display_name = "Laboratory Sink Door"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.3525636611532792
+vox_file = "res://furniture/vox/lab_sink__part2.vox"
+vox_material = ExtResource("5_ushie")
+vox_index_materials = {
+1: ExtResource("5_ushie"),
+2: ExtResource("6_so2xb"),
+3: ExtResource("6_so2xb"),
+4: ExtResource("7_a7rv8"),
+5: ExtResource("7_a7rv8"),
+6: ExtResource("8_kaoyi"),
+7: ExtResource("8_kaoyi"),
+8: ExtResource("8_kaoyi"),
+9: ExtResource("9_a45ee")
+}
+
+[sub_resource type="Resource" id="Resource_lo501"]
+script = ExtResource("2_lj1mn")
+structure = SubResource("Resource_hq1eu")
+pivot = Vector3(0.5900001, 0.41500002, -0.32000002)
+amount = -100.0
+
+[resource]
+script = ExtResource("3_ttow3")
+display_name = "Laboratory Sink"
+spawn_category = "Laboratory"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.3525636611532792
+vox_file = "res://furniture/vox/lab_sink.vox"
+vox_material = ExtResource("5_ushie")
+vox_index_materials = {
+1: ExtResource("5_ushie"),
+2: ExtResource("6_so2xb"),
+3: ExtResource("6_so2xb"),
+4: ExtResource("7_a7rv8"),
+5: ExtResource("7_a7rv8"),
+6: ExtResource("8_kaoyi"),
+7: ExtResource("8_kaoyi"),
+8: ExtResource("8_kaoyi"),
+9: ExtResource("9_a45ee")
+}
+moving_parts = Array[ExtResource("2_lj1mn")]([SubResource("Resource_pjppf"), SubResource("Resource_lo501")])

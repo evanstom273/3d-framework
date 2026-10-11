@@ -38,6 +38,8 @@ func setup(definition: ToolActionDefinition) -> void:
 			node.top_level = true
 		_beam.mesh = _beam_mesh
 		_beam.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	_loop.bus = &"Tools"
+	_shot.bus = &"Tools"
 	_loop.stream = _loop_stream(action.loop_sound)
 	_loop.max_distance = 25.0
 	_loop.unit_size = 4.0

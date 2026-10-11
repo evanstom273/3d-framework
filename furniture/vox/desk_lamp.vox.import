@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://g7gfmrciv23t"
+path="res://.godot/imported/desk_lamp.vox-0b9786176dfb4cb810ba337ebe1c773b.tres"
+
+[deps]
+
+source_file="res://furniture/vox/desk_lamp.vox"
+dest_files=["res://.godot/imported/desk_lamp.vox-0b9786176dfb4cb810ba337ebe1c773b.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

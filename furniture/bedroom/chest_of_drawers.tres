@@ -1,0 +1,169 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://dy4vcpdagnm3k"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_vpofl"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_rudfi"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_aljki"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_vrdwi"]
+[ext_resource type="Resource" uid="uid://do6r55lv41aud" path="res://furniture/materials/oak.tres" id="5_rqdjx"]
+[ext_resource type="Resource" uid="uid://de8xv7dfh7g41" path="res://furniture/materials/brass.tres" id="6_6qcum"]
+
+[sub_resource type="Resource" id="Resource_gywuo"]
+script = ExtResource("3_aljki")
+display_name = "Chest of Drawers Drawer"
+voxel_size = 0.02249999940395355
+anchor_mode = 1
+density_scale = 0.5077441495384555
+vox_file = "res://furniture/vox/chest_of_drawers__part1.vox"
+vox_material = ExtResource("5_rqdjx")
+vox_index_materials = {
+1: ExtResource("5_rqdjx"),
+2: ExtResource("5_rqdjx"),
+3: ExtResource("5_rqdjx"),
+4: ExtResource("5_rqdjx"),
+5: ExtResource("5_rqdjx"),
+6: ExtResource("5_rqdjx"),
+7: ExtResource("6_6qcum"),
+8: ExtResource("6_6qcum")
+}
+
+[sub_resource type="Resource" id="Resource_kkm37"]
+script = ExtResource("2_rudfi")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_gywuo")
+pivot = Vector3(0, 0.19749999, -0.2225)
+axis = Vector3(0, 0, -1)
+amount = 0.3075000062584877
+
+[sub_resource type="Resource" id="Resource_hoxmq"]
+script = ExtResource("3_aljki")
+display_name = "Chest of Drawers Drawer"
+voxel_size = 0.02249999940395355
+anchor_mode = 1
+density_scale = 0.5077441495384555
+vox_file = "res://furniture/vox/chest_of_drawers__part2.vox"
+vox_material = ExtResource("5_rqdjx")
+vox_index_materials = {
+1: ExtResource("5_rqdjx"),
+2: ExtResource("5_rqdjx"),
+3: ExtResource("5_rqdjx"),
+4: ExtResource("5_rqdjx"),
+5: ExtResource("5_rqdjx"),
+6: ExtResource("5_rqdjx"),
+7: ExtResource("6_6qcum"),
+8: ExtResource("6_6qcum")
+}
+
+[sub_resource type="Resource" id="Resource_e7d15"]
+script = ExtResource("2_rudfi")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_hoxmq")
+pivot = Vector3(0, 0.37250003, -0.2225)
+axis = Vector3(0, 0, -1)
+amount = 0.3075000062584877
+
+[sub_resource type="Resource" id="Resource_iwasa"]
+script = ExtResource("3_aljki")
+display_name = "Chest of Drawers Drawer"
+voxel_size = 0.02249999940395355
+anchor_mode = 1
+density_scale = 0.5077441495384555
+vox_file = "res://furniture/vox/chest_of_drawers__part3.vox"
+vox_material = ExtResource("5_rqdjx")
+vox_index_materials = {
+1: ExtResource("5_rqdjx"),
+2: ExtResource("5_rqdjx"),
+3: ExtResource("5_rqdjx"),
+4: ExtResource("5_rqdjx"),
+5: ExtResource("5_rqdjx"),
+6: ExtResource("5_rqdjx"),
+7: ExtResource("6_6qcum"),
+8: ExtResource("6_6qcum")
+}
+
+[sub_resource type="Resource" id="Resource_30f4b"]
+script = ExtResource("2_rudfi")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_iwasa")
+pivot = Vector3(0, 0.5475, -0.2225)
+axis = Vector3(0, 0, -1)
+amount = 0.3075000062584877
+
+[sub_resource type="Resource" id="Resource_eihel"]
+script = ExtResource("3_aljki")
+display_name = "Chest of Drawers Drawer"
+voxel_size = 0.02249999940395355
+anchor_mode = 1
+density_scale = 0.5077441495384555
+vox_file = "res://furniture/vox/chest_of_drawers__part4.vox"
+vox_material = ExtResource("5_rqdjx")
+vox_index_materials = {
+1: ExtResource("5_rqdjx"),
+2: ExtResource("5_rqdjx"),
+3: ExtResource("5_rqdjx"),
+4: ExtResource("5_rqdjx"),
+5: ExtResource("5_rqdjx"),
+6: ExtResource("5_rqdjx"),
+7: ExtResource("6_6qcum"),
+8: ExtResource("6_6qcum")
+}
+
+[sub_resource type="Resource" id="Resource_j021r"]
+script = ExtResource("2_rudfi")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_eihel")
+pivot = Vector3(-0.21499999, 0.72249997, -0.2225)
+axis = Vector3(0, 0, -1)
+amount = 0.3075000062584877
+
+[sub_resource type="Resource" id="Resource_w6f3e"]
+script = ExtResource("3_aljki")
+display_name = "Chest of Drawers Drawer"
+voxel_size = 0.02249999940395355
+anchor_mode = 1
+density_scale = 0.5077441495384555
+vox_file = "res://furniture/vox/chest_of_drawers__part5.vox"
+vox_material = ExtResource("5_rqdjx")
+vox_index_materials = {
+1: ExtResource("5_rqdjx"),
+2: ExtResource("5_rqdjx"),
+3: ExtResource("5_rqdjx"),
+4: ExtResource("5_rqdjx"),
+5: ExtResource("5_rqdjx"),
+6: ExtResource("5_rqdjx"),
+7: ExtResource("6_6qcum"),
+8: ExtResource("6_6qcum")
+}
+
+[sub_resource type="Resource" id="Resource_8yc0n"]
+script = ExtResource("2_rudfi")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_w6f3e")
+pivot = Vector3(0.21499999, 0.72249997, -0.2225)
+axis = Vector3(0, 0, -1)
+amount = 0.3075000062584877
+
+[resource]
+script = ExtResource("3_aljki")
+display_name = "Chest of Drawers"
+spawn_category = "Bedroom"
+voxel_size = 0.02249999940395355
+anchor_mode = 1
+density_scale = 0.5077441495384555
+vox_file = "res://furniture/vox/chest_of_drawers.vox"
+vox_material = ExtResource("5_rqdjx")
+vox_index_materials = {
+1: ExtResource("5_rqdjx"),
+2: ExtResource("5_rqdjx"),
+3: ExtResource("5_rqdjx"),
+4: ExtResource("5_rqdjx"),
+5: ExtResource("5_rqdjx"),
+6: ExtResource("5_rqdjx"),
+7: ExtResource("6_6qcum"),
+8: ExtResource("6_6qcum")
+}
+moving_parts = Array[ExtResource("2_rudfi")]([SubResource("Resource_kkm37"), SubResource("Resource_e7d15"), SubResource("Resource_30f4b"), SubResource("Resource_j021r"), SubResource("Resource_8yc0n")])

@@ -1,0 +1,128 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://b1i3y1ysed1yn"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_j1k7d"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_ngknr"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_c3kk0"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_c04cs"]
+[ext_resource type="Resource" uid="uid://c3oyba533fuca" path="res://furniture/materials/painted_steel.tres" id="5_mdfl7"]
+[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="6_sr7mq"]
+[ext_resource type="Resource" uid="uid://c3dhplrb8hgty" path="res://furniture/materials/stone.tres" id="7_yit1l"]
+[ext_resource type="Resource" uid="uid://cqju2cnc1vrtw" path="res://furniture/materials/glass.tres" id="8_k7wbn"]
+[ext_resource type="Resource" uid="uid://dw4suus87xjs" path="res://furniture/materials/plastic.tres" id="9_e21ta"]
+
+[sub_resource type="Resource" id="Resource_6unr4"]
+script = ExtResource("3_c3kk0")
+display_name = "Laboratory Workbench Drawer"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.4821252909325177
+vox_file = "res://furniture/vox/lab_workbench__part1.vox"
+vox_material = ExtResource("5_mdfl7")
+vox_index_materials = {
+1: ExtResource("5_mdfl7"),
+2: ExtResource("5_mdfl7"),
+3: ExtResource("6_sr7mq"),
+4: ExtResource("6_sr7mq"),
+5: ExtResource("7_yit1l"),
+6: ExtResource("7_yit1l"),
+7: ExtResource("7_yit1l"),
+8: ExtResource("8_k7wbn"),
+9: ExtResource("8_k7wbn"),
+10: ExtResource("8_k7wbn"),
+11: ExtResource("9_e21ta")
+}
+
+[sub_resource type="Resource" id="Resource_5cd3i"]
+script = ExtResource("2_ngknr")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_6unr4")
+pivot = Vector3(0.5500001, 0.185, -0.32999998)
+axis = Vector3(0, 0, -1)
+amount = 0.375
+
+[sub_resource type="Resource" id="Resource_yl33f"]
+script = ExtResource("3_c3kk0")
+display_name = "Laboratory Workbench Drawer"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.4821252909325177
+vox_file = "res://furniture/vox/lab_workbench__part2.vox"
+vox_material = ExtResource("5_mdfl7")
+vox_index_materials = {
+1: ExtResource("5_mdfl7"),
+2: ExtResource("5_mdfl7"),
+3: ExtResource("6_sr7mq"),
+4: ExtResource("6_sr7mq"),
+5: ExtResource("7_yit1l"),
+6: ExtResource("7_yit1l"),
+7: ExtResource("7_yit1l"),
+8: ExtResource("8_k7wbn"),
+9: ExtResource("8_k7wbn"),
+10: ExtResource("8_k7wbn"),
+11: ExtResource("9_e21ta")
+}
+
+[sub_resource type="Resource" id="Resource_4uxm5"]
+script = ExtResource("2_ngknr")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_yl33f")
+pivot = Vector3(0.5500001, 0.445, -0.32999998)
+axis = Vector3(0, 0, -1)
+amount = 0.375
+
+[sub_resource type="Resource" id="Resource_n73na"]
+script = ExtResource("3_c3kk0")
+display_name = "Laboratory Workbench Drawer"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.4821252909325177
+vox_file = "res://furniture/vox/lab_workbench__part3.vox"
+vox_material = ExtResource("5_mdfl7")
+vox_index_materials = {
+1: ExtResource("5_mdfl7"),
+2: ExtResource("5_mdfl7"),
+3: ExtResource("6_sr7mq"),
+4: ExtResource("6_sr7mq"),
+5: ExtResource("7_yit1l"),
+6: ExtResource("7_yit1l"),
+7: ExtResource("7_yit1l"),
+8: ExtResource("8_k7wbn"),
+9: ExtResource("8_k7wbn"),
+10: ExtResource("8_k7wbn"),
+11: ExtResource("9_e21ta")
+}
+
+[sub_resource type="Resource" id="Resource_b78we"]
+script = ExtResource("2_ngknr")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_n73na")
+pivot = Vector3(0.5500001, 0.705, -0.32999998)
+axis = Vector3(0, 0, -1)
+amount = 0.375
+
+[resource]
+script = ExtResource("3_c3kk0")
+display_name = "Laboratory Workbench"
+spawn_category = "Laboratory"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.4821252909325177
+vox_file = "res://furniture/vox/lab_workbench.vox"
+vox_material = ExtResource("5_mdfl7")
+vox_index_materials = {
+1: ExtResource("5_mdfl7"),
+2: ExtResource("5_mdfl7"),
+3: ExtResource("6_sr7mq"),
+4: ExtResource("6_sr7mq"),
+5: ExtResource("7_yit1l"),
+6: ExtResource("7_yit1l"),
+7: ExtResource("7_yit1l"),
+8: ExtResource("8_k7wbn"),
+9: ExtResource("8_k7wbn"),
+10: ExtResource("8_k7wbn"),
+11: ExtResource("9_e21ta")
+}
+moving_parts = Array[ExtResource("2_ngknr")]([SubResource("Resource_5cd3i"), SubResource("Resource_4uxm5"), SubResource("Resource_b78we")])

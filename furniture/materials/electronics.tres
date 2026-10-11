@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://6ri68lauf7ep"]
+
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_ldtnd"]
+
+[resource]
+script = ExtResource("1_ldtnd")
+display_name = "Electronics"
+color = Color(0.12, 0.12, 0.13, 1)
+color_jitter = 0.0
+strength = 6.0
+density = 700.0
+friction = 0.6
+bounce = 0.1
+impact_sound = 4
+rubble_fraction = 0.15

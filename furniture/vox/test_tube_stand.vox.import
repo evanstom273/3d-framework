@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://rl37dbtw7ab5"
+path="res://.godot/imported/test_tube_stand.vox-7105d3589b878ef8a5ccc6828fa9517b.tres"
+
+[deps]
+
+source_file="res://furniture/vox/test_tube_stand.vox"
+dest_files=["res://.godot/imported/test_tube_stand.vox-7105d3589b878ef8a5ccc6828fa9517b.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

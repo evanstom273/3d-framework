@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://cb0l1bfxqb5wt"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_8r62r"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_wnqg8"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_0bewy"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_twims"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_wood.tres" id="5_6km4l"]
+[ext_resource type="Resource" path="res://furniture/materials/fabric.tres" id="6_nn5iy"]
+
+[resource]
+script = ExtResource("3_0bewy")
+display_name = "Desk Chair"
+spawn_category = "Bedroom"
+voxel_size = 0.022
+anchor_mode = 1
+density_scale = 1.2535842265542396
+vox_file = "res://furniture/vox/bedroom_desk_chair.vox"
+vox_material = ExtResource("5_6km4l")
+vox_index_materials = {
+1: ExtResource("5_6km4l"),
+2: ExtResource("6_nn5iy"),
+3: ExtResource("6_nn5iy")
+}

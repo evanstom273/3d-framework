@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://b4ls4i8kvjo11"
+path="res://.godot/imported/tv_cabinet__part2.vox-02f5815a7c7378da7757194af6c576e6.tres"
+
+[deps]
+
+source_file="res://furniture/vox/tv_cabinet__part2.vox"
+dest_files=["res://.godot/imported/tv_cabinet__part2.vox-02f5815a7c7378da7757194af6c576e6.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

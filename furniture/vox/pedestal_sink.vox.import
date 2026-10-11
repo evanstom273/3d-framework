@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://croawj1nnmxct"
+path="res://.godot/imported/pedestal_sink.vox-bae9ae9c84a0dc4acb2aeb32cc0f61cc.tres"
+
+[deps]
+
+source_file="res://furniture/vox/pedestal_sink.vox"
+dest_files=["res://.godot/imported/pedestal_sink.vox-bae9ae9c84a0dc4acb2aeb32cc0f61cc.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bexltq146ofa"
+path="res://.godot/imported/sawhorse.vox-0ec05c4ab554f8a86093a1e6f7cad42c.tres"
+
+[deps]
+
+source_file="res://furniture/vox/sawhorse.vox"
+dest_files=["res://.godot/imported/sawhorse.vox-0ec05c4ab554f8a86093a1e6f7cad42c.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://o8hbrsowmsb1"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_kfaf8"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_vmjap"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_t0fyr"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_tyofk"]
+[ext_resource type="Resource" uid="uid://c3oyba533fuca" path="res://furniture/materials/painted_steel.tres" id="5_ri5v0"]
+[ext_resource type="Resource" uid="uid://6ri68lauf7ep" path="res://furniture/materials/electronics.tres" id="6_3g3pl"]
+[ext_resource type="Resource" uid="uid://c77k5wn3vmtmo" path="res://furniture/materials/cast_iron.tres" id="7_asrua"]
+[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="8_btn6i"]
+[ext_resource type="Resource" uid="uid://cqju2cnc1vrtw" path="res://furniture/materials/glass.tres" id="9_c5qi4"]
+
+[sub_resource type="Resource" id="Resource_kbaj2"]
+script = ExtResource("3_t0fyr")
+display_name = "Cooker Oven door"
+voxel_size = 0.02349999994039535
+anchor_mode = 1
+density_scale = 0.42464252912516154
+vox_file = "res://furniture/vox/cooker__part1.vox"
+vox_material = ExtResource("5_ri5v0")
+vox_index_materials = {
+1: ExtResource("5_ri5v0"),
+2: ExtResource("6_3g3pl"),
+3: ExtResource("7_asrua"),
+4: ExtResource("8_btn6i"),
+5: ExtResource("8_btn6i"),
+6: ExtResource("9_c5qi4")
+}
+
+[sub_resource type="Resource" id="Resource_8edpe"]
+script = ExtResource("2_vmjap")
+label = "Oven door"
+structure = SubResource("Resource_kbaj2")
+pivot = Vector3(-0.0054999683, 0.11999999, -0.2785)
+axis = Vector3(1, 0, 0)
+amount = -85.0
+
+[resource]
+script = ExtResource("3_t0fyr")
+display_name = "Cooker"
+spawn_category = "Kitchen"
+voxel_size = 0.02349999994039535
+anchor_mode = 1
+density_scale = 0.42464252912516154
+vox_file = "res://furniture/vox/cooker.vox"
+vox_material = ExtResource("5_ri5v0")
+vox_index_materials = {
+1: ExtResource("5_ri5v0"),
+2: ExtResource("6_3g3pl"),
+3: ExtResource("7_asrua"),
+4: ExtResource("8_btn6i"),
+5: ExtResource("8_btn6i"),
+6: ExtResource("9_c5qi4")
+}
+moving_parts = Array[ExtResource("2_vmjap")]([SubResource("Resource_8edpe")])

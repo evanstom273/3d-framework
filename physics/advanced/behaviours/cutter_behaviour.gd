@@ -8,8 +8,14 @@ extends ToolBehaviour
 ## change how fast things cut.
 
 const STEP := 0.05
+## Seconds of levering to force a locked or an unlocked door or window.
+const LOCKED_PRY_SECONDS := 1.8
+const UNLOCKED_PRY_SECONDS := 0.7
 
 var _exposure: float = 0.0
+var _pry_target: Node
+var _pry_progress: float = 0.0
+var _creak_timer: float = 0.0
 var _target_id: int = 0
 var _contact: Dictionary = {}
 
@@ -52,6 +58,7 @@ func press() -> void:
 
 func release() -> void:
 	_exposure = 0.0
+	_pry_progress = 0.0
 	_contact = {}
 
 
@@ -92,6 +99,8 @@ func _apply(hit: Dictionary, operation: String, exposure: float) -> void:
 	world.reason = ""
 	var collider: CollisionObject3D = hit["collider"]
 	if operation == "pry":
+		if _pry_open(hit, exposure):
+			return
 		if world.weaken(hit["position"], action.rate * exposure):
 			# Leverage lifts the prised piece away from what it was fixed to.
 			_nudge(collider, hit, hit["normal"], exposure)
@@ -114,6 +123,42 @@ func _apply(hit: Dictionary, operation: String, exposure: float) -> void:
 		_nudge(collider, hit, -hit["normal"], exposure)
 	if operation == "heat":
 		ToolMatter.surface(world, hit, "heat", exposure * profile.heat_response, action.effect_color)
+
+
+## Levering a door or window (anything with force_open()): it strains and creaks,
+## then the lock gives with a crack and it swings open, undamaged. Returns false
+## when the target isn't a door or window.
+func _pry_open(hit: Dictionary, exposure: float) -> bool:
+	var target := hit["collider"] as Node
+	while target != null and not target.has_method("force_open"):
+		target = target.get_parent()
+	if target == null:
+		return false
+	if target != _pry_target:
+		_pry_target = target
+		_pry_progress = 0.0
+		_creak_timer = 0.0
+	if bool(target.get(&"_is_open")):
+		runtime.say("Already open", 0.6)
+		return true
+	var locked: bool = target.call("is_locked")
+	var needed := LOCKED_PRY_SECONDS if locked else UNLOCKED_PRY_SECONDS
+	_pry_progress += exposure
+	_creak_timer -= exposure
+	if _creak_timer <= 0.0:
+		_creak_timer = randf_range(0.35, 0.55)
+		PrySounds.play_creak(runtime.body, hit["position"])
+		ImpactFeedback.spawn(runtime.body.get_tree().current_scene, hit["position"], hit["normal"], PhysicsToolDefinition.ImpactType.BLUNT, 0.3, Color(0.62, 0.52, 0.4), ImpactFeedback.Sound.WOOD)
+	runtime.say("%s… %d%%" % ["Forcing the lock" if locked else "Levering it open", roundi(minf(_pry_progress / needed, 1.0) * 100.0)], 0.3)
+	if _pry_progress >= needed:
+		if target.call("force_open"):
+			PrySounds.play_crack(runtime.body, hit["position"])
+			ImpactFeedback.spawn(runtime.body.get_tree().current_scene, hit["position"], hit["normal"], PhysicsToolDefinition.ImpactType.BLUNT, 1.0, Color(0.62, 0.52, 0.4), ImpactFeedback.Sound.WOOD)
+			CameraShake.shake_at(runtime.body.get_tree(), hit["position"], 40.0)
+			runtime.say("Forced open" if locked else "Prised open", 1.2)
+			runtime.shot(1.0)
+		_pry_progress = 0.0
+	return true
 
 
 ## Blades and discs cut in the tool's own plane; torches and shovels face the surface.

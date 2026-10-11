@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://b4eflkm42q3i4"
+path="res://.godot/imported/plastic_storage_box.vox-f7360024eb7baa22bbf70e1cc72f1412.tres"
+
+[deps]
+
+source_file="res://furniture/vox/plastic_storage_box.vox"
+dest_files=["res://.godot/imported/plastic_storage_box.vox-f7360024eb7baa22bbf70e1cc72f1412.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

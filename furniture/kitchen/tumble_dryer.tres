@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://c44ebkn3tumc0"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_oo5ew"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_jrho2"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_2j3hl"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_iciht"]
+[ext_resource type="Resource" uid="uid://c3oyba533fuca" path="res://furniture/materials/painted_steel.tres" id="5_0ituu"]
+[ext_resource type="Resource" uid="uid://dw4suus87xjs" path="res://furniture/materials/plastic.tres" id="6_j168n"]
+[ext_resource type="Resource" uid="uid://cqju2cnc1vrtw" path="res://furniture/materials/glass.tres" id="7_211bm"]
+
+[sub_resource type="Resource" id="Resource_mb6ba"]
+script = ExtResource("3_2j3hl")
+display_name = "Tumble Dryer Door"
+voxel_size = 0.02125000059604644
+anchor_mode = 1
+density_scale = 0.4067495525267988
+vox_file = "res://furniture/vox/tumble_dryer__part1.vox"
+vox_material = ExtResource("5_0ituu")
+vox_index_materials = {
+1: ExtResource("5_0ituu"),
+2: ExtResource("6_j168n"),
+3: ExtResource("7_211bm"),
+4: ExtResource("6_j168n")
+}
+
+[sub_resource type="Resource" id="Resource_1kbdx"]
+script = ExtResource("2_jrho2")
+structure = SubResource("Resource_mb6ba")
+pivot = Vector3(-0.2075, 0.39875, -0.31625)
+
+[resource]
+script = ExtResource("3_2j3hl")
+display_name = "Tumble Dryer"
+spawn_category = "Kitchen"
+voxel_size = 0.02125000059604644
+anchor_mode = 1
+density_scale = 0.4067495525267988
+vox_file = "res://furniture/vox/tumble_dryer.vox"
+vox_material = ExtResource("5_0ituu")
+vox_index_materials = {
+1: ExtResource("5_0ituu"),
+2: ExtResource("6_j168n"),
+3: ExtResource("7_211bm"),
+4: ExtResource("6_j168n")
+}
+moving_parts = Array[ExtResource("2_jrho2")]([SubResource("Resource_1kbdx")])

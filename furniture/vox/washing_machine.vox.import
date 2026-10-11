@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://m4yk0no88ghl"
+path="res://.godot/imported/washing_machine.vox-b07a6cc466cc3381b22d0d0224ad1054.tres"
+
+[deps]
+
+source_file="res://furniture/vox/washing_machine.vox"
+dest_files=["res://.godot/imported/washing_machine.vox-b07a6cc466cc3381b22d0d0224ad1054.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

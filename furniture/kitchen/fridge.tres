@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://b260jvedvkqt2"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_18pjg"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_o32mb"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_knpyp"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_jjhxv"]
+[ext_resource type="Resource" uid="uid://c3oyba533fuca" path="res://furniture/materials/painted_steel.tres" id="5_51qil"]
+[ext_resource type="Resource" uid="uid://d01xckqs64akm" path="res://furniture/materials/rubber.tres" id="6_mrp1c"]
+[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="7_6v74r"]
+
+[sub_resource type="Resource" id="Resource_j487v"]
+script = ExtResource("3_knpyp")
+display_name = "Fridge Fridge door"
+voxel_size = 0.045
+anchor_mode = 1
+density_scale = 0.2520025784709826
+vox_file = "res://furniture/vox/fridge__part1.vox"
+vox_material = ExtResource("5_51qil")
+vox_index_materials = {
+1: ExtResource("5_51qil"),
+2: ExtResource("6_mrp1c"),
+3: ExtResource("7_6v74r"),
+4: ExtResource("7_6v74r")
+}
+
+[sub_resource type="Resource" id="Resource_obn1k"]
+script = ExtResource("2_o32mb")
+label = "Fridge door"
+structure = SubResource("Resource_j487v")
+pivot = Vector3(-0.26000002, 0.6, -0.315)
+amount = 110.0
+
+[sub_resource type="Resource" id="Resource_vje5h"]
+script = ExtResource("3_knpyp")
+display_name = "Fridge Freezer door"
+voxel_size = 0.045
+anchor_mode = 1
+density_scale = 0.2520025784709826
+vox_file = "res://furniture/vox/fridge__part2.vox"
+vox_material = ExtResource("5_51qil")
+vox_index_materials = {
+1: ExtResource("5_51qil"),
+2: ExtResource("6_mrp1c"),
+3: ExtResource("7_6v74r"),
+4: ExtResource("7_6v74r")
+}
+
+[sub_resource type="Resource" id="Resource_26od1"]
+script = ExtResource("2_o32mb")
+label = "Freezer door"
+structure = SubResource("Resource_vje5h")
+pivot = Vector3(-0.26000002, 1.5, -0.315)
+amount = 110.0
+
+[resource]
+script = ExtResource("3_knpyp")
+display_name = "Fridge"
+spawn_category = "Kitchen"
+voxel_size = 0.045
+anchor_mode = 1
+density_scale = 0.2520025784709826
+vox_file = "res://furniture/vox/fridge.vox"
+vox_material = ExtResource("5_51qil")
+vox_index_materials = {
+1: ExtResource("5_51qil"),
+2: ExtResource("6_mrp1c"),
+3: ExtResource("7_6v74r"),
+4: ExtResource("7_6v74r")
+}
+moving_parts = Array[ExtResource("2_o32mb")]([SubResource("Resource_obn1k"), SubResource("Resource_26od1")])

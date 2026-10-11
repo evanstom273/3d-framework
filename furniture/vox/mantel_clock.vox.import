@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://14htcv4v8nsk"
+path="res://.godot/imported/mantel_clock.vox-3fa1db2b194ab334f9a29a4fed3c0bbe.tres"
+
+[deps]
+
+source_file="res://furniture/vox/mantel_clock.vox"
+dest_files=["res://.godot/imported/mantel_clock.vox-3fa1db2b194ab334f9a29a4fed3c0bbe.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

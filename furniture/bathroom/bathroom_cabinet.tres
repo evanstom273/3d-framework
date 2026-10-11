@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://bk4bif38rck3g"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_0jowk"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_ipi0e"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_nekx4"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_53sda"]
+[ext_resource type="Resource" uid="uid://bgrnpiwfmjxib" path="res://furniture/materials/painted_wood.tres" id="5_ophlk"]
+[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="6_m5krn"]
+[ext_resource type="Resource" uid="uid://dw4suus87xjs" path="res://furniture/materials/plastic.tres" id="7_kol55"]
+
+[sub_resource type="Resource" id="Resource_seke5"]
+script = ExtResource("3_nekx4")
+display_name = "Bathroom Cabinet Door"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 1.024555172295989
+vox_file = "res://furniture/vox/bathroom_cabinet__part1.vox"
+vox_material = ExtResource("5_ophlk")
+vox_index_materials = {
+1: ExtResource("5_ophlk"),
+2: ExtResource("6_m5krn"),
+3: ExtResource("6_m5krn"),
+4: ExtResource("7_kol55"),
+5: ExtResource("7_kol55"),
+6: ExtResource("7_kol55")
+}
+
+[sub_resource type="Resource" id="Resource_h3v18"]
+script = ExtResource("2_ipi0e")
+structure = SubResource("Resource_seke5")
+pivot = Vector3(-0.19999999, 0.3, -0.098)
+
+[resource]
+script = ExtResource("3_nekx4")
+display_name = "Bathroom Cabinet"
+spawn_category = "Bathroom"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 1.024555172295989
+vox_file = "res://furniture/vox/bathroom_cabinet.vox"
+vox_material = ExtResource("5_ophlk")
+vox_index_materials = {
+1: ExtResource("5_ophlk"),
+2: ExtResource("6_m5krn"),
+3: ExtResource("6_m5krn"),
+4: ExtResource("7_kol55"),
+5: ExtResource("7_kol55"),
+6: ExtResource("7_kol55")
+}
+moving_parts = Array[ExtResource("2_ipi0e")]([SubResource("Resource_h3v18")])

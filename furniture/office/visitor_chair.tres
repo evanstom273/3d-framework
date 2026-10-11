@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://duc604o3tk3q"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_l7wap"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_yca2c"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_sx6y4"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_i5yey"]
+[ext_resource type="Resource" path="res://furniture/materials/chrome.tres" id="5_g1lrl"]
+[ext_resource type="Resource" path="res://furniture/materials/fabric.tres" id="6_3drf5"]
+
+[resource]
+script = ExtResource("3_sx6y4")
+display_name = "Visitor Chair"
+spawn_category = "Office"
+voxel_size = 0.021250000596046446
+anchor_mode = 1
+density_scale = 1.3928535532331634
+vox_file = "res://furniture/vox/visitor_chair.vox"
+vox_material = ExtResource("5_g1lrl")
+vox_index_materials = {
+1: ExtResource("5_g1lrl"),
+2: ExtResource("5_g1lrl"),
+3: ExtResource("6_3drf5"),
+4: ExtResource("6_3drf5")
+}

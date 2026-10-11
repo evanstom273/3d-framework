@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://ckcmhi7jwxp4u"
+path="res://.godot/imported/computer_tower.vox-895d6581fa43f360c718177d9cdfef14.tres"
+
+[deps]
+
+source_file="res://furniture/vox/computer_tower.vox"
+dest_files=["res://.godot/imported/computer_tower.vox-895d6581fa43f360c718177d9cdfef14.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

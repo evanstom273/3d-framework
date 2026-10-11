@@ -9,7 +9,17 @@ extends RigidBody3D
 ## and the tool's voxel_damage_radius.
 
 const CHUNK_SIZE := 16
+## log2(CHUNK_SIZE): chunk index by arithmetic shift (floors negatives correctly).
+const CHUNK_SHIFT := 4
 const RUBBLE_LIMIT := 60
+## Furniture, props and debris stop drawing beyond this (metres), and stop
+## casting shadows beyond SHADOW_DISTANCE. Fixed structures (house walls,
+## doors) always draw.
+const VIEW_DISTANCE := 40.0
+const SHADOW_DISTANCE := 20.0
+## Rebuilding collision in this many chunks at once takes the body out of the
+## physics world while its shapes are added (see _flush_dirty).
+const BULK_REBUILD_CHUNKS := 4
 ## Most rubble pieces one hit or collision can create.
 const RUBBLE_PER_EVENT := 10
 const NEIGHBOURS: Array[Vector3i] = [
@@ -32,6 +42,13 @@ var _body_properties_dirty: bool = true
 
 ## Live rubble pieces, oldest first, so the count can be capped.
 static var _rubble: Array[VoxelBody] = []
+## Meshes and collision boxes of undamaged structures, per structure and chunk:
+## every untouched copy of the same piece shares them instead of rebuilding.
+static var _pristine_chunks: Dictionary = {}
+## The combined mesh of each untouched structure (see _ensure_whole).
+static var _pristine_whole: Dictionary = {}
+## One BoxShape3D per box size, shared by every body's collision.
+static var _box_shapes: Dictionary = {}
 
 @export var structure: VoxelStructureDefinition:
 	set(value):
@@ -40,8 +57,9 @@ static var _rubble: Array[VoxelBody] = []
 		structure = value
 		if structure != null:
 			structure.changed.connect(_on_structure_changed)
-		if is_node_ready():
+		if is_node_ready() and not _building_quietly:
 			_build_from_structure()
+			_build_parts()
 ## Free pieces falling below this height are removed.
 @export var respawn_below_y: float = -25.0
 
@@ -73,6 +91,25 @@ var _flush_queued: bool = false
 var _check_support: bool = false
 ## Spawned at runtime (rubble, broken pieces, built structures), so reset removes it.
 var _spawned: bool = false
+## Scales the mass the voxels add up to (from the structure's density_scale;
+## carried over to pieces that break off).
+var mass_scale: float = 1.0
+## True while the voxels are exactly as built from `structure` (see _pristine_chunks).
+var _pristine: bool = false
+## Set while apply_baked() assigns `structure`, so the setter does not rebuild.
+var _building_quietly: bool = false
+## Pre-baked moving parts from apply_baked(), used once by FurnitureAssembly.
+var baked_parts: Array = []
+## Forces distance culling on (e.g. furniture doors, whose structure has no category).
+var distance_culled: bool = false
+## Mesh nodes of the combined mesh while untouched (empty once split into chunks).
+var _whole_nodes: Array = []
+## Chunk geometry gathered during a first build, for the combined mesh.
+var _whole_surfaces: Dictionary = {}
+## Chunk -> collision shape owner ids.
+var _chunk_owners: Dictionary = {}
+## Physics frame until which collisions do no damage (settling in after a build).
+var _impacts_from_frame: int = 0
 var _spawn_transform: Transform3D
 var _impact_memory: Dictionary = {}
 ## Voxels touched by the last damage_sphere() call.
@@ -104,6 +141,7 @@ func _ready() -> void:
 		_build_from_structure()
 	else:
 		_flush_dirty()
+	_build_parts()
 	if Engine.is_editor_hint():
 		set_physics_process(false)
 		return
@@ -116,7 +154,11 @@ func _ready() -> void:
 	# Needed so hard collisions can break voxels (see ImpactBreaker).
 	contact_monitor = true
 	max_contacts_reported = 4
-	_update_body()
+	if _body_properties_dirty:
+		_update_body()
+	if not _spawned:
+		# Let a freshly built piece settle without contact jitter counting as a crash.
+		_impacts_from_frame = Engine.get_physics_frames() + 90
 
 
 # --- Prop contract (ObjectManipulator, containers)
@@ -155,6 +197,7 @@ func reset_to_spawn() -> void:
 	elif structure != null:
 		global_transform = _spawn_transform
 		_build_from_structure()
+		_build_parts()
 
 
 # --- Damage
@@ -334,6 +377,8 @@ func _remove_cell(cell: Vector3i) -> void:
 
 ## Queues the cell's chunk (and any neighbouring chunk whose faces it hid) for rebuild.
 func _mark_dirty(cell: Vector3i) -> void:
+	# Any edit (damage, paint, building) means this body no longer matches its structure.
+	_pristine = false
 	_dirty[_chunk_of(cell)] = true
 	for offset in NEIGHBOURS:
 		var neighbour_chunk := _chunk_of(cell + offset)
@@ -345,7 +390,7 @@ func _mark_dirty(cell: Vector3i) -> void:
 
 
 func _chunk_of(cell: Vector3i) -> Vector3i:
-	return Vector3i(floori(float(cell.x) / CHUNK_SIZE), floori(float(cell.y) / CHUNK_SIZE), floori(float(cell.z) / CHUNK_SIZE))
+	return Vector3i(cell.x >> CHUNK_SHIFT, cell.y >> CHUNK_SHIFT, cell.z >> CHUNK_SHIFT)
 
 
 ## Rebuilds the mesh and collision of every changed chunk, once per frame at most.
@@ -356,9 +401,31 @@ func _flush_dirty() -> void:
 		_split_disconnected()
 	if _dirty.is_empty():
 		return
+	# First change to an untouched piece: switch from the combined mesh to chunk
+	# meshes before rebuilding, reusing the cached meshes of untouched chunks.
+	if not _pristine and not _whole_nodes.is_empty():
+		_split_whole()
+	# Adding shapes to a body already in the physics world is slow (the engine
+	# rebuilds its shape after each one: ~40 ms for 500 boxes, against under 1 ms
+	# outside it), so a big rebuild briefly takes the body out of the world.
+	var space := RID()
+	var velocity := Vector3.ZERO
+	var spin := Vector3.ZERO
+	if is_inside_tree() and _collision_dirty.size() >= BULK_REBUILD_CHUNKS:
+		space = PhysicsServer3D.body_get_space(get_rid())
+		velocity = linear_velocity
+		spin = angular_velocity
+		PhysicsServer3D.body_set_space(get_rid(), RID())
 	for chunk in _dirty:
 		_rebuild_chunk(chunk)
 	_dirty.clear()
+	if space.is_valid():
+		PhysicsServer3D.body_set_space(get_rid(), space)
+		PhysicsServer3D.body_set_state(get_rid(), PhysicsServer3D.BODY_STATE_TRANSFORM, global_transform)
+		linear_velocity = velocity
+		angular_velocity = spin
+	if _pristine:
+		_ensure_whole()
 	if not Engine.is_editor_hint():
 		if _body_properties_dirty: _update_body()
 		if cells.is_empty():
@@ -372,37 +439,142 @@ func _rebuild_chunk(chunk: Vector3i) -> void:
 	var nodes: Array = []
 	for node in _chunk_nodes.get(chunk, []):
 		if is_instance_valid(node):
-			if node is CollisionShape3D and not rebuild_collision:
-				nodes.append(node)
-				continue
 			remove_child(node)
 			node.queue_free()
 	_chunk_nodes.erase(chunk)
+	if rebuild_collision:
+		for owner_id in _chunk_owners.get(chunk, []):
+			remove_shape_owner(owner_id)
+		_chunk_owners.erase(chunk)
 	var chunk_cells: Dictionary = _chunk_cells.get(chunk, {})
 	if chunk_cells.is_empty():
 		_chunk_cells.erase(chunk)
 		return
-	var mesh := VoxelMesher.build(chunk_cells, cells, health, palette, voxel_size, surface_state)
-	if mesh != null:
-		var mesh_instance := MeshInstance3D.new()
-		mesh_instance.mesh = mesh
-		mesh_instance.material_override = mesh_material_override
-		add_child(mesh_instance, false, Node.INTERNAL_MODE_BACK)
-		nodes.append(mesh_instance)
+	# An untouched copy of a structure reuses the first copy's mesh and boxes.
+	var shared: Dictionary = {}
+	if _pristine and structure != null:
+		var per_structure: Dictionary = _pristine_chunks.get(structure, {})
+		if per_structure.is_empty():
+			_pristine_chunks[structure] = per_structure
+		if not per_structure.has(chunk):
+			var surfaces := VoxelMesher.build_surfaces(chunk_cells, cells, health, palette, voxel_size, surface_state)
+			per_structure[chunk] = {"mesh": VoxelMesher.to_mesh(surfaces), "boxes": VoxelCollider.merge(chunk_cells)}
+			# Gathered for the combined mesh (see _ensure_whole).
+			VoxelMesher.merge(_whole_surfaces, surfaces)
+		shared = per_structure[chunk]
+	else:
+		var mesh := VoxelMesher.build(chunk_cells, cells, health, palette, voxel_size, surface_state)
+		if mesh != null:
+			nodes.append_array(_add_mesh_nodes(mesh))
 	if not rebuild_collision:
 		_chunk_nodes[chunk] = nodes
 		return
-	for box in VoxelCollider.merge(chunk_cells):
+	var boxes: Array = shared["boxes"] if not shared.is_empty() else VoxelCollider.merge(chunk_cells)
+	# Boxes go straight to the physics server as shape owners: no scene node per
+	# box (a piece has hundreds), and equal-sized boxes share one shape.
+	var owners: Array = []
+	for box in boxes:
 		var low: Vector3i = box[0]
 		var high: Vector3i = box[1]
-		var shape := BoxShape3D.new()
-		shape.size = Vector3(high - low + Vector3i.ONE) * voxel_size
-		var collision := CollisionShape3D.new()
-		collision.shape = shape
-		collision.position = (Vector3(low) + Vector3(high - low + Vector3i.ONE) * 0.5) * voxel_size
-		add_child(collision, false, Node.INTERNAL_MODE_BACK)
-		nodes.append(collision)
+		var size := Vector3(high - low + Vector3i.ONE) * voxel_size
+		var shape: BoxShape3D = _box_shapes.get(size)
+		if shape == null:
+			shape = BoxShape3D.new()
+			shape.size = size
+			_box_shapes[size] = shape
+		var owner_id := create_shape_owner(self)
+		shape_owner_add_shape(owner_id, shape)
+		shape_owner_set_transform(owner_id, Transform3D(Basis.IDENTITY, (Vector3(low) + size / voxel_size * 0.5) * voxel_size))
+		owners.append(owner_id)
+	_chunk_owners[chunk] = owners
 	_chunk_nodes[chunk] = nodes
+
+
+## Mesh nodes for one mesh: distance-culled furniture and debris get a view
+## range and a shorter-range, shadow-only copy (see VIEW_DISTANCE).
+func _add_mesh_nodes(mesh: ArrayMesh) -> Array:
+	var mesh_instance := MeshInstance3D.new()
+	mesh_instance.mesh = mesh
+	mesh_instance.material_override = mesh_material_override
+	add_child(mesh_instance, false, Node.INTERNAL_MODE_BACK)
+	if not _is_distance_culled():
+		return [mesh_instance]
+	# Seen up to VIEW_DISTANCE, but casting shadows only up to SHADOW_DISTANCE.
+	mesh_instance.visibility_range_end = VIEW_DISTANCE
+	# A hard cut-off: fading would draw it see-through, a separate shader
+	# variant that compiles (and stalls) the first time it's needed.
+	mesh_instance.visibility_range_end_margin = 2.0
+	mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	var shadow := MeshInstance3D.new()
+	shadow.mesh = mesh
+	shadow.material_override = mesh_material_override
+	shadow.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
+	shadow.visibility_range_end = SHADOW_DISTANCE
+	add_child(shadow, false, Node.INTERNAL_MODE_BACK)
+	return [mesh_instance, shadow]
+
+
+## An untouched piece draws as one combined mesh (one draw call, not one per
+## chunk), shared by every untouched copy. Its chunk meshes stay cached, and its
+## collision boxes are the usual per-chunk ones, so nothing physical changes.
+func _ensure_whole() -> void:
+	if not _whole_nodes.is_empty() or structure == null:
+		_whole_surfaces.clear()
+		return
+	var whole: ArrayMesh = _pristine_whole.get(structure)
+	if whole == null:
+		var per_structure: Dictionary = _pristine_chunks.get(structure, {})
+		var complete := not _whole_surfaces.is_empty()
+		# Chunks cached by an earlier copy weren't gathered this time: build them.
+		for chunk in _chunk_cells:
+			if not per_structure.has(chunk):
+				complete = false
+		if not complete or _whole_surfaces.is_empty():
+			_whole_surfaces.clear()
+			for chunk in _chunk_cells:
+				VoxelMesher.merge(_whole_surfaces, VoxelMesher.build_surfaces(_chunk_cells[chunk], cells, health, palette, voxel_size, surface_state))
+		whole = VoxelMesher.to_mesh(_whole_surfaces)
+		if whole != null:
+			_pristine_whole[structure] = whole
+	_whole_surfaces.clear()
+	if whole != null:
+		_whole_nodes = _add_mesh_nodes(whole)
+
+
+## The first change to an untouched piece: give every chunk its own mesh node
+## from the cache (no rebuilding), then drop the combined mesh, all within this
+## one update, so no frame shows both or neither. Only the changed chunks are
+## then rebuilt by the caller.
+func _split_whole() -> void:
+	var per_structure: Dictionary = _pristine_chunks.get(structure, {}) if structure != null else {}
+	for chunk in _chunk_cells:
+		if _dirty.has(chunk):
+			continue
+		var shared: Dictionary = per_structure.get(chunk, {})
+		if shared.is_empty():
+			# Not cached (unexpected): rebuild just its mesh, keeping its collision.
+			_dirty[chunk] = true
+			continue
+		if shared["mesh"] != null:
+			var nodes: Array = _chunk_nodes.get(chunk, [])
+			nodes.append_array(_add_mesh_nodes(shared["mesh"]))
+			_chunk_nodes[chunk] = nodes
+	_free_whole()
+
+
+func _clear_owners() -> void:
+	for chunk in _chunk_owners:
+		for owner_id in _chunk_owners[chunk]:
+			remove_shape_owner(owner_id)
+	_chunk_owners.clear()
+
+
+func _free_whole() -> void:
+	for node in _whole_nodes:
+		if is_instance_valid(node):
+			remove_child(node)
+			node.queue_free()
+	_whole_nodes.clear()
 
 
 ## Mass and surface follow the voxels that remain.
@@ -412,6 +584,7 @@ func _update_body() -> void:
 	var volume := pow(voxel_size, 3.0)
 	for cell in cells:
 		total += palette[cells[cell]].density * volume
+	total *= mass_scale
 	mass = maxf(total, 0.01)
 	var material := _main_material()
 	if material != null:
@@ -420,12 +593,14 @@ func _update_body() -> void:
 
 
 func _build_from_structure() -> void:
+	_free_whole()
 	for chunk in _chunk_nodes:
 		for node in _chunk_nodes[chunk]:
 			if is_instance_valid(node):
 				remove_child(node)
 				node.queue_free()
 	_chunk_nodes.clear()
+	_clear_owners()
 	_chunk_cells.clear()
 	cells.clear()
 	surface_state.clear()
@@ -440,6 +615,7 @@ func _build_from_structure() -> void:
 	if structure == null:
 		return
 	voxel_size = structure.voxel_size
+	mass_scale = structure.density_scale
 	var lowest := 1 << 30
 	for box in structure.get_boxes():
 		if box == null or box.material == null:
@@ -449,11 +625,24 @@ func _build_from_structure() -> void:
 		if index < 0:
 			palette.append(material)
 			index = palette.size() - 1
+		# Bulk fill: the per-voxel bookkeeping in _set_cell is for edits, not whole builds.
+		lowest = mini(lowest, box.min_cell.y)
 		for x in range(box.min_cell.x, box.min_cell.x + box.size.x):
 			for y in range(box.min_cell.y, box.min_cell.y + box.size.y):
 				for z in range(box.min_cell.z, box.min_cell.z + box.size.z):
-					_set_cell(Vector3i(x, y, z), index)
-					lowest = mini(lowest, y)
+					var cell := Vector3i(x, y, z)
+					cells[cell] = index
+					var chunk := Vector3i(x >> CHUNK_SHIFT, y >> CHUNK_SHIFT, z >> CHUNK_SHIFT)
+					var members: Dictionary = _chunk_cells.get(chunk, {})
+					if members.is_empty():
+						_chunk_cells[chunk] = members
+					members[cell] = true
+	for chunk in _chunk_cells:
+		_dirty[chunk] = true
+		_collision_dirty[chunk] = true
+	_bounds_dirty = true
+	_body_properties_dirty = true
+	_main_material_dirty = true
 	if structure.anchor_mode == VoxelStructureDefinition.AnchorMode.BOTTOM_LAYER:
 		for cell in cells:
 			if cell.y == lowest:
@@ -463,7 +652,134 @@ func _build_from_structure() -> void:
 		freeze = not anchors.is_empty()
 		linear_velocity = Vector3.ZERO
 		angular_velocity = Vector3.ZERO
+	_pristine = not Engine.is_editor_hint()
 	_flush_dirty()
+
+
+## Does all the heavy work of building `definition` (voxel fill, chunk meshes,
+## collision boxes, mass, bounds) without touching the scene, so it can run on a
+## WorkerThreadPool thread. Hand the result to apply_baked() on the main thread.
+## Call prepare_bake() on the main thread first.
+static func bake(definition: VoxelStructureDefinition) -> Dictionary:
+	var baked_palette: Array[VoxelMaterialDefinition] = []
+	var baked_cells: Dictionary[Vector3i, int] = {}
+	var baked_chunks: Dictionary[Vector3i, Dictionary] = {}
+	var lowest := 1 << 30
+	var low := Vector3i(1 << 30, 1 << 30, 1 << 30)
+	var high := -low
+	for box in definition.get_boxes():
+		if box == null or box.material == null:
+			continue
+		var material := box.get_effective_material()
+		var index := baked_palette.find(material)
+		if index < 0:
+			baked_palette.append(material)
+			index = baked_palette.size() - 1
+		lowest = mini(lowest, box.min_cell.y)
+		low = low.min(box.min_cell)
+		high = high.max(box.min_cell + box.size - Vector3i.ONE)
+		for x in range(box.min_cell.x, box.min_cell.x + box.size.x):
+			for y in range(box.min_cell.y, box.min_cell.y + box.size.y):
+				for z in range(box.min_cell.z, box.min_cell.z + box.size.z):
+					var cell := Vector3i(x, y, z)
+					baked_cells[cell] = index
+					var chunk := Vector3i(x >> CHUNK_SHIFT, y >> CHUNK_SHIFT, z >> CHUNK_SHIFT)
+					var members: Dictionary = baked_chunks.get(chunk, {})
+					if members.is_empty():
+						baked_chunks[chunk] = members
+					members[cell] = true
+	var size := definition.voxel_size
+	var shared := {}
+	var whole_surfaces := {}
+	for chunk in baked_chunks:
+		var members: Dictionary = baked_chunks[chunk]
+		var surfaces := VoxelMesher.build_surfaces(members, baked_cells, {}, baked_palette, size)
+		shared[chunk] = {"mesh": VoxelMesher.to_mesh(surfaces), "boxes": VoxelCollider.merge(members)}
+		VoxelMesher.merge(whole_surfaces, surfaces)
+	var total := 0.0
+	var counts := {}
+	for cell in baked_cells:
+		counts[baked_cells[cell]] = counts.get(baked_cells[cell], 0) + 1
+	for index in counts:
+		total += baked_palette[index].density * pow(size, 3.0) * counts[index]
+	# Doors, drawers and lids too, so a whole piece of furniture is ready at once.
+	var parts := []
+	for part in definition.moving_parts:
+		parts.append(bake(part.structure) if part != null and part.structure != null else {})
+	return {"structure": definition, "palette": baked_palette, "cells": baked_cells, "chunks": baked_chunks, "parts": parts, "whole": VoxelMesher.to_mesh(whole_surfaces),
+		"shared": shared, "lowest": lowest, "low": low, "high": high, "mass": total * definition.density_scale}
+
+
+## Lazily created statics the bake reads; create them before any thread does.
+static func prepare_bake() -> void:
+	VoxelMesher.get_material()
+	VoxelMesher._prepare()
+
+
+## Takes over a bake() result (before or after entering the tree). Its meshes and
+## boxes go into the pristine cache, so later copies of the same piece reuse them.
+func apply_baked(baked: Dictionary) -> void:
+	var definition: VoxelStructureDefinition = baked["structure"]
+	var per_structure: Dictionary = _pristine_chunks.get(definition, {})
+	if per_structure.is_empty():
+		_pristine_chunks[definition] = per_structure
+	var shared: Dictionary = baked["shared"]
+	for chunk in shared:
+		if not per_structure.has(chunk):
+			per_structure[chunk] = shared[chunk]
+	if not _pristine_whole.has(definition) and baked.get("whole") != null:
+		_pristine_whole[definition] = baked["whole"]
+	# Assigned quietly: the setter would build it all again on the main thread.
+	_set_structure_quietly(definition)
+	_free_whole()
+	for chunk in _chunk_nodes:
+		for node in _chunk_nodes[chunk]:
+			if is_instance_valid(node):
+				remove_child(node)
+				node.queue_free()
+	_chunk_nodes.clear()
+	_clear_owners()
+	surface_state.clear()
+	health.clear()
+	anchors.clear()
+	_dirty.clear()
+	_collision_dirty.clear()
+	voxel_size = definition.voxel_size
+	mass_scale = definition.density_scale
+	palette = baked["palette"]
+	cells = baked["cells"]
+	_chunk_cells = baked["chunks"]
+	_bounds_min = baked["low"]
+	_bounds_max = baked["high"]
+	_bounds_dirty = false
+	_main_material_dirty = true
+	_cached_main_material = null
+	for chunk in _chunk_cells:
+		_dirty[chunk] = true
+		_collision_dirty[chunk] = true
+	if definition.anchor_mode == VoxelStructureDefinition.AnchorMode.BOTTOM_LAYER:
+		for cell in cells:
+			if cell.y == int(baked["lowest"]):
+				anchors[cell] = true
+	if not Engine.is_editor_hint():
+		freeze_mode = RigidBody3D.FREEZE_MODE_STATIC
+		freeze = not anchors.is_empty()
+	mass = maxf(float(baked["mass"]), 0.01)
+	var material := _main_material()
+	if material != null:
+		physics_material_override = material.get_physics_material()
+	_body_properties_dirty = false
+	baked_parts = baked.get("parts", [])
+	_pristine = not Engine.is_editor_hint()
+	# Built now even outside the tree: shapes are cheap to add before the body
+	# joins the physics world.
+	_flush_dirty()
+
+
+func _set_structure_quietly(definition: VoxelStructureDefinition) -> void:
+	_building_quietly = true
+	structure = definition
+	_building_quietly = false
 
 
 ## Exact occupied bounds in cell coordinates, shared by pickup and construction.
@@ -569,6 +885,7 @@ func _detach(group: Array) -> void:
 		if health.has(cell):
 			piece_health[cell - offset] = health[cell]
 	var piece := VoxelBody.create_piece(piece_cells, piece_health, palette, voxel_size)
+	piece.mass_scale = mass_scale
 	var mapping := {}
 	for cell: Vector3i in group:
 		mapping[cell] = cell - offset
@@ -645,6 +962,7 @@ func _spawn_rubble(removed: Dictionary[Vector3i, int], direction: Vector3, stren
 		var piece_cells: Dictionary[Vector3i, int] = {Vector3i.ZERO: 0}
 		var piece_palette: Array[VoxelMaterialDefinition] = [material]
 		var piece := VoxelBody.create_piece(piece_cells, {}, piece_palette, voxel_size)
+		piece.mass_scale = mass_scale
 		piece.mesh_material_override = mesh_material_override
 		piece.is_rubble = true
 		piece.name = "Rubble"
@@ -700,9 +1018,22 @@ func _physics_process(_delta: float) -> void:
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if Engine.is_editor_hint():
 		return
-	ImpactBreaker.process(self, state, _impact_memory, 1.0, not freeze)
+	ImpactBreaker.process(self, state, _impact_memory, 1.0, not freeze and Engine.get_physics_frames() >= _impacts_from_frame)
 
 
 func _on_structure_changed() -> void:
 	if is_node_ready():
 		_build_from_structure()
+		_build_parts()
+
+
+## Small loose things (furniture and its parts, spawned props, rubble, broken
+## pieces) are culled with distance; fixed structures are not.
+func _is_distance_culled() -> bool:
+	return distance_culled or is_rubble or _spawned or (structure != null and not structure.spawn_category.is_empty())
+
+
+## Furniture doors, drawers and lids (see FurnitureAssembly).
+func _build_parts() -> void:
+	if not _spawned and structure != null and (not structure.moving_parts.is_empty() or get_node_or_null(^"Assembly") != null):
+		FurnitureAssembly.build(self)

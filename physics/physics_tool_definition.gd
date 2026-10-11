@@ -119,6 +119,12 @@ enum AimMode {
 ## Layers a strike can hit. The tool and its user are always excluded.
 @export_flags_3d_physics var hit_mask: int = 1 | 2 | 4 | 16
 
+@export_group("Secondary Strike")
+## A second attack on RMB (e.g. a knife's stab). Its windup and strike poses,
+## timing, charging and impact settings are used; rest pose, grip and motion
+## strikes always come from this (primary) definition.
+@export var secondary_strike: PhysicsToolDefinition
+
 
 func get_total_action_time() -> float:
 	return windup_time + strike_time + recover_time + cooldown

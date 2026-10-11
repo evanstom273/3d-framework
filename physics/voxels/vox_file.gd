@@ -48,7 +48,7 @@ static func read(path: String) -> Dictionary:
 ## Builds fill boxes (one per merged run of same-coloured voxels). Colours close to
 ## one of `extra_materials`' colours use that material instead of `material`.
 static func to_boxes(path: String, material: VoxelMaterialDefinition, keep_colors: bool,
-		extra_materials: Array[VoxelMaterialDefinition] = []) -> Array[VoxelFillBox]:
+		extra_materials: Array[VoxelMaterialDefinition] = [], index_materials: Dictionary = {}) -> Array[VoxelFillBox]:
 	var boxes: Array[VoxelFillBox] = []
 	var data := read(path)
 	if data.is_empty() or material == null:
@@ -59,7 +59,7 @@ static func to_boxes(path: String, material: VoxelMaterialDefinition, keep_color
 		var v: Vector3i = entry[0]
 		var cell := Vector3i(v.x - size.x / 2, v.z, (size.y - 1 - v.y) - size.y / 2)
 		# Keep colour indices apart when they map to different materials.
-		var key: int = entry[1] if keep_colors or not extra_materials.is_empty() else 0
+		var key: int = entry[1] if keep_colors or not extra_materials.is_empty() or not index_materials.is_empty() else 0
 		if not by_color.has(key):
 			by_color[key] = {}
 		by_color[key][cell] = true
@@ -67,10 +67,14 @@ static func to_boxes(path: String, material: VoxelMaterialDefinition, keep_color
 	for key in by_color:
 		var color: Color = palette[key]
 		var box_material := material
-		for extra in extra_materials:
-			if extra != null and _color_distance(extra.color, color) < 0.06:
-				box_material = extra
-				break
+		# An explicit palette-index material (generated models) wins over colour matching.
+		if index_materials.has(key) and index_materials[key] is VoxelMaterialDefinition:
+			box_material = index_materials[key]
+		else:
+			for extra in extra_materials:
+				if extra != null and _color_distance(extra.color, color) < 0.06:
+					box_material = extra
+					break
 		for run in VoxelCollider.merge(by_color[key]):
 			var box := VoxelFillBox.new()
 			box.min_cell = run[0]
@@ -125,6 +129,36 @@ static func write_cells(path: String, size: Vector3i, cells: Dictionary) -> Erro
 	var rgba := PackedByteArray()
 	for i in 256:
 		var c := colors[i] if i < colors.size() else Color(0.5, 0.5, 0.5)
+		rgba.append_array(PackedByteArray([c.r8, c.g8, c.b8, 255]))
+	children.append_array(_chunk("RGBA", rgba))
+	var file := FileAccess.open(path, FileAccess.WRITE)
+	if file == null:
+		return FileAccess.get_open_error()
+	file.store_buffer("VOX ".to_ascii_buffer())
+	file.store_32(150)
+	file.store_buffer("MAIN".to_ascii_buffer())
+	file.store_32(0)
+	file.store_32(children.size())
+	file.store_buffer(children)
+	return OK
+
+
+## Writes Godot-space cells ({Vector3i: palette index 1..255}) with an explicit
+## palette (palette[i] is index i's colour; index 0 unused). Unlike write_cells the
+## caller owns the indices, so it can map them to materials.
+static func write_indexed(path: String, size: Vector3i, cells: Dictionary, palette: PackedColorArray) -> Error:
+	var voxels := PackedByteArray()
+	for cell: Vector3i in cells:
+		voxels.append_array(PackedByteArray([cell.x, size.z - 1 - cell.z, cell.y, int(cells[cell])]))
+	var children := PackedByteArray()
+	children.append_array(_chunk("SIZE", _ints([size.x, size.z, size.y])))
+	var xyzi := _ints([cells.size()])
+	xyzi.append_array(voxels)
+	children.append_array(_chunk("XYZI", xyzi))
+	var rgba := PackedByteArray()
+	# The RGBA chunk's entry i holds colour index i + 1.
+	for i in 256:
+		var c := palette[i + 1] if i + 1 < palette.size() else Color(0.5, 0.5, 0.5)
 		rgba.append_array(PackedByteArray([c.r8, c.g8, c.b8, 255]))
 	children.append_array(_chunk("RGBA", rgba))
 	var file := FileAccess.open(path, FileAccess.WRITE)

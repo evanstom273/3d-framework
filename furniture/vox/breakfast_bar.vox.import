@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://d20cbcureuxqh"
+path="res://.godot/imported/breakfast_bar.vox-df1e6e7afc6fd64d0b3f0f40f9905b15.tres"
+
+[deps]
+
+source_file="res://furniture/vox/breakfast_bar.vox"
+dest_files=["res://.godot/imported/breakfast_bar.vox-df1e6e7afc6fd64d0b3f0f40f9905b15.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

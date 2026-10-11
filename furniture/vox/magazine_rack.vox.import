@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://yt2b72i1ou03"
+path="res://.godot/imported/magazine_rack.vox-638be5478184a31af6899773184b38d7.tres"
+
+[deps]
+
+source_file="res://furniture/vox/magazine_rack.vox"
+dest_files=["res://.godot/imported/magazine_rack.vox-638be5478184a31af6899773184b38d7.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

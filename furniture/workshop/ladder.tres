@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://bhlo7p3qjy4tb"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_pn8pe"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_ot7l1"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_6ujuw"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_8ki68"]
+[ext_resource type="Resource" path="res://furniture/materials/rubber.tres" id="5_egpim"]
+[ext_resource type="Resource" path="res://furniture/materials/aluminium.tres" id="6_nk3gw"]
+[ext_resource type="Resource" path="res://furniture/materials/plastic.tres" id="7_xecjk"]
+
+[resource]
+script = ExtResource("3_6ujuw")
+display_name = "Stepladder"
+spawn_category = "Workshop"
+voxel_size = 0.022
+anchor_mode = 1
+density_scale = 0.8477937270385573
+vox_file = "res://furniture/vox/ladder.vox"
+vox_material = ExtResource("6_nk3gw")
+vox_index_materials = {
+1: ExtResource("5_egpim"),
+2: ExtResource("6_nk3gw"),
+3: ExtResource("6_nk3gw"),
+4: ExtResource("7_xecjk")
+}

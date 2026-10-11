@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://byh5oxajc1nic"]
+
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_xw5d2"]
+
+[resource]
+script = ExtResource("1_xw5d2")
+display_name = "Plywood"
+color = Color(0.78, 0.66, 0.48, 1)
+color_jitter = 0.0
+strength = 6.0
+density = 600.0
+friction = 0.7
+bounce = 0.08
+sharp_multiplier = 1.1
+impact_sound = 1
+rubble_fraction = 0.3

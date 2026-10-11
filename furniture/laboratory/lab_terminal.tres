@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://dbqe3t2cjqmbw"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_7f4fk"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_t61gp"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_3qpyw"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_06l5f"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_steel.tres" id="5_7ga84"]
+[ext_resource type="Resource" path="res://furniture/materials/plastic.tres" id="6_8k4nb"]
+[ext_resource type="Resource" path="res://furniture/materials/screen.tres" id="7_1jyj3"]
+
+[resource]
+script = ExtResource("3_3qpyw")
+display_name = "Laboratory Computer Terminal"
+spawn_category = "Laboratory"
+voxel_size = 0.022
+anchor_mode = 1
+density_scale = 0.26967044390539124
+vox_file = "res://furniture/vox/lab_terminal.vox"
+vox_material = ExtResource("5_7ga84")
+vox_index_materials = {
+1: ExtResource("5_7ga84"),
+2: ExtResource("6_8k4nb"),
+3: ExtResource("7_1jyj3"),
+4: ExtResource("6_8k4nb")
+}

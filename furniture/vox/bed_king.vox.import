@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://b87mmsllk1wn"
+path="res://.godot/imported/bed_king.vox-8e30f8d6f23e366586902a350ff58d2f.tres"
+
+[deps]
+
+source_file="res://furniture/vox/bed_king.vox"
+dest_files=["res://.godot/imported/bed_king.vox-8e30f8d6f23e366586902a350ff58d2f.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

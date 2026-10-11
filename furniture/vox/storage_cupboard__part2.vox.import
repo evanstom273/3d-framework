@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://c5y7w31yqm506"
+path="res://.godot/imported/storage_cupboard__part2.vox-8dcb286d2e8162977f107e1d351aa47b.tres"
+
+[deps]
+
+source_file="res://furniture/vox/storage_cupboard__part2.vox"
+dest_files=["res://.godot/imported/storage_cupboard__part2.vox-8dcb286d2e8162977f107e1d351aa47b.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

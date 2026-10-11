@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://c6yyohh1u7swp"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_h46td"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_1na1p"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_uqrm5"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_vbcni"]
+[ext_resource type="Resource" uid="uid://bgrnpiwfmjxib" path="res://furniture/materials/painted_wood.tres" id="5_l5ed3"]
+[ext_resource type="Resource" uid="uid://cqjn2l6wntvg5" path="res://furniture/materials/wicker.tres" id="6_uvjmm"]
+[ext_resource type="Resource" uid="uid://2lwgqxnq8yv5" path="res://furniture/materials/fabric.tres" id="7_dwibe"]
+
+[sub_resource type="Resource" id="Resource_vt71y"]
+script = ExtResource("3_uqrm5")
+display_name = "Storage Bench Basket"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.4180001306250754
+vox_file = "res://furniture/vox/storage_bench__part1.vox"
+vox_material = ExtResource("5_l5ed3")
+vox_index_materials = {
+1: ExtResource("5_l5ed3"),
+2: ExtResource("6_uvjmm"),
+3: ExtResource("6_uvjmm"),
+4: ExtResource("7_dwibe"),
+5: ExtResource("7_dwibe")
+}
+
+[sub_resource type="Resource" id="Resource_gu1i6"]
+script = ExtResource("2_1na1p")
+label = "Basket"
+kind = 1
+structure = SubResource("Resource_vt71y")
+pivot = Vector3(-0.25, 0.15, -0.17999999)
+axis = Vector3(0, 0, -1)
+amount = 0.28
+
+[sub_resource type="Resource" id="Resource_0hscc"]
+script = ExtResource("3_uqrm5")
+display_name = "Storage Bench Basket"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.4180001306250754
+vox_file = "res://furniture/vox/storage_bench__part2.vox"
+vox_material = ExtResource("5_l5ed3")
+vox_index_materials = {
+1: ExtResource("5_l5ed3"),
+2: ExtResource("6_uvjmm"),
+3: ExtResource("6_uvjmm"),
+4: ExtResource("7_dwibe"),
+5: ExtResource("7_dwibe")
+}
+
+[sub_resource type="Resource" id="Resource_amf8m"]
+script = ExtResource("2_1na1p")
+label = "Basket"
+kind = 1
+structure = SubResource("Resource_0hscc")
+pivot = Vector3(0.25, 0.15, -0.17999999)
+axis = Vector3(0, 0, -1)
+amount = 0.28
+
+[resource]
+script = ExtResource("3_uqrm5")
+display_name = "Storage Bench"
+spawn_category = "Bedroom"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.4180001306250754
+vox_file = "res://furniture/vox/storage_bench.vox"
+vox_material = ExtResource("5_l5ed3")
+vox_index_materials = {
+1: ExtResource("5_l5ed3"),
+2: ExtResource("6_uvjmm"),
+3: ExtResource("6_uvjmm"),
+4: ExtResource("7_dwibe"),
+5: ExtResource("7_dwibe")
+}
+moving_parts = Array[ExtResource("2_1na1p")]([SubResource("Resource_gu1i6"), SubResource("Resource_amf8m")])

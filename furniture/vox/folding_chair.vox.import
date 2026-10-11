@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://djdln0y7yc6a3"
+path="res://.godot/imported/folding_chair.vox-fa12b869a346241c0018269b4eb742e8.tres"
+
+[deps]
+
+source_file="res://furniture/vox/folding_chair.vox"
+dest_files=["res://.godot/imported/folding_chair.vox-fa12b869a346241c0018269b4eb742e8.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

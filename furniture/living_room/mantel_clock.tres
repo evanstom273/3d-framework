@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://ciaows242ljtt"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_d5o8u"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_1pruj"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_8seom"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_3pdwn"]
+[ext_resource type="Resource" path="res://furniture/materials/walnut.tres" id="5_180ky"]
+[ext_resource type="Resource" path="res://furniture/materials/brass.tres" id="6_lmwus"]
+[ext_resource type="Resource" path="res://furniture/materials/ceramic.tres" id="7_6dup0"]
+[ext_resource type="Resource" path="res://furniture/materials/cast_iron.tres" id="8_5uf2t"]
+
+[resource]
+script = ExtResource("3_8seom")
+display_name = "Mantel Clock"
+spawn_category = "Living Room"
+voxel_size = 0.012
+anchor_mode = 1
+density_scale = 0.8853012233871324
+vox_file = "res://furniture/vox/mantel_clock.vox"
+vox_material = ExtResource("5_180ky")
+vox_index_materials = {
+1: ExtResource("5_180ky"),
+2: ExtResource("5_180ky"),
+3: ExtResource("5_180ky"),
+4: ExtResource("6_lmwus"),
+5: ExtResource("6_lmwus"),
+6: ExtResource("7_6dup0"),
+7: ExtResource("8_5uf2t")
+}

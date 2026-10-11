@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bukthxs7byjdv"
+path="res://.godot/imported/kitchen_island__part3.vox-844d4ca8db70c11a388f85dd82bb91bc.tres"
+
+[deps]
+
+source_file="res://furniture/vox/kitchen_island__part3.vox"
+dest_files=["res://.godot/imported/kitchen_island__part3.vox-844d4ca8db70c11a388f85dd82bb91bc.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

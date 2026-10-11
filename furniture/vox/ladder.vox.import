@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bt308o36j80vb"
+path="res://.godot/imported/ladder.vox-c7f12e2e67d98602b777c5477bde6985.tres"
+
+[deps]
+
+source_file="res://furniture/vox/ladder.vox"
+dest_files=["res://.godot/imported/ladder.vox-c7f12e2e67d98602b777c5477bde6985.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

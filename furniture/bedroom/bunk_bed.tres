@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://bkksjjxj2sc8x"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_kso27"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_34pgk"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_gwkwf"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_4pxwi"]
+[ext_resource type="Resource" path="res://furniture/materials/pine.tres" id="5_huqi3"]
+[ext_resource type="Resource" path="res://furniture/materials/foam.tres" id="6_t1drj"]
+[ext_resource type="Resource" path="res://furniture/materials/fabric.tres" id="7_6dkni"]
+
+[resource]
+script = ExtResource("3_gwkwf")
+display_name = "Bunk Bed"
+spawn_category = "Bedroom"
+voxel_size = 0.045
+anchor_mode = 1
+density_scale = 0.6785553810396228
+vox_file = "res://furniture/vox/bunk_bed.vox"
+vox_material = ExtResource("5_huqi3")
+vox_index_materials = {
+1: ExtResource("5_huqi3"),
+2: ExtResource("5_huqi3"),
+3: ExtResource("5_huqi3"),
+4: ExtResource("6_t1drj"),
+5: ExtResource("6_t1drj"),
+6: ExtResource("7_6dkni"),
+7: ExtResource("7_6dkni"),
+8: ExtResource("7_6dkni"),
+9: ExtResource("7_6dkni")
+}

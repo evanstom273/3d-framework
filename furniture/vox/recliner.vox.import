@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dr7wquplhw5nn"
+path="res://.godot/imported/recliner.vox-32aa302abdd6505cf1045e17dd83e440.tres"
+
+[deps]
+
+source_file="res://furniture/vox/recliner.vox"
+dest_files=["res://.godot/imported/recliner.vox-32aa302abdd6505cf1045e17dd83e440.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

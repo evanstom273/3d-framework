@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://b5evcxyfxoli5"
+path="res://.godot/imported/clothes_rail.vox-7818c10d8d7e70abf4cb77a0679d7003.tres"
+
+[deps]
+
+source_file="res://furniture/vox/clothes_rail.vox"
+dest_files=["res://.godot/imported/clothes_rail.vox-7818c10d8d7e70abf4cb77a0679d7003.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

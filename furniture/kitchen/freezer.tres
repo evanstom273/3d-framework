@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://cv170rpdfjh1d"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_1bbtd"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_1kk3s"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_wg4eu"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_8h256"]
+[ext_resource type="Resource" uid="uid://c3oyba533fuca" path="res://furniture/materials/painted_steel.tres" id="5_vhj40"]
+[ext_resource type="Resource" uid="uid://dw4suus87xjs" path="res://furniture/materials/plastic.tres" id="6_4wn3a"]
+
+[sub_resource type="Resource" id="Resource_7ei5c"]
+script = ExtResource("3_wg4eu")
+display_name = "Chest Freezer Lid"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.41634878673353176
+vox_file = "res://furniture/vox/freezer__part1.vox"
+vox_material = ExtResource("5_vhj40")
+vox_index_materials = {
+1: ExtResource("5_vhj40"),
+2: ExtResource("5_vhj40"),
+3: ExtResource("6_4wn3a")
+}
+
+[sub_resource type="Resource" id="Resource_un5vh"]
+script = ExtResource("2_1kk3s")
+label = "Lid"
+structure = SubResource("Resource_7ei5c")
+pivot = Vector3(0, 0.8600001, 0.33)
+axis = Vector3(1, 0, 0)
+amount = 80.0
+
+[resource]
+script = ExtResource("3_wg4eu")
+display_name = "Chest Freezer"
+spawn_category = "Kitchen"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.41634878673353176
+vox_file = "res://furniture/vox/freezer.vox"
+vox_material = ExtResource("5_vhj40")
+vox_index_materials = {
+1: ExtResource("5_vhj40"),
+2: ExtResource("5_vhj40"),
+3: ExtResource("6_4wn3a")
+}
+moving_parts = Array[ExtResource("2_1kk3s")]([SubResource("Resource_un5vh")])

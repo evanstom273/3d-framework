@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://ddd86oaigekma"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_mfcod"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_xh1pp"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_we0g0"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_u516e"]
+[ext_resource type="Resource" uid="uid://dw4suus87xjs" path="res://furniture/materials/plastic.tres" id="5_8ndq1"]
+
+[sub_resource type="Resource" id="Resource_3p28h"]
+script = ExtResource("3_we0g0")
+display_name = "Compost Bin Lid"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.38001929785494226
+vox_file = "res://furniture/vox/compost_bin__part1.vox"
+vox_material = ExtResource("5_8ndq1")
+vox_index_materials = {
+1: ExtResource("5_8ndq1"),
+2: ExtResource("5_8ndq1")
+}
+
+[sub_resource type="Resource" id="Resource_jrb84"]
+script = ExtResource("2_xh1pp")
+label = "Lid"
+structure = SubResource("Resource_3p28h")
+pivot = Vector3(0.010000015, 0.8600001, 0.31000003)
+axis = Vector3(1, 0, 0)
+
+[resource]
+script = ExtResource("3_we0g0")
+display_name = "Compost Bin"
+spawn_category = "Garden"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.38001929785494226
+vox_file = "res://furniture/vox/compost_bin.vox"
+vox_material = ExtResource("5_8ndq1")
+vox_index_materials = {
+1: ExtResource("5_8ndq1"),
+2: ExtResource("5_8ndq1")
+}
+moving_parts = Array[ExtResource("2_xh1pp")]([SubResource("Resource_jrb84")])

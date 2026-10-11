@@ -1,0 +1,132 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://bdty0qgiwetlh"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_1vasg"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_e6xmx"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_pc8ac"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_xx7mb"]
+[ext_resource type="Resource" uid="uid://bgrnpiwfmjxib" path="res://furniture/materials/painted_wood.tres" id="5_bosms"]
+[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="6_fxbm1"]
+[ext_resource type="Resource" uid="uid://2lwgqxnq8yv5" path="res://furniture/materials/fabric.tres" id="7_shpj0"]
+[ext_resource type="Resource" uid="uid://de8xv7dfh7g41" path="res://furniture/materials/brass.tres" id="8_wsjfb"]
+
+[sub_resource type="Resource" id="Resource_61218"]
+script = ExtResource("3_pc8ac")
+display_name = "Double Wardrobe Door"
+voxel_size = 0.045
+anchor_mode = 1
+density_scale = 0.28779434351644617
+vox_file = "res://furniture/vox/wardrobe_double__part1.vox"
+vox_material = ExtResource("5_bosms")
+vox_index_materials = {
+1: ExtResource("5_bosms"),
+2: ExtResource("6_fxbm1"),
+3: ExtResource("6_fxbm1"),
+4: ExtResource("7_shpj0"),
+5: ExtResource("7_shpj0"),
+6: ExtResource("7_shpj0"),
+7: ExtResource("7_shpj0"),
+8: ExtResource("7_shpj0"),
+9: ExtResource("7_shpj0"),
+10: ExtResource("7_shpj0"),
+11: ExtResource("7_shpj0"),
+12: ExtResource("5_bosms"),
+13: ExtResource("8_wsjfb"),
+14: ExtResource("8_wsjfb")
+}
+
+[sub_resource type="Resource" id="Resource_w84km"]
+script = ExtResource("2_e6xmx")
+structure = SubResource("Resource_61218")
+pivot = Vector3(-0.49000004, 1.095, -0.292)
+
+[sub_resource type="Resource" id="Resource_1q7mc"]
+script = ExtResource("3_pc8ac")
+display_name = "Double Wardrobe Door"
+voxel_size = 0.045
+anchor_mode = 1
+density_scale = 0.28779434351644617
+vox_file = "res://furniture/vox/wardrobe_double__part2.vox"
+vox_material = ExtResource("5_bosms")
+vox_index_materials = {
+1: ExtResource("5_bosms"),
+2: ExtResource("6_fxbm1"),
+3: ExtResource("6_fxbm1"),
+4: ExtResource("7_shpj0"),
+5: ExtResource("7_shpj0"),
+6: ExtResource("7_shpj0"),
+7: ExtResource("7_shpj0"),
+8: ExtResource("7_shpj0"),
+9: ExtResource("7_shpj0"),
+10: ExtResource("7_shpj0"),
+11: ExtResource("7_shpj0"),
+12: ExtResource("5_bosms"),
+13: ExtResource("8_wsjfb"),
+14: ExtResource("8_wsjfb")
+}
+
+[sub_resource type="Resource" id="Resource_w7udf"]
+script = ExtResource("2_e6xmx")
+structure = SubResource("Resource_1q7mc")
+pivot = Vector3(0.495, 1.095, -0.292)
+amount = -100.0
+
+[sub_resource type="Resource" id="Resource_dk5t4"]
+script = ExtResource("3_pc8ac")
+display_name = "Double Wardrobe Drawer"
+voxel_size = 0.045
+anchor_mode = 1
+density_scale = 0.28779434351644617
+vox_file = "res://furniture/vox/wardrobe_double__part3.vox"
+vox_material = ExtResource("5_bosms")
+vox_index_materials = {
+1: ExtResource("5_bosms"),
+2: ExtResource("6_fxbm1"),
+3: ExtResource("6_fxbm1"),
+4: ExtResource("7_shpj0"),
+5: ExtResource("7_shpj0"),
+6: ExtResource("7_shpj0"),
+7: ExtResource("7_shpj0"),
+8: ExtResource("7_shpj0"),
+9: ExtResource("7_shpj0"),
+10: ExtResource("7_shpj0"),
+11: ExtResource("7_shpj0"),
+12: ExtResource("5_bosms"),
+13: ExtResource("8_wsjfb"),
+14: ExtResource("8_wsjfb")
+}
+
+[sub_resource type="Resource" id="Resource_lrlyn"]
+script = ExtResource("2_e6xmx")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_dk5t4")
+pivot = Vector3(0.0049999813, 0.2, -0.292)
+axis = Vector3(0, 0, -1)
+amount = 0.375
+
+[resource]
+script = ExtResource("3_pc8ac")
+display_name = "Double Wardrobe"
+spawn_category = "Bedroom"
+voxel_size = 0.045
+anchor_mode = 1
+density_scale = 0.28779434351644617
+vox_file = "res://furniture/vox/wardrobe_double.vox"
+vox_material = ExtResource("5_bosms")
+vox_index_materials = {
+1: ExtResource("5_bosms"),
+2: ExtResource("6_fxbm1"),
+3: ExtResource("6_fxbm1"),
+4: ExtResource("7_shpj0"),
+5: ExtResource("7_shpj0"),
+6: ExtResource("7_shpj0"),
+7: ExtResource("7_shpj0"),
+8: ExtResource("7_shpj0"),
+9: ExtResource("7_shpj0"),
+10: ExtResource("7_shpj0"),
+11: ExtResource("7_shpj0"),
+12: ExtResource("5_bosms"),
+13: ExtResource("8_wsjfb"),
+14: ExtResource("8_wsjfb")
+}
+moving_parts = Array[ExtResource("2_e6xmx")]([SubResource("Resource_w84km"), SubResource("Resource_w7udf"), SubResource("Resource_lrlyn")])

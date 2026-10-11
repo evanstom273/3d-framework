@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dilg1snnfb4jl"
+path="res://.godot/imported/lab_terminal.vox-8f15865b93cd93bdc190d4f319eab9c6.tres"
+
+[deps]
+
+source_file="res://furniture/vox/lab_terminal.vox"
+dest_files=["res://.godot/imported/lab_terminal.vox-8f15865b93cd93bdc190d4f319eab9c6.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

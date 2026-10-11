@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://b35qn5rhpjy1s"
+path="res://.godot/imported/toilet_roll_holder.vox-562bff5b98a280dfc53b45ee93129c4d.tres"
+
+[deps]
+
+source_file="res://furniture/vox/toilet_roll_holder.vox"
+dest_files=["res://.godot/imported/toilet_roll_holder.vox-562bff5b98a280dfc53b45ee93129c4d.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

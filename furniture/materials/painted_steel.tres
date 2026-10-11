@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://c3oyba533fuca"]
+
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_y8a4v"]
+
+[resource]
+script = ExtResource("1_y8a4v")
+display_name = "Painted steel"
+color = Color(0.3, 0.35, 0.42, 1)
+color_jitter = 0.0
+strength = 28.0
+density = 850.0
+friction = 0.5
+blunt_multiplier = 0.65
+sharp_multiplier = 0.35
+pierce_multiplier = 0.5
+impact_sound = 2
+rubble_fraction = 0.05

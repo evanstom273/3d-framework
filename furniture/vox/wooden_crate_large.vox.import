@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bcucbij2p26gr"
+path="res://.godot/imported/wooden_crate_large.vox-be73aa32d0e6dc270a7ba301446ca153.tres"
+
+[deps]
+
+source_file="res://furniture/vox/wooden_crate_large.vox"
+dest_files=["res://.godot/imported/wooden_crate_large.vox-be73aa32d0e6dc270a7ba301446ca153.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

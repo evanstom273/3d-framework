@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://b7xyeuo2q7m3n"
+path="res://.godot/imported/folding_table.vox-63ebcbdc5a78be07461cb8a49200377d.tres"
+
+[deps]
+
+source_file="res://furniture/vox/folding_table.vox"
+dest_files=["res://.godot/imported/folding_table.vox-63ebcbdc5a78be07461cb8a49200377d.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

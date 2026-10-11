@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://sxrou78tt24v"
+path="res://.godot/imported/vice.vox-102ea7f6b059984d8587b310f6225466.tres"
+
+[deps]
+
+source_file="res://furniture/vox/vice.vox"
+dest_files=["res://.godot/imported/vice.vox-102ea7f6b059984d8587b310f6225466.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

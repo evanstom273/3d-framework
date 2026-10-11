@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://docpaco782yay"
+path="res://.godot/imported/shower_enclosure.vox-88da2606258e5745b407cca364e36866.tres"
+
+[deps]
+
+source_file="res://furniture/vox/shower_enclosure.vox"
+dest_files=["res://.godot/imported/shower_enclosure.vox-88da2606258e5745b407cca364e36866.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

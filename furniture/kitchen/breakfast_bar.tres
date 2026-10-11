@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://b8111w6xptinu"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_as6gh"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_0twqy"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_wft8o"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_2yfj2"]
+[ext_resource type="Resource" path="res://furniture/materials/oak.tres" id="5_g5ccb"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_steel.tres" id="6_3c8da"]
+
+[resource]
+script = ExtResource("3_wft8o")
+display_name = "Breakfast Bar"
+spawn_category = "Kitchen"
+voxel_size = 0.022
+anchor_mode = 1
+density_scale = 2.1900390628506208
+vox_file = "res://furniture/vox/breakfast_bar.vox"
+vox_material = ExtResource("5_g5ccb")
+vox_index_materials = {
+1: ExtResource("5_g5ccb"),
+2: ExtResource("5_g5ccb"),
+3: ExtResource("5_g5ccb"),
+4: ExtResource("6_3c8da")
+}

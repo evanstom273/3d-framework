@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://dc4r1d8yi1odf"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_4l63j"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_n03ml"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_vk8q2"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_4uw48"]
+[ext_resource type="Resource" path="res://furniture/materials/oak.tres" id="5_8avr2"]
+[ext_resource type="Resource" path="res://furniture/materials/plywood.tres" id="6_5xldt"]
+[ext_resource type="Resource" path="res://furniture/materials/steel.tres" id="7_dtcnl"]
+[ext_resource type="Resource" path="res://furniture/materials/plastic.tres" id="8_88kxl"]
+
+[resource]
+script = ExtResource("3_vk8q2")
+display_name = "Pegboard"
+spawn_category = "Workshop"
+voxel_size = 0.018
+anchor_mode = 1
+density_scale = 0.9342425531338818
+vox_file = "res://furniture/vox/pegboard.vox"
+vox_material = ExtResource("6_5xldt")
+vox_index_materials = {
+1: ExtResource("5_8avr2"),
+2: ExtResource("5_8avr2"),
+3: ExtResource("5_8avr2"),
+4: ExtResource("6_5xldt"),
+5: ExtResource("7_dtcnl"),
+6: ExtResource("7_dtcnl"),
+7: ExtResource("8_88kxl"),
+8: ExtResource("8_88kxl"),
+9: ExtResource("8_88kxl"),
+10: ExtResource("8_88kxl")
+}

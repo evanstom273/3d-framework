@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://dtjm2qdm0g7xp"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_nbfh3"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_65emr"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_7kc2f"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_6s3ka"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_steel.tres" id="5_ao5bf"]
+[ext_resource type="Resource" path="res://furniture/materials/plywood.tres" id="6_douk3"]
+
+[resource]
+script = ExtResource("3_7kc2f")
+display_name = "Folding Chair"
+spawn_category = "Utility"
+voxel_size = 0.020499999821186065
+anchor_mode = 1
+density_scale = 0.9285065845607873
+vox_file = "res://furniture/vox/folding_chair.vox"
+vox_material = ExtResource("5_ao5bf")
+vox_index_materials = {
+1: ExtResource("5_ao5bf"),
+2: ExtResource("6_douk3"),
+3: ExtResource("6_douk3"),
+4: ExtResource("6_douk3")
+}

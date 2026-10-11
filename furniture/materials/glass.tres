@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://cqju2cnc1vrtw"]
+
+[ext_resource type="Material" path="res://house/assets/materials/transparent_glass.tres" id="1_5mq1r"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="2_saupf"]
+
+[resource]
+script = ExtResource("2_saupf")
+display_name = "Glass"
+color = Color(0.69, 0.86, 0.92, 1)
+mesh_material_override = ExtResource("1_5mq1r")
+color_jitter = 0.0
+strength = 1.2
+density = 1300.0
+friction = 0.4
+blunt_multiplier = 1.6
+pierce_multiplier = 1.5
+impact_sound = 7
+rubble_fraction = 0.45

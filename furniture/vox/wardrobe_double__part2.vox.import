@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://baxhx2fhnkck7"
+path="res://.godot/imported/wardrobe_double__part2.vox-b212ce7c6aa45fd90b35ee8bfa3fd8a1.tres"
+
+[deps]
+
+source_file="res://furniture/vox/wardrobe_double__part2.vox"
+dest_files=["res://.godot/imported/wardrobe_double__part2.vox-b212ce7c6aa45fd90b35ee8bfa3fd8a1.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

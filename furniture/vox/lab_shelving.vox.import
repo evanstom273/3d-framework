@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://b3rkljpceg735"
+path="res://.godot/imported/lab_shelving.vox-30fd381ca060fc57757b7b0fd87f7051.tres"
+
+[deps]
+
+source_file="res://furniture/vox/lab_shelving.vox"
+dest_files=["res://.godot/imported/lab_shelving.vox-30fd381ca060fc57757b7b0fd87f7051.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

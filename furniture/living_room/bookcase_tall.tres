@@ -1,0 +1,104 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://ctubf368wk0pl"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_htsku"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_n13cq"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_wrnmd"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_pmshi"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_wood.tres" id="5_hjipd"]
+[ext_resource type="Resource" path="res://furniture/materials/plywood.tres" id="6_ysex8"]
+[ext_resource type="Resource" path="res://furniture/materials/paper.tres" id="7_etues"]
+
+[resource]
+script = ExtResource("3_wrnmd")
+display_name = "Tall Bookcase"
+spawn_category = "Living Room"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.3078324898722931
+vox_file = "res://furniture/vox/bookcase_tall.vox"
+vox_material = ExtResource("5_hjipd")
+vox_index_materials = {
+1: ExtResource("5_hjipd"),
+2: ExtResource("6_ysex8"),
+3: ExtResource("7_etues"),
+4: ExtResource("7_etues"),
+5: ExtResource("7_etues"),
+6: ExtResource("7_etues"),
+7: ExtResource("7_etues"),
+8: ExtResource("7_etues"),
+9: ExtResource("7_etues"),
+10: ExtResource("7_etues"),
+11: ExtResource("7_etues"),
+12: ExtResource("7_etues"),
+13: ExtResource("7_etues"),
+14: ExtResource("7_etues"),
+15: ExtResource("7_etues"),
+16: ExtResource("7_etues"),
+17: ExtResource("7_etues"),
+18: ExtResource("7_etues"),
+19: ExtResource("7_etues"),
+20: ExtResource("7_etues"),
+21: ExtResource("7_etues"),
+22: ExtResource("7_etues"),
+23: ExtResource("7_etues"),
+24: ExtResource("7_etues"),
+25: ExtResource("7_etues"),
+26: ExtResource("7_etues"),
+27: ExtResource("7_etues"),
+28: ExtResource("7_etues"),
+29: ExtResource("7_etues"),
+30: ExtResource("7_etues"),
+31: ExtResource("7_etues"),
+32: ExtResource("7_etues"),
+33: ExtResource("7_etues"),
+34: ExtResource("7_etues"),
+35: ExtResource("7_etues"),
+36: ExtResource("7_etues"),
+37: ExtResource("7_etues"),
+38: ExtResource("7_etues"),
+39: ExtResource("7_etues"),
+40: ExtResource("7_etues"),
+41: ExtResource("7_etues"),
+42: ExtResource("7_etues"),
+43: ExtResource("7_etues"),
+44: ExtResource("7_etues"),
+45: ExtResource("7_etues"),
+46: ExtResource("7_etues"),
+47: ExtResource("7_etues"),
+48: ExtResource("7_etues"),
+49: ExtResource("7_etues"),
+50: ExtResource("7_etues"),
+51: ExtResource("7_etues"),
+52: ExtResource("7_etues"),
+53: ExtResource("7_etues"),
+54: ExtResource("7_etues"),
+55: ExtResource("7_etues"),
+56: ExtResource("7_etues"),
+57: ExtResource("7_etues"),
+58: ExtResource("7_etues"),
+59: ExtResource("7_etues"),
+60: ExtResource("7_etues"),
+61: ExtResource("7_etues"),
+62: ExtResource("7_etues"),
+63: ExtResource("7_etues"),
+64: ExtResource("7_etues"),
+65: ExtResource("7_etues"),
+66: ExtResource("7_etues"),
+67: ExtResource("7_etues"),
+68: ExtResource("7_etues"),
+69: ExtResource("7_etues"),
+70: ExtResource("7_etues"),
+71: ExtResource("7_etues"),
+72: ExtResource("7_etues"),
+73: ExtResource("7_etues"),
+74: ExtResource("7_etues"),
+75: ExtResource("7_etues"),
+76: ExtResource("7_etues"),
+77: ExtResource("7_etues"),
+78: ExtResource("7_etues"),
+79: ExtResource("7_etues"),
+80: ExtResource("7_etues"),
+81: ExtResource("7_etues"),
+82: ExtResource("7_etues"),
+83: ExtResource("7_etues")
+}

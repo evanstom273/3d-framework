@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://b3hs582neorda"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_yofqx"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_6kvee"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_nnkps"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_42bfh"]
+[ext_resource type="Resource" uid="uid://bgrnpiwfmjxib" path="res://furniture/materials/painted_wood.tres" id="5_5j02d"]
+[ext_resource type="Resource" uid="uid://do6r55lv41aud" path="res://furniture/materials/oak.tres" id="6_ghdyt"]
+[ext_resource type="Resource" uid="uid://2t7j78nojlx7" path="res://furniture/materials/ceramic.tres" id="7_yj5ue"]
+
+[sub_resource type="Resource" id="Resource_wnni3"]
+script = ExtResource("3_nnkps")
+display_name = "Bedside Cabinet Drawer"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.7483909594372249
+vox_file = "res://furniture/vox/bedside_cabinet__part1.vox"
+vox_material = ExtResource("5_5j02d")
+vox_index_materials = {
+1: ExtResource("5_5j02d"),
+2: ExtResource("6_ghdyt"),
+3: ExtResource("6_ghdyt"),
+4: ExtResource("6_ghdyt"),
+5: ExtResource("7_yj5ue")
+}
+
+[sub_resource type="Resource" id="Resource_q6bwb"]
+script = ExtResource("2_6kvee")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_wnni3")
+pivot = Vector3(0.005000019, 0.465, -0.17999999)
+axis = Vector3(0, 0, -1)
+amount = 0.2625000044703484
+
+[sub_resource type="Resource" id="Resource_l0qra"]
+script = ExtResource("3_nnkps")
+display_name = "Bedside Cabinet Door"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.7483909594372249
+vox_file = "res://furniture/vox/bedside_cabinet__part2.vox"
+vox_material = ExtResource("5_5j02d")
+vox_index_materials = {
+1: ExtResource("5_5j02d"),
+2: ExtResource("6_ghdyt"),
+3: ExtResource("6_ghdyt"),
+4: ExtResource("6_ghdyt"),
+5: ExtResource("7_yj5ue")
+}
+
+[sub_resource type="Resource" id="Resource_jhcho"]
+script = ExtResource("2_6kvee")
+structure = SubResource("Resource_l0qra")
+pivot = Vector3(-0.19999999, 0.24499999, -0.17999999)
+
+[resource]
+script = ExtResource("3_nnkps")
+display_name = "Bedside Cabinet"
+spawn_category = "Bedroom"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.7483909594372249
+vox_file = "res://furniture/vox/bedside_cabinet.vox"
+vox_material = ExtResource("5_5j02d")
+vox_index_materials = {
+1: ExtResource("5_5j02d"),
+2: ExtResource("6_ghdyt"),
+3: ExtResource("6_ghdyt"),
+4: ExtResource("6_ghdyt"),
+5: ExtResource("7_yj5ue")
+}
+moving_parts = Array[ExtResource("2_6kvee")]([SubResource("Resource_q6bwb"), SubResource("Resource_jhcho")])

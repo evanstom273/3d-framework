@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://djd8gj2q0c18o"]
+
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_fjxje"]
+
+[resource]
+script = ExtResource("1_fjxje")
+display_name = "Foliage"
+color = Color(0.25, 0.45, 0.2, 1)
+color_jitter = 0.0
+strength = 1.0
+density = 300.0
+friction = 0.9
+bounce = 0.02
+sharp_multiplier = 2.5
+pierce_multiplier = 1.5
+impact_sound = 6
+rubble_fraction = 0.1

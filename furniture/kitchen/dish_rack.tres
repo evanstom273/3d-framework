@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://cbipo143y5d8f"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_wn2um"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_d3s4f"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_lv0vq"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_mmx6l"]
+[ext_resource type="Resource" path="res://furniture/materials/plastic.tres" id="5_mrpqo"]
+[ext_resource type="Resource" path="res://furniture/materials/chrome.tres" id="6_wvpwd"]
+[ext_resource type="Resource" path="res://furniture/materials/ceramic.tres" id="7_d7x6n"]
+
+[resource]
+script = ExtResource("3_lv0vq")
+display_name = "Dish Rack"
+spawn_category = "Kitchen"
+voxel_size = 0.012
+anchor_mode = 1
+density_scale = 0.25441998755987444
+vox_file = "res://furniture/vox/dish_rack.vox"
+vox_material = ExtResource("6_wvpwd")
+vox_index_materials = {
+1: ExtResource("5_mrpqo"),
+2: ExtResource("6_wvpwd"),
+3: ExtResource("6_wvpwd"),
+4: ExtResource("7_d7x6n")
+}

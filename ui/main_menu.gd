@@ -3,6 +3,7 @@ extends Control
 ## environments can be added without touching code.
 
 const UiStyle := preload("res://ui/ui_style.gd")
+const SettingsMenu := preload("res://ui/settings_menu.gd")
 
 @export var title: String = "Physics Sandbox"
 @export var subtitle: String = "Grab it. Throw it. Break it. Build it."
@@ -50,7 +51,12 @@ func _build() -> void:
 	for index in mini(level_names.size(), level_paths.size()):
 		column.add_child(UiStyle.button(level_names[index], _open_level.bind(level_paths[index]), 46))
 	column.add_child(UiStyle.spacer(6))
+	column.add_child(UiStyle.button("Settings", _open_settings, 40))
 	column.add_child(UiStyle.button("Quit", get_tree().quit, 40))
+
+
+func _open_settings() -> void:
+	add_child(SettingsMenu.new())
 
 
 func _open_level(path: String) -> void:

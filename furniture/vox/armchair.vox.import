@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bf8d83j0reud4"
+path="res://.godot/imported/armchair.vox-7a5f966e3a9c640f38cad2b86a9e2fe8.tres"
+
+[deps]
+
+source_file="res://furniture/vox/armchair.vox"
+dest_files=["res://.godot/imported/armchair.vox-7a5f966e3a9c640f38cad2b86a9e2fe8.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

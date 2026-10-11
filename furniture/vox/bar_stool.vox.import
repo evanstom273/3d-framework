@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://641t5qpohwwe"
+path="res://.godot/imported/bar_stool.vox-7594b895bb549e91119f074ed76ada0e.tres"
+
+[deps]
+
+source_file="res://furniture/vox/bar_stool.vox"
+dest_files=["res://.godot/imported/bar_stool.vox-7594b895bb549e91119f074ed76ada0e.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

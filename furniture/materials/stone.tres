@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://c3dhplrb8hgty"]
+
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_00frc"]
+
+[resource]
+script = ExtResource("1_00frc")
+display_name = "Stone"
+color = Color(0.68, 0.66, 0.62, 1)
+color_jitter = 0.0
+strength = 20.0
+density = 2300.0
+friction = 0.7
+sharp_multiplier = 0.3
+pierce_multiplier = 0.6
+rubble_fraction = 0.25

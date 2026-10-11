@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bpdra5waxcts0" path="res://house/kit/kit_slab.gd" id="8_rqd5y"]
 [ext_resource type="Script" uid="uid://c6b5gonnjgybr" path="res://house/kit/kit_steps.gd" id="9_dbyey"]
 [ext_resource type="Script" uid="uid://0cr4sa27vs6l" path="res://house/kit/kit_porch.gd" id="10_kqlvi"]
+[ext_resource type="Script" uid="uid://cib7i2rtoqhhp" path="res://house/kit/kit_fence.gd" id="12_dbyey"]
 
 [sub_resource type="ProceduralSkyMaterial" id="sky_material"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -37,6 +38,7 @@ position = 4.5
 width = 1.1
 height = 2.2
 door_style = 2
+panel_widths = PackedFloat32Array()
 head = 1
 frame_color = Color(0.46858966, 0.46637982, 0.36149168, 1)
 metadata/_custom_type_script = "uid://d13k8ocasub88"
@@ -48,6 +50,7 @@ width = 1.5
 height = 1.6500000000000001
 sill_height = 0.65
 window_style = 1
+panel_widths = PackedFloat32Array()
 frame_color = Color(0.46858966, 0.46637982, 0.36149168, 1)
 metadata/_custom_type_script = "uid://d13k8ocasub88"
 
@@ -58,6 +61,7 @@ width = 1.5
 height = 1.6500000000000001
 sill_height = 0.65
 window_style = 1
+panel_widths = PackedFloat32Array()
 frame_color = Color(0.46858966, 0.46637982, 0.36149168, 1)
 metadata/_custom_type_script = "uid://d13k8ocasub88"
 
@@ -68,6 +72,7 @@ position = 0.75
 width = 1.1
 height = 2.2
 door_style = 1
+panel_widths = PackedFloat32Array()
 head = 1
 frame_color = Color(0.46858966, 0.46637982, 0.36149168, 1)
 metadata/_custom_type_script = "uid://d13k8ocasub88"
@@ -79,6 +84,7 @@ position = 3.2
 width = 2.2
 height = 2.35
 door_style = 2
+panel_widths = PackedFloat32Array()
 head = 1
 frame_color = Color(0.23651966, 0.23505181, 0.17140493, 1)
 metadata/_custom_type_script = "uid://d13k8ocasub88"
@@ -89,6 +95,7 @@ kind = 2
 position = 0.6000000000000001
 width = 1.2000000000000002
 height = 2.6
+panel_widths = PackedFloat32Array()
 metadata/_custom_type_script = "uid://d13k8ocasub88"
 
 [sub_resource type="Resource" id="Resource_187y1"]
@@ -99,6 +106,7 @@ height = 2.6
 sill_height = 0.0
 window_style = 1
 panes = 1
+panel_widths = PackedFloat32Array()
 head = 1
 metadata/_custom_type_script = "uid://d13k8ocasub88"
 
@@ -110,6 +118,7 @@ height = 2.6
 sill_height = 0.0
 window_style = 3
 panes = 4
+panel_widths = PackedFloat32Array()
 head = 1
 metadata/_custom_type_script = "uid://d13k8ocasub88"
 
@@ -119,6 +128,7 @@ position = 2.25
 width = 1.5
 height = 2.0
 sill_height = 0.5
+panel_widths = PackedFloat32Array()
 frame_color = Color(0.46858966, 0.46637982, 0.36149168, 1)
 metadata/_custom_type_script = "uid://d13k8ocasub88"
 
@@ -128,6 +138,7 @@ position = 6.75
 width = 1.5
 height = 2.0
 sill_height = 0.5
+panel_widths = PackedFloat32Array()
 frame_color = Color(0.46858966, 0.46637982, 0.36149168, 1)
 metadata/_custom_type_script = "uid://d13k8ocasub88"
 
@@ -139,7 +150,16 @@ width = 1.1
 height = 2.2
 door_bottom_height = 0.1
 door_style = 3
+panel_widths = PackedFloat32Array()
 frame_color = Color(0.46858966, 0.46637982, 0.36149168, 1)
+metadata/_custom_type_script = "uid://d13k8ocasub88"
+
+[sub_resource type="Resource" id="Resource_qegeq"]
+script = ExtResource("2_dbyey")
+kind = 0
+height = 1.7000000000000002
+door_style = 15
+panel_widths = PackedFloat32Array()
 metadata/_custom_type_script = "uid://d13k8ocasub88"
 
 [node name="ExampleHouse" type="Node3D" unique_id=1283294391]
@@ -228,55 +248,6 @@ end_join = 1
 plinth_drop = 0.6
 quoins = true
 band_course_height = 3.0
-metadata/_custom_type_script = "uid://hh1my0bmi66c"
-
-[node name="KitWall8" type="StaticBody3D" parent="GroundFloor" unique_id=557443350]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.34713325, -0.099999994, 17.899998)
-script = ExtResource("1_rqd5y")
-wall_type = 2
-length = 9.0
-height = 1.35
-plinth_drop = 0.0
-metadata/_custom_type_script = "uid://hh1my0bmi66c"
-
-[node name="KitWall9" type="StaticBody3D" parent="GroundFloor" unique_id=822776174]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 13.647135, -0.099999994, 17.699997)
-script = ExtResource("1_rqd5y")
-wall_type = 2
-length = 13.5
-height = 1.35
-start_join = 1
-plinth_drop = 0.0
-metadata/_custom_type_script = "uid://hh1my0bmi66c"
-
-[node name="KitWall10" type="StaticBody3D" parent="GroundFloor" unique_id=52254626]
-transform = Transform3D(-9.934766e-08, 0, 1, 0, 1, 0, -1, 0, -9.934766e-08, 13.547134, -0.099999994, 17.799997)
-script = ExtResource("1_rqd5y")
-wall_type = 2
-length = 13.5
-height = 1.35
-start_join = 1
-plinth_drop = 0.0
-metadata/_custom_type_script = "uid://hh1my0bmi66c"
-
-[node name="KitWall11" type="StaticBody3D" parent="GroundFloor" unique_id=2087931602]
-transform = Transform3D(1, 0, 1.1127254e-07, 0, 1, 0, -1.1127254e-07, 0, 1, 12.147134, -0.099999994, 4.4999976)
-script = ExtResource("1_rqd5y")
-wall_type = 2
-length = 1.6
-height = 1.35
-start_join = 1
-plinth_drop = 0.0
-metadata/_custom_type_script = "uid://hh1my0bmi66c"
-
-[node name="KitWall12" type="StaticBody3D" parent="GroundFloor" unique_id=1651856682]
-transform = Transform3D(1, 0, 1.1127254e-07, 0, 1, 0, -1.1127254e-07, 0, 1, 8.947133, -0.099999994, 4.4999976)
-script = ExtResource("1_rqd5y")
-wall_type = 2
-length = 1.75
-height = 1.35
-start_join = 1
-plinth_drop = 0.0
 metadata/_custom_type_script = "uid://hh1my0bmi66c"
 
 [node name="KitWall3" type="StaticBody3D" parent="GroundFloor" unique_id=448583336]
@@ -559,3 +530,10 @@ length = 9.0
 start_end = 1
 finish_end = 1
 metadata/_custom_type_script = "uid://dnkcp0tf6qa0j"
+
+[node name="KitFence" type="StaticBody3D" parent="." unique_id=455326386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.8)
+script = ExtResource("12_dbyey")
+style = 1
+bay_width = 1.5
+gates = Array[ExtResource("2_dbyey")]([SubResource("Resource_qegeq")])

@@ -1,0 +1,116 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://dyfdhsapyerrj"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_mni5a"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_nt5a6"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_bufot"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_vhroo"]
+[ext_resource type="Resource" uid="uid://c3oyba533fuca" path="res://furniture/materials/painted_steel.tres" id="5_4x3lv"]
+[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="6_0w1df"]
+
+[sub_resource type="Resource" id="Resource_hpn6q"]
+script = ExtResource("3_bufot")
+display_name = "Tool Chest Drawer"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 1.216832619458308
+vox_file = "res://furniture/vox/tool_chest__part1.vox"
+vox_material = ExtResource("5_4x3lv")
+vox_index_materials = {
+1: ExtResource("5_4x3lv"),
+2: ExtResource("6_0w1df"),
+3: ExtResource("6_0w1df")
+}
+
+[sub_resource type="Resource" id="Resource_tec6c"]
+script = ExtResource("2_nt5a6")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_hpn6q")
+pivot = Vector3(0.01, 0.0525, -0.155)
+axis = Vector3(0, 0, -1)
+amount = 0.202499994635582
+
+[sub_resource type="Resource" id="Resource_es3ua"]
+script = ExtResource("3_bufot")
+display_name = "Tool Chest Drawer"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 1.216832619458308
+vox_file = "res://furniture/vox/tool_chest__part2.vox"
+vox_material = ExtResource("5_4x3lv")
+vox_index_materials = {
+1: ExtResource("5_4x3lv"),
+2: ExtResource("6_0w1df"),
+3: ExtResource("6_0w1df")
+}
+
+[sub_resource type="Resource" id="Resource_odggs"]
+script = ExtResource("2_nt5a6")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_es3ua")
+pivot = Vector3(0.01, 0.1425, -0.155)
+axis = Vector3(0, 0, -1)
+amount = 0.202499994635582
+
+[sub_resource type="Resource" id="Resource_7qrm5"]
+script = ExtResource("3_bufot")
+display_name = "Tool Chest Drawer"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 1.216832619458308
+vox_file = "res://furniture/vox/tool_chest__part3.vox"
+vox_material = ExtResource("5_4x3lv")
+vox_index_materials = {
+1: ExtResource("5_4x3lv"),
+2: ExtResource("6_0w1df"),
+3: ExtResource("6_0w1df")
+}
+
+[sub_resource type="Resource" id="Resource_b1a1g"]
+script = ExtResource("2_nt5a6")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_7qrm5")
+pivot = Vector3(0.01, 0.2325, -0.155)
+axis = Vector3(0, 0, -1)
+amount = 0.202499994635582
+
+[sub_resource type="Resource" id="Resource_be36e"]
+script = ExtResource("3_bufot")
+display_name = "Tool Chest Drawer"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 1.216832619458308
+vox_file = "res://furniture/vox/tool_chest__part4.vox"
+vox_material = ExtResource("5_4x3lv")
+vox_index_materials = {
+1: ExtResource("5_4x3lv"),
+2: ExtResource("6_0w1df"),
+3: ExtResource("6_0w1df")
+}
+
+[sub_resource type="Resource" id="Resource_fxxqx"]
+script = ExtResource("2_nt5a6")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_be36e")
+pivot = Vector3(0.01, 0.3225, -0.155)
+axis = Vector3(0, 0, -1)
+amount = 0.202499994635582
+
+[resource]
+script = ExtResource("3_bufot")
+display_name = "Tool Chest"
+spawn_category = "Workshop"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 1.216832619458308
+vox_file = "res://furniture/vox/tool_chest.vox"
+vox_material = ExtResource("5_4x3lv")
+vox_index_materials = {
+1: ExtResource("5_4x3lv"),
+2: ExtResource("6_0w1df"),
+3: ExtResource("6_0w1df")
+}
+moving_parts = Array[ExtResource("2_nt5a6")]([SubResource("Resource_tec6c"), SubResource("Resource_odggs"), SubResource("Resource_b1a1g"), SubResource("Resource_fxxqx")])

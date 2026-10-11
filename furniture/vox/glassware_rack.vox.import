@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://1c26uto4hduu"
+path="res://.godot/imported/glassware_rack.vox-dcc5fb247c00bd6f29b0000929e40e54.tres"
+
+[deps]
+
+source_file="res://furniture/vox/glassware_rack.vox"
+dest_files=["res://.godot/imported/glassware_rack.vox-dcc5fb247c00bd6f29b0000929e40e54.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

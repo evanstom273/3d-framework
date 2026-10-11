@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://tw8x4apsp0nu"
+path="res://.godot/imported/footstool.vox-d9a901ea25cf7197c5d18c8e81367186.tres"
+
+[deps]
+
+source_file="res://furniture/vox/footstool.vox"
+dest_files=["res://.godot/imported/footstool.vox-d9a901ea25cf7197c5d18c8e81367186.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bfjag18opehcj"
+path="res://.godot/imported/printer.vox-0260b0ba73d01b479947d9ad855569aa.tres"
+
+[deps]
+
+source_file="res://furniture/vox/printer.vox"
+dest_files=["res://.godot/imported/printer.vox-0260b0ba73d01b479947d9ad855569aa.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://dvendy8frofm7"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_y3c15"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_a5mu6"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_ou5st"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_ejsvl"]
+[ext_resource type="Resource" path="res://furniture/materials/walnut.tres" id="5_vnqic"]
+[ext_resource type="Resource" path="res://furniture/materials/fabric.tres" id="6_0i1tt"]
+
+[resource]
+script = ExtResource("3_ou5st")
+display_name = "Two-Seater Sofa"
+spawn_category = "Living Room"
+voxel_size = 0.0387499988079071
+anchor_mode = 1
+density_scale = 0.9135870807412507
+vox_file = "res://furniture/vox/sofa_two_seater.vox"
+vox_material = ExtResource("6_0i1tt")
+vox_index_materials = {
+1: ExtResource("5_vnqic"),
+2: ExtResource("6_0i1tt"),
+3: ExtResource("5_vnqic"),
+4: ExtResource("6_0i1tt"),
+5: ExtResource("6_0i1tt"),
+6: ExtResource("6_0i1tt"),
+7: ExtResource("6_0i1tt"),
+8: ExtResource("6_0i1tt")
+}

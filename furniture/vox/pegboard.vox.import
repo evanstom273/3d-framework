@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://c7b1bbkhvf3s2"
+path="res://.godot/imported/pegboard.vox-233694a27f1f7537017b73c434fd5e52.tres"
+
+[deps]
+
+source_file="res://furniture/vox/pegboard.vox"
+dest_files=["res://.godot/imported/pegboard.vox-233694a27f1f7537017b73c434fd5e52.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

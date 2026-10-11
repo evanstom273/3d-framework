@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://lobw7kswckmf"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_lwufa"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_bp14x"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_hfohj"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_22tp3"]
+[ext_resource type="Resource" path="res://furniture/materials/terracotta.tres" id="5_34ac6"]
+[ext_resource type="Resource" path="res://furniture/materials/soil.tres" id="6_cj30u"]
+[ext_resource type="Resource" path="res://furniture/materials/oak.tres" id="7_08ljp"]
+[ext_resource type="Resource" path="res://furniture/materials/plant.tres" id="8_prnok"]
+
+[resource]
+script = ExtResource("3_hfohj")
+display_name = "Large Flower Pot"
+spawn_category = "Garden"
+voxel_size = 0.022
+anchor_mode = 1
+density_scale = 0.5446330819126967
+vox_file = "res://furniture/vox/flower_pot_large.vox"
+vox_material = ExtResource("5_34ac6")
+vox_index_materials = {
+1: ExtResource("5_34ac6"),
+2: ExtResource("5_34ac6"),
+3: ExtResource("6_cj30u"),
+4: ExtResource("6_cj30u"),
+5: ExtResource("6_cj30u"),
+6: ExtResource("7_08ljp"),
+7: ExtResource("7_08ljp"),
+8: ExtResource("8_prnok"),
+9: ExtResource("8_prnok"),
+10: ExtResource("8_prnok")
+}

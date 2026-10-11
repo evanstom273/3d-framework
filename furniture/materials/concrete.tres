@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="1_siudq"]
+
+[resource]
+script = ExtResource("1_siudq")
+display_name = "Concrete"
+color = Color(0.62, 0.62, 0.6, 1)
+color_jitter = 0.0
+strength = 18.0
+density = 2200.0
+friction = 0.75
+bounce = 0.04
+sharp_multiplier = 0.3
+pierce_multiplier = 0.6
+rubble_fraction = 0.25

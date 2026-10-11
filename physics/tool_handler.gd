@@ -26,6 +26,10 @@ var _holder: CollisionObject3D
 var _tool: RigidBody3D
 var _provider: Node
 var _settings: PhysicsToolDefinition
+## The attack in progress: _settings, or its secondary_strike while that runs.
+var _strike: PhysicsToolDefinition
+## The button the current charge is held on.
+var _charge_action: StringName = &"use_tool"
 var _saved_layer: int = 0
 var _saved_mask: int = 0
 var _saved_freeze_mode: RigidBody3D.FreezeMode = RigidBody3D.FREEZE_MODE_STATIC
@@ -103,7 +107,10 @@ func get_prompt() -> String:
 	if _advanced != null:
 		return "%s (equipped)\n%s" % [title, _advanced.prompt(_settings.alternate_action != null)]
 	var use := "[Hold LMB]" if _settings.charge_time > 0.0 else "[LMB]"
-	return "%s (equipped)\n%s %s   [F] Unequip   [E] Drop%s" % [title, use, _settings.action_name, "   [Q] Pry mode" if _settings.alternate_action != null else ""]
+	var second := ""
+	if _settings.secondary_strike != null:
+		second = "   %s %s" % ["[Hold RMB]" if _settings.secondary_strike.charge_time > 0.0 else "[RMB]", _settings.secondary_strike.action_name]
+	return "%s (equipped)\n%s %s%s   [F] Unequip   [E] Drop%s" % [title, use, _settings.action_name, second, "   [Q] Pry mode" if _settings.alternate_action != null else ""]
 
 
 ## Equips the body currently held by the manipulator.
@@ -128,6 +135,20 @@ func unequip() -> void:
 	var body := _release_tool()
 	if body != null and not manipulator.grab(body):
 		body.linear_velocity = _holder_velocity()
+
+
+## Puts the equipped tool away (e.g. into a hotbar): cancels any action, unbinds
+## its advanced behaviour exactly as unequipping does, and hands the body back
+## loose and still, without dropping or throwing it. Returns null if nothing is equipped.
+func stow() -> RigidBody3D:
+	if not is_equipped():
+		return null
+	cancel_action()
+	var body := _release_tool()
+	if body != null:
+		body.linear_velocity = Vector3.ZERO
+		body.angular_velocity = Vector3.ZERO
+	return body
 
 
 ## Unequips and lets go, leaving the tool to world physics.
@@ -162,11 +183,14 @@ func use_primary(power: float = 1.0) -> bool:
 
 ## Starts winding up; the strike happens on release_charge(), scaled by how long
 ## it was held. Tools with no charge time strike straight away at max power.
-func begin_charge() -> bool:
+## `secondary` uses the tool's secondary strike (RMB), if it has one.
+func begin_charge(secondary := false) -> bool:
 	if not is_equipped() or is_busy():
 		return false
-	if _settings.charge_time <= 0.0:
-		return use_primary(_settings.max_charge_power)
+	_strike = _settings.secondary_strike if secondary and _settings.secondary_strike != null else _settings
+	_charge_action = &"tool_secondary" if _strike != _settings else &"use_tool"
+	if _strike.charge_time <= 0.0:
+		return use_primary(_strike.max_charge_power)
 	use_primary()
 	_charging = true
 	_charge_elapsed = 0.0
@@ -177,7 +201,7 @@ func release_charge() -> void:
 	if not _charging:
 		return
 	_charging = false
-	_power = lerpf(_settings.min_charge_power, _settings.max_charge_power, get_charge_ratio_unchecked())
+	_power = lerpf(_strike.min_charge_power, _strike.max_charge_power, get_charge_ratio_unchecked())
 
 
 ## Charge from 0 to 1, or -1 when not charging.
@@ -186,13 +210,14 @@ func get_charge_ratio() -> float:
 
 
 func get_charge_ratio_unchecked() -> float:
-	return clampf(_charge_elapsed / maxf(_settings.charge_time, 0.001), 0.0, 1.0)
+	return clampf(_charge_elapsed / maxf(_strike.charge_time, 0.001), 0.0, 1.0)
 
 
 func cancel_action() -> void:
 	if _advanced != null: _advanced.stop()
 	_action_time = -1.0
 	_charging = false
+	_strike = _settings
 
 
 ## Returns true when the event was consumed by the equipped tool.
@@ -206,10 +231,14 @@ func handle_input(event: InputEvent) -> bool:
 		_bind_advanced()
 		return true
 	if _advanced != null: return _advanced.input(event)
-	if event.is_action("use_tool"):
+	for action in [&"use_tool", &"tool_secondary"]:
+		if not event.is_action(action):
+			continue
+		if action == &"tool_secondary" and _settings.secondary_strike == null:
+			return false
 		if event.is_pressed() and not event.is_echo():
-			begin_charge()
-		elif not event.is_pressed():
+			begin_charge(action == &"tool_secondary")
+		elif not event.is_pressed() and _charge_action == action:
 			release_charge()
 		return true
 	return false
@@ -227,26 +256,27 @@ func physics_update(delta: float) -> void:
 	if _charging:
 		_charge_elapsed += delta
 		# A release event can be missed (e.g. focus loss); the button state is authoritative.
-		if not Input.is_action_pressed("use_tool"):
+		if not Input.is_action_pressed(_charge_action):
 			release_charge()
 	if _action_time >= 0.0:
 		var previous := _action_time
 		_action_time += delta
 		if _charging:
 			# Hold at the top of the windup until the button is released.
-			_action_time = minf(_action_time, _settings.windup_time)
-		var strike_start := _settings.windup_time
-		var strike_end := strike_start + _settings.strike_time
+			_action_time = minf(_action_time, _strike.windup_time)
+		var strike_start := _strike.windup_time
+		var strike_end := strike_start + _strike.strike_time
 		# Placing tools act when used, so only striking tools look for hits.
 		var strikes := not _is_placing()
-		if strikes and _settings.hit_detection == PhysicsToolDefinition.HitDetection.CROSSHAIR:
-			var impact_at := strike_start + _settings.strike_time * _settings.impact_moment
+		if strikes and _strike.hit_detection == PhysicsToolDefinition.HitDetection.CROSSHAIR:
+			var impact_at := strike_start + _strike.strike_time * _strike.impact_moment
 			if not _hit_done and previous < impact_at and _action_time >= impact_at:
 				_crosshair_hit(impact_at)
 		elif strikes and not _hit_done and _action_time > strike_start and previous < strike_end:
 			_sweep(clampf(previous, strike_start, strike_end), clampf(_action_time, strike_start, strike_end))
-		if _action_time >= _settings.get_total_action_time():
+		if _action_time >= _strike.get_total_action_time():
 			_action_time = -1.0
+			_strike = _settings
 	# Placing tools keep building while the button is held, one voxel per cycle.
 	if _is_placing() and _action_time < 0.0 and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED \
 			and Input.is_action_pressed("use_tool"):
@@ -309,6 +339,7 @@ func _equip(body: RigidBody3D) -> void:
 	_tool = body
 	_provider = _find_provider(body)
 	_settings = get_tool_definition(body)
+	_strike = _settings
 	_saved_layer = body.collision_layer
 	_saved_mask = body.collision_mask
 	_saved_freeze_mode = body.freeze_mode
@@ -370,7 +401,7 @@ func _release_tool() -> RigidBody3D:
 func _current_transform(ahead: float) -> Transform3D:
 	var time := _action_time + ahead if _action_time >= 0.0 else -1.0
 	if _charging:
-		time = minf(time, _settings.windup_time)
+		time = minf(time, _strike.windup_time)
 	var target: Transform3D
 	if _advanced != null:
 		# Advanced tools blend between their rest and use poses, with recoil and vibration.
@@ -432,11 +463,13 @@ func _tool_transform_at(time: float) -> Transform3D:
 
 
 func _hand_pose_at(time: float) -> Transform3D:
-	var s := _settings
-	var from_position := s.rest_position
-	var from_rotation := s.rest_rotation_degrees
-	var to_position := s.rest_position
-	var to_rotation := s.rest_rotation_degrees
+	# Attack poses come from the attack in progress; the rest pose is always the primary's.
+	var s := _strike if time >= 0.0 else _settings
+	var rest := _settings
+	var from_position := rest.rest_position
+	var from_rotation := rest.rest_rotation_degrees
+	var to_position := rest.rest_position
+	var to_rotation := rest.rest_rotation_degrees
 	var weight := 0.0
 	if time >= 0.0:
 		if time < s.windup_time:
@@ -459,7 +492,7 @@ func _hand_pose_at(time: float) -> Transform3D:
 
 
 func _strike_point_at(time: float) -> Vector3:
-	return _tool_transform_at(time) * _settings.strike_point
+	return _tool_transform_at(time) * (_strike if time >= 0.0 else _settings).strike_point
 
 
 ## Hits what the crosshair is on: an exact ray first, then a wider sphere as aim assist.
@@ -469,20 +502,20 @@ func _crosshair_hit(impact_time: float) -> void:
 	var forward := -aim.basis.z.normalized()
 	var space := _tool.get_world_3d().direct_space_state
 	var exclude: Array[RID] = [_holder.get_rid(), _tool.get_rid()]
-	var ray := PhysicsRayQueryParameters3D.create(aim.origin, aim.origin + forward * _settings.reach, _settings.hit_mask, exclude)
+	var ray := PhysicsRayQueryParameters3D.create(aim.origin, aim.origin + forward * _strike.reach, _strike.hit_mask, exclude)
 	var hit := space.intersect_ray(ray)
 	var point: Vector3
 	var normal: Vector3
 	if not hit.is_empty():
 		point = hit["position"]
 		normal = hit["normal"]
-	elif _settings.aim_assist_radius > 0.0:
-		_sphere.radius = _settings.aim_assist_radius
+	elif _strike.aim_assist_radius > 0.0:
+		_sphere.radius = _strike.aim_assist_radius
 		_query.shape = _sphere
-		_query.collision_mask = _settings.hit_mask
+		_query.collision_mask = _strike.hit_mask
 		_query.exclude = exclude
 		_query.transform = Transform3D(Basis(), aim.origin)
-		_query.motion = forward * (_settings.reach - _settings.aim_assist_radius)
+		_query.motion = forward * (_strike.reach - _strike.aim_assist_radius)
 		var fractions := space.cast_motion(_query)
 		if fractions.is_empty() or fractions[1] >= 1.0:
 			return
@@ -523,9 +556,9 @@ func _sweep_path(from: Vector3, to: Vector3, duration: float) -> bool:
 	if motion.length_squared() < 0.000001:
 		return false
 	var space := _tool.get_world_3d().direct_space_state
-	_sphere.radius = _settings.strike_radius
+	_sphere.radius = _strike.strike_radius
 	_query.shape = _sphere
-	_query.collision_mask = _settings.hit_mask
+	_query.collision_mask = _strike.hit_mask
 	_query.exclude = [_holder.get_rid(), _tool.get_rid()]
 	_query.transform = Transform3D(Basis(), from)
 	_query.motion = motion
@@ -569,7 +602,7 @@ func _update_motion_strike(delta: float) -> void:
 
 
 func _register_hit(collider: Object, point: Vector3, normal: Vector3, swing_direction: Vector3, speed: float) -> void:
-	var s := _settings
+	var s := _strike
 	var aim := -view.global_basis.z.normalized()
 	if s.aim_mode == PhysicsToolDefinition.AimMode.VIEW_FORWARD_FLAT:
 		aim = -_holder.global_basis.z.slide(Vector3.UP).normalized()

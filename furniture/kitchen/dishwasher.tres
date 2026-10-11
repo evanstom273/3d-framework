@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://d00y34pau0btu"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_jp7x2"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_1wo03"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_2u6lx"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_oamri"]
+[ext_resource type="Resource" uid="uid://cdtvomcuyhwix" path="res://furniture/materials/steel.tres" id="5_mlqgb"]
+[ext_resource type="Resource" uid="uid://6ri68lauf7ep" path="res://furniture/materials/electronics.tres" id="6_bn3gk"]
+[ext_resource type="Resource" uid="uid://dw4suus87xjs" path="res://furniture/materials/plastic.tres" id="7_ygkq8"]
+[ext_resource type="Resource" uid="uid://d1dlfsyyucymk" path="res://furniture/materials/screen.tres" id="8_jl3ld"]
+
+[sub_resource type="Resource" id="Resource_ffv5j"]
+script = ExtResource("3_2u6lx")
+display_name = "Dishwasher Door"
+voxel_size = 0.02125000059604644
+anchor_mode = 1
+density_scale = 0.6092761632299029
+vox_file = "res://furniture/vox/dishwasher__part1.vox"
+vox_material = ExtResource("5_mlqgb")
+vox_index_materials = {
+1: ExtResource("5_mlqgb"),
+2: ExtResource("5_mlqgb"),
+3: ExtResource("6_bn3gk"),
+4: ExtResource("7_ygkq8"),
+5: ExtResource("8_jl3ld")
+}
+
+[sub_resource type="Resource" id="Resource_bfcwt"]
+script = ExtResource("2_1wo03")
+structure = SubResource("Resource_ffv5j")
+pivot = Vector3(0.0025000025, 0.08, -0.28625003)
+axis = Vector3(1, 0, 0)
+amount = -85.0
+
+[resource]
+script = ExtResource("3_2u6lx")
+display_name = "Dishwasher"
+spawn_category = "Kitchen"
+voxel_size = 0.02125000059604644
+anchor_mode = 1
+density_scale = 0.6092761632299029
+vox_file = "res://furniture/vox/dishwasher.vox"
+vox_material = ExtResource("5_mlqgb")
+vox_index_materials = {
+1: ExtResource("5_mlqgb"),
+2: ExtResource("5_mlqgb"),
+3: ExtResource("6_bn3gk"),
+4: ExtResource("7_ygkq8"),
+5: ExtResource("8_jl3ld")
+}
+moving_parts = Array[ExtResource("2_1wo03")]([SubResource("Resource_bfcwt")])

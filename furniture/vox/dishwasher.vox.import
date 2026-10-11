@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bmx5r5qe2bhq"
+path="res://.godot/imported/dishwasher.vox-ee640d5635986721650b1c5c5a38fa6a.tres"
+
+[deps]
+
+source_file="res://furniture/vox/dishwasher.vox"
+dest_files=["res://.godot/imported/dishwasher.vox-ee640d5635986721650b1c5c5a38fa6a.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

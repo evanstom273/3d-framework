@@ -84,6 +84,8 @@ var _camera_rest_roll: float
 var _click_interact_requested: bool = false
 var _crosshair_was_visible: bool = true
 var climber: RopeClimber
+var window_climber: WindowClimber
+var hotbar: ToolHotbar
 
 
 func _ready() -> void:
@@ -112,6 +114,13 @@ func _ready() -> void:
 	interaction_ray.target_position = Vector3(0.0, 0.0, -interaction_distance)
 	climber = RopeClimber.new()
 	add_child(climber)
+	window_climber = WindowClimber.new()
+	window_climber.name = "WindowClimber"
+	add_child(window_climber)
+	hotbar = ToolHotbar.new()
+	hotbar.name = "ToolHotbar"
+	hotbar.setup(tool_handler, manipulator, $HUD, self)
+	add_child(hotbar)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
@@ -150,6 +159,18 @@ func _physics_process(delta: float) -> void:
 	var controls_active: bool = Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
 	if climber.is_climbing():
 		_climb(delta, controls_active)
+		return
+	if window_climber.is_active():
+		interaction_prompt.hide()
+		window_climber.update(delta)
+		_update_camera_motion(delta, controls_active, Vector2.ZERO)
+		manipulator.physics_update(delta)
+		tool_handler.physics_update(delta)
+		return
+	# Jump at an open window to climb through it.
+	window_climber.find_target(-camera.global_transform.basis.z)
+	if controls_active and window_climber.target != null and Input.is_action_just_pressed("jump"):
+		window_climber.start()
 		return
 	var was_on_floor := is_on_floor()
 	_update_crouch(controls_active and Input.is_action_pressed("crouch"), delta)
@@ -426,6 +447,9 @@ func _update_interaction(controls_active: bool) -> void:
 		target = target.get_parent()
 	if target == null:
 		interaction_menu.close_menu()
+		if window_climber.target != null:
+			interaction_prompt.text = "[Space] Climb through the window"
+			interaction_prompt.show()
 		return
 	var available := not target.has_method("can_interact") or bool(target.call("can_interact"))
 	if target.has_method("get_interaction_actions") and target.has_method("perform_interaction_action"):

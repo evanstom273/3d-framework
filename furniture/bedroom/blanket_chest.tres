@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://cc1d7ii61q5ix"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_bfpij"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_m3bmk"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_t0b1a"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_ddewe"]
+[ext_resource type="Resource" path="res://furniture/materials/pine.tres" id="5_m1yi8"]
+[ext_resource type="Resource" path="res://furniture/materials/cast_iron.tres" id="6_f81ob"]
+
+[resource]
+script = ExtResource("3_t0b1a")
+display_name = "Blanket Chest"
+spawn_category = "Bedroom"
+voxel_size = 0.02249999940395355
+anchor_mode = 1
+density_scale = 0.6086066008731629
+vox_file = "res://furniture/vox/blanket_chest.vox"
+vox_material = ExtResource("5_m1yi8")
+vox_index_materials = {
+1: ExtResource("5_m1yi8"),
+2: ExtResource("5_m1yi8"),
+3: ExtResource("5_m1yi8"),
+4: ExtResource("6_f81ob")
+}

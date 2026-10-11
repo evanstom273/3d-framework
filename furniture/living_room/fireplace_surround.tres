@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://rkdpdvu4mjtq"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_qi20d"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_w0joq"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_nuvl1"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_fwplv"]
+[ext_resource type="Resource" path="res://furniture/materials/marble.tres" id="5_setop"]
+[ext_resource type="Resource" path="res://furniture/materials/cast_iron.tres" id="6_x7ymp"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_wood.tres" id="7_i2lhs"]
+
+[resource]
+script = ExtResource("3_nuvl1")
+display_name = "Fireplace Surround"
+spawn_category = "Living Room"
+voxel_size = 0.0375
+anchor_mode = 1
+density_scale = 0.14139556316190047
+vox_file = "res://furniture/vox/fireplace_surround.vox"
+vox_material = ExtResource("7_i2lhs")
+vox_index_materials = {
+1: ExtResource("5_setop"),
+2: ExtResource("5_setop"),
+3: ExtResource("5_setop"),
+4: ExtResource("6_x7ymp"),
+5: ExtResource("7_i2lhs")
+}

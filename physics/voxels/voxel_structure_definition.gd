@@ -24,6 +24,13 @@ enum AnchorMode {
 	set(value):
 		anchor_mode = value
 		emit_changed()
+## Multiplies the mass the voxels add up to. Thin parts (a board, a pane, sheet
+## metal) are much thinner than a voxel, so generated furniture uses this to
+## reach its real-world weight.
+@export_range(0.01, 10.0, 0.01) var density_scale: float = 1.0:
+	set(value):
+		density_scale = value
+		emit_changed()
 @export var boxes: Array[VoxelFillBox] = []:
 	set(value):
 		for box in boxes:
@@ -63,6 +70,16 @@ enum AnchorMode {
 		vox_keep_colors = value
 		_vox_boxes.clear()
 		emit_changed()
+## Palette index -> VoxelMaterialDefinition. Generated models (furniture) record
+## each voxel's material here, so shading never changes what a voxel is made of.
+## Takes priority over vox_extra_materials' colour matching.
+@export var vox_index_materials: Dictionary = {}:
+	set(value):
+		vox_index_materials = value
+		_vox_boxes.clear()
+		emit_changed()
+## Doors, drawers and lids that open (furniture). Built onto the body at spawn.
+@export var moving_parts: Array[FurniturePart] = []
 
 var _vox_boxes: Array[VoxelFillBox] = []
 
@@ -72,5 +89,5 @@ func get_boxes() -> Array[VoxelFillBox]:
 	if vox_file.is_empty():
 		return boxes
 	if _vox_boxes.is_empty():
-		_vox_boxes = VoxFile.to_boxes(vox_file, vox_material, vox_keep_colors, vox_extra_materials)
+		_vox_boxes = VoxFile.to_boxes(vox_file, vox_material, vox_keep_colors, vox_extra_materials, vox_index_materials)
 	return _vox_boxes

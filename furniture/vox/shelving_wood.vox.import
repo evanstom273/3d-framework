@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://2n7cnseyabgh"
+path="res://.godot/imported/shelving_wood.vox-cf13c78479eac3c129cb1cb031671159.tres"
+
+[deps]
+
+source_file="res://furniture/vox/shelving_wood.vox"
+dest_files=["res://.godot/imported/shelving_wood.vox-cf13c78479eac3c129cb1cb031671159.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

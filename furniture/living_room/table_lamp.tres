@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://cn08r2smlen0b"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_ogv6e"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_hwsq3"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_6vffp"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_tfem2"]
+[ext_resource type="Resource" path="res://furniture/materials/brass.tres" id="5_mmiik"]
+[ext_resource type="Resource" path="res://furniture/materials/ceramic.tres" id="6_m5ca8"]
+[ext_resource type="Resource" path="res://furniture/materials/fabric.tres" id="7_7axo8"]
+
+[resource]
+script = ExtResource("3_6vffp")
+display_name = "Table Lamp"
+spawn_category = "Living Room"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.6517885076650215
+vox_file = "res://furniture/vox/table_lamp.vox"
+vox_material = ExtResource("6_m5ca8")
+vox_index_materials = {
+1: ExtResource("5_mmiik"),
+2: ExtResource("5_mmiik"),
+3: ExtResource("6_m5ca8"),
+4: ExtResource("7_7axo8"),
+5: ExtResource("7_7axo8")
+}

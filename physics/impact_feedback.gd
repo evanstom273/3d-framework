@@ -84,6 +84,7 @@ func _emit(normal: Vector3, impact_type: PhysicsToolDefinition.ImpactType, stren
 	particles.emitting = true
 
 	var player := AudioStreamPlayer3D.new()
+	player.bus = &"Impacts"
 	player.stream = _get_sound(sound)
 	player.volume_db = lerpf(-16.0, 2.0, strength)
 	# Bigger hits sound a little deeper.

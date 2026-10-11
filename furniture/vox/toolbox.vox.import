@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://c4w73us8dghmg"
+path="res://.godot/imported/toolbox.vox-cbff3f638fff895e207ce64189bf6033.tres"
+
+[deps]
+
+source_file="res://furniture/vox/toolbox.vox"
+dest_files=["res://.godot/imported/toolbox.vox-cbff3f638fff895e207ce64189bf6033.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

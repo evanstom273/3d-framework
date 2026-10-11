@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://dgtcq11enj07i"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_ugnlc"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_jlhic"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_f6p3t"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_ilvly"]
+[ext_resource type="Resource" path="res://furniture/materials/pine.tres" id="5_7dj31"]
+[ext_resource type="Resource" path="res://furniture/materials/plant.tres" id="6_1gohs"]
+[ext_resource type="Resource" path="res://furniture/materials/soil.tres" id="7_7s2kh"]
+
+[resource]
+script = ExtResource("3_f6p3t")
+display_name = "Garden Planter"
+spawn_category = "Garden"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.6944821225109985
+vox_file = "res://furniture/vox/garden_planter.vox"
+vox_material = ExtResource("5_7dj31")
+vox_index_materials = {
+1: ExtResource("5_7dj31"),
+2: ExtResource("5_7dj31"),
+3: ExtResource("5_7dj31"),
+4: ExtResource("5_7dj31"),
+5: ExtResource("5_7dj31"),
+6: ExtResource("5_7dj31"),
+7: ExtResource("6_1gohs"),
+8: ExtResource("6_1gohs"),
+9: ExtResource("6_1gohs"),
+10: ExtResource("7_7s2kh"),
+11: ExtResource("7_7s2kh"),
+12: ExtResource("7_7s2kh"),
+13: ExtResource("6_1gohs"),
+14: ExtResource("6_1gohs")
+}

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://bgyepv6cn5qkj"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_m4xkg"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_wdas2"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_eq1vo"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_mqcij"]
+[ext_resource type="Resource" path="res://furniture/materials/plastic.tres" id="5_7i1f3"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_steel.tres" id="6_rp6q6"]
+
+[resource]
+script = ExtResource("3_eq1vo")
+display_name = "Folding Table"
+spawn_category = "Utility"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.363756927011785
+vox_file = "res://furniture/vox/folding_table.vox"
+vox_material = ExtResource("5_7i1f3")
+vox_index_materials = {
+1: ExtResource("5_7i1f3"),
+2: ExtResource("6_rp6q6")
+}

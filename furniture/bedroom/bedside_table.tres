@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://cr8x2p4lhxwbq"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_se8q3"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_jye5t"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_5waaj"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_0r5yt"]
+[ext_resource type="Resource" path="res://furniture/materials/walnut.tres" id="5_7sb3x"]
+[ext_resource type="Resource" path="res://furniture/materials/brass.tres" id="6_kqx55"]
+
+[resource]
+script = ExtResource("3_5waaj")
+display_name = "Bedside Table"
+spawn_category = "Bedroom"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 1.0029802842732873
+vox_file = "res://furniture/vox/bedside_table.vox"
+vox_material = ExtResource("5_7sb3x")
+vox_index_materials = {
+1: ExtResource("5_7sb3x"),
+2: ExtResource("5_7sb3x"),
+3: ExtResource("5_7sb3x"),
+4: ExtResource("6_kqx55"),
+5: ExtResource("6_kqx55")
+}

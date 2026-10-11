@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dvlhqy5oydhqg"
+path="res://.godot/imported/room_divider.vox-dedb89312f8bdf8f7ede3c256c8e549c.tres"
+
+[deps]
+
+source_file="res://furniture/vox/room_divider.vox"
+dest_files=["res://.godot/imported/room_divider.vox-dedb89312f8bdf8f7ede3c256c8e549c.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

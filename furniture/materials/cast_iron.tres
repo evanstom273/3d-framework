@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://c77k5wn3vmtmo"]
+
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_uvdgp"]
+
+[resource]
+script = ExtResource("1_uvdgp")
+display_name = "Cast iron"
+color = Color(0.16, 0.16, 0.17, 1)
+color_jitter = 0.0
+strength = 40.0
+density = 3000.0
+friction = 0.6
+bounce = 0.03
+blunt_multiplier = 0.5
+sharp_multiplier = 0.2
+pierce_multiplier = 0.3
+impact_sound = 2
+rubble_fraction = 0.1

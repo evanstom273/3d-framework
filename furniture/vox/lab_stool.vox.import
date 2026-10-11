@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://c8l0qd54xungk"
+path="res://.godot/imported/lab_stool.vox-2bfdf41170239ffc0b500c4c343acdfc.tres"
+
+[deps]
+
+source_file="res://furniture/vox/lab_stool.vox"
+dest_files=["res://.godot/imported/lab_stool.vox-2bfdf41170239ffc0b500c4c343acdfc.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

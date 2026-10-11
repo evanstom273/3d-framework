@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dgrbiwkk4n6px"
+path="res://.godot/imported/blanket_chest.vox-b9ffe62eb29b67f3bcd10ff7708a6b39.tres"
+
+[deps]
+
+source_file="res://furniture/vox/blanket_chest.vox"
+dest_files=["res://.godot/imported/blanket_chest.vox-b9ffe62eb29b67f3bcd10ff7708a6b39.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

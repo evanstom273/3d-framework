@@ -1,0 +1,144 @@
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+
+[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="object"]
+[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="part"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="steel_profile"]
+[ext_resource type="Script" path="res://physics/physics_tool_definition.gd" id="tool"]
+
+[sub_resource type="StandardMaterial3D" id="handle_material"]
+albedo_color = Color(0.16, 0.1, 0.07, 1)
+roughness = 0.7
+
+[sub_resource type="Resource" id="handle"]
+script = ExtResource("part")
+size = Vector3(0.024, 0.11, 0.03)
+material = SubResource("handle_material")
+
+[sub_resource type="StandardMaterial3D" id="steel_material"]
+albedo_color = Color(0.78, 0.8, 0.83, 1)
+metallic = 0.95
+roughness = 0.22
+
+[sub_resource type="Resource" id="pommel"]
+script = ExtResource("part")
+size = Vector3(0.026, 0.014, 0.033)
+position = Vector3(0, -0.062, 0.001)
+material = SubResource("steel_material")
+
+[sub_resource type="Resource" id="bolster"]
+script = ExtResource("part")
+size = Vector3(0.028, 0.014, 0.036)
+position = Vector3(0, 0.062, -0.002)
+material = SubResource("steel_material")
+
+[sub_resource type="StandardMaterial3D" id="rivet_material"]
+albedo_color = Color(0.75, 0.6, 0.32, 1)
+metallic = 0.9
+roughness = 0.3
+
+[sub_resource type="Resource" id="rivet_low"]
+script = ExtResource("part")
+size = Vector3(0.026, 0.008, 0.008)
+position = Vector3(0, -0.025, 0)
+material = SubResource("rivet_material")
+collides = false
+
+[sub_resource type="Resource" id="rivet_high"]
+script = ExtResource("part")
+size = Vector3(0.026, 0.008, 0.008)
+position = Vector3(0, 0.025, 0)
+material = SubResource("rivet_material")
+collides = false
+
+[sub_resource type="Resource" id="blade"]
+script = ExtResource("part")
+size = Vector3(0.004, 0.15, 0.032)
+position = Vector3(0, 0.144, -0.004)
+material = SubResource("steel_material")
+
+[sub_resource type="Resource" id="spine"]
+script = ExtResource("part")
+size = Vector3(0.005, 0.15, 0.006)
+position = Vector3(0, 0.144, 0.011)
+material = SubResource("steel_material")
+collides = false
+
+[sub_resource type="Resource" id="tip"]
+script = ExtResource("part")
+size = Vector3(0.004, 0.05, 0.022)
+position = Vector3(0, 0.226, 0.003)
+rotation_degrees = Vector3(-24, 0, 0)
+material = SubResource("steel_material")
+
+[sub_resource type="Resource" id="stab"]
+script = ExtResource("tool")
+action_name = "Stab"
+windup_position = Vector3(0.24, -0.2, -0.2)
+windup_rotation_degrees = Vector3(-90, 0, 0)
+strike_position = Vector3(0.1, -0.14, -0.74)
+strike_rotation_degrees = Vector3(-93, 0, 0)
+windup_time = 0.12
+strike_time = 0.07
+recover_time = 0.18
+cooldown = 0.05
+charge_time = 0.4
+min_charge_power = 0.4
+max_charge_power = 1.2
+aim_assist_radius = 0.06
+impact_moment = 0.85
+impact_type = 3
+strike_point = Vector3(0, 0.24, 0)
+strike_radius = 0.03
+impact_impulse = 10.0
+max_launch_speed = 6.0
+swing_path_influence = 0.2
+damage = 22.0
+voxel_damage_radius = 0.05
+
+[sub_resource type="Resource" id="slash"]
+script = ExtResource("tool")
+action_name = "Slash"
+equip_time = 0.2
+rest_position = Vector3(0.24, -0.27, -0.38)
+rest_rotation_degrees = Vector3(-72, 0, 0)
+windup_position = Vector3(0.42, -0.12, -0.32)
+windup_rotation_degrees = Vector3(-80, -60, 90)
+strike_position = Vector3(-0.08, -0.24, -0.46)
+strike_rotation_degrees = Vector3(-80, 60, 90)
+windup_time = 0.1
+strike_time = 0.09
+recover_time = 0.16
+cooldown = 0.05
+charge_time = 0.3
+min_charge_power = 0.5
+motion_strike_min_speed = 4.0
+motion_strike_full_speed = 11.0
+motion_strike_cooldown = 0.18
+reach = 1.8
+aim_assist_radius = 0.1
+impact_moment = 0.55
+impact_type = 2
+strike_point = Vector3(0, 0.18, -0.01)
+strike_radius = 0.05
+impact_impulse = 7.0
+max_launch_speed = 6.0
+swing_path_influence = 0.75
+damage = 14.0
+voxel_damage_radius = 0.07
+secondary_strike = SubResource("stab")
+
+[resource]
+script = ExtResource("object")
+tool_profile = ExtResource("steel_profile")
+equipped_collision_parts = PackedInt32Array()
+display_name = "Knife"
+shape_type = 4
+parts = Array[ExtResource("part")]([SubResource("handle"), SubResource("pommel"), SubResource("bolster"), SubResource("rivet_low"), SubResource("rivet_high"), SubResource("blade"), SubResource("spine"), SubResource("tip")])
+mass = 0.25
+bounce = 0.1
+angular_damp = 0.2
+impact_sound = 2
+vox_model = "res://props/vox/knife.vox"
+vox_voxel_size = 0.008
+vox_origin = Vector3(-0.014, -0.069, -0.020000001)
+tool = SubResource("slash")

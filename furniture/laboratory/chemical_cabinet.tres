@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://bvhv3tngupuo7"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_0o53k"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_64hn8"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_42eyx"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_juqba"]
+[ext_resource type="Resource" uid="uid://c3oyba533fuca" path="res://furniture/materials/painted_steel.tres" id="5_cqmaq"]
+[ext_resource type="Resource" uid="uid://dw4suus87xjs" path="res://furniture/materials/plastic.tres" id="6_8a8b4"]
+[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="7_mtpqw"]
+
+[sub_resource type="Resource" id="Resource_ck6n0"]
+script = ExtResource("3_42eyx")
+display_name = "Chemical Storage Cabinet Door"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.4293651407029533
+vox_file = "res://furniture/vox/chemical_cabinet__part1.vox"
+vox_material = ExtResource("5_cqmaq")
+vox_index_materials = {
+1: ExtResource("5_cqmaq"),
+2: ExtResource("6_8a8b4"),
+3: ExtResource("7_mtpqw"),
+4: ExtResource("7_mtpqw"),
+5: ExtResource("5_cqmaq")
+}
+
+[sub_resource type="Resource" id="Resource_w4cfl"]
+script = ExtResource("2_64hn8")
+structure = SubResource("Resource_ck6n0")
+pivot = Vector3(-0.45, 0.91999996, -0.23)
+
+[sub_resource type="Resource" id="Resource_045ur"]
+script = ExtResource("3_42eyx")
+display_name = "Chemical Storage Cabinet Door"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.4293651407029533
+vox_file = "res://furniture/vox/chemical_cabinet__part2.vox"
+vox_material = ExtResource("5_cqmaq")
+vox_index_materials = {
+1: ExtResource("5_cqmaq"),
+2: ExtResource("6_8a8b4"),
+3: ExtResource("7_mtpqw"),
+4: ExtResource("7_mtpqw"),
+5: ExtResource("5_cqmaq")
+}
+
+[sub_resource type="Resource" id="Resource_je84l"]
+script = ExtResource("2_64hn8")
+structure = SubResource("Resource_045ur")
+pivot = Vector3(0.45, 0.91999996, -0.23)
+amount = -100.0
+
+[resource]
+script = ExtResource("3_42eyx")
+display_name = "Chemical Storage Cabinet"
+spawn_category = "Laboratory"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.4293651407029533
+vox_file = "res://furniture/vox/chemical_cabinet.vox"
+vox_material = ExtResource("5_cqmaq")
+vox_index_materials = {
+1: ExtResource("5_cqmaq"),
+2: ExtResource("6_8a8b4"),
+3: ExtResource("7_mtpqw"),
+4: ExtResource("7_mtpqw"),
+5: ExtResource("5_cqmaq")
+}
+moving_parts = Array[ExtResource("2_64hn8")]([SubResource("Resource_w4cfl"), SubResource("Resource_je84l")])

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://cpw3fj6nm5lbo"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_fxji0"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_amcbt"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_3arqo"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_igyrn"]
+[ext_resource type="Resource" path="res://furniture/materials/pine.tres" id="5_x6k73"]
+
+[resource]
+script = ExtResource("3_3arqo")
+display_name = "Picnic Table"
+spawn_category = "Garden"
+voxel_size = 0.035
+anchor_mode = 1
+density_scale = 1.174993207070557
+vox_file = "res://furniture/vox/picnic_table.vox"
+vox_material = ExtResource("5_x6k73")
+vox_index_materials = {
+1: ExtResource("5_x6k73"),
+2: ExtResource("5_x6k73"),
+3: ExtResource("5_x6k73"),
+4: ExtResource("5_x6k73"),
+5: ExtResource("5_x6k73"),
+6: ExtResource("5_x6k73")
+}

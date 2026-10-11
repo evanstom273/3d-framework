@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://d7w7w610mh3v"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_ykal5"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_yysrx"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_j5kta"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_bxb2h"]
+[ext_resource type="Resource" uid="uid://c3oyba533fuca" path="res://furniture/materials/painted_steel.tres" id="5_100m0"]
+[ext_resource type="Resource" uid="uid://cqju2cnc1vrtw" path="res://furniture/materials/glass.tres" id="6_jw7op"]
+[ext_resource type="Resource" uid="uid://6ri68lauf7ep" path="res://furniture/materials/electronics.tres" id="7_6i738"]
+[ext_resource type="Resource" uid="uid://d1dlfsyyucymk" path="res://furniture/materials/screen.tres" id="8_b55xq"]
+[ext_resource type="Resource" uid="uid://bht0hyc6vbx2v" path="res://furniture/materials/aluminium.tres" id="9_kgnmr"]
+
+[sub_resource type="Resource" id="Resource_e3gu3"]
+script = ExtResource("3_j5kta")
+display_name = "Microwave Door"
+voxel_size = 0.0125
+anchor_mode = 1
+density_scale = 0.6413134592963227
+vox_file = "res://furniture/vox/microwave__part1.vox"
+vox_material = ExtResource("5_100m0")
+vox_index_materials = {
+1: ExtResource("5_100m0"),
+2: ExtResource("6_jw7op"),
+3: ExtResource("7_6i738"),
+4: ExtResource("8_b55xq"),
+5: ExtResource("9_kgnmr"),
+6: ExtResource("9_kgnmr")
+}
+
+[sub_resource type="Resource" id="Resource_2khs5"]
+script = ExtResource("2_yysrx")
+structure = SubResource("Resource_e3gu3")
+pivot = Vector3(-0.23, 0.16, -0.181)
+
+[resource]
+script = ExtResource("3_j5kta")
+display_name = "Microwave"
+spawn_category = "Kitchen"
+voxel_size = 0.0125
+anchor_mode = 1
+density_scale = 0.6413134592963227
+vox_file = "res://furniture/vox/microwave.vox"
+vox_material = ExtResource("5_100m0")
+vox_index_materials = {
+1: ExtResource("5_100m0"),
+2: ExtResource("6_jw7op"),
+3: ExtResource("7_6i738"),
+4: ExtResource("8_b55xq"),
+5: ExtResource("9_kgnmr"),
+6: ExtResource("9_kgnmr")
+}
+moving_parts = Array[ExtResource("2_yysrx")]([SubResource("Resource_2khs5")])

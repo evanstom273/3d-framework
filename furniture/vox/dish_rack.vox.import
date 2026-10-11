@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://2kwmbsuebp5v"
+path="res://.godot/imported/dish_rack.vox-6c2af92d941b326dd5b3bc306e5a86e1.tres"
+
+[deps]
+
+source_file="res://furniture/vox/dish_rack.vox"
+dest_files=["res://.godot/imported/dish_rack.vox-6c2af92d941b326dd5b3bc306e5a86e1.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

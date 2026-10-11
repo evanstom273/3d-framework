@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://bw58kwlpqs6wj"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_04nxa"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_qhtl6"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_e2746"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_nsc0f"]
+[ext_resource type="Resource" path="res://furniture/materials/pine.tres" id="5_hh4au"]
+[ext_resource type="Resource" path="res://furniture/materials/plastic.tres" id="6_66igj"]
+[ext_resource type="Resource" path="res://furniture/materials/glass.tres" id="7_42xp5"]
+
+[resource]
+script = ExtResource("3_e2746")
+display_name = "Test Tube Stand"
+spawn_category = "Laboratory"
+voxel_size = 0.012
+anchor_mode = 1
+density_scale = 1.8530377960413333
+vox_file = "res://furniture/vox/test_tube_stand.vox"
+vox_material = ExtResource("5_hh4au")
+vox_index_materials = {
+1: ExtResource("5_hh4au"),
+2: ExtResource("5_hh4au"),
+3: ExtResource("5_hh4au"),
+4: ExtResource("6_66igj"),
+5: ExtResource("7_42xp5"),
+6: ExtResource("6_66igj"),
+7: ExtResource("6_66igj"),
+8: ExtResource("6_66igj")
+}

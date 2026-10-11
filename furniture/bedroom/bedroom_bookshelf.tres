@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://duad71ol2k6lk"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_ah2do"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_dmyle"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_ttidh"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_0on7g"]
+[ext_resource type="Resource" path="res://furniture/materials/oak.tres" id="5_3sihr"]
+[ext_resource type="Resource" path="res://furniture/materials/paper.tres" id="6_baa27"]
+
+[resource]
+script = ExtResource("3_ttidh")
+display_name = "Bookshelf"
+spawn_category = "Bedroom"
+voxel_size = 0.034999999403953555
+anchor_mode = 1
+density_scale = 0.24390072261582588
+vox_file = "res://furniture/vox/bedroom_bookshelf.vox"
+vox_material = ExtResource("5_3sihr")
+vox_index_materials = {
+1: ExtResource("5_3sihr"),
+2: ExtResource("5_3sihr"),
+3: ExtResource("5_3sihr"),
+4: ExtResource("6_baa27"),
+5: ExtResource("6_baa27"),
+6: ExtResource("6_baa27"),
+7: ExtResource("6_baa27"),
+8: ExtResource("6_baa27"),
+9: ExtResource("6_baa27"),
+10: ExtResource("6_baa27"),
+11: ExtResource("6_baa27"),
+12: ExtResource("6_baa27"),
+13: ExtResource("6_baa27"),
+14: ExtResource("6_baa27"),
+15: ExtResource("6_baa27"),
+16: ExtResource("6_baa27"),
+17: ExtResource("6_baa27"),
+18: ExtResource("6_baa27"),
+19: ExtResource("6_baa27"),
+20: ExtResource("6_baa27"),
+21: ExtResource("6_baa27"),
+22: ExtResource("6_baa27"),
+23: ExtResource("6_baa27"),
+24: ExtResource("6_baa27"),
+25: ExtResource("6_baa27"),
+26: ExtResource("6_baa27"),
+27: ExtResource("6_baa27"),
+28: ExtResource("6_baa27"),
+29: ExtResource("6_baa27"),
+30: ExtResource("6_baa27"),
+31: ExtResource("6_baa27"),
+32: ExtResource("6_baa27"),
+33: ExtResource("6_baa27"),
+34: ExtResource("6_baa27"),
+35: ExtResource("6_baa27"),
+36: ExtResource("6_baa27"),
+37: ExtResource("6_baa27"),
+38: ExtResource("6_baa27"),
+39: ExtResource("6_baa27"),
+40: ExtResource("6_baa27"),
+41: ExtResource("6_baa27"),
+42: ExtResource("6_baa27"),
+43: ExtResource("6_baa27"),
+44: ExtResource("6_baa27"),
+45: ExtResource("6_baa27"),
+46: ExtResource("6_baa27"),
+47: ExtResource("6_baa27"),
+48: ExtResource("6_baa27"),
+49: ExtResource("6_baa27"),
+50: ExtResource("6_baa27"),
+51: ExtResource("6_baa27")
+}

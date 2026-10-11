@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="2_box"]
 [ext_resource type="Resource" path="res://props/voxel_materials/brick.tres" id="3_brick"]
 [ext_resource type="Resource" path="res://props/voxel_materials/concrete.tres" id="4_concrete"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="4_odl18"]
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="5_o3o4p"]
 
 [sub_resource type="Resource" id="Box_leg_left"]

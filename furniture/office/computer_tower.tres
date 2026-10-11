@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://bf2wbkgpx4128"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_s83xs"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_2rqvi"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_sgka3"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_xf7yq"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_steel.tres" id="5_o1wqa"]
+[ext_resource type="Resource" path="res://furniture/materials/glass.tres" id="6_yg73f"]
+[ext_resource type="Resource" path="res://furniture/materials/plastic.tres" id="7_ephxp"]
+
+[resource]
+script = ExtResource("3_sgka3")
+display_name = "Desktop Computer Tower"
+spawn_category = "Office"
+voxel_size = 0.012
+anchor_mode = 1
+density_scale = 0.6119720333677399
+vox_file = "res://furniture/vox/computer_tower.vox"
+vox_material = ExtResource("5_o1wqa")
+vox_index_materials = {
+1: ExtResource("5_o1wqa"),
+2: ExtResource("6_yg73f"),
+3: ExtResource("7_ephxp"),
+4: ExtResource("7_ephxp")
+}

@@ -39,16 +39,21 @@ extends Resource
 
 var _physics_material: PhysicsMaterial
 var _variants: Dictionary = {}
+## Guards _variants: furniture is baked on worker threads that share materials.
+static var _variants_lock := Mutex.new()
 
 
 ## The same material in another colour (cached, so equal colours share one variant).
 func get_color_variant(variant_color: Color) -> VoxelMaterialDefinition:
 	var key := variant_color.to_rgba32()
-	if not _variants.has(key):
-		var variant: VoxelMaterialDefinition = duplicate()
+	_variants_lock.lock()
+	var variant: VoxelMaterialDefinition = _variants.get(key)
+	if variant == null:
+		variant = duplicate()
 		variant.color = Color(variant_color, 1.0)
 		_variants[key] = variant
-	return _variants[key]
+	_variants_lock.unlock()
+	return variant
 
 
 func damage_multiplier(impact_type: PhysicsToolDefinition.ImpactType) -> float:

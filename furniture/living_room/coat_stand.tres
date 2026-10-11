@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://mhkcubglqgle"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_daadh"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_lpblh"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_qx12l"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_ke74o"]
+[ext_resource type="Resource" path="res://furniture/materials/walnut.tres" id="5_huep2"]
+
+[resource]
+script = ExtResource("3_qx12l")
+display_name = "Coat Stand"
+spawn_category = "Living Room"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 2.502144695453249
+vox_file = "res://furniture/vox/coat_stand.vox"
+vox_material = ExtResource("5_huep2")
+vox_index_materials = {
+1: ExtResource("5_huep2"),
+2: ExtResource("5_huep2"),
+3: ExtResource("5_huep2")
+}

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bnn2rnmy26tgf"
+path="res://.godot/imported/tool_cabinet__part6.vox-ccff3b6ee387083bb30eb5e709ed6ba1.tres"
+
+[deps]
+
+source_file="res://furniture/vox/tool_cabinet__part6.vox"
+dest_files=["res://.godot/imported/tool_cabinet__part6.vox-ccff3b6ee387083bb30eb5e709ed6ba1.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

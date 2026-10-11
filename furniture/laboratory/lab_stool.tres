@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://br0x4k1icad50"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_4sngr"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_246r4"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_4s8f7"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_djmc5"]
+[ext_resource type="Resource" path="res://furniture/materials/chrome.tres" id="5_7j4yi"]
+[ext_resource type="Resource" path="res://furniture/materials/plastic.tres" id="6_4iaa4"]
+
+[resource]
+script = ExtResource("3_4s8f7")
+display_name = "Laboratory Stool"
+spawn_category = "Laboratory"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.8710801393728572
+vox_file = "res://furniture/vox/lab_stool.vox"
+vox_material = ExtResource("5_7j4yi")
+vox_index_materials = {
+1: ExtResource("5_7j4yi"),
+2: ExtResource("5_7j4yi"),
+3: ExtResource("6_4iaa4")
+}

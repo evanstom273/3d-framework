@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://skekp473y1y7"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_hnfa5"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_c2bc1"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_8qib0"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_8xtx7"]
+[ext_resource type="Resource" path="res://furniture/materials/oak.tres" id="5_5feqp"]
+[ext_resource type="Resource" path="res://furniture/materials/cast_iron.tres" id="6_06q8s"]
+
+[resource]
+script = ExtResource("3_8qib0")
+display_name = "Heavy Wooden Workbench"
+spawn_category = "Workshop"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.6217546627158154
+vox_file = "res://furniture/vox/workbench_wood.vox"
+vox_material = ExtResource("5_5feqp")
+vox_index_materials = {
+1: ExtResource("5_5feqp"),
+2: ExtResource("5_5feqp"),
+3: ExtResource("5_5feqp"),
+4: ExtResource("5_5feqp"),
+5: ExtResource("5_5feqp"),
+6: ExtResource("5_5feqp"),
+7: ExtResource("6_06q8s")
+}

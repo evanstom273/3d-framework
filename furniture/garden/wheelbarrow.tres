@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://bou1aclr3tbcn"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_3n64v"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_qc7qm"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_yvfhq"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_c2ija"]
+[ext_resource type="Resource" path="res://furniture/materials/rubber.tres" id="5_qd5ov"]
+[ext_resource type="Resource" path="res://furniture/materials/steel.tres" id="6_en8f6"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_steel.tres" id="7_nm6pn"]
+
+[resource]
+script = ExtResource("3_yvfhq")
+display_name = "Wheelbarrow"
+spawn_category = "Garden"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.2975636972289578
+vox_file = "res://furniture/vox/wheelbarrow.vox"
+vox_material = ExtResource("7_nm6pn")
+vox_index_materials = {
+1: ExtResource("5_qd5ov"),
+2: ExtResource("6_en8f6"),
+3: ExtResource("6_en8f6"),
+4: ExtResource("7_nm6pn"),
+5: ExtResource("7_nm6pn"),
+6: ExtResource("5_qd5ov")
+}

@@ -174,7 +174,8 @@ func _z_min(end: End, v: float) -> float:
 		End.GABLE:
 			return -_half - verge_overhang
 		End.HIP:
-			return -_half - eaves_overhang + v * cos(_p)
+			# Hips never run past the middle: a square hipped roof becomes a pyramid.
+			return minf(-_half - eaves_overhang + v * cos(_p), length * 0.5)
 	return 0.0
 
 
@@ -183,7 +184,7 @@ func _z_max(end: End, v: float) -> float:
 		End.GABLE:
 			return length + _half + verge_overhang
 		End.HIP:
-			return length + _half + eaves_overhang - v * cos(_p)
+			return maxf(length + _half + eaves_overhang - v * cos(_p), length * 0.5)
 	return length
 
 
@@ -231,6 +232,8 @@ func _ridge(b: KitBuilder, from: Vector3, to: Vector3, up: Vector3, material: Ma
 	var profile := arc(Vector2(0, -0.035), 0.11, 0.0, PI, 10)
 	var piece := 0.45
 	var total := from.distance_to(to)
+	if total < 0.02:
+		return
 	var count := maxi(1, ceili(total / piece))
 	var direction := (to - from) / total
 	for i in count:

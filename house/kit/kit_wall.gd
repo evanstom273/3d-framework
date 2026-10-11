@@ -128,6 +128,9 @@ const SETBACK := 0.1
 		queue_rebuild()
 
 var _holes: Array[Rect2] = []
+## Doors, windows and climb markers built alongside the geometry, added as fixtures.
+var _fixtures: Array[Node3D] = []
+var _climbable: Array[KitWindowOpening] = []
 
 
 func thickness() -> float:
@@ -168,13 +171,26 @@ func _build(b: KitBuilder) -> void:
 	var x1 := _end_x()
 	var y0 := _bottom()
 	_holes.clear()
+	_fixtures.clear()
+	_climbable.clear()
 	for opening in openings:
 		if opening == null:
 			continue
 		var left := clampf(opening.position - opening.width * 0.5, x0 + 0.05, x1 - 0.05)
 		var right := clampf(opening.position + opening.width * 0.5, x0 + 0.05, x1 - 0.05)
+		# Corner glazing runs right up to the end of the wall.
+		if opening.kind == KitOpening.Kind.WINDOW and opening.corner == KitOpening.CornerGlazing.AT_START:
+			left = x0
+		if opening.kind == KitOpening.Kind.WINDOW and opening.corner == KitOpening.CornerGlazing.AT_END:
+			right = x1
 		var bottom := opening.bottom()
-		var top := minf(bottom + opening.height, height - 0.1)
+		var top := bottom + opening.height
+		# Gates have no threshold, so the opening runs right down through the
+		# footings; otherwise a strip of wall would sit flush with the ground.
+		if opening.is_gate() and bottom <= 0.001:
+			bottom = y0
+		# Gates can be as tall as a garden wall; everything else keeps a lintel.
+		top = minf(top, height if opening.is_gate() else height - 0.1)
 		_holes.append(Rect2(left, bottom, right - left, top - bottom) if right - left > 0.2 and top > bottom else Rect2())
 	var solid := _subtract(Rect2(x0, y0, x1 - x0, height - y0), _holes)
 	var paint_in := KitMaterials.paint(inside_color)
@@ -193,7 +209,9 @@ func _build(b: KitBuilder) -> void:
 			_coping(b, half, x0, x1)
 	for i in openings.size():
 		if openings[i] != null and _holes[i].has_area():
-			_opening_details(b, openings[i], _holes[i], half)
+			if _is_shaped(openings[i]):
+				_shape_infill(b, openings[i], _holes[i], half)
+			_opening_details(b, openings[i], _holes[i], half, i)
 	_interior_finishes(b, half, x0, x1)
 	if quoins and wall_type != WallType.INTERIOR:
 		if start_join == Join.CORNER:
@@ -280,19 +298,32 @@ func _coping(b: KitBuilder, half: float, x0: float, x1: float) -> void:
 	b.extrude(profile, Vector3(x1 + 0.0, height, 0), Vector3(x0, height, 0), Vector3.UP, stone)
 
 
-func _opening_details(b: KitBuilder, o: KitOpening, hole: Rect2, half: float) -> void:
+func _opening_details(b: KitBuilder, o: KitOpening, hole: Rect2, half: float, index := 0) -> void:
 	var frame := KitMaterials.gloss(o.frame_color)
 	var x0 := hole.position.x
 	var x1 := hole.end.x
 	var bottom := hole.position.y
+	if o.is_gate():
+		# The hole runs down through the footings; the gate stands on the ground.
+		bottom = maxf(bottom, o.bottom())
 	var top := hole.end.y
 	var exterior := wall_type == WallType.EXTERIOR
 	var stone := KitMaterials.stone()
 	match o.kind:
 		KitOpening.Kind.WINDOW:
 			var z0 := -half + SETBACK if exterior else -0.035
-			KitJoinery.window_frame(b, o, x0, x1, bottom, top, z0, z0 + 0.07, frame)
-			if exterior:
+			if _is_bay(o):
+				_bay(b, o, hole, half, index)
+				return
+			if o.uses_mechanism():
+				var title := o.display_name if not o.display_name.is_empty() else "Window"
+				var result := KitWindows.build(b, o, x1 - x0, top - bottom, Transform3D(Basis.IDENTITY, Vector3(x0, bottom, z0)), title)
+				_fixtures.append_array(result.nodes)
+				_add_climbable(Transform3D(Basis.IDENTITY, Vector3((x0 + x1) * 0.5, bottom, 0.0)), x1 - x0, top - bottom, thickness(), bottom, result, (x1 - x0) * 0.5, index)
+			else:
+				KitJoinery.window_frame(b, o, x0, x1, bottom, top, z0, z0 + 0.07, frame)
+			# Round, oval and polygon windows have no flat bottom for a sill.
+			if exterior and not o.shape in [KitOpening.Shape.CIRCLE, KitOpening.Shape.OVAL, KitOpening.Shape.POLYGON]:
 				# Projecting stone sill with a drip, and a window board inside.
 				var sill_material := frame if facade == KitMaterials.Facade.TIMBER_CLADDING else stone
 				var out := SETBACK + 0.05
@@ -303,6 +334,24 @@ func _opening_details(b: KitBuilder, o: KitOpening, hole: Rect2, half: float) ->
 		_:
 			var z0 := -half + SETBACK if exterior else -half
 			var z1 := z0 + 0.1 if exterior else half
+			if o.kind == KitOpening.Kind.DOOR and o.uses_mechanism():
+				_fixtures.append_array(KitDoors.build(b, o, x0, x1, bottom, top, z0, z1, half, exterior))
+				# Ordinary doorways get architraves; garages, gates and glazed screens don't.
+				var trimmed := not o.is_gate() and not o.door_style in [KitOpening.DoorStyle.GARAGE_UP_AND_OVER,
+					KitOpening.DoorStyle.GARAGE_SECTIONAL, KitOpening.DoorStyle.ROLLER_SHUTTER, KitOpening.DoorStyle.SLIDING_PATIO,
+					KitOpening.DoorStyle.BIFOLD]
+				if trimmed and wall_type != WallType.GARDEN:
+					var trim := KitMaterials.gloss(joinery_color)
+					KitJoinery.architrave(b, x0, x1, top, half, 1.0, trim, bottom)
+					if wall_type == WallType.INTERIOR:
+						KitJoinery.architrave(b, x0, x1, top, -half, -1.0, trim, bottom)
+				if exterior and not o.is_gate():
+					var inside := half * 2.0 - SETBACK
+					var threshold := PackedVector2Array([Vector2(-inside, 0.006), Vector2(-0.1, 0.012), Vector2(SETBACK + 0.06, -0.01), Vector2(SETBACK + 0.06, -0.06), Vector2(-inside, -0.06)])
+					b.extrude(threshold, Vector3(x0, bottom, z0), Vector3(x1, bottom, z0), Vector3.UP, stone)
+				if exterior or wall_type == WallType.GARDEN:
+					_head(b, o, x0, x1, top, half)
+				return
 			# Door joinery is defined relative to floor height 0. Shift its entire
 			# construction to the opening bottom, including the threshold and trim.
 			var saved_transform := b.transform
@@ -320,7 +369,10 @@ func _opening_details(b: KitBuilder, o: KitOpening, hole: Rect2, half: float) ->
 				KitJoinery.architrave(b, x0, x1, local_top, -half, -1.0, trim)
 			b.transform = saved_transform
 	if exterior or wall_type == WallType.GARDEN:
-		_head(b, o, x0, x1, top, half)
+		if _is_shaped(o):
+			_shaped_head(b, o, hole, half)
+		else:
+			_head(b, o, x0, x1, top, half)
 
 
 ## Lintel detail over an opening on the outside face.
@@ -425,6 +477,9 @@ func _build_fixtures() -> void:
 		if o == null or i >= _holes.size() or not _holes[i].has_area():
 			continue
 		var hole := _holes[i]
+		# Mechanism doors and windows (and bays) were built with the geometry; added below.
+		if o.kind != KitOpening.Kind.OPEN_DOORWAY and (o.uses_mechanism() or _is_bay(o)):
+			continue
 		match o.kind:
 			KitOpening.Kind.DOOR:
 				var z0 := -half + SETBACK if exterior else -half
@@ -436,8 +491,163 @@ func _build_fixtures() -> void:
 				add_generated(leaf)
 			KitOpening.Kind.WINDOW:
 				var z0 := -half + SETBACK if exterior else -0.035
-				for node in KitJoinery.window_sashes(o, hole.position.x, hole.end.x, hole.position.y, hole.end.y, z0):
+				var sashes := KitJoinery.window_sashes(o, hole.position.x, hole.end.x, hole.position.y, hole.end.y, z0)
+				for node in sashes:
 					add_generated(node)
+				# Lets the player climb through once a casement is open.
+				var climbable := KitWindowOpening.new()
+				climbable.name = "Climbable%d" % i
+				climbable.position = Vector3(hole.get_center().x, hole.position.y, 0.0)
+				climbable.width = hole.size.x
+				climbable.height = hole.size.y
+				climbable.depth = thickness()
+				climbable.sill_height = hole.position.y
+				climbable.casements.assign(sashes)
+				# Each casement's own clear opening, relative to the window's bottom centre.
+				for light in KitJoinery.window_lights(o, hole.position.x, hole.end.x, hole.position.y, hole.end.y):
+					var rect: Rect2 = light
+					climbable.lights.append(Rect2(rect.position.x - hole.get_center().x, rect.position.y - hole.position.y, rect.size.x, rect.size.y))
+				add_generated(climbable)
+	for node in _fixtures:
+		add_generated(node)
+	for climbable in _climbable:
+		add_generated(climbable)
+
+
+# --- Shaped, bay and mechanism windows
+
+static func _is_bay(o: KitOpening) -> bool:
+	return o.kind == KitOpening.Kind.WINDOW and o.window_style in [KitOpening.WindowStyle.BAY, KitOpening.WindowStyle.BOW]
+
+
+static func _is_shaped(o: KitOpening) -> bool:
+	return o.kind == KitOpening.Kind.WINDOW and o.shape != KitOpening.Shape.RECTANGLE and not _is_bay(o)
+
+
+## The opening's outline in wall space.
+static func _wall_outline(o: KitOpening, hole: Rect2) -> PackedVector2Array:
+	var outline := KitShapes.outline(o, hole.size.x, hole.size.y)
+	for i in outline.size():
+		outline[i] += Vector2(hole.get_center().x, hole.position.y)
+	return outline
+
+
+## Fills the corners between the rectangular cut and a shaped opening, through
+## the whole wall, so the hole (and its collision) follows the shape exactly.
+func _shape_infill(b: KitBuilder, o: KitOpening, hole: Rect2, half: float) -> void:
+	var outline := _wall_outline(o, hole)
+	var rect := KitShapes.rect(hole.position.x, hole.position.y, hole.end.x, hole.end.y)
+	var paint_in := KitMaterials.paint(inside_color)
+	for piece in KitShapes.ring(rect, outline):
+		match wall_type:
+			WallType.EXTERIOR:
+				var face := KitMaterials.facade(facade, brick, facade_color)
+				b.slab(piece, Vector3(0, 0, half), Vector3.RIGHT, Vector3.UP, half * 2.0 - OUTER_LEAF, paint_in, paint_in)
+				b.slab(piece, Vector3(0, 0, -half + OUTER_LEAF), Vector3.RIGHT, Vector3.UP, OUTER_LEAF, face, face)
+			WallType.INTERIOR:
+				b.slab(piece, Vector3(0, 0, half), Vector3.RIGHT, Vector3.UP, half * 2.0, paint_in, KitMaterials.paint(other_side_color))
+			_:
+				var face := KitMaterials.facade(facade, brick, facade_color)
+				b.slab(piece, Vector3(0, 0, half), Vector3.RIGHT, Vector3.UP, half * 2.0, face, face)
+
+
+## A brick or stone surround following a shaped window's outline on the facade.
+func _shaped_head(b: KitBuilder, o: KitOpening, hole: Rect2, half: float) -> void:
+	if o.head == KitOpening.Head.NONE or facade == KitMaterials.Facade.TIMBER_CLADDING:
+		return
+	var outline := _wall_outline(o, hole)
+	var around := KitShapes.inset(outline, -0.11)
+	var soldier := o.head == KitOpening.Head.SOLDIER_COURSE and facade == KitMaterials.Facade.BRICK
+	var material := KitMaterials.brick(brick, true) if soldier else KitMaterials.stone()
+	# Arched and gable tops get an arch over the top only; others a full surround.
+	var from_y := hole.position.y - 1.0
+	if o.shape in [KitOpening.Shape.ARCHED, KitOpening.Shape.GABLE, KitOpening.Shape.TRIANGLE, KitOpening.Shape.TRAPEZOID, KitOpening.Shape.SEMICIRCLE]:
+		from_y = hole.position.y + KitShapes.spring_height(o, hole.size.x, hole.size.y) - 0.02
+		if o.shape != KitOpening.Shape.ARCHED and o.shape != KitOpening.Shape.GABLE:
+			from_y = hole.position.y + 0.02
+	for piece in KitShapes.ring(around, outline):
+		if KitShapes.bounds(piece).get_center().y < from_y:
+			continue
+		b.slab(piece, Vector3(0, 0, -half + 0.03), Vector3.RIGHT, Vector3.UP, 0.042, material, material)
+
+
+## A bay (three facets) or bow (five, curved) window projecting from the wall:
+## low walls carry the sill, each facet is a window, and a lead roof caps it.
+func _bay(b: KitBuilder, o: KitOpening, hole: Rect2, half: float, index: int) -> void:
+	var x0 := hole.position.x
+	var x1 := hole.end.x
+	var p := minf(o.projection, (x1 - x0) * (0.45 if o.window_style == KitOpening.WindowStyle.BOW else 0.3))
+	var face_z := -half
+	var sill := o.sill_height
+	var top := hole.end.y
+	var points: Array[Vector2] = []
+	if o.window_style == KitOpening.WindowStyle.BOW:
+		var mid := (x0 + x1) * 0.5
+		var hw := (x1 - x0) * 0.5
+		for i in 6:
+			var angle := PI * (1.0 - i / 5.0)
+			points.append(Vector2(mid + cos(angle) * hw, face_z - sin(angle) * p))
+	else:
+		points = [Vector2(x0, face_z), Vector2(x0 + p, face_z - p), Vector2(x1 - p, face_z - p), Vector2(x1, face_z)]
+	var footprint := PackedVector2Array(points)
+	var face := KitMaterials.facade(facade, brick, facade_color)
+	var stone := KitMaterials.stone()
+	var frame := KitMaterials.gloss(o.frame_color)
+	# Low walls under the windows, capped by a stone sill that doubles as a
+	# window seat inside.
+	b.prism(footprint, -plinth_drop if wall_type == WallType.EXTERIOR else 0.0, sill, face)
+	b.prism(KitShapes.inset(footprint, -0.04), sill, sill + 0.05, stone)
+	# Facet windows between corner posts.
+	var title := o.display_name if not o.display_name.is_empty() else "Bay window"
+	var facets := points.size() - 1
+	for i in facets:
+		var a := points[i]
+		var c := points[i + 1]
+		var along := Vector3(c.x - a.x, 0.0, c.y - a.y)
+		var w := along.length()
+		var x_axis := along / w
+		var basis := Basis(x_axis, Vector3.UP, x_axis.cross(Vector3.UP))
+		var place := Transform3D(basis, Vector3(a.x, sill + 0.05, a.y))
+		var facet := o.duplicate() as KitOpening
+		facet.window_style = KitOpening.WindowStyle.CASEMENT
+		facet.shape = KitOpening.Shape.RECTANGLE
+		facet.corner = KitOpening.CornerGlazing.NONE
+		var middle := int(facets / 2.0)
+		if i != middle:
+			facet.panel_layout = "L" if i < middle else "R"
+		elif facet.panel_layout.is_empty():
+			facet.panel_layout = "L,F,R" if w > 1.2 else "F"
+		var result := KitWindows.build(b, facet, w, top - sill - 0.05, place, "%s %d" % [title, i + 1])
+		_fixtures.append_array(result.nodes)
+		_add_climbable(place * Transform3D(Basis.IDENTITY, Vector3(w * 0.5, 0.0, 0.0)), w, top - sill - 0.05, 0.1, sill + 0.05, result, w * 0.5, index * 10 + i)
+	for i in range(1, facets):
+		var q := points[i]
+		b.box(Vector3(q.x - 0.045, sill + 0.05, q.y - 0.045), Vector3(q.x + 0.045, top, q.y + 0.045), frame)
+	# Lead flat roof over the bay, with a fascia edge.
+	var roof := KitShapes.inset(footprint, -0.06)
+	b.prism(roof, top, top + 0.16, KitMaterials.lead())
+	b.prism(roof, top - 0.02, top, frame)
+
+
+func _add_climbable(place: Transform3D, w: float, h: float, depth: float, sill: float, result: KitWindows.Result, centre_offset: float, index: int) -> void:
+	var climbable := KitWindowOpening.new()
+	climbable.name = "Climbable%d" % index
+	climbable.transform = place
+	climbable.width = w
+	climbable.height = h
+	climbable.depth = depth
+	climbable.sill_height = sill
+	for i in result.lights.size():
+		# Fixed lights never open, so they can't be climbed through.
+		if result.mechanisms[i] == null:
+			continue
+		var r := result.lights[i]
+		climbable.casements.append(result.mechanisms[i])
+		climbable.lights.append(Rect2(r.position.x - centre_offset, r.position.y, r.size.x, r.size.y))
+	if climbable.casements.is_empty():
+		climbable.free()
+		return
+	_climbable.append(climbable)
 
 
 # --- 2D helpers

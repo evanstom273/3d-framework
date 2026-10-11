@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://c0miwimukr3dt"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_2e5bp"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_2jdvl"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_a03y8"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_7hul4"]
+[ext_resource type="Resource" path="res://furniture/materials/oak.tres" id="5_exvdu"]
+[ext_resource type="Resource" path="res://furniture/materials/fabric.tres" id="6_i8vtw"]
+[ext_resource type="Resource" path="res://furniture/materials/cast_iron.tres" id="7_y7tkj"]
+
+[resource]
+script = ExtResource("3_a03y8")
+display_name = "Coat Rack"
+spawn_category = "Utility"
+voxel_size = 0.022
+anchor_mode = 1
+density_scale = 0.6118907372654622
+vox_file = "res://furniture/vox/coat_rack_wall.vox"
+vox_material = ExtResource("5_exvdu")
+vox_index_materials = {
+1: ExtResource("5_exvdu"),
+2: ExtResource("5_exvdu"),
+3: ExtResource("5_exvdu"),
+4: ExtResource("6_i8vtw"),
+5: ExtResource("6_i8vtw"),
+6: ExtResource("7_y7tkj"),
+7: ExtResource("6_i8vtw"),
+8: ExtResource("6_i8vtw")
+}

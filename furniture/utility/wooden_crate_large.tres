@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://dn8cesdjilbil"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_a68dp"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_aiw7e"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_hc5mh"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_en3fx"]
+[ext_resource type="Resource" path="res://furniture/materials/pine.tres" id="5_q5t46"]
+
+[resource]
+script = ExtResource("3_hc5mh")
+display_name = "Wooden Crate"
+spawn_category = "Utility"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.7038948850305421
+vox_file = "res://furniture/vox/wooden_crate_large.vox"
+vox_material = ExtResource("5_q5t46")
+vox_index_materials = {
+1: ExtResource("5_q5t46"),
+2: ExtResource("5_q5t46"),
+3: ExtResource("5_q5t46"),
+4: ExtResource("5_q5t46"),
+5: ExtResource("5_q5t46"),
+6: ExtResource("5_q5t46"),
+7: ExtResource("5_q5t46"),
+8: ExtResource("5_q5t46"),
+9: ExtResource("5_q5t46")
+}

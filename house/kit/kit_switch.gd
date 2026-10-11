@@ -115,6 +115,7 @@ func _play_click() -> void:
 		_click.mix_rate = rate
 		_click.data = samples
 	var player := AudioStreamPlayer3D.new()
+	player.bus = &"World"
 	player.stream = _click
 	player.volume_db = -6.0
 	player.unit_size = 2.0

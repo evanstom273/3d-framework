@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://drsjsry1peadr"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_x4hi2"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_swcx0"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_yh2kw"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_4t503"]
+[ext_resource type="Resource" path="res://furniture/materials/plastic.tres" id="5_ba6ud"]
+[ext_resource type="Resource" path="res://furniture/materials/chrome.tres" id="6_cuiho"]
+[ext_resource type="Resource" path="res://furniture/materials/fabric.tres" id="7_grd34"]
+
+[resource]
+script = ExtResource("3_yh2kw")
+display_name = "Office Chair"
+spawn_category = "Office"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 1.570239035245054
+vox_file = "res://furniture/vox/office_chair.vox"
+vox_material = ExtResource("5_ba6ud")
+vox_index_materials = {
+1: ExtResource("5_ba6ud"),
+2: ExtResource("6_cuiho"),
+3: ExtResource("6_cuiho"),
+4: ExtResource("7_grd34"),
+5: ExtResource("7_grd34"),
+6: ExtResource("7_grd34")
+}

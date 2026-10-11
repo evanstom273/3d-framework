@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://2lmvs7aik6ef"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_qq1ab"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_6pkdi"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_4l7pd"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_ads0l"]
+[ext_resource type="Resource" path="res://furniture/materials/walnut.tres" id="5_xklda"]
+[ext_resource type="Resource" path="res://furniture/materials/paper.tres" id="6_jvmh8"]
+
+[resource]
+script = ExtResource("3_4l7pd")
+display_name = "Magazine Rack"
+spawn_category = "Living Room"
+voxel_size = 0.018
+anchor_mode = 1
+density_scale = 0.27594892626891765
+vox_file = "res://furniture/vox/magazine_rack.vox"
+vox_material = ExtResource("5_xklda")
+vox_index_materials = {
+1: ExtResource("5_xklda"),
+2: ExtResource("5_xklda"),
+3: ExtResource("5_xklda"),
+4: ExtResource("6_jvmh8"),
+5: ExtResource("6_jvmh8"),
+6: ExtResource("6_jvmh8"),
+7: ExtResource("6_jvmh8"),
+8: ExtResource("6_jvmh8"),
+9: ExtResource("6_jvmh8"),
+10: ExtResource("6_jvmh8"),
+11: ExtResource("6_jvmh8")
+}

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://52p47fyyl1ql"
+path="res://.godot/imported/shower_tray.vox-0f74cfcbdc53a609f4daf67c3f0cd87c.tres"
+
+[deps]
+
+source_file="res://furniture/vox/shower_tray.vox"
+dest_files=["res://.godot/imported/shower_tray.vox-0f74cfcbdc53a609f4daf67c3f0cd87c.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

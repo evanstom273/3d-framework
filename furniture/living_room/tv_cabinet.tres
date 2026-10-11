@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://dk3tbtepoylsk"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_cf83s"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_fg2ng"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_dy45r"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_fg5jm"]
+[ext_resource type="Resource" uid="uid://do6r55lv41aud" path="res://furniture/materials/oak.tres" id="5_agx75"]
+[ext_resource type="Resource" uid="uid://bgrnpiwfmjxib" path="res://furniture/materials/painted_wood.tres" id="6_25h38"]
+[ext_resource type="Resource" uid="uid://cdtvomcuyhwix" path="res://furniture/materials/steel.tres" id="7_1pgjt"]
+
+[sub_resource type="Resource" id="Resource_igpoa"]
+script = ExtResource("3_dy45r")
+display_name = "TV Cabinet Door"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.7123379152985893
+vox_file = "res://furniture/vox/tv_cabinet__part1.vox"
+vox_material = ExtResource("5_agx75")
+vox_index_materials = {
+1: ExtResource("5_agx75"),
+2: ExtResource("5_agx75"),
+3: ExtResource("5_agx75"),
+4: ExtResource("6_25h38"),
+5: ExtResource("7_1pgjt"),
+6: ExtResource("7_1pgjt")
+}
+
+[sub_resource type="Resource" id="Resource_4dlhg"]
+script = ExtResource("2_fg2ng")
+structure = SubResource("Resource_igpoa")
+pivot = Vector3(-0.77, 0.29, -0.175)
+
+[sub_resource type="Resource" id="Resource_qsoah"]
+script = ExtResource("3_dy45r")
+display_name = "TV Cabinet Door"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.7123379152985893
+vox_file = "res://furniture/vox/tv_cabinet__part2.vox"
+vox_material = ExtResource("5_agx75")
+vox_index_materials = {
+1: ExtResource("5_agx75"),
+2: ExtResource("5_agx75"),
+3: ExtResource("5_agx75"),
+4: ExtResource("6_25h38"),
+5: ExtResource("7_1pgjt"),
+6: ExtResource("7_1pgjt")
+}
+
+[sub_resource type="Resource" id="Resource_ygybp"]
+script = ExtResource("2_fg2ng")
+structure = SubResource("Resource_qsoah")
+pivot = Vector3(0.7700001, 0.29, -0.175)
+amount = -100.0
+
+[resource]
+script = ExtResource("3_dy45r")
+display_name = "TV Cabinet"
+spawn_category = "Living Room"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.7123379152985893
+vox_file = "res://furniture/vox/tv_cabinet.vox"
+vox_material = ExtResource("5_agx75")
+vox_index_materials = {
+1: ExtResource("5_agx75"),
+2: ExtResource("5_agx75"),
+3: ExtResource("5_agx75"),
+4: ExtResource("6_25h38"),
+5: ExtResource("7_1pgjt"),
+6: ExtResource("7_1pgjt")
+}
+moving_parts = Array[ExtResource("2_fg2ng")]([SubResource("Resource_4dlhg"), SubResource("Resource_ygybp")])

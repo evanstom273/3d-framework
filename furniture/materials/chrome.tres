@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://clxxadowmi0ea"]
+
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_gr75v"]
+
+[resource]
+script = ExtResource("1_gr75v")
+display_name = "Chrome"
+color = Color(0.82, 0.83, 0.85, 1)
+color_jitter = 0.0
+strength = 30.0
+density = 1100.0
+friction = 0.4
+bounce = 0.1
+blunt_multiplier = 0.6
+sharp_multiplier = 0.3
+pierce_multiplier = 0.4
+impact_sound = 2
+rubble_fraction = 0.05

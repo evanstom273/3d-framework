@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://b5m3qr64cqmcx"
+path="res://.godot/imported/storage_bench.vox-240007c9f4f31fb93cd696ea1b395975.tres"
+
+[deps]
+
+source_file="res://furniture/vox/storage_bench.vox"
+dest_files=["res://.godot/imported/storage_bench.vox-240007c9f4f31fb93cd696ea1b395975.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

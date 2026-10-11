@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://dgnby06t2k8b6"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_wde03"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_ely56"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_uwmfb"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_ijhb2"]
+[ext_resource type="Resource" path="res://furniture/materials/chrome.tres" id="5_o3b24"]
+[ext_resource type="Resource" path="res://furniture/materials/fabric.tres" id="6_q38nq"]
+
+[resource]
+script = ExtResource("3_uwmfb")
+display_name = "Towel Rail"
+spawn_category = "Bathroom"
+voxel_size = 0.018
+anchor_mode = 1
+density_scale = 2.135339527526225
+vox_file = "res://furniture/vox/towel_rail.vox"
+vox_material = ExtResource("5_o3b24")
+vox_index_materials = {
+1: ExtResource("5_o3b24"),
+2: ExtResource("5_o3b24"),
+3: ExtResource("6_q38nq"),
+4: ExtResource("6_q38nq")
+}

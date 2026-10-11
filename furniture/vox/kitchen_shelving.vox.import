@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://jfx4jtl3l30l"
+path="res://.godot/imported/kitchen_shelving.vox-d908dfb898fb78c20dc4716a6bccca8b.tres"
+
+[deps]
+
+source_file="res://furniture/vox/kitchen_shelving.vox"
+dest_files=["res://.godot/imported/kitchen_shelving.vox-d908dfb898fb78c20dc4716a6bccca8b.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

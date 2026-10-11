@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://b3qu1yc1022lg"
+path="res://.godot/imported/fridge__part2.vox-66da53ee6199a008f9b6ac2e4aef3461.tres"
+
+[deps]
+
+source_file="res://furniture/vox/fridge__part2.vox"
+dest_files=["res://.godot/imported/fridge__part2.vox-66da53ee6199a008f9b6ac2e4aef3461.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

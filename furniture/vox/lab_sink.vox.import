@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bo8fdmku5rpkm"
+path="res://.godot/imported/lab_sink.vox-1b761ead1b428ce0c7c8fb7bdb454a7d.tres"
+
+[deps]
+
+source_file="res://furniture/vox/lab_sink.vox"
+dest_files=["res://.godot/imported/lab_sink.vox-1b761ead1b428ce0c7c8fb7bdb454a7d.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

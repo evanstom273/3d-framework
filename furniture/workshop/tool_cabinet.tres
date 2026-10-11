@@ -1,0 +1,170 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://c3vqirkhu0d3m"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_w5vs5"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_ug5th"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_6rwv7"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_bb42g"]
+[ext_resource type="Resource" uid="uid://c3oyba533fuca" path="res://furniture/materials/painted_steel.tres" id="5_wfdad"]
+[ext_resource type="Resource" uid="uid://d01xckqs64akm" path="res://furniture/materials/rubber.tres" id="6_2tb6b"]
+[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="7_4hcnp"]
+
+[sub_resource type="Resource" id="Resource_ryo0o"]
+script = ExtResource("3_6rwv7")
+display_name = "Tool Cabinet Drawer"
+voxel_size = 0.022
+anchor_mode = 1
+density_scale = 0.7781237581145763
+vox_file = "res://furniture/vox/tool_cabinet__part1.vox"
+vox_material = ExtResource("5_wfdad")
+vox_index_materials = {
+1: ExtResource("5_wfdad"),
+2: ExtResource("6_2tb6b"),
+3: ExtResource("7_4hcnp"),
+4: ExtResource("7_4hcnp")
+}
+
+[sub_resource type="Resource" id="Resource_4t1c1"]
+script = ExtResource("2_ug5th")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_ryo0o")
+pivot = Vector3(-0.001999998, 0.15200001, -0.218)
+axis = Vector3(0, 0, -1)
+amount = 0.3075000062584877
+
+[sub_resource type="Resource" id="Resource_k3231"]
+script = ExtResource("3_6rwv7")
+display_name = "Tool Cabinet Drawer"
+voxel_size = 0.022
+anchor_mode = 1
+density_scale = 0.7781237581145763
+vox_file = "res://furniture/vox/tool_cabinet__part2.vox"
+vox_material = ExtResource("5_wfdad")
+vox_index_materials = {
+1: ExtResource("5_wfdad"),
+2: ExtResource("6_2tb6b"),
+3: ExtResource("7_4hcnp"),
+4: ExtResource("7_4hcnp")
+}
+
+[sub_resource type="Resource" id="Resource_egqf8"]
+script = ExtResource("2_ug5th")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_k3231")
+pivot = Vector3(-0.001999998, 0.24200001, -0.218)
+axis = Vector3(0, 0, -1)
+amount = 0.3075000062584877
+
+[sub_resource type="Resource" id="Resource_4uwdm"]
+script = ExtResource("3_6rwv7")
+display_name = "Tool Cabinet Drawer"
+voxel_size = 0.022
+anchor_mode = 1
+density_scale = 0.7781237581145763
+vox_file = "res://furniture/vox/tool_cabinet__part3.vox"
+vox_material = ExtResource("5_wfdad")
+vox_index_materials = {
+1: ExtResource("5_wfdad"),
+2: ExtResource("6_2tb6b"),
+3: ExtResource("7_4hcnp"),
+4: ExtResource("7_4hcnp")
+}
+
+[sub_resource type="Resource" id="Resource_va0gn"]
+script = ExtResource("2_ug5th")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_4uwdm")
+pivot = Vector3(-0.001999998, 0.33200002, -0.218)
+axis = Vector3(0, 0, -1)
+amount = 0.3075000062584877
+
+[sub_resource type="Resource" id="Resource_w8bk3"]
+script = ExtResource("3_6rwv7")
+display_name = "Tool Cabinet Drawer"
+voxel_size = 0.022
+anchor_mode = 1
+density_scale = 0.7781237581145763
+vox_file = "res://furniture/vox/tool_cabinet__part4.vox"
+vox_material = ExtResource("5_wfdad")
+vox_index_materials = {
+1: ExtResource("5_wfdad"),
+2: ExtResource("6_2tb6b"),
+3: ExtResource("7_4hcnp"),
+4: ExtResource("7_4hcnp")
+}
+
+[sub_resource type="Resource" id="Resource_u8h5q"]
+script = ExtResource("2_ug5th")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_w8bk3")
+pivot = Vector3(-0.001999998, 0.43699998, -0.218)
+axis = Vector3(0, 0, -1)
+amount = 0.3075000062584877
+
+[sub_resource type="Resource" id="Resource_cjqn1"]
+script = ExtResource("3_6rwv7")
+display_name = "Tool Cabinet Drawer"
+voxel_size = 0.022
+anchor_mode = 1
+density_scale = 0.7781237581145763
+vox_file = "res://furniture/vox/tool_cabinet__part5.vox"
+vox_material = ExtResource("5_wfdad")
+vox_index_materials = {
+1: ExtResource("5_wfdad"),
+2: ExtResource("6_2tb6b"),
+3: ExtResource("7_4hcnp"),
+4: ExtResource("7_4hcnp")
+}
+
+[sub_resource type="Resource" id="Resource_kbf2b"]
+script = ExtResource("2_ug5th")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_cjqn1")
+pivot = Vector3(-0.001999998, 0.572, -0.218)
+axis = Vector3(0, 0, -1)
+amount = 0.3075000062584877
+
+[sub_resource type="Resource" id="Resource_p4hgi"]
+script = ExtResource("3_6rwv7")
+display_name = "Tool Cabinet Drawer"
+voxel_size = 0.022
+anchor_mode = 1
+density_scale = 0.7781237581145763
+vox_file = "res://furniture/vox/tool_cabinet__part6.vox"
+vox_material = ExtResource("5_wfdad")
+vox_index_materials = {
+1: ExtResource("5_wfdad"),
+2: ExtResource("6_2tb6b"),
+3: ExtResource("7_4hcnp"),
+4: ExtResource("7_4hcnp")
+}
+
+[sub_resource type="Resource" id="Resource_n0e1i"]
+script = ExtResource("2_ug5th")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_p4hgi")
+pivot = Vector3(-0.001999998, 0.797, -0.218)
+axis = Vector3(0, 0, -1)
+amount = 0.3075000062584877
+
+[resource]
+script = ExtResource("3_6rwv7")
+display_name = "Tool Cabinet"
+spawn_category = "Workshop"
+voxel_size = 0.022
+anchor_mode = 1
+density_scale = 0.7781237581145763
+vox_file = "res://furniture/vox/tool_cabinet.vox"
+vox_material = ExtResource("5_wfdad")
+vox_index_materials = {
+1: ExtResource("5_wfdad"),
+2: ExtResource("6_2tb6b"),
+3: ExtResource("7_4hcnp"),
+4: ExtResource("7_4hcnp")
+}
+moving_parts = Array[ExtResource("2_ug5th")]([SubResource("Resource_4t1c1"), SubResource("Resource_egqf8"), SubResource("Resource_va0gn"), SubResource("Resource_u8h5q"), SubResource("Resource_kbf2b"), SubResource("Resource_n0e1i")])

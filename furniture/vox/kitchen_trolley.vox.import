@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://xdpgttadvtfa"
+path="res://.godot/imported/kitchen_trolley.vox-39469be38973c0c996fbab15120c3253.tres"
+
+[deps]
+
+source_file="res://furniture/vox/kitchen_trolley.vox"
+dest_files=["res://.godot/imported/kitchen_trolley.vox-39469be38973c0c996fbab15120c3253.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://dm442xbvvvxxi"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_07vwc"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_7hpgx"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_7rl4m"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_lf3hr"]
+[ext_resource type="Resource" path="res://furniture/materials/plastic.tres" id="5_yhu68"]
+[ext_resource type="Resource" path="res://furniture/materials/chrome.tres" id="6_ktojr"]
+
+[resource]
+script = ExtResource("3_7rl4m")
+display_name = "Kettle"
+spawn_category = "Kitchen"
+voxel_size = 0.012
+anchor_mode = 1
+density_scale = 0.5791622071176632
+vox_file = "res://furniture/vox/kettle.vox"
+vox_material = ExtResource("6_ktojr")
+vox_index_materials = {
+1: ExtResource("5_yhu68"),
+2: ExtResource("6_ktojr"),
+3: ExtResource("6_ktojr")
+}

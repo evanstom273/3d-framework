@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://vp2law02l47"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_5yyti"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_ul4xj"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_vok5a"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_wm6kt"]
+[ext_resource type="Resource" path="res://furniture/materials/electronics.tres" id="5_3mcu6"]
+[ext_resource type="Resource" path="res://furniture/materials/aluminium.tres" id="6_70kqs"]
+[ext_resource type="Resource" path="res://furniture/materials/screen.tres" id="7_byejn"]
+[ext_resource type="Resource" path="res://furniture/materials/plastic.tres" id="8_me7te"]
+
+[resource]
+script = ExtResource("3_vok5a")
+display_name = "Television"
+spawn_category = "Living Room"
+voxel_size = 0.03100000023841858
+anchor_mode = 1
+density_scale = 0.26384850667576126
+vox_file = "res://furniture/vox/television.vox"
+vox_material = ExtResource("5_3mcu6")
+vox_index_materials = {
+1: ExtResource("5_3mcu6"),
+2: ExtResource("6_70kqs"),
+3: ExtResource("6_70kqs"),
+4: ExtResource("7_byejn"),
+5: ExtResource("8_me7te")
+}

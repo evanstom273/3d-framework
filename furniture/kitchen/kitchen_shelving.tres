@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://cuuvo3wsvhkaq"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_pgjvv"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_5cual"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_0pstg"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_1njh6"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_steel.tres" id="5_wnvfu"]
+[ext_resource type="Resource" path="res://furniture/materials/pine.tres" id="6_m22la"]
+[ext_resource type="Resource" path="res://furniture/materials/glass.tres" id="7_mmhl2"]
+[ext_resource type="Resource" path="res://furniture/materials/ceramic.tres" id="8_dyisr"]
+
+[resource]
+script = ExtResource("3_0pstg")
+display_name = "Freestanding Kitchen Shelving"
+spawn_category = "Kitchen"
+voxel_size = 0.04000000059604645
+anchor_mode = 1
+density_scale = 0.24556577258769186
+vox_file = "res://furniture/vox/kitchen_shelving.vox"
+vox_material = ExtResource("5_wnvfu")
+vox_index_materials = {
+1: ExtResource("5_wnvfu"),
+2: ExtResource("6_m22la"),
+3: ExtResource("6_m22la"),
+4: ExtResource("6_m22la"),
+5: ExtResource("7_mmhl2"),
+6: ExtResource("8_dyisr")
+}

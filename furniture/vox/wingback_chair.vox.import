@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://buxhu20qipspd"
+path="res://.godot/imported/wingback_chair.vox-ad07b48a323525fbc491afab8f612b01.tres"
+
+[deps]
+
+source_file="res://furniture/vox/wingback_chair.vox"
+dest_files=["res://.godot/imported/wingback_chair.vox-ad07b48a323525fbc491afab8f612b01.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

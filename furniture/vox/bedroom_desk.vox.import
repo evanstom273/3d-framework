@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dle3qvb1s03kw"
+path="res://.godot/imported/bedroom_desk.vox-f2c806021e74f53da00ac13f5a5d086e.tres"
+
+[deps]
+
+source_file="res://furniture/vox/bedroom_desk.vox"
+dest_files=["res://.godot/imported/bedroom_desk.vox-f2c806021e74f53da00ac13f5a5d086e.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

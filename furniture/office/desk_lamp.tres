@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://ttolotvd82y3"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_hy8w3"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_oupkt"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_r8kpe"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_1hleb"]
+[ext_resource type="Resource" path="res://furniture/materials/cast_iron.tres" id="5_o68wr"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_steel.tres" id="6_ad5q0"]
+[ext_resource type="Resource" path="res://furniture/materials/brass.tres" id="7_47xy4"]
+
+[resource]
+script = ExtResource("3_r8kpe")
+display_name = "Desk Lamp"
+spawn_category = "Office"
+voxel_size = 0.0125
+anchor_mode = 1
+density_scale = 0.6815459022940116
+vox_file = "res://furniture/vox/desk_lamp.vox"
+vox_material = ExtResource("6_ad5q0")
+vox_index_materials = {
+1: ExtResource("5_o68wr"),
+2: ExtResource("6_ad5q0"),
+3: ExtResource("7_47xy4"),
+4: ExtResource("7_47xy4")
+}

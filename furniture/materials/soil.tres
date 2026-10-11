@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://go384plr6n02"]
+
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_et8ml"]
+
+[resource]
+script = ExtResource("1_et8ml")
+display_name = "Soil"
+color = Color(0.3, 0.22, 0.15, 1)
+color_jitter = 0.0
+strength = 1.5
+density = 1200.0
+friction = 0.95
+bounce = 0.0
+blunt_multiplier = 1.2
+impact_sound = 6
+rubble_fraction = 0.3

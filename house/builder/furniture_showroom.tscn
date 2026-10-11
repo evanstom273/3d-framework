@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://dy1ofliuxfi2c"]
+
+[ext_resource type="Shader" uid="uid://d26flwksvey7a" path="res://house/kit/shaders/stone.gdshader" id="ground_shader"]
+[ext_resource type="Script" uid="uid://caawrow5ouhi4" path="res://house/builder/furniture_showroom.gd" id="map"]
+[ext_resource type="PackedScene" uid="uid://c8bo3i576tqx" path="res://player.tscn" id="player"]
+
+[sub_resource type="ProceduralSkyMaterial" id="sky_material"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="sky"]
+sky_material = SubResource("sky_material")
+
+[sub_resource type="Environment" id="environment"]
+background_mode = 2
+sky = SubResource("sky")
+ambient_light_source = 3
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[sub_resource type="ShaderMaterial" id="grass"]
+render_priority = 0
+shader = ExtResource("ground_shader")
+shader_parameter/color = Color(0.29, 0.42, 0.2, 1)
+shader_parameter/mottling = 0.22
+shader_parameter/grain_scale = 30.0
+shader_parameter/relief = 1.5
+shader_parameter/roughness = 0.95
+shader_parameter/blocks = 0.0
+
+[sub_resource type="BoxMesh" id="ground_mesh"]
+material = SubResource("grass")
+size = Vector3(120, 1, 120)
+
+[sub_resource type="BoxShape3D" id="ground_shape"]
+size = Vector3(120, 1, 120)
+
+[node name="FurnitureShowroom" type="Node3D" unique_id=863290689]
+script = ExtResource("map")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=108561573]
+environment = SubResource("environment")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=795388398]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1505897163]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 50, -0.5, 30)
+
+[node name="Mesh" type="MeshInstance3D" parent="Ground" unique_id=1056112967]
+mesh = SubResource("ground_mesh")
+
+[node name="Collision" type="CollisionShape3D" parent="Ground" unique_id=823594020]
+shape = SubResource("ground_shape")
+
+[node name="Player" parent="." unique_id=1834242467 instance=ExtResource("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.05, -4)
+interaction_distance = 4.0

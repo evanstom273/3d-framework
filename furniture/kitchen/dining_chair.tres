@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://bil7dmjdi8tx3"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_0tu0v"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_peunn"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_h6xmq"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_uabyl"]
+[ext_resource type="Resource" path="res://furniture/materials/oak.tres" id="5_cv1w1"]
+[ext_resource type="Resource" path="res://furniture/materials/fabric.tres" id="6_xxo8m"]
+
+[resource]
+script = ExtResource("3_h6xmq")
+display_name = "Dining Chair"
+spawn_category = "Kitchen"
+voxel_size = 0.02375
+anchor_mode = 1
+density_scale = 1.3020487132370702
+vox_file = "res://furniture/vox/dining_chair.vox"
+vox_material = ExtResource("5_cv1w1")
+vox_index_materials = {
+1: ExtResource("5_cv1w1"),
+2: ExtResource("5_cv1w1"),
+3: ExtResource("5_cv1w1"),
+4: ExtResource("6_xxo8m"),
+5: ExtResource("6_xxo8m")
+}

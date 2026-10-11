@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://2t7j78nojlx7"]
+
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_oglyp"]
+
+[resource]
+script = ExtResource("1_oglyp")
+display_name = "Ceramic"
+color = Color(0.95, 0.95, 0.93, 1)
+color_jitter = 0.0
+strength = 2.5
+density = 1400.0
+friction = 0.5
+blunt_multiplier = 1.7
+sharp_multiplier = 0.8
+pierce_multiplier = 1.2
+impact_sound = 7
+rubble_fraction = 0.4

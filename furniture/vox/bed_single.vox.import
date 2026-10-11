@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://c8ccmciun0ugy"
+path="res://.godot/imported/bed_single.vox-20f9f6ae0b4f13b4e8adf7532e3180f6.tres"
+
+[deps]
+
+source_file="res://furniture/vox/bed_single.vox"
+dest_files=["res://.godot/imported/bed_single.vox-20f9f6ae0b4f13b4e8adf7532e3180f6.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

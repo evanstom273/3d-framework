@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dpi1lk2y7x8fe"
+path="res://.godot/imported/bathroom_cabinet.vox-3ed3da9a4e52de10ac2dc9454f0edb62.tres"
+
+[deps]
+
+source_file="res://furniture/vox/bathroom_cabinet.vox"
+dest_files=["res://.godot/imported/bathroom_cabinet.vox-3ed3da9a4e52de10ac2dc9454f0edb62.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

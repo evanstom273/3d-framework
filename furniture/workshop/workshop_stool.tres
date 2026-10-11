@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://cf03wf0375a37"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_dsnf8"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_nnhlo"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_hh4v5"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_gjvfj"]
+[ext_resource type="Resource" path="res://furniture/materials/plywood.tres" id="5_5rivg"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_steel.tres" id="6_wcpha"]
+
+[resource]
+script = ExtResource("3_hh4v5")
+display_name = "Workshop Stool"
+spawn_category = "Workshop"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 1.1347131445170584
+vox_file = "res://furniture/vox/workshop_stool.vox"
+vox_material = ExtResource("5_5rivg")
+vox_index_materials = {
+1: ExtResource("5_5rivg"),
+2: ExtResource("5_5rivg"),
+3: ExtResource("5_5rivg"),
+4: ExtResource("6_wcpha")
+}

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://s30dhhhrv1oo"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_4o73u"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_7k6f2"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_s7ogv"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_a3jra"]
+[ext_resource type="Resource" path="res://furniture/materials/plastic.tres" id="5_50ajk"]
+[ext_resource type="Resource" path="res://furniture/materials/chrome.tres" id="6_bpxqb"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_wood.tres" id="7_q0c3q"]
+
+[resource]
+script = ExtResource("3_s7ogv")
+display_name = "Bathtub"
+spawn_category = "Bathroom"
+voxel_size = 0.04250000119209289
+anchor_mode = 1
+density_scale = 0.29728418923730926
+vox_file = "res://furniture/vox/bathtub.vox"
+vox_material = ExtResource("5_50ajk")
+vox_index_materials = {
+1: ExtResource("5_50ajk"),
+2: ExtResource("6_bpxqb"),
+3: ExtResource("7_q0c3q"),
+4: ExtResource("6_bpxqb")
+}

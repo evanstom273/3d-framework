@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://by1f1jclvc86e"
+path="res://.godot/imported/cooker.vox-a3935b3d819cdb0d665cf3586e12c4d4.tres"
+
+[deps]
+
+source_file="res://furniture/vox/cooker.vox"
+dest_files=["res://.godot/imported/cooker.vox-a3935b3d819cdb0d665cf3586e12c4d4.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

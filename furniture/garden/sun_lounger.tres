@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://cuwd8cylme0yp"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_tjwo1"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_8mdum"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_38s6q"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_bqdwd"]
+[ext_resource type="Resource" path="res://furniture/materials/oak.tres" id="5_nj46n"]
+[ext_resource type="Resource" path="res://furniture/materials/rubber.tres" id="6_f2b0p"]
+[ext_resource type="Resource" path="res://furniture/materials/fabric.tres" id="7_2wvvb"]
+
+[resource]
+script = ExtResource("3_38s6q")
+display_name = "Sun Lounger"
+spawn_category = "Garden"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.4279374697769277
+vox_file = "res://furniture/vox/sun_lounger.vox"
+vox_material = ExtResource("5_nj46n")
+vox_index_materials = {
+1: ExtResource("5_nj46n"),
+2: ExtResource("5_nj46n"),
+3: ExtResource("5_nj46n"),
+4: ExtResource("6_f2b0p"),
+5: ExtResource("7_2wvvb"),
+6: ExtResource("7_2wvvb")
+}

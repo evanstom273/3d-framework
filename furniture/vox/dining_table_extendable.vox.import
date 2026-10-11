@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://d0lwuvwicjnko"
+path="res://.godot/imported/dining_table_extendable.vox-62883c595e435dc2c5c569c105a26c08.tres"
+
+[deps]
+
+source_file="res://furniture/vox/dining_table_extendable.vox"
+dest_files=["res://.godot/imported/dining_table_extendable.vox-62883c595e435dc2c5c569c105a26c08.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://cpgmi3ot1d22h"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_unjqg"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_va8i0"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_qco5o"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_73ohb"]
+[ext_resource type="Resource" uid="uid://dw4suus87xjs" path="res://furniture/materials/plastic.tres" id="5_acb0x"]
+[ext_resource type="Resource" uid="uid://d01xckqs64akm" path="res://furniture/materials/rubber.tres" id="6_8k4ju"]
+
+[sub_resource type="Resource" id="Resource_xhwnp"]
+script = ExtResource("3_qco5o")
+display_name = "Recycling Wheelie Bin Lid"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.25072229567603016
+vox_file = "res://furniture/vox/recycling_bin__part1.vox"
+vox_material = ExtResource("5_acb0x")
+vox_index_materials = {
+1: ExtResource("5_acb0x"),
+2: ExtResource("5_acb0x"),
+3: ExtResource("6_8k4ju"),
+4: ExtResource("5_acb0x"),
+5: ExtResource("5_acb0x")
+}
+
+[sub_resource type="Resource" id="Resource_33go0"]
+script = ExtResource("2_va8i0")
+label = "Lid"
+structure = SubResource("Resource_xhwnp")
+pivot = Vector3(0, 1, 0.35)
+axis = Vector3(1, 0, 0)
+amount = 110.0
+
+[resource]
+script = ExtResource("3_qco5o")
+display_name = "Recycling Wheelie Bin"
+spawn_category = "Utility"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.25072229567603016
+vox_file = "res://furniture/vox/recycling_bin.vox"
+vox_material = ExtResource("5_acb0x")
+vox_index_materials = {
+1: ExtResource("5_acb0x"),
+2: ExtResource("5_acb0x"),
+3: ExtResource("6_8k4ju"),
+4: ExtResource("5_acb0x"),
+5: ExtResource("5_acb0x")
+}
+moving_parts = Array[ExtResource("2_va8i0")]([SubResource("Resource_33go0")])

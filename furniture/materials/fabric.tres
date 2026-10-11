@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://2lwgqxnq8yv5"]
+
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_u5iuv"]
+
+[resource]
+script = ExtResource("1_u5iuv")
+display_name = "Upholstery"
+color = Color(0.45, 0.5, 0.55, 1)
+color_jitter = 0.0
+strength = 5.0
+density = 160.0
+friction = 0.9
+bounce = 0.02
+blunt_multiplier = 0.45
+sharp_multiplier = 2.2
+pierce_multiplier = 1.6
+impact_sound = 6
+rubble_fraction = 0.1

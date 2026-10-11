@@ -1,0 +1,95 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://dp525vqmv7jsv"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_v0x2v"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_yftls"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_0pskf"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_e80l6"]
+[ext_resource type="Resource" uid="uid://bgrnpiwfmjxib" path="res://furniture/materials/painted_wood.tres" id="5_jksb0"]
+[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="6_3ua8g"]
+[ext_resource type="Resource" uid="uid://2lwgqxnq8yv5" path="res://furniture/materials/fabric.tres" id="7_m2pv1"]
+[ext_resource type="Resource" uid="uid://de8xv7dfh7g41" path="res://furniture/materials/brass.tres" id="8_jcuj6"]
+
+[sub_resource type="Resource" id="Resource_b0mcw"]
+script = ExtResource("3_0pskf")
+display_name = "Single Wardrobe Door"
+voxel_size = 0.045
+anchor_mode = 1
+density_scale = 0.28431950762911645
+vox_file = "res://furniture/vox/wardrobe_single__part1.vox"
+vox_material = ExtResource("5_jksb0")
+vox_index_materials = {
+1: ExtResource("5_jksb0"),
+2: ExtResource("6_3ua8g"),
+3: ExtResource("6_3ua8g"),
+4: ExtResource("7_m2pv1"),
+5: ExtResource("7_m2pv1"),
+6: ExtResource("7_m2pv1"),
+7: ExtResource("7_m2pv1"),
+8: ExtResource("7_m2pv1"),
+9: ExtResource("7_m2pv1"),
+10: ExtResource("5_jksb0"),
+11: ExtResource("8_jcuj6"),
+12: ExtResource("8_jcuj6")
+}
+
+[sub_resource type="Resource" id="Resource_83ocy"]
+script = ExtResource("2_yftls")
+structure = SubResource("Resource_b0mcw")
+pivot = Vector3(-0.26500002, 1.045, -0.24700001)
+
+[sub_resource type="Resource" id="Resource_qblro"]
+script = ExtResource("3_0pskf")
+display_name = "Single Wardrobe Drawer"
+voxel_size = 0.045
+anchor_mode = 1
+density_scale = 0.28431950762911645
+vox_file = "res://furniture/vox/wardrobe_single__part2.vox"
+vox_material = ExtResource("5_jksb0")
+vox_index_materials = {
+1: ExtResource("5_jksb0"),
+2: ExtResource("6_3ua8g"),
+3: ExtResource("6_3ua8g"),
+4: ExtResource("7_m2pv1"),
+5: ExtResource("7_m2pv1"),
+6: ExtResource("7_m2pv1"),
+7: ExtResource("7_m2pv1"),
+8: ExtResource("7_m2pv1"),
+9: ExtResource("7_m2pv1"),
+10: ExtResource("5_jksb0"),
+11: ExtResource("8_jcuj6"),
+12: ExtResource("8_jcuj6")
+}
+
+[sub_resource type="Resource" id="Resource_0iuxd"]
+script = ExtResource("2_yftls")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_qblro")
+pivot = Vector3(0.0050000027, 0.2, -0.24700001)
+axis = Vector3(0, 0, -1)
+amount = 0.375
+
+[resource]
+script = ExtResource("3_0pskf")
+display_name = "Single Wardrobe"
+spawn_category = "Bedroom"
+voxel_size = 0.045
+anchor_mode = 1
+density_scale = 0.28431950762911645
+vox_file = "res://furniture/vox/wardrobe_single.vox"
+vox_material = ExtResource("5_jksb0")
+vox_index_materials = {
+1: ExtResource("5_jksb0"),
+2: ExtResource("6_3ua8g"),
+3: ExtResource("6_3ua8g"),
+4: ExtResource("7_m2pv1"),
+5: ExtResource("7_m2pv1"),
+6: ExtResource("7_m2pv1"),
+7: ExtResource("7_m2pv1"),
+8: ExtResource("7_m2pv1"),
+9: ExtResource("7_m2pv1"),
+10: ExtResource("5_jksb0"),
+11: ExtResource("8_jcuj6"),
+12: ExtResource("8_jcuj6")
+}
+moving_parts = Array[ExtResource("2_yftls")]([SubResource("Resource_83ocy"), SubResource("Resource_0iuxd")])

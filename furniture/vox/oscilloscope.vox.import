@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cjrxa3koift0n"
+path="res://.godot/imported/oscilloscope.vox-c111d0e7978537a6bf349577b899aff4.tres"
+
+[deps]
+
+source_file="res://furniture/vox/oscilloscope.vox"
+dest_files=["res://.godot/imported/oscilloscope.vox-c111d0e7978537a6bf349577b899aff4.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

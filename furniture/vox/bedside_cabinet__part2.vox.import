@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bysxewsemtncp"
+path="res://.godot/imported/bedside_cabinet__part2.vox-f22bf6b3bb274a9a3a55027b062d22b9.tres"
+
+[deps]
+
+source_file="res://furniture/vox/bedside_cabinet__part2.vox"
+dest_files=["res://.godot/imported/bedside_cabinet__part2.vox-f22bf6b3bb274a9a3a55027b062d22b9.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://fsidgfgiyrtq"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_l87qt"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_5urn2"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_vhxgf"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_1kk7m"]
+[ext_resource type="Resource" uid="uid://dw4suus87xjs" path="res://furniture/materials/plastic.tres" id="5_dgi4l"]
+[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="6_c4cvu"]
+
+[sub_resource type="Resource" id="Resource_hpt1e"]
+script = ExtResource("3_vhxgf")
+display_name = "Toolbox Lid"
+voxel_size = 0.0125
+anchor_mode = 1
+density_scale = 0.9294304515544493
+vox_file = "res://furniture/vox/toolbox__part1.vox"
+vox_material = ExtResource("5_dgi4l")
+vox_index_materials = {
+1: ExtResource("5_dgi4l"),
+2: ExtResource("6_c4cvu"),
+3: ExtResource("6_c4cvu"),
+4: ExtResource("5_dgi4l")
+}
+
+[sub_resource type="Resource" id="Resource_mhb41"]
+script = ExtResource("2_5urn2")
+label = "Lid"
+structure = SubResource("Resource_hpt1e")
+pivot = Vector3(0, 0.2, 0.125)
+axis = Vector3(1, 0, 0)
+
+[resource]
+script = ExtResource("3_vhxgf")
+display_name = "Toolbox"
+spawn_category = "Workshop"
+voxel_size = 0.0125
+anchor_mode = 1
+density_scale = 0.9294304515544493
+vox_file = "res://furniture/vox/toolbox.vox"
+vox_material = ExtResource("5_dgi4l")
+vox_index_materials = {
+1: ExtResource("5_dgi4l"),
+2: ExtResource("6_c4cvu"),
+3: ExtResource("6_c4cvu"),
+4: ExtResource("5_dgi4l")
+}
+moving_parts = Array[ExtResource("2_5urn2")]([SubResource("Resource_mhb41")])

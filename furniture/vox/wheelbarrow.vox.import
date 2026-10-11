@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cj4ahfcn4xhrb"
+path="res://.godot/imported/wheelbarrow.vox-0b50382ef53e4c90e72f754c62915d8f.tres"
+
+[deps]
+
+source_file="res://furniture/vox/wheelbarrow.vox"
+dest_files=["res://.godot/imported/wheelbarrow.vox-0b50382ef53e4c90e72f754c62915d8f.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

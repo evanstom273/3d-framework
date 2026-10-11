@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dvbp6bpjjywg5"
+path="res://.godot/imported/toaster.vox-ccde896e9bfce01cec76dd490cec2689.tres"
+
+[deps]
+
+source_file="res://furniture/vox/toaster.vox"
+dest_files=["res://.godot/imported/toaster.vox-ccde896e9bfce01cec76dd490cec2689.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

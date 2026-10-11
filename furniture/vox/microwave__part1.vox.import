@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dtiejmpvip3g0"
+path="res://.godot/imported/microwave__part1.vox-f09fe217b06d0b48b5d4d750b9c4f9e9.tres"
+
+[deps]
+
+source_file="res://furniture/vox/microwave__part1.vox"
+dest_files=["res://.godot/imported/microwave__part1.vox-f09fe217b06d0b48b5d4d750b9c4f9e9.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

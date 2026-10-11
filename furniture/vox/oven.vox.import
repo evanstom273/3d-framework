@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://drdum1dmktj3m"
+path="res://.godot/imported/oven.vox-9de3fbf133161d900df525341b82f59a.tres"
+
+[deps]
+
+source_file="res://furniture/vox/oven.vox"
+dest_files=["res://.godot/imported/oven.vox-9de3fbf133161d900df525341b82f59a.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

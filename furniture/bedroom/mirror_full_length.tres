@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://3nr0vwrldxx0"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_4ll83"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_8m66g"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_kivhx"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_ggmrt"]
+[ext_resource type="Resource" path="res://furniture/materials/walnut.tres" id="5_dlsjo"]
+[ext_resource type="Resource" path="res://furniture/materials/brass.tres" id="6_flji8"]
+[ext_resource type="Resource" path="res://furniture/materials/mirror.tres" id="7_iu1e0"]
+
+[resource]
+script = ExtResource("3_kivhx")
+display_name = "Full-Length Mirror"
+spawn_category = "Bedroom"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.393852401624412
+vox_file = "res://furniture/vox/mirror_full_length.vox"
+vox_material = ExtResource("5_dlsjo")
+vox_index_materials = {
+1: ExtResource("5_dlsjo"),
+2: ExtResource("5_dlsjo"),
+3: ExtResource("5_dlsjo"),
+4: ExtResource("6_flji8"),
+5: ExtResource("6_flji8"),
+6: ExtResource("7_iu1e0")
+}

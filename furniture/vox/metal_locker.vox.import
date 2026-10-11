@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cns4l3v2caki3"
+path="res://.godot/imported/metal_locker.vox-baf81dba9cb08858044f3d20abe6c2f8.tres"
+
+[deps]
+
+source_file="res://furniture/vox/metal_locker.vox"
+dest_files=["res://.godot/imported/metal_locker.vox-baf81dba9cb08858044f3d20abe6c2f8.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

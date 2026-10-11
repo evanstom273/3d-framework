@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://cljrdmbpdjg86"]
+
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_wbwct"]
+
+[resource]
+script = ExtResource("1_wbwct")
+display_name = "Terracotta"
+color = Color(0.7, 0.36, 0.22, 1)
+color_jitter = 0.0
+strength = 3.0
+density = 1300.0
+friction = 0.7
+blunt_multiplier = 1.5
+sharp_multiplier = 0.8
+pierce_multiplier = 1.2
+rubble_fraction = 0.4

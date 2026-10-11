@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://ssuv047qf4yx"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_s4ojw"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_wxftb"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_6yqfj"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_m4hog"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_steel.tres" id="5_trk2n"]
+[ext_resource type="Resource" path="res://furniture/materials/chipboard.tres" id="6_bu0na"]
+[ext_resource type="Resource" path="res://furniture/materials/plastic.tres" id="7_0y534"]
+[ext_resource type="Resource" path="res://furniture/materials/cardboard.tres" id="8_n7utj"]
+
+[resource]
+script = ExtResource("3_6yqfj")
+display_name = "Storage Rack"
+spawn_category = "Workshop"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.33360163244622976
+vox_file = "res://furniture/vox/storage_rack.vox"
+vox_material = ExtResource("5_trk2n")
+vox_index_materials = {
+1: ExtResource("5_trk2n"),
+2: ExtResource("5_trk2n"),
+3: ExtResource("6_bu0na"),
+4: ExtResource("7_0y534"),
+5: ExtResource("8_n7utj")
+}

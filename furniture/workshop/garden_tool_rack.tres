@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://b3uf1cwhxqqps"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_5tbvb"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_6te6l"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_pskf6"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_wyh1y"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_steel.tres" id="5_5lv4f"]
+[ext_resource type="Resource" path="res://furniture/materials/steel.tres" id="6_j53bj"]
+[ext_resource type="Resource" path="res://furniture/materials/oak.tres" id="7_85da2"]
+[ext_resource type="Resource" path="res://furniture/materials/plastic.tres" id="8_ycqwa"]
+
+[resource]
+script = ExtResource("3_pskf6")
+display_name = "Garden Equipment Rack"
+spawn_category = "Workshop"
+voxel_size = 0.022
+anchor_mode = 1
+density_scale = 0.43714980657574565
+vox_file = "res://furniture/vox/garden_tool_rack.vox"
+vox_material = ExtResource("5_5lv4f")
+vox_index_materials = {
+1: ExtResource("5_5lv4f"),
+2: ExtResource("6_j53bj"),
+3: ExtResource("7_85da2"),
+4: ExtResource("6_j53bj"),
+5: ExtResource("7_85da2"),
+6: ExtResource("7_85da2"),
+7: ExtResource("8_ycqwa")
+}

@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://ce0hfwxl31cxc"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_xtg3a"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_wcy52"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_eylji"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_aoswf"]
+[ext_resource type="Resource" uid="uid://dw4suus87xjs" path="res://furniture/materials/plastic.tres" id="5_umkp8"]
+
+[sub_resource type="Resource" id="Resource_c6qaj"]
+script = ExtResource("3_eylji")
+display_name = "Outdoor Storage Chest Lid"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.33644545378087287
+vox_file = "res://furniture/vox/garden_storage_chest__part1.vox"
+vox_material = ExtResource("5_umkp8")
+vox_index_materials = {
+1: ExtResource("5_umkp8"),
+2: ExtResource("5_umkp8")
+}
+
+[sub_resource type="Resource" id="Resource_tqcrx"]
+script = ExtResource("2_wcy52")
+label = "Lid"
+structure = SubResource("Resource_c6qaj")
+pivot = Vector3(-4.7683717e-08, 0.58, 0.335)
+axis = Vector3(1, 0, 0)
+
+[resource]
+script = ExtResource("3_eylji")
+display_name = "Outdoor Storage Chest"
+spawn_category = "Garden"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.33644545378087287
+vox_file = "res://furniture/vox/garden_storage_chest.vox"
+vox_material = ExtResource("5_umkp8")
+vox_index_materials = {
+1: ExtResource("5_umkp8"),
+2: ExtResource("5_umkp8")
+}
+moving_parts = Array[ExtResource("2_wcy52")]([SubResource("Resource_tqcrx")])

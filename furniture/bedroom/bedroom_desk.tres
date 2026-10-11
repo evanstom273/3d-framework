@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://bvbagbfhpf1lx"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_nk1be"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_etnmv"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_x8pti"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_q4bal"]
+[ext_resource type="Resource" uid="uid://do6r55lv41aud" path="res://furniture/materials/oak.tres" id="5_ylj3m"]
+[ext_resource type="Resource" uid="uid://bgrnpiwfmjxib" path="res://furniture/materials/painted_wood.tres" id="6_jhcxo"]
+[ext_resource type="Resource" uid="uid://de8xv7dfh7g41" path="res://furniture/materials/brass.tres" id="7_l7v36"]
+
+[sub_resource type="Resource" id="Resource_3wndr"]
+script = ExtResource("3_x8pti")
+display_name = "Bedroom Desk Drawer"
+voxel_size = 0.02750000059604645
+anchor_mode = 1
+density_scale = 0.4804701689078642
+vox_file = "res://furniture/vox/bedroom_desk__part1.vox"
+vox_material = ExtResource("6_jhcxo")
+vox_index_materials = {
+1: ExtResource("5_ylj3m"),
+2: ExtResource("5_ylj3m"),
+3: ExtResource("5_ylj3m"),
+4: ExtResource("6_jhcxo"),
+5: ExtResource("7_l7v36")
+}
+
+[sub_resource type="Resource" id="Resource_7qaf5"]
+script = ExtResource("2_etnmv")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_3wndr")
+pivot = Vector3(-0.25000003, 0.665, -0.19999999)
+axis = Vector3(0, 0, -1)
+amount = 0.3075000006705523
+
+[sub_resource type="Resource" id="Resource_dvv8g"]
+script = ExtResource("3_x8pti")
+display_name = "Bedroom Desk Drawer"
+voxel_size = 0.02750000059604645
+anchor_mode = 1
+density_scale = 0.4804701689078642
+vox_file = "res://furniture/vox/bedroom_desk__part2.vox"
+vox_material = ExtResource("6_jhcxo")
+vox_index_materials = {
+1: ExtResource("5_ylj3m"),
+2: ExtResource("5_ylj3m"),
+3: ExtResource("5_ylj3m"),
+4: ExtResource("6_jhcxo"),
+5: ExtResource("7_l7v36")
+}
+
+[sub_resource type="Resource" id="Resource_5bkcs"]
+script = ExtResource("2_etnmv")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_dvv8g")
+pivot = Vector3(0.24999997, 0.665, -0.19999999)
+axis = Vector3(0, 0, -1)
+amount = 0.3075000006705523
+
+[resource]
+script = ExtResource("3_x8pti")
+display_name = "Bedroom Desk"
+spawn_category = "Bedroom"
+voxel_size = 0.02750000059604645
+anchor_mode = 1
+density_scale = 0.4804701689078642
+vox_file = "res://furniture/vox/bedroom_desk.vox"
+vox_material = ExtResource("6_jhcxo")
+vox_index_materials = {
+1: ExtResource("5_ylj3m"),
+2: ExtResource("5_ylj3m"),
+3: ExtResource("5_ylj3m"),
+4: ExtResource("6_jhcxo"),
+5: ExtResource("7_l7v36")
+}
+moving_parts = Array[ExtResource("2_etnmv")]([SubResource("Resource_7qaf5"), SubResource("Resource_5bkcs")])

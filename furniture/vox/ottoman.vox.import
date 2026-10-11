@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://basjdv8jadf44"
+path="res://.godot/imported/ottoman.vox-706aac54757d2e6902e36ff59e09e9cf.tres"
+
+[deps]
+
+source_file="res://furniture/vox/ottoman.vox"
+dest_files=["res://.godot/imported/ottoman.vox-706aac54757d2e6902e36ff59e09e9cf.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

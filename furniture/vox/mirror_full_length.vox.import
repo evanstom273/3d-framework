@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cmum7vg2pos43"
+path="res://.godot/imported/mirror_full_length.vox-1ef6012753131c5748ef94b3bfd0dc8c.tres"
+
+[deps]
+
+source_file="res://furniture/vox/mirror_full_length.vox"
+dest_files=["res://.godot/imported/mirror_full_length.vox-1ef6012753131c5748ef94b3bfd0dc8c.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

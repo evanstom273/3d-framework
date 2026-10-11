@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dbgfo2mkca6bp"
+path="res://.godot/imported/mirrored_cabinet.vox-facbfc068bb204ab76af40a3d6187945.tres"
+
+[deps]
+
+source_file="res://furniture/vox/mirrored_cabinet.vox"
+dest_files=["res://.godot/imported/mirrored_cabinet.vox-facbfc068bb204ab76af40a3d6187945.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

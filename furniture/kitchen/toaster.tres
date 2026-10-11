@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://bunilmqb852v"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_r3id2"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_h51oi"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_u1ldi"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_1cmct"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_steel.tres" id="5_iiau1"]
+[ext_resource type="Resource" path="res://furniture/materials/plastic.tres" id="6_ui6pm"]
+[ext_resource type="Resource" path="res://furniture/materials/chrome.tres" id="7_1e0uc"]
+
+[resource]
+script = ExtResource("3_u1ldi")
+display_name = "Toaster"
+spawn_category = "Kitchen"
+voxel_size = 0.012
+anchor_mode = 1
+density_scale = 0.4464789597683127
+vox_file = "res://furniture/vox/toaster.vox"
+vox_material = ExtResource("5_iiau1")
+vox_index_materials = {
+1: ExtResource("5_iiau1"),
+2: ExtResource("6_ui6pm"),
+3: ExtResource("7_1e0uc"),
+4: ExtResource("7_1e0uc")
+}

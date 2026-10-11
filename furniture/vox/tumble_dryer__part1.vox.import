@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bejv7tdrlt4bs"
+path="res://.godot/imported/tumble_dryer__part1.vox-298a78bcd307c9c6a7c0a02c2360103b.tres"
+
+[deps]
+
+source_file="res://furniture/vox/tumble_dryer__part1.vox"
+dest_files=["res://.godot/imported/tumble_dryer__part1.vox-298a78bcd307c9c6a7c0a02c2360103b.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

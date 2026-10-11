@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://t6hwd1lm70df"
+path="res://.godot/imported/utility_shelf.vox-e437862831b5bf1fd7dabd5d4e694e52.tres"
+
+[deps]
+
+source_file="res://furniture/vox/utility_shelf.vox"
+dest_files=["res://.godot/imported/utility_shelf.vox-e437862831b5bf1fd7dabd5d4e694e52.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

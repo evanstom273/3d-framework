@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://cocwgpffxft12"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_oxcqe"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_w74e7"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_6mttc"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_bd1oq"]
+[ext_resource type="Resource" uid="uid://c3oyba533fuca" path="res://furniture/materials/painted_steel.tres" id="5_14tne"]
+[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="6_32lqi"]
+
+[sub_resource type="Resource" id="Resource_x7sih"]
+script = ExtResource("3_6mttc")
+display_name = "Storage Cupboard Door"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.2735042735042713
+vox_file = "res://furniture/vox/storage_cupboard__part1.vox"
+vox_material = ExtResource("5_14tne")
+vox_index_materials = {
+1: ExtResource("5_14tne"),
+2: ExtResource("5_14tne"),
+3: ExtResource("5_14tne"),
+4: ExtResource("6_32lqi"),
+5: ExtResource("6_32lqi")
+}
+
+[sub_resource type="Resource" id="Resource_e6q7r"]
+script = ExtResource("2_w74e7")
+structure = SubResource("Resource_x7sih")
+pivot = Vector3(-0.45, 0.9, -0.2)
+
+[sub_resource type="Resource" id="Resource_qo54p"]
+script = ExtResource("3_6mttc")
+display_name = "Storage Cupboard Door"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.2735042735042713
+vox_file = "res://furniture/vox/storage_cupboard__part2.vox"
+vox_material = ExtResource("5_14tne")
+vox_index_materials = {
+1: ExtResource("5_14tne"),
+2: ExtResource("5_14tne"),
+3: ExtResource("5_14tne"),
+4: ExtResource("6_32lqi"),
+5: ExtResource("6_32lqi")
+}
+
+[sub_resource type="Resource" id="Resource_aq4uq"]
+script = ExtResource("2_w74e7")
+structure = SubResource("Resource_qo54p")
+pivot = Vector3(0.45, 0.9, -0.2)
+amount = -100.0
+
+[resource]
+script = ExtResource("3_6mttc")
+display_name = "Storage Cupboard"
+spawn_category = "Office"
+voxel_size = 0.03
+anchor_mode = 1
+density_scale = 0.2735042735042713
+vox_file = "res://furniture/vox/storage_cupboard.vox"
+vox_material = ExtResource("5_14tne")
+vox_index_materials = {
+1: ExtResource("5_14tne"),
+2: ExtResource("5_14tne"),
+3: ExtResource("5_14tne"),
+4: ExtResource("6_32lqi"),
+5: ExtResource("6_32lqi")
+}
+moving_parts = Array[ExtResource("2_w74e7")]([SubResource("Resource_e6q7r"), SubResource("Resource_aq4uq")])

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://crk1jlnpotd2e"
+path="res://.godot/imported/centrifuge.vox-79b519679b563c22dc72b0dc2a5f6ead.tres"
+
+[deps]
+
+source_file="res://furniture/vox/centrifuge.vox"
+dest_files=["res://.godot/imported/centrifuge.vox-79b519679b563c22dc72b0dc2a5f6ead.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

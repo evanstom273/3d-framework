@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://hptss87xwuc7"
+path="res://.godot/imported/lab_workbench__part2.vox-ccc54e6d2fce1dc4bcb39960e947e80b.tres"
+
+[deps]
+
+source_file="res://furniture/vox/lab_workbench__part2.vox"
+dest_files=["res://.godot/imported/lab_workbench__part2.vox-ccc54e6d2fce1dc4bcb39960e947e80b.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cbvf3e1rlk8gf"
+path="res://.godot/imported/instrument_rack.vox-f7a45b90955d1a173452601c256adfd9.tres"
+
+[deps]
+
+source_file="res://furniture/vox/instrument_rack.vox"
+dest_files=["res://.godot/imported/instrument_rack.vox-f7a45b90955d1a173452601c256adfd9.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

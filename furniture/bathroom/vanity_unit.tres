@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://bxs632grt87yl"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_tuxra"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_07lov"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_uqg2q"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_yoa68"]
+[ext_resource type="Resource" uid="uid://bgrnpiwfmjxib" path="res://furniture/materials/painted_wood.tres" id="5_xreiu"]
+[ext_resource type="Resource" uid="uid://de8xv7dfh7g41" path="res://furniture/materials/brass.tres" id="6_x2q6e"]
+[ext_resource type="Resource" uid="uid://b6je217u8h4pn" path="res://furniture/materials/marble.tres" id="7_fttfs"]
+[ext_resource type="Resource" uid="uid://2t7j78nojlx7" path="res://furniture/materials/ceramic.tres" id="8_13qlg"]
+[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="9_8qhrh"]
+
+[sub_resource type="Resource" id="Resource_6mdty"]
+script = ExtResource("3_uqg2q")
+display_name = "Vanity Sink Cabinet Door"
+voxel_size = 0.02375
+anchor_mode = 1
+density_scale = 0.5656625989013857
+vox_file = "res://furniture/vox/vanity_unit__part1.vox"
+vox_material = ExtResource("5_xreiu")
+vox_index_materials = {
+1: ExtResource("5_xreiu"),
+2: ExtResource("6_x2q6e"),
+3: ExtResource("6_x2q6e"),
+4: ExtResource("7_fttfs"),
+5: ExtResource("7_fttfs"),
+6: ExtResource("7_fttfs"),
+7: ExtResource("8_13qlg"),
+8: ExtResource("9_8qhrh"),
+9: ExtResource("9_8qhrh")
+}
+
+[sub_resource type="Resource" id="Resource_uhxq3"]
+script = ExtResource("2_07lov")
+structure = SubResource("Resource_6mdty")
+pivot = Vector3(-0.39374998, 0.47, -0.21375)
+
+[sub_resource type="Resource" id="Resource_dwors"]
+script = ExtResource("3_uqg2q")
+display_name = "Vanity Sink Cabinet Door"
+voxel_size = 0.02375
+anchor_mode = 1
+density_scale = 0.5656625989013857
+vox_file = "res://furniture/vox/vanity_unit__part2.vox"
+vox_material = ExtResource("5_xreiu")
+vox_index_materials = {
+1: ExtResource("5_xreiu"),
+2: ExtResource("6_x2q6e"),
+3: ExtResource("6_x2q6e"),
+4: ExtResource("7_fttfs"),
+5: ExtResource("7_fttfs"),
+6: ExtResource("7_fttfs"),
+7: ExtResource("8_13qlg"),
+8: ExtResource("9_8qhrh"),
+9: ExtResource("9_8qhrh")
+}
+
+[sub_resource type="Resource" id="Resource_fy6qt"]
+script = ExtResource("2_07lov")
+structure = SubResource("Resource_dwors")
+pivot = Vector3(0.38625005, 0.47, -0.21375)
+amount = -100.0
+
+[resource]
+script = ExtResource("3_uqg2q")
+display_name = "Vanity Sink Cabinet"
+spawn_category = "Bathroom"
+voxel_size = 0.02375
+anchor_mode = 1
+density_scale = 0.5656625989013857
+vox_file = "res://furniture/vox/vanity_unit.vox"
+vox_material = ExtResource("5_xreiu")
+vox_index_materials = {
+1: ExtResource("5_xreiu"),
+2: ExtResource("6_x2q6e"),
+3: ExtResource("6_x2q6e"),
+4: ExtResource("7_fttfs"),
+5: ExtResource("7_fttfs"),
+6: ExtResource("7_fttfs"),
+7: ExtResource("8_13qlg"),
+8: ExtResource("9_8qhrh"),
+9: ExtResource("9_8qhrh")
+}
+moving_parts = Array[ExtResource("2_07lov")]([SubResource("Resource_uhxq3"), SubResource("Resource_fy6qt")])

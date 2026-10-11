@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://bq8kg5de8n8a3"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_ikjp0"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_5ki34"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_sujx7"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_wqowp"]
+[ext_resource type="Resource" path="res://furniture/materials/aluminium.tres" id="5_nv0xm"]
+[ext_resource type="Resource" path="res://furniture/materials/glass.tres" id="6_kv06m"]
+
+[resource]
+script = ExtResource("3_sujx7")
+display_name = "Outdoor Dining Table"
+spawn_category = "Garden"
+voxel_size = 0.025
+anchor_mode = 1
+density_scale = 0.7533463375260548
+vox_file = "res://furniture/vox/outdoor_dining_table.vox"
+vox_material = ExtResource("5_nv0xm")
+vox_index_materials = {
+1: ExtResource("5_nv0xm"),
+2: ExtResource("5_nv0xm"),
+3: ExtResource("6_kv06m")
+}

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://b5jtgopc844wi"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_t26ps"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_hr22u"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_iam5a"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_qxxlf"]
+[ext_resource type="Resource" path="res://furniture/materials/cast_iron.tres" id="5_vpcmk"]
+[ext_resource type="Resource" path="res://furniture/materials/ceramic.tres" id="6_e6asc"]
+[ext_resource type="Resource" path="res://furniture/materials/brass.tres" id="7_tk7sp"]
+
+[resource]
+script = ExtResource("3_iam5a")
+display_name = "Freestanding Bathtub"
+spawn_category = "Bathroom"
+voxel_size = 0.04250000119209289
+anchor_mode = 1
+density_scale = 0.15593057336188607
+vox_file = "res://furniture/vox/bathtub_freestanding.vox"
+vox_material = ExtResource("6_e6asc")
+vox_index_materials = {
+1: ExtResource("5_vpcmk"),
+2: ExtResource("6_e6asc"),
+3: ExtResource("7_tk7sp"),
+4: ExtResource("7_tk7sp")
+}

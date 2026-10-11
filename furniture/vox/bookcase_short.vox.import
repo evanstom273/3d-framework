@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://c70m5kcxeg6up"
+path="res://.godot/imported/bookcase_short.vox-1c4f406af47b3239aff9f666c0fb8e98.tres"
+
+[deps]
+
+source_file="res://furniture/vox/bookcase_short.vox"
+dest_files=["res://.godot/imported/bookcase_short.vox-1c4f406af47b3239aff9f666c0fb8e98.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

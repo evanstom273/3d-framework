@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://dmthrfvw2lt0i"]
+
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_fqyrj"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_um8jf"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_kegse"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_7755y"]
+[ext_resource type="Resource" path="res://furniture/materials/cast_iron.tres" id="5_k0a3y"]
+[ext_resource type="Resource" path="res://furniture/materials/chrome.tres" id="6_tx6tb"]
+
+[resource]
+script = ExtResource("3_kegse")
+display_name = "Bench Vice"
+spawn_category = "Workshop"
+voxel_size = 0.012
+anchor_mode = 1
+density_scale = 1.2514445245369272
+vox_file = "res://furniture/vox/vice.vox"
+vox_material = ExtResource("5_k0a3y")
+vox_index_materials = {
+1: ExtResource("5_k0a3y"),
+2: ExtResource("6_tx6tb"),
+3: ExtResource("6_tx6tb")
+}

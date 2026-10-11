@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3]
+[gd_resource type="Resource" script_class="PhysicsObjectDefinition" format=3 uid="uid://domutquroem60"]
 
+[ext_resource type="Script" uid="uid://bt0eo62t820fu" path="res://physics/physics_shape_part.gd" id="1_fnhjn"]
+[ext_resource type="Script" uid="uid://ur7twl65pc43" path="res://physics/physics_object_definition.gd" id="2_hux58"]
+[ext_resource type="Script" uid="uid://ys0h2s1lo1lb" path="res://physics/physics_tool_definition.gd" id="3_515gs"]
 [ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="advanced_profile"]
-
-[ext_resource type="Script" path="res://physics/physics_shape_part.gd" id="1_fnhjn"]
-[ext_resource type="Script" path="res://physics/physics_object_definition.gd" id="2_hux58"]
-[ext_resource type="Script" path="res://physics/physics_tool_definition.gd" id="3_515gs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wcgb4"]
 albedo_color = Color(0.62, 0.44, 0.26, 1)
@@ -79,14 +78,13 @@ motion_strike_full_speed = 15.0
 motion_strike_cooldown = 0.5
 reach = 2.6
 strike_point = Vector3(0, 0.55, -0.22)
-strike_radius = 0.2
-impact_impulse = 90.0
-damage = 70.0
+damage = 140.0
 voxel_damage_radius = 0.5
 
 [resource]
 script = ExtResource("2_hux58")
 tool_profile = ExtResource("advanced_profile")
+equipped_collision_parts = PackedInt32Array()
 display_name = "Wrecking Mallet"
 shape_type = 4
 parts = Array[ExtResource("1_fnhjn")]([SubResource("Resource_bputj"), SubResource("Resource_d4pao"), SubResource("Resource_turjw"), SubResource("Resource_k7w5s")])
@@ -94,7 +92,7 @@ mass = 9.0
 bounce = 0.1
 angular_damp = 0.15
 impact_sound = 1
-impact_damage_scale = 2.0
+impact_damage_scale = 3.0
 vox_model = "res://props/vox/wrecking_mallet.vox"
 vox_voxel_size = 0.015
 vox_origin = Vector3(-0.175, -0.5, -0.22)

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://gp528kh3f4i7"
+path="res://.godot/imported/keyboard.vox-b089b6fa32566a1b3bd835aae760636f.tres"
+
+[deps]
+
+source_file="res://furniture/vox/keyboard.vox"
+dest_files=["res://.godot/imported/keyboard.vox-b089b6fa32566a1b3bd835aae760636f.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://bbkjrhlimveyo"
+path="res://.godot/imported/bathtub.vox-2fdf6a0eb5293f674126368be81a1b6f.tres"
+
+[deps]
+
+source_file="res://furniture/vox/bathtub.vox"
+dest_files=["res://.godot/imported/bathtub.vox-2fdf6a0eb5293f674126368be81a1b6f.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://cv2ku4tto7ekm"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_r4fvd"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_g21qi"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_6a7w8"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_h6fma"]
+[ext_resource type="Resource" uid="uid://bykhkvh721pjc" path="res://furniture/materials/walnut.tres" id="5_7osen"]
+[ext_resource type="Resource" uid="uid://de8xv7dfh7g41" path="res://furniture/materials/brass.tres" id="6_qrcud"]
+
+[sub_resource type="Resource" id="Resource_c1wad"]
+script = ExtResource("3_6a7w8")
+display_name = "Console Table Drawer"
+voxel_size = 0.030000001
+anchor_mode = 1
+density_scale = 0.41643887698529464
+vox_file = "res://furniture/vox/console_table__part1.vox"
+vox_material = ExtResource("5_7osen")
+vox_index_materials = {
+1: ExtResource("5_7osen"),
+2: ExtResource("5_7osen"),
+3: ExtResource("5_7osen"),
+4: ExtResource("6_qrcud"),
+5: ExtResource("6_qrcud")
+}
+
+[sub_resource type="Resource" id="Resource_3pnlh"]
+script = ExtResource("2_g21qi")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_c1wad")
+pivot = Vector3(-0.26000002, 0.695, -0.13000001)
+axis = Vector3(0, 0, -1)
+amount = 0.19499999620020392
+
+[sub_resource type="Resource" id="Resource_41nu7"]
+script = ExtResource("3_6a7w8")
+display_name = "Console Table Drawer"
+voxel_size = 0.030000001
+anchor_mode = 1
+density_scale = 0.41643887698529464
+vox_file = "res://furniture/vox/console_table__part2.vox"
+vox_material = ExtResource("5_7osen")
+vox_index_materials = {
+1: ExtResource("5_7osen"),
+2: ExtResource("5_7osen"),
+3: ExtResource("5_7osen"),
+4: ExtResource("6_qrcud"),
+5: ExtResource("6_qrcud")
+}
+
+[sub_resource type="Resource" id="Resource_b7s8r"]
+script = ExtResource("2_g21qi")
+label = "Drawer"
+kind = 1
+structure = SubResource("Resource_41nu7")
+pivot = Vector3(0.26, 0.695, -0.13000001)
+axis = Vector3(0, 0, -1)
+amount = 0.19499999620020392
+
+[resource]
+script = ExtResource("3_6a7w8")
+display_name = "Console Table"
+spawn_category = "Living Room"
+voxel_size = 0.030000001
+anchor_mode = 1
+density_scale = 0.41643887698529464
+vox_file = "res://furniture/vox/console_table.vox"
+vox_material = ExtResource("5_7osen")
+vox_index_materials = {
+1: ExtResource("5_7osen"),
+2: ExtResource("5_7osen"),
+3: ExtResource("5_7osen"),
+4: ExtResource("6_qrcud"),
+5: ExtResource("6_qrcud")
+}
+moving_parts = Array[ExtResource("2_g21qi")]([SubResource("Resource_3pnlh"), SubResource("Resource_b7s8r")])

@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cjgojt3ro7i72"
+path="res://.godot/imported/sideboard__part2.vox-1497e10fd47839ddd49f838858ad37cc.tres"
+
+[deps]
+
+source_file="res://furniture/vox/sideboard__part2.vox"
+dest_files=["res://.godot/imported/sideboard__part2.vox-1497e10fd47839ddd49f838858ad37cc.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0
