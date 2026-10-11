@@ -6,10 +6,10 @@ extends KitPiece
 ## tiled platform, posts or columns (or wall brackets), beams, and a tiled
 ## lean-to or gabled roof with its own gutter.
 
-enum RoofStyle { LEAN_TO, GABLE }
-enum Supports { TIMBER_POSTS, COLUMNS, BRICK_PIERS, WALL_BRACKETS }
+enum RoofStyle { NONE, LEAN_TO, GABLE }
+enum Supports { TIMBER_POSTS, COLUMNS, BRICK_PIERS, WALL_BRACKETS, NONE }
 
-@export_range(1.0, 6.0, 0.05, "suffix:m") var width: float = 2.2:
+@export_range(1.0, 9.0, 0.05, "suffix:m") var width: float = 2.2:
 	set(value):
 		width = snap(value, 1.0)
 		queue_rebuild()
@@ -26,7 +26,7 @@ enum Supports { TIMBER_POSTS, COLUMNS, BRICK_PIERS, WALL_BRACKETS }
 	set(value):
 		roof_style = value
 		queue_rebuild()
-@export_range(10.0, 55.0, 0.5, "suffix:°") var pitch: float = 30.0:
+@export_range(5.0, 55.0, 0.5, "suffix:°") var pitch: float = 30.0:
 	set(value):
 		pitch = value
 		queue_rebuild()
@@ -78,18 +78,39 @@ func _build(b: KitBuilder) -> void:
 		b.box(Vector3(-hw, -0.03, front), Vector3(hw, 0.0, front + 0.04), edge)
 		b.box(Vector3(-hw, -0.03, front + 0.04), Vector3(-hw + 0.04, 0.0, face_z), edge)
 		b.box(Vector3(hw - 0.04, -0.03, front + 0.04), Vector3(hw, 0.0, face_z), edge)
+	
 	var beam_y := post_height - 0.15
 	var post_z := front + POST_INSET
-	if supports == Supports.WALL_BRACKETS:
+
+	if supports != Supports.NONE:
+		if supports == Supports.WALL_BRACKETS:
+			for x in [-hw + POST_INSET, hw - POST_INSET]:
+				_bracket(b, Vector3(x, beam_y, face_z), post_z, timber)
+		else:
+			for x in [-hw + POST_INSET, hw - POST_INSET]:
+				KitPorch.support(
+					b,
+					supports,
+					Vector3(x, 0, post_z),
+					beam_y,
+					timber,
+					brick
+				)
+
+		# Front beam and side beams.
+		b.box(
+			Vector3(-hw + 0.02, beam_y, post_z - 0.05),
+			Vector3(hw - 0.02, post_height, post_z + 0.05),
+			timber
+		)
+
 		for x in [-hw + POST_INSET, hw - POST_INSET]:
-			_bracket(b, Vector3(x, beam_y, face_z), post_z, timber)
-	else:
-		for x in [-hw + POST_INSET, hw - POST_INSET]:
-			KitPorch.support(b, supports, Vector3(x, 0, post_z), beam_y, timber, brick)
-	# Beams: across the front, and back to the wall each side.
-	b.box(Vector3(-hw + 0.02, beam_y, post_z - 0.05), Vector3(hw - 0.02, post_height, post_z + 0.05), timber)
-	for x in [-hw + POST_INSET, hw - POST_INSET]:
-		b.box(Vector3(x - 0.045, beam_y, post_z + 0.05), Vector3(x + 0.045, post_height, face_z), timber)
+			b.box(
+				Vector3(x - 0.045, beam_y, post_z + 0.05),
+				Vector3(x + 0.045, post_height, face_z),
+				timber
+			)
+
 	var roof := KitRoof.new()
 	roof.tiles = tiles
 	roof.pitch = pitch
@@ -99,24 +120,31 @@ func _build(b: KitBuilder) -> void:
 	roof.eaves_overhang = 0.18
 	roof.verge_overhang = 0.12
 	var saved := b.transform
-	if roof_style == RoofStyle.LEAN_TO:
-		# The roof's +X (up the slope) points at the wall, its +Z runs along the porch.
-		roof.lean_to = true
-		roof.span = maxf(0.3, depth - POST_INSET - 0.05)
-		roof.length = width - POST_INSET * 2.0
-		roof.start_end = KitRoof.End.GABLE
-		roof.finish_end = KitRoof.End.GABLE
-		b.transform = saved * Transform3D(Basis(Vector3.UP, -PI * 0.5), Vector3(hw - POST_INSET, post_height, post_z))
+	if roof_style == RoofStyle.NONE:
+		# No roof — leave the porch open.
+		pass
 	else:
-		# Ridge runs out from the wall; the open gable faces the garden.
-		roof.span = width - POST_INSET * 2.0
-		roof.length = depth - POST_INSET
-		roof.start_end = KitRoof.End.OPEN
-		roof.finish_end = KitRoof.End.GABLE
-		b.transform = saved * Transform3D(Basis(Vector3.UP, PI), Vector3(hw - POST_INSET, post_height, face_z))
-	roof._build(b)
-	b.transform = saved
+		if roof_style == RoofStyle.LEAN_TO:
+			# The roof's +X (up the slope) points at the wall, its +Z runs along the porch.
+			roof.lean_to = true
+			roof.span = maxf(0.3, depth - POST_INSET - 0.05)
+			roof.length = width - POST_INSET * 2.0
+			roof.start_end = KitRoof.End.GABLE
+			roof.finish_end = KitRoof.End.GABLE
+			b.transform = saved * Transform3D(Basis(Vector3.UP, -PI * 0.5), Vector3(hw - POST_INSET, post_height, post_z))
+		else:
+			# Ridge runs out from the wall; the open gable faces the garden.
+			roof.span = width - POST_INSET * 2.0
+			roof.length = depth - POST_INSET
+			roof.start_end = KitRoof.End.OPEN
+			roof.finish_end = KitRoof.End.GABLE
+			b.transform = saved * Transform3D(Basis(Vector3.UP, PI), Vector3(hw - POST_INSET, post_height, face_z))
+
+		roof._build(b)
+		b.transform = saved
+
 	roof.free()
+
 
 
 ## A post, column or pier standing at `base`, carrying a beam at height `top`.

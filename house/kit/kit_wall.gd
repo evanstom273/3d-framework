@@ -303,16 +303,22 @@ func _opening_details(b: KitBuilder, o: KitOpening, hole: Rect2, half: float) ->
 		_:
 			var z0 := -half + SETBACK if exterior else -half
 			var z1 := z0 + 0.1 if exterior else half
-			KitJoinery.door_frame(b, o, x0, x1, top, z0, z1, frame)
+			# Door joinery is defined relative to floor height 0. Shift its entire
+			# construction to the opening bottom, including the threshold and trim.
+			var saved_transform := b.transform
+			b.transform = saved_transform * Transform3D(Basis(), Vector3(0.0, bottom, 0.0))
+			var local_top := top - bottom
+			KitJoinery.door_frame(b, o, x0, x1, local_top, z0, z1, frame)
 			var trim := KitMaterials.gloss(joinery_color)
-			KitJoinery.architrave(b, x0, x1, top, half, 1.0, trim)
+			KitJoinery.architrave(b, x0, x1, local_top, half, 1.0, trim)
 			if exterior:
-				# Stone threshold under the door, sloping out.
+				# Stone threshold at the raised door opening, sloping out.
 				var inside := half * 2.0 - SETBACK
 				var threshold := PackedVector2Array([Vector2(-inside, 0.006), Vector2(-0.1, 0.012), Vector2(SETBACK + 0.06, -0.01), Vector2(SETBACK + 0.06, -0.06), Vector2(-inside, -0.06)])
-				b.extrude(threshold, Vector3(x0, 0, z0 + 0.0), Vector3(x1, 0, z0 + 0.0), Vector3.UP, stone)
+				b.extrude(threshold, Vector3(x0, 0, z0), Vector3(x1, 0, z0), Vector3.UP, stone)
 			elif wall_type == WallType.INTERIOR:
-				KitJoinery.architrave(b, x0, x1, top, -half, -1.0, KitMaterials.gloss(joinery_color))
+				KitJoinery.architrave(b, x0, x1, local_top, -half, -1.0, trim)
+			b.transform = saved_transform
 	if exterior or wall_type == WallType.GARDEN:
 		_head(b, o, x0, x1, top, half)
 
@@ -423,7 +429,11 @@ func _build_fixtures() -> void:
 			KitOpening.Kind.DOOR:
 				var z0 := -half + SETBACK if exterior else -half
 				var z1 := z0 + 0.1 if exterior else half
-				add_generated(KitJoinery.door_leaf(o, hole.position.x, hole.end.x, hole.end.y, z0, z1, exterior))
+				# Construct at local height, then lift the entire interactive door.
+				# This keeps the hinge, leaf and collision aligned with the opening.
+				var leaf := KitJoinery.door_leaf(o, hole.position.x, hole.end.x, hole.size.y, z0, z1, exterior)
+				leaf.position.y += hole.position.y
+				add_generated(leaf)
 			KitOpening.Kind.WINDOW:
 				var z0 := -half + SETBACK if exterior else -0.035
 				for node in KitJoinery.window_sashes(o, hole.position.x, hole.end.x, hole.position.y, hole.end.y, z0):

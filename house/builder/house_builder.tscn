@@ -52,7 +52,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1180857287]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -0.8, 0)
 
 [node name="Mesh" type="MeshInstance3D" parent="Ground" unique_id=1410661960]
 mesh = SubResource("ground_mesh")
@@ -61,6 +61,7 @@ mesh = SubResource("ground_mesh")
 shape = SubResource("ground_shape")
 
 [node name="ExampleHouse" parent="." unique_id=1775933676 instance=ExtResource("cottage")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
 
 [node name="Player" parent="." unique_id=1203291185 instance=ExtResource("player")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 4, -0.25, -7)

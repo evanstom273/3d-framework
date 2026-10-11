@@ -19,7 +19,7 @@ enum Head { SOLDIER_COURSE, STONE_LINTEL, STONE_KEYSTONE, NONE }
 		position = snappedf(value, 0.05)
 		emit_changed()
 ## Structural opening width, including the frame.
-@export_range(0.3, 4.0, 0.05, "suffix:m") var width: float = 1.2:
+@export_range(0.3, 9.0, 0.05, "suffix:m") var width: float = 1.2:
 	set(value):
 		width = snappedf(value, 0.05)
 		emit_changed()
@@ -32,6 +32,13 @@ enum Head { SOLDIER_COURSE, STONE_LINTEL, STONE_KEYSTONE, NONE }
 	set(value):
 		sill_height = snappedf(value, 0.05)
 		emit_changed()
+
+## Doors only: height of the opening above the floor.
+@export_range(0.0, 2.5, 0.05, "suffix:m") var door_bottom_height: float = 0.0:
+	set(value):
+		door_bottom_height = snappedf(value, 0.05)
+		emit_changed()
+
 
 @export_group("Door")
 @export var door_style: DoorStyle = DoorStyle.FOUR_PANEL:
@@ -103,4 +110,4 @@ static func window(at: float, width_m := 1.2, height_m := 1.2, sill := 0.9) -> K
 
 
 func bottom() -> float:
-	return sill_height if kind == Kind.WINDOW else 0.0
+	return sill_height if kind == Kind.WINDOW else door_bottom_height
