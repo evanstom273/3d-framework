@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_84les"]
 [ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_y2e1w"]
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_ym4bd"]
-[ext_resource type="Resource" uid="uid://c3oyba533fuca" path="res://furniture/materials/painted_steel.tres" id="5_s1jal"]
-[ext_resource type="Resource" uid="uid://d01xckqs64akm" path="res://furniture/materials/rubber.tres" id="6_kmlcx"]
-[ext_resource type="Resource" uid="uid://6fc2qsb8id5f" path="res://furniture/materials/paper.tres" id="7_b7a1b"]
-[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="8_yh3qm"]
+[ext_resource type="Resource" uid="uid://b24y6id5o84h" path="res://furniture/materials/painted_steel.tres" id="5_s1jal"]
+[ext_resource type="Resource" uid="uid://bk3b65jphjurv" path="res://furniture/materials/rubber.tres" id="6_kmlcx"]
+[ext_resource type="Resource" uid="uid://cb2ib57fgyjlk" path="res://furniture/materials/paper.tres" id="7_b7a1b"]
+[ext_resource type="Resource" uid="uid://dvjnxm637ukvf" path="res://furniture/materials/chrome.tres" id="8_yh3qm"]
 
 [sub_resource type="Resource" id="Resource_iox0c"]
 script = ExtResource("3_y2e1w")

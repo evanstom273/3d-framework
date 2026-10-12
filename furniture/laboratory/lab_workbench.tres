@@ -4,11 +4,11 @@
 [ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_ngknr"]
 [ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_c3kk0"]
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_c04cs"]
-[ext_resource type="Resource" uid="uid://c3oyba533fuca" path="res://furniture/materials/painted_steel.tres" id="5_mdfl7"]
-[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="6_sr7mq"]
-[ext_resource type="Resource" uid="uid://c3dhplrb8hgty" path="res://furniture/materials/stone.tres" id="7_yit1l"]
-[ext_resource type="Resource" uid="uid://cqju2cnc1vrtw" path="res://furniture/materials/glass.tres" id="8_k7wbn"]
-[ext_resource type="Resource" uid="uid://dw4suus87xjs" path="res://furniture/materials/plastic.tres" id="9_e21ta"]
+[ext_resource type="Resource" uid="uid://b24y6id5o84h" path="res://furniture/materials/painted_steel.tres" id="5_mdfl7"]
+[ext_resource type="Resource" uid="uid://dvjnxm637ukvf" path="res://furniture/materials/chrome.tres" id="6_sr7mq"]
+[ext_resource type="Resource" uid="uid://cl7c5wwq0kduf" path="res://furniture/materials/stone.tres" id="7_yit1l"]
+[ext_resource type="Resource" uid="uid://bmklgqcq0h7is" path="res://furniture/materials/glass.tres" id="8_k7wbn"]
+[ext_resource type="Resource" uid="uid://b3ttum7f787qt" path="res://furniture/materials/plastic.tres" id="9_e21ta"]
 
 [sub_resource type="Resource" id="Resource_6unr4"]
 script = ExtResource("3_c3kk0")

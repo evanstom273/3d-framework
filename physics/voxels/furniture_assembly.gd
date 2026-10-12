@@ -70,6 +70,7 @@ func _add_part(part: FurniturePart, index: int) -> void:
 	var leaf := VoxelBody.new()
 	leaf.name = "Leaf"
 	leaf.distance_culled = true
+	leaf.hold_when_split = true
 	# Built off the main thread with the body when it was baked (see VoxelBody.bake).
 	var baked: Dictionary = body.baked_parts[index] if index < body.baked_parts.size() else {}
 	if not baked.is_empty() and baked["structure"] == part.structure:
@@ -116,7 +117,7 @@ func _check() -> void:
 			_release(link)
 			continue
 		var region := _mount_region(part, leaf)
-		if not _has_cells(leaf, region) or not _has_cells(body, region.grow(body.voxel_size * MOUNT_CELLS)):
+		if not leaf.has_cells_in(region) or not body.has_cells_in(region.grow(body.voxel_size * MOUNT_CELLS)):
 			_release(link)
 
 
@@ -136,20 +137,6 @@ func _mount_region(part: FurniturePart, leaf: VoxelBody) -> AABB:
 			low[a] = maxf(low[a], part.pivot[a] - reach)
 			high[a] = minf(high[a], part.pivot[a] + reach)
 	return AABB(low, (high - low).max(Vector3.ZERO))
-
-
-## Whether `target` has a voxel centred inside `region` (body space).
-static func _has_cells(target: VoxelBody, region: AABB) -> bool:
-	var size := target.voxel_size
-	var low := Vector3i((region.position / size).floor())
-	var high := Vector3i((region.end / size).ceil())
-	for x in range(low.x, high.x):
-		for y in range(low.y, high.y):
-			for z in range(low.z, high.z):
-				var cell := Vector3i(x, y, z)
-				if target.cells.has(cell) and region.has_point((Vector3(cell) + Vector3.ONE * 0.5) * size):
-					return true
-	return false
 
 
 func _release(link: Dictionary) -> void:

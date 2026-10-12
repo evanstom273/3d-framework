@@ -1,17 +1,17 @@
 [gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://duad71ol2k6lk"]
 
-[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_ah2do"]
-[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_dmyle"]
-[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_ttidh"]
-[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_0on7g"]
-[ext_resource type="Resource" path="res://furniture/materials/oak.tres" id="5_3sihr"]
-[ext_resource type="Resource" path="res://furniture/materials/paper.tres" id="6_baa27"]
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_ah2do"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_dmyle"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_ttidh"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_0on7g"]
+[ext_resource type="Resource" uid="uid://d0ow670ht3lld" path="res://furniture/materials/oak.tres" id="5_3sihr"]
+[ext_resource type="Resource" uid="uid://cb2ib57fgyjlk" path="res://furniture/materials/paper.tres" id="6_baa27"]
 
 [resource]
 script = ExtResource("3_ttidh")
 display_name = "Bookshelf"
 spawn_category = "Bedroom"
-voxel_size = 0.034999999403953555
+voxel_size = 0.03499999940395355
 anchor_mode = 1
 density_scale = 0.24390072261582588
 vox_file = "res://furniture/vox/bedroom_bookshelf.vox"

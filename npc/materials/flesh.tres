@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://diatm0rjbaagk"]
+
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_01h1w"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/soft.tres" id="2_hrdxp"]
+
+[resource]
+script = ExtResource("1_01h1w")
+tool_profile = ExtResource("2_hrdxp")
+display_name = "Flesh"
+color = Color(0.86, 0.14, 0.16, 1)
+color_jitter = 0.0
+strength = 3.5
+density = 1050.0
+friction = 0.85
+bounce = 0.1
+blunt_multiplier = 0.9
+sharp_multiplier = 1.8
+pierce_multiplier = 1.6
+impact_sound = 6
+rubble_fraction = 0.12

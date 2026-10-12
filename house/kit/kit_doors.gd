@@ -292,6 +292,8 @@ static func _attach(root: Node3D, attachment_name: String, body: String, mount: 
 static func _mechanism(o: KitOpening, title: String, duration := 0.6) -> KitMechanism:
 	var m := KitMechanism.new()
 	m.name = "Door"
+	# Doors, gates and garage doors: NPCs may open these (not windows).
+	m.set_meta(&"door", true)
 	m.interaction_name = title
 	m.lockable = o.lockable
 	m.duration = duration if not o.powered else duration * 2.5

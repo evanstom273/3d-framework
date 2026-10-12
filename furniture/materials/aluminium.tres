@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://bht0hyc6vbx2v"]
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://rvg63dngb3ov"]
 
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_uc8gb"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/nonmagnetic_metal.tres" id="2_lg3a3"]
 
 [resource]
 script = ExtResource("1_uc8gb")
+tool_profile = ExtResource("2_lg3a3")
 display_name = "Aluminium"
 color = Color(0.78, 0.79, 0.8, 1)
 color_jitter = 0.0

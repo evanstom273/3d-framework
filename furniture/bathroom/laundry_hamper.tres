@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://c6qqjjnbt6jwp"]
 
-[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_nkkvy"]
-[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_ardev"]
-[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_nph3r"]
-[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_ust5j"]
-[ext_resource type="Resource" path="res://furniture/materials/wicker.tres" id="5_ijecr"]
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_nkkvy"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_ardev"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_nph3r"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_ust5j"]
+[ext_resource type="Resource" uid="uid://c8jedf6101ees" path="res://furniture/materials/wicker.tres" id="5_ijecr"]
 
 [resource]
 script = ExtResource("3_nph3r")
@@ -12,7 +12,7 @@ display_name = "Laundry Hamper"
 spawn_category = "Bathroom"
 voxel_size = 0.02
 anchor_mode = 1
-density_scale = 0.43453070683665035
+density_scale = 0.4345307068366503
 vox_file = "res://furniture/vox/laundry_hamper.vox"
 vox_material = ExtResource("5_ijecr")
 vox_index_materials = {

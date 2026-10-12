@@ -171,9 +171,9 @@ func _region_basis(operation: String) -> Basis:
 ## Loose objects get pushed around by a running blade instead of being cut.
 func _nudge(collider: CollisionObject3D, hit: Dictionary, direction: Vector3, exposure: float) -> void:
 	var target := collider as RigidBody3D
-	if target == null or target.freeze:
+	if target == null:
 		return
-	target.apply_impulse(direction * action.force * exposure, hit["position"] - target.global_position)
+	ToolMatter.push(target, direction * action.force * exposure, hit["position"])
 
 
 func _surface_color(hit: Dictionary) -> Color:

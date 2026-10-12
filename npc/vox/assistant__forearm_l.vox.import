@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dykjsisalpy8v"
+path="res://.godot/imported/assistant__forearm_l.vox-6aeb4febdc962a03c5cdcf0f5439c138.tres"
+
+[deps]
+
+source_file="res://npc/vox/assistant__forearm_l.vox"
+dest_files=["res://.godot/imported/assistant__forearm_l.vox-6aeb4febdc962a03c5cdcf0f5439c138.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

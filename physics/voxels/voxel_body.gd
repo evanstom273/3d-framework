@@ -33,6 +33,17 @@ enum HandState { WORLD, HELD }
 signal geometry_changed
 ## Mounts migrate before geometry_changed validates the source's remaining cells.
 signal cells_transferred(target: VoxelBody, mapping: Dictionary)
+## Voxels were knocked out (cell -> palette index), e.g. for blood or dust effects.
+signal cells_removed(removed: Dictionary, direction: Vector3, strength: float)
+## Something hit this body (a tool, or a moving object striking it while frozen).
+## `strength` is roughly the impulse in newton-seconds.
+signal impacted(strength: float, point: Vector3, direction: Vector3)
+## An advanced tool (blowtorch, saw, grinder, drill, shovel...) worked on this
+## body: the operation, where, and the cells it removed (cell -> palette index).
+signal tool_worked(operation: StringName, point: Vector3, removed: Dictionary)
+## A tool or spray pushed this body while it was frozen (so it couldn't move):
+## whatever carries it (an NPC) can react.
+signal pushed(impulse: Vector3, point: Vector3)
 var surface_state: Dictionary = {}
 var _body_properties_dirty: bool = true
 
@@ -102,6 +113,9 @@ var _building_quietly: bool = false
 var baked_parts: Array = []
 ## Forces distance culling on (e.g. furniture doors, whose structure has no category).
 var distance_culled: bool = false
+## Frozen and anchorless, it stays frozen when a hit splits it (the biggest
+## piece stays put; the rest falls away). For bodies carried by something else.
+var hold_when_split: bool = false
 ## Mesh nodes of the combined mesh while untouched (empty once split into chunks).
 var _whole_nodes: Array = []
 ## Chunk geometry gathered during a first build, for the combined mesh.
@@ -217,6 +231,9 @@ func receive_tool_impact(impact: ToolImpact) -> void:
 		impact.handled = true
 	_remember_impact(impact.position, impact.direction, impact.damage)
 	_spawn_rubble(removed, impact.direction, impact.damage)
+	if not removed.is_empty():
+		cells_removed.emit(removed, impact.direction, impact.damage)
+	impacted.emit(maxf(impact.impulse.length(), impact.damage), impact.position, impact.direction)
 
 
 func get_impact_sound() -> int:
@@ -240,6 +257,8 @@ func damage_at(point: Vector3, radius: float, damage: float, direction: Vector3)
 	var removed := damage_sphere(to_local(point) / voxel_size, radius / voxel_size, damage)
 	_remember_impact(point, direction, damage)
 	_spawn_rubble(removed, direction, damage)
+	if not removed.is_empty():
+		cells_removed.emit(removed, direction, damage)
 	var material := _main_material()
 	if material == null or _last_damaged_count == 0:
 		return Color(0, 0, 0, 0)
@@ -782,6 +801,20 @@ func _set_structure_quietly(definition: VoxelStructureDefinition) -> void:
 	_building_quietly = false
 
 
+## Whether any voxel's centre lies inside `region` (this body's local space,
+## metres). Used to test what holds a hinge, joint or mounting together.
+func has_cells_in(region: AABB) -> bool:
+	var low := Vector3i((region.position / voxel_size).floor())
+	var high := Vector3i((region.end / voxel_size).ceil())
+	for x in range(low.x, high.x):
+		for y in range(low.y, high.y):
+			for z in range(low.z, high.z):
+				var cell := Vector3i(x, y, z)
+				if cells.has(cell) and region.has_point((Vector3(cell) + Vector3.ONE * 0.5) * voxel_size):
+					return true
+	return false
+
+
 ## Exact occupied bounds in cell coordinates, shared by pickup and construction.
 ## Movement does not invalidate them; removing an outer cell refreshes them lazily.
 func get_cell_bounds() -> AABB:
@@ -835,6 +868,15 @@ func _on_emptied() -> void:
 ## keeps the groups still touching an anchor (and comes loose entirely if none
 ## are left); a free piece keeps its largest group. Everything else becomes a
 ## new free piece that falls under physics.
+## Where broken-off pieces and rubble go: beside this body, unless it rides on
+## something that moves (an NPC limb, a furniture door), then into the scene.
+func _debris_parent() -> Node:
+	if hold_when_split and is_inside_tree():
+		var tree := get_tree()
+		return tree.current_scene if tree.current_scene != null else tree.root
+	return get_parent()
+
+
 func _split_disconnected() -> void:
 	if cells.is_empty():
 		return
@@ -844,7 +886,10 @@ func _split_disconnected() -> void:
 		for index in groups.size():
 			if _touches_anchor(groups[index]):
 				keep.append(index)
-		if keep.is_empty():
+		# Frozen with nothing holding it to the world: normally it all comes loose,
+		# but bodies that ride on something (NPC limbs, furniture doors) keep their
+		# biggest piece fixed in place and only shed the bits cut off.
+		if keep.is_empty() and not (hold_when_split and anchors.is_empty()):
 			freeze = false
 	if keep.is_empty():
 		var largest := 0
@@ -869,7 +914,7 @@ func _touches_anchor(group: Array) -> bool:
 
 ## Moves `group` into a new free VoxelBody occupying the same place in the world.
 func _detach(group: Array) -> void:
-	var parent := get_parent()
+	var parent := _debris_parent()
 	if parent == null:
 		return
 	# Re-centre on a whole-cell offset: the grid stays aligned and the new body's
@@ -943,7 +988,7 @@ func _add_impact_kick(count: int, centre: Vector3, velocity: Vector3, spin: Vect
 
 ## `strength` is the hit's damage: harder hits throw rubble further.
 func _spawn_rubble(removed: Dictionary[Vector3i, int], direction: Vector3, strength: float) -> void:
-	var parent := get_parent()
+	var parent := _debris_parent()
 	if parent == null or removed.is_empty():
 		return
 	var energy := clampf(strength / 30.0, 0.3, 1.5) * PhysicsFeel.get_active().debris_launch_multiplier

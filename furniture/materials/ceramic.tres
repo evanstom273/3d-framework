@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://2t7j78nojlx7"]
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://cd7usdievww85"]
 
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_oglyp"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/masonry.tres" id="2_riy4t"]
 
 [resource]
 script = ExtResource("1_oglyp")
+tool_profile = ExtResource("2_riy4t")
 display_name = "Ceramic"
 color = Color(0.95, 0.95, 0.93, 1)
 color_jitter = 0.0

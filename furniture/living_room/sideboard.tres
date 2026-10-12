@@ -1,19 +1,19 @@
 [gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://7vgslbc602jq"]
 
-[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_dou6u"]
-[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_aal5d"]
-[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_1o4g7"]
-[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_sd3vt"]
-[ext_resource type="Resource" uid="uid://bgrnpiwfmjxib" path="res://furniture/materials/painted_wood.tres" id="5_js7rv"]
-[ext_resource type="Resource" uid="uid://do6r55lv41aud" path="res://furniture/materials/oak.tres" id="6_yqk7j"]
-[ext_resource type="Resource" uid="uid://de8xv7dfh7g41" path="res://furniture/materials/brass.tres" id="7_wmefw"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_dou6u"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_aal5d"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_1o4g7"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_sd3vt"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_wood.tres" id="5_js7rv"]
+[ext_resource type="Resource" path="res://furniture/materials/oak.tres" id="6_yqk7j"]
+[ext_resource type="Resource" path="res://furniture/materials/brass.tres" id="7_wmefw"]
 
 [sub_resource type="Resource" id="Resource_00aa7"]
 script = ExtResource("3_1o4g7")
 display_name = "Sideboard Door"
 voxel_size = 0.04000000059604645
 anchor_mode = 1
-density_scale = 0.20895131335899209
+density_scale = 0.20895131335899206
 vox_file = "res://furniture/vox/sideboard__part1.vox"
 vox_material = ExtResource("5_js7rv")
 vox_index_materials = {
@@ -35,7 +35,7 @@ script = ExtResource("3_1o4g7")
 display_name = "Sideboard Door"
 voxel_size = 0.04000000059604645
 anchor_mode = 1
-density_scale = 0.20895131335899209
+density_scale = 0.20895131335899206
 vox_file = "res://furniture/vox/sideboard__part2.vox"
 vox_material = ExtResource("5_js7rv")
 vox_index_materials = {
@@ -58,7 +58,7 @@ script = ExtResource("3_1o4g7")
 display_name = "Sideboard Drawer"
 voxel_size = 0.04000000059604645
 anchor_mode = 1
-density_scale = 0.20895131335899209
+density_scale = 0.20895131335899206
 vox_file = "res://furniture/vox/sideboard__part3.vox"
 vox_material = ExtResource("5_js7rv")
 vox_index_materials = {
@@ -84,7 +84,7 @@ script = ExtResource("3_1o4g7")
 display_name = "Sideboard Drawer"
 voxel_size = 0.04000000059604645
 anchor_mode = 1
-density_scale = 0.20895131335899209
+density_scale = 0.20895131335899206
 vox_file = "res://furniture/vox/sideboard__part4.vox"
 vox_material = ExtResource("5_js7rv")
 vox_index_materials = {
@@ -110,7 +110,7 @@ script = ExtResource("3_1o4g7")
 display_name = "Sideboard Drawer"
 voxel_size = 0.04000000059604645
 anchor_mode = 1
-density_scale = 0.20895131335899209
+density_scale = 0.20895131335899206
 vox_file = "res://furniture/vox/sideboard__part5.vox"
 vox_material = ExtResource("5_js7rv")
 vox_index_materials = {
@@ -137,7 +137,7 @@ display_name = "Sideboard"
 spawn_category = "Living Room"
 voxel_size = 0.04000000059604645
 anchor_mode = 1
-density_scale = 0.20895131335899209
+density_scale = 0.20895131335899206
 vox_file = "res://furniture/vox/sideboard.vox"
 vox_material = ExtResource("5_js7rv")
 vox_index_materials = {

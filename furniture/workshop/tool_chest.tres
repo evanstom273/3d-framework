@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_nt5a6"]
 [ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_bufot"]
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_vhroo"]
-[ext_resource type="Resource" uid="uid://c3oyba533fuca" path="res://furniture/materials/painted_steel.tres" id="5_4x3lv"]
-[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="6_0w1df"]
+[ext_resource type="Resource" uid="uid://b24y6id5o84h" path="res://furniture/materials/painted_steel.tres" id="5_4x3lv"]
+[ext_resource type="Resource" uid="uid://dvjnxm637ukvf" path="res://furniture/materials/chrome.tres" id="6_0w1df"]
 
 [sub_resource type="Resource" id="Resource_hpn6q"]
 script = ExtResource("3_bufot")

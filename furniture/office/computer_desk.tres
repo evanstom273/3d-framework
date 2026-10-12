@@ -1,16 +1,16 @@
 [gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://d14xd6plvcijo"]
 
-[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_v734u"]
-[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_hfgrh"]
-[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_ytjv5"]
-[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_jyooy"]
-[ext_resource type="Resource" uid="uid://bfvvsd3dyvk67" path="res://furniture/materials/chipboard.tres" id="5_cmlop"]
-[ext_resource type="Resource" uid="uid://c3oyba533fuca" path="res://furniture/materials/painted_steel.tres" id="6_yq6ut"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_v734u"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_hfgrh"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_ytjv5"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_jyooy"]
+[ext_resource type="Resource" path="res://furniture/materials/chipboard.tres" id="5_cmlop"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_steel.tres" id="6_yq6ut"]
 
 [sub_resource type="Resource" id="Resource_q8p75"]
 script = ExtResource("3_ytjv5")
 display_name = "Computer Desk Drawer"
-voxel_size = 0.03499999940395355
+voxel_size = 0.034999999403953555
 anchor_mode = 1
 density_scale = 0.3096485879141529
 vox_file = "res://furniture/vox/computer_desk__part1.vox"
@@ -32,7 +32,7 @@ amount = 0.375
 [sub_resource type="Resource" id="Resource_i4a6k"]
 script = ExtResource("3_ytjv5")
 display_name = "Computer Desk Drawer"
-voxel_size = 0.03499999940395355
+voxel_size = 0.034999999403953555
 anchor_mode = 1
 density_scale = 0.3096485879141529
 vox_file = "res://furniture/vox/computer_desk__part2.vox"
@@ -54,7 +54,7 @@ amount = 0.375
 [sub_resource type="Resource" id="Resource_mw8ah"]
 script = ExtResource("3_ytjv5")
 display_name = "Computer Desk Drawer"
-voxel_size = 0.03499999940395355
+voxel_size = 0.034999999403953555
 anchor_mode = 1
 density_scale = 0.3096485879141529
 vox_file = "res://furniture/vox/computer_desk__part3.vox"
@@ -77,7 +77,7 @@ amount = 0.375
 script = ExtResource("3_ytjv5")
 display_name = "Computer Desk"
 spawn_category = "Office"
-voxel_size = 0.03499999940395355
+voxel_size = 0.034999999403953555
 anchor_mode = 1
 density_scale = 0.3096485879141529
 vox_file = "res://furniture/vox/computer_desk.vox"

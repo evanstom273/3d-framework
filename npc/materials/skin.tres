@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://bhn2ql2g7ona8"]
+
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_7yqyj"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/soft.tres" id="2_ja8ff"]
+
+[resource]
+script = ExtResource("1_7yqyj")
+tool_profile = ExtResource("2_ja8ff")
+display_name = "Skin"
+color = Color(0.93, 0.76, 0.64, 1)
+color_jitter = 0.0
+strength = 4.0
+density = 1000.0
+blunt_multiplier = 0.9
+sharp_multiplier = 1.6
+pierce_multiplier = 1.5
+impact_sound = 6
+rubble_fraction = 0.05

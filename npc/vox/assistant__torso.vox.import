@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://djkvbu7k7god2"
+path="res://.godot/imported/assistant__torso.vox-2b6b7c9c3db795632d7af30c52cdec31.tres"
+
+[deps]
+
+source_file="res://npc/vox/assistant__torso.vox"
+dest_files=["res://.godot/imported/assistant__torso.vox-2b6b7c9c3db795632d7af30c52cdec31.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

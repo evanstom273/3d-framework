@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://bq00qd5uvbe3q"]
+
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_8djew"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/soft.tres" id="2_lu5ae"]
+
+[resource]
+script = ExtResource("1_8djew")
+tool_profile = ExtResource("2_lu5ae")
+display_name = "Hair"
+color = Color(0.36, 0.25, 0.16, 1)
+color_jitter = 0.0
+strength = 3.0
+density = 300.0
+friction = 0.9
+bounce = 0.02
+blunt_multiplier = 0.6
+sharp_multiplier = 2.0
+impact_sound = 6
+rubble_fraction = 0.05

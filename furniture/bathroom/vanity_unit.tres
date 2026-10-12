@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://bxs632grt87yl"]
 
-[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_tuxra"]
-[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_07lov"]
-[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_uqg2q"]
-[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_yoa68"]
-[ext_resource type="Resource" uid="uid://bgrnpiwfmjxib" path="res://furniture/materials/painted_wood.tres" id="5_xreiu"]
-[ext_resource type="Resource" uid="uid://de8xv7dfh7g41" path="res://furniture/materials/brass.tres" id="6_x2q6e"]
-[ext_resource type="Resource" uid="uid://b6je217u8h4pn" path="res://furniture/materials/marble.tres" id="7_fttfs"]
-[ext_resource type="Resource" uid="uid://2t7j78nojlx7" path="res://furniture/materials/ceramic.tres" id="8_13qlg"]
-[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="9_8qhrh"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_tuxra"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_07lov"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_uqg2q"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_yoa68"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_wood.tres" id="5_xreiu"]
+[ext_resource type="Resource" path="res://furniture/materials/brass.tres" id="6_x2q6e"]
+[ext_resource type="Resource" path="res://furniture/materials/marble.tres" id="7_fttfs"]
+[ext_resource type="Resource" path="res://furniture/materials/ceramic.tres" id="8_13qlg"]
+[ext_resource type="Resource" path="res://furniture/materials/chrome.tres" id="9_8qhrh"]
 
 [sub_resource type="Resource" id="Resource_6mdty"]
 script = ExtResource("3_uqg2q")

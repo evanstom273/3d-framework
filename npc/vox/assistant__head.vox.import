@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cglmemt4n4u55"
+path="res://.godot/imported/assistant__head.vox-89af93eba15cb9b214140634bfa6e4fb.tres"
+
+[deps]
+
+source_file="res://npc/vox/assistant__head.vox"
+dest_files=["res://.godot/imported/assistant__head.vox-89af93eba15cb9b214140634bfa6e4fb.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

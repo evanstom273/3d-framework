@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://bykhkvh721pjc"]
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://b4dbramkj4048"]
 
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_pc7y5"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/wood.tres" id="2_o3xbj"]
 
 [resource]
 script = ExtResource("1_pc7y5")
+tool_profile = ExtResource("2_o3xbj")
 display_name = "Walnut"
 color = Color(0.38, 0.25, 0.16, 1)
 color_jitter = 0.0

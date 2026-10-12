@@ -1,0 +1,594 @@
+[gd_resource type="Resource" script_class="NPCDefinition" format=3 uid="uid://demx0ri6h4dm3"]
+
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_x577r"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_8vm3h"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_d1kjl"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_xlmgf"]
+[ext_resource type="Resource" uid="uid://ddofipusls2qi" path="res://furniture/materials/plywood.tres" id="5_mv008"]
+[ext_resource type="Resource" uid="uid://cb2ib57fgyjlk" path="res://furniture/materials/paper.tres" id="6_7imhf"]
+[ext_resource type="Resource" uid="uid://b3v2c6w8j02yv" path="res://furniture/materials/steel.tres" id="7_85tff"]
+[ext_resource type="Script" uid="uid://bn33gxwsc5a3y" path="res://npc/npc_part.gd" id="8_yt3et"]
+[ext_resource type="Resource" uid="uid://bnxau5n1guxtk" path="res://npc/materials/suit.tres" id="9_25dd1"]
+[ext_resource type="Resource" uid="uid://cy61rksemwh5s" path="res://npc/materials/leather.tres" id="10_tjqlu"]
+[ext_resource type="Resource" uid="uid://diatm0rjbaagk" path="res://npc/materials/flesh.tres" id="11_nqjxt"]
+[ext_resource type="Resource" uid="uid://rpwn1207fnx0" path="res://npc/materials/bone.tres" id="12_lq77o"]
+[ext_resource type="Resource" uid="uid://cm0f4xitimpm4" path="res://npc/materials/shirt.tres" id="13_udt4k"]
+[ext_resource type="Resource" uid="uid://crvtacubyntbm" path="res://npc/materials/tie.tres" id="14_vcevd"]
+[ext_resource type="Resource" uid="uid://bhn2ql2g7ona8" path="res://npc/materials/skin.tres" id="15_8jytu"]
+[ext_resource type="Resource" uid="uid://b3ttum7f787qt" path="res://furniture/materials/plastic.tres" id="16_31qvf"]
+[ext_resource type="Resource" uid="uid://bq00qd5uvbe3q" path="res://npc/materials/hair.tres" id="17_y7c44"]
+[ext_resource type="Resource" uid="uid://geoqmxo6r6rd" path="res://npc/materials/eye.tres" id="18_mck5m"]
+[ext_resource type="Resource" uid="uid://bbdk3cwofwttr" path="res://npc/materials/pupil.tres" id="19_m3e36"]
+[ext_resource type="Script" uid="uid://f3ryc06lnyon" path="res://npc/npc_definition.gd" id="20_n5bjw"]
+
+[sub_resource type="Resource" id="Resource_n6ek6"]
+script = ExtResource("3_d1kjl")
+display_name = "Clipboard"
+voxel_size = 0.01
+anchor_mode = 1
+density_scale = 0.3298289012574626
+vox_file = "res://npc/vox/assistant__clipboard.vox"
+vox_material = ExtResource("5_mv008")
+vox_index_materials = {
+1: ExtResource("5_mv008"),
+2: ExtResource("5_mv008"),
+3: ExtResource("5_mv008"),
+4: ExtResource("6_7imhf"),
+5: ExtResource("6_7imhf"),
+6: ExtResource("7_85tff"),
+7: ExtResource("7_85tff")
+}
+
+[sub_resource type="Resource" id="Resource_60254"]
+script = ExtResource("3_d1kjl")
+display_name = "Assistant Torso"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.773779800839503
+vox_file = "res://npc/vox/assistant__torso.vox"
+vox_material = ExtResource("9_25dd1")
+vox_index_materials = {
+1: ExtResource("9_25dd1"),
+2: ExtResource("9_25dd1"),
+3: ExtResource("10_tjqlu"),
+4: ExtResource("10_tjqlu"),
+5: ExtResource("11_nqjxt"),
+6: ExtResource("11_nqjxt"),
+7: ExtResource("11_nqjxt"),
+8: ExtResource("10_tjqlu"),
+9: ExtResource("12_lq77o"),
+10: ExtResource("9_25dd1"),
+11: ExtResource("13_udt4k"),
+12: ExtResource("9_25dd1"),
+13: ExtResource("13_udt4k"),
+14: ExtResource("14_vcevd"),
+15: ExtResource("14_vcevd"),
+16: ExtResource("15_8jytu"),
+17: ExtResource("15_8jytu"),
+18: ExtResource("15_8jytu"),
+19: ExtResource("14_vcevd"),
+20: ExtResource("16_31qvf"),
+21: ExtResource("17_y7c44"),
+22: ExtResource("17_y7c44"),
+23: ExtResource("17_y7c44"),
+24: ExtResource("18_mck5m"),
+25: ExtResource("19_m3e36"),
+26: ExtResource("18_mck5m"),
+27: ExtResource("15_8jytu"),
+28: ExtResource("18_mck5m"),
+29: ExtResource("15_8jytu"),
+30: ExtResource("15_8jytu"),
+31: ExtResource("19_m3e36"),
+32: ExtResource("10_tjqlu"),
+33: ExtResource("10_tjqlu")
+}
+
+[sub_resource type="Resource" id="Resource_m7ucp"]
+script = ExtResource("8_yt3et")
+name = "torso"
+structure = SubResource("Resource_60254")
+pivot = Vector3(0, 0.94, 0.040000018)
+vital = true
+swing_limit = 0.0
+twist_limit = 0.0
+
+[sub_resource type="Resource" id="Resource_5toja"]
+script = ExtResource("3_d1kjl")
+display_name = "Assistant Head"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.773779800839503
+vox_file = "res://npc/vox/assistant__head.vox"
+vox_material = ExtResource("9_25dd1")
+vox_index_materials = {
+1: ExtResource("9_25dd1"),
+2: ExtResource("9_25dd1"),
+3: ExtResource("10_tjqlu"),
+4: ExtResource("10_tjqlu"),
+5: ExtResource("11_nqjxt"),
+6: ExtResource("11_nqjxt"),
+7: ExtResource("11_nqjxt"),
+8: ExtResource("10_tjqlu"),
+9: ExtResource("12_lq77o"),
+10: ExtResource("9_25dd1"),
+11: ExtResource("13_udt4k"),
+12: ExtResource("9_25dd1"),
+13: ExtResource("13_udt4k"),
+14: ExtResource("14_vcevd"),
+15: ExtResource("14_vcevd"),
+16: ExtResource("15_8jytu"),
+17: ExtResource("15_8jytu"),
+18: ExtResource("15_8jytu"),
+19: ExtResource("14_vcevd"),
+20: ExtResource("16_31qvf"),
+21: ExtResource("17_y7c44"),
+22: ExtResource("17_y7c44"),
+23: ExtResource("17_y7c44"),
+24: ExtResource("18_mck5m"),
+25: ExtResource("19_m3e36"),
+26: ExtResource("18_mck5m"),
+27: ExtResource("15_8jytu"),
+28: ExtResource("18_mck5m"),
+29: ExtResource("15_8jytu"),
+30: ExtResource("15_8jytu"),
+31: ExtResource("19_m3e36"),
+32: ExtResource("10_tjqlu"),
+33: ExtResource("10_tjqlu")
+}
+
+[sub_resource type="Resource" id="Resource_ot1ms"]
+script = ExtResource("8_yt3et")
+name = "head"
+structure = SubResource("Resource_5toja")
+parent = 0
+pivot = Vector3(0, 1.52, 0.040000018)
+vital = true
+swing_limit = 40.0
+twist_limit = 60.0
+
+[sub_resource type="Resource" id="Resource_8ax58"]
+script = ExtResource("3_d1kjl")
+display_name = "Assistant Upper Arm R"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.773779800839503
+vox_file = "res://npc/vox/assistant__upper_arm_r.vox"
+vox_material = ExtResource("9_25dd1")
+vox_index_materials = {
+1: ExtResource("9_25dd1"),
+2: ExtResource("9_25dd1"),
+3: ExtResource("10_tjqlu"),
+4: ExtResource("10_tjqlu"),
+5: ExtResource("11_nqjxt"),
+6: ExtResource("11_nqjxt"),
+7: ExtResource("11_nqjxt"),
+8: ExtResource("10_tjqlu"),
+9: ExtResource("12_lq77o"),
+10: ExtResource("9_25dd1"),
+11: ExtResource("13_udt4k"),
+12: ExtResource("9_25dd1"),
+13: ExtResource("13_udt4k"),
+14: ExtResource("14_vcevd"),
+15: ExtResource("14_vcevd"),
+16: ExtResource("15_8jytu"),
+17: ExtResource("15_8jytu"),
+18: ExtResource("15_8jytu"),
+19: ExtResource("14_vcevd"),
+20: ExtResource("16_31qvf"),
+21: ExtResource("17_y7c44"),
+22: ExtResource("17_y7c44"),
+23: ExtResource("17_y7c44"),
+24: ExtResource("18_mck5m"),
+25: ExtResource("19_m3e36"),
+26: ExtResource("18_mck5m"),
+27: ExtResource("15_8jytu"),
+28: ExtResource("18_mck5m"),
+29: ExtResource("15_8jytu"),
+30: ExtResource("15_8jytu"),
+31: ExtResource("19_m3e36"),
+32: ExtResource("10_tjqlu"),
+33: ExtResource("10_tjqlu")
+}
+
+[sub_resource type="Resource" id="Resource_7vefh"]
+script = ExtResource("8_yt3et")
+name = "upper_arm_r"
+structure = SubResource("Resource_8ax58")
+parent = 0
+pivot = Vector3(0.21500003, 1.43, 0.040000018)
+swing_limit = 95.0
+twist_limit = 45.0
+
+[sub_resource type="Resource" id="Resource_x60xx"]
+script = ExtResource("3_d1kjl")
+display_name = "Assistant Forearm R"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.773779800839503
+vox_file = "res://npc/vox/assistant__forearm_r.vox"
+vox_material = ExtResource("9_25dd1")
+vox_index_materials = {
+1: ExtResource("9_25dd1"),
+2: ExtResource("9_25dd1"),
+3: ExtResource("10_tjqlu"),
+4: ExtResource("10_tjqlu"),
+5: ExtResource("11_nqjxt"),
+6: ExtResource("11_nqjxt"),
+7: ExtResource("11_nqjxt"),
+8: ExtResource("10_tjqlu"),
+9: ExtResource("12_lq77o"),
+10: ExtResource("9_25dd1"),
+11: ExtResource("13_udt4k"),
+12: ExtResource("9_25dd1"),
+13: ExtResource("13_udt4k"),
+14: ExtResource("14_vcevd"),
+15: ExtResource("14_vcevd"),
+16: ExtResource("15_8jytu"),
+17: ExtResource("15_8jytu"),
+18: ExtResource("15_8jytu"),
+19: ExtResource("14_vcevd"),
+20: ExtResource("16_31qvf"),
+21: ExtResource("17_y7c44"),
+22: ExtResource("17_y7c44"),
+23: ExtResource("17_y7c44"),
+24: ExtResource("18_mck5m"),
+25: ExtResource("19_m3e36"),
+26: ExtResource("18_mck5m"),
+27: ExtResource("15_8jytu"),
+28: ExtResource("18_mck5m"),
+29: ExtResource("15_8jytu"),
+30: ExtResource("15_8jytu"),
+31: ExtResource("19_m3e36"),
+32: ExtResource("10_tjqlu"),
+33: ExtResource("10_tjqlu")
+}
+
+[sub_resource type="Resource" id="Resource_xr5k4"]
+script = ExtResource("8_yt3et")
+name = "forearm_r"
+structure = SubResource("Resource_x60xx")
+parent = 2
+pivot = Vector3(0.235, 1.13, 0.040000018)
+swing_limit = 85.0
+
+[sub_resource type="Resource" id="Resource_7b8j7"]
+script = ExtResource("3_d1kjl")
+display_name = "Assistant Upper Arm L"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.773779800839503
+vox_file = "res://npc/vox/assistant__upper_arm_l.vox"
+vox_material = ExtResource("9_25dd1")
+vox_index_materials = {
+1: ExtResource("9_25dd1"),
+2: ExtResource("9_25dd1"),
+3: ExtResource("10_tjqlu"),
+4: ExtResource("10_tjqlu"),
+5: ExtResource("11_nqjxt"),
+6: ExtResource("11_nqjxt"),
+7: ExtResource("11_nqjxt"),
+8: ExtResource("10_tjqlu"),
+9: ExtResource("12_lq77o"),
+10: ExtResource("9_25dd1"),
+11: ExtResource("13_udt4k"),
+12: ExtResource("9_25dd1"),
+13: ExtResource("13_udt4k"),
+14: ExtResource("14_vcevd"),
+15: ExtResource("14_vcevd"),
+16: ExtResource("15_8jytu"),
+17: ExtResource("15_8jytu"),
+18: ExtResource("15_8jytu"),
+19: ExtResource("14_vcevd"),
+20: ExtResource("16_31qvf"),
+21: ExtResource("17_y7c44"),
+22: ExtResource("17_y7c44"),
+23: ExtResource("17_y7c44"),
+24: ExtResource("18_mck5m"),
+25: ExtResource("19_m3e36"),
+26: ExtResource("18_mck5m"),
+27: ExtResource("15_8jytu"),
+28: ExtResource("18_mck5m"),
+29: ExtResource("15_8jytu"),
+30: ExtResource("15_8jytu"),
+31: ExtResource("19_m3e36"),
+32: ExtResource("10_tjqlu"),
+33: ExtResource("10_tjqlu")
+}
+
+[sub_resource type="Resource" id="Resource_gnuq3"]
+script = ExtResource("8_yt3et")
+name = "upper_arm_l"
+structure = SubResource("Resource_7b8j7")
+parent = 0
+pivot = Vector3(-0.21499999, 1.43, 0.040000018)
+swing_limit = 95.0
+twist_limit = 45.0
+
+[sub_resource type="Resource" id="Resource_shfys"]
+script = ExtResource("3_d1kjl")
+display_name = "Assistant Forearm L"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.773779800839503
+vox_file = "res://npc/vox/assistant__forearm_l.vox"
+vox_material = ExtResource("9_25dd1")
+vox_index_materials = {
+1: ExtResource("9_25dd1"),
+2: ExtResource("9_25dd1"),
+3: ExtResource("10_tjqlu"),
+4: ExtResource("10_tjqlu"),
+5: ExtResource("11_nqjxt"),
+6: ExtResource("11_nqjxt"),
+7: ExtResource("11_nqjxt"),
+8: ExtResource("10_tjqlu"),
+9: ExtResource("12_lq77o"),
+10: ExtResource("9_25dd1"),
+11: ExtResource("13_udt4k"),
+12: ExtResource("9_25dd1"),
+13: ExtResource("13_udt4k"),
+14: ExtResource("14_vcevd"),
+15: ExtResource("14_vcevd"),
+16: ExtResource("15_8jytu"),
+17: ExtResource("15_8jytu"),
+18: ExtResource("15_8jytu"),
+19: ExtResource("14_vcevd"),
+20: ExtResource("16_31qvf"),
+21: ExtResource("17_y7c44"),
+22: ExtResource("17_y7c44"),
+23: ExtResource("17_y7c44"),
+24: ExtResource("18_mck5m"),
+25: ExtResource("19_m3e36"),
+26: ExtResource("18_mck5m"),
+27: ExtResource("15_8jytu"),
+28: ExtResource("18_mck5m"),
+29: ExtResource("15_8jytu"),
+30: ExtResource("15_8jytu"),
+31: ExtResource("19_m3e36"),
+32: ExtResource("10_tjqlu"),
+33: ExtResource("10_tjqlu")
+}
+
+[sub_resource type="Resource" id="Resource_vibj6"]
+script = ExtResource("8_yt3et")
+name = "forearm_l"
+structure = SubResource("Resource_shfys")
+parent = 4
+pivot = Vector3(-0.235, 1.13, 0.040000018)
+swing_limit = 85.0
+
+[sub_resource type="Resource" id="Resource_a4ymf"]
+script = ExtResource("3_d1kjl")
+display_name = "Assistant Thigh R"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.773779800839503
+vox_file = "res://npc/vox/assistant__thigh_r.vox"
+vox_material = ExtResource("9_25dd1")
+vox_index_materials = {
+1: ExtResource("9_25dd1"),
+2: ExtResource("9_25dd1"),
+3: ExtResource("10_tjqlu"),
+4: ExtResource("10_tjqlu"),
+5: ExtResource("11_nqjxt"),
+6: ExtResource("11_nqjxt"),
+7: ExtResource("11_nqjxt"),
+8: ExtResource("10_tjqlu"),
+9: ExtResource("12_lq77o"),
+10: ExtResource("9_25dd1"),
+11: ExtResource("13_udt4k"),
+12: ExtResource("9_25dd1"),
+13: ExtResource("13_udt4k"),
+14: ExtResource("14_vcevd"),
+15: ExtResource("14_vcevd"),
+16: ExtResource("15_8jytu"),
+17: ExtResource("15_8jytu"),
+18: ExtResource("15_8jytu"),
+19: ExtResource("14_vcevd"),
+20: ExtResource("16_31qvf"),
+21: ExtResource("17_y7c44"),
+22: ExtResource("17_y7c44"),
+23: ExtResource("17_y7c44"),
+24: ExtResource("18_mck5m"),
+25: ExtResource("19_m3e36"),
+26: ExtResource("18_mck5m"),
+27: ExtResource("15_8jytu"),
+28: ExtResource("18_mck5m"),
+29: ExtResource("15_8jytu"),
+30: ExtResource("15_8jytu"),
+31: ExtResource("19_m3e36"),
+32: ExtResource("10_tjqlu"),
+33: ExtResource("10_tjqlu")
+}
+
+[sub_resource type="Resource" id="Resource_h4s7v"]
+script = ExtResource("8_yt3et")
+name = "thigh_r"
+structure = SubResource("Resource_a4ymf")
+parent = 0
+pivot = Vector3(0.089999996, 0.94, 0.040000018)
+swing_limit = 75.0
+
+[sub_resource type="Resource" id="Resource_0w5qr"]
+script = ExtResource("3_d1kjl")
+display_name = "Assistant Shin R"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.773779800839503
+vox_file = "res://npc/vox/assistant__shin_r.vox"
+vox_material = ExtResource("9_25dd1")
+vox_index_materials = {
+1: ExtResource("9_25dd1"),
+2: ExtResource("9_25dd1"),
+3: ExtResource("10_tjqlu"),
+4: ExtResource("10_tjqlu"),
+5: ExtResource("11_nqjxt"),
+6: ExtResource("11_nqjxt"),
+7: ExtResource("11_nqjxt"),
+8: ExtResource("10_tjqlu"),
+9: ExtResource("12_lq77o"),
+10: ExtResource("9_25dd1"),
+11: ExtResource("13_udt4k"),
+12: ExtResource("9_25dd1"),
+13: ExtResource("13_udt4k"),
+14: ExtResource("14_vcevd"),
+15: ExtResource("14_vcevd"),
+16: ExtResource("15_8jytu"),
+17: ExtResource("15_8jytu"),
+18: ExtResource("15_8jytu"),
+19: ExtResource("14_vcevd"),
+20: ExtResource("16_31qvf"),
+21: ExtResource("17_y7c44"),
+22: ExtResource("17_y7c44"),
+23: ExtResource("17_y7c44"),
+24: ExtResource("18_mck5m"),
+25: ExtResource("19_m3e36"),
+26: ExtResource("18_mck5m"),
+27: ExtResource("15_8jytu"),
+28: ExtResource("18_mck5m"),
+29: ExtResource("15_8jytu"),
+30: ExtResource("15_8jytu"),
+31: ExtResource("19_m3e36"),
+32: ExtResource("10_tjqlu"),
+33: ExtResource("10_tjqlu")
+}
+
+[sub_resource type="Resource" id="Resource_2d0wp"]
+script = ExtResource("8_yt3et")
+name = "shin_r"
+structure = SubResource("Resource_0w5qr")
+parent = 6
+pivot = Vector3(0.089999996, 0.51, 0.040000018)
+swing_limit = 85.0
+twist_limit = 10.0
+
+[sub_resource type="Resource" id="Resource_sfhx3"]
+script = ExtResource("3_d1kjl")
+display_name = "Assistant Thigh L"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.773779800839503
+vox_file = "res://npc/vox/assistant__thigh_l.vox"
+vox_material = ExtResource("9_25dd1")
+vox_index_materials = {
+1: ExtResource("9_25dd1"),
+2: ExtResource("9_25dd1"),
+3: ExtResource("10_tjqlu"),
+4: ExtResource("10_tjqlu"),
+5: ExtResource("11_nqjxt"),
+6: ExtResource("11_nqjxt"),
+7: ExtResource("11_nqjxt"),
+8: ExtResource("10_tjqlu"),
+9: ExtResource("12_lq77o"),
+10: ExtResource("9_25dd1"),
+11: ExtResource("13_udt4k"),
+12: ExtResource("9_25dd1"),
+13: ExtResource("13_udt4k"),
+14: ExtResource("14_vcevd"),
+15: ExtResource("14_vcevd"),
+16: ExtResource("15_8jytu"),
+17: ExtResource("15_8jytu"),
+18: ExtResource("15_8jytu"),
+19: ExtResource("14_vcevd"),
+20: ExtResource("16_31qvf"),
+21: ExtResource("17_y7c44"),
+22: ExtResource("17_y7c44"),
+23: ExtResource("17_y7c44"),
+24: ExtResource("18_mck5m"),
+25: ExtResource("19_m3e36"),
+26: ExtResource("18_mck5m"),
+27: ExtResource("15_8jytu"),
+28: ExtResource("18_mck5m"),
+29: ExtResource("15_8jytu"),
+30: ExtResource("15_8jytu"),
+31: ExtResource("19_m3e36"),
+32: ExtResource("10_tjqlu"),
+33: ExtResource("10_tjqlu")
+}
+
+[sub_resource type="Resource" id="Resource_nmow3"]
+script = ExtResource("8_yt3et")
+name = "thigh_l"
+structure = SubResource("Resource_sfhx3")
+parent = 0
+pivot = Vector3(-0.089999996, 0.94, 0.040000018)
+swing_limit = 75.0
+
+[sub_resource type="Resource" id="Resource_qjt61"]
+script = ExtResource("3_d1kjl")
+display_name = "Assistant Shin L"
+voxel_size = 0.02
+anchor_mode = 1
+density_scale = 0.773779800839503
+vox_file = "res://npc/vox/assistant__shin_l.vox"
+vox_material = ExtResource("9_25dd1")
+vox_index_materials = {
+1: ExtResource("9_25dd1"),
+2: ExtResource("9_25dd1"),
+3: ExtResource("10_tjqlu"),
+4: ExtResource("10_tjqlu"),
+5: ExtResource("11_nqjxt"),
+6: ExtResource("11_nqjxt"),
+7: ExtResource("11_nqjxt"),
+8: ExtResource("10_tjqlu"),
+9: ExtResource("12_lq77o"),
+10: ExtResource("9_25dd1"),
+11: ExtResource("13_udt4k"),
+12: ExtResource("9_25dd1"),
+13: ExtResource("13_udt4k"),
+14: ExtResource("14_vcevd"),
+15: ExtResource("14_vcevd"),
+16: ExtResource("15_8jytu"),
+17: ExtResource("15_8jytu"),
+18: ExtResource("15_8jytu"),
+19: ExtResource("14_vcevd"),
+20: ExtResource("16_31qvf"),
+21: ExtResource("17_y7c44"),
+22: ExtResource("17_y7c44"),
+23: ExtResource("17_y7c44"),
+24: ExtResource("18_mck5m"),
+25: ExtResource("19_m3e36"),
+26: ExtResource("18_mck5m"),
+27: ExtResource("15_8jytu"),
+28: ExtResource("18_mck5m"),
+29: ExtResource("15_8jytu"),
+30: ExtResource("15_8jytu"),
+31: ExtResource("19_m3e36"),
+32: ExtResource("10_tjqlu"),
+33: ExtResource("10_tjqlu")
+}
+
+[sub_resource type="Resource" id="Resource_l0sxu"]
+script = ExtResource("8_yt3et")
+name = "shin_l"
+structure = SubResource("Resource_qjt61")
+parent = 8
+pivot = Vector3(-0.089999996, 0.51, 0.040000018)
+swing_limit = 85.0
+twist_limit = 10.0
+
+[resource]
+script = ExtResource("20_n5bjw")
+display_name = "The Assistant"
+parts = Array[ExtResource("8_yt3et")]([SubResource("Resource_m7ucp"), SubResource("Resource_ot1ms"), SubResource("Resource_7vefh"), SubResource("Resource_xr5k4"), SubResource("Resource_gnuq3"), SubResource("Resource_vibj6"), SubResource("Resource_h4s7v"), SubResource("Resource_2d0wp"), SubResource("Resource_nmow3"), SubResource("Resource_l0sxu")])
+walk_speed = 2.0
+run_speed = 3.25
+wander_radius = 4.0
+held_prop = SubResource("Resource_n6ek6")
+held_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.235, 0.6600001, -0.035)
+barks = {
+"burn": ["Hot! Hot! Hot!", "Ow, that's hot!", "Is something burning? Oh, it's me.", "Not the suit!"],
+"careful": ["Careful with that!", "Mind where you point that.", "Health and safety!", "Is that strictly necessary?"],
+"carried": ["Put me down!", "This is highly irregular!", "Whoa, whoa, whoa!", "I can walk, you know!"],
+"cut": ["Ow! That's sharp!", "That's attached to me!", "My good jacket!", "That's going to need a plaster."],
+"death": ["Tell the boss I tried...", "Write that down...", "Bleurgh."],
+"follow": ["Right behind you.", "Lead the way!", "Coming!"],
+"hit": ["Ow!", "Ouch!", "Hey!", "That's not in the brief!", "Mind the suit!", "Ow, my everything."],
+"knocked": ["Whoa-oh-oh!", "Not again!", "Oof!"],
+"limb": ["I needed that!", "That's coming out of your score.", "I'll need a form for that.", "Well, that's a first.", "Could someone hold this?"],
+"look": ["Can I help?", "Hello!", "Is this part of the task?", "Don't mind me."],
+"pushed": ["Whoa!", "Steady on!", "I'm being blown away!", "Pfft! Was that necessary?"],
+"talk": ["The task is in the envelope.", "You have one hour. Your time starts now.", "Please don't touch the props.", "I'm just here to keep score.", "Is that a hammer?"],
+"thrown": ["Wheeeee- oof!", "Aaaaargh!", "Not the face!"],
+"up": ["I'm fine! Fine.", "Totally meant to do that.", "Right. Where was I?", "Carrying on."],
+"wait": ["I'll wait here.", "Righto.", "Take your time."]
+}

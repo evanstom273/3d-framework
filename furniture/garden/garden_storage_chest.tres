@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_wcy52"]
 [ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_eylji"]
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_aoswf"]
-[ext_resource type="Resource" uid="uid://dw4suus87xjs" path="res://furniture/materials/plastic.tres" id="5_umkp8"]
+[ext_resource type="Resource" uid="uid://b3ttum7f787qt" path="res://furniture/materials/plastic.tres" id="5_umkp8"]
 
 [sub_resource type="Resource" id="Resource_c6qaj"]
 script = ExtResource("3_eylji")

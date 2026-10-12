@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://cm0f4xitimpm4"]
+
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_iksh4"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/soft.tres" id="2_hi8hn"]
+
+[resource]
+script = ExtResource("1_iksh4")
+tool_profile = ExtResource("2_hi8hn")
+display_name = "Shirt"
+color = Color(0.95, 0.95, 0.93, 1)
+color_jitter = 0.0
+strength = 4.0
+density = 900.0
+bounce = 0.03
+blunt_multiplier = 0.6
+sharp_multiplier = 1.9
+pierce_multiplier = 1.4
+impact_sound = 6
+rubble_fraction = 0.05

@@ -443,3 +443,14 @@ static func grow_foam(world: ContraptionWorld, aim: Transform3D, action: ToolAct
 		if support != null and support != body and not surface_hit.is_empty():
 			world.create(anchor, AttachmentPoint.at(support, surface_hit["position"], surface_hit["normal"]), load("res://contraptions/config/glue.tres"))
 	return true
+
+
+## Pushes a body: a real impulse if it's loose; if it's frozen but carried by
+## something that can react (a VoxelBody: an NPC's limb), it's told instead.
+static func push(target: RigidBody3D, impulse: Vector3, point: Vector3) -> void:
+	if target == null:
+		return
+	if not target.freeze:
+		target.apply_impulse(impulse, point - target.global_position)
+	elif target is VoxelBody:
+		(target as VoxelBody).pushed.emit(impulse, point)

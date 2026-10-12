@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://djd8gj2q0c18o"]
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://c5f23j6s61ew2"]
 
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_fjxje"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/soft.tres" id="2_wrw5v"]
 
 [resource]
 script = ExtResource("1_fjxje")
+tool_profile = ExtResource("2_wrw5v")
 display_name = "Foliage"
 color = Color(0.25, 0.45, 0.2, 1)
 color_jitter = 0.0

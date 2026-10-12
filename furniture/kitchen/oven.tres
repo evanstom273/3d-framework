@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://d10cae010m6k0"]
 
-[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_n027m"]
-[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_60lis"]
-[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_y8vpa"]
-[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_i3n82"]
-[ext_resource type="Resource" uid="uid://6ri68lauf7ep" path="res://furniture/materials/electronics.tres" id="5_v2y8n"]
-[ext_resource type="Resource" uid="uid://cdtvomcuyhwix" path="res://furniture/materials/steel.tres" id="6_b6ytr"]
-[ext_resource type="Resource" uid="uid://cqju2cnc1vrtw" path="res://furniture/materials/glass.tres" id="7_3u4c4"]
-[ext_resource type="Resource" uid="uid://clxxadowmi0ea" path="res://furniture/materials/chrome.tres" id="8_ufi7u"]
-[ext_resource type="Resource" uid="uid://d1dlfsyyucymk" path="res://furniture/materials/screen.tres" id="9_jgwc4"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_n027m"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_60lis"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_y8vpa"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_i3n82"]
+[ext_resource type="Resource" path="res://furniture/materials/electronics.tres" id="5_v2y8n"]
+[ext_resource type="Resource" path="res://furniture/materials/steel.tres" id="6_b6ytr"]
+[ext_resource type="Resource" path="res://furniture/materials/glass.tres" id="7_3u4c4"]
+[ext_resource type="Resource" path="res://furniture/materials/chrome.tres" id="8_ufi7u"]
+[ext_resource type="Resource" path="res://furniture/materials/screen.tres" id="9_jgwc4"]
 
 [sub_resource type="Resource" id="Resource_kxe4v"]
 script = ExtResource("3_y8vpa")

@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://go384plr6n02"]
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://c3jem1tg01ia5"]
 
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_et8ml"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/soil.tres" id="2_mk72q"]
 
 [resource]
 script = ExtResource("1_et8ml")
+tool_profile = ExtResource("2_mk72q")
 display_name = "Soil"
 color = Color(0.3, 0.22, 0.15, 1)
 color_jitter = 0.0

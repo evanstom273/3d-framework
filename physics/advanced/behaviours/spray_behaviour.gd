@@ -106,7 +106,8 @@ func _push(step: float) -> void:
 	var cone := cos(deg_to_rad(action.cone_degrees))
 	for overlap in space.intersect_shape(_query, 24):
 		var target := overlap["collider"] as RigidBody3D
-		if target == null or target.freeze:
+		# Frozen bodies can still be shoved if something carries them (an NPC).
+		if target == null or (target.freeze and not target.has_signal(&"pushed")):
 			continue
 		var offset := target.global_position - origin
 		var distance := offset.length()
@@ -134,7 +135,7 @@ func _push(step: float) -> void:
 				if mode == 0:
 					push = -push
 		var falloff := clampf(1.0 - distance / action.range_metres, 0.15, 1.0)
-		target.apply_impulse(push * action.force * falloff * step, sight["position"] - target.global_position)
+		ToolMatter.push(target, push * action.force * falloff * step, sight["position"])
 
 
 func _treat_surface(hit: Dictionary, step: float) -> void:

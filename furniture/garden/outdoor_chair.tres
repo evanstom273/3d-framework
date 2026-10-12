@@ -1,18 +1,18 @@
 [gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://b55ylu5a01tyu"]
 
-[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_u36as"]
-[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_q6cs6"]
-[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_olxks"]
-[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_5m45a"]
-[ext_resource type="Resource" path="res://furniture/materials/wicker.tres" id="5_j1neb"]
-[ext_resource type="Resource" path="res://furniture/materials/aluminium.tres" id="6_kvpc4"]
-[ext_resource type="Resource" path="res://furniture/materials/fabric.tres" id="7_c3o30"]
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_u36as"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_q6cs6"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_olxks"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_5m45a"]
+[ext_resource type="Resource" uid="uid://c8jedf6101ees" path="res://furniture/materials/wicker.tres" id="5_j1neb"]
+[ext_resource type="Resource" uid="uid://rvg63dngb3ov" path="res://furniture/materials/aluminium.tres" id="6_kvpc4"]
+[ext_resource type="Resource" uid="uid://c65lbu0yec2bn" path="res://furniture/materials/fabric.tres" id="7_c3o30"]
 
 [resource]
 script = ExtResource("3_olxks")
 display_name = "Outdoor Chair"
 spawn_category = "Garden"
-voxel_size = 0.023000000417232512
+voxel_size = 0.02300000041723251
 anchor_mode = 1
 density_scale = 0.2921359372329277
 vox_file = "res://furniture/vox/outdoor_chair.vox"

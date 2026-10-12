@@ -1,19 +1,19 @@
 [gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://ce8bh886vm17v"]
 
-[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_m6qfb"]
-[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_3j6po"]
-[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_tjl7g"]
-[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_fid2n"]
-[ext_resource type="Resource" path="res://furniture/materials/walnut.tres" id="5_blnws"]
-[ext_resource type="Resource" path="res://furniture/materials/fabric.tres" id="6_w3i4c"]
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_m6qfb"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_3j6po"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_tjl7g"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_fid2n"]
+[ext_resource type="Resource" uid="uid://b4dbramkj4048" path="res://furniture/materials/walnut.tres" id="5_blnws"]
+[ext_resource type="Resource" uid="uid://c65lbu0yec2bn" path="res://furniture/materials/fabric.tres" id="6_w3i4c"]
 
 [resource]
 script = ExtResource("3_tjl7g")
 display_name = "Wingback Chair"
 spawn_category = "Living Room"
-voxel_size = 0.028749999403953553
+voxel_size = 0.02874999940395355
 anchor_mode = 1
-density_scale = 0.9750988628669869
+density_scale = 0.9750988628669868
 vox_file = "res://furniture/vox/wingback_chair.vox"
 vox_material = ExtResource("6_w3i4c")
 vox_index_materials = {

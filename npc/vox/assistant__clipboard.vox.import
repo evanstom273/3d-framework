@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://dqja2pjb4l22s"
+path="res://.godot/imported/assistant__clipboard.vox-af1e418a96bfa7b2fc6f60d5cd285cb3.tres"
+
+[deps]
+
+source_file="res://npc/vox/assistant__clipboard.vox"
+dest_files=["res://.godot/imported/assistant__clipboard.vox-af1e418a96bfa7b2fc6f60d5cd285cb3.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

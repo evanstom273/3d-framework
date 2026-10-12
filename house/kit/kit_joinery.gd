@@ -84,6 +84,7 @@ static func door_leaf(o: KitOpening, x0: float, x1: float, top: float, z0: float
 	_door_cells(o, nx, ny, boxes, glass_rects)
 	var root := _hinge_root(o.display_name if not o.display_name.is_empty() else ("Front door" if exterior else "Door"), o.lockable,
 		(-1.0 if o.hinge_left else 1.0) * (1.0 if o.opens_inward else -1.0) * 95.0)
+	root.set_meta(&"door", true)
 	var pivot := Vector3(leaf_x if o.hinge_left else leaf_x + width, 0, leaf_z.y if o.opens_inward else leaf_z.x)
 	var leaf := _voxel_leaf(root, "Leaf", boxes, Vector3(leaf_x, 0.006, leaf_z.x), pivot)
 	var mount := AABB(Vector3(0 if o.hinge_left else width - 0.1, 0, 0), Vector3(0.1, height, CELL * LEAF_CELLS_DEEP))

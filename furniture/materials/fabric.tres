@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://2lwgqxnq8yv5"]
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://c65lbu0yec2bn"]
 
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_u5iuv"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/soft.tres" id="2_5mfhn"]
 
 [resource]
 script = ExtResource("1_u5iuv")
+tool_profile = ExtResource("2_5mfhn")
 display_name = "Upholstery"
 color = Color(0.45, 0.5, 0.55, 1)
 color_jitter = 0.0

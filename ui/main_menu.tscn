@@ -10,5 +10,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_menu")
-level_names = ["Playground", "House", "House Builder", "Lab", "Window & Door Gallery", "Furniture Showroom"]
-level_paths = ["res://playground/physics_playground.tscn", "res://house/house.tscn", "res://house/builder/house_builder.tscn", "res://contraptions/contraption_lab.tscn", "res://house/builder/opening_gallery.tscn", "res://house/builder/furniture_showroom.tscn"]
+level_names = ["Playground", "House Builder", "Lab", "Window & Door Gallery", "Furniture Showroom", "Taskmaster House"]
+level_paths = ["res://playground/physics_playground.tscn", "res://house/builder/house_builder.tscn", "res://contraptions/contraption_lab.tscn", "res://house/builder/opening_gallery.tscn", "res://house/builder/furniture_showroom.tscn", "res://house/builder/taskmaster_house.tscn"]

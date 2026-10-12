@@ -79,6 +79,11 @@ static func _apply(body: RigidBody3D, other: Object, own_point: Vector3, other_p
 			if hit_tint.a > 0.0:
 				tint = hit_tint
 				sound = _sound_of(other)
+	# Tell both sides they were hit (NPCs flinch or fall over from this).
+	if is_instance_valid(other) and other is VoxelBody and (other as VoxelBody).freeze:
+		(other as VoxelBody).impacted.emit(impulse, other_point, direction)
+	if body is VoxelBody:
+		(body as VoxelBody).impacted.emit(impulse, own_point, -direction)
 	if impulse < feel.min_exaggeration_impulse:
 		return
 	# Exaggerated consequences, each applied once per impact (the caller's cooldown

@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_rudfi"]
 [ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_aljki"]
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_vrdwi"]
-[ext_resource type="Resource" uid="uid://do6r55lv41aud" path="res://furniture/materials/oak.tres" id="5_rqdjx"]
-[ext_resource type="Resource" uid="uid://de8xv7dfh7g41" path="res://furniture/materials/brass.tres" id="6_6qcum"]
+[ext_resource type="Resource" uid="uid://d0ow670ht3lld" path="res://furniture/materials/oak.tres" id="5_rqdjx"]
+[ext_resource type="Resource" uid="uid://bmunlolkxq0m4" path="res://furniture/materials/brass.tres" id="6_6qcum"]
 
 [sub_resource type="Resource" id="Resource_gywuo"]
 script = ExtResource("3_aljki")

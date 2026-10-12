@@ -10,9 +10,15 @@ extends KitPiece
 ## the corner and wraps its facade round it) and the end of the other to
 ## BUTT_EXTERIOR (it stops at the first wall's inside face). Interior walls meeting
 ## an exterior wall use BUTT_EXTERIOR; meeting another interior wall, BUTT_INTERIOR.
+##
+## Inside (reflex) corners, as in an L- or T-shaped plan: set the end of one wall
+## to INSIDE_CORNER and the start of the other to BUTT_EXTERIOR. The first stops
+## its brickwork where the two outside faces meet, then closes the corner with a
+## block plastered on the room side, so no brick shows indoors.
 
 enum WallType { EXTERIOR, INTERIOR, GARDEN }
-enum Join { NONE, CORNER, BUTT_EXTERIOR, BUTT_INTERIOR }
+## Values are only appended, so saved scenes keep their joins.
+enum Join { NONE, CORNER, BUTT_EXTERIOR, BUTT_INTERIOR, INSIDE_CORNER }
 
 const THICKNESS := {WallType.EXTERIOR: 0.3, WallType.INTERIOR: 0.12, WallType.GARDEN: 0.225}
 ## Brick outer leaf of a cavity wall.
@@ -149,7 +155,7 @@ func _join_offset(join: Join, direction: float) -> float:
 	match join:
 		Join.CORNER:
 			return direction * thickness() * 0.5
-		Join.BUTT_EXTERIOR:
+		Join.BUTT_EXTERIOR, Join.INSIDE_CORNER:
 			return -direction * THICKNESS[WallType.EXTERIOR] * 0.5
 		Join.BUTT_INTERIOR:
 			return -direction * THICKNESS[WallType.INTERIOR] * 0.5
@@ -212,7 +218,17 @@ func _build(b: KitBuilder) -> void:
 			if _is_shaped(openings[i]):
 				_shape_infill(b, openings[i], _holes[i], half)
 			_opening_details(b, openings[i], _holes[i], half, i)
-	_interior_finishes(b, half, x0, x1)
+	# Inside corners: a plastered block from where the outside faces meet to the
+	# other wall's inside face; the room-side finishes run on round it.
+	var finish_x0 := x0
+	var finish_x1 := x1
+	if start_join == Join.INSIDE_CORNER:
+		finish_x0 = x0 - half * 2.0
+		b.box(Vector3(finish_x0, y0, -half), Vector3(x0, height, half), paint_in)
+	if end_join == Join.INSIDE_CORNER:
+		finish_x1 = x1 + half * 2.0
+		b.box(Vector3(x1, y0, -half), Vector3(finish_x1, height, half), paint_in)
+	_interior_finishes(b, half, finish_x0, finish_x1)
 	if quoins and wall_type != WallType.INTERIOR:
 		if start_join == Join.CORNER:
 			_quoins(b, half, x0, -1.0)
@@ -295,7 +311,9 @@ func _coping(b: KitBuilder, half: float, x0: float, x1: float) -> void:
 	var w := half + 0.035
 	# Saddleback coping with drip grooves either side.
 	var profile := PackedVector2Array([Vector2(-w, 0.0), Vector2(-w, 0.05), Vector2(0.0, 0.09), Vector2(w, 0.05), Vector2(w, 0.0), Vector2(w - 0.02, 0.0), Vector2(w - 0.02, 0.008), Vector2(w - 0.03, 0.008), Vector2(w - 0.03, 0.0), Vector2(-w + 0.03, 0.0), Vector2(-w + 0.03, 0.008), Vector2(-w + 0.02, 0.008), Vector2(-w + 0.02, 0.0)])
-	b.extrude(profile, Vector3(x1 + 0.0, height, 0), Vector3(x0, height, 0), Vector3.UP, stone)
+	# Stops either side of openings that reach the top (gates), so they can be walked through.
+	for span in _free_spans(x0, x1, height - 0.05, height - 0.01):
+		b.extrude(profile, Vector3(span.y, height, 0), Vector3(span.x, height, 0), Vector3.UP, stone)
 
 
 func _opening_details(b: KitBuilder, o: KitOpening, hole: Rect2, half: float, index := 0) -> void:

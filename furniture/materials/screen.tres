@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://d1dlfsyyucymk"]
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://de6nyvtgof5ve"]
 
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_0gtlm"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/glass.tres" id="2_fpa0w"]
 
 [resource]
 script = ExtResource("1_0gtlm")
+tool_profile = ExtResource("2_fpa0w")
 display_name = "Screen"
 color = Color(0.06, 0.07, 0.09, 1)
 color_jitter = 0.0

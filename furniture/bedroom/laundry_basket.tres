@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_yrn4h"]
 [ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_aghuw"]
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_ahqbv"]
-[ext_resource type="Resource" uid="uid://cqjn2l6wntvg5" path="res://furniture/materials/wicker.tres" id="5_k0qoc"]
+[ext_resource type="Resource" uid="uid://c8jedf6101ees" path="res://furniture/materials/wicker.tres" id="5_k0qoc"]
 
 [sub_resource type="Resource" id="Resource_5tkhk"]
 script = ExtResource("3_aghuw")

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://rpwn1207fnx0"]
+
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_x7tpm"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/wood.tres" id="2_3fcug"]
+
+[resource]
+script = ExtResource("1_x7tpm")
+tool_profile = ExtResource("2_3fcug")
+display_name = "Bone"
+color = Color(0.93, 0.9, 0.82, 1)
+color_jitter = 0.0
+strength = 14.0
+friction = 0.6
+bounce = 0.15
+blunt_multiplier = 0.8
+sharp_multiplier = 0.6
+pierce_multiplier = 0.7
+impact_sound = 1

@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://mhxoa17xyapu"]
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://bwuavbl8j52el"]
 
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_d2nhn"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/soft.tres" id="2_jqbbp"]
 
 [resource]
 script = ExtResource("1_d2nhn")
+tool_profile = ExtResource("2_jqbbp")
 display_name = "Cardboard"
 color = Color(0.66, 0.5, 0.32, 1)
 color_jitter = 0.0

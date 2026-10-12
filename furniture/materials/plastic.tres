@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://dw4suus87xjs"]
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://b3ttum7f787qt"]
 
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_bau0a"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/plastic.tres" id="2_tuyek"]
 
 [resource]
 script = ExtResource("1_bau0a")
+tool_profile = ExtResource("2_tuyek")
 display_name = "Plastic"
 color = Color(0.9, 0.9, 0.88, 1)
 color_jitter = 0.0

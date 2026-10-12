@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://c6yyohh1u7swp"]
 
-[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_h46td"]
-[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_1na1p"]
-[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_uqrm5"]
-[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_vbcni"]
-[ext_resource type="Resource" uid="uid://bgrnpiwfmjxib" path="res://furniture/materials/painted_wood.tres" id="5_l5ed3"]
-[ext_resource type="Resource" uid="uid://cqjn2l6wntvg5" path="res://furniture/materials/wicker.tres" id="6_uvjmm"]
-[ext_resource type="Resource" uid="uid://2lwgqxnq8yv5" path="res://furniture/materials/fabric.tres" id="7_dwibe"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_h46td"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_1na1p"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_uqrm5"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_vbcni"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_wood.tres" id="5_l5ed3"]
+[ext_resource type="Resource" path="res://furniture/materials/wicker.tres" id="6_uvjmm"]
+[ext_resource type="Resource" path="res://furniture/materials/fabric.tres" id="7_dwibe"]
 
 [sub_resource type="Resource" id="Resource_vt71y"]
 script = ExtResource("3_uqrm5")

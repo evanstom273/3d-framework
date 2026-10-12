@@ -7,10 +7,10 @@ extends CanvasLayer
 ## automatically.
 
 ## Every definition under these folders is listed (furniture gets a tab per room).
-const SCAN_ROOTS := ["res://props", "res://furniture"]
+const SCAN_ROOTS := ["res://props", "res://furniture", "res://npc/definitions"]
 const SKIP_DIRS := ["vox", "details", "voxel_materials", "materials"]
 const TAB_ORDER := ["Tools", "Props", "Balls", "Destructible", "Containers", "Structures",
-	"Living Room", "Kitchen", "Bedroom", "Bathroom", "Office", "Laboratory", "Workshop", "Garden", "Utility"]
+	"Living Room", "Kitchen", "Bedroom", "Bathroom", "Office", "Laboratory", "Workshop", "Garden", "Utility", "NPCs"]
 ## Tabs the random spawn picks from (big anchored structures are left out).
 const RANDOM_TABS := ["Tools", "Props", "Balls", "Destructible", "Containers"]
 const SPAWN_REACH := 6.0
@@ -105,6 +105,8 @@ func _scan(dir_path: String) -> void:
 
 
 func _tab_for(resource: Resource) -> String:
+	if resource is NPCDefinition:
+		return "NPCs"
 	if resource is PhysicsObjectDefinition:
 		var definition := resource as PhysicsObjectDefinition
 		if not definition.spawn_category.is_empty():
@@ -144,6 +146,10 @@ func _spawn(entry: Dictionary) -> void:
 		node = body
 		# Structures stand on their bottom layer, so they sit right at the floor point.
 		_add_to_world(node, Transform3D(place["basis"], place["position"] + Vector3.UP * 0.005))
+	elif resource is NPCDefinition:
+		node = NPCCharacter.create(resource)
+		# Facing the player.
+		_add_to_world(node, Transform3D(place["basis"], place["position"] + Vector3.UP * 0.02))
 	_set_status("Spawned %s" % entry["name"])
 
 

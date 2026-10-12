@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://bfvvsd3dyvk67"]
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://h74cefcsw42u"]
 
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_eo3h8"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/wood.tres" id="2_ib6uu"]
 
 [resource]
 script = ExtResource("1_eo3h8")
+tool_profile = ExtResource("2_ib6uu")
 display_name = "Chipboard"
 color = Color(0.85, 0.83, 0.78, 1)
 color_jitter = 0.0

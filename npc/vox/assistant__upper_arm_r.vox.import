@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cyfvx8scuo2v"
+path="res://.godot/imported/assistant__upper_arm_r.vox-d42293c7d53fc517ffb4416a29e0cc5f.tres"
+
+[deps]
+
+source_file="res://npc/vox/assistant__upper_arm_r.vox"
+dest_files=["res://.godot/imported/assistant__upper_arm_r.vox-d42293c7d53fc517ffb4416a29e0cc5f.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

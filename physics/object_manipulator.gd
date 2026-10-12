@@ -146,6 +146,16 @@ func release_charged_throw() -> void:
 ## Returns the RigidBody3D that should be grabbed for a ray collider, or null.
 func resolve_grabbable(collider: Object) -> RigidBody3D:
 	var node := collider as Node
+	# Something can stand in for what was aimed at (grabbing any part of an NPC
+	# picks up the whole NPC): the first node up the tree offering a proxy decides.
+	var ancestor := node
+	while ancestor != null:
+		if ancestor.has_method("get_grab_proxy"):
+			var proxy: RigidBody3D = ancestor.call("get_grab_proxy", collider)
+			if proxy != null:
+				return proxy
+			break
+		ancestor = ancestor.get_parent()
 	var body: RigidBody3D = null
 	while node != null:
 		if body == null and node is RigidBody3D:

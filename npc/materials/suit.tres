@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://bnxau5n1guxtk"]
+
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_rihot"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/soft.tres" id="2_gk12t"]
+
+[resource]
+script = ExtResource("1_rihot")
+tool_profile = ExtResource("2_gk12t")
+display_name = "Suit"
+color = Color(0.14, 0.16, 0.22, 1)
+color_jitter = 0.0
+strength = 5.0
+density = 900.0
+bounce = 0.03
+blunt_multiplier = 0.6
+sharp_multiplier = 1.8
+pierce_multiplier = 1.4
+impact_sound = 6
+rubble_fraction = 0.05

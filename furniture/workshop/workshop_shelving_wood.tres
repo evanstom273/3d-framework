@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://chc55q10ef1bq"]
 
-[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_3p0yd"]
-[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_ltd7o"]
-[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_x42cy"]
-[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_vol0d"]
-[ext_resource type="Resource" path="res://furniture/materials/pine.tres" id="5_3igxu"]
-[ext_resource type="Resource" path="res://furniture/materials/terracotta.tres" id="6_8afmg"]
-[ext_resource type="Resource" path="res://furniture/materials/steel.tres" id="7_ci8ni"]
-[ext_resource type="Resource" path="res://furniture/materials/glass.tres" id="8_3ucu0"]
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_3p0yd"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_ltd7o"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_x42cy"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_vol0d"]
+[ext_resource type="Resource" uid="uid://b0fn6qvk26vma" path="res://furniture/materials/pine.tres" id="5_3igxu"]
+[ext_resource type="Resource" uid="uid://c1m4y0yaaxs87" path="res://furniture/materials/terracotta.tres" id="6_8afmg"]
+[ext_resource type="Resource" uid="uid://b3v2c6w8j02yv" path="res://furniture/materials/steel.tres" id="7_ci8ni"]
+[ext_resource type="Resource" uid="uid://bmklgqcq0h7is" path="res://furniture/materials/glass.tres" id="8_3ucu0"]
 
 [resource]
 script = ExtResource("3_x42cy")

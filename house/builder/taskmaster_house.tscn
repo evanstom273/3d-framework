@@ -1,0 +1,3287 @@
+[gd_scene format=3 uid="uid://ctdusepfd8qen"]
+
+[ext_resource type="Script" uid="uid://bqw6mch523kfp" path="res://house/house.gd" id="1_oaun7"]
+[ext_resource type="Shader" uid="uid://d26flwksvey7a" path="res://house/kit/shaders/stone.gdshader" id="2_3mr6o"]
+[ext_resource type="PackedScene" uid="uid://c8bo3i576tqx" path="res://player.tscn" id="3_7oda2"]
+[ext_resource type="Script" uid="uid://hh1my0bmi66c" path="res://house/kit/kit_wall.gd" id="5_fapn2"]
+[ext_resource type="Script" uid="uid://d13k8ocasub88" path="res://house/kit/kit_opening.gd" id="6_g4pp6"]
+[ext_resource type="Script" uid="uid://cthodpns1jvmh" path="res://house/kit/kit_floor.gd" id="7_qh1a5"]
+[ext_resource type="Script" uid="uid://bw8dtn7eno0t3" path="res://house/kit/kit_stairs.gd" id="8_ckaig"]
+[ext_resource type="Script" uid="uid://brl3qfk8rpled" path="res://house/kit/kit_chimney.gd" id="9_4e0yo"]
+[ext_resource type="Script" uid="uid://0cr4sa27vs6l" path="res://house/kit/kit_porch.gd" id="10_pu1fh"]
+[ext_resource type="Script" uid="uid://c6b5gonnjgybr" path="res://house/kit/kit_steps.gd" id="11_xidyu"]
+[ext_resource type="Script" uid="uid://bos5x6dqhk2d0" path="res://house/kit/kit_light.gd" id="12_svmoc"]
+[ext_resource type="Script" uid="uid://3wv73ptba0qx" path="res://house/kit/kit_switch.gd" id="13_thcqk"]
+[ext_resource type="Script" uid="uid://ubr3mvu5b4vy" path="res://house/kit/kit_balustrade.gd" id="14_xfsm6"]
+[ext_resource type="Script" uid="uid://dnkcp0tf6qa0j" path="res://house/kit/kit_roof.gd" id="15_bf33p"]
+[ext_resource type="Script" uid="uid://cib7i2rtoqhhp" path="res://house/kit/kit_fence.gd" id="16_aj6jo"]
+[ext_resource type="Script" uid="uid://bpdra5waxcts0" path="res://house/kit/kit_slab.gd" id="17_c43bt"]
+[ext_resource type="Script" uid="uid://ccu2ybbio4p4g" path="res://physics/voxels/voxel_body.gd" id="18_3dv8t"]
+[ext_resource type="Resource" uid="uid://oaipxubw71sl" path="res://furniture/living_room/sofa_three_seater.tres" id="19_o0nj2"]
+[ext_resource type="Resource" uid="uid://cpgaf1rh02wo7" path="res://furniture/living_room/coffee_table.tres" id="20_hctn7"]
+[ext_resource type="Resource" uid="uid://ce8bh886vm17v" path="res://furniture/living_room/wingback_chair.tres" id="21_utgf3"]
+[ext_resource type="Resource" uid="uid://c8ycmgikkkp1u" path="res://furniture/living_room/footstool.tres" id="22_tsuv0"]
+[ext_resource type="Resource" uid="uid://boif0spbught1" path="res://furniture/living_room/armchair.tres" id="23_pcn1f"]
+[ext_resource type="Resource" uid="uid://dk3tbtepoylsk" path="res://furniture/living_room/tv_cabinet.tres" id="24_isrll"]
+[ext_resource type="Resource" uid="uid://ctubf368wk0pl" path="res://furniture/living_room/bookcase_tall.tres" id="25_ubv18"]
+[ext_resource type="Resource" uid="uid://cqquoyegyvcny" path="res://furniture/living_room/side_table.tres" id="26_f4bw6"]
+[ext_resource type="Resource" uid="uid://cno3tg44hhgng" path="res://furniture/living_room/floor_lamp.tres" id="27_elnxm"]
+[ext_resource type="Resource" uid="uid://2lmvs7aik6ef" path="res://furniture/living_room/magazine_rack.tres" id="28_1mgu0"]
+[ext_resource type="Resource" uid="uid://vp2law02l47" path="res://furniture/living_room/television.tres" id="29_kmmjl"]
+[ext_resource type="Resource" uid="uid://cn08r2smlen0b" path="res://furniture/living_room/table_lamp.tres" id="30_d2byv"]
+[ext_resource type="Resource" uid="uid://ciaows242ljtt" path="res://furniture/living_room/mantel_clock.tres" id="31_q1xv0"]
+[ext_resource type="Resource" uid="uid://cv2ku4tto7ekm" path="res://furniture/living_room/console_table.tres" id="32_rkde7"]
+[ext_resource type="Resource" uid="uid://mhkcubglqgle" path="res://furniture/living_room/coat_stand.tres" id="33_sb6w3"]
+[ext_resource type="Resource" uid="uid://cnfvr7f6d4sh3" path="res://furniture/office/executive_desk.tres" id="34_joijd"]
+[ext_resource type="Resource" uid="uid://drsjsry1peadr" path="res://furniture/office/office_chair.tres" id="35_faybv"]
+[ext_resource type="Resource" uid="uid://duc604o3tk3q" path="res://furniture/office/visitor_chair.tres" id="36_a17pt"]
+[ext_resource type="Resource" uid="uid://bp17kw68cyu55" path="res://furniture/office/office_bookshelf.tres" id="37_8rvio"]
+[ext_resource type="Resource" uid="uid://cocwgpffxft12" path="res://furniture/office/storage_cupboard.tres" id="38_6ea3v"]
+[ext_resource type="Resource" uid="uid://behvjflkxtoi8" path="res://furniture/office/filing_cabinet_tall.tres" id="39_45ih4"]
+[ext_resource type="Resource" uid="uid://kcibpje5w11e" path="res://furniture/office/whiteboard.tres" id="40_2qp74"]
+[ext_resource type="Resource" uid="uid://ckvsp6xexoxkx" path="res://furniture/office/computer_monitor.tres" id="41_ia4o7"]
+[ext_resource type="Resource" uid="uid://dsdcsspeecfyo" path="res://furniture/office/keyboard.tres" id="42_u24am"]
+[ext_resource type="Resource" uid="uid://ttolotvd82y3" path="res://furniture/office/desk_lamp.tres" id="43_vxijh"]
+[ext_resource type="Resource" uid="uid://dp0xsvggy0fir" path="res://furniture/office/printer.tres" id="44_6v2os"]
+[ext_resource type="Resource" uid="uid://d0lfkdpfevv0t" path="res://furniture/laboratory/lab_sink.tres" id="45_5xnj1"]
+[ext_resource type="Resource" uid="uid://dvunyoy5xq0sn" path="res://furniture/laboratory/fume_cupboard.tres" id="46_jesny"]
+[ext_resource type="Resource" uid="uid://bvhv3tngupuo7" path="res://furniture/laboratory/chemical_cabinet.tres" id="47_4njwg"]
+[ext_resource type="Resource" uid="uid://ibwxu18je0xi" path="res://furniture/laboratory/equipment_trolley.tres" id="48_ekyy3"]
+[ext_resource type="Resource" uid="uid://dbqe3t2cjqmbw" path="res://furniture/laboratory/lab_terminal.tres" id="49_o1qng"]
+[ext_resource type="Resource" uid="uid://b1i3y1ysed1yn" path="res://furniture/laboratory/lab_workbench.tres" id="50_6vhw7"]
+[ext_resource type="Resource" uid="uid://br0x4k1icad50" path="res://furniture/laboratory/lab_stool.tres" id="51_xgc72"]
+[ext_resource type="Resource" uid="uid://ceqgknprmtjrh" path="res://furniture/laboratory/microscope.tres" id="52_vrb2v"]
+[ext_resource type="Resource" uid="uid://bw58kwlpqs6wj" path="res://furniture/laboratory/test_tube_stand.tres" id="53_4v635"]
+[ext_resource type="Resource" uid="uid://c6tgmeac5iueo" path="res://furniture/laboratory/glassware_rack.tres" id="54_2iqdr"]
+[ext_resource type="Resource" uid="uid://cc3fbx8vkarq2" path="res://furniture/laboratory/centrifuge.tres" id="55_8thxh"]
+[ext_resource type="Resource" uid="uid://banjoei1hubsj" path="res://furniture/laboratory/oscilloscope.tres" id="56_x0g5l"]
+[ext_resource type="Resource" uid="uid://b260jvedvkqt2" path="res://furniture/kitchen/fridge.tres" id="57_qinte"]
+[ext_resource type="Resource" uid="uid://c03hsgmgtwqhd" path="res://furniture/kitchen/base_cabinet.tres" id="58_npmk1"]
+[ext_resource type="Resource" uid="uid://b0k384yjirp70" path="res://furniture/kitchen/sink_unit.tres" id="59_kswv0"]
+[ext_resource type="Resource" uid="uid://d00y34pau0btu" path="res://furniture/kitchen/dishwasher.tres" id="60_jpi3x"]
+[ext_resource type="Resource" uid="uid://o8hbrsowmsb1" path="res://furniture/kitchen/cooker.tres" id="61_m7idq"]
+[ext_resource type="Resource" uid="uid://ybg2t2k78fdj" path="res://furniture/kitchen/drawer_cabinet.tres" id="62_pfmu4"]
+[ext_resource type="Resource" uid="uid://dgya534j1yw2d" path="res://furniture/kitchen/pantry_cabinet.tres" id="63_06b6x"]
+[ext_resource type="Resource" uid="uid://cylaxksw3yynq" path="res://furniture/utility/bin.tres" id="64_vv1g3"]
+[ext_resource type="Resource" uid="uid://cnglmgxei0d7n" path="res://furniture/kitchen/dining_table.tres" id="65_uswg6"]
+[ext_resource type="Resource" uid="uid://bil7dmjdi8tx3" path="res://furniture/kitchen/dining_chair.tres" id="66_gncua"]
+[ext_resource type="Resource" uid="uid://dm442xbvvvxxi" path="res://furniture/kitchen/kettle.tres" id="67_ogdyk"]
+[ext_resource type="Resource" uid="uid://bunilmqb852v" path="res://furniture/kitchen/toaster.tres" id="68_2pl7u"]
+[ext_resource type="Resource" uid="uid://cbipo143y5d8f" path="res://furniture/kitchen/dish_rack.tres" id="69_1vj5k"]
+[ext_resource type="Resource" uid="uid://bx5dd1uefntai" path="res://furniture/kitchen/washing_machine.tres" id="70_ynp7r"]
+[ext_resource type="Resource" uid="uid://c44ebkn3tumc0" path="res://furniture/kitchen/tumble_dryer.tres" id="71_atwpl"]
+[ext_resource type="Resource" uid="uid://cv170rpdfjh1d" path="res://furniture/kitchen/freezer.tres" id="72_ydyjh"]
+[ext_resource type="Resource" uid="uid://b8xjlukxqxp2c" path="res://furniture/utility/utility_shelf.tres" id="73_pxkqx"]
+[ext_resource type="Resource" uid="uid://c0miwimukr3dt" path="res://furniture/utility/coat_rack_wall.tres" id="74_sdyku"]
+[ext_resource type="Resource" uid="uid://ca16p72ww4mga" path="res://furniture/kitchen/kitchen_trolley.tres" id="75_gu5td"]
+[ext_resource type="Resource" uid="uid://bn726nd3ng252" path="res://furniture/bedroom/laundry_basket.tres" id="76_h8731"]
+[ext_resource type="Resource" uid="uid://rmpnry5n2g13" path="res://furniture/utility/plastic_storage_box.tres" id="77_t5p0q"]
+[ext_resource type="Resource" uid="uid://basnch8puo8tm" path="res://furniture/bedroom/bed_king.tres" id="78_l5meo"]
+[ext_resource type="Resource" uid="uid://b3hs582neorda" path="res://furniture/bedroom/bedside_cabinet.tres" id="79_cwjjs"]
+[ext_resource type="Resource" uid="uid://cc1d7ii61q5ix" path="res://furniture/bedroom/blanket_chest.tres" id="80_30upf"]
+[ext_resource type="Resource" uid="uid://bdty0qgiwetlh" path="res://furniture/bedroom/wardrobe_double.tres" id="81_3h7on"]
+[ext_resource type="Resource" uid="uid://dy4vcpdagnm3k" path="res://furniture/bedroom/chest_of_drawers.tres" id="82_ufsd0"]
+[ext_resource type="Resource" uid="uid://w540u8bbmrdj" path="res://furniture/bedroom/dressing_table.tres" id="83_cg51l"]
+[ext_resource type="Resource" uid="uid://dbhrm1q5aocif" path="res://furniture/bedroom/dressing_stool.tres" id="84_x0au6"]
+[ext_resource type="Resource" uid="uid://3nr0vwrldxx0" path="res://furniture/bedroom/mirror_full_length.tres" id="85_imm58"]
+[ext_resource type="Resource" uid="uid://ckaxyhmvphuc5" path="res://furniture/bedroom/bed_single.tres" id="86_2andd"]
+[ext_resource type="Resource" uid="uid://cr8x2p4lhxwbq" path="res://furniture/bedroom/bedside_table.tres" id="87_435mq"]
+[ext_resource type="Resource" uid="uid://bvbagbfhpf1lx" path="res://furniture/bedroom/bedroom_desk.tres" id="88_jsq4n"]
+[ext_resource type="Resource" uid="uid://cb0l1bfxqb5wt" path="res://furniture/bedroom/bedroom_desk_chair.tres" id="89_pf8ud"]
+[ext_resource type="Resource" uid="uid://dp525vqmv7jsv" path="res://furniture/bedroom/wardrobe_single.tres" id="90_6mh25"]
+[ext_resource type="Resource" uid="uid://duad71ol2k6lk" path="res://furniture/bedroom/bedroom_bookshelf.tres" id="91_4rarc"]
+[ext_resource type="Resource" uid="uid://s30dhhhrv1oo" path="res://furniture/bathroom/bathtub.tres" id="92_awubf"]
+[ext_resource type="Resource" uid="uid://c8ph2uq6bnera" path="res://furniture/bathroom/toilet.tres" id="93_8jujp"]
+[ext_resource type="Resource" uid="uid://dcfkxxnd5djqm" path="res://furniture/bathroom/pedestal_sink.tres" id="94_hmn0l"]
+[ext_resource type="Resource" uid="uid://c2ajm210obsi" path="res://furniture/bathroom/shower_enclosure.tres" id="95_kyu3c"]
+[ext_resource type="Resource" uid="uid://d0cvx23kaasaw" path="res://furniture/bathroom/towel_rail_heated.tres" id="96_fl4vm"]
+[ext_resource type="Resource" uid="uid://c0o6dboqkblmu" path="res://furniture/bathroom/bathroom_shelf.tres" id="97_0fih7"]
+[ext_resource type="Resource" uid="uid://c6qqjjnbt6jwp" path="res://furniture/bathroom/laundry_hamper.tres" id="98_6vpd0"]
+[ext_resource type="Resource" uid="uid://d2r1p25h40k1n" path="res://furniture/bathroom/bathroom_stool.tres" id="99_8xbyk"]
+[ext_resource type="Resource" uid="uid://cvyx4m1hauwg5" path="res://furniture/bathroom/toilet_roll_holder.tres" id="100_m11kf"]
+[ext_resource type="Resource" uid="uid://babmotqn5jlf3" path="res://furniture/living_room/bookcase_short.tres" id="101_w348a"]
+[ext_resource type="Resource" uid="uid://skekp473y1y7" path="res://furniture/workshop/workbench_wood.tres" id="102_gjuv4"]
+[ext_resource type="Resource" uid="uid://bdsiwdge7i3f2" path="res://furniture/workshop/shelving_metal.tres" id="103_xi8v0"]
+[ext_resource type="Resource" uid="uid://dyfdhsapyerrj" path="res://furniture/workshop/tool_chest.tres" id="104_j03qc"]
+[ext_resource type="Resource" uid="uid://brwn0a52ywpjb" path="res://furniture/workshop/workbench_metal.tres" id="105_1qbax"]
+[ext_resource type="Resource" uid="uid://c3vqirkhu0d3m" path="res://furniture/workshop/tool_cabinet.tres" id="106_bup34"]
+[ext_resource type="Resource" uid="uid://ssuv047qf4yx" path="res://furniture/workshop/storage_rack.tres" id="107_2hu17"]
+[ext_resource type="Resource" uid="uid://d3itsipqufe3b" path="res://furniture/utility/metal_locker.tres" id="108_2swoe"]
+[ext_resource type="Resource" uid="uid://bhlo7p3qjy4tb" path="res://furniture/workshop/ladder.tres" id="109_4r7uj"]
+[ext_resource type="Resource" uid="uid://bybjb6smscchu" path="res://furniture/workshop/sawhorse.tres" id="110_vpimb"]
+[ext_resource type="Resource" uid="uid://cf03wf0375a37" path="res://furniture/workshop/workshop_stool.tres" id="111_rybnb"]
+[ext_resource type="Resource" uid="uid://dc4r1d8yi1odf" path="res://furniture/workshop/pegboard.tres" id="112_8dgnu"]
+[ext_resource type="Resource" uid="uid://dmthrfvw2lt0i" path="res://furniture/workshop/vice.tres" id="113_gp2jm"]
+[ext_resource type="Resource" uid="uid://fsidgfgiyrtq" path="res://furniture/workshop/toolbox.tres" id="114_imvko"]
+[ext_resource type="Resource" uid="uid://chc55q10ef1bq" path="res://furniture/workshop/workshop_shelving_wood.tres" id="115_faevg"]
+[ext_resource type="Resource" uid="uid://b3uf1cwhxqqps" path="res://furniture/workshop/garden_tool_rack.tres" id="116_qpv1r"]
+[ext_resource type="Resource" uid="uid://dn8cesdjilbil" path="res://furniture/utility/wooden_crate_large.tres" id="117_dikes"]
+[ext_resource type="Resource" uid="uid://cyqp51b518ary" path="res://furniture/workshop/pallet.tres" id="118_ntnvu"]
+[ext_resource type="Resource" uid="uid://dtjm2qdm0g7xp" path="res://furniture/utility/folding_chair.tres" id="119_pmku0"]
+[ext_resource type="Resource" uid="uid://bq8kg5de8n8a3" path="res://furniture/garden/outdoor_dining_table.tres" id="120_0u66d"]
+[ext_resource type="Resource" uid="uid://b55ylu5a01tyu" path="res://furniture/garden/outdoor_chair.tres" id="121_jvrrc"]
+[ext_resource type="Resource" uid="uid://ce0hfwxl31cxc" path="res://furniture/garden/garden_storage_chest.tres" id="122_gexgd"]
+[ext_resource type="Resource" uid="uid://lobw7kswckmf" path="res://furniture/garden/flower_pot_large.tres" id="123_30cdq"]
+[ext_resource type="Resource" uid="uid://cpw3fj6nm5lbo" path="res://furniture/garden/picnic_table.tres" id="124_q7guh"]
+[ext_resource type="Resource" uid="uid://cuwd8cylme0yp" path="res://furniture/garden/sun_lounger.tres" id="125_ttt6t"]
+[ext_resource type="Resource" uid="uid://dxac7l0bqey2j" path="res://furniture/garden/garden_bench.tres" id="126_qpdxr"]
+[ext_resource type="Resource" uid="uid://dgtcq11enj07i" path="res://furniture/garden/garden_planter.tres" id="127_8wg4d"]
+[ext_resource type="Resource" uid="uid://ddd86oaigekma" path="res://furniture/garden/compost_bin.tres" id="128_usuuj"]
+[ext_resource type="Resource" uid="uid://bou1aclr3tbcn" path="res://furniture/garden/wheelbarrow.tres" id="129_tt5fj"]
+[ext_resource type="Script" uid="uid://bm1ct5756p37" path="res://npc/npc_character.gd" id="130_3mr6o"]
+[ext_resource type="Resource" uid="uid://cpgmi3ot1d22h" path="res://furniture/utility/recycling_bin.tres" id="130_lnbh3"]
+[ext_resource type="Resource" uid="uid://demx0ri6h4dm3" path="res://npc/definitions/assistant.tres" id="131_7oda2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="sky_material"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="sky"]
+sky_material = SubResource("sky_material")
+
+[sub_resource type="Environment" id="environment"]
+background_mode = 2
+sky = SubResource("sky")
+ambient_light_source = 3
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+metadata/scene_effects = {
+"fog": false,
+"glow": true,
+"sdfgi": true,
+"ssao": true,
+"ssil": true,
+"ssr": true,
+"volumetric_fog": false
+}
+
+[sub_resource type="ShaderMaterial" id="grass"]
+render_priority = 0
+shader = ExtResource("2_3mr6o")
+shader_parameter/color = Color(0.29, 0.42, 0.2, 1)
+shader_parameter/mottling = 0.22
+shader_parameter/grain_scale = 30.0
+shader_parameter/relief = 1.5
+shader_parameter/roughness = 0.95
+shader_parameter/blocks = 0.0
+
+[sub_resource type="BoxMesh" id="ground_mesh"]
+material = SubResource("grass")
+size = Vector3(120, 1, 120)
+
+[sub_resource type="BoxShape3D" id="ground_shape"]
+size = Vector3(120, 1, 120)
+
+[sub_resource type="Resource" id="Resource_o5nrd"]
+script = ExtResource("6_g4pp6")
+position = 2.25
+width = 2.4000000000000004
+height = 1.6
+sill_height = 0.55
+window_style = 12
+panel_widths = PackedFloat32Array()
+display_name = "Bay window"
+
+[sub_resource type="Resource" id="Resource_ua0bm"]
+script = ExtResource("6_g4pp6")
+kind = 0
+position = 6.0
+width = 1.1
+height = 2.1
+door_style = 1
+door_color = Color(0.12, 0.2, 0.16, 1)
+handle = 1
+panel_widths = PackedFloat32Array()
+head = 2
+display_name = "Front door"
+
+[sub_resource type="Resource" id="Resource_rlhnm"]
+script = ExtResource("6_g4pp6")
+position = 9.75
+width = 1.5
+height = 1.5
+sill_height = 0.8
+window_style = 1
+panel_widths = PackedFloat32Array()
+
+[sub_resource type="Resource" id="Resource_0mvcq"]
+script = ExtResource("6_g4pp6")
+position = 1.75
+width = 1.2000000000000002
+height = 1.4000000000000001
+sill_height = 0.8500000000000001
+panel_widths = PackedFloat32Array()
+
+[sub_resource type="Resource" id="Resource_g4642"]
+script = ExtResource("6_g4pp6")
+position = 5.25
+width = 1.0
+height = 1.0
+sill_height = 1.1
+shape = 2
+panel_widths = PackedFloat32Array()
+display_name = "Lab porthole"
+
+[sub_resource type="Resource" id="Resource_uddop"]
+script = ExtResource("6_g4pp6")
+kind = 0
+position = 1.55
+width = 1.5
+height = 2.1
+door_style = 10
+panel_widths = PackedFloat32Array()
+display_name = "Lab French doors"
+
+[sub_resource type="Resource" id="Resource_bmooa"]
+script = ExtResource("6_g4pp6")
+position = 5.25
+width = 0.6000000000000001
+height = 1.2000000000000002
+sill_height = 1.0
+panel_widths = PackedFloat32Array()
+
+[sub_resource type="Resource" id="Resource_44oks"]
+script = ExtResource("6_g4pp6")
+position = 2.25
+width = 1.5
+height = 1.2000000000000002
+sill_height = 1.05
+panel_widths = PackedFloat32Array()
+
+[sub_resource type="Resource" id="Resource_dcn22"]
+script = ExtResource("6_g4pp6")
+kind = 0
+position = 3.75
+width = 1.0
+height = 2.1
+door_style = 2
+panel_widths = PackedFloat32Array()
+display_name = "Kitchen door"
+
+[sub_resource type="Resource" id="Resource_5fe1m"]
+script = ExtResource("6_g4pp6")
+position = 5.75
+width = 0.9
+height = 1.0
+sill_height = 1.05
+panel_widths = PackedFloat32Array()
+
+[sub_resource type="Resource" id="Resource_g1qi5"]
+script = ExtResource("6_g4pp6")
+kind = 0
+width = 1.0
+height = 2.1
+door_style = 4
+panel_widths = PackedFloat32Array()
+display_name = "Back door"
+
+[sub_resource type="Resource" id="Resource_64est"]
+script = ExtResource("6_g4pp6")
+position = 4.5
+width = 1.0
+height = 1.0
+sill_height = 1.05
+panel_widths = PackedFloat32Array()
+
+[sub_resource type="Resource" id="Resource_w8g0a"]
+script = ExtResource("6_g4pp6")
+position = 4.75
+width = 1.2000000000000002
+height = 1.2000000000000002
+sill_height = 1.05
+panel_widths = PackedFloat32Array()
+
+[sub_resource type="Resource" id="Resource_c3dmd"]
+script = ExtResource("6_g4pp6")
+position = 10.5
+width = 1.5
+height = 1.5
+sill_height = 0.8
+window_style = 1
+panel_widths = PackedFloat32Array()
+
+[sub_resource type="Resource" id="Resource_ygcrt"]
+script = ExtResource("6_g4pp6")
+kind = 0
+position = 5.0
+width = 1.0
+height = 2.1
+panel_widths = PackedFloat32Array()
+display_name = "Living room door"
+
+[sub_resource type="Resource" id="Resource_jvjli"]
+script = ExtResource("6_g4pp6")
+kind = 0
+position = 0.9
+width = 1.0
+height = 2.1
+door_style = 1
+opens_inward = false
+panel_widths = PackedFloat32Array()
+display_name = "Study door"
+
+[sub_resource type="Resource" id="Resource_8wkii"]
+script = ExtResource("6_g4pp6")
+kind = 0
+position = 6.2
+width = 1.0
+height = 2.1
+door_style = 19
+panel_widths = PackedFloat32Array()
+display_name = "Task Lab door"
+
+[sub_resource type="Resource" id="Resource_xbem3"]
+script = ExtResource("6_g4pp6")
+kind = 2
+position = 3.6
+width = 1.1
+height = 2.15
+panel_widths = PackedFloat32Array()
+
+[sub_resource type="Resource" id="Resource_jljg2"]
+script = ExtResource("6_g4pp6")
+kind = 0
+position = 5.2
+width = 1.0
+height = 2.1
+door_style = 2
+opens_inward = false
+panel_widths = PackedFloat32Array()
+display_name = "Kitchen door"
+
+[sub_resource type="Resource" id="Resource_qsuma"]
+script = ExtResource("6_g4pp6")
+kind = 0
+position = 3.0
+width = 1.0
+height = 2.1
+door_style = 5
+panel_widths = PackedFloat32Array()
+display_name = "Utility door"
+
+[sub_resource type="Resource" id="Resource_5e77h"]
+script = ExtResource("6_g4pp6")
+position = 2.25
+width = 1.5
+height = 1.4000000000000001
+sill_height = 0.8
+window_style = 1
+panel_widths = PackedFloat32Array()
+
+[sub_resource type="Resource" id="Resource_wlp2t"]
+script = ExtResource("6_g4pp6")
+position = 6.0
+width = 0.9
+height = 0.9
+sill_height = 1.0
+shape = 2
+panel_widths = PackedFloat32Array()
+
+[sub_resource type="Resource" id="Resource_lxxdd"]
+script = ExtResource("6_g4pp6")
+position = 9.75
+width = 1.5
+height = 1.4000000000000001
+sill_height = 0.8
+window_style = 1
+panel_widths = PackedFloat32Array()
+
+[sub_resource type="Resource" id="Resource_xvo38"]
+script = ExtResource("6_g4pp6")
+position = 1.75
+width = 1.0
+height = 1.2000000000000002
+panel_widths = PackedFloat32Array()
+
+[sub_resource type="Resource" id="Resource_dxinr"]
+script = ExtResource("6_g4pp6")
+position = 5.25
+width = 0.8
+height = 1.0
+sill_height = 1.3
+window_style = 5
+panel_widths = PackedFloat32Array()
+obscured = true
+
+[sub_resource type="Resource" id="Resource_g4p10"]
+script = ExtResource("6_g4pp6")
+position = 2.25
+width = 0.8
+height = 1.0
+sill_height = 1.3
+window_style = 5
+panel_widths = PackedFloat32Array()
+obscured = true
+
+[sub_resource type="Resource" id="Resource_q6854"]
+script = ExtResource("6_g4pp6")
+position = 5.25
+width = 0.8
+height = 1.2000000000000002
+sill_height = 1.0
+panel_widths = PackedFloat32Array()
+
+[sub_resource type="Resource" id="Resource_pi3cm"]
+script = ExtResource("6_g4pp6")
+width = 1.0
+height = 1.2000000000000002
+panel_widths = PackedFloat32Array()
+
+[sub_resource type="Resource" id="Resource_j4psd"]
+script = ExtResource("6_g4pp6")
+kind = 0
+position = 5.6000000000000005
+width = 1.0
+height = 2.1
+panel_widths = PackedFloat32Array()
+display_name = "Master bedroom door"
+
+[sub_resource type="Resource" id="Resource_7u72t"]
+script = ExtResource("6_g4pp6")
+kind = 0
+position = 0.8
+width = 1.0
+height = 2.1
+opens_inward = false
+panel_widths = PackedFloat32Array()
+display_name = "Bedroom door"
+
+[sub_resource type="Resource" id="Resource_ox6yy"]
+script = ExtResource("6_g4pp6")
+kind = 0
+position = 6.0
+width = 1.0
+height = 2.1
+door_style = 5
+opens_inward = false
+panel_widths = PackedFloat32Array()
+display_name = "Bathroom door"
+
+[sub_resource type="Resource" id="Resource_qj5ll"]
+script = ExtResource("6_g4pp6")
+kind = 0
+position = 9.0
+width = 1.1
+height = 1.0
+door_style = 21
+door_color = Color(0.94, 0.94, 0.9, 1)
+panel_widths = PackedFloat32Array()
+head = 3
+display_name = "Front gate"
+
+[sub_resource type="Resource" id="Resource_ogdbe"]
+script = ExtResource("6_g4pp6")
+kind = 0
+position = 20.0
+width = 3.6
+height = 1.1
+door_style = 23
+door_color = Color(0.12, 0.13, 0.14, 1)
+panel_widths = PackedFloat32Array()
+head = 3
+display_name = "Driveway gates"
+
+[sub_resource type="Resource" id="Resource_x7a0b"]
+script = ExtResource("6_g4pp6")
+kind = 0
+position = 13.0
+width = 1.0
+height = 1.8
+door_style = 20
+panel_widths = PackedFloat32Array()
+display_name = "Back gate"
+
+[sub_resource type="Resource" id="Resource_bw1un"]
+script = ExtResource("6_g4pp6")
+kind = 0
+position = 1.4000000000000001
+width = 1.0
+height = 1.8
+door_style = 20
+panel_widths = PackedFloat32Array()
+display_name = "Side gate"
+
+[sub_resource type="Resource" id="Resource_x7sf5"]
+script = ExtResource("6_g4pp6")
+kind = 0
+position = 0.8500000000000001
+width = 1.0
+height = 1.8
+door_style = 20
+panel_widths = PackedFloat32Array()
+display_name = "Side gate"
+
+[sub_resource type="Resource" id="Resource_5mqb6"]
+script = ExtResource("6_g4pp6")
+kind = 0
+position = 1.4500000000000002
+width = 1.0
+height = 1.8
+door_style = 20
+panel_widths = PackedFloat32Array()
+display_name = "Side gate"
+
+[sub_resource type="Resource" id="Resource_mnpsg"]
+script = ExtResource("6_g4pp6")
+kind = 0
+position = 3.0
+width = 2.5
+height = 2.1
+door_style = 16
+door_color = Color(0.85, 0.86, 0.84, 1)
+powered = true
+panel_widths = PackedFloat32Array()
+display_name = "Garage door"
+
+[sub_resource type="Resource" id="Resource_qg1v6"]
+script = ExtResource("6_g4pp6")
+position = 2.0
+width = 1.2000000000000002
+height = 1.0
+sill_height = 1.0
+panel_widths = PackedFloat32Array()
+
+[sub_resource type="Resource" id="Resource_2vdhr"]
+script = ExtResource("6_g4pp6")
+kind = 0
+width = 1.0
+height = 2.0
+door_style = 4
+door_color = Color(0.3, 0.38, 0.3, 1)
+panel_widths = PackedFloat32Array()
+display_name = "Workshop back door"
+
+[sub_resource type="Resource" id="Resource_81wu6"]
+script = ExtResource("6_g4pp6")
+position = 3.5
+width = 1.2000000000000002
+height = 1.0
+sill_height = 1.0
+panel_widths = PackedFloat32Array()
+
+[sub_resource type="Resource" id="Resource_ig31u"]
+script = ExtResource("6_g4pp6")
+kind = 0
+position = 5.5
+width = 1.0
+height = 2.0
+door_style = 2
+panel_widths = PackedFloat32Array()
+display_name = "Workshop side door"
+
+[sub_resource type="Resource" id="Resource_df6jl"]
+script = ExtResource("6_g4pp6")
+kind = 0
+position = 1.75
+width = 1.4000000000000001
+height = 1.9500000000000002
+door_style = 27
+door_color = Color(0.36, 0.44, 0.34, 1)
+panel_widths = PackedFloat32Array()
+head = 3
+display_name = "Shed doors"
+
+[sub_resource type="Resource" id="Resource_ic0ka"]
+script = ExtResource("6_g4pp6")
+width = 0.9
+height = 0.6000000000000001
+sill_height = 1.1
+panel_widths = PackedFloat32Array()
+head = 3
+frame_color = Color(0.36, 0.44, 0.34, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ocdb0"]
+friction = 0.9
+bounce = 0.02
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uqd66"]
+friction = 0.7
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0wf66"]
+friction = 0.9
+bounce = 0.02
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7h7qp"]
+friction = 0.9
+bounce = 0.02
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ci3e3"]
+friction = 0.9
+bounce = 0.02
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fktn1"]
+friction = 0.7
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oklpb"]
+friction = 0.6
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s7pkf"]
+friction = 0.6
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yw55l"]
+friction = 0.9
+bounce = 0.02
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pa5x4"]
+friction = 0.7
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_frc57"]
+friction = 0.6
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fjt8w"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0wb1l"]
+friction = 0.7
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4n8n2"]
+friction = 0.7
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k302v"]
+friction = 0.7
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gu2nl"]
+friction = 0.7
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q2rnx"]
+friction = 0.9
+bounce = 0.02
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a5n0r"]
+friction = 0.9
+bounce = 0.02
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3chcs"]
+friction = 0.7
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vumfx"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cqakt"]
+friction = 0.6
+bounce = 0.15
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dp4cp"]
+friction = 0.6
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d5ccm"]
+friction = 0.6
+bounce = 0.15
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bdukp"]
+friction = 0.6
+bounce = 0.03
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fjkh2"]
+friction = 0.6
+bounce = 0.15
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ko7s8"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3nm6g"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w50go"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bxsgm"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7lngb"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m82wu"]
+friction = 0.6
+bounce = 0.15
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pe4qq"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bnkhq"]
+friction = 0.7
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b20r1"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d8dee"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sb0ft"]
+friction = 0.6
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vbwnk"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4g68u"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_473l4"]
+friction = 0.4
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4f40k"]
+friction = 0.7
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5ruey"]
+friction = 0.9
+bounce = 0.02
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bomv2"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tfw8m"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l07lb"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yrygr"]
+friction = 0.7
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j6vk4"]
+friction = 0.7
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5h3p8"]
+friction = 0.8
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tafaw"]
+friction = 0.6
+bounce = 0.15
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p4g2p"]
+friction = 0.95
+bounce = 0.02
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_obtua"]
+friction = 0.6
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ddoov"]
+friction = 0.7
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jevhy"]
+friction = 0.6
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ktwxm"]
+friction = 0.7
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7ip8t"]
+friction = 0.6
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m7e71"]
+friction = 0.9
+bounce = 0.02
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3r7jh"]
+friction = 0.4
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gtprp"]
+friction = 0.9
+bounce = 0.02
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dody2"]
+friction = 0.6
+bounce = 0.15
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wbk5y"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_n3kly"]
+friction = 0.4
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xohfv"]
+friction = 0.4
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8ndw4"]
+friction = 0.9
+bounce = 0.02
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vdwmn"]
+friction = 0.8
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bg5ix"]
+friction = 0.7
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fff4c"]
+friction = 0.8
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ixmg6"]
+friction = 0.6
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mm2uc"]
+friction = 0.7
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ibf46"]
+friction = 0.8
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qh6il"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_henn0"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mpghl"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5b1gr"]
+friction = 0.5
+bounce = 0.06
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lupg7"]
+friction = 0.7
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5ogam"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fmsc5"]
+friction = 0.7
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_eal8p"]
+friction = 0.6
+bounce = 0.03
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6e6wy"]
+friction = 0.6
+bounce = 0.15
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6jam2"]
+friction = 0.7
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dyw26"]
+friction = 0.7
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_chlb4"]
+friction = 0.7
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_whylt"]
+friction = 0.7
+bounce = 0.08
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_glbl1"]
+friction = 0.4
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ajosd"]
+friction = 0.8
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fp7rh"]
+friction = 0.6
+bounce = 0.15
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lm5vs"]
+friction = 0.7
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ow1wy"]
+friction = 0.7
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4i2lh"]
+friction = 0.9
+bounce = 0.02
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5ogyg"]
+friction = 0.6
+bounce = 0.03
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_alfw1"]
+friction = 0.7
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_toixu"]
+friction = 0.6
+bounce = 0.15
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_an8mw"]
+friction = 0.5
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t48mi"]
+friction = 0.6
+bounce = 0.15
+
+[node name="TaskmasterHouse" type="Node3D" unique_id=808065275]
+script = ExtResource("1_oaun7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=478190092]
+environment = SubResource("environment")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=1256546516]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+metadata/scene_shadow = true
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=963689308]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 10, -0.5, 10)
+
+[node name="Mesh" type="MeshInstance3D" parent="Ground" unique_id=737741058]
+mesh = SubResource("ground_mesh")
+
+[node name="Collision" type="CollisionShape3D" parent="Ground" unique_id=860217131]
+shape = SubResource("ground_shape")
+
+[node name="Player" parent="." unique_id=1745676424 instance=ExtResource("3_7oda2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6, 0.009166664, -9.5)
+velocity = Vector3(0, -0.8166667, 0)
+
+[node name="House" type="Node3D" parent="." unique_id=1360275747]
+
+[node name="GroundFloor" type="Node3D" parent="House" unique_id=74478920]
+
+[node name="FrontWall" type="StaticBody3D" parent="House/GroundFloor" unique_id=578538834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+script = ExtResource("5_fapn2")
+length = 12.0
+start_join = 2
+end_join = 1
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_o5nrd"), SubResource("Resource_ua0bm"), SubResource("Resource_rlhnm")])
+plinth_drop = 0.35
+quoins = true
+band_course_height = 3.0
+
+[node name="EastWall" type="StaticBody3D" parent="House/GroundFloor" unique_id=608350577]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 12, 0.3, 0)
+script = ExtResource("5_fapn2")
+length = 7.0
+start_join = 2
+end_join = 1
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_0mvcq"), SubResource("Resource_g4642")])
+plinth_drop = 0.35
+quoins = true
+band_course_height = 3.0
+
+[node name="RearWallMain" type="StaticBody3D" parent="House/GroundFloor" unique_id=1209432577]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 12, 0.3, 7)
+script = ExtResource("5_fapn2")
+length = 6.0
+start_join = 2
+end_join = 4
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_uddop"), SubResource("Resource_bmooa")])
+plinth_drop = 0.35
+quoins = true
+band_course_height = 3.0
+
+[node name="WingEastWall" type="StaticBody3D" parent="House/GroundFloor" unique_id=379123375]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 6, 0.3, 7)
+script = ExtResource("5_fapn2")
+length = 7.0
+start_join = 2
+end_join = 1
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_44oks"), SubResource("Resource_dcn22"), SubResource("Resource_5fe1m")])
+plinth_drop = 0.35
+quoins = true
+band_course_height = 3.0
+
+[node name="WingRearWall" type="StaticBody3D" parent="House/GroundFloor" unique_id=448128416]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 6, 0.3, 14)
+script = ExtResource("5_fapn2")
+length = 6.0
+start_join = 2
+end_join = 1
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_g1qi5"), SubResource("Resource_64est")])
+plinth_drop = 0.35
+quoins = true
+band_course_height = 3.0
+
+[node name="WestWall" type="StaticBody3D" parent="House/GroundFloor" unique_id=1064478001]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0.3, 14)
+script = ExtResource("5_fapn2")
+length = 14.0
+start_join = 2
+end_join = 1
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_w8g0a"), SubResource("Resource_c3dmd")])
+plinth_drop = 0.35
+quoins = true
+band_course_height = 3.0
+
+[node name="LivingHallWall" type="StaticBody3D" parent="House/GroundFloor" unique_id=544145815]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 4.5, 0.3, 0)
+script = ExtResource("5_fapn2")
+wall_type = 1
+length = 7.0
+start_join = 2
+end_join = 3
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_ygcrt")])
+
+[node name="HallStudyWall" type="StaticBody3D" parent="House/GroundFloor" unique_id=1745381657]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 7.5, 0.3, 0)
+script = ExtResource("5_fapn2")
+wall_type = 1
+length = 7.0
+start_join = 2
+end_join = 2
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_jvjli"), SubResource("Resource_8wkii")])
+
+[node name="KitchenWall" type="StaticBody3D" parent="House/GroundFloor" unique_id=657476835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 7)
+script = ExtResource("5_fapn2")
+wall_type = 1
+length = 6.0
+start_join = 2
+end_join = 2
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_xbem3"), SubResource("Resource_jljg2")])
+
+[node name="StudyLabWall" type="StaticBody3D" parent="House/GroundFloor" unique_id=1897388964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.3, 3.5)
+script = ExtResource("5_fapn2")
+wall_type = 1
+length = 4.5
+start_join = 3
+end_join = 2
+
+[node name="UtilityWall" type="StaticBody3D" parent="House/GroundFloor" unique_id=98983192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 11.5)
+script = ExtResource("5_fapn2")
+wall_type = 1
+length = 6.0
+start_join = 2
+end_join = 2
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_qsuma")])
+
+[node name="LivingFloor" type="StaticBody3D" parent="House/GroundFloor" unique_id=1795582142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+script = ExtResource("7_qh1a5")
+size = Vector2(4.5, 7)
+thickness = 0.3
+finish_color = Color(0.55, 0.38, 0.24, 1)
+structure = 1
+ceiling = false
+
+[node name="HallFloor" type="StaticBody3D" parent="House/GroundFloor" unique_id=410378063]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.3, 0)
+script = ExtResource("7_qh1a5")
+size = Vector2(3, 7)
+thickness = 0.3
+finish = 3
+finish_color = Color(0.85, 0.83, 0.78, 1)
+boards_along_z = true
+structure = 1
+ceiling = false
+
+[node name="StudyFloor" type="StaticBody3D" parent="House/GroundFloor" unique_id=1149942171]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.3, 0)
+script = ExtResource("7_qh1a5")
+size = Vector2(4.5, 3.5)
+thickness = 0.3
+finish = 1
+structure = 1
+ceiling = false
+
+[node name="LabFloor" type="StaticBody3D" parent="House/GroundFloor" unique_id=1884687822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.3, 3.5)
+script = ExtResource("7_qh1a5")
+size = Vector2(4.5, 3.5)
+thickness = 0.3
+finish = 2
+finish_color = Color(0.9, 0.92, 0.92, 1)
+structure = 1
+ceiling = false
+
+[node name="KitchenFloor" type="StaticBody3D" parent="House/GroundFloor" unique_id=229419484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 7)
+script = ExtResource("7_qh1a5")
+size = Vector2(6, 4.5)
+thickness = 0.3
+finish = 3
+finish_color = Color(0.2, 0.22, 0.24, 1)
+structure = 1
+ceiling = false
+
+[node name="UtilityFloor" type="StaticBody3D" parent="House/GroundFloor" unique_id=2132576033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 11.5)
+script = ExtResource("7_qh1a5")
+size = Vector2(6, 2.5)
+thickness = 0.3
+finish = 2
+finish_color = Color(0.7, 0.66, 0.6, 1)
+structure = 1
+ceiling = false
+
+[node name="Stairs" type="StaticBody3D" parent="House/GroundFloor" unique_id=1055225070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0.3, 1.8)
+script = ExtResource("8_ckaig")
+left_side = 1
+right_side = 0
+runner = true
+runner_color = Color(0.42, 0.1, 0.13, 1)
+
+[node name="Chimney" type="StaticBody3D" parent="House/GroundFloor" unique_id=256763911]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.45, 0.3, 3.5)
+script = ExtResource("9_4e0yo")
+size = Vector2(1.1, 0.6)
+height = 9.4
+breast_height = 5.75
+fireplace = 1
+
+[node name="Porch" type="StaticBody3D" parent="House/GroundFloor" unique_id=201967922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.3, 0)
+script = ExtResource("10_pu1fh")
+roof_style = 2
+
+[node name="FrontSteps" type="StaticBody3D" parent="House/GroundFloor" unique_id=1080217086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.3, -1.4)
+script = ExtResource("11_xidyu")
+width = 1.5
+
+[node name="BackDoorSteps" type="StaticBody3D" parent="House/GroundFloor" unique_id=1096574717]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.5, 0.3, 14.15)
+script = ExtResource("11_xidyu")
+
+[node name="LivingLight" type="StaticBody3D" parent="House/GroundFloor" unique_id=809737840]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 3.05, 3.5)
+script = ExtResource("12_svmoc")
+circuit = "living"
+light_color = Color(1, 0.84, 0.64, 1)
+energy = 1.1
+light_range = 6.5
+shadows = false
+
+[node name="HallLight" type="StaticBody3D" parent="House/GroundFloor" unique_id=73730126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 3.05, 3)
+script = ExtResource("12_svmoc")
+circuit = "hall"
+light_color = Color(1, 0.84, 0.64, 1)
+energy = 1.1
+light_range = 6.5
+shadows = false
+
+[node name="StudyLight" type="StaticBody3D" parent="House/GroundFloor" unique_id=1922079314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 3.05, 1.75)
+script = ExtResource("12_svmoc")
+circuit = "study"
+light_color = Color(1, 0.84, 0.64, 1)
+energy = 1.1
+light_range = 6.5
+shadows = false
+
+[node name="LabLight" type="StaticBody3D" parent="House/GroundFloor" unique_id=1037822846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 3.05, 5.25)
+script = ExtResource("12_svmoc")
+style = 1
+circuit = "lab"
+light_color = Color(0.95, 0.97, 1, 1)
+light_range = 6.5
+shadows = false
+
+[node name="KitchenLight" type="StaticBody3D" parent="House/GroundFloor" unique_id=358512350]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3.05, 9.25)
+script = ExtResource("12_svmoc")
+style = 1
+circuit = "kitchen"
+light_color = Color(1, 0.84, 0.64, 1)
+energy = 1.1
+light_range = 6.5
+shadows = false
+
+[node name="UtilityLight" type="StaticBody3D" parent="House/GroundFloor" unique_id=244516724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3.05, 12.75)
+script = ExtResource("12_svmoc")
+style = 1
+circuit = "utility"
+light_color = Color(1, 0.84, 0.64, 1)
+energy = 1.1
+light_range = 6.5
+shadows = false
+
+[node name="LivingSwitch" type="StaticBody3D" parent="House/GroundFloor" unique_id=516105459]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.44, 1.5, 4.3)
+script = ExtResource("13_thcqk")
+circuit = "living"
+
+[node name="HallSwitch" type="StaticBody3D" parent="House/GroundFloor" unique_id=1771587572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.15, 1.5, 0.15)
+script = ExtResource("13_thcqk")
+circuit = "hall"
+label = "Hall and landing lights"
+
+[node name="OutsideSwitch" type="StaticBody3D" parent="House/GroundFloor" unique_id=1657020015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.85, 1.5, 0.15)
+script = ExtResource("13_thcqk")
+circuit = "outside"
+label = "Outside lights"
+
+[node name="StudySwitch" type="StaticBody3D" parent="House/GroundFloor" unique_id=2051605134]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.56, 1.5, 1.6)
+script = ExtResource("13_thcqk")
+circuit = "study"
+
+[node name="LabSwitch" type="StaticBody3D" parent="House/GroundFloor" unique_id=1886260215]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.56, 1.5, 5.5)
+script = ExtResource("13_thcqk")
+circuit = "lab"
+
+[node name="KitchenSwitch" type="StaticBody3D" parent="House/GroundFloor" unique_id=1508414780]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1.5, 7.06)
+script = ExtResource("13_thcqk")
+circuit = "kitchen"
+
+[node name="UtilitySwitch" type="StaticBody3D" parent="House/GroundFloor" unique_id=68914182]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35, 1.5, 11.56)
+script = ExtResource("13_thcqk")
+circuit = "utility"
+
+[node name="FirstFloor" type="Node3D" parent="House" unique_id=388095117]
+
+[node name="FrontWall" type="StaticBody3D" parent="House/FirstFloor" unique_id=1672789370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3, 0)
+script = ExtResource("5_fapn2")
+length = 12.0
+start_join = 2
+end_join = 1
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_5e77h"), SubResource("Resource_wlp2t"), SubResource("Resource_lxxdd")])
+plinth_drop = 0.0
+quoins = true
+
+[node name="EastWall" type="StaticBody3D" parent="House/FirstFloor" unique_id=839816071]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 12, 3.3, 0)
+script = ExtResource("5_fapn2")
+length = 7.0
+start_join = 2
+end_join = 1
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_xvo38"), SubResource("Resource_dxinr")])
+plinth_drop = 0.0
+quoins = true
+
+[node name="RearWall" type="StaticBody3D" parent="House/FirstFloor" unique_id=1707692431]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 12, 3.3, 7)
+script = ExtResource("5_fapn2")
+length = 12.0
+start_join = 2
+end_join = 1
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_g4p10"), SubResource("Resource_q6854")])
+plinth_drop = 0.0
+quoins = true
+
+[node name="WestWall" type="StaticBody3D" parent="House/FirstFloor" unique_id=722884716]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 3.3, 7)
+script = ExtResource("5_fapn2")
+length = 7.0
+start_join = 2
+end_join = 1
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_pi3cm")])
+plinth_drop = 0.0
+quoins = true
+
+[node name="BedroomLandingWall" type="StaticBody3D" parent="House/FirstFloor" unique_id=337227873]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 4.5, 3.3, 0)
+script = ExtResource("5_fapn2")
+wall_type = 1
+length = 7.0
+start_join = 2
+end_join = 2
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_j4psd")])
+
+[node name="LandingEastWall" type="StaticBody3D" parent="House/FirstFloor" unique_id=707643110]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 7.5, 3.3, 0)
+script = ExtResource("5_fapn2")
+wall_type = 1
+length = 7.0
+start_join = 2
+end_join = 2
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_7u72t"), SubResource("Resource_ox6yy")])
+
+[node name="BedroomBathWall" type="StaticBody3D" parent="House/FirstFloor" unique_id=1308535781]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3.3, 3.5)
+script = ExtResource("5_fapn2")
+wall_type = 1
+length = 4.5
+start_join = 3
+end_join = 2
+
+[node name="MasterBedroomFloor" type="StaticBody3D" parent="House/FirstFloor" unique_id=192855315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3, 0)
+script = ExtResource("7_qh1a5")
+size = Vector2(4.5, 7)
+finish = 4
+finish_color = Color(0.55, 0.6, 0.66, 1)
+
+[node name="LandingFloor" type="StaticBody3D" parent="House/FirstFloor" unique_id=559920675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3.3, 0)
+script = ExtResource("7_qh1a5")
+size = Vector2(3, 7)
+finish_color = Color(0.55, 0.38, 0.24, 1)
+boards_along_z = true
+
+[node name="BedroomFloor" type="StaticBody3D" parent="House/FirstFloor" unique_id=2050938633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3.3, 0)
+script = ExtResource("7_qh1a5")
+size = Vector2(4.5, 3.5)
+finish = 4
+finish_color = Color(0.7, 0.62, 0.5, 1)
+
+[node name="BathroomFloor" type="StaticBody3D" parent="House/FirstFloor" unique_id=661030025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3.3, 3.5)
+script = ExtResource("7_qh1a5")
+size = Vector2(4.5, 3.5)
+finish = 2
+finish_color = Color(0.92, 0.93, 0.92, 1)
+
+[node name="MasterBedroomLight" type="StaticBody3D" parent="House/FirstFloor" unique_id=1069030398]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 6.05, 3.5)
+script = ExtResource("12_svmoc")
+circuit = "master_bedroom"
+light_color = Color(1, 0.84, 0.64, 1)
+energy = 1.1
+light_range = 6.5
+shadows = false
+
+[node name="LandingLight" type="StaticBody3D" parent="House/FirstFloor" unique_id=1744978572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 6.05, 3)
+script = ExtResource("12_svmoc")
+circuit = "hall"
+light_color = Color(1, 0.84, 0.64, 1)
+energy = 1.1
+light_range = 6.5
+shadows = false
+
+[node name="BedroomLight" type="StaticBody3D" parent="House/FirstFloor" unique_id=53403046]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 6.05, 1.75)
+script = ExtResource("12_svmoc")
+circuit = "bedroom"
+light_color = Color(1, 0.84, 0.64, 1)
+energy = 1.1
+light_range = 6.5
+shadows = false
+
+[node name="BathroomLight" type="StaticBody3D" parent="House/FirstFloor" unique_id=1204397342]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 6.05, 5.25)
+script = ExtResource("12_svmoc")
+style = 1
+circuit = "bathroom"
+light_color = Color(1, 0.84, 0.64, 1)
+energy = 1.1
+light_range = 6.5
+shadows = false
+
+[node name="LandingSwitch" type="StaticBody3D" parent="House/FirstFloor" unique_id=2073009485]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.56, 4.5, 4.8)
+script = ExtResource("13_thcqk")
+circuit = "hall"
+label = "Hall and landing lights"
+
+[node name="MasterBedroomSwitch" type="StaticBody3D" parent="House/FirstFloor" unique_id=1848193843]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.44, 4.5, 4.9)
+script = ExtResource("13_thcqk")
+circuit = "master_bedroom"
+
+[node name="BedroomSwitch" type="StaticBody3D" parent="House/FirstFloor" unique_id=820487155]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.56, 4.5, 1.4)
+script = ExtResource("13_thcqk")
+circuit = "bedroom"
+
+[node name="BathroomSwitch" type="StaticBody3D" parent="House/FirstFloor" unique_id=1342368145]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.56, 4.5, 5.35)
+script = ExtResource("13_thcqk")
+circuit = "bathroom"
+
+[node name="StairwellBalustrade" type="StaticBody3D" parent="House/FirstFloor" unique_id=1499595451]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.44, 3.3, 2.0583334)
+script = ExtResource("14_xfsm6")
+length = 3.25
+
+[node name="StairwellEndBalustrade" type="StaticBody3D" parent="House/FirstFloor" unique_id=388678398]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.49, 3.3, 2.0083334)
+script = ExtResource("14_xfsm6")
+length = 0.9500000000000001
+start_newel = false
+
+[node name="Roof" type="Node3D" parent="House" unique_id=1318958020]
+
+[node name="LoftFloor" type="StaticBody3D" parent="House/Roof" unique_id=1419446790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.3, 0)
+script = ExtResource("7_qh1a5")
+size = Vector2(12, 7)
+finish_color = Color(0.5, 0.4, 0.3, 1)
+
+[node name="WingCeiling" type="StaticBody3D" parent="House/Roof" unique_id=2131876489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3, 7)
+script = ExtResource("7_qh1a5")
+size = Vector2(6, 7)
+finish_color = Color(0.5, 0.4, 0.3, 1)
+
+[node name="MainRoof" type="StaticBody3D" parent="House/Roof" unique_id=309118835]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 12, 6.3, 0)
+script = ExtResource("15_bf33p")
+span = 7.0
+length = 12.0
+tiles = 1
+downpipe_drop = 6.3
+
+[node name="WingRoof" type="StaticBody3D" parent="House/Roof" unique_id=325309945]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3, 7)
+script = ExtResource("15_bf33p")
+length = 7.0
+start_end = 2
+tiles = 1
+downpipe_drop = 3.3
+
+[node name="Grounds" type="Node3D" parent="." unique_id=1287225777]
+
+[node name="Lights" type="Node3D" parent="Grounds" unique_id=1439026227]
+
+[node name="PorchLantern" type="StaticBody3D" parent="Grounds/Lights" unique_id=1213128383]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.95, 2.3, -0.15)
+script = ExtResource("12_svmoc")
+style = 3
+circuit = "outside"
+light_color = Color(1, 0.8, 0.55, 1)
+energy = 1.6
+shadows = false
+
+[node name="KitchenDoorLantern" type="StaticBody3D" parent="Grounds/Lights" unique_id=65337502]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.15, 2.3, 11.5)
+script = ExtResource("12_svmoc")
+style = 3
+circuit = "outside"
+light_color = Color(1, 0.8, 0.55, 1)
+energy = 1.6
+shadows = false
+
+[node name="LabDoorLantern" type="StaticBody3D" parent="Grounds/Lights" unique_id=1866240378]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.3, 2.5, 7.15)
+script = ExtResource("12_svmoc")
+style = 2
+circuit = "outside"
+light_color = Color(1, 0.8, 0.55, 1)
+energy = 1.6
+shadows = false
+
+[node name="GarageLantern" type="StaticBody3D" parent="Grounds/Lights" unique_id=1488684100]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 17, 2.55, -0.15)
+script = ExtResource("12_svmoc")
+style = 3
+circuit = "outside"
+energy = 1.6
+light_range = 6.5
+shadows = false
+
+[node name="ShedLantern" type="StaticBody3D" parent="Grounds/Lights" unique_id=1812378746]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 16.7, 2.05, 18.85)
+script = ExtResource("12_svmoc")
+style = 3
+circuit = "outside"
+energy = 1.2
+light_range = 6.5
+shadows = false
+
+[node name="Boundary" type="Node3D" parent="Grounds" unique_id=2001657212]
+
+[node name="FrontGardenWall" type="StaticBody3D" parent="Grounds/Boundary" unique_id=1063538412]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -7)
+script = ExtResource("5_fapn2")
+wall_type = 2
+length = 26.0
+height = 1.0
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_qj5ll"), SubResource("Resource_ogdbe")])
+plinth_drop = 0.0
+
+[node name="WestFence" type="StaticBody3D" parent="Grounds/Boundary" unique_id=1725154420]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -3, 0, 26)
+script = ExtResource("16_aj6jo")
+length = 32.85
+
+[node name="EastFence" type="StaticBody3D" parent="Grounds/Boundary" unique_id=602411400]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 23, 0, -6.85)
+script = ExtResource("16_aj6jo")
+length = 32.85
+
+[node name="RearFence" type="StaticBody3D" parent="Grounds/Boundary" unique_id=1552356019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 26)
+script = ExtResource("16_aj6jo")
+length = 26.0
+gates = Array[ExtResource("6_g4pp6")]([SubResource("Resource_x7a0b")])
+
+[node name="WestSideFence" type="StaticBody3D" parent="Grounds/Boundary" unique_id=980094086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3.5)
+script = ExtResource("16_aj6jo")
+length = 2.85
+gates = Array[ExtResource("6_g4pp6")]([SubResource("Resource_bw1un")])
+
+[node name="PassageFence" type="StaticBody3D" parent="Grounds/Boundary" unique_id=1197540390]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.15, 0, 3.5)
+script = ExtResource("16_aj6jo")
+length = 1.7000008
+gates = Array[ExtResource("6_g4pp6")]([SubResource("Resource_x7sf5")])
+
+[node name="EastSideFence" type="StaticBody3D" parent="Grounds/Boundary" unique_id=1083621562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.15, 0, 3.5)
+script = ExtResource("16_aj6jo")
+length = 2.8500004
+gates = Array[ExtResource("6_g4pp6")]([SubResource("Resource_5mqb6")])
+
+[node name="FrontPath" type="StaticBody3D" parent="Grounds" unique_id=1393089112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4, 0.03, -6.85)
+script = ExtResource("17_c43bt")
+size = Vector2(1.2, 4.85)
+thickness = 0.06
+
+[node name="Driveway" type="StaticBody3D" parent="Grounds" unique_id=1876364094]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.04, -6.85)
+script = ExtResource("17_c43bt")
+size = Vector2(6, 6.85)
+thickness = 0.08
+surface = 3
+
+[node name="Patio" type="StaticBody3D" parent="Grounds" unique_id=811435125]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.15, 0.3, 7.15)
+script = ExtResource("17_c43bt")
+size = Vector2(5.55, 3.85)
+thickness = 0.35
+edging = true
+
+[node name="PatioSteps" type="StaticBody3D" parent="Grounds" unique_id=1520019746]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 9.112549, 0.3, 11)
+script = ExtResource("11_xidyu")
+width = 6.0
+
+[node name="PatioSteps2" type="StaticBody3D" parent="Grounds" unique_id=951660101]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.787685, 0.3, 8.599999)
+script = ExtResource("11_xidyu")
+width = 4.9
+
+[node name="GardenPath" type="StaticBody3D" parent="Grounds" unique_id=2072352294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.7, 0.03, 11.7)
+script = ExtResource("17_c43bt")
+size = Vector2(1, 7.3)
+thickness = 0.06
+
+[node name="ShedPath" type="StaticBody3D" parent="Grounds" unique_id=132728102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.7, 0.03, 18)
+script = ExtResource("17_c43bt")
+size = Vector2(8.5, 1)
+thickness = 0.06
+
+[node name="BinStore" type="StaticBody3D" parent="Grounds" unique_id=1088455412]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.15, 0.03, -2)
+script = ExtResource("17_c43bt")
+size = Vector2(1.7, 1.6)
+thickness = 0.06
+surface = 0
+
+[node name="Garage" type="Node3D" parent="." unique_id=929358139]
+
+[node name="FrontWall" type="StaticBody3D" parent="Garage" unique_id=977689980]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.1, 0)
+script = ExtResource("5_fapn2")
+length = 6.0
+height = 2.8000000000000003
+start_join = 2
+end_join = 1
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_mnpsg")])
+plinth_drop = 0.2
+quoins = true
+
+[node name="EastWall" type="StaticBody3D" parent="Garage" unique_id=258707795]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 20, 0.1, 0)
+script = ExtResource("5_fapn2")
+length = 7.0
+height = 2.8000000000000003
+start_join = 2
+end_join = 1
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_qg1v6")])
+plinth_drop = 0.2
+quoins = true
+
+[node name="RearWall" type="StaticBody3D" parent="Garage" unique_id=974313868]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 20, 0.1, 7)
+script = ExtResource("5_fapn2")
+length = 6.0
+height = 2.8000000000000003
+start_join = 2
+end_join = 1
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_2vdhr")])
+plinth_drop = 0.2
+quoins = true
+
+[node name="WestWall" type="StaticBody3D" parent="Garage" unique_id=938256890]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 14, 0.1, 7)
+script = ExtResource("5_fapn2")
+length = 7.0
+height = 2.8000000000000003
+start_join = 2
+end_join = 1
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_81wu6"), SubResource("Resource_ig31u")])
+plinth_drop = 0.2
+quoins = true
+
+[node name="Floor" type="StaticBody3D" parent="Garage" unique_id=451724590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.1, 0)
+script = ExtResource("7_qh1a5")
+size = Vector2(6, 7)
+thickness = 0.2
+finish = 5
+finish_color = Color(0.62, 0.62, 0.6, 1)
+structure = 1
+ceiling = false
+
+[node name="Roof" type="StaticBody3D" parent="Garage" unique_id=1119882853]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.9, 0)
+script = ExtResource("15_bf33p")
+length = 7.0
+pitch = 35.0
+tiles = 2
+downpipe_drop = 2.9
+
+[node name="WorkshopLight" type="StaticBody3D" parent="Garage" unique_id=464953394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 2.9, 3.5)
+script = ExtResource("12_svmoc")
+circuit = "garage"
+drop = 0.7
+light_color = Color(0.95, 0.96, 1, 1)
+energy = 1.6
+light_range = 6.5
+shadows = false
+
+[node name="BenchLight" type="StaticBody3D" parent="Garage" unique_id=1171316513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 2.9, 5.8)
+script = ExtResource("12_svmoc")
+circuit = "garage"
+drop = 0.9
+energy = 1.2
+light_range = 6.5
+shadows = false
+
+[node name="Switch" type="StaticBody3D" parent="Garage" unique_id=569885042]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 14.15, 1.3, 2.25)
+script = ExtResource("13_thcqk")
+circuit = "garage"
+label = "Workshop lights"
+
+[node name="Shed" type="Node3D" parent="." unique_id=70225576]
+
+[node name="FrontWall" type="StaticBody3D" parent="Shed" unique_id=937994740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.15, 19)
+script = ExtResource("5_fapn2")
+length = 3.5
+height = 2.3000000000000003
+start_join = 2
+end_join = 1
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_df6jl")])
+facade = 2
+facade_color = Color(0.42, 0.33, 0.24, 1)
+plinth_drop = 0.15
+
+[node name="EastWall" type="StaticBody3D" parent="Shed" unique_id=265667981]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 19.5, 0.15, 19)
+script = ExtResource("5_fapn2")
+height = 2.3000000000000003
+start_join = 2
+end_join = 1
+openings = Array[ExtResource("6_g4pp6")]([SubResource("Resource_ic0ka")])
+facade = 2
+facade_color = Color(0.42, 0.33, 0.24, 1)
+plinth_drop = 0.15
+
+[node name="RearWall" type="StaticBody3D" parent="Shed" unique_id=637547566]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 19.5, 0.15, 22)
+script = ExtResource("5_fapn2")
+length = 3.5
+height = 2.3000000000000003
+start_join = 2
+end_join = 1
+facade = 2
+facade_color = Color(0.42, 0.33, 0.24, 1)
+plinth_drop = 0.15
+
+[node name="WestWall" type="StaticBody3D" parent="Shed" unique_id=666853373]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 16, 0.15, 22)
+script = ExtResource("5_fapn2")
+height = 2.3000000000000003
+start_join = 2
+end_join = 1
+facade = 2
+facade_color = Color(0.42, 0.33, 0.24, 1)
+plinth_drop = 0.15
+
+[node name="Floor" type="StaticBody3D" parent="Shed" unique_id=1175818083]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.15, 19)
+script = ExtResource("7_qh1a5")
+size = Vector2(3.5, 3)
+thickness = 0.15
+finish_color = Color(0.5, 0.4, 0.3, 1)
+structure = 1
+ceiling = false
+
+[node name="Roof" type="StaticBody3D" parent="Shed" unique_id=1726467620]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2.45, 19)
+script = ExtResource("15_bf33p")
+span = 3.5
+length = 3.0
+pitch = 30.0
+tiles = 1
+eaves_overhang = 0.2
+gable_facade = 2
+gable_color = Color(0.42, 0.33, 0.24, 1)
+
+[node name="Light" type="StaticBody3D" parent="Shed" unique_id=1034965971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.75, 2.45, 20.5)
+script = ExtResource("12_svmoc")
+circuit = "shed"
+drop = 0.3
+energy = 1.0
+light_range = 6.5
+shadows = false
+
+[node name="Switch" type="StaticBody3D" parent="Shed" unique_id=1447131556]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6, 1.35, 19.15)
+script = ExtResource("13_thcqk")
+circuit = "shed"
+label = "Shed light"
+
+[node name="Furniture" type="Node3D" parent="." unique_id=1526848184]
+
+[node name="LivingRoom" type="Node3D" parent="Furniture" unique_id=844453425]
+
+[node name="SofaThreeSeater" type="RigidBody3D" parent="Furniture/LivingRoom" unique_id=720872692]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.9500003, 0.305, 3.2224998)
+collision_layer = 16
+collision_mask = 31
+mass = 70.0
+physics_material_override = SubResource("PhysicsMaterial_ocdb0")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("19_o0nj2")
+
+[node name="CoffeeTable" type="RigidBody3D" parent="Furniture/LivingRoom" unique_id=599397114]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.6, 0.305, 3.4)
+collision_layer = 16
+collision_mask = 31
+mass = 22.0
+physics_material_override = SubResource("PhysicsMaterial_uqd66")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("20_hctn7")
+
+[node name="TaskmastersThrone" type="RigidBody3D" parent="Furniture/LivingRoom" unique_id=1867668469]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.45, 0.305, 5.3356247)
+collision_layer = 16
+collision_mask = 31
+mass = 30.0
+physics_material_override = SubResource("PhysicsMaterial_0wf66")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("21_utgf3")
+
+[node name="Footstool" type="RigidBody3D" parent="Furniture/LivingRoom" unique_id=1264914650]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.3, 0.305, 5.35)
+collision_layer = 16
+collision_mask = 31
+mass = 6.0
+physics_material_override = SubResource("PhysicsMaterial_7h7qp")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("22_tsuv0")
+
+[node name="Armchair" type="RigidBody3D" parent="Furniture/LivingRoom" unique_id=1827276846]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.45, 0.305, 1.55)
+collision_layer = 16
+collision_mask = 31
+mass = 35.0
+physics_material_override = SubResource("PhysicsMaterial_ci3e3")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("23_pcn1f")
+
+[node name="TvCabinet" type="RigidBody3D" parent="Furniture/LivingRoom" unique_id=994498783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0.305, 6.65)
+collision_layer = 16
+collision_mask = 31
+mass = 35.458847
+physics_material_override = SubResource("PhysicsMaterial_fktn1")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("24_isrll")
+
+[node name="BookcaseTall" type="RigidBody3D" parent="Furniture/LivingRoom" unique_id=2036992827]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.2200003, 0.305, 0.75)
+collision_layer = 16
+collision_mask = 31
+mass = 45.0
+physics_material_override = SubResource("PhysicsMaterial_oklpb")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("25_ubv18")
+
+[node name="SideTable" type="RigidBody3D" parent="Furniture/LivingRoom" unique_id=2136303879]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.94, 0.305, 1.76)
+collision_layer = 16
+collision_mask = 31
+mass = 7.7829366
+physics_material_override = SubResource("PhysicsMaterial_s7pkf")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("26_f4bw6")
+
+[node name="FloorLamp" type="RigidBody3D" parent="Furniture/LivingRoom" unique_id=1107723233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54, 0.305, 6.49)
+collision_layer = 16
+collision_mask = 31
+mass = 7.0
+physics_material_override = SubResource("PhysicsMaterial_yw55l")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("27_elnxm")
+
+[node name="MagazineRack" type="RigidBody3D" parent="Furniture/LivingRoom" unique_id=233989733]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.2589998, 0.305, 1.191)
+collision_layer = 16
+collision_mask = 31
+mass = 4.0
+physics_material_override = SubResource("PhysicsMaterial_pa5x4")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("28_1mgu0")
+
+[node name="Television" type="RigidBody3D" parent="Furniture/LivingRoom" unique_id=2010937728]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0.8130001, 6.7044997)
+collision_layer = 16
+collision_mask = 31
+mass = 14.0
+physics_material_override = SubResource("PhysicsMaterial_frc57")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("29_kmmjl")
+
+[node name="TableLamp" type="RigidBody3D" parent="Furniture/LivingRoom" unique_id=1457279330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.94, 0.8729999, 1.74)
+collision_layer = 16
+collision_mask = 31
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_fjt8w")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("30_d2byv")
+
+[node name="MantelClock" type="RigidBody3D" parent="Furniture/LivingRoom" unique_id=46132679]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.776, 1.5280014, 3.494)
+collision_layer = 16
+collision_mask = 31
+mass = 2.5
+physics_material_override = SubResource("PhysicsMaterial_0wb1l")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("31_q1xv0")
+
+[node name="Hall" type="Node3D" parent="Furniture" unique_id=1406395347]
+
+[node name="ConsoleTable" type="RigidBody3D" parent="Furniture/Hall" unique_id=1863618024]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.81, 0.305, 2.5)
+collision_layer = 16
+collision_mask = 31
+mass = 15.23092
+physics_material_override = SubResource("PhysicsMaterial_4n8n2")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("32_rkde7")
+
+[node name="CoatStand" type="RigidBody3D" parent="Furniture/Hall" unique_id=759918063]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.95, 0.305, 0.6)
+collision_layer = 16
+collision_mask = 31
+mass = 7.0
+physics_material_override = SubResource("PhysicsMaterial_k302v")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("33_sb6w3")
+
+[node name="TableLamp" type="RigidBody3D" parent="Furniture/Hall" unique_id=1479654147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.74, 1.093, 2.09)
+collision_layer = 16
+collision_mask = 31
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_fjt8w")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("30_d2byv")
+
+[node name="Study" type="Node3D" parent="Furniture" unique_id=134268685]
+
+[node name="ExecutiveDesk" type="RigidBody3D" parent="Furniture/Study" unique_id=1374847729]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.255, 0.305, 1.85)
+collision_layer = 16
+collision_mask = 31
+mass = 62.790417
+physics_material_override = SubResource("PhysicsMaterial_gu2nl")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("34_joijd")
+
+[node name="OfficeChair" type="RigidBody3D" parent="Furniture/Study" unique_id=1155946110]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.24, 0.305, 1.8499999)
+collision_layer = 16
+collision_mask = 31
+mass = 14.0
+physics_material_override = SubResource("PhysicsMaterial_q2rnx")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("35_faybv")
+
+[node name="VisitorChair" type="RigidBody3D" parent="Furniture/Study" unique_id=1504364643]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 9.060625, 0.305, 1.839375)
+collision_layer = 16
+collision_mask = 31
+mass = 7.0
+physics_material_override = SubResource("PhysicsMaterial_a5n0r")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("36_a17pt")
+
+[node name="OfficeBookshelf" type="RigidBody3D" parent="Furniture/Study" unique_id=1905898967]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.485001, 0.305, 3.22)
+collision_layer = 16
+collision_mask = 31
+mass = 35.0
+physics_material_override = SubResource("PhysicsMaterial_3chcs")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("37_8rvio")
+
+[node name="StorageCupboard" type="RigidBody3D" parent="Furniture/Study" unique_id=426468947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.65, 0.305, 3.13)
+collision_layer = 16
+collision_mask = 31
+mass = 34.49649
+physics_material_override = SubResource("PhysicsMaterial_vumfx")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("38_6ea3v")
+
+[node name="FilingCabinetTall" type="RigidBody3D" parent="Furniture/Study" unique_id=1129661832]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3335, 0.305, 3.0370002)
+collision_layer = 16
+collision_mask = 31
+mass = 20.986635
+physics_material_override = SubResource("PhysicsMaterial_vumfx")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("39_45ih4")
+
+[node name="Whiteboard" type="RigidBody3D" parent="Furniture/Study" unique_id=1842195784]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 8.05, 0.305, 2.42)
+collision_layer = 16
+collision_mask = 31
+mass = 12.0
+physics_material_override = SubResource("PhysicsMaterial_cqakt")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("40_2qp74")
+
+[node name="ComputerMonitor" type="RigidBody3D" parent="Furniture/Study" unique_id=76995210]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.45, 1.0780001, 1.86)
+collision_layer = 16
+collision_mask = 31
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_dp4cp")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("41_ia4o7")
+
+[node name="Keyboard" type="RigidBody3D" parent="Furniture/Study" unique_id=557705346]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.05, 1.0780001, 1.8540001)
+collision_layer = 16
+collision_mask = 31
+mass = 0.8
+physics_material_override = SubResource("PhysicsMaterial_d5ccm")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("42_u24am")
+
+[node name="DeskLamp" type="RigidBody3D" parent="Furniture/Study" unique_id=1674040587]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.4, 1.0780001, 1.15)
+collision_layer = 16
+collision_mask = 31
+mass = 1.5
+physics_material_override = SubResource("PhysicsMaterial_bdukp")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("43_vxijh")
+
+[node name="Printer" type="RigidBody3D" parent="Furniture/Study" unique_id=290673433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.35, 1.633, 3.1)
+collision_layer = 16
+collision_mask = 31
+mass = 9.0
+physics_material_override = SubResource("PhysicsMaterial_fjkh2")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("44_6v2os")
+
+[node name="TaskLab" type="Node3D" parent="Furniture" unique_id=1423303653]
+
+[node name="LabSink" type="RigidBody3D" parent="Furniture/TaskLab" unique_id=110691201]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8.25, 0.305, 3.9499998)
+collision_layer = 16
+collision_mask = 31
+mass = 52.534466
+physics_material_override = SubResource("PhysicsMaterial_ko7s8")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("45_5xnj1")
+
+[node name="FumeCupboard" type="RigidBody3D" parent="Furniture/TaskLab" unique_id=600078903]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.8175, 0.305, 4.09)
+collision_layer = 16
+collision_mask = 31
+mass = 235.99118
+physics_material_override = SubResource("PhysicsMaterial_3nm6g")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("46_jesny")
+
+[node name="ChemicalCabinet" type="RigidBody3D" parent="Furniture/TaskLab" unique_id=1370803975]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.51, 0.305, 4.25)
+collision_layer = 16
+collision_mask = 31
+mass = 53.639
+physics_material_override = SubResource("PhysicsMaterial_w50go")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("47_4njwg")
+
+[node name="EquipmentTrolley" type="RigidBody3D" parent="Furniture/TaskLab" unique_id=2132580610]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.5460005, 0.305, 5.3110003)
+collision_layer = 16
+collision_mask = 31
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_bxsgm")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("48_ekyy3")
+
+[node name="LabTerminal" type="RigidBody3D" parent="Furniture/TaskLab" unique_id=362081801]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.502001, 0.305, 6.3)
+collision_layer = 16
+collision_mask = 31
+mass = 25.0
+physics_material_override = SubResource("PhysicsMaterial_7lngb")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("49_o1qng")
+
+[node name="LabWorkbench" type="RigidBody3D" parent="Furniture/TaskLab" unique_id=1977126235]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8.85, 0.305, 5.0150003)
+collision_layer = 16
+collision_mask = 31
+mass = 120.092514
+physics_material_override = SubResource("PhysicsMaterial_ko7s8")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("50_6vhw7")
+
+[node name="LabStool" type="RigidBody3D" parent="Furniture/TaskLab" unique_id=365451309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.1, 0.305, 5.9)
+collision_layer = 16
+collision_mask = 31
+mass = 6.0
+physics_material_override = SubResource("PhysicsMaterial_m82wu")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("51_xgc72")
+
+[node name="Microscope" type="RigidBody3D" parent="Furniture/TaskLab" unique_id=526371496]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8.1, 1.2429999, 5.226)
+collision_layer = 16
+collision_mask = 31
+mass = 9.0
+physics_material_override = SubResource("PhysicsMaterial_pe4qq")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("52_vrb2v")
+
+[node name="TestTubeStand" type="RigidBody3D" parent="Furniture/TaskLab" unique_id=1951987675]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8.455999, 1.2429999, 5.25)
+collision_layer = 16
+collision_mask = 31
+physics_material_override = SubResource("PhysicsMaterial_bnkhq")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("53_4v635")
+
+[node name="GlasswareRack" type="RigidBody3D" parent="Furniture/TaskLab" unique_id=232141564]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8.85, 1.2429999, 5.25)
+collision_layer = 16
+collision_mask = 31
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_fjkh2")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("54_2iqdr")
+
+[node name="Centrifuge" type="RigidBody3D" parent="Furniture/TaskLab" unique_id=1648034080]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.360001, 1.2429999, 5.16)
+collision_layer = 16
+collision_mask = 31
+mass = 30.0
+physics_material_override = SubResource("PhysicsMaterial_fjkh2")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("55_8thxh")
+
+[node name="Oscilloscope" type="RigidBody3D" parent="Furniture/TaskLab" unique_id=1065575410]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.4939995, 1.2149998, 5.306)
+collision_layer = 16
+collision_mask = 31
+mass = 8.0
+physics_material_override = SubResource("PhysicsMaterial_b20r1")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("56_x0g5l")
+
+[node name="Kitchen" type="Node3D" parent="Furniture" unique_id=494131820]
+
+[node name="Fridge" type="RigidBody3D" parent="Furniture/Kitchen" unique_id=1299280660]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5500001, 0.305, 7.4275)
+collision_layer = 16
+collision_mask = 31
+mass = 55.054405
+physics_material_override = SubResource("PhysicsMaterial_d8dee")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("57_qinte")
+
+[node name="BaseCabinet" type="RigidBody3D" parent="Furniture/Kitchen" unique_id=2143061622]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.512, 0.305, 8.08)
+collision_layer = 16
+collision_mask = 31
+mass = 27.160702
+physics_material_override = SubResource("PhysicsMaterial_sb0ft")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("58_npmk1")
+
+[node name="SinkUnit" type="RigidBody3D" parent="Furniture/Kitchen" unique_id=1825603372]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.53125, 0.305, 8.92)
+collision_layer = 16
+collision_mask = 31
+mass = 41.027756
+physics_material_override = SubResource("PhysicsMaterial_sb0ft")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("59_kswv0")
+
+[node name="Dishwasher" type="RigidBody3D" parent="Furniture/Kitchen" unique_id=1915954651]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5087501, 0.305, 9.74)
+collision_layer = 16
+collision_mask = 31
+mass = 39.774456
+physics_material_override = SubResource("PhysicsMaterial_vbwnk")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("60_jpi3x")
+
+[node name="Cooker" type="RigidBody3D" parent="Furniture/Kitchen" unique_id=1478815621]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5425, 0.305, 10.36)
+collision_layer = 16
+collision_mask = 31
+mass = 56.439095
+physics_material_override = SubResource("PhysicsMaterial_4g68u")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("61_m7idq")
+
+[node name="DrawerCabinet" type="RigidBody3D" parent="Furniture/Kitchen" unique_id=1220849986]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.512, 0.305, 10.98)
+collision_layer = 16
+collision_mask = 31
+mass = 26.074518
+physics_material_override = SubResource("PhysicsMaterial_sb0ft")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("62_pfmu4")
+
+[node name="PantryCabinet" type="RigidBody3D" parent="Furniture/Kitchen" unique_id=763796740]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.5, 0.305, 7.46)
+collision_layer = 16
+collision_mask = 31
+mass = 55.222767
+physics_material_override = SubResource("PhysicsMaterial_sb0ft")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("63_06b6x")
+
+[node name="Bin" type="RigidBody3D" parent="Furniture/Kitchen" unique_id=1764271927]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4.41, 0.305, 7.3)
+collision_layer = 16
+collision_mask = 31
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_473l4")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("64_vv1g3")
+
+[node name="DiningTable" type="RigidBody3D" parent="Furniture/Kitchen" unique_id=622595991]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 0.305, 9.4)
+collision_layer = 16
+collision_mask = 31
+mass = 45.0
+physics_material_override = SubResource("PhysicsMaterial_4f40k")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("65_uswg6")
+
+[node name="DiningChair" type="RigidBody3D" parent="Furniture/Kitchen" unique_id=520382965]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.111875, 0.305, 8.988125)
+collision_layer = 16
+collision_mask = 31
+mass = 6.0
+physics_material_override = SubResource("PhysicsMaterial_5ruey")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("66_gncua")
+
+[node name="DiningChair2" type="RigidBody3D" parent="Furniture/Kitchen" unique_id=1432215486]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.111875, 0.305, 9.788125)
+collision_layer = 16
+collision_mask = 31
+mass = 6.0
+physics_material_override = SubResource("PhysicsMaterial_5ruey")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("66_gncua")
+
+[node name="DiningChair3" type="RigidBody3D" parent="Furniture/Kitchen" unique_id=339961938]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.8881254, 0.305, 9.011875)
+collision_layer = 16
+collision_mask = 31
+mass = 6.0
+physics_material_override = SubResource("PhysicsMaterial_5ruey")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("66_gncua")
+
+[node name="DiningChair4" type="RigidBody3D" parent="Furniture/Kitchen" unique_id=1971453266]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.8881254, 0.305, 9.811875)
+collision_layer = 16
+collision_mask = 31
+mass = 6.0
+physics_material_override = SubResource("PhysicsMaterial_5ruey")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("66_gncua")
+
+[node name="Kettle" type="RigidBody3D" parent="Furniture/Kitchen" unique_id=1542978794]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1.2329999, 8.08)
+collision_layer = 16
+collision_mask = 31
+mass = 1.2
+physics_material_override = SubResource("PhysicsMaterial_473l4")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("67_ogdyk")
+
+[node name="Toaster" type="RigidBody3D" parent="Furniture/Kitchen" unique_id=638224723]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1.2329999, 10.95)
+collision_layer = 16
+collision_mask = 31
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_bomv2")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("68_2pl7u")
+
+[node name="DishRack" type="RigidBody3D" parent="Furniture/Kitchen" unique_id=784444722]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.556, 1.23175, 9.2)
+collision_layer = 16
+collision_mask = 31
+mass = 1.5
+physics_material_override = SubResource("PhysicsMaterial_tfw8m")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("69_1vj5k")
+
+[node name="Utility" type="Node3D" parent="Furniture" unique_id=1166395766]
+
+[node name="WashingMachine" type="RigidBody3D" parent="Furniture/Utility" unique_id=182581813]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.49125, 0.305, 11.9)
+collision_layer = 16
+collision_mask = 31
+mass = 67.604904
+physics_material_override = SubResource("PhysicsMaterial_l07lb")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("70_ynp7r")
+
+[node name="TumbleDryer" type="RigidBody3D" parent="Furniture/Utility" unique_id=1809959234]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.49125, 0.305, 12.52)
+collision_layer = 16
+collision_mask = 31
+mass = 38.320324
+physics_material_override = SubResource("PhysicsMaterial_pe4qq")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("71_atwpl")
+
+[node name="Freezer" type="RigidBody3D" parent="Furniture/Utility" unique_id=1204568459]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.485, 0.305, 13.37)
+collision_layer = 16
+collision_mask = 31
+mass = 49.641785
+physics_material_override = SubResource("PhysicsMaterial_l07lb")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("72_ydyjh")
+
+[node name="UtilityShelf" type="RigidBody3D" parent="Furniture/Utility" unique_id=1609810178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0.305, 13.660001)
+collision_layer = 16
+collision_mask = 31
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_pe4qq")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("73_pxkqx")
+
+[node name="CoatRackWall" type="RigidBody3D" parent="Furniture/Utility" unique_id=1892986307]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.839, 0.305, 13.59)
+collision_layer = 16
+collision_mask = 31
+mass = 9.0
+physics_material_override = SubResource("PhysicsMaterial_yrygr")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("74_sdyku")
+
+[node name="KitchenTrolley" type="RigidBody3D" parent="Furniture/Utility" unique_id=327118148]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.86125004, 0.305, 11.847501)
+collision_layer = 16
+collision_mask = 31
+mass = 16.0
+physics_material_override = SubResource("PhysicsMaterial_j6vk4")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("75_gu5td")
+
+[node name="LaundryBasket" type="RigidBody3D" parent="Furniture/Utility" unique_id=1618259129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76, 0.305, 13.55)
+collision_layer = 16
+collision_mask = 31
+mass = 1.7776539
+physics_material_override = SubResource("PhysicsMaterial_5h3p8")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("76_h8731")
+
+[node name="PlasticStorageBox" type="RigidBody3D" parent="Furniture/Utility" unique_id=1848173214]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.55, 0.305, 12.9)
+collision_layer = 16
+collision_mask = 31
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_tafaw")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("77_t5p0q")
+
+[node name="MasterBedroom" type="Node3D" parent="Furniture" unique_id=1041961958]
+
+[node name="BedKing" type="RigidBody3D" parent="Furniture/MasterBedroom" unique_id=224881155]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.3200002, 3.305, 2.6)
+collision_layer = 16
+collision_mask = 31
+mass = 90.0
+physics_material_override = SubResource("PhysicsMaterial_p4g2p")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("78_l5meo")
+
+[node name="BedsideCabinet" type="RigidBody3D" parent="Furniture/MasterBedroom" unique_id=318521250]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.1600003, 3.305, 1.3)
+collision_layer = 16
+collision_mask = 31
+mass = 10.53974
+physics_material_override = SubResource("PhysicsMaterial_obtua")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("79_cwjjs")
+
+[node name="BedsideCabinet2" type="RigidBody3D" parent="Furniture/MasterBedroom" unique_id=589174456]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.1600003, 3.305, 3.9)
+collision_layer = 16
+collision_mask = 31
+mass = 10.53974
+physics_material_override = SubResource("PhysicsMaterial_obtua")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("79_cwjjs")
+
+[node name="BlanketChest" type="RigidBody3D" parent="Furniture/MasterBedroom" unique_id=1883939485]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.8999999, 3.305, 2.6)
+collision_layer = 16
+collision_mask = 31
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_ddoov")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("80_30upf")
+
+[node name="WardrobeDouble" type="RigidBody3D" parent="Furniture/MasterBedroom" unique_id=1029407489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4775, 3.305, 6.45)
+collision_layer = 16
+collision_mask = 31
+mass = 56.322678
+physics_material_override = SubResource("PhysicsMaterial_jevhy")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("81_3h7on")
+
+[node name="ChestOfDrawers" type="RigidBody3D" parent="Furniture/MasterBedroom" unique_id=910941524]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.85, 3.305, 6.54)
+collision_layer = 16
+collision_mask = 31
+mass = 20.671467
+physics_material_override = SubResource("PhysicsMaterial_ktwxm")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("82_ufsd0")
+
+[node name="DressingTable" type="RigidBody3D" parent="Furniture/MasterBedroom" unique_id=1124539702]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.48000005, 3.305, 1.431875)
+collision_layer = 16
+collision_mask = 31
+mass = 16.463089
+physics_material_override = SubResource("PhysicsMaterial_7ip8t")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("83_cg51l")
+
+[node name="DressingStool" type="RigidBody3D" parent="Furniture/MasterBedroom" unique_id=2014845991]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.944, 3.305, 1.4560001)
+collision_layer = 16
+collision_mask = 31
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_m7e71")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("84_x0au6")
+
+[node name="MirrorFullLength" type="RigidBody3D" parent="Furniture/MasterBedroom" unique_id=1665250151]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.51, 3.305, 5.1899996)
+collision_layer = 16
+collision_mask = 31
+mass = 9.0
+physics_material_override = SubResource("PhysicsMaterial_3r7jh")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("85_imm58")
+
+[node name="TableLamp" type="RigidBody3D" parent="Furniture/MasterBedroom" unique_id=2006783789]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.1899996, 3.893, 1.31)
+collision_layer = 16
+collision_mask = 31
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_fjt8w")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("30_d2byv")
+
+[node name="TableLamp2" type="RigidBody3D" parent="Furniture/MasterBedroom" unique_id=306801948]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.1899996, 3.893, 3.9100003)
+collision_layer = 16
+collision_mask = 31
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_fjt8w")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("30_d2byv")
+
+[node name="Bedroom" type="Node3D" parent="Furniture" unique_id=170331030]
+
+[node name="BedSingle" type="RigidBody3D" parent="Furniture/Bedroom" unique_id=1513734775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2, 3.305, 2.3649998)
+collision_layer = 16
+collision_mask = 31
+mass = 45.0
+physics_material_override = SubResource("PhysicsMaterial_p4g2p")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("86_2andd")
+
+[node name="BedsideTable" type="RigidBody3D" parent="Furniture/Bedroom" unique_id=1837089863]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3, 3.305, 3.2)
+collision_layer = 16
+collision_mask = 31
+mass = 7.0
+physics_material_override = SubResource("PhysicsMaterial_4n8n2")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("87_435mq")
+
+[node name="BedroomDesk" type="RigidBody3D" parent="Furniture/Bedroom" unique_id=37016308]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.875, 3.305, 2.6)
+collision_layer = 16
+collision_mask = 31
+mass = 18.22092
+physics_material_override = SubResource("PhysicsMaterial_obtua")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("88_jsq4n")
+
+[node name="BedroomDeskChair" type="RigidBody3D" parent="Furniture/Bedroom" unique_id=939103018]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.45, 3.305, 2.6)
+collision_layer = 16
+collision_mask = 31
+mass = 6.0
+physics_material_override = SubResource("PhysicsMaterial_gtprp")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("89_pf8ud")
+
+[node name="WardrobeSingle" type="RigidBody3D" parent="Furniture/Bedroom" unique_id=1648562333]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.450001, 3.305, 0.52250004)
+collision_layer = 16
+collision_mask = 31
+mass = 34.983368
+physics_material_override = SubResource("PhysicsMaterial_jevhy")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("90_6mh25")
+
+[node name="BedroomBookshelf" type="RigidBody3D" parent="Furniture/Bedroom" unique_id=517673434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.3825, 3.305, 3.26)
+collision_layer = 16
+collision_mask = 31
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_4f40k")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("91_4rarc")
+
+[node name="LaundryBasket" type="RigidBody3D" parent="Furniture/Bedroom" unique_id=1590422712]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.01, 3.305, 0.45)
+collision_layer = 16
+collision_mask = 31
+mass = 1.7776539
+physics_material_override = SubResource("PhysicsMaterial_5h3p8")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("76_h8731")
+
+[node name="DeskLamp" type="RigidBody3D" parent="Furniture/Bedroom" unique_id=851108813]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.9, 4.0829997, 2.2)
+collision_layer = 16
+collision_mask = 31
+mass = 1.5
+physics_material_override = SubResource("PhysicsMaterial_bdukp")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("43_vxijh")
+
+[node name="Bathroom" type="Node3D" parent="Furniture" unique_id=799662357]
+
+[node name="Bathtub" type="RigidBody3D" parent="Furniture/Bathroom" unique_id=1537974086]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.75, 3.305, 3.9824998)
+collision_layer = 16
+collision_mask = 31
+mass = 45.0
+physics_material_override = SubResource("PhysicsMaterial_dody2")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("92_awubf")
+
+[node name="Toilet" type="RigidBody3D" parent="Furniture/Bathroom" unique_id=476872073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3, 3.305, 6.49)
+collision_layer = 16
+collision_mask = 31
+mass = 27.586407
+physics_material_override = SubResource("PhysicsMaterial_wbk5y")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("93_8jujp")
+
+[node name="PedestalSink" type="RigidBody3D" parent="Furniture/Bathroom" unique_id=683258675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.739, 3.305, 6.59)
+collision_layer = 16
+collision_mask = 31
+mass = 22.0
+physics_material_override = SubResource("PhysicsMaterial_wbk5y")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("94_hmn0l")
+
+[node name="ShowerEnclosure" type="RigidBody3D" parent="Furniture/Bathroom" unique_id=1616583631]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8.05, 3.305, 4.0950003)
+collision_layer = 16
+collision_mask = 31
+mass = 60.0
+physics_material_override = SubResource("PhysicsMaterial_n3kly")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("95_kyu3c")
+
+[node name="TowelRailHeated" type="RigidBody3D" parent="Furniture/Bathroom" unique_id=544285165]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.765, 3.305, 6.25)
+collision_layer = 16
+collision_mask = 31
+mass = 8.0
+physics_material_override = SubResource("PhysicsMaterial_xohfv")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("96_fl4vm")
+
+[node name="BathroomShelf" type="RigidBody3D" parent="Furniture/Bathroom" unique_id=12912764]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.7539997, 3.305, 4.939)
+collision_layer = 16
+collision_mask = 31
+mass = 6.0
+physics_material_override = SubResource("PhysicsMaterial_8ndw4")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("97_0fih7")
+
+[node name="LaundryHamper" type="RigidBody3D" parent="Furniture/Bathroom" unique_id=1822972129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.35, 3.305, 4)
+collision_layer = 16
+collision_mask = 31
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_vdwmn")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("98_6vpd0")
+
+[node name="BathroomStool" type="RigidBody3D" parent="Furniture/Bathroom" unique_id=20515713]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.393999, 3.305, 5.294)
+collision_layer = 16
+collision_mask = 31
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_bg5ix")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("99_8xbyk")
+
+[node name="ToiletRollHolder" type="RigidBody3D" parent="Furniture/Bathroom" unique_id=1025964708]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.85, 3.305, 5.9)
+collision_layer = 16
+collision_mask = 31
+mass = 0.8
+physics_material_override = SubResource("PhysicsMaterial_fff4c")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("100_m11kf")
+
+[node name="Landing" type="Node3D" parent="Furniture" unique_id=2053934279]
+
+[node name="BookcaseShort" type="RigidBody3D" parent="Furniture/Landing" unique_id=1394679545]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.775, 3.305, 2.6)
+collision_layer = 16
+collision_mask = 31
+mass = 22.0
+physics_material_override = SubResource("PhysicsMaterial_ixmg6")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("101_w348a")
+
+[node name="Workshop" type="Node3D" parent="Furniture" unique_id=160993906]
+
+[node name="WorkbenchWood" type="RigidBody3D" parent="Furniture/Workshop" unique_id=1183303737]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2, 0.105, 6.36)
+collision_layer = 16
+collision_mask = 31
+mass = 70.0
+physics_material_override = SubResource("PhysicsMaterial_mm2uc")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("102_gjuv4")
+
+[node name="ShelvingMetal" type="RigidBody3D" parent="Furniture/Workshop" unique_id=1364195535]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7, 0.105, 6.586)
+collision_layer = 16
+collision_mask = 31
+mass = 30.0
+physics_material_override = SubResource("PhysicsMaterial_ibf46")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("103_xi8v0")
+
+[node name="ToolChest" type="RigidBody3D" parent="Furniture/Workshop" unique_id=1005594967]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.64, 0.105, 6.63)
+collision_layer = 16
+collision_mask = 31
+mass = 30.83454
+physics_material_override = SubResource("PhysicsMaterial_qh6il")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("104_j03qc")
+
+[node name="WorkbenchMetal" type="RigidBody3D" parent="Furniture/Workshop" unique_id=394179021]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19.449999, 0.105, 5.0150003)
+collision_layer = 16
+collision_mask = 31
+mass = 66.49058
+physics_material_override = SubResource("PhysicsMaterial_henn0")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("105_1qbax")
+
+[node name="ToolCabinet" type="RigidBody3D" parent="Furniture/Workshop" unique_id=1066911626]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19.546, 0.105, 3.211)
+collision_layer = 16
+collision_mask = 31
+mass = 34.45178
+physics_material_override = SubResource("PhysicsMaterial_qh6il")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("106_bup34")
+
+[node name="StorageRack" type="RigidBody3D" parent="Furniture/Workshop" unique_id=1274464813]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 14.46, 0.105, 5.6)
+collision_layer = 16
+collision_mask = 31
+mass = 40.0
+physics_material_override = SubResource("PhysicsMaterial_ibf46")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("107_2hu17")
+
+[node name="MetalLocker" type="RigidBody3D" parent="Furniture/Workshop" unique_id=2073549225]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 14.7, 0.105, 0.44000003)
+collision_layer = 16
+collision_mask = 31
+mass = 45.0
+physics_material_override = SubResource("PhysicsMaterial_mpghl")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("108_2swoe")
+
+[node name="Ladder" type="RigidBody3D" parent="Furniture/Workshop" unique_id=1613126548]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19.35, 0.105, 0.75)
+collision_layer = 16
+collision_mask = 31
+mass = 8.0
+physics_material_override = SubResource("PhysicsMaterial_5b1gr")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("109_4r7uj")
+
+[node name="Sawhorse" type="RigidBody3D" parent="Furniture/Workshop" unique_id=1046640925]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.105, 3.9)
+collision_layer = 16
+collision_mask = 31
+mass = 6.0
+physics_material_override = SubResource("PhysicsMaterial_lupg7")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("110_vpimb")
+
+[node name="Sawhorse2" type="RigidBody3D" parent="Furniture/Workshop" unique_id=221700401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6, 0.105, 3.9)
+collision_layer = 16
+collision_mask = 31
+mass = 6.0
+physics_material_override = SubResource("PhysicsMaterial_lupg7")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("110_vpimb")
+
+[node name="WorkshopStool" type="RigidBody3D" parent="Furniture/Workshop" unique_id=1631262449]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 16.210001, 0.105, 5.76)
+collision_layer = 16
+collision_mask = 31
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_5ogam")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("111_rybnb")
+
+[node name="Pegboard" type="RigidBody3D" parent="Furniture/Workshop" unique_id=394534768]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.191002, 1.0129999, 6.5410004)
+collision_layer = 16
+collision_mask = 31
+mass = 15.0
+physics_material_override = SubResource("PhysicsMaterial_fmsc5")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("112_8dgnu")
+
+[node name="Vice" type="RigidBody3D" parent="Furniture/Workshop" unique_id=1190027774]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 1.0129999, 6.2)
+collision_layer = 16
+collision_mask = 31
+mass = 14.0
+physics_material_override = SubResource("PhysicsMaterial_eal8p")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("113_gp2jm")
+
+[node name="Toolbox" type="RigidBody3D" parent="Furniture/Workshop" unique_id=798135190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.95, 1.0129999, 6.14375)
+collision_layer = 16
+collision_mask = 31
+mass = 3.6629
+physics_material_override = SubResource("PhysicsMaterial_6e6wy")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("114_imvko")
+
+[node name="Shed" type="Node3D" parent="Furniture" unique_id=350293819]
+
+[node name="WorkshopShelvingWood" type="RigidBody3D" parent="Furniture/Shed" unique_id=1598116180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.75, 0.155, 21.614)
+collision_layer = 16
+collision_mask = 31
+mass = 25.0
+physics_material_override = SubResource("PhysicsMaterial_6jam2")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("115_faevg")
+
+[node name="GardenToolRack" type="RigidBody3D" parent="Furniture/Shed" unique_id=234203606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.339, 0.155, 21.633999)
+collision_layer = 16
+collision_mask = 31
+mass = 12.0
+physics_material_override = SubResource("PhysicsMaterial_henn0")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("116_qpv1r")
+
+[node name="WoodenCrateLarge" type="RigidBody3D" parent="Furniture/Shed" unique_id=1321553204]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19.05, 0.155, 20.01)
+collision_layer = 16
+collision_mask = 31
+mass = 12.0
+physics_material_override = SubResource("PhysicsMaterial_dyw26")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("117_dikes")
+
+[node name="PlasticStorageBox" type="RigidBody3D" parent="Furniture/Shed" unique_id=715821434]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 16.6, 0.155, 20.4)
+collision_layer = 16
+collision_mask = 31
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_tafaw")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("77_t5p0q")
+
+[node name="Pallet" type="RigidBody3D" parent="Furniture/Shed" unique_id=1041819955]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.85, 0.155, 20.55)
+collision_layer = 16
+collision_mask = 31
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_chlb4")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("118_ntnvu")
+
+[node name="FoldingChair" type="RigidBody3D" parent="Furniture/Shed" unique_id=1611498449]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 16.56025, 0.155, 19.75)
+collision_layer = 16
+collision_mask = 31
+mass = 4.0
+physics_material_override = SubResource("PhysicsMaterial_whylt")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("119_pmku0")
+
+[node name="Garden" type="Node3D" parent="Furniture" unique_id=1692314143]
+
+[node name="OutdoorDiningTable" type="RigidBody3D" parent="Furniture/Garden" unique_id=1492966773]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.305, 9)
+collision_layer = 16
+collision_mask = 31
+mass = 35.0
+physics_material_override = SubResource("PhysicsMaterial_glbl1")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("120_0u66d")
+
+[node name="OutdoorChair" type="RigidBody3D" parent="Furniture/Garden" unique_id=1545316206]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.6115, 0.305, 8.1)
+collision_layer = 16
+collision_mask = 31
+mass = 8.0
+physics_material_override = SubResource("PhysicsMaterial_ajosd")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("121_jvrrc")
+
+[node name="OutdoorChair2" type="RigidBody3D" parent="Furniture/Garden" unique_id=278127809]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8.411499, 0.305, 8.1)
+collision_layer = 16
+collision_mask = 31
+mass = 8.0
+physics_material_override = SubResource("PhysicsMaterial_ajosd")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("121_jvrrc")
+
+[node name="OutdoorChair3" type="RigidBody3D" parent="Furniture/Garden" unique_id=853759698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5885, 0.305, 9.9)
+collision_layer = 16
+collision_mask = 31
+mass = 8.0
+physics_material_override = SubResource("PhysicsMaterial_ajosd")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("121_jvrrc")
+
+[node name="OutdoorChair4" type="RigidBody3D" parent="Furniture/Garden" unique_id=1517243725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3885, 0.305, 9.9)
+collision_layer = 16
+collision_mask = 31
+mass = 8.0
+physics_material_override = SubResource("PhysicsMaterial_ajosd")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("121_jvrrc")
+
+[node name="GardenStorageChest" type="RigidBody3D" parent="Furniture/Garden" unique_id=1084723502]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.515, 0.305, 8)
+collision_layer = 16
+collision_mask = 31
+mass = 19.08592
+physics_material_override = SubResource("PhysicsMaterial_fp7rh")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("122_gexgd")
+
+[node name="FlowerPotLarge" type="RigidBody3D" parent="Furniture/Garden" unique_id=290453333]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.589001, 0.305, 7.639)
+collision_layer = 16
+collision_mask = 31
+mass = 25.0
+physics_material_override = SubResource("PhysicsMaterial_lm5vs")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("123_30cdq")
+
+[node name="FlowerPotLarge2" type="RigidBody3D" parent="Furniture/Garden" unique_id=688342779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.589001, 0.305, 10.539)
+collision_layer = 16
+collision_mask = 31
+mass = 25.0
+physics_material_override = SubResource("PhysicsMaterial_lm5vs")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("123_30cdq")
+
+[node name="PicnicTable" type="RigidBody3D" parent="Furniture/Garden" unique_id=1778053818]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9825, 0.005, 19.4825)
+collision_layer = 16
+collision_mask = 31
+mass = 60.0
+physics_material_override = SubResource("PhysicsMaterial_ow1wy")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("124_q7guh")
+
+[node name="SunLounger" type="RigidBody3D" parent="Furniture/Garden" unique_id=794735327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.385, 0.005, 14.485001)
+collision_layer = 16
+collision_mask = 31
+mass = 18.0
+physics_material_override = SubResource("PhysicsMaterial_4i2lh")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("125_ttt6t")
+
+[node name="SunLounger2" type="RigidBody3D" parent="Furniture/Garden" unique_id=671390586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.385, 0.005, 14.485001)
+collision_layer = 16
+collision_mask = 31
+mass = 18.0
+physics_material_override = SubResource("PhysicsMaterial_4i2lh")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("125_ttt6t")
+
+[node name="GardenBench" type="RigidBody3D" parent="Furniture/Garden" unique_id=5383487]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.005, 25.66)
+collision_layer = 16
+collision_mask = 31
+mass = 30.0
+physics_material_override = SubResource("PhysicsMaterial_5ogyg")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("126_qpdxr")
+
+[node name="GardenPlanter" type="RigidBody3D" parent="Furniture/Garden" unique_id=168170140]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.7350001, 0.005, 16)
+collision_layer = 16
+collision_mask = 31
+mass = 40.0
+physics_material_override = SubResource("PhysicsMaterial_alfw1")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("127_8wg4d")
+
+[node name="GardenPlanter2" type="RigidBody3D" parent="Furniture/Garden" unique_id=2022148595]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.7350001, 0.005, 18.5)
+collision_layer = 16
+collision_mask = 31
+mass = 40.0
+physics_material_override = SubResource("PhysicsMaterial_alfw1")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("127_8wg4d")
+
+[node name="CompostBin" type="RigidBody3D" parent="Furniture/Garden" unique_id=1521503846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.9, 0.005, 24.9)
+collision_layer = 16
+collision_mask = 31
+mass = 9.814295
+physics_material_override = SubResource("PhysicsMaterial_toixu")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("128_usuuj")
+
+[node name="Wheelbarrow" type="RigidBody3D" parent="Furniture/Garden" unique_id=1669826413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6, 0.005, 20.3875)
+collision_layer = 16
+collision_mask = 31
+mass = 15.0
+physics_material_override = SubResource("PhysicsMaterial_an8mw")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("129_tt5fj")
+
+[node name="FrontGardenBench" type="RigidBody3D" parent="Furniture/Garden" unique_id=1235256669]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.2, 0.005, -5.2)
+collision_layer = 16
+collision_mask = 31
+mass = 30.0
+physics_material_override = SubResource("PhysicsMaterial_5ogyg")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("126_qpdxr")
+
+[node name="PorchPot" type="RigidBody3D" parent="Furniture/Garden" unique_id=1001875285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3389997, 0.005, -1.011)
+collision_layer = 16
+collision_mask = 31
+mass = 25.0
+physics_material_override = SubResource("PhysicsMaterial_lm5vs")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("123_30cdq")
+
+[node name="PorchPot2" type="RigidBody3D" parent="Furniture/Garden" unique_id=1032792044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.639, 0.005, -1.011)
+collision_layer = 16
+collision_mask = 31
+mass = 25.0
+physics_material_override = SubResource("PhysicsMaterial_lm5vs")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("123_30cdq")
+
+[node name="RecyclingBin" type="RigidBody3D" parent="Furniture/Garden" unique_id=1742895131]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6, 0.035, -1.2)
+collision_layer = 16
+collision_mask = 31
+mass = 8.082856
+physics_material_override = SubResource("PhysicsMaterial_t48mi")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("130_lnbh3")
+
+[node name="RecyclingBin2" type="RigidBody3D" parent="Furniture/Garden" unique_id=522059993]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4, 0.035, -1.2)
+collision_layer = 16
+collision_mask = 31
+mass = 8.082856
+physics_material_override = SubResource("PhysicsMaterial_t48mi")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("18_3dv8t")
+structure = ExtResource("130_lnbh3")
+
+[node name="NPCCharacter" type="CharacterBody3D" parent="." unique_id=1525807399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+script = ExtResource("130_3mr6o")
+definition = ExtResource("131_7oda2")
+metadata/_custom_type_script = "uid://bm1ct5756p37"

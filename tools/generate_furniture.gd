@@ -67,13 +67,18 @@ const MATERIAL_TABLE := {
 	"electronics": ["Electronics", Color(0.12, 0.12, 0.13), 6.0, 700.0, 0.6, 0.1, 1.0, 1.0, 1.0, ImpactFeedback.Sound.PLASTIC, 0.15],
 }
 
-## Finish shades: multipliers for shade 0, 1, 2.
-const SHADES := {
-	FurnitureModel.Finish.PLAIN: [1.0, 1.0, 1.0],
-	FurnitureModel.Finish.GRAIN: [1.0, 0.9, 1.08],
-	FurnitureModel.Finish.FABRIC: [1.0, 0.92, 1.0],
-	FurnitureModel.Finish.BRUSHED: [1.0, 1.09, 1.0],
-	FurnitureModel.Finish.SPECKLE: [1.0, 0.94, 1.05],
+## How each material responds to the advanced tools (blowtorch, saws, grinder,
+## drill, shovel...), from res://contraptions/materials/profiles/.
+const PROFILE_DIR := "res://contraptions/materials/profiles/"
+const TOOL_PROFILES := {
+	"wood": ["oak", "pine", "walnut", "painted_wood", "chipboard", "plywood", "wicker"],
+	"steel": ["steel", "painted_steel", "cast_iron", "chrome"],
+	"nonmagnetic_metal": ["brass", "aluminium"],
+	"glass": ["glass", "mirror", "screen"],
+	"masonry": ["marble", "stone", "concrete", "terracotta", "ceramic"],
+	"plastic": ["plastic", "rubber", "electronics"],
+	"soft": ["fabric", "leather", "foam", "paper", "cardboard", "plant"],
+	"soil": ["soil"],
 }
 
 var materials: Dictionary = {}
@@ -148,32 +153,15 @@ func _generate(spec: Dictionary) -> bool:
 	if grid.x > 255 or grid.y > 255 or grid.z > 255:
 		report.append("TOO BIG  %s %s" % [spec["id"], grid])
 		return false
-	# Palette: one entry per (part, shade) actually used.
-	var palette := PackedColorArray([Color.BLACK])
-	var index_of := {}
-	var index_materials := {}
-	var indexed := {}
-	var mass := 0.0
-	var cell_volume := pow(voxel, 3.0)
-	for cell: Vector3i in model.cells:
-		var entry: Array = model.cells[cell]
-		var key := Vector2i(entry[0], entry[1])
-		if not index_of.has(key):
-			if palette.size() >= 256:
-				report.append("PALETTE FULL  %s" % spec["id"])
-				return false
-			var part: Array = model.parts[entry[0]]
-			var shade: float = SHADES[part[2]][entry[1]]
-			var color: Color = part[1]
-			palette.append(Color(clampf(color.r * shade, 0, 1), clampf(color.g * shade, 0, 1), clampf(color.b * shade, 0, 1)))
-			index_of[key] = palette.size() - 1
-			index_materials[palette.size() - 1] = materials[part[0]]
-		# Split by moving part: 0 is the body, the rest are doors, drawers and lids.
-		var group: int = entry[2] if entry.size() > 2 else 0
-		if not indexed.has(group):
-			indexed[group] = {}
-		indexed[group][cell] = index_of[key]
-		mass += materials[model.parts[entry[0]][0]].density * cell_volume
+	# Palette: one entry per (paint, shade) used, each with its real material.
+	var baked := ModelExporter.palette(model, materials)
+	if baked.is_empty():
+		report.append("PALETTE FULL  %s" % spec["id"])
+		return false
+	var palette: PackedColorArray = baked["colors"]
+	var index_materials: Dictionary = baked["index_materials"]
+	var indexed: Dictionary = baked["indexed"]
+	var mass: float = baked["mass"]
 	var folder: String = OUT + String(spec["category"]).to_snake_case() + "/"
 	var vox_path: String = VOX + spec["id"] + ".vox"
 	var def_path: String = folder + spec["id"] + ".tres"
@@ -207,24 +195,15 @@ func _generate(spec: Dictionary) -> bool:
 			continue
 		VoxFile.write_indexed(part_path, grid, indexed[group], palette)
 		manifest[part_path] = true
-		var part_definition := VoxelStructureDefinition.new()
-		part_definition.display_name = "%s %s" % [spec["name"], spec_part["label"]]
-		part_definition.voxel_size = voxel
-		part_definition.anchor_mode = VoxelStructureDefinition.AnchorMode.NONE
-		part_definition.vox_file = part_path
-		part_definition.vox_material = definition.vox_material
-		part_definition.vox_keep_colors = true
-		part_definition.vox_index_materials = index_materials
-		part_definition.density_scale = definition.density_scale
+		var part_definition := ModelExporter.definition("%s %s" % [spec["name"], spec_part["label"]], part_path, voxel,
+			index_materials, definition.vox_material, definition.density_scale)
 		var part := FurniturePart.new()
 		part.label = spec_part["label"]
 		part.kind = FurniturePart.Kind.HINGE if spec_part["kind"] == "hinge" else FurniturePart.Kind.SLIDE
 		part.structure = part_definition
 		part.axis = spec_part["axis"]
 		part.amount = spec_part["amount"]
-		# Model metres -> the body's space (VoxFile centres x and z on the grid).
-		var p: Vector3 = spec_part["pivot"] / voxel - Vector3(model.shift)
-		part.pivot = (p - Vector3(grid.x / 2, 0, grid.z / 2)) * voxel
+		part.pivot = ModelExporter.to_body(model, grid, spec_part["pivot"])
 		moving_parts.append(part)
 	definition.moving_parts = moving_parts
 	_save(definition, def_path)
@@ -239,6 +218,7 @@ func _make_materials() -> void:
 		var path: String = MATERIALS + key + ".tres"
 		if ResourceLoader.exists(path):
 			materials[key] = load(path)
+			_ensure_profile(key, materials[key], path)
 			continue
 		var row: Array = MATERIAL_TABLE[key]
 		var material := VoxelMaterialDefinition.new()
@@ -264,8 +244,23 @@ func _make_materials() -> void:
 			shiny.metallic = 1.0
 			shiny.roughness = 0.04
 			material.mesh_material_override = shiny
+		material.tool_profile = _profile_for(key)
 		ResourceSaver.save(material, path)
 		materials[key] = load(path)
+
+
+static func _profile_for(key: String) -> ToolMaterialProfile:
+	for profile in TOOL_PROFILES:
+		if TOOL_PROFILES[profile].has(key):
+			return load(PROFILE_DIR + profile + ".tres")
+	return null
+
+
+## Existing materials are left for tuning, but get a tool profile if they lack one.
+func _ensure_profile(key: String, material: VoxelMaterialDefinition, path: String) -> void:
+	if material.tool_profile == null and _profile_for(key) != null:
+		material.tool_profile = _profile_for(key)
+		ResourceSaver.save(material, path)
 
 
 func _may_write(path: String) -> bool:

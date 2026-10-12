@@ -1,0 +1,75 @@
+extends SceneTree
+## Locked kitchen door: the Assistant should find another way round (or stop).
+var _f := 0
+var _s: Node
+var npc: NPCCharacter
+var player: CharacterBody3D
+var _path := [Vector3(5.2, 0.3, 5.6), Vector3(5.2, 0.3, 6.4), Vector3(5.2, 0.3, 8.6), Vector3(4.2, 0.3, 9.3)]
+var _leg := 0
+var _top_y := 0.0
+func _physics_process(_d: float) -> bool:
+	_f += 1
+	if _f == 1:
+		_s = (load("res://house/builder/taskmaster_house.tscn") as PackedScene).instantiate()
+		root.add_child(_s)
+		# Remove the real player; use a stand-in we can steer.
+		var real := _s.get_node_or_null("Player")
+		if real != null:
+			real.free()
+		player = CharacterBody3D.new()
+		player.position = _path[0]
+		_s.add_child(player)
+		var cam := Camera3D.new()
+		cam.position.y = 1.6
+		player.add_child(cam)
+		cam.current = true
+		npc = NPCCharacter.create(load("res://npc/definitions/assistant.tres"), false)
+		npc.position = Vector3(5.6, 0.3, 4.6)
+		_s.add_child(npc)
+		return false
+	if npc.life == NPCCharacter.Life.BUILDING:
+		return false
+	if not npc.brain.following:
+		npc.brain.set_following(true)
+	# Walk the stand-in along the path at 1.2 m/s (after a short wait).
+	if _f > 60 and _leg < _path.size() - 1:
+		var a: Vector3 = player.global_position
+		var b: Vector3 = _path[_leg + 1]
+		var step := 1.2 / 60.0
+		if a.distance_to(b) <= step:
+			player.global_position = b
+			_leg += 1
+		else:
+			player.global_position = a + (b - a).normalized() * step
+	_top_y = maxf(_top_y, npc.global_position.y)
+	if _f % 120 == 0:
+		print("t=%ds player %s  npc %s  state %s  crumbs %d" % [_f / 60, player.global_position.snapped(Vector3.ONE * 0.01), npc.global_position.snapped(Vector3.ONE * 0.01), NPCBrain.State.keys()[npc.brain.state], npc.brain._trail.size()])
+	if _f == 60 * 40:
+		print("ended at %s (kitchen is z > 7.1), %.1f m from the player; kitchen door open: %s" % [npc.global_position.snapped(Vector3.ONE * 0.01), npc.global_position.distance_to(player.global_position), _door_open()])
+		return true
+	return false
+
+
+func _door_open() -> String:
+	var wall := _s.find_child("KitchenWall", true, false)
+	var states := []
+	for n in wall.find_children("*", "", true, false):
+		if n.has_method("get_interaction_actions") and n.get("_is_open") != null:
+			states.append(n.get("_is_open"))
+	return str(states)
+
+
+var _locked := false
+func _process(_d: float) -> bool:
+	if not _locked and _s != null and _s.is_inside_tree():
+		var wall := _s.find_child("KitchenWall", true, false)
+		if wall != null:
+			for n in wall.find_children("*", "", true, false):
+				if n.has_method("perform_interaction_action") and n.get("_is_open") != null:
+					n.call("perform_interaction_action", &"lock", null)
+					print("locked: ", n.call("is_locked"))
+					_locked = true
+	if npc != null and _f % 120 == 0 and npc.brain._nav != null:
+		var r: PackedVector3Array = npc.brain._route
+		print("   route %d pts (idx %d) end %s, blocked %d, baking %s" % [r.size(), npc.brain._route_index, r[r.size()-1].snapped(Vector3.ONE*0.01) if r.size() else "-", npc.brain._nav._blocked.size(), npc.brain._nav.is_baking()])
+	return false

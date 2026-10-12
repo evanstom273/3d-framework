@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://b2scslaodb02y"]
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://b0fn6qvk26vma"]
 
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_emh42"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/wood.tres" id="2_k8qsg"]
 
 [resource]
 script = ExtResource("1_emh42")
+tool_profile = ExtResource("2_k8qsg")
 display_name = "Pine"
 color = Color(0.8, 0.64, 0.42, 1)
 color_jitter = 0.0

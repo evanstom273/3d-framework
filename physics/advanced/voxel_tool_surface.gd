@@ -47,6 +47,8 @@ static func damage(body: VoxelBody, pose: Transform3D, size: Vector3, operation:
 	var low = Vector3i((bounds.position / body.voxel_size).floor())
 	var high = Vector3i((bounds.end / body.voxel_size).ceil())
 	var removed = 0
+	var removed_cells := {}
+	var touched := false
 	for x in range(low.x, high.x + 1):
 		for y in range(low.y, high.y + 1):
 			for z in range(low.z, high.z + 1):
@@ -63,11 +65,17 @@ static func damage(body: VoxelBody, pose: Transform3D, size: Vector3, operation:
 				if material.tool_profile == null: continue
 				var dealt = rate * exposure * material.tool_profile.response(operation)
 				if dealt <= 0: continue
+				touched = true
 				var remaining: float = body.health.get(cell, material.strength) - dealt
 				if remaining <= 0:
+					removed_cells[cell] = body.cells[cell]
 					body._remove_cell(cell)
 					removed += 1
 				else:
 					body.health[cell] = remaining
 					body._mark_dirty(cell)
+	if touched:
+		body.tool_worked.emit(operation, pose.origin, removed_cells)
+		if not removed_cells.is_empty():
+			body.cells_removed.emit(removed_cells, -pose.basis.z, rate * exposure)
 	return removed

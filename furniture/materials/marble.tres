@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://b6je217u8h4pn"]
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://bvnkss283xpn6"]
 
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_d3i8k"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/masonry.tres" id="2_c2ve3"]
 
 [resource]
 script = ExtResource("1_d3i8k")
+tool_profile = ExtResource("2_c2ve3")
 display_name = "Marble"
 color = Color(0.88, 0.87, 0.84, 1)
 color_jitter = 0.0

@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://cvyx4m1hauwg5"]
 
-[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_6h5gb"]
-[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_3i2q1"]
-[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_7kata"]
-[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_phjv5"]
-[ext_resource type="Resource" path="res://furniture/materials/chrome.tres" id="5_gbu13"]
-[ext_resource type="Resource" path="res://furniture/materials/paper.tres" id="6_ucwbs"]
+[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_6h5gb"]
+[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_3i2q1"]
+[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_7kata"]
+[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_phjv5"]
+[ext_resource type="Resource" uid="uid://dvjnxm637ukvf" path="res://furniture/materials/chrome.tres" id="5_gbu13"]
+[ext_resource type="Resource" uid="uid://cb2ib57fgyjlk" path="res://furniture/materials/paper.tres" id="6_ucwbs"]
 
 [resource]
 script = ExtResource("3_7kata")

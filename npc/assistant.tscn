@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://npc/npc_character.gd" id="1_npc"]
+[ext_resource type="Resource" path="res://npc/definitions/assistant.tres" id="2_def"]
+
+[node name="Assistant" type="CharacterBody3D"]
+script = ExtResource("1_npc")
+definition = ExtResource("2_def")

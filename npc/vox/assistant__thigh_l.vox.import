@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://cmk8kvini547v"
+path="res://.godot/imported/assistant__thigh_l.vox-84f67e876521d4511ad5d236ef9a7700.tres"
+
+[deps]
+
+source_file="res://npc/vox/assistant__thigh_l.vox"
+dest_files=["res://.godot/imported/assistant__thigh_l.vox-84f67e876521d4511ad5d236ef9a7700.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

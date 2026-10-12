@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://c3oyba533fuca"]
+[gd_resource type="Resource" script_class="VoxelMaterialDefinition" format=3 uid="uid://b24y6id5o84h"]
 
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="1_y8a4v"]
+[ext_resource type="Resource" path="res://contraptions/materials/profiles/steel.tres" id="2_670w1"]
 
 [resource]
 script = ExtResource("1_y8a4v")
+tool_profile = ExtResource("2_670w1")
 display_name = "Painted steel"
 color = Color(0.3, 0.35, 0.42, 1)
 color_jitter = 0.0

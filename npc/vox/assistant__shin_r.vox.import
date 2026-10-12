@@ -1,0 +1,17 @@
+[remap]
+
+importer="vox_object.voxel_destruction"
+type="VoxelResource"
+uid="uid://ds4c6bjswmn1p"
+path="res://.godot/imported/assistant__shin_r.vox-2108bee7b85263c9d35801fe6a63e8bd.tres"
+
+[deps]
+
+source_file="res://npc/vox/assistant__shin_r.vox"
+dest_files=["res://.godot/imported/assistant__shin_r.vox-2108bee7b85263c9d35801fe6a63e8bd.tres"]
+
+[params]
+
+Scale=0.1
+Chunk_Size=Vector3(16, 16, 16)
+Resource_type=0

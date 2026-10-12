@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_6kvee"]
 [ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_nnkps"]
 [ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_42bfh"]
-[ext_resource type="Resource" uid="uid://bgrnpiwfmjxib" path="res://furniture/materials/painted_wood.tres" id="5_5j02d"]
-[ext_resource type="Resource" uid="uid://do6r55lv41aud" path="res://furniture/materials/oak.tres" id="6_ghdyt"]
-[ext_resource type="Resource" uid="uid://2t7j78nojlx7" path="res://furniture/materials/ceramic.tres" id="7_yj5ue"]
+[ext_resource type="Resource" uid="uid://e6f1oi8t3eqp" path="res://furniture/materials/painted_wood.tres" id="5_5j02d"]
+[ext_resource type="Resource" uid="uid://d0ow670ht3lld" path="res://furniture/materials/oak.tres" id="6_ghdyt"]
+[ext_resource type="Resource" uid="uid://cd7usdievww85" path="res://furniture/materials/ceramic.tres" id="7_yj5ue"]
 
 [sub_resource type="Resource" id="Resource_wnni3"]
 script = ExtResource("3_nnkps")

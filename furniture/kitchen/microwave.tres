@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="VoxelStructureDefinition" format=3 uid="uid://d7w7w610mh3v"]
 
-[ext_resource type="Script" uid="uid://ftpm3vurrpnk" path="res://physics/voxels/voxel_fill_box.gd" id="1_ykal5"]
-[ext_resource type="Script" uid="uid://bt8loylkqpj8h" path="res://physics/voxels/furniture_part.gd" id="2_yysrx"]
-[ext_resource type="Script" uid="uid://cqq5d4qkthl3" path="res://physics/voxels/voxel_structure_definition.gd" id="3_j5kta"]
-[ext_resource type="Script" uid="uid://b2kbe1jqoji1a" path="res://physics/voxels/voxel_material_definition.gd" id="4_bxb2h"]
-[ext_resource type="Resource" uid="uid://c3oyba533fuca" path="res://furniture/materials/painted_steel.tres" id="5_100m0"]
-[ext_resource type="Resource" uid="uid://cqju2cnc1vrtw" path="res://furniture/materials/glass.tres" id="6_jw7op"]
-[ext_resource type="Resource" uid="uid://6ri68lauf7ep" path="res://furniture/materials/electronics.tres" id="7_6i738"]
-[ext_resource type="Resource" uid="uid://d1dlfsyyucymk" path="res://furniture/materials/screen.tres" id="8_b55xq"]
-[ext_resource type="Resource" uid="uid://bht0hyc6vbx2v" path="res://furniture/materials/aluminium.tres" id="9_kgnmr"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_fill_box.gd" id="1_ykal5"]
+[ext_resource type="Script" path="res://physics/voxels/furniture_part.gd" id="2_yysrx"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_structure_definition.gd" id="3_j5kta"]
+[ext_resource type="Script" path="res://physics/voxels/voxel_material_definition.gd" id="4_bxb2h"]
+[ext_resource type="Resource" path="res://furniture/materials/painted_steel.tres" id="5_100m0"]
+[ext_resource type="Resource" path="res://furniture/materials/glass.tres" id="6_jw7op"]
+[ext_resource type="Resource" path="res://furniture/materials/electronics.tres" id="7_6i738"]
+[ext_resource type="Resource" path="res://furniture/materials/screen.tres" id="8_b55xq"]
+[ext_resource type="Resource" path="res://furniture/materials/aluminium.tres" id="9_kgnmr"]
 
 [sub_resource type="Resource" id="Resource_e3gu3"]
 script = ExtResource("3_j5kta")
